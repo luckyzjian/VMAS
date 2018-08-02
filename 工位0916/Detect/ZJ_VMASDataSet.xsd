@@ -1,0 +1,587 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ZJ_VMASDataSet" targetNamespace="http://tempuri.org/ZJ_VMASDataSet.xsd" xmlns:mstns="http://tempuri.org/ZJ_VMASDataSet.xsd" xmlns="http://tempuri.org/ZJ_VMASDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ZJ_VMASConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ZJ_VMASConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Detect.Properties.Settings.GlobalReference.Default.ZJ_VMASConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BJCLXXBTableAdapter" GeneratorDataComponentClassName="BJCLXXBTableAdapter" Name="BJCLXXB" UserDataComponentName="BJCLXXBTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ZJ_VMASConnectionString (Settings)" DbObjectName="ZJ_VMAS.dbo.BJCLXXB" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [dbo].[BJCLXXB] WHERE (([JCBH] = @Original_JCBH) AND ((@IsNull_JCCS = 1 AND [JCCS] IS NULL) OR ([JCCS] = @Original_JCCS)) AND ((@IsNull_PZLX = 1 AND [PZLX] IS NULL) OR ([PZLX] = @Original_PZLX)) AND ((@IsNull_JCCLPH = 1 AND [JCCLPH] IS NULL) OR ([JCCLPH] = @Original_JCCLPH)) AND ((@IsNull_CLXHBH = 1 AND [CLXHBH] IS NULL) OR ([CLXHBH] = @Original_CLXHBH)) AND ((@IsNull_CCRQ = 1 AND [CCRQ] IS NULL) OR ([CCRQ] = @Original_CCRQ)) AND ((@IsNull_DJRQ = 1 AND [DJRQ] IS NULL) OR ([DJRQ] = @Original_DJRQ)) AND ((@IsNull_FDJH = 1 AND [FDJH] IS NULL) OR ([FDJH] = @Original_FDJH)) AND ((@IsNull_CJH = 1 AND [CJH] IS NULL) OR ([CJH] = @Original_CJH)) AND ((@IsNull_CZ = 1 AND [CZ] IS NULL) OR ([CZ] = @Original_CZ)) AND ((@IsNull_CZDH = 1 AND [CZDH] IS NULL) OR ([CZDH] = @Original_CZDH)) AND ((@IsNull_CZDZ = 1 AND [CZDZ] IS NULL) OR ([CZDZ] = @Original_CZDZ)) AND ((@IsNull_LCBDS = 1 AND [LCBDS] IS NULL) OR ([LCBDS] = @Original_LCBDS)) AND ((@IsNull_HBBZ = 1 AND [HBBZ] IS NULL) OR ([HBBZ] = @Original_HBBZ)) AND ((@IsNull_SYQK = 1 AND [SYQK] IS NULL) OR ([SYQK] = @Original_SYQK)) AND ((@IsNull_JCBJ = 1 AND [JCBJ] IS NULL) OR ([JCBJ] = @Original_JCBJ)) AND ((@IsNull_JCZT = 1 AND [JCZT] IS NULL) OR ([JCZT] = @Original_JCZT)) AND ((@IsNull_QRJCFF = 1 AND [QRJCFF] IS NULL) OR ([QRJCFF] = @Original_QRJCFF)) AND ((@IsNull_RYLX = 1 AND [RYLX] IS NULL) OR ([RYLX] = @Original_RYLX)) AND ((@IsNull_GYFF = 1 AND [GYFF] IS NULL) OR ([GYFF] = @Original_GYFF)) AND ((@IsNull_BSXLX = 1 AND [BSXLX] IS NULL) OR ([BSXLX] = @Original_BSXLX)) AND ((@IsNull_CLLX = 1 AND [CLLX] IS NULL) OR ([CLLX] = @Original_CLLX)) AND ((@IsNull_ZBZL = 1 AND [ZBZL] IS NULL) OR ([ZBZL] = @Original_ZBZL)) AND ((@IsNull_ZDZZL = 1 AND [ZDZZL] IS NULL) OR ([ZDZZL] = @Original_ZDZZL)) AND ((@IsNull_FDJPL = 1 AND [FDJPL] IS NULL) OR ([FDJPL] = @Original_FDJPL)) AND ((@IsNull_FDJSCS = 1 AND [FDJSCS] IS NULL) OR ([FDJSCS] = @Original_FDJSCS)) AND ((@IsNull_JCZH = 1 AND [JCZH] IS NULL) OR ([JCZH] = @Original_JCZH)) AND ((@IsNull_DCZZ = 1 AND [DCZZ] IS NULL) OR ([DCZZ] = @Original_DCZZ)) AND ((@IsNull_FDJEDGL = 1 AND [FDJEDGL] IS NULL) OR ([FDJEDGL] = @Original_FDJEDGL)) AND ((@IsNull_FDJEDZS = 1 AND [FDJEDZS] IS NULL) OR ([FDJEDZS] = @Original_FDJEDZS)) AND ((@IsNull_PQGSL = 1 AND [PQGSL] IS NULL) OR ([PQGSL] = @Original_PQGSL)) AND ((@IsNull_PFBZ = 1 AND [PFBZ] IS NULL) OR ([PFBZ] = @Original_PFBZ)) AND ((@IsNull_ZZCS = 1 AND [ZZCS] IS NULL) OR ([ZZCS] = @Original_ZZCS)) AND ((@IsNull_QGS = 1 AND [QGS] IS NULL) OR ([QGS] = @Original_QGS)) AND ((@IsNull_QDXS = 1 AND [QDXS] IS NULL) OR ([QDXS] = @Original_QDXS)) AND ((@IsNull_QDLQY = 1 AND [QDLQY] IS NULL) OR ([QDLQY] = @Original_QDLQY)) AND ((@IsNull_JCYH = 1 AND [JCYH] IS NULL) OR ([JCYH] = @Original_JCYH)) AND ((@IsNull_DWS = 1 AND [DWS] IS NULL) OR ([DWS] = @Original_DWS)) AND ((@IsNull_HDZK = 1 AND [HDZK] IS NULL) OR ([HDZK] = @Original_HDZK)) AND ((@IsNull_JCRQ = 1 AND [JCRQ] IS NULL) OR ([JCRQ] = @Original_JCRQ)) AND ((@IsNull_JQXS = 1 AND [JQXS] IS NULL) OR ([JQXS] = @Original_JQXS)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_JCBH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCBH" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JCCS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCCS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_JCCS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCCS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PZLX" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PZLX" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_PZLX" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PZLX" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JCCLPH" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCCLPH" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_JCCLPH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCCLPH" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CLXHBH" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CLXHBH" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CLXHBH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CLXHBH" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CCRQ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CCRQ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_CCRQ" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="CCRQ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DJRQ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DJRQ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_DJRQ" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="DJRQ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FDJH" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FDJH" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_FDJH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJH" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CJH" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CJH" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CJH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CJH" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CZ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CZ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CZ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CZDH" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CZDH" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CZDH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CZDH" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CZDZ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CZDZ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CZDZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CZDZ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_LCBDS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="LCBDS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_LCBDS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="LCBDS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_HBBZ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HBBZ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_HBBZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="HBBZ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_SYQK" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SYQK" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_SYQK" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SYQK" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JCBJ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCBJ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_JCBJ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCBJ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JCZT" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCZT" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_JCZT" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCZT" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_QRJCFF" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="QRJCFF" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_QRJCFF" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="QRJCFF" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_RYLX" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RYLX" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_RYLX" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RYLX" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_GYFF" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="GYFF" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_GYFF" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="GYFF" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_BSXLX" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="BSXLX" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_BSXLX" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BSXLX" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CLLX" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CLLX" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CLLX" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CLLX" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ZBZL" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ZBZL" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_ZBZL" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ZBZL" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ZDZZL" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ZDZZL" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_ZDZZL" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ZDZZL" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FDJPL" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FDJPL" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_FDJPL" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJPL" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FDJSCS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FDJSCS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_FDJSCS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJSCS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JCZH" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCZH" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_JCZH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCZH" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DCZZ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DCZZ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_DCZZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DCZZ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FDJEDGL" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FDJEDGL" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_FDJEDGL" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJEDGL" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FDJEDZS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FDJEDZS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_FDJEDZS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJEDZS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PQGSL" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PQGSL" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_PQGSL" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PQGSL" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PFBZ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PFBZ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_PFBZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PFBZ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ZZCS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ZZCS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_ZZCS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ZZCS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_QGS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="QGS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_QGS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="QGS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_QDXS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="QDXS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_QDXS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="QDXS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_QDLQY" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="QDLQY" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_QDLQY" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="QDLQY" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JCYH" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCYH" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_JCYH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCYH" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DWS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DWS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_DWS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DWS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_HDZK" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HDZK" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_HDZK" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HDZK" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JCRQ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCRQ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_JCRQ" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="JCRQ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JQXS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JQXS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_JQXS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JQXS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [dbo].[BJCLXXB] ([JCBH], [JCCS], [PZLX], [JCCLPH], [CLXHBH], [CCRQ], [DJRQ], [FDJH], [CJH], [CZ], [CZDH], [CZDZ], [LCBDS], [HBBZ], [SYQK], [JCBJ], [JCZT], [QRJCFF], [RYLX], [GYFF], [BSXLX], [CLLX], [ZBZL], [ZDZZL], [FDJPL], [FDJSCS], [JCZH], [DCZZ], [FDJEDGL], [FDJEDZS], [PQGSL], [PFBZ], [ZZCS], [QGS], [QDXS], [QDLQY], [JCYH], [DWS], [HDZK], [JCRQ], [JQXS]) VALUES (@JCBH, @JCCS, @PZLX, @JCCLPH, @CLXHBH, @CCRQ, @DJRQ, @FDJH, @CJH, @CZ, @CZDH, @CZDZ, @LCBDS, @HBBZ, @SYQK, @JCBJ, @JCZT, @QRJCFF, @RYLX, @GYFF, @BSXLX, @CLLX, @ZBZL, @ZDZZL, @FDJPL, @FDJSCS, @JCZH, @DCZZ, @FDJEDGL, @FDJEDZS, @PQGSL, @PFBZ, @ZZCS, @QGS, @QDXS, @QDLQY, @JCYH, @DWS, @HDZK, @JCRQ, @JQXS);
+SELECT JCBH, JCCS, PZLX, JCCLPH, CLXHBH, CCRQ, DJRQ, FDJH, CJH, CZ, CZDH, CZDZ, LCBDS, HBBZ, SYQK, JCBJ, JCZT, QRJCFF, RYLX, GYFF, BSXLX, CLLX, ZBZL, ZDZZL, FDJPL, FDJSCS, JCZH, DCZZ, FDJEDGL, FDJEDZS, PQGSL, PFBZ, ZZCS, QGS, QDXS, QDLQY, JCYH, DWS, HDZK, JCRQ, JQXS FROM BJCLXXB WHERE (JCBH = @JCBH)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@JCBH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCBH" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@JCCS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCCS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@PZLX" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PZLX" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@JCCLPH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCCLPH" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CLXHBH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CLXHBH" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@CCRQ" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="CCRQ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@DJRQ" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="DJRQ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@FDJH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJH" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CJH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CJH" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CZ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CZDH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CZDH" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CZDZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CZDZ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@LCBDS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="LCBDS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@HBBZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="HBBZ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SYQK" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SYQK" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@JCBJ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCBJ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@JCZT" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCZT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@QRJCFF" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="QRJCFF" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@RYLX" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RYLX" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@GYFF" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="GYFF" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BSXLX" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BSXLX" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CLLX" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CLLX" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ZBZL" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ZBZL" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ZDZZL" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ZDZZL" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@FDJPL" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJPL" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@FDJSCS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJSCS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@JCZH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCZH" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@DCZZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DCZZ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@FDJEDGL" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJEDGL" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@FDJEDZS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJEDZS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@PQGSL" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PQGSL" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@PFBZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PFBZ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ZZCS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ZZCS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@QGS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="QGS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@QDXS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="QDXS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@QDLQY" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="QDLQY" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@JCYH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCYH" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@DWS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DWS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@HDZK" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HDZK" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@JCRQ" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="JCRQ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@JQXS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JQXS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT JCBH, JCCS, PZLX, JCCLPH, CLXHBH, CCRQ, DJRQ, FDJH, CJH, CZ, CZDH, CZDZ, LCBDS, HBBZ, SYQK, JCBJ, JCZT, QRJCFF, RYLX, GYFF, BSXLX, CLLX, ZBZL, ZDZZL, FDJPL, FDJSCS, JCZH, DCZZ, FDJEDGL, FDJEDZS, PQGSL, PFBZ, ZZCS, QGS, QDXS, QDLQY, JCYH, DWS, HDZK, JCRQ, JQXS FROM dbo.BJCLXXB</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [dbo].[BJCLXXB] SET [JCBH] = @JCBH, [JCCS] = @JCCS, [PZLX] = @PZLX, [JCCLPH] = @JCCLPH, [CLXHBH] = @CLXHBH, [CCRQ] = @CCRQ, [DJRQ] = @DJRQ, [FDJH] = @FDJH, [CJH] = @CJH, [CZ] = @CZ, [CZDH] = @CZDH, [CZDZ] = @CZDZ, [LCBDS] = @LCBDS, [HBBZ] = @HBBZ, [SYQK] = @SYQK, [JCBJ] = @JCBJ, [JCZT] = @JCZT, [QRJCFF] = @QRJCFF, [RYLX] = @RYLX, [GYFF] = @GYFF, [BSXLX] = @BSXLX, [CLLX] = @CLLX, [ZBZL] = @ZBZL, [ZDZZL] = @ZDZZL, [FDJPL] = @FDJPL, [FDJSCS] = @FDJSCS, [JCZH] = @JCZH, [DCZZ] = @DCZZ, [FDJEDGL] = @FDJEDGL, [FDJEDZS] = @FDJEDZS, [PQGSL] = @PQGSL, [PFBZ] = @PFBZ, [ZZCS] = @ZZCS, [QGS] = @QGS, [QDXS] = @QDXS, [QDLQY] = @QDLQY, [JCYH] = @JCYH, [DWS] = @DWS, [HDZK] = @HDZK, [JCRQ] = @JCRQ, [JQXS] = @JQXS WHERE (([JCBH] = @Original_JCBH) AND ((@IsNull_JCCS = 1 AND [JCCS] IS NULL) OR ([JCCS] = @Original_JCCS)) AND ((@IsNull_PZLX = 1 AND [PZLX] IS NULL) OR ([PZLX] = @Original_PZLX)) AND ((@IsNull_JCCLPH = 1 AND [JCCLPH] IS NULL) OR ([JCCLPH] = @Original_JCCLPH)) AND ((@IsNull_CLXHBH = 1 AND [CLXHBH] IS NULL) OR ([CLXHBH] = @Original_CLXHBH)) AND ((@IsNull_CCRQ = 1 AND [CCRQ] IS NULL) OR ([CCRQ] = @Original_CCRQ)) AND ((@IsNull_DJRQ = 1 AND [DJRQ] IS NULL) OR ([DJRQ] = @Original_DJRQ)) AND ((@IsNull_FDJH = 1 AND [FDJH] IS NULL) OR ([FDJH] = @Original_FDJH)) AND ((@IsNull_CJH = 1 AND [CJH] IS NULL) OR ([CJH] = @Original_CJH)) AND ((@IsNull_CZ = 1 AND [CZ] IS NULL) OR ([CZ] = @Original_CZ)) AND ((@IsNull_CZDH = 1 AND [CZDH] IS NULL) OR ([CZDH] = @Original_CZDH)) AND ((@IsNull_CZDZ = 1 AND [CZDZ] IS NULL) OR ([CZDZ] = @Original_CZDZ)) AND ((@IsNull_LCBDS = 1 AND [LCBDS] IS NULL) OR ([LCBDS] = @Original_LCBDS)) AND ((@IsNull_HBBZ = 1 AND [HBBZ] IS NULL) OR ([HBBZ] = @Original_HBBZ)) AND ((@IsNull_SYQK = 1 AND [SYQK] IS NULL) OR ([SYQK] = @Original_SYQK)) AND ((@IsNull_JCBJ = 1 AND [JCBJ] IS NULL) OR ([JCBJ] = @Original_JCBJ)) AND ((@IsNull_JCZT = 1 AND [JCZT] IS NULL) OR ([JCZT] = @Original_JCZT)) AND ((@IsNull_QRJCFF = 1 AND [QRJCFF] IS NULL) OR ([QRJCFF] = @Original_QRJCFF)) AND ((@IsNull_RYLX = 1 AND [RYLX] IS NULL) OR ([RYLX] = @Original_RYLX)) AND ((@IsNull_GYFF = 1 AND [GYFF] IS NULL) OR ([GYFF] = @Original_GYFF)) AND ((@IsNull_BSXLX = 1 AND [BSXLX] IS NULL) OR ([BSXLX] = @Original_BSXLX)) AND ((@IsNull_CLLX = 1 AND [CLLX] IS NULL) OR ([CLLX] = @Original_CLLX)) AND ((@IsNull_ZBZL = 1 AND [ZBZL] IS NULL) OR ([ZBZL] = @Original_ZBZL)) AND ((@IsNull_ZDZZL = 1 AND [ZDZZL] IS NULL) OR ([ZDZZL] = @Original_ZDZZL)) AND ((@IsNull_FDJPL = 1 AND [FDJPL] IS NULL) OR ([FDJPL] = @Original_FDJPL)) AND ((@IsNull_FDJSCS = 1 AND [FDJSCS] IS NULL) OR ([FDJSCS] = @Original_FDJSCS)) AND ((@IsNull_JCZH = 1 AND [JCZH] IS NULL) OR ([JCZH] = @Original_JCZH)) AND ((@IsNull_DCZZ = 1 AND [DCZZ] IS NULL) OR ([DCZZ] = @Original_DCZZ)) AND ((@IsNull_FDJEDGL = 1 AND [FDJEDGL] IS NULL) OR ([FDJEDGL] = @Original_FDJEDGL)) AND ((@IsNull_FDJEDZS = 1 AND [FDJEDZS] IS NULL) OR ([FDJEDZS] = @Original_FDJEDZS)) AND ((@IsNull_PQGSL = 1 AND [PQGSL] IS NULL) OR ([PQGSL] = @Original_PQGSL)) AND ((@IsNull_PFBZ = 1 AND [PFBZ] IS NULL) OR ([PFBZ] = @Original_PFBZ)) AND ((@IsNull_ZZCS = 1 AND [ZZCS] IS NULL) OR ([ZZCS] = @Original_ZZCS)) AND ((@IsNull_QGS = 1 AND [QGS] IS NULL) OR ([QGS] = @Original_QGS)) AND ((@IsNull_QDXS = 1 AND [QDXS] IS NULL) OR ([QDXS] = @Original_QDXS)) AND ((@IsNull_QDLQY = 1 AND [QDLQY] IS NULL) OR ([QDLQY] = @Original_QDLQY)) AND ((@IsNull_JCYH = 1 AND [JCYH] IS NULL) OR ([JCYH] = @Original_JCYH)) AND ((@IsNull_DWS = 1 AND [DWS] IS NULL) OR ([DWS] = @Original_DWS)) AND ((@IsNull_HDZK = 1 AND [HDZK] IS NULL) OR ([HDZK] = @Original_HDZK)) AND ((@IsNull_JCRQ = 1 AND [JCRQ] IS NULL) OR ([JCRQ] = @Original_JCRQ)) AND ((@IsNull_JQXS = 1 AND [JQXS] IS NULL) OR ([JQXS] = @Original_JQXS)));
+SELECT JCBH, JCCS, PZLX, JCCLPH, CLXHBH, CCRQ, DJRQ, FDJH, CJH, CZ, CZDH, CZDZ, LCBDS, HBBZ, SYQK, JCBJ, JCZT, QRJCFF, RYLX, GYFF, BSXLX, CLLX, ZBZL, ZDZZL, FDJPL, FDJSCS, JCZH, DCZZ, FDJEDGL, FDJEDZS, PQGSL, PFBZ, ZZCS, QGS, QDXS, QDLQY, JCYH, DWS, HDZK, JCRQ, JQXS FROM BJCLXXB WHERE (JCBH = @JCBH)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@JCBH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCBH" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@JCCS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCCS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@PZLX" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PZLX" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@JCCLPH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCCLPH" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CLXHBH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CLXHBH" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@CCRQ" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="CCRQ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@DJRQ" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="DJRQ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@FDJH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJH" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CJH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CJH" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CZ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CZDH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CZDH" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CZDZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CZDZ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@LCBDS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="LCBDS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@HBBZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="HBBZ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SYQK" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SYQK" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@JCBJ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCBJ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@JCZT" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCZT" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@QRJCFF" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="QRJCFF" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@RYLX" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RYLX" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@GYFF" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="GYFF" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BSXLX" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BSXLX" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CLLX" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CLLX" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ZBZL" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ZBZL" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ZDZZL" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ZDZZL" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@FDJPL" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJPL" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@FDJSCS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJSCS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@JCZH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCZH" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@DCZZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DCZZ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@FDJEDGL" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJEDGL" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@FDJEDZS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJEDZS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@PQGSL" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PQGSL" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@PFBZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PFBZ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ZZCS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ZZCS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@QGS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="QGS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@QDXS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="QDXS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@QDLQY" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="QDLQY" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@JCYH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCYH" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@DWS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DWS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@HDZK" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HDZK" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@JCRQ" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="JCRQ" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@JQXS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JQXS" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_JCBH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCBH" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JCCS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCCS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_JCCS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCCS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PZLX" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PZLX" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_PZLX" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PZLX" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JCCLPH" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCCLPH" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_JCCLPH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCCLPH" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CLXHBH" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CLXHBH" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CLXHBH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CLXHBH" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CCRQ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CCRQ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_CCRQ" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="CCRQ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DJRQ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DJRQ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_DJRQ" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="DJRQ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FDJH" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FDJH" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_FDJH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJH" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CJH" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CJH" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CJH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CJH" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CZ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CZ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CZ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CZDH" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CZDH" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CZDH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CZDH" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CZDZ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CZDZ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CZDZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CZDZ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_LCBDS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="LCBDS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_LCBDS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="LCBDS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_HBBZ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HBBZ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_HBBZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="HBBZ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_SYQK" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SYQK" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_SYQK" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SYQK" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JCBJ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCBJ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_JCBJ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCBJ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JCZT" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCZT" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_JCZT" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCZT" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_QRJCFF" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="QRJCFF" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_QRJCFF" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="QRJCFF" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_RYLX" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RYLX" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_RYLX" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RYLX" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_GYFF" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="GYFF" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_GYFF" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="GYFF" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_BSXLX" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="BSXLX" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_BSXLX" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BSXLX" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_CLLX" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="CLLX" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_CLLX" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CLLX" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ZBZL" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ZBZL" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_ZBZL" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ZBZL" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ZDZZL" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ZDZZL" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_ZDZZL" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ZDZZL" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FDJPL" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FDJPL" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_FDJPL" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJPL" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FDJSCS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FDJSCS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_FDJSCS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJSCS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JCZH" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCZH" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_JCZH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCZH" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DCZZ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DCZZ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_DCZZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DCZZ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FDJEDGL" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FDJEDGL" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_FDJEDGL" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJEDGL" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_FDJEDZS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="FDJEDZS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_FDJEDZS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="FDJEDZS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PQGSL" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PQGSL" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_PQGSL" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PQGSL" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PFBZ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PFBZ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_PFBZ" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PFBZ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ZZCS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ZZCS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_ZZCS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ZZCS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_QGS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="QGS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_QGS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="QGS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_QDXS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="QDXS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_QDXS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="QDXS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_QDLQY" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="QDLQY" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_QDLQY" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="QDLQY" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JCYH" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCYH" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_JCYH" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JCYH" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_DWS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DWS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_DWS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="DWS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_HDZK" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HDZK" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_HDZK" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="HDZK" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JCRQ" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JCRQ" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_JCRQ" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="JCRQ" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_JQXS" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="JQXS" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_JQXS" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="JQXS" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="JCBH" DataSetColumn="JCBH" />
+              <Mapping SourceColumn="JCCS" DataSetColumn="JCCS" />
+              <Mapping SourceColumn="PZLX" DataSetColumn="PZLX" />
+              <Mapping SourceColumn="JCCLPH" DataSetColumn="JCCLPH" />
+              <Mapping SourceColumn="CLXHBH" DataSetColumn="CLXHBH" />
+              <Mapping SourceColumn="CCRQ" DataSetColumn="CCRQ" />
+              <Mapping SourceColumn="DJRQ" DataSetColumn="DJRQ" />
+              <Mapping SourceColumn="FDJH" DataSetColumn="FDJH" />
+              <Mapping SourceColumn="CJH" DataSetColumn="CJH" />
+              <Mapping SourceColumn="CZ" DataSetColumn="CZ" />
+              <Mapping SourceColumn="CZDH" DataSetColumn="CZDH" />
+              <Mapping SourceColumn="CZDZ" DataSetColumn="CZDZ" />
+              <Mapping SourceColumn="LCBDS" DataSetColumn="LCBDS" />
+              <Mapping SourceColumn="HBBZ" DataSetColumn="HBBZ" />
+              <Mapping SourceColumn="SYQK" DataSetColumn="SYQK" />
+              <Mapping SourceColumn="JCBJ" DataSetColumn="JCBJ" />
+              <Mapping SourceColumn="JCZT" DataSetColumn="JCZT" />
+              <Mapping SourceColumn="QRJCFF" DataSetColumn="QRJCFF" />
+              <Mapping SourceColumn="RYLX" DataSetColumn="RYLX" />
+              <Mapping SourceColumn="GYFF" DataSetColumn="GYFF" />
+              <Mapping SourceColumn="BSXLX" DataSetColumn="BSXLX" />
+              <Mapping SourceColumn="CLLX" DataSetColumn="CLLX" />
+              <Mapping SourceColumn="ZBZL" DataSetColumn="ZBZL" />
+              <Mapping SourceColumn="ZDZZL" DataSetColumn="ZDZZL" />
+              <Mapping SourceColumn="FDJPL" DataSetColumn="FDJPL" />
+              <Mapping SourceColumn="FDJSCS" DataSetColumn="FDJSCS" />
+              <Mapping SourceColumn="JCZH" DataSetColumn="JCZH" />
+              <Mapping SourceColumn="DCZZ" DataSetColumn="DCZZ" />
+              <Mapping SourceColumn="FDJEDGL" DataSetColumn="FDJEDGL" />
+              <Mapping SourceColumn="FDJEDZS" DataSetColumn="FDJEDZS" />
+              <Mapping SourceColumn="PQGSL" DataSetColumn="PQGSL" />
+              <Mapping SourceColumn="PFBZ" DataSetColumn="PFBZ" />
+              <Mapping SourceColumn="ZZCS" DataSetColumn="ZZCS" />
+              <Mapping SourceColumn="QGS" DataSetColumn="QGS" />
+              <Mapping SourceColumn="QDXS" DataSetColumn="QDXS" />
+              <Mapping SourceColumn="QDLQY" DataSetColumn="QDLQY" />
+              <Mapping SourceColumn="JCYH" DataSetColumn="JCYH" />
+              <Mapping SourceColumn="DWS" DataSetColumn="DWS" />
+              <Mapping SourceColumn="HDZK" DataSetColumn="HDZK" />
+              <Mapping SourceColumn="JCRQ" DataSetColumn="JCRQ" />
+              <Mapping SourceColumn="JQXS" DataSetColumn="JQXS" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ZJ_VMASDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ZJ_VMASDataSet" msprop:Generator_UserDSName="ZJ_VMASDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="BJCLXXB" msprop:Generator_TableClassName="BJCLXXBDataTable" msprop:Generator_TableVarName="tableBJCLXXB" msprop:Generator_TablePropName="BJCLXXB" msprop:Generator_RowDeletingName="BJCLXXBRowDeleting" msprop:Generator_UserTableName="BJCLXXB" msprop:Generator_RowChangingName="BJCLXXBRowChanging" msprop:Generator_RowEvHandlerName="BJCLXXBRowChangeEventHandler" msprop:Generator_RowDeletedName="BJCLXXBRowDeleted" msprop:Generator_RowEvArgName="BJCLXXBRowChangeEvent" msprop:Generator_RowChangedName="BJCLXXBRowChanged" msprop:Generator_RowClassName="BJCLXXBRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="JCBH" msprop:Generator_ColumnVarNameInTable="columnJCBH" msprop:Generator_ColumnPropNameInRow="JCBH" msprop:Generator_ColumnPropNameInTable="JCBHColumn" msprop:Generator_UserColumnName="JCBH">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="JCCS" msprop:Generator_ColumnVarNameInTable="columnJCCS" msprop:Generator_ColumnPropNameInRow="JCCS" msprop:Generator_ColumnPropNameInTable="JCCSColumn" msprop:Generator_UserColumnName="JCCS" type="xs:int" minOccurs="0" />
+              <xs:element name="PZLX" msprop:Generator_ColumnVarNameInTable="columnPZLX" msprop:Generator_ColumnPropNameInRow="PZLX" msprop:Generator_ColumnPropNameInTable="PZLXColumn" msprop:Generator_UserColumnName="PZLX" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="JCCLPH" msprop:Generator_ColumnVarNameInTable="columnJCCLPH" msprop:Generator_ColumnPropNameInRow="JCCLPH" msprop:Generator_ColumnPropNameInTable="JCCLPHColumn" msprop:Generator_UserColumnName="JCCLPH" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="16" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CLXHBH" msprop:Generator_ColumnVarNameInTable="columnCLXHBH" msprop:Generator_ColumnPropNameInRow="CLXHBH" msprop:Generator_ColumnPropNameInTable="CLXHBHColumn" msprop:Generator_UserColumnName="CLXHBH" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CCRQ" msprop:Generator_ColumnVarNameInTable="columnCCRQ" msprop:Generator_ColumnPropNameInRow="CCRQ" msprop:Generator_ColumnPropNameInTable="CCRQColumn" msprop:Generator_UserColumnName="CCRQ" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DJRQ" msprop:Generator_ColumnVarNameInTable="columnDJRQ" msprop:Generator_ColumnPropNameInRow="DJRQ" msprop:Generator_ColumnPropNameInTable="DJRQColumn" msprop:Generator_UserColumnName="DJRQ" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FDJH" msprop:Generator_ColumnVarNameInTable="columnFDJH" msprop:Generator_ColumnPropNameInRow="FDJH" msprop:Generator_ColumnPropNameInTable="FDJHColumn" msprop:Generator_UserColumnName="FDJH" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CJH" msprop:Generator_ColumnVarNameInTable="columnCJH" msprop:Generator_ColumnPropNameInRow="CJH" msprop:Generator_ColumnPropNameInTable="CJHColumn" msprop:Generator_UserColumnName="CJH" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CZ" msprop:Generator_ColumnVarNameInTable="columnCZ" msprop:Generator_ColumnPropNameInRow="CZ" msprop:Generator_ColumnPropNameInTable="CZColumn" msprop:Generator_UserColumnName="CZ" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CZDH" msprop:Generator_ColumnVarNameInTable="columnCZDH" msprop:Generator_ColumnPropNameInRow="CZDH" msprop:Generator_ColumnPropNameInTable="CZDHColumn" msprop:Generator_UserColumnName="CZDH" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="16" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CZDZ" msprop:Generator_ColumnVarNameInTable="columnCZDZ" msprop:Generator_ColumnPropNameInRow="CZDZ" msprop:Generator_ColumnPropNameInTable="CZDZColumn" msprop:Generator_UserColumnName="CZDZ" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LCBDS" msprop:Generator_ColumnVarNameInTable="columnLCBDS" msprop:Generator_ColumnPropNameInRow="LCBDS" msprop:Generator_ColumnPropNameInTable="LCBDSColumn" msprop:Generator_UserColumnName="LCBDS" type="xs:int" minOccurs="0" />
+              <xs:element name="HBBZ" msprop:Generator_ColumnVarNameInTable="columnHBBZ" msprop:Generator_ColumnPropNameInRow="HBBZ" msprop:Generator_ColumnPropNameInTable="HBBZColumn" msprop:Generator_UserColumnName="HBBZ" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SYQK" msprop:Generator_ColumnVarNameInTable="columnSYQK" msprop:Generator_ColumnPropNameInRow="SYQK" msprop:Generator_ColumnPropNameInTable="SYQKColumn" msprop:Generator_UserColumnName="SYQK" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="JCBJ" msprop:Generator_ColumnVarNameInTable="columnJCBJ" msprop:Generator_ColumnPropNameInRow="JCBJ" msprop:Generator_ColumnPropNameInTable="JCBJColumn" msprop:Generator_UserColumnName="JCBJ" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="JCZT" msprop:Generator_ColumnVarNameInTable="columnJCZT" msprop:Generator_ColumnPropNameInRow="JCZT" msprop:Generator_ColumnPropNameInTable="JCZTColumn" msprop:Generator_UserColumnName="JCZT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QRJCFF" msprop:Generator_ColumnVarNameInTable="columnQRJCFF" msprop:Generator_ColumnPropNameInRow="QRJCFF" msprop:Generator_ColumnPropNameInTable="QRJCFFColumn" msprop:Generator_UserColumnName="QRJCFF" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RYLX" msprop:Generator_ColumnVarNameInTable="columnRYLX" msprop:Generator_ColumnPropNameInRow="RYLX" msprop:Generator_ColumnPropNameInTable="RYLXColumn" msprop:Generator_UserColumnName="RYLX" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="GYFF" msprop:Generator_ColumnVarNameInTable="columnGYFF" msprop:Generator_ColumnPropNameInRow="GYFF" msprop:Generator_ColumnPropNameInTable="GYFFColumn" msprop:Generator_UserColumnName="GYFF" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BSXLX" msprop:Generator_ColumnVarNameInTable="columnBSXLX" msprop:Generator_ColumnPropNameInRow="BSXLX" msprop:Generator_ColumnPropNameInTable="BSXLXColumn" msprop:Generator_UserColumnName="BSXLX" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CLLX" msprop:Generator_ColumnVarNameInTable="columnCLLX" msprop:Generator_ColumnPropNameInRow="CLLX" msprop:Generator_ColumnPropNameInTable="CLLXColumn" msprop:Generator_UserColumnName="CLLX" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ZBZL" msprop:Generator_ColumnVarNameInTable="columnZBZL" msprop:Generator_ColumnPropNameInRow="ZBZL" msprop:Generator_ColumnPropNameInTable="ZBZLColumn" msprop:Generator_UserColumnName="ZBZL" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ZDZZL" msprop:Generator_ColumnVarNameInTable="columnZDZZL" msprop:Generator_ColumnPropNameInRow="ZDZZL" msprop:Generator_ColumnPropNameInTable="ZDZZLColumn" msprop:Generator_UserColumnName="ZDZZL" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FDJPL" msprop:Generator_ColumnVarNameInTable="columnFDJPL" msprop:Generator_ColumnPropNameInRow="FDJPL" msprop:Generator_ColumnPropNameInTable="FDJPLColumn" msprop:Generator_UserColumnName="FDJPL" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FDJSCS" msprop:Generator_ColumnVarNameInTable="columnFDJSCS" msprop:Generator_ColumnPropNameInRow="FDJSCS" msprop:Generator_ColumnPropNameInTable="FDJSCSColumn" msprop:Generator_UserColumnName="FDJSCS" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="JCZH" msprop:Generator_ColumnVarNameInTable="columnJCZH" msprop:Generator_ColumnPropNameInRow="JCZH" msprop:Generator_ColumnPropNameInTable="JCZHColumn" msprop:Generator_UserColumnName="JCZH" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DCZZ" msprop:Generator_ColumnVarNameInTable="columnDCZZ" msprop:Generator_ColumnPropNameInRow="DCZZ" msprop:Generator_ColumnPropNameInTable="DCZZColumn" msprop:Generator_UserColumnName="DCZZ" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FDJEDGL" msprop:Generator_ColumnVarNameInTable="columnFDJEDGL" msprop:Generator_ColumnPropNameInRow="FDJEDGL" msprop:Generator_ColumnPropNameInTable="FDJEDGLColumn" msprop:Generator_UserColumnName="FDJEDGL" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FDJEDZS" msprop:Generator_ColumnVarNameInTable="columnFDJEDZS" msprop:Generator_ColumnPropNameInRow="FDJEDZS" msprop:Generator_ColumnPropNameInTable="FDJEDZSColumn" msprop:Generator_UserColumnName="FDJEDZS" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PQGSL" msprop:Generator_ColumnVarNameInTable="columnPQGSL" msprop:Generator_ColumnPropNameInRow="PQGSL" msprop:Generator_ColumnPropNameInTable="PQGSLColumn" msprop:Generator_UserColumnName="PQGSL" type="xs:int" minOccurs="0" />
+              <xs:element name="PFBZ" msprop:Generator_ColumnVarNameInTable="columnPFBZ" msprop:Generator_ColumnPropNameInRow="PFBZ" msprop:Generator_ColumnPropNameInTable="PFBZColumn" msprop:Generator_UserColumnName="PFBZ" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ZZCS" msprop:Generator_ColumnVarNameInTable="columnZZCS" msprop:Generator_ColumnPropNameInRow="ZZCS" msprop:Generator_ColumnPropNameInTable="ZZCSColumn" msprop:Generator_UserColumnName="ZZCS" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QGS" msprop:Generator_ColumnVarNameInTable="columnQGS" msprop:Generator_ColumnPropNameInRow="QGS" msprop:Generator_ColumnPropNameInTable="QGSColumn" msprop:Generator_UserColumnName="QGS" type="xs:int" minOccurs="0" />
+              <xs:element name="QDXS" msprop:Generator_ColumnVarNameInTable="columnQDXS" msprop:Generator_ColumnPropNameInRow="QDXS" msprop:Generator_ColumnPropNameInTable="QDXSColumn" msprop:Generator_UserColumnName="QDXS" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QDLQY" msprop:Generator_ColumnVarNameInTable="columnQDLQY" msprop:Generator_ColumnPropNameInRow="QDLQY" msprop:Generator_ColumnPropNameInTable="QDLQYColumn" msprop:Generator_UserColumnName="QDLQY" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="JCYH" msprop:Generator_ColumnVarNameInTable="columnJCYH" msprop:Generator_ColumnPropNameInRow="JCYH" msprop:Generator_ColumnPropNameInTable="JCYHColumn" msprop:Generator_UserColumnName="JCYH" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DWS" msprop:Generator_ColumnVarNameInTable="columnDWS" msprop:Generator_ColumnPropNameInRow="DWS" msprop:Generator_ColumnPropNameInTable="DWSColumn" msprop:Generator_UserColumnName="DWS" type="xs:int" minOccurs="0" />
+              <xs:element name="HDZK" msprop:Generator_ColumnVarNameInTable="columnHDZK" msprop:Generator_ColumnPropNameInRow="HDZK" msprop:Generator_ColumnPropNameInTable="HDZKColumn" msprop:Generator_UserColumnName="HDZK" type="xs:int" minOccurs="0" />
+              <xs:element name="JCRQ" msprop:Generator_ColumnVarNameInTable="columnJCRQ" msprop:Generator_ColumnPropNameInRow="JCRQ" msprop:Generator_ColumnPropNameInTable="JCRQColumn" msprop:Generator_UserColumnName="JCRQ" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="JQXS" msprop:Generator_ColumnVarNameInTable="columnJQXS" msprop:Generator_ColumnPropNameInRow="JQXS" msprop:Generator_ColumnPropNameInTable="JQXSColumn" msprop:Generator_UserColumnName="JQXS" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:BJCLXXB" />
+      <xs:field xpath="mstns:JCBH" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,469 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2CAB3F8C-E596-4DEF-BD21-8058A55F48AC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VMAS1._0</RootNamespace>
+    <AssemblyName>VMAS1.0</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>www.ico.la_30_64X64_1385045040.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a" />
+    <Reference Include="DevExpress.Charts.v10.2.Core, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.ExpressApp.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.ExpressApp.Win.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.OfficeSkins.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a" />
+    <Reference Include="DevExpress.Persistent.Base.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v10.2.Core, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v10.2.UI, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v10.2.Core, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v10.2.Win, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraLayout.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="ImageDealWith, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ImageDealWith.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="YutouPanelCtrl, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\YutouPanelCtrl.DLL</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base.cs" />
+    <Compile Include="dataPerSec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dataPerSec.Designer.cs">
+      <DependentUpon>dataPerSec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="demarcate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="demarcate.Designer.cs">
+      <DependentUpon>demarcate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="detectLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="detectLine.Designer.cs">
+      <DependentUpon>detectLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="exhaustForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="exhaustForm.Designer.cs">
+      <DependentUpon>exhaustForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Jiancexian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Jiancexian.designer.cs">
+      <DependentUpon>Jiancexian.cs</DependentUpon>
+    </Compile>
+    <Compile Include="jzjs_result_panel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="jzjs_result_panel.Designer.cs">
+      <DependentUpon>jzjs_result_panel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LljDemarcate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LljDemarcate.Designer.cs">
+      <DependentUpon>LljDemarcate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mainForm.Designer.cs">
+      <DependentUpon>mainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mobileLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mobileLogin.Designer.cs">
+      <DependentUpon>mobileLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newJiancexian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newJiancexian.designer.cs">
+      <DependentUpon>newJiancexian.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newUserLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newUserLogin.designer.cs">
+      <DependentUpon>newUserLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="selfDetectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="selfDetectionForm.Designer.cs">
+      <DependentUpon>selfDetectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowText.designer.cs">
+      <DependentUpon>ShowText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sqlDataView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sqlDataView.Designer.cs">
+      <DependentUpon>sqlDataView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="systemConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="systemConfig.Designer.cs">
+      <DependentUpon>systemConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="testPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="testPanel.Designer.cs">
+      <DependentUpon>testPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForceForm.Designer.cs">
+      <DependentUpon>ForceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="userLogin.designer.cs">
+      <DependentUpon>userLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vmas_resultafter_panel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vmas_resultafter_panel.Designer.cs">
+      <DependentUpon>vmas_resultafter_panel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ZJ_VMASDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZJ_VMASDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ZJ_VMASDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZJ_VMASDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="zyjs_result_panel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="zyjs_result_panel.Designer.cs">
+      <DependentUpon>zyjs_result_panel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vmas_result_panel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vmas_result_panel.Designer.cs">
+      <DependentUpon>vmas_result_panel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sds_result_panel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sds_result_panel.Designer.cs">
+      <DependentUpon>sds_result_panel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="huanBaoLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="huanBaoLogin.Designer.cs">
+      <DependentUpon>huanBaoLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="huanBaoConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="huanBaoConfig.Designer.cs">
+      <DependentUpon>huanBaoConfig.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="dataPerSec.resx">
+      <DependentUpon>dataPerSec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="demarcate.resx">
+      <DependentUpon>demarcate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="detectLine.resx">
+      <DependentUpon>detectLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="exhaustForm.resx">
+      <DependentUpon>exhaustForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Jiancexian.resx">
+      <DependentUpon>Jiancexian.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="jzjs_result_panel.resx">
+      <DependentUpon>jzjs_result_panel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LljDemarcate.resx">
+      <DependentUpon>LljDemarcate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mainForm.resx">
+      <DependentUpon>mainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mobileLogin.resx">
+      <DependentUpon>mobileLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newJiancexian.resx">
+      <DependentUpon>newJiancexian.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newUserLogin.resx">
+      <DependentUpon>newUserLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ReportVmas.rdlc" />
+    <EmbeddedResource Include="ReportVmasAfter.rdlc" />
+    <EmbeddedResource Include="selfDetectionForm.resx">
+      <DependentUpon>selfDetectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowText.resx">
+      <DependentUpon>ShowText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sqlDataView.resx">
+      <DependentUpon>sqlDataView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="systemConfig.resx">
+      <DependentUpon>systemConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="testPanel.resx">
+      <DependentUpon>testPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForceForm.resx">
+      <DependentUpon>ForceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportJzjs.rdlc" />
+    <EmbeddedResource Include="ReportZyjs.rdlc" />
+    <EmbeddedResource Include="ReportSds.rdlc" />
+    <EmbeddedResource Include="userLogin.resx">
+      <DependentUpon>userLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vmas_resultafter_panel.resx">
+      <DependentUpon>vmas_resultafter_panel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="zyjs_result_panel.resx">
+      <DependentUpon>zyjs_result_panel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vmas_result_panel.resx">
+      <DependentUpon>vmas_result_panel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sds_result_panel.resx">
+      <DependentUpon>sds_result_panel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="huanBaoLogin.resx">
+      <DependentUpon>huanBaoLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="huanBaoConfig.resx">
+      <DependentUpon>huanBaoConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="ZJ_VMASDataSet.xsc">
+      <DependentUpon>ZJ_VMASDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ZJ_VMASDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ZJ_VMASDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ZJ_VMASDataSet.xss">
+      <DependentUpon>ZJ_VMASDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ZJ_VMASDataSet1.xsc">
+      <DependentUpon>ZJ_VMASDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ZJ_VMASDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ZJ_VMASDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ZJ_VMASDataSet1.xss">
+      <DependentUpon>ZJ_VMASDataSet1.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BpqFl\BpqFl.csproj">
+      <Project>{B6FE0FB9-8E71-4FB6-B101-8172C4334D52}</Project>
+      <Name>BpqFl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Exhaust\Exhaust.csproj">
+      <Project>{3B5A73DE-4971-4079-A4F8-50D676278742}</Project>
+      <Name>Exhaust</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\INIIO\INIIO.csproj">
+      <Project>{66AB13FC-AE00-42C8-B107-F375867E6363}</Project>
+      <Name>INIIO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Meter\Meter.csproj">
+      <Project>{9315DEFC-B53C-4FDD-984D-2B586451EA50}</Project>
+      <Name>Meter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SYS_DAL\SYS_DAL.csproj">
+      <Project>{0C158118-DD0C-42DC-9B67-EA3055AE46CF}</Project>
+      <Name>SYS_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SYS_MODEL\SYS_MODEL.csproj">
+      <Project>{E43A16D8-0BCA-42AB-B0DC-5D8FEE37958C}</Project>
+      <Name>SYS_MODEL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\工位0916\Detect\Detect.csproj">
+      <Project>{945E7829-A243-4F7E-9954-DB5A9E9AFC48}</Project>
+      <Name>Detect</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="www.ico.la_30_64X64_1385045040.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
