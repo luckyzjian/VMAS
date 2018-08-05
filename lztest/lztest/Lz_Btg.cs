@@ -788,6 +788,18 @@ namespace lzTest
                     Thread.Sleep(400);
                 }
                 dyczs = (int)ZS;
+                while (!yd_1.WaitFirstTestFinished())
+                {
+                    ts1 = "第" + sxnb.ToString() + "次测量";
+                    ts2 = "测量中";
+                    if (ledcontrol != null)
+                    {
+                        ledcontrol.writeLed("第" + sxnb.ToString() + "次测量　　　", 2, equipconfig.Ledxh);
+                        Thread.Sleep(200);
+                        ledcontrol.writeLed("　　　测量中　　", 5, equipconfig.Ledxh);
+                    }
+                    Thread.Sleep(900);
+                }
                 Msg(label_msg, panel_cp, carbj.CarPH + "请松开踏板", true);
                 ts2 = "松开踏板";
                     
@@ -797,35 +809,24 @@ namespace lzTest
                     Thread.Sleep(200);
                     ledcontrol.writeLed("　　　请松开踏板", 5, equipconfig.Ledxh);
                 }
-                Thread.Sleep(2000);
-                int waitTime = 0;
-                while(!yd_1.WaitFirstTestFinished())
+                Thread.Sleep(1000);
+                for (int i = 0; i < 10; i++)
                 {
-                    waitTime++;
-                    /*if (isUseRotater)
-                    {
-                        if (vmt_2000.readRotateSpeed())
-                            ZS = vmt_2000.zs;
-                    }
-                    else if (flb_100 != null)
-                    {
-                        smoke = flb_100.get_Data();
-                        ZS = smoke.Zs;
-                    }*/
-                    dszs = (int)ZS;
-                    //arcScaleComponent3.Value = ZS;
-                    Msg(label_msg, panel_cp, carbj.CarPH + "测量中，保持怠速：" + " " + waitTime.ToString(), true);
-                    ts2 = "测量中..." + " " + waitTime.ToString();
+                    //dszs = (int)ZS;
+                    Msg(label_msg, panel_cp, carbj.CarPH + "测量中，保持怠速：" + " " + (10 - i).ToString(), true);
+                    ts2 = "测量中..." + " " + (10 - i).ToString();
+                    if(i==9)
+                        dszs = (int)ZS;
                     if (ledcontrol != null)
                     {
                         ledcontrol.writeLed("第" + sxnb.ToString() + "次测量　　　", 2, equipconfig.Ledxh);
                         Thread.Sleep(200);
-                        ledcontrol.writeLed(" 　测量中:" + waitTime.ToString() + "秒", 5, equipconfig.Ledxh);
+                        ledcontrol.writeLed(" 　测量中:" + (10 - i).ToString() + "秒", 5, equipconfig.Ledxh);
                         Thread.Sleep(500);
                         //ledcontrol.writeLed(i.ToString() + "秒", 5);
                     }
                     else
-                        Thread.Sleep(900);                    
+                        Thread.Sleep(900);
                 }
                 Msg(label_msg, panel_cp, "第" + sxnb.ToString() + "次测量完毕", true);
                 ts2 = "第" + sxnb.ToString() + "次测量完毕";
@@ -848,16 +849,18 @@ namespace lzTest
                     Thread.Sleep(400);
                 }
                 deczs = (int)ZS;
-                /*if (isUseRotater)
+                while (!yd_1.WaitFirstTestFinished())
                 {
-                    if (vmt_2000.readRotateSpeed())
-                        ZS = vmt_2000.zs;
+                    ts1 = "第" + sxnb.ToString() + "次测量";
+                    ts2 = "测量中";
+                    if (ledcontrol != null)
+                    {
+                        ledcontrol.writeLed("第" + sxnb.ToString() + "次测量　　　", 2, equipconfig.Ledxh);
+                        Thread.Sleep(200);
+                        ledcontrol.writeLed("　　　测量中　　", 5, equipconfig.Ledxh);
+                    }
+                    Thread.Sleep(900);
                 }
-                else if (flb_100 != null)
-                {
-                    smoke = flb_100.get_Data();
-                    ZS = smoke.Zs;
-                }*/
                 Msg(label_msg, panel_cp, carbj.CarPH + "请松开踏板", true);
                 ts2 = "松开踏板";
                 if (ledcontrol != null)
@@ -866,30 +869,17 @@ namespace lzTest
                     Thread.Sleep(200);
                     ledcontrol.writeLed("　　　请松开踏板", 5, equipconfig.Ledxh);
                 }
-                Thread.Sleep(2000);
-                waitTime = 0;
-                while (!yd_1.WaitFirstTestFinished())
+                Thread.Sleep(1000);
+                for (int i = 0; i < 10; i++)
                 {
-                    waitTime++;
-                    /*if (isUseRotater)
-                    {
-                        if (vmt_2000.readRotateSpeed())
-                            ZS = vmt_2000.zs;
-                    }
-                    else if (flb_100 != null)
-                    {
-                        smoke = flb_100.get_Data();
-                        ZS = smoke.Zs;
-                    }*/
-                    dszs = (int)ZS;
-                    //arcScaleComponent3.Value = ZS;
-                    Msg(label_msg, panel_cp, carbj.CarPH + "测量中，保持怠速：" + " " + waitTime.ToString(), true);
-                    ts2 = "测量中..." + " " + waitTime.ToString();
+                    //dszs = (int)ZS;
+                    Msg(label_msg, panel_cp, carbj.CarPH + "测量中，保持怠速：" + " " + (10 - i).ToString(), true);
+                    ts2 = "测量中..." + " " + (10 - i).ToString();
                     if (ledcontrol != null)
                     {
                         ledcontrol.writeLed("第" + sxnb.ToString() + "次测量　　　", 2, equipconfig.Ledxh);
                         Thread.Sleep(200);
-                        ledcontrol.writeLed(" 　测量中:" + waitTime.ToString() + "秒", 5, equipconfig.Ledxh);
+                        ledcontrol.writeLed(" 　测量中:" + (10 - i).ToString() + "秒", 5, equipconfig.Ledxh);
                         Thread.Sleep(500);
                         //ledcontrol.writeLed(i.ToString() + "秒", 5);
                     }
@@ -917,6 +907,18 @@ namespace lzTest
                     Thread.Sleep(400);
                 }
                 dsczs = (int)ZS;
+                while (!yd_1.WaitFirstTestFinished())
+                {
+                    ts1 = "第" + sxnb.ToString() + "次测量";
+                    ts2 = "测量中";
+                    if (ledcontrol != null)
+                    {
+                        ledcontrol.writeLed("第" + sxnb.ToString() + "次测量　　　", 2, equipconfig.Ledxh);
+                        Thread.Sleep(200);
+                        ledcontrol.writeLed("　　　测量中　　", 5, equipconfig.Ledxh);
+                    }
+                    Thread.Sleep(900);
+                }
                 Msg(label_msg, panel_cp, carbj.CarPH + "请松开踏板", true);
                 ts2 = "松开踏板";
                 if (ledcontrol != null)
@@ -925,20 +927,17 @@ namespace lzTest
                     Thread.Sleep(200);
                     ledcontrol.writeLed("　　　请松开踏板", 5, equipconfig.Ledxh);
                 }
-                Thread.Sleep(2000);
-                waitTime = 0;
-                while (!yd_1.WaitTestFinished())
+                Thread.Sleep(1000);
+                for (int i = 0; i < 10; i++)
                 {
-                    waitTime++;
-                    dszs = (int)ZS;                    
-                    //arcScaleComponent3.Value = ZS;
-                    Msg(label_msg, panel_cp, carbj.CarPH + "测量中，保持怠速：" + " " + waitTime.ToString(), true);
-                    ts2 = "测量中..." + " " + waitTime.ToString();
+                    //dszs = (int)ZS;
+                    Msg(label_msg, panel_cp, carbj.CarPH + "测量中，保持怠速：" + " " + (10 - i).ToString(), true);
+                    ts2 = "测量中..." + " " + (10 - i).ToString();
                     if (ledcontrol != null)
                     {
                         ledcontrol.writeLed("第" + sxnb.ToString() + "次测量　　　", 2, equipconfig.Ledxh);
                         Thread.Sleep(200);
-                        ledcontrol.writeLed(" 　测量中:" + waitTime.ToString() + "秒", 5, equipconfig.Ledxh);
+                        ledcontrol.writeLed(" 　测量中:" + (10 - i).ToString() + "秒", 5, equipconfig.Ledxh);
                         Thread.Sleep(500);
                         //ledcontrol.writeLed(i.ToString() + "秒", 5);
                     }
