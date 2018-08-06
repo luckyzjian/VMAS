@@ -1405,6 +1405,7 @@ namespace lugdowm
                     Thread.Sleep(1000);
                 }
                 #endregion
+
                 #region 检查仪器状态
                 Thread.Sleep(1000);
                 Jc_Process = "VelMaxHP";        //该过程为确定VelMaxHP
@@ -1520,6 +1521,7 @@ namespace lugdowm
                     }
                 }
                 #endregion
+               
                 #region 烟度计线性校正中
                 ts2 = "校正烟度计...";
                 if (equipconfig.Ydjxh.ToLower() == "cdf5000")
@@ -1547,6 +1549,7 @@ namespace lugdowm
                     Thread.Sleep(8000);//等待5s至线性校正结束
                 }
                 #endregion
+                
                 #region 仪器调零
                 if (equipconfig.Ydjxh == yq_mqw5101)
                 {
@@ -1617,6 +1620,7 @@ namespace lugdowm
                     Thread.Sleep(1000);
                 }
                 #endregion
+                
                 #region 仪器开始测量
                 if (equipconfig.Ydjxh.ToLower() == "cdf5000")
                     fla_502.Set_Measure();
@@ -1635,6 +1639,7 @@ namespace lugdowm
                             notester.pumpVehicleGas();
                 }
                 #endregion
+                
                 #region 测功机准备
                 //Thread.Sleep(1000);                     //烟度计要求等待1秒后再发送数据
                 igbt.Exit_Control();            //退出igbt的所有控制状态
@@ -1643,6 +1648,7 @@ namespace lugdowm
                 //ts2 = "举升下降";
                 Thread.Sleep(1000);
                 #endregion
+                
                 #region 安置探头
                 Msg(Msg_msg, panel_msg, "请安置不透光烟度计尾气探头", false);
                 ts2 = "请安置探头";
@@ -1666,6 +1672,7 @@ namespace lugdowm
                     }
                 }
                 #endregion
+                
                 #region 开始检测，提示回事
                 fq_getdata = true;
                 ts1 = "检测开始";
@@ -1695,6 +1702,7 @@ namespace lugdowm
                 startTime = DateTime.Now;
                 Jzjs_status = true;
                 #endregion
+
                 if (!isUsedata)
                 {
                     #region 加速阶段
@@ -1735,6 +1743,7 @@ namespace lugdowm
                         }
                     }
                     #endregion
+
                     #region 判断转速
                     MaxRpm_sure = false;
                     MaxRPM = ZS;//确定最大转速
@@ -1748,6 +1757,7 @@ namespace lugdowm
                     jzjs_data.Lbzs = MaxRPM.ToString();
                     led_display(ledNumber_ZDZS, MaxRPM.ToString("0"));
                     #endregion
+                    
                     #region 判断速度
                     velMaxHpRation = MaxRPM / carbj.CarEdzs;
                     VelMaxHP_real = igbt.Speed;
@@ -1773,6 +1783,7 @@ namespace lugdowm
                         return;
                     }
                     #endregion
+                    
                     #region 功率扫描
                     if (ledcontrol != null)
                     {
@@ -1883,6 +1894,7 @@ namespace lugdowm
                         #endregion
                     }
                     #endregion
+
                     #region 核对最大轮边功率
                     igbt.Exit_Control();
                     igbt.Exit_Control();
@@ -1988,6 +2000,10 @@ namespace lugdowm
                         }
                     }
                     #endregion
+
+                    if(equipconfig.DATASECONDS_TYPE == "江西")
+                        sxnb = 2;
+
                     #region 加载测试
                     ts1 = "加载测试开始";
                     if (ledcontrol != null)
@@ -2020,21 +2036,28 @@ namespace lugdowm
                             case "VelMaxHP100%":
                                 statusconfigini.writeNeuStatusData("K100Testing", DateTime.Now.ToString());
                                 Modulus = 1;
-                                sxnb = 2;
+                                if (equipconfig.DATASECONDS_TYPE != "江西")
+                                    sxnb = 2;
                                 opno = 5;
                                 opcode = 21;
                                 break;
                             case "VelMaxHP90%":
                                 statusconfigini.writeNeuStatusData("K90Testing", DateTime.Now.ToString());
                                 Modulus = 0.9f;
-                                sxnb = 3;
+                                if (equipconfig.DATASECONDS_TYPE == "江西")
+                                    sxnb = 4;
+                                else
+                                    sxnb = 3;
                                 opno = 9;
                                 opcode = 31;
                                 break;
                             case "VelMaxHP80%":
                                 statusconfigini.writeNeuStatusData("K80Testing", DateTime.Now.ToString());
                                 Modulus = 0.8f;
-                                sxnb = 4;
+                                if (equipconfig.DATASECONDS_TYPE == "江西")
+                                    sxnb = 5;
+                                else
+                                    sxnb = 4;
                                 opno = 13;
                                 opcode = 41;
                                 break;
@@ -2042,6 +2065,19 @@ namespace lugdowm
                         igbt.Set_Speed(VelMaxHP_real * Modulus);
                         Thread.Sleep(200);
                         igbt.Start_Control_Speed();
+
+                        if (equipconfig.DATASECONDS_TYPE == "江西" && Jc_Process == "VelMaxHP100%")
+                        {
+                            while (igbt.Speed < VelMaxHP_real - 1)
+                            {
+                                if (ledcontrol != null)
+                                    ledcontrol.writeLed("恢复100%VelMaxHP", 2, equipconfig.Ledxh);
+                                Msg(Msg_msg, panel_msg, "恢复100%VelMaxHP过程", true);
+                                Thread.Sleep(200);
+                            }
+                            sxnb = 3;
+                        }
+
                         Msg(Msg_msg, panel_msg, "正在进行加载减速测试，将在" + Math.Round(VelMaxHP_real * Modulus, 2).ToString("0.0") + "km/h时取值", true);
                         if (ledcontrol != null)
                         {
@@ -2471,7 +2507,10 @@ namespace lugdowm
                     {
                         dr = jzjs_datatable.NewRow();
                         dr["全程时序"] = Qcsxlist[i];
-                        dr["时序类别"] = Sxnblist[i];
+                        if (equipconfig.DATASECONDS_TYPE == "江西" && int.Parse(Sxnblist[i]) > 0)
+                            dr["时序类别"] = (int.Parse(Sxnblist[i]) - 1).ToString();
+                        else
+                            dr["时序类别"] = Sxnblist[i];
                         dr["采样时序"] = Cysxlist[i];
                         dr["车速"] = Speedlist[i];
                         //dr["转速"] = FDJZSlist[i].ToString();
@@ -3104,6 +3143,8 @@ namespace lugdowm
         private double zgl = 0;
         private float nl = 0;
         private double nowpower = 0;
+        private DateTime gc_time = DateTime.Now;//用于标记过程数据全程时序，避免出现相同时间
+
         private void timer_show_Tick(object sender, EventArgs e)
         {
             if (Jzjs_status)//如果正在测试
@@ -3132,8 +3173,10 @@ namespace lugdowm
                         PregongkuangTime = (int)(gongkuangTime * 10);
 
                     }
-                    if (Convert.ToInt16(gongkuangTime * 10) / 10 != GKSJ)
+                    //if (Convert.ToInt16(gongkuangTime * 10) / 10 != GKSJ)
+                    if(DateTime.Compare(DateTime.Parse(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), DateTime.Parse(gc_time.ToString("yyyy-MM-dd HH:mm:ss"))) > 0)
                     {
+                        gc_time = System.DateTime.Now;
                         if (GKSJ == 1023) GKSJ = 0;
                         jsgl = Math.Round(jsgl_xsa * igbt.Speed * igbt.Speed + jsgl_xsb * igbt.Speed + jsgl_xsc, 3);//寄生功率=
                         if (jsgl < 0) jsgl = 0;

@@ -2182,7 +2182,7 @@ namespace sds
                         }
                         QcsxlistSY[passTime + preseconds + 60] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
                         SxnblistSY[passTime + preseconds + 60] = "4";
-                        Sxnblist[nowgksj] = "4";//将该时刻时序变量置为2
+                        Sxnblist[nowgksj] = "4";//将该时刻时序变量置为4
                         CysxlistSY[passTime + preseconds + 60] = passTime + 1;
                         HclistSY[passTime + preseconds + 60] = Hclist[nowgksj];
                         NolistSY[passTime + preseconds + 60] = Nolist[nowgksj];
@@ -2888,14 +2888,18 @@ namespace sds
             initConfigInfo();
         }
 
+
+        private DateTime gc_time = DateTime.Now;//用于标记过程数据全程时序，避免出现相同时间
         private void timer2_Tick(object sender, EventArgs e)
         {
             if (JC_Status)//如果正在测试
             {
                 nowtime = DateTime.Now;
                 led_display(ledNumber_gksj, gongkuangTime.ToString("000.0"));
-                if (Convert.ToInt16(gongkuangTime * 10) / 10 != GKSJ)
+                //if(Convert.ToInt16(gongkuangTime * 10) / 10 != GKSJ)
+                if (DateTime.Compare(DateTime.Parse(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), DateTime.Parse(gc_time.ToString("yyyy-MM-dd HH:mm:ss"))) > 0)
                 {
+                    gc_time = DateTime.Now;
                     if (GKSJ == 2048) GKSJ = 0;
                     Sxnblist[GKSJ] = sxnb.ToString("0");//时序类别
                     Qcsxlist[GKSJ] = nowtime.ToString("yyyy-MM-dd HH:mm:ss.fff");//全程时序

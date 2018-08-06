@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vmasTest", "工位0916\Detect\vmasTest.csproj", "{945E7829-A243-4F7E-9954-DB5A9E9AFC48}"
 EndProject
@@ -74,8 +74,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "车辆登录", "车辆登录\车辆登录.csproj", "{97868FE4-CCDF-4BC0-BAA5-97C42A3FFC14}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "车型库管理", "车型库管理\车型库管理.csproj", "{2E422C41-414C-4C68-A2E6-619C22F742E8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "内阻测试", "内阻测试\内阻测试\内阻测试.csproj", "{D2DF2BAC-B210-43B2-A3D7-C11A18C1440F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LED屏测试", "LED屏测试\LED屏测试.csproj", "{D2473C8D-83EB-41AB-84BB-231AB4D05720}"
 EndProject
@@ -463,18 +461,6 @@ Global
 		{2E422C41-414C-4C68-A2E6-619C22F742E8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{2E422C41-414C-4C68-A2E6-619C22F742E8}.Release|x86.ActiveCfg = Release|Any CPU
 		{2E422C41-414C-4C68-A2E6-619C22F742E8}.Release|x86.Build.0 = Release|Any CPU
-		{D2DF2BAC-B210-43B2-A3D7-C11A18C1440F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2DF2BAC-B210-43B2-A3D7-C11A18C1440F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2DF2BAC-B210-43B2-A3D7-C11A18C1440F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D2DF2BAC-B210-43B2-A3D7-C11A18C1440F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{D2DF2BAC-B210-43B2-A3D7-C11A18C1440F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D2DF2BAC-B210-43B2-A3D7-C11A18C1440F}.Debug|x86.Build.0 = Debug|Any CPU
-		{D2DF2BAC-B210-43B2-A3D7-C11A18C1440F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2DF2BAC-B210-43B2-A3D7-C11A18C1440F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D2DF2BAC-B210-43B2-A3D7-C11A18C1440F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{D2DF2BAC-B210-43B2-A3D7-C11A18C1440F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{D2DF2BAC-B210-43B2-A3D7-C11A18C1440F}.Release|x86.ActiveCfg = Release|Any CPU
-		{D2DF2BAC-B210-43B2-A3D7-C11A18C1440F}.Release|x86.Build.0 = Release|Any CPU
 		{D2473C8D-83EB-41AB-84BB-231AB4D05720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D2473C8D-83EB-41AB-84BB-231AB4D05720}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2473C8D-83EB-41AB-84BB-231AB4D05720}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

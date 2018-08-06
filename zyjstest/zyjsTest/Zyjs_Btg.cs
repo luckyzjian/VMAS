@@ -2906,14 +2906,17 @@ namespace zyjsTest
             JCSJ = (int)jcTime;
         }
 
+        private DateTime gc_time = DateTime.Now;//用于标记过程数据全程时序，避免出现相同时间
         private void timer2_Tick(object sender, EventArgs e)
         {
             
             if (SaveData_status)//如果正在测试
             {
                 nowtime = DateTime.Now;
-                if (Convert.ToInt16(gongkuangTime) != GKSJ)//100ms一次
+                //if (Convert.ToInt16(gongkuangTime) != GKSJ)//100ms一次
+                if(DateTime.Compare(DateTime.Parse(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), DateTime.Parse(gc_time.ToString("yyyy-MM-dd HH:mm:ss"))) > 0)
                 {
+                    gc_time = System.DateTime.Now;
                     if (equipconfig.DATASECONDS_TYPE == "安车通用联网")//如果为安车通用联网，在此取值，以保证子程序过程数据 与安车前置数据一致
                     {
                         if (isReadRealTime)

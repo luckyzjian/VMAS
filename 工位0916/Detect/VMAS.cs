@@ -1345,6 +1345,7 @@ namespace vmasDetect
         private double zsgl = 0;
         private double zgl = 0;
         private float nl = 0;
+        private DateTime gc_time = DateTime.Now;//用于标记过程数据全程时序，避免出现相同时间
 
         private void timer2_Click(object sender, EventArgs e)
         {
@@ -1371,10 +1372,15 @@ namespace vmasDetect
                         }
                     }
 
-                    if (Convert.ToInt16(gongkuangTime*10)/10 !=GKSJ)           //每1s记录一次信息
+                    //if (Convert.ToInt16(gongkuangTime*10)/10 !=GKSJ)           //每1s记录一次信息
+                    if(DateTime.Compare(DateTime.Parse(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), DateTime.Parse(gc_time.ToString("yyyy-MM-dd HH:mm:ss"))) > 0)
                     {
+                        gc_time = DateTime.Now;
                         Random rd2 = new Random();
-                        gksj_count = GKSJ + vmasconfig.Dssj;
+                        if (equipconfig.DATASECONDS_TYPE == "江西")
+                            gksj_count = GKSJ + vmasconfig.Dssj + 1;
+                        else
+                            gksj_count = GKSJ + vmasconfig.Dssj;
                         jsgl = Math.Round(jsgl_xsa * igbt.Speed * igbt.Speed + jsgl_xsb * igbt.Speed + jsgl_xsc, 3);//寄生功率=
                         if (jsgl < 0) jsgl = 0;
                         zgl = Math.Round(igbt.Power, 3);
@@ -1402,8 +1408,6 @@ namespace vmasDetect
                         Vmas_jsgl[gksj_count] = (float)(Math.Round(jsgl,3));//功率
                         Vmas_zsgl[gksj_count] = (float)(Math.Round(zsgl, 3));//功率
                         Vmas_jzgl[gksj_count] = (float)(Math.Round(zgl, 3));//功率
-
-                        //Vmas_jzgl[gksj_count] = igbt.Power;//加载功率
                         Vmas_Exhaust_accelerate[gksj_count] = accelerate_flag;//是否处于加速和等速状态下
                         Vmas_Exhaust_shandongflag[gksj_count] = shandongCo2O2_flag;
                         Speed_listIg195[gksj_count] = igbt.Speed;//实时速度
@@ -1451,10 +1455,6 @@ namespace vmasDetect
                         Vmas_Exhaust_nold[gksj_count] = Vmas_Exhaust_Now.NO;//NO浓度
 
                         Vmas_lambda[gksj_count] = Vmas_Exhaust_Now.λ;
-                        //Vmas_Exhaust_co2zl[gksj_count] = Vmas_Exhaust_fqsjll[gksj_count] * Vmas_Exhaust_Now.CO2 * md_co2;//CO质量mg
-                        //Vmas_Exhaust_cozl[gksj_count] = Vmas_Exhaust_fqsjll[gksj_count] * Vmas_Exhaust_Now.CO * md_co;//CO质量mg
-                        //Vmas_Exhaust_nozl[gksj_count] = Vmas_Exhaust_fqsjll[gksj_count] * Vmas_Exhaust_Now.NO * md_no;//NO质量mg
-                        //Vmas_Exhaust_hczl[gksj_count] = Vmas_Exhaust_fqsjll[gksj_count] * Vmas_Exhaust_Now.HC * md_hc;//HC质量mg
                         if (IsUseTpTemp)
                         {
                             Vmas_hjwd[gksj_count] = (float)WD; //温度
@@ -1504,14 +1504,6 @@ namespace vmasDetect
                             Msg(labelCO, panelCO, "—", false);
                             Msg(labelHC, panelHC, "—", false);
                             Msg(labelNO, panelNO, "—", false);
-                            /*Msg(labelCO2, panelCO2, "—", false);
-                            Msg(labelOO2, panelO2, "—", false);
-                            Msg(labelXsO2, panelXsO2, "—", false);
-                            Msg(labelLL, panelLL, "—", false);
-                            Msg(labelWD, panelWD, "—", false);
-                            Msg(labelSD, panelSD, "—", false);
-                            Msg(labelQY, panelQY, "—", false);
-                            Msg(labelWQLL, panelWQLL, "—", false);*/
                         }
                         Msg(labelCO2, panelCO2, Vmas_Exhaust_Now.CO2.ToString("0.00"), false);
                         Msg(labelOO2, panelO2, Vmas_Exhaust_o2ld[gksj_count].ToString("0.00"), false);
@@ -2929,6 +2921,167 @@ namespace vmasDetect
                         Thread.Sleep(1000);
                     }
                     Thread.Sleep(1000);
+
+                    if (equipconfig.DATASECONDS_TYPE == "江西")
+                    {
+                        //sxnb设置为00
+                        Exhaust.Fla502_data zhunbei_data = null;
+                        try//获取环境参数
+                        {
+                            if (equipconfig.TempInstrument == "废气仪")
+                            {
+                                if (equipconfig.Fqyxh.ToLower() == "nha_503" || equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "cdf5000")
+                                {
+                                    Thread.Sleep(500);
+                                    Exhaust.Fla502_temp_data Environment = fla_502.Get_Temp();
+                                    WD = Environment.TEMP;
+                                    SD = Environment.HUMIDITY;
+                                    DQY = Environment.AIRPRESSURE;
+                                }
+                                else
+                                {
+                                    Exhaust.Fla502_data Environment = fla_502.GetData();
+                                    WD = Environment.HJWD;
+                                    SD = Environment.SD;
+                                    DQY = Environment.HJYL;
+                                }
+                            }
+                            else if (equipconfig.TempInstrument == "烟度计" && flb_100 != null)
+                            {
+                                flb_100.Set_Measure();
+                                Thread.Sleep(1000);
+                                if (equipconfig.IsOldMqy200)
+                                {
+                                    Exhaust.Flb_100_smoke smoke = flb_100.get_DirectData();
+                                    WD = smoke.WD;
+                                    SD = smoke.SD;
+                                    DQY = smoke.DQY;
+                                }
+                                else
+                                {
+                                    Exhaust.Flb_100_smoke ydjEnvironment = flb_100.get_Data();
+                                    WD = ydjEnvironment.WD;
+                                    SD = ydjEnvironment.SD;
+                                    DQY = ydjEnvironment.DQY;
+                                }
+                            }
+                            else if (equipconfig.TempInstrument == "XCE_100")
+                            {
+                                if (xce_100.readEnvironment())
+                                {
+                                    WD = xce_100.temp;
+                                    SD = xce_100.humidity;
+                                    DQY = xce_100.airpressure;
+                                }
+                                else
+                                {
+                                    Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", false);
+                                    ts2 = "读取环境参数失败";
+                                    return;
+                                }
+                            }
+                            else if (equipconfig.TempInstrument == "DWSP_T5" || equipconfig.TempInstrument == "FTH_2")
+                            {
+                                if (xce_100.readEnvironment())
+                                {
+                                    WD = xce_100.temp;
+                                    SD = xce_100.humidity;
+                                    DQY = xce_100.airpressure;
+                                }
+                                else
+                                {
+                                    Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", false);
+                                    ts2 = "读取环境参数失败";
+                                    return;
+                                }
+                            }
+                            else if (equipconfig.TempInstrument == "RZ_1")
+                            {
+                                if (xce_100.readEnvironment())
+                                {
+                                    WD = xce_100.temp;
+                                    SD = xce_100.humidity;
+                                    DQY = xce_100.airpressure;
+                                }
+                                else
+                                {
+                                    Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", false);
+                                    ts2 = "读取环境参数失败";
+                                    return;
+                                }
+                            }
+                            WD = thaxsdata.Tempxs * WD;
+                            SD = thaxsdata.Humixs * SD;
+                            DQY = thaxsdata.Airpxs * DQY;
+                        }
+                        catch (Exception)
+                        {
+                        }
+                        Thread.Sleep(200);
+
+                        for (int i = 0; i < 10; i++)
+                        {
+                            flv_1000.Get_standardDat();
+                            hjo2data[i] = flv_1000.o2_standard_value;//取样空气O2浓度
+                        }
+                        px();
+                        if (vmasconfig.Huanjingo2Monitor == true)//是否检测环境氧
+                        {
+                            lljo2 = (hjo2data[3] + hjo2data[4] + hjo2data[5] + hjo2data[6]) / 4f;
+                            hjo2 = lljo2;
+                        }
+                        else
+                        {
+                            hjo2 = 20.8f;
+                        }
+                        zhunbei_data = fla_502.GetData();//取废气仪
+
+                        Vmas_qcsj[0] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");//全程时序
+                        Vmas_cysx[0] = "1";//从0开始
+                        Vmas_nj[0] = igbt.Force;
+                        Vmas_fdjzs[0] = zhunbei_data.ZS;
+                        Vmas_sxnb[0] = "00";
+                        Vmas_bzcs[0] = 0f;//标准速度
+                        Vmas_sscs[0] = 0f;//实时速度
+                        Vmas_jsgl[0] = 0f;//加载功率
+                        Vmas_zsgl[0] = 0f;//加载功率
+                        Vmas_jzgl[0] = 0f;//加载功率
+                        Speed_listIg195[0] = 0f;//实时速度
+                        Vmas_Exhaust_ListIG195[0] = zhunbei_data;//尾气浓度值
+                        Vmas_Exhaust_Revise_ListIG195[0] = zhunbei_data;//修正的尾气浓度值
+                        Vmas_Exhaust_llList[0] = flv_1000.ll_standard_value;//流量计标准流量值
+                        Vmas_Exhaust_xso2now[0] = flv_1000.o2_standard_value;
+                        Vmas_Exhaust_xso2afterDelay[0] = flv_1000.o2_standard_value;//流量计稀释氧浓度
+                        Vmas_Exhaust_lljtemp[0] = flv_1000.temp_standard_value;//流量计温度
+                        Vmas_Exhaust_lljyl[0] = flv_1000.yali_standard_value;//流量计压力
+                        if (hjo2 > flv_1000.o2_standard_value && hjo2 > zhunbei_data.O2)//稀释比
+                        {
+                            Vmas_Exhaust_k[0] = (hjo2 - flv_1000.o2_standard_value) / (hjo2 - zhunbei_data.O2);
+                        }
+                        else
+                        {
+                            Vmas_Exhaust_k[0] = 0f;
+                        }
+                        Vmas_Exhaust_fqsjll[0] = Vmas_Exhaust_llList[0] * Vmas_Exhaust_k[0];//尾气实际流量
+                        Vmas_Exhaust_cold[0] = zhunbei_data.CO;//CO浓度
+                        Vmas_Exhaust_co2ld[0] = zhunbei_data.CO2;//CO2浓度
+                        Vmas_Exhaust_hcld[0] = zhunbei_data.HC;//HC浓度
+                        Vmas_Exhaust_nold[0] = zhunbei_data.NO;//NO浓度
+                        Vmas_Exhaust_o2ld[0] = zhunbei_data.O2;//废气仪氧气浓度
+                        Vmas_Exhaust_cozl[0] = Vmas_Exhaust_fqsjll[0] * zhunbei_data.CO * md_co;//CO质量mg
+                        Vmas_Exhaust_nozl[0] = Vmas_Exhaust_fqsjll[0] * zhunbei_data.NO * md_no;//NO质量mg
+                        Vmas_Exhaust_hczl[0] = Vmas_Exhaust_fqsjll[0] * zhunbei_data.HC * md_hc;//HC质量mg
+                        Vmas_Exhaust_co2zl[0] = Vmas_Exhaust_fqsjll[0] * zhunbei_data.CO2 * md_co2;//CO质量mg
+                        Vmas_hjwd[0] = (float)WD; //温度
+                        Vmas_xdsd[0] = (float)SD;//湿度
+                        Vmas_dqyl[0] = (float)DQY;//大气压                
+                        Vmas_xsxzxs[0] = (float)(Math.Round(caculateDf(Vmas_Exhaust_co2ld[0], Vmas_Exhaust_cold[0]), 3));//稀释修正系数
+                        Vmas_sdxzxs[0] = (float)(Math.Round(caculateKh(Vmas_hjwd[0], Vmas_xdsd[0], Vmas_dqyl[0]), 3));//湿度修正系数
+                        Vmas_Exhaust_qlyl[0] = zhunbei_data.QLYL;
+                        Vmas_lambda[0] = zhunbei_data.λ;
+                        Thread.Sleep(500);
+                    }
+
                     if (vmasconfig.IfFqyTl)
                     {
                         fla_502.Zeroing();                 //反吹                  1
@@ -3003,36 +3156,36 @@ namespace vmasDetect
                     Msg(label_message, panel_msg, "探头已插好,检测开始", false);
                     Thread.Sleep(1500);
                 }
-                    Msg(label_message, panel_msg, "检测开始，进行空档怠速", true);
-                    ts1 = "检测即将开始";
-                    ts2 = "空档怠速";
-                    sxnb = 4;
-                    Thread.Sleep(2000);
-                    int timeDs = vmasconfig.Dssj;
-                    statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.DAOWEI, GKSJ.ToString());
-                    Thread.Sleep(2000);
-                    statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.CHATANTOU, GKSJ.ToString());
-                    statusconfigini.writeNeuStatusData("StartTest", GKSJ.ToString());//东软开始命令
-                    vmas_data.Starttime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                    vmas_data.TestTime = (vmasconfig.Dssj + 195).ToString();
-                    vmas_data.Power = Set_Power.ToString();
-                    while (timeDs > 0)
+                Msg(label_message, panel_msg, "检测开始，进行空档怠速", true);
+                ts1 = "检测即将开始";
+                ts2 = "空档怠速";
+                sxnb = 4;
+                Thread.Sleep(2000);
+                int timeDs = vmasconfig.Dssj;
+                statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.DAOWEI, GKSJ.ToString());
+                Thread.Sleep(2000);
+                statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.CHATANTOU, GKSJ.ToString());
+                statusconfigini.writeNeuStatusData("StartTest", GKSJ.ToString());//东软开始命令
+                vmas_data.Starttime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                vmas_data.TestTime = (vmasconfig.Dssj + 195).ToString();
+                vmas_data.Power = Set_Power.ToString();
+                while (timeDs > 0)
+                {
+                    if (equipconfig.DATASECONDS_TYPE == "江西")
                     {
-                        cysx = vmasconfig.Dssj - timeDs;//从数组的第三个开始存，第一、二个存的是准备阶段的数
+                        cysx = vmasconfig.Dssj - timeDs + 1;//从数组的第二个开始存，第一存准备阶段的数
                         Msg(label_message, panel_msg, "空档怠速中..." + timeDs.ToString() + "s", false);
-                        //ts1 = "检测开始";
                         ts2 = "怠速中..." + timeDs.ToString() + "s";
-                        //Msg(label_tishi, panel_tishi, "等待开始", false);
                         Vmas_qcsj[cysx] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");//全程时序
                         Vmas_cysx[cysx] = cysx.ToString();//从0开始
                         Vmas_nj[cysx] = igbt.Force;
                         Vmas_fdjzs[cysx] = Vmas_Exhaust_Now.ZS;
-                        Vmas_sxnb[cysx] = sxnb.ToString();
+                        Vmas_sxnb[cysx] = "11";
                         Vmas_bzcs[cysx] = 0f;//标准速度
                         Vmas_sscs[cysx] = 0f;//实时速度
-                    Vmas_jsgl[cysx] = 0f;//加载功率
-                    Vmas_zsgl[cysx] = 0f;//加载功率
-                    Vmas_jzgl[cysx] = 0f;//加载功率
+                        Vmas_jsgl[cysx] = 0f;//加载功率
+                        Vmas_zsgl[cysx] = 0f;//加载功率
+                        Vmas_jzgl[cysx] = 0f;//加载功率
                         Speed_listIg195[cysx] = 0f;//实时速度
                         Vmas_Exhaust_ListIG195[cysx] = Vmas_Exhaust_Now;//尾气浓度值
                         Vmas_Exhaust_Revise_ListIG195[cysx] = Vmas_Exhaust_Now;//修正的尾气浓度值
@@ -3058,19 +3211,69 @@ namespace vmasDetect
                         Vmas_Exhaust_cozl[cysx] = Vmas_Exhaust_fqsjll[cysx] * Vmas_Exhaust_Now.CO * md_co;//CO质量mg
                         Vmas_Exhaust_nozl[cysx] = Vmas_Exhaust_fqsjll[cysx] * Vmas_Exhaust_Now.NO * md_no;//NO质量mg
                         Vmas_Exhaust_hczl[cysx] = Vmas_Exhaust_fqsjll[cysx] * Vmas_Exhaust_Now.HC * md_hc;//HC质量mg
-                    Vmas_Exhaust_co2zl[cysx] = Vmas_Exhaust_fqsjll[cysx] * Vmas_Exhaust_Now.CO2 * md_co2;//CO质量mg
-                    Vmas_hjwd[cysx] = fla502_temp_data.TEMP;//温度
+                        Vmas_Exhaust_co2zl[cysx] = Vmas_Exhaust_fqsjll[cysx] * Vmas_Exhaust_Now.CO2 * md_co2;//CO质量mg
+                        Vmas_hjwd[cysx] = fla502_temp_data.TEMP;//温度
                         Vmas_xdsd[cysx] = fla502_temp_data.HUMIDITY;//湿度
                         Vmas_dqyl[cysx] = fla502_temp_data.AIRPRESSURE;//大气压
-                    Vmas_xsxzxs[cysx] = (float)(Math.Round(caculateDf(Vmas_Exhaust_co2ld[cysx], Vmas_Exhaust_cold[cysx]), 3));//稀释修正系数
-                    Vmas_sdxzxs[cysx] = (float)(Math.Round(caculateKh(Vmas_hjwd[cysx], Vmas_xdsd[cysx], Vmas_dqyl[cysx]), 3));//湿度修正系数
-                    //Vmas_xsxzxs[cysx] = xsxzxs;//稀释修正系数
-                      //  Vmas_sdxzxs[cysx] = sdxzxs;//湿度修正系数
+                        Vmas_xsxzxs[cysx] = (float)(Math.Round(caculateDf(Vmas_Exhaust_co2ld[cysx], Vmas_Exhaust_cold[cysx]), 3));//稀释修正系数
+                        Vmas_sdxzxs[cysx] = (float)(Math.Round(caculateKh(Vmas_hjwd[cysx], Vmas_xdsd[cysx], Vmas_dqyl[cysx]), 3));//湿度修正系数
                         Vmas_Exhaust_qlyl[cysx] = Vmas_Exhaust_Now.QLYL;
-                    Vmas_lambda[cysx] = Vmas_Exhaust_Now.λ;
-                    Thread.Sleep(900);
+                        Vmas_lambda[cysx] = Vmas_Exhaust_Now.λ;
+                        Thread.Sleep(900);
                         timeDs--;
                     }
+                    else
+                    {
+                        cysx = vmasconfig.Dssj - timeDs;//从数组的第三个开始存，第一、二个存的是准备阶段的数
+                        Msg(label_message, panel_msg, "空档怠速中..." + timeDs.ToString() + "s", false);
+                        ts2 = "怠速中..." + timeDs.ToString() + "s";
+                        Vmas_qcsj[cysx] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");//全程时序
+                        Vmas_cysx[cysx] = cysx.ToString();//从0开始
+                        Vmas_nj[cysx] = igbt.Force;
+                        Vmas_fdjzs[cysx] = Vmas_Exhaust_Now.ZS;
+                        Vmas_sxnb[cysx] = sxnb.ToString();
+                        Vmas_bzcs[cysx] = 0f;//标准速度
+                        Vmas_sscs[cysx] = 0f;//实时速度
+                        Vmas_jsgl[cysx] = 0f;//加载功率
+                        Vmas_zsgl[cysx] = 0f;//加载功率
+                        Vmas_jzgl[cysx] = 0f;//加载功率
+                        Speed_listIg195[cysx] = 0f;//实时速度
+                        Vmas_Exhaust_ListIG195[cysx] = Vmas_Exhaust_Now;//尾气浓度值
+                        Vmas_Exhaust_Revise_ListIG195[cysx] = Vmas_Exhaust_Now;//修正的尾气浓度值
+                        Vmas_Exhaust_llList[cysx] = flv_1000.ll_standard_value;//流量计标准流量值
+                        Vmas_Exhaust_xso2now[cysx] = flv_1000.o2_standard_value;
+                        Vmas_Exhaust_xso2afterDelay[cysx] = flv_1000.o2_standard_value;//流量计稀释氧浓度
+                        Vmas_Exhaust_lljtemp[cysx] = flv_1000.temp_standard_value;//流量计温度
+                        Vmas_Exhaust_lljyl[cysx] = flv_1000.yali_standard_value;//流量计压力
+                        if (hjo2 > flv_1000.o2_standard_value && hjo2 > Vmas_Exhaust_Now.O2)//稀释比
+                        {
+                            Vmas_Exhaust_k[cysx] = (hjo2 - flv_1000.o2_standard_value) / (hjo2 - Vmas_Exhaust_Now.O2);
+                        }
+                        else
+                        {
+                            Vmas_Exhaust_k[cysx] = 0f;
+                        }
+                        Vmas_Exhaust_fqsjll[cysx] = Vmas_Exhaust_llList[cysx] * Vmas_Exhaust_k[cysx];//尾气实际流量
+                        Vmas_Exhaust_cold[cysx] = Vmas_Exhaust_Now.CO;//CO浓度
+                        Vmas_Exhaust_co2ld[cysx] = Vmas_Exhaust_Now.CO2;//CO2浓度
+                        Vmas_Exhaust_hcld[cysx] = Vmas_Exhaust_Now.HC;//HC浓度
+                        Vmas_Exhaust_nold[cysx] = Vmas_Exhaust_Now.NO;//NO浓度
+                        Vmas_Exhaust_o2ld[cysx] = Vmas_Exhaust_Now.O2;//废气仪氧气浓度
+                        Vmas_Exhaust_cozl[cysx] = Vmas_Exhaust_fqsjll[cysx] * Vmas_Exhaust_Now.CO * md_co;//CO质量mg
+                        Vmas_Exhaust_nozl[cysx] = Vmas_Exhaust_fqsjll[cysx] * Vmas_Exhaust_Now.NO * md_no;//NO质量mg
+                        Vmas_Exhaust_hczl[cysx] = Vmas_Exhaust_fqsjll[cysx] * Vmas_Exhaust_Now.HC * md_hc;//HC质量mg
+                        Vmas_Exhaust_co2zl[cysx] = Vmas_Exhaust_fqsjll[cysx] * Vmas_Exhaust_Now.CO2 * md_co2;//CO质量mg
+                        Vmas_hjwd[cysx] = fla502_temp_data.TEMP;//温度
+                        Vmas_xdsd[cysx] = fla502_temp_data.HUMIDITY;//湿度
+                        Vmas_dqyl[cysx] = fla502_temp_data.AIRPRESSURE;//大气压
+                        Vmas_xsxzxs[cysx] = (float)(Math.Round(caculateDf(Vmas_Exhaust_co2ld[cysx], Vmas_Exhaust_cold[cysx]), 3));//稀释修正系数
+                        Vmas_sdxzxs[cysx] = (float)(Math.Round(caculateKh(Vmas_hjwd[cysx], Vmas_xdsd[cysx], Vmas_dqyl[cysx]), 3));//湿度修正系数
+                        Vmas_Exhaust_qlyl[cysx] = Vmas_Exhaust_Now.QLYL;
+                        Vmas_lambda[cysx] = Vmas_Exhaust_Now.λ;
+                        Thread.Sleep(900);
+                        timeDs--;
+                    }
+                }
                 
                 Msg(label_message, panel_msg, "测试开始，请根据工况运转循环图及语言提示进行驾驶", true);
                 ts1 = "检测开始";
@@ -3403,6 +3606,7 @@ namespace vmasDetect
                 double lambdasum = 0;
                 vmas_dataseconds.CarID=carbj.CarID;
                 DataTable vmas_datatable = new DataTable();
+
                 try
                 {
                     vmas_datatable.Columns.Add("全程时序");
@@ -3439,18 +3643,19 @@ namespace vmasDetect
                     vmas_datatable.Columns.Add("稀释比");
                     vmas_datatable.Columns.Add("分析仪管路压力");
                     vmas_datatable.Columns.Add("尾气实际排放流量");
-                    for (int i = 0; i <= vmasconfig.Dssj - 1; i++)//将数据写入逐秒数据
+                    if (equipconfig.DATASECONDS_TYPE == "江西")
                     {
+                        //准备阶段
                         dr = vmas_datatable.NewRow();
-                        dr["全程时序"] = Vmas_qcsj[i];
-                        dr["时序类别"] = Vmas_sxnb[i];
-                        dr["采样时序"] = Vmas_cysx[i];
-                        dr["扭矩"] = (Vmas_nj[i] * 0.108f).ToString("0.0");
-                        dr["发动机转速"] = Vmas_fdjzs[i].ToString("0");
-                        dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
-                        dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
-                        dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
-                        dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                        dr["全程时序"] = Vmas_qcsj[0];
+                        dr["时序类别"] = Vmas_sxnb[0];
+                        dr["采样时序"] = Vmas_cysx[0];
+                        dr["扭矩"] = (Vmas_nj[0] * 0.108f).ToString("0.0");
+                        dr["发动机转速"] = Vmas_fdjzs[0].ToString("0");
+                        dr["HC实时值"] = Vmas_Exhaust_hcld[0].ToString("0");
+                        dr["CO实时值"] = Vmas_Exhaust_cold[0].ToString("0.00");
+                        dr["CO2实时值"] = Vmas_Exhaust_co2ld[0].ToString("0.00");
+                        dr["NO实时值"] = Vmas_Exhaust_nold[0].ToString("0");
                         if (!isUseData)
                         {
                             dr["环境O2浓度"] = hjo2.ToString("0.00");
@@ -3459,59 +3664,63 @@ namespace vmasDetect
                         {
                             dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[0].ToString("0.00");
                         }
-                        dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
-                        dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
-                        dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
-                        dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
-                        dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
-                        dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
-                        dr["标准时速"] = Math.Round(Vmas_bzcs[i],1).ToString("0.0");
-                        dr["实时车速"] = Math.Round(Vmas_sscs[i],1).ToString("0.0");
-                        dr["寄生功率"] = Math.Round(Vmas_jsgl[i], 2).ToString("0.00");
-                        dr["指示功率"] = Math.Round(Vmas_zsgl[i], 2).ToString("0.00");
-                        dr["加载功率"] = Math.Round(Vmas_jzgl[i], 2).ToString("0.00");
-                        dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
-                        dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
-                        dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
-                        dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
-                        dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                        dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
-                        dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
-                        dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
-                        dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
-                        dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
-                        dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
-                        dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i] * 0.6, 3).ToString("0.000");
-                        dr["lambda"] = Vmas_lambda[i];
-                        zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                        dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[0].ToString("0.00");
+                        dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[0].ToString("0.00");
+                        dr["HC排放质量"] = Vmas_Exhaust_hczl[0].ToString("0.000");
+                        dr["CO排放质量"] = Vmas_Exhaust_cozl[0].ToString("0.000");
+                        dr["CO2排放质量"] = Vmas_Exhaust_co2zl[0].ToString("0.000");
+                        dr["NO排放质量"] = Vmas_Exhaust_nozl[0].ToString("0.000");
+                        dr["标准时速"] = Math.Round(Vmas_bzcs[0], 1).ToString("0.0");
+                        dr["实时车速"] = Math.Round(Vmas_sscs[0], 1).ToString("0.0");
+                        dr["寄生功率"] = Math.Round(Vmas_jsgl[0], 2).ToString("0.00");
+                        dr["指示功率"] = Math.Round(Vmas_zsgl[0], 2).ToString("0.00");
+                        dr["加载功率"] = Math.Round(Vmas_jzgl[0], 2).ToString("0.00");
+                        dr["环境温度"] = Vmas_hjwd[0].ToString("0.0");
+                        dr["相对湿度"] = Vmas_xdsd[0].ToString("0.0");
+                        dr["大气压力"] = Vmas_dqyl[0].ToString("0.0");
+                        dr["流量计温度"] = Vmas_Exhaust_lljtemp[0].ToString("0.0");
+                        dr["流量计压力"] = Vmas_Exhaust_lljyl[0].ToString("0.0");
+                        dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[0] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[0]) / (Vmas_Exhaust_lljyl[0] * 273.15), 3).ToString("0.000");
+                        dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[0], 3).ToString("0.000");
+                        dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[0], 3).ToString("0.000");
+                        dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[0], 3).ToString("0.000");
+                        dr["稀释比"] = Vmas_Exhaust_k[0].ToString("0.000");
+                        dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[0].ToString("0.0");
+                        dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[0] * 0.6, 3).ToString("0.000");
+                        dr["lambda"] = Vmas_lambda[0];
                         vmas_datatable.Rows.Add(dr);
-                    }
-                    if (!isUseData)
-                    {
-                        for (int i = vmasconfig.Dssj + fqy_delayTime; i < 195 + vmasconfig.Dssj + fqy_delayTime; i++)//将数据写入逐秒数据
+                        //怠速阶段
+                        for (int i = 1; i < vmasconfig.Dssj + 1; i++)//将数据写入逐秒数据
                         {
                             dr = vmas_datatable.NewRow();
-                            dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
-                            dr["时序类别"] = Vmas_sxnb[i - fqy_delayTime];
-                            dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
-                            dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f,1).ToString("0.0");
-                            dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                            dr["全程时序"] = Vmas_qcsj[i];
+                            dr["时序类别"] = Vmas_sxnb[i];
+                            dr["采样时序"] = Vmas_cysx[i];
+                            dr["扭矩"] = (Vmas_nj[i] * 0.108f).ToString("0.0");
+                            dr["发动机转速"] = Vmas_fdjzs[i].ToString("0");
                             dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
                             dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
                             dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
                             dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
-                            dr["环境O2浓度"] = hjo2.ToString("0.00");
+                            if (!isUseData)
+                            {
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                            }
+                            else
+                            {
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[0].ToString("0.00");
+                            }
                             dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
                             dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
                             dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
                             dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
                             dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
                             dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
-                            dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
-                            dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
-                            dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
-                            dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
-                            dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                            dr["标准时速"] = Math.Round(Vmas_bzcs[i], 1).ToString("0.0");
+                            dr["实时车速"] = Math.Round(Vmas_sscs[i], 1).ToString("0.0");
+                            dr["寄生功率"] = Math.Round(Vmas_jsgl[i], 2).ToString("0.00");
+                            dr["指示功率"] = Math.Round(Vmas_zsgl[i], 2).ToString("0.00");
+                            dr["加载功率"] = Math.Round(Vmas_jzgl[i], 2).ToString("0.00");
                             dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
                             dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
                             dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
@@ -3523,52 +3732,1338 @@ namespace vmasDetect
                             dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
                             dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
                             dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
-                            dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
-                            dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                            dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i] * 0.6, 3).ToString("0.000");
+                            dr["lambda"] = Vmas_lambda[i];
                             zll += Vmas_Exhaust_fqsjll[i] * 0.6;
-                            sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
-                            lambdasum += Vmas_lambda[i];
                             vmas_datatable.Rows.Add(dr);
+                        }
+                        #region 195秒阶段
+                        if (!isUseData)//将数据写入逐秒数据
+                        {
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 1; i < vmasconfig.Dssj + fqy_delayTime + 12; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
+                                dr["时序类别"] = "4";
+                                dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
+                                dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f, 1).ToString("0.0");
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                                dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                                dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                                dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                                dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                                dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                                dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                                dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                                dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                                dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                                dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                                dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
+                                dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                                zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                                sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
+                                lambdasum += Vmas_lambda[i];
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 12; i < vmasconfig.Dssj + fqy_delayTime + 16; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
+                                dr["时序类别"] = "5";
+                                dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
+                                dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f, 1).ToString("0.0");
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                                dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                                dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                                dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                                dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                                dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                                dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                                dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                                dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                                dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                                dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                                dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
+                                dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                                zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                                sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
+                                lambdasum += Vmas_lambda[i];
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 16; i < vmasconfig.Dssj + fqy_delayTime + 24; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
+                                dr["时序类别"] = "0";
+                                dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
+                                dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f, 1).ToString("0.0");
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                                dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                                dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                                dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                                dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                                dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                                dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                                dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                                dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                                dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                                dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                                dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
+                                dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                                zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                                sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
+                                lambdasum += Vmas_lambda[i];
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 24; i < vmasconfig.Dssj + fqy_delayTime + 29; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
+                                dr["时序类别"] = "6";
+                                dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
+                                dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f, 1).ToString("0.0");
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                                dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                                dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                                dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                                dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                                dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                                dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                                dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                                dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                                dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                                dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                                dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
+                                dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                                zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                                sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
+                                lambdasum += Vmas_lambda[i];
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 29; i < vmasconfig.Dssj + fqy_delayTime + 50; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
+                                dr["时序类别"] = "4";
+                                dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
+                                dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f, 1).ToString("0.0");
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                                dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                                dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                                dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                                dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                                dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                                dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                                dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                                dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                                dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                                dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                                dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
+                                dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                                zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                                sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
+                                lambdasum += Vmas_lambda[i];
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 50; i < vmasconfig.Dssj + fqy_delayTime + 62; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
+                                dr["时序类别"] = "5";
+                                dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
+                                dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f, 1).ToString("0.0");
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                                dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                                dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                                dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                                dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                                dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                                dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                                dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                                dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                                dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                                dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                                dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
+                                dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                                zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                                sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
+                                lambdasum += Vmas_lambda[i];
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 62; i < vmasconfig.Dssj + fqy_delayTime + 86; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
+                                dr["时序类别"] = "1";
+                                dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
+                                dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f, 1).ToString("0.0");
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                                dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                                dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                                dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                                dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                                dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                                dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                                dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                                dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                                dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                                dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                                dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
+                                dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                                zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                                sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
+                                lambdasum += Vmas_lambda[i];
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 86; i < vmasconfig.Dssj + fqy_delayTime + 97; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
+                                dr["时序类别"] = "6";
+                                dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
+                                dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f, 1).ToString("0.0");
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                                dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                                dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                                dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                                dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                                dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                                dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                                dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                                dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                                dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                                dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                                dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
+                                dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                                zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                                sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
+                                lambdasum += Vmas_lambda[i];
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 97; i < vmasconfig.Dssj + fqy_delayTime + 118; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
+                                dr["时序类别"] = "4";
+                                dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
+                                dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f, 1).ToString("0.0");
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                                dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                                dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                                dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                                dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                                dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                                dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                                dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                                dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                                dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                                dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                                dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
+                                dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                                zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                                sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
+                                lambdasum += Vmas_lambda[i];
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 118; i < vmasconfig.Dssj + fqy_delayTime + 144; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
+                                dr["时序类别"] = "5";
+                                dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
+                                dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f, 1).ToString("0.0");
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                                dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                                dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                                dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                                dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                                dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                                dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                                dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                                dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                                dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                                dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                                dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
+                                dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                                zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                                sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
+                                lambdasum += Vmas_lambda[i];
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 144; i < vmasconfig.Dssj + fqy_delayTime + 156; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
+                                dr["时序类别"] = "2";
+                                dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
+                                dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f, 1).ToString("0.0");
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                                dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                                dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                                dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                                dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                                dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                                dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                                dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                                dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                                dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                                dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                                dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
+                                dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                                zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                                sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
+                                lambdasum += Vmas_lambda[i];
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 156; i < vmasconfig.Dssj + fqy_delayTime + 164; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
+                                dr["时序类别"] = "6";
+                                dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
+                                dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f, 1).ToString("0.0");
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                                dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                                dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                                dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                                dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                                dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                                dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                                dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                                dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                                dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                                dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                                dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
+                                dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                                zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                                sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
+                                lambdasum += Vmas_lambda[i];
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 164; i < vmasconfig.Dssj + fqy_delayTime + 177; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
+                                dr["时序类别"] = "3";
+                                dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
+                                dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f, 1).ToString("0.0");
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                                dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                                dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                                dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                                dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                                dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                                dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                                dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                                dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                                dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                                dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                                dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
+                                dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                                zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                                sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
+                                lambdasum += Vmas_lambda[i];
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 177; i < vmasconfig.Dssj + fqy_delayTime + 189; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
+                                dr["时序类别"] = "6";
+                                dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
+                                dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f, 1).ToString("0.0");
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                                dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                                dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                                dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                                dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                                dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                                dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                                dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                                dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                                dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                                dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                                dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
+                                dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                                zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                                sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
+                                lambdasum += Vmas_lambda[i];
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 189; i < vmasconfig.Dssj + fqy_delayTime + 196; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
+                                dr["时序类别"] = "4";
+                                dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
+                                dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f, 1).ToString("0.0");
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                                dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                                dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                                dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                                dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                                dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                                dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                                dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                                dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                                dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                                dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                                dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
+                                dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                                zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                                sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
+                                lambdasum += Vmas_lambda[i];
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                        }
+                        else//将数据写入逐秒数据
+                        {
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 1; i < vmasconfig.Dssj + fqy_delayTime + 12; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i];
+                                dr["时序类别"] = "4";
+                                dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
+                                dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
+                                dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
+                                dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
+                                dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
+                                dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
+                                dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
+                                dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
+                                dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["湿度修正系数"] = Vmas_sdxzxs[i];
+                                dr["稀释修正系数"] = Vmas_xsxzxs[i];
+                                dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
+                                dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 12; i < vmasconfig.Dssj + fqy_delayTime + 16; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i];
+                                dr["时序类别"] = "5";
+                                dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
+                                dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
+                                dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
+                                dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
+                                dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
+                                dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
+                                dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
+                                dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
+                                dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["湿度修正系数"] = Vmas_sdxzxs[i];
+                                dr["稀释修正系数"] = Vmas_xsxzxs[i];
+                                dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
+                                dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 16; i < vmasconfig.Dssj + fqy_delayTime + 24; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i];
+                                dr["时序类别"] = "0";
+                                dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
+                                dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
+                                dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
+                                dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
+                                dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
+                                dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
+                                dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
+                                dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
+                                dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["湿度修正系数"] = Vmas_sdxzxs[i];
+                                dr["稀释修正系数"] = Vmas_xsxzxs[i];
+                                dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
+                                dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 24; i < vmasconfig.Dssj + fqy_delayTime + 29; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i];
+                                dr["时序类别"] = "6";
+                                dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
+                                dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
+                                dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
+                                dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
+                                dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
+                                dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
+                                dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
+                                dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
+                                dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["湿度修正系数"] = Vmas_sdxzxs[i];
+                                dr["稀释修正系数"] = Vmas_xsxzxs[i];
+                                dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
+                                dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 29; i < vmasconfig.Dssj + fqy_delayTime + 50; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i];
+                                dr["时序类别"] = "4";
+                                dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
+                                dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
+                                dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
+                                dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
+                                dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
+                                dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
+                                dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
+                                dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
+                                dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["湿度修正系数"] = Vmas_sdxzxs[i];
+                                dr["稀释修正系数"] = Vmas_xsxzxs[i];
+                                dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
+                                dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 50; i < vmasconfig.Dssj + fqy_delayTime + 62; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i];
+                                dr["时序类别"] = "5";
+                                dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
+                                dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
+                                dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
+                                dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
+                                dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
+                                dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
+                                dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
+                                dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
+                                dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["湿度修正系数"] = Vmas_sdxzxs[i];
+                                dr["稀释修正系数"] = Vmas_xsxzxs[i];
+                                dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
+                                dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 62; i < vmasconfig.Dssj + fqy_delayTime + 86; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i];
+                                dr["时序类别"] = "1";
+                                dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
+                                dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
+                                dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
+                                dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
+                                dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
+                                dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
+                                dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
+                                dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
+                                dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["湿度修正系数"] = Vmas_sdxzxs[i];
+                                dr["稀释修正系数"] = Vmas_xsxzxs[i];
+                                dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
+                                dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 86; i < vmasconfig.Dssj + fqy_delayTime + 97; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i];
+                                dr["时序类别"] = "6";
+                                dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
+                                dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
+                                dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
+                                dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
+                                dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
+                                dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
+                                dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
+                                dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
+                                dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["湿度修正系数"] = Vmas_sdxzxs[i];
+                                dr["稀释修正系数"] = Vmas_xsxzxs[i];
+                                dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
+                                dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 97; i < vmasconfig.Dssj + fqy_delayTime + 118; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i];
+                                dr["时序类别"] = "4";
+                                dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
+                                dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
+                                dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
+                                dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
+                                dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
+                                dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
+                                dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
+                                dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
+                                dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["湿度修正系数"] = Vmas_sdxzxs[i];
+                                dr["稀释修正系数"] = Vmas_xsxzxs[i];
+                                dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
+                                dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 118; i < vmasconfig.Dssj + fqy_delayTime + 144; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i];
+                                dr["时序类别"] = "5";
+                                dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
+                                dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
+                                dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
+                                dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
+                                dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
+                                dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
+                                dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
+                                dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
+                                dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["湿度修正系数"] = Vmas_sdxzxs[i];
+                                dr["稀释修正系数"] = Vmas_xsxzxs[i];
+                                dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
+                                dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 144; i < vmasconfig.Dssj + fqy_delayTime + 156; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i];
+                                dr["时序类别"] = "2";
+                                dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
+                                dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
+                                dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
+                                dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
+                                dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
+                                dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
+                                dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
+                                dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
+                                dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["湿度修正系数"] = Vmas_sdxzxs[i];
+                                dr["稀释修正系数"] = Vmas_xsxzxs[i];
+                                dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
+                                dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 156; i < vmasconfig.Dssj + fqy_delayTime + 164; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i];
+                                dr["时序类别"] = "6";
+                                dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
+                                dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
+                                dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
+                                dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
+                                dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
+                                dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
+                                dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
+                                dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
+                                dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["湿度修正系数"] = Vmas_sdxzxs[i];
+                                dr["稀释修正系数"] = Vmas_xsxzxs[i];
+                                dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
+                                dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 164; i < vmasconfig.Dssj + fqy_delayTime + 177; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i];
+                                dr["时序类别"] = "3";
+                                dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
+                                dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
+                                dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
+                                dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
+                                dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
+                                dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
+                                dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
+                                dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
+                                dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["湿度修正系数"] = Vmas_sdxzxs[i];
+                                dr["稀释修正系数"] = Vmas_xsxzxs[i];
+                                dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
+                                dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 177; i < vmasconfig.Dssj + fqy_delayTime + 189; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i];
+                                dr["时序类别"] = "6";
+                                dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
+                                dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
+                                dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
+                                dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
+                                dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
+                                dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
+                                dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
+                                dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
+                                dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["湿度修正系数"] = Vmas_sdxzxs[i];
+                                dr["稀释修正系数"] = Vmas_xsxzxs[i];
+                                dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
+                                dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            for (int i = vmasconfig.Dssj + fqy_delayTime + 189; i < vmasconfig.Dssj + fqy_delayTime + 196; i++)
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i];
+                                dr["时序类别"] = "4";
+                                dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
+                                dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
+                                dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
+                                dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
+                                dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
+                                dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
+                                dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
+                                dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
+                                dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["湿度修正系数"] = Vmas_sdxzxs[i];
+                                dr["稀释修正系数"] = Vmas_xsxzxs[i];
+                                dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
+                                dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                                vmas_datatable.Rows.Add(dr);
+                            }
                         }
                     }
                     else
                     {
-                        for (int i = vmasconfig.Dssj + 2 + fqy_delayTime; i < 195 + vmasconfig.Dssj + 2 + fqy_delayTime; i++)//将数据写入逐秒数据
+                        for (int i = 0; i <= vmasconfig.Dssj - 1; i++)//将数据写入逐秒数据
                         {
                             dr = vmas_datatable.NewRow();
                             dr["全程时序"] = Vmas_qcsj[i];
                             dr["时序类别"] = Vmas_sxnb[i];
-                            dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
-                            dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
-                            dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
-                            dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
-                            dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
-                            dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
-                            dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
-                            dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
-                            dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
-                            dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
-                            dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
-                            dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
-                            dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
-                            dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
-                            dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
-                            dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
-                            dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
-                            dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
-                            dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
-                            dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
-                            dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
-                            dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
-                            dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
-                            dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
-                            dr["湿度修正系数"] = Vmas_sdxzxs[i];
-                            dr["稀释修正系数"] = Vmas_xsxzxs[i];
-                            dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
-                            dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
-                            dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
-                            dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                            dr["采样时序"] = Vmas_cysx[i];
+                            dr["扭矩"] = (Vmas_nj[i] * 0.108f).ToString("0.0");
+                            dr["发动机转速"] = Vmas_fdjzs[i].ToString("0");
+                            dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                            dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                            dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                            dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                            if (!isUseData)
+                            {
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                            }
+                            else
+                            {
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[0].ToString("0.00");
+                            }
+                            dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                            dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                            dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                            dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                            dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                            dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                            dr["标准时速"] = Math.Round(Vmas_bzcs[i], 1).ToString("0.0");
+                            dr["实时车速"] = Math.Round(Vmas_sscs[i], 1).ToString("0.0");
+                            dr["寄生功率"] = Math.Round(Vmas_jsgl[i], 2).ToString("0.00");
+                            dr["指示功率"] = Math.Round(Vmas_zsgl[i], 2).ToString("0.00");
+                            dr["加载功率"] = Math.Round(Vmas_jzgl[i], 2).ToString("0.00");
+                            dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                            dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                            dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                            dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                            dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                            dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                            dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                            dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                            dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                            dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                            dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                            dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i] * 0.6, 3).ToString("0.000");
+                            dr["lambda"] = Vmas_lambda[i];
+                            zll += Vmas_Exhaust_fqsjll[i] * 0.6;
                             vmas_datatable.Rows.Add(dr);
+                        }
+                        if (!isUseData)
+                        {
+                            for (int i = vmasconfig.Dssj + fqy_delayTime; i < 195 + vmasconfig.Dssj + fqy_delayTime; i++)//将数据写入逐秒数据
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i - fqy_delayTime];
+                                dr["时序类别"] = Vmas_sxnb[i - fqy_delayTime];
+                                dr["采样时序"] = (i - fqy_delayTime - vmasconfig.Dssj + 1).ToString("0");
+                                dr["扭矩"] = Math.Round(Vmas_nj[i - fqy_delayTime] * 0.108f, 1).ToString("0.0");
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime].ToString("0");
+                                dr["HC实时值"] = Vmas_Exhaust_hcld[i].ToString("0");
+                                dr["CO实时值"] = Vmas_Exhaust_cold[i].ToString("0.00");
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i].ToString("0.00");
+                                dr["NO实时值"] = Vmas_Exhaust_nold[i].ToString("0");
+                                dr["环境O2浓度"] = hjo2.ToString("0.00");
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2ld[i].ToString("0.00");
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xso2afterDelay[i].ToString("0.00");
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl[i].ToString("0.000");
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl[i].ToString("0.000");
+                                dr["CO2排放质量"] = Vmas_Exhaust_co2zl[i].ToString("0.000");
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl[i].ToString("0.000");
+                                dr["标准时速"] = Math.Round(Vmas_bzcs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["实时车速"] = Math.Round(Vmas_sscs[i - fqy_delayTime], 1).ToString("0.0");
+                                dr["寄生功率"] = Math.Round(Vmas_jsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["指示功率"] = Math.Round(Vmas_zsgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["加载功率"] = Math.Round(Vmas_jzgl[i - fqy_delayTime], 2).ToString("0.00");
+                                dr["环境温度"] = Vmas_hjwd[i].ToString("0.0");
+                                dr["相对湿度"] = Vmas_xdsd[i].ToString("0.0");
+                                dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
+                                dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
+                                dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
+                                dr["稀释比"] = Vmas_Exhaust_k[i].ToString("0.000");
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i].ToString("0.0");
+                                dr["尾气实际排放流量"] = Math.Round(Vmas_Exhaust_fqsjll[i], 3).ToString("0.000");
+                                dr["lambda"] = Vmas_lambda[i].ToString("0.000");
+                                zll += Vmas_Exhaust_fqsjll[i] * 0.6;
+                                sjlc += Vmas_sscs[i - fqy_delayTime] / 3.6;
+                                lambdasum += Vmas_lambda[i];
+                                vmas_datatable.Rows.Add(dr);
+                            }
+                            #endregion
+                        }
+                        else
+                        {
+                            for (int i = vmasconfig.Dssj + 2 + fqy_delayTime; i < 195 + vmasconfig.Dssj + 2 + fqy_delayTime; i++)//将数据写入逐秒数据
+                            {
+                                dr = vmas_datatable.NewRow();
+                                dr["全程时序"] = Vmas_qcsj[i];
+                                dr["时序类别"] = Vmas_sxnb[i];
+                                dr["采样时序"] = i - vmasconfig.Dssj - fqy_delayTime - 1;
+                                dr["HC实时值"] = Vmas_Exhaust_hc_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO实时值"] = Vmas_Exhaust_co_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2实时值"] = Vmas_Exhaust_co2ld[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO实时值"] = Vmas_Exhaust_no_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["环境O2浓度"] = Vmas_Exhaust_hujingo2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪O2实时值"] = Vmas_Exhaust_o2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["流量计O2实时值"] = Vmas_Exhaust_xishio2_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["HC排放质量"] = Vmas_Exhaust_hczl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["CO2排放质量"] = Vmas_Exhaust_cozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["NO排放质量"] = Vmas_Exhaust_nozl_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["扭矩"] = Vmas_nj[i - fqy_delayTime];
+                                dr["发动机转速"] = Vmas_fdjzs[i - fqy_delayTime];
+                                dr["标准时速"] = Vmas_bzcs[i - fqy_delayTime];
+                                dr["实时车速"] = Vmas_sscs[i - fqy_delayTime];
+                                dr["加载功率"] = Vmas_jzgl[i - fqy_delayTime];
+                                dr["环境温度"] = Vmas_hjwd[i - fqy_delayTime];
+                                dr["相对湿度"] = Vmas_xdsd[i - fqy_delayTime];
+                                dr["大气压力"] = Vmas_dqyl[i - fqy_delayTime];
+                                dr["流量计温度"] = Vmas_Exhaust_lljtemp[i - fqy_delayTime];
+                                dr["流量计压力"] = Vmas_Exhaust_lljyl[i - fqy_delayTime];
+                                dr["实际体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["标准体积流量"] = Vmas_Exhaust_lljll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["湿度修正系数"] = Vmas_sdxzxs[i];
+                                dr["稀释修正系数"] = Vmas_xsxzxs[i];
+                                dr["稀释比"] = Vmas_Exhaust_k_zb[i - vmasconfig.Dssj - fqy_delayTime - 2];
+                                dr["分析仪管路压力"] = Vmas_Exhaust_qlyl[i];
+                                dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
+                                dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
+                                vmas_datatable.Rows.Add(dr);
+                            }
                         }
                     }
                 }
@@ -3599,12 +5094,12 @@ namespace vmasDetect
                         return;
                     }
                 }
-                    writeDataIsFinished = false;
-                    th_load = new Thread(load_progress);
-                    th_load.Start();
-                    csvwriter.SaveCSV(vmas_datatable, "C:/jcdatatxt/" + carbj.CarID + ".csv");
-                    vmasdatacontrol.writeVmasData(vmas_data);
-                    writeDataIsFinished = true;
+                writeDataIsFinished = false;
+                th_load = new Thread(load_progress);
+                th_load.Start();
+                csvwriter.SaveCSV(vmas_datatable, "C:/jcdatatxt/" + carbj.CarID + ".csv");
+                vmasdatacontrol.writeVmasData(vmas_data);
+                writeDataIsFinished = true;
                 Msg(label_message, panel_msg, "测试完毕,请驶离测功机 ", true);
                 ts2 = "请驶离测功机";                
                 Thread.Sleep(2000);
