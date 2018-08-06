@@ -2503,53 +2503,106 @@ namespace lugdowm
                     jzjs_datatable.Columns.Add("OPCODE");
                     jzjs_datatable.Columns.Add("DYNN");
                     jzjs_datatable.Columns.Add("NO");
-                    for (int i = 10; i < jzjs_dataseconds.Gksj; i++)//从第10秒开始取过程 数据，以避免金华判断转速时，第一秒的转速为0
+                    if (equipconfig.DATASECONDS_TYPE == "江西")
                     {
-                        dr = jzjs_datatable.NewRow();
-                        dr["全程时序"] = Qcsxlist[i];
-                        if (equipconfig.DATASECONDS_TYPE == "江西" && int.Parse(Sxnblist[i]) > 0)
-                            dr["时序类别"] = (int.Parse(Sxnblist[i]) - 1).ToString();
-                        else
-                            dr["时序类别"] = Sxnblist[i];
-                        dr["采样时序"] = Cysxlist[i];
-                        dr["车速"] = Speedlist[i];
-                        //dr["转速"] = FDJZSlist[i].ToString();
-                        dr["寄生功率"] = JSGLlist[i];
-                        dr["指示功率"] = ZSGLlist[i];
-                        dr["功率"] = ZGLlist[i];
-                        dr["扭力"] = Forcelist[i];
-                        dr["光吸收系数K"] = GXXSlist[i];
-                        dr["不透光度"] = btglist[i];
-                        dr["环境温度"] = wdlist[i];
-                        dr["大气压力"] = dqylist[i];
-                        dr["相对湿度"] = sdlist[i];
-                        dr["油温"] = ywlist[i];
-                        dr["转速"] = FDJZSlist[i];
-                        dr["DCF"] = DCFlist[i];
-                        dr["OPNO"] = opnolist[i];
-                        dr["OPCODE"] = opcodelist[i];
-                        dr["DYNN"] = dynnlist[i];
-                        dr["NO"] = Nolist[i];
-                        jzjs_datatable.Rows.Add(dr);
-                        if (equipconfig.useJHJK)
+                        for (int i = 10; i < jzjs_dataseconds.Gksj; i++)//从第10秒开始取过程 数据，以避免金华判断转速时，第一秒的转速为0
                         {
-                            if (FDJZSlist[i] == 0)
+                            if (int.Parse(Sxnblist[i]) > 0)
                             {
-                                JC_Status = false;
-                                button_ss.Text = "重新检测";
-                                Th_get_FqandLl.Abort();
-                                Jzjs_status = false; fq_getdata = false;
-                                Thread.Sleep(500);
-                                Msg(Msg_msg, panel_msg, "过程程有转速为0，检测中止。", true);
-                                ts1 = "过程程有转速为0";
-                                ts2 = "检测中止";
-                                if (ledcontrol != null)
+                                dr = jzjs_datatable.NewRow();
+                                dr["全程时序"] = Qcsxlist[i];
+                                dr["时序类别"] = (int.Parse(Sxnblist[i]) - 1).ToString();
+                                dr["采样时序"] = Cysxlist[i];
+                                dr["车速"] = Speedlist[i];
+                                //dr["转速"] = FDJZSlist[i].ToString();
+                                dr["寄生功率"] = JSGLlist[i];
+                                dr["指示功率"] = ZSGLlist[i];
+                                dr["功率"] = ZGLlist[i];
+                                dr["扭力"] = Forcelist[i];
+                                dr["光吸收系数K"] = GXXSlist[i];
+                                dr["不透光度"] = btglist[i];
+                                dr["环境温度"] = wdlist[i];
+                                dr["大气压力"] = dqylist[i];
+                                dr["相对湿度"] = sdlist[i];
+                                dr["油温"] = ywlist[i];
+                                dr["转速"] = FDJZSlist[i];
+                                dr["DCF"] = DCFlist[i];
+                                dr["OPNO"] = opnolist[i];
+                                dr["OPCODE"] = opcodelist[i];
+                                dr["DYNN"] = dynnlist[i];
+                                dr["NO"] = Nolist[i];
+                                jzjs_datatable.Rows.Add(dr);
+                                if (equipconfig.useJHJK)
                                 {
-                                    ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
-                                    Thread.Sleep(200);
-                                    ledcontrol.writeLed("过程程有转速为0", 5, equipconfig.Ledxh);
+                                    if (FDJZSlist[i] == 0)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "过程程有转速为0，检测中止。", true);
+                                        ts1 = "过程程有转速为0";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("过程程有转速为0", 5, equipconfig.Ledxh);
+                                        }
+                                        return;
+                                    }
                                 }
-                                return;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 10; i < jzjs_dataseconds.Gksj; i++)//从第10秒开始取过程 数据，以避免金华判断转速时，第一秒的转速为0
+                        {
+                            dr = jzjs_datatable.NewRow();
+                            dr["全程时序"] = Qcsxlist[i];
+                            dr["时序类别"] = Sxnblist[i];
+                            dr["采样时序"] = Cysxlist[i];
+                            dr["车速"] = Speedlist[i];
+                            //dr["转速"] = FDJZSlist[i].ToString();
+                            dr["寄生功率"] = JSGLlist[i];
+                            dr["指示功率"] = ZSGLlist[i];
+                            dr["功率"] = ZGLlist[i];
+                            dr["扭力"] = Forcelist[i];
+                            dr["光吸收系数K"] = GXXSlist[i];
+                            dr["不透光度"] = btglist[i];
+                            dr["环境温度"] = wdlist[i];
+                            dr["大气压力"] = dqylist[i];
+                            dr["相对湿度"] = sdlist[i];
+                            dr["油温"] = ywlist[i];
+                            dr["转速"] = FDJZSlist[i];
+                            dr["DCF"] = DCFlist[i];
+                            dr["OPNO"] = opnolist[i];
+                            dr["OPCODE"] = opcodelist[i];
+                            dr["DYNN"] = dynnlist[i];
+                            dr["NO"] = Nolist[i];
+                            jzjs_datatable.Rows.Add(dr);
+                            if (equipconfig.useJHJK)
+                            {
+                                if (FDJZSlist[i] == 0)
+                                {
+                                    JC_Status = false;
+                                    button_ss.Text = "重新检测";
+                                    Th_get_FqandLl.Abort();
+                                    Jzjs_status = false; fq_getdata = false;
+                                    Thread.Sleep(500);
+                                    Msg(Msg_msg, panel_msg, "过程程有转速为0，检测中止。", true);
+                                    ts1 = "过程程有转速为0";
+                                    ts2 = "检测中止";
+                                    if (ledcontrol != null)
+                                    {
+                                        ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                        Thread.Sleep(200);
+                                        ledcontrol.writeLed("过程程有转速为0", 5, equipconfig.Ledxh);
+                                    }
+                                    return;
+                                }
                             }
                         }
                     }
