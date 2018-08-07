@@ -522,6 +522,7 @@ namespace Exhaust
                 //temp +=  Cmd ;//计算出和校验位
                 CS[DF.Length + 1] = Convert.ToByte(temp % 256);
                 ComPort_1.Write(CS, 0, CS.Length);
+                ini.INIIO.saveLogInf("[废气仪发送]:" + byteToHexStr(CS));
             }
             catch (Exception)
             {
@@ -1203,6 +1204,7 @@ namespace Exhaust
                     ReadData();
                     byte[] naContent = new byte[] { cmdDemarcate_nh503 };
                     ComPort_1.Write(naContent, 0, 1);        //发送开始测量命令
+                    ini.INIIO.saveLogInf("[废气仪发送]:" + byteToHexStr(naContent));
                     Thread.Sleep(500);
                     if (ComPort_1.BytesToRead > 0)
                     {
@@ -2432,7 +2434,7 @@ namespace Exhaust
                     break;
                 case "nha_503":
                     byte[] naContent = new byte[] { };
-                    Content = new byte[10];
+                    Content = new byte[8];
                     temp_byte = BitConverter.GetBytes((ushort)C3H8_density);
                     Content[0] = temp_byte[1];
                     Content[1] = temp_byte[0];
@@ -2442,12 +2444,9 @@ namespace Exhaust
                     temp_byte = BitConverter.GetBytes((ushort)(co2_density * 100));
                     Content[4] = temp_byte[1];
                     Content[5] = temp_byte[0];
-                    temp_byte = BitConverter.GetBytes((ushort)(o2_density * 100));
+                    temp_byte = BitConverter.GetBytes((ushort)(no_density));
                     Content[6] = temp_byte[1];
                     Content[7] = temp_byte[0];
-                    temp_byte = BitConverter.GetBytes((ushort)(no_density));
-                    Content[8] = temp_byte[1];
-                    Content[9] = temp_byte[0];
                     SendData(cmdWrStandardAir_nh503, Content);
                     //ComPort_1.Write(Content, 0, 1);       //发送停止检查动作命令
                     Thread.Sleep(10);
@@ -2879,6 +2878,7 @@ namespace Exhaust
                 case "nha_503":
                     byte[] naContent = new byte[] { cmdDemarcate_nh503 };
                     ComPort_1.Write(naContent, 0, 1);       //发送停止检查动作命令
+                    ini.INIIO.saveLogInf("[废气仪发送]:" + byteToHexStr(naContent));
                     Thread.Sleep(10);
                     while (ComPort_1.BytesToRead < 14)                          //等待仪器返回
                     {

@@ -419,6 +419,7 @@ namespace carinfor
         public bool isIgbtContainGdyk { set; get; }
         public bool isYdjNhSelfUse { set; get; }
         public bool isFqyNhSelfUse { set; get; }
+        public bool isLljNhSelfUse { set; get; }
         public int ledrow1 { set; get; }
         public int ledrow2 { set; get; }
         public int LEDTJPH { set; get; }
@@ -1767,6 +1768,11 @@ namespace carinfor
                 configinidata.isYdjNhSelfUse = true;
             else
                 configinidata.isYdjNhSelfUse = false;
+            ini.INIIO.GetPrivateProfileString("配置参数", "是否南华自用流量计", "N", temp, 2048, startUpPath + "/detectConfig.ini");
+            if (temp.ToString().Trim() == "Y")
+                configinidata.isLljNhSelfUse = true;
+            else
+                configinidata.isLljNhSelfUse = false;
             ini.INIIO.GetPrivateProfileString("配置参数", "显示评价结果", "Y", temp, 2048, startUpPath + "/detectConfig.ini");
             if (temp.ToString().Trim() == "Y")
                 configinidata.displayJudge = true;
@@ -1956,6 +1962,7 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("配置参数", "是否鸣泉老烟度计", equipconfig.IsOldMqy200?"Y":"N", startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("配置参数", "是否南华自用废气仪", equipconfig.isFqyNhSelfUse ? "Y" : "N", startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("配置参数", "是否南华自用烟度计", equipconfig.isYdjNhSelfUse ? "Y" : "N", startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("配置参数", "是否南华自用流量计", equipconfig.isLljNhSelfUse ? "Y" : "N", startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("配置参数", "烟度计光通道有效长度", equipconfig.YdjL.ToString(), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("配置参数", "刹车占空比", equipconfig.BrakePWM.ToString(), startUpPath+"/detectConfig.ini");
 

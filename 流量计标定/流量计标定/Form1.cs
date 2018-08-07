@@ -85,6 +85,7 @@ namespace 流量计标定
                     try
                     {
                         flv_1000 = new Exhaust.Flv_1000(configdata.Lljxh);
+                        flv_1000.isNhSelfUse = configdata.isLljNhSelfUse;
                         if (flv_1000.Init_Comm(configdata.Lljck, "9600,N,8,1") == false)
                         {
                             flv_1000 = null;

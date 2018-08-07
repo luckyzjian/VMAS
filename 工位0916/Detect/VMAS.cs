@@ -757,6 +757,7 @@ namespace vmasDetect
                     try
                     {
                         flv_1000 = new Exhaust.Flv_1000(equipconfig.Lljxh);
+                        flv_1000.isNhSelfUse = equipconfig.isLljNhSelfUse;
                         if (flv_1000.Init_Comm(equipconfig.Lljck, equipconfig.Lljckpzz) == false)
                         {
                             flv_1000 = null;

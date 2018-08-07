@@ -272,6 +272,7 @@ namespace 系统设置
             checkBoxGdyk.Checked = equipconfig.isIgbtContainGdyk;
             checkBoxIsFqyNhSelfUse.Checked = equipconfig.isFqyNhSelfUse;
             checkBoxIsYdjNhSelfUse.Checked = equipconfig.isYdjNhSelfUse;
+            checkBoxIsLljNhSelfUse.Checked = equipconfig.isLljNhSelfUse;
             comboBoxLEDROW1.Text = equipconfig.ledrow1.ToString();
             comboBoxLEDROW2.Text = equipconfig.ledrow2.ToString();
             comboBoxLEDTJPH.Text = equipconfig.LEDTJPH.ToString();
@@ -705,6 +706,7 @@ namespace 系统设置
             equipconfig.isIgbtContainGdyk = checkBoxGdyk.Checked;
             equipconfig.isFqyNhSelfUse = checkBoxIsFqyNhSelfUse.Checked;
             equipconfig.isYdjNhSelfUse = checkBoxIsYdjNhSelfUse.Checked;
+            equipconfig.isLljNhSelfUse = checkBoxIsLljNhSelfUse.Checked;
             equipconfig.useWeightWCF = checkBoxUseWeightWCF.Checked;
             equipconfig.WeightWCFaddress = textBoxWeightWCF.Text;
             equipconfig.useJHJK = checkBoxJHJK.Checked;

@@ -2550,7 +2550,7 @@ namespace 废气仪标定
                         analysisdata.Co2bz = float.Parse(textEditBiaoCo2.Text.Trim());
                         analysisdata.Co2clz = float.Parse(textEdit_co2jg.Text.Trim());
                         co2wc = Math.Abs(analysisdata.Co2bz - analysisdata.Co2clz);
-                        co2xdwc = cowc / analysisdata.Co2bz;
+                        co2xdwc = co2wc / analysisdata.Co2bz;
                         if (co2wc <= 0.3 || co2xdwc <= 0.03)
                             co2pd = true;
                         else
@@ -2638,7 +2638,7 @@ namespace 废气仪标定
                         analysisdata.Co2bz = float.Parse(textEditBiaoCo2.Text.Trim());
                         analysisdata.Co2clz = float.Parse(textEdit_co2jg.Text.Trim());
                         co2wc = Math.Abs(analysisdata.Co2bz - analysisdata.Co2clz);
-                        co2xdwc = cowc / analysisdata.Co2bz;
+                        co2xdwc = co2wc / analysisdata.Co2bz;
                         if (co2wc <= 0.3 || co2xdwc <= 0.05)
                             co2pd = true;
                         else
@@ -2764,7 +2764,7 @@ namespace 废气仪标定
                         analysisdata.Co2bz = float.Parse(textEditBiaoCo2.Text.Trim());
                         analysisdata.Co2clz = float.Parse(textEdit_co2jg.Text.Trim());
                         co2wc = Math.Abs(analysisdata.Co2bz - analysisdata.Co2clz);
-                        co2xdwc = cowc / analysisdata.Co2bz;
+                        co2xdwc = co2wc / analysisdata.Co2bz;
                         if (co2wc <= 0.3 || co2xdwc <= 0.03)
                             co2pd = true;
                         else
@@ -2852,7 +2852,7 @@ namespace 废气仪标定
                         analysisdata.Co2bz = float.Parse(textEditBiaoCo2.Text.Trim());
                         analysisdata.Co2clz = float.Parse(textEdit_co2jg.Text.Trim());
                         co2wc = Math.Abs(analysisdata.Co2bz - analysisdata.Co2clz);
-                        co2xdwc = cowc / analysisdata.Co2bz;
+                        co2xdwc = co2wc / analysisdata.Co2bz;
                         if (co2wc <= 0.3 || co2xdwc <= 0.05)
                             co2pd = true;
                         else
@@ -2978,7 +2978,7 @@ namespace 废气仪标定
                         analysisdata.Co2bz = float.Parse(textEditBiaoCo2.Text.Trim());
                         analysisdata.Co2clz = float.Parse(textEdit_co2jg.Text.Trim());
                         co2wc = Math.Abs(analysisdata.Co2bz - analysisdata.Co2clz);
-                        co2xdwc = cowc / analysisdata.Co2bz;
+                        co2xdwc = co2wc / analysisdata.Co2bz;
                         if (co2wc <= 0.3 || co2xdwc <= 0.03)
                             co2pd = true;
                         else
@@ -3071,7 +3071,7 @@ namespace 废气仪标定
                         analysisdata.Co2bz = float.Parse(textEditBiaoCo2.Text.Trim());
                         analysisdata.Co2clz = float.Parse(textEdit_co2jg.Text.Trim());
                         co2wc = Math.Abs(analysisdata.Co2bz - analysisdata.Co2clz);
-                        co2xdwc = cowc / analysisdata.Co2bz;
+                        co2xdwc = co2wc / analysisdata.Co2bz;
                         if (co2wc <= 0.3 || co2xdwc <= 0.05)
                             co2pd = true;
                         else
@@ -3196,7 +3196,7 @@ namespace 废气仪标定
                         analysisdata.Co2bz = float.Parse(textEditBiaoCo2.Text.Trim());
                         analysisdata.Co2clz = float.Parse(textEdit_co2jg.Text.Trim());
                         co2wc = Math.Abs(analysisdata.Co2bz - analysisdata.Co2clz);
-                        co2xdwc = cowc / analysisdata.Co2bz;
+                        co2xdwc = co2wc / analysisdata.Co2bz;
                         if (co2wc <= 0.3 || co2xdwc <= 0.03)
                             co2pd = true;
                         else
@@ -3289,7 +3289,7 @@ namespace 废气仪标定
                         analysisdata.Co2bz = float.Parse(textEditBiaoCo2.Text.Trim());
                         analysisdata.Co2clz = float.Parse(textEdit_co2jg.Text.Trim());
                         co2wc = Math.Abs(analysisdata.Co2bz - analysisdata.Co2clz);
-                        co2xdwc = cowc / analysisdata.Co2bz;
+                        co2xdwc = co2wc / analysisdata.Co2bz;
                         if (co2wc <= 0.3 || co2xdwc <= 0.05)
                             co2pd = true;
                         else
@@ -3414,7 +3414,7 @@ namespace 废气仪标定
                         analysisdata.Co2bz = float.Parse(textEditBiaoCo2.Text.Trim());
                         analysisdata.Co2clz = float.Parse(textEdit_co2jg.Text.Trim());
                         co2wc = Math.Abs(analysisdata.Co2bz - analysisdata.Co2clz);
-                        co2xdwc = cowc / analysisdata.Co2bz;
+                        co2xdwc = co2wc / analysisdata.Co2bz;
                         if (co2wc <= 0.3 || co2xdwc <= 0.03)
                             co2pd = true;
                         else
@@ -3507,7 +3507,7 @@ namespace 废气仪标定
                         analysisdata.Co2bz = float.Parse(textEditBiaoCo2.Text.Trim());
                         analysisdata.Co2clz = float.Parse(textEdit_co2jg.Text.Trim());
                         co2wc = Math.Abs(analysisdata.Co2bz - analysisdata.Co2clz);
-                        co2xdwc = cowc / analysisdata.Co2bz;
+                        co2xdwc = co2wc / analysisdata.Co2bz;
                         if (co2wc <= 0.3 || co2xdwc <= 0.05)
                             co2pd = true;
                         else
@@ -3631,7 +3631,7 @@ namespace 废气仪标定
                         analysisdata.Co2bz = float.Parse(textEditBiaoCo2.Text.Trim());
                         analysisdata.Co2clz = float.Parse(textEdit_co2jg.Text.Trim());
                         co2wc = Math.Abs(analysisdata.Co2bz - analysisdata.Co2clz);
-                        co2xdwc = cowc / analysisdata.Co2bz;
+                        co2xdwc = co2wc / analysisdata.Co2bz;
                         if (co2wc <= 0.5 || co2xdwc <= 0.05)
                             co2pd = true;
                         else
@@ -3752,7 +3752,7 @@ namespace 废气仪标定
                         analysisdata.Co2bz = float.Parse(textEditBiaoCo2.Text.Trim());
                         analysisdata.Co2clz = float.Parse(textEdit_co2jg.Text.Trim());
                         co2wc = Math.Abs(analysisdata.Co2bz - analysisdata.Co2clz);
-                        co2xdwc = cowc / analysisdata.Co2bz;
+                        co2xdwc = co2wc / analysisdata.Co2bz;
                         if (co2wc <= 0.5 || co2xdwc <= 0.05)
                             co2pd = true;
                         else

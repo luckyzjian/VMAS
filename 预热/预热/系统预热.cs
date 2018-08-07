@@ -604,6 +604,7 @@ namespace 预热
                     try
                     {
                         flv_1000 = new Exhaust.Flv_1000();
+                        flv_1000.isNhSelfUse = configdata.isLljNhSelfUse;
                         if (flv_1000.Init_Comm(configdata.Lljck, configdata.Lljckpzz) == false)
                         {
                             flv_1000 = null;

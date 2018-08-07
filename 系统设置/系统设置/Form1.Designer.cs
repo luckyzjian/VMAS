@@ -485,6 +485,7 @@
             this.comboBoxDynZsj = new System.Windows.Forms.ComboBox();
             this.panel32 = new System.Windows.Forms.Panel();
             this.label131 = new System.Windows.Forms.Label();
+            this.checkBoxIsLljNhSelfUse = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -2869,8 +2870,8 @@
             // 
             this.tabControl2.BackColor = System.Drawing.Color.Transparent;
             this.tabControl2.CanReorderTabs = true;
-            this.tabControl2.Controls.Add(this.tabControlPanel2);
             this.tabControl2.Controls.Add(this.tabControlPanel1);
+            this.tabControl2.Controls.Add(this.tabControlPanel2);
             this.tabControl2.Location = new System.Drawing.Point(3, 2);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedTabFont = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Bold);
@@ -3296,6 +3297,7 @@
             // 
             // tabControlPanel1
             // 
+            this.tabControlPanel1.Controls.Add(this.checkBoxIsLljNhSelfUse);
             this.tabControlPanel1.Controls.Add(this.checkBoxCD_YDJ);
             this.tabControlPanel1.Controls.Add(this.checkBoxCD_FQY);
             this.tabControlPanel1.Controls.Add(this.label187);
@@ -3433,9 +3435,9 @@
             this.textBoxLLjLlmyz.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxLLjLlmyz.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxLLjLlmyz.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxLLjLlmyz.Location = new System.Drawing.Point(856, 287);
+            this.textBoxLLjLlmyz.Location = new System.Drawing.Point(815, 287);
             this.textBoxLLjLlmyz.Name = "textBoxLLjLlmyz";
-            this.textBoxLLjLlmyz.Size = new System.Drawing.Size(90, 26);
+            this.textBoxLLjLlmyz.Size = new System.Drawing.Size(74, 26);
             this.textBoxLLjLlmyz.TabIndex = 167;
             // 
             // label185
@@ -3443,11 +3445,11 @@
             this.label185.AutoSize = true;
             this.label185.BackColor = System.Drawing.Color.Transparent;
             this.label185.Font = new System.Drawing.Font("宋体", 12F);
-            this.label185.Location = new System.Drawing.Point(725, 292);
+            this.label185.Location = new System.Drawing.Point(724, 292);
             this.label185.Name = "label185";
-            this.label185.Size = new System.Drawing.Size(128, 16);
+            this.label185.Size = new System.Drawing.Size(96, 16);
             this.label185.TabIndex = 168;
-            this.label185.Text = "流量名义值(L/s)";
+            this.label185.Text = "名义值(L/s)";
             // 
             // comboBoxLZCKPZZ
             // 
@@ -6097,6 +6099,18 @@
             this.label131.TabIndex = 107;
             this.label131.Text = "转速计设置";
             // 
+            // checkBoxIsLljNhSelfUse
+            // 
+            this.checkBoxIsLljNhSelfUse.AutoSize = true;
+            this.checkBoxIsLljNhSelfUse.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxIsLljNhSelfUse.Font = new System.Drawing.Font("宋体", 12F);
+            this.checkBoxIsLljNhSelfUse.Location = new System.Drawing.Point(911, 291);
+            this.checkBoxIsLljNhSelfUse.Name = "checkBoxIsLljNhSelfUse";
+            this.checkBoxIsLljNhSelfUse.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxIsLljNhSelfUse.TabIndex = 171;
+            this.checkBoxIsLljNhSelfUse.Text = "南华自用";
+            this.checkBoxIsLljNhSelfUse.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -6684,6 +6698,7 @@
         private System.Windows.Forms.CheckBox checkBoxCD_YDJ;
         private System.Windows.Forms.CheckBox checkBoxCD_FQY;
         private System.Windows.Forms.Label label187;
+        private System.Windows.Forms.CheckBox checkBoxIsLljNhSelfUse;
     }
 }
 

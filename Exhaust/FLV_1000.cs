@@ -102,6 +102,7 @@ namespace Exhaust
     public class Flv_1000
     {
         private string yqxh = "flv_1000";
+        public bool isNhSelfUse = false;
         public Flv_1000(string xh)
         {
             yqxh = xh.ToLower();
@@ -144,11 +145,16 @@ namespace Exhaust
         byte SetXishiO2Standard_MQ = 0xa1;
 
         byte[] getNHStandardData = { 0x01, 0x03,0x12, 0x58,0x00, 0x05 };
+        byte[] getNHStandardData_selfuse = { 0x37, 0x00, 0x00, 0x00 };
         byte[] getNHStatus = { 0x01, 0x03,0x12, 0x5D, 0x00, 0x01 };
+        byte[] getNHStatus_selfuse = { 0x32, 0x00, 0x01, 0x00, 0x01, 0x00 };
         byte[] turnOnNHMotor = { 0x01, 0x06, 0x12, 0x5E, 0x00, 0x01 };
         byte[] turnOffNHMotor = { 0x01, 0x06, 0x12, 0x5E, 0x00, 0x00 };
+        byte[] turnOnNHMotor_selfuse = { 0x38, 0x00, 0x02, 0x00, 0x10, 0x00,0x10,0x00 };
+        byte[] turnOffNHMotor_selfuse = { 0x38, 0x00, 0x02, 0x00, 0x10, 0x00, 0x00,0x00 };
         byte[] setNHO2zero = { 0x01, 0x06, 0x12, 0x5F, 0x00, 0x01 };
         byte[] setNHQtylSingleDemarcate = { 0x01, 0x06, 0x12, 0x60, 0x00, 0x00 };//后两个数据为标定的压力值，单位为0.01kPa,如校准值为101.33kPa,则发送2795
+        byte[] setNHQtylSingleDemarcate_selfuse = { 0x35, 0x00, 0x04, 0x00, 0x01, 0x00,0x02,0x00,0x00,0x00,0xff,0xff};//后两个数据为标定的压力值，单位为0.01kPa,如校准值为101.33kPa,则发送2795
         byte[] setNHTempSingleDemarcate = { 0x01, 0x06, 0x12, 0x61, 0x00, 0x00 };//后两个数据为标定的气体温度，单位为0.1°C,如校准值为10.4°C,则发送0068
         byte[] setNHFlowHighDemarcate = { 0x01, 0x06, 0x12, 0x62, 0x00, 0x00 };//后两个数据为标定的标准流量(须小于390CFM)，单位为CFM(立方英尺/分钟),如校准值为300CCFM,则发送012C
         byte[] setNHFlowLowDemarcate = { 0x01, 0x06, 0x12, 0x63, 0x00, 0x00 };//后两个数据为标定的标准流量(须小于高量程)，单位为CFM(立方英尺/分钟),如校准值为300CCFM,则发送012C
@@ -315,6 +321,36 @@ namespace Exhaust
             }
         }
         #endregion
+        #region 南华自用流量计校验方式发送数据 
+        /// <summary>
+        /// 发送数据
+        /// </summary>
+        /// <param name="Cmd">命令</param>
+        /// <param name="Content">内容</param>
+        public void SendDataOfNHF2(byte[] Content)
+        {
+            try
+            {
+                //byte DID = 0x02;
+                byte[] DF = Content;
+                //int temp = 0;
+                byte[] CS = new byte[DF.Length + 2];
+                short CS2 = 0;
+                for (int i = 0; i < DF.Length; i++)
+                {
+                    CS[i] = DF[i];
+                    CS2 += CS[i];
+                }
+                CS[DF.Length] =(byte)(CS2);
+                CS[DF.Length+1] = (byte)(CS2 >> 8);                
+                ComPort_1.Write(CS, 0, CS.Length);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion
         #region 鸣泉的校验方式
         private byte getCS_MQ(byte[] content, int count)
         {
@@ -444,40 +480,61 @@ namespace Exhaust
                     return msg;
                     break;
                 case "nhf_1":
-                    SendDataOfNHF(getNHStatus);
-                    Thread.Sleep(30);
-                    while (ComPort_1.BytesToRead < 15)                          //等待仪器返回
+                    if (isNhSelfUse)
                     {
-                        i++;
-                        Thread.Sleep(2);
-                        if (i == 100)
+                        SendDataOfNHF2(getNHStatus_selfuse);
+                        Thread.Sleep(30);
+                        while (ComPort_1.BytesToRead < 8)                          //等待仪器返回
+                        {
+                            i++;
+                            Thread.Sleep(2);
+                            if (i == 100)
+                                return "仪器通讯失败";
+                        }
+                        ReadData();                     //读取返回的数据
+                                                        //[06](HC)(CO)(CO2)(O2)(NO)(转速)(油温)(流量)[Status](lamda)[CS]
+                        if (Read_Buffer[0]==0x32&& Read_Buffer[1] == 0x06&&Read_Buffer[2] == 0x01)
+                            return "流量计已经准备好";
+                        else
+                            return "氧化锆正在预热";
+                    }
+                    else
+                    {
+                        SendDataOfNHF(getNHStatus);
+                        Thread.Sleep(30);
+                        while (ComPort_1.BytesToRead < 15)                          //等待仪器返回
+                        {
+                            i++;
+                            Thread.Sleep(2);
+                            if (i == 100)
+                                return "仪器通讯失败";
+                        }
+                        ReadData();                     //读取返回的数据
+                                                        //[06](HC)(CO)(CO2)(O2)(NO)(转速)(油温)(流量)[Status](lamda)[CS]
+                        Status = Convert.ToByte(Read_Buffer[10] & 0xff);
+                        if (Status >= 0x30 && Status <= 0x39)
+                        {
+                            Status = (byte)(Status - 0x30);
+                        }
+                        else if (Status >= 'A' && Status <= 'F')
+                        {
+                            Status = (byte)(Status - 'A' + 10);
+                        }
+                        else if (Status >= 'a' && Status <= 'f')
+                        {
+                            Status = (byte)(Status - 'a' + 10);
+                        }
+                        else
+                        {
                             return "仪器通讯失败";
+                        }
+                        if ((Status & 0x04) == 0x00)
+                            return "流量处于超量程";
+                        else if ((Status & 0x01) == 0x01)
+                            return "氧化锆正在预热";
+                        else
+                            return "流量计已经准备好";
                     }
-                    ReadData();                     //读取返回的数据
-                    //[06](HC)(CO)(CO2)(O2)(NO)(转速)(油温)(流量)[Status](lamda)[CS]
-                    Status = Convert.ToByte(Read_Buffer[10] & 0xff);
-                    if (Status >= 0x30 && Status <= 0x39)
-                    {
-                        Status = (byte)(Status - 0x30);
-                    }
-                    else if (Status >= 'A' && Status <= 'F')
-                    {
-                        Status = (byte)(Status - 'A'+10);
-                    }
-                    else if (Status >= 'a' && Status <= 'f')
-                    {
-                        Status = (byte)(Status - 'a' + 10);
-                    }
-                    else
-                    {
-                        return "仪器通讯失败";
-                    }
-                    if ((Status & 0x04) == 0x00)
-                        return "流量处于超量程";
-                    else if ((Status & 0x01) == 0x01)
-                        return  "氧化锆正在预热";
-                    else
-                        return "流量计已经准备好";
                     break;
                 default:
                     return "未提供该型号相关功能";
@@ -904,39 +961,67 @@ namespace Exhaust
                     }
                     break;
                 case "nhf_1":
-                    SendDataOfNHF(getNHStandardData);
-                    Thread.Sleep(30);
-                    while (ComPort_1.BytesToRead < 31)                          //等待仪器返回
+                    if (isNhSelfUse)
                     {
-                        i++;
-                        Thread.Sleep(10);
-                        if (i == 200)
-                            return "通讯故障";
-                    }
-                    ReadData();                     //读取返回的数据
-                    if (Read_Buffer[3] == 0x38)
-                        return "命令不正常";
-                    else
-                    {
-                        try
+                        SendDataOfNHF2(getNHStandardData_selfuse);
+                        Thread.Sleep(30);
+                        while (ComPort_1.BytesToRead < 58)                          //等待仪器返回
                         {
-                            string datastring = Encoding.Default.GetString(Read_Buffer, 9, 4);
-                            o2_standard_value = Convert.ToInt16(datastring, 16) * 0.01f;
-                            datastring = Encoding.Default.GetString(Read_Buffer, 13, 4);
-                            temp_standard_value = Convert.ToInt16(datastring, 16) * 0.1f;
-                            datastring = Encoding.Default.GetString(Read_Buffer, 17, 4);
-                            yali_standard_value= Convert.ToInt16(datastring, 16) * 0.01f;
-                            datastring = Encoding.Default.GetString(Read_Buffer, 21, 4);
-                            ll_unstandard_value = Convert.ToInt16(datastring, 16) * 28.3168f/60f;
-                            datastring = Encoding.Default.GetString(Read_Buffer, 25, 4);
-                            ll_standard_value = Convert.ToInt16(datastring, 16) * 28.3168f / 60f;
+                            i++;
+                            Thread.Sleep(10);
+                            if (i == 200)
+                                return "通讯故障";
+                        }
+                        ReadData();                     //读取返回的数据
+                        if (Read_Buffer[0] == 0x37)
+                        { 
+                            o2_standard_value =(float)(Read_Buffer[45]*256+ Read_Buffer[44]) * 0.01f;
+                            temp_standard_value = (float)(Read_Buffer[47] * 256 + Read_Buffer[46]) * 0.1f;
+                            yali_standard_value = (float)(Read_Buffer[49] * 256 + Read_Buffer[48]) * 0.01f;
+                            ll_unstandard_value = (float)(Math.Round((Read_Buffer[51] * 256 + Read_Buffer[50]) * 28.3168f / 60f,2));
+                            ll_standard_value = (float)(Math.Round((ll_unstandard_value* yali_standard_value/100.325*273.15/(temp_standard_value+273.15)),2));
                             return "获取成功";//HC
                         }
-                        catch
-                        {
-                            return "通讯故障";
+                        else
+                            return "命令不正常";
+                    }
+                    else
+                    {
+                        
+                            SendDataOfNHF(getNHStandardData);
+                            Thread.Sleep(30);
+                            while (ComPort_1.BytesToRead < 31)                          //等待仪器返回
+                            {
+                                i++;
+                                Thread.Sleep(10);
+                                if (i == 200)
+                                    return "通讯故障";
+                            }
+                            ReadData();                     //读取返回的数据
+                            if (Read_Buffer[3] == 0x38)
+                                return "命令不正常";
+                            else
+                            {
+                                try
+                                {
+                                    string datastring = Encoding.Default.GetString(Read_Buffer, 9, 4);
+                                    o2_standard_value = Convert.ToInt16(datastring, 16) * 0.01f;
+                                    datastring = Encoding.Default.GetString(Read_Buffer, 13, 4);
+                                    temp_standard_value = Convert.ToInt16(datastring, 16) * 0.1f;
+                                    datastring = Encoding.Default.GetString(Read_Buffer, 17, 4);
+                                    yali_standard_value = Convert.ToInt16(datastring, 16) * 0.01f;
+                                    datastring = Encoding.Default.GetString(Read_Buffer, 21, 4);
+                                    ll_unstandard_value = Convert.ToInt16(datastring, 16) * 28.3168f / 60f;
+                                    datastring = Encoding.Default.GetString(Read_Buffer, 25, 4);
+                                    ll_standard_value = Convert.ToInt16(datastring, 16) * 28.3168f / 60f;
+                                    return "获取成功";//HC
+                                }
+                                catch
+                                {
+                                    return "通讯故障";
 
-                        }
+                                }
+                            }
                     }
                     break;
                 default:
@@ -1047,38 +1132,65 @@ namespace Exhaust
                     }
                     break;
                 case "nhf_1":
-                    SendDataOfNHF(getNHStandardData);
-                    Thread.Sleep(30);
-                    while (ComPort_1.BytesToRead < 31)                          //等待仪器返回
+                    if (isNhSelfUse)
                     {
-                        i++;
-                        Thread.Sleep(10);
-                        if (i == 200)
-                            return "通讯故障";
-                    }
-                    ReadData();                     //读取返回的数据
-                    if (Read_Buffer[3] == 0x38)
-                        return "命令不正常";
-                    else
-                    {
-                        try
+                        SendDataOfNHF2(getNHStandardData_selfuse);
+                        Thread.Sleep(30);
+                        while (ComPort_1.BytesToRead < 58)                          //等待仪器返回
                         {
-                            string datastring = Encoding.Default.GetString(Read_Buffer, 7, 4);
-                            o2_unstandard_value = Convert.ToInt16(datastring, 16) * 0.01f;
-                            datastring = Encoding.Default.GetString(Read_Buffer, 11, 4);
-                            temp_unstandard_value = Convert.ToInt16(datastring, 16) * 0.1f;
-                            datastring = Encoding.Default.GetString(Read_Buffer, 15, 4);
-                            yali_unstandard_value = Convert.ToInt16(datastring, 16) * 0.01f;
-                            datastring = Encoding.Default.GetString(Read_Buffer, 19, 4);
-                            ll_unstandard_value = Convert.ToInt16(datastring, 16) * 28.3168f / 60f;
-                            datastring = Encoding.Default.GetString(Read_Buffer, 23, 4);
-                            ll_standard_value = Convert.ToInt16(datastring, 16) * 28.3168f / 60f;
+                            i++;
+                            Thread.Sleep(10);
+                            if (i == 200)
+                                return "通讯故障";
+                        }
+                        ReadData();                     //读取返回的数据
+                        if (Read_Buffer[0] == 0x37)
+                        {
+                            o2_unstandard_value = (float)(Read_Buffer[45] * 256 + Read_Buffer[44]) * 0.01f;
+                            temp_unstandard_value = (float)(Read_Buffer[47] * 256 + Read_Buffer[46]) * 0.1f;
+                            yali_unstandard_value = (float)(Read_Buffer[49] * 256 + Read_Buffer[48]) * 0.01f;
+                            ll_unstandard_value = (float)(Math.Round((Read_Buffer[51] * 256 + Read_Buffer[50]) * 28.3168f / 60f, 2));
+                            ll_standard_value = (float)(Math.Round((ll_unstandard_value * yali_standard_value / 100.325 * 273.15 / (temp_standard_value + 273.15)), 2));
                             return "获取成功";//HC
                         }
-                        catch
+                        else
+                            return "命令不正常";
+                    }
+                    else
+                    {
+                        SendDataOfNHF(getNHStandardData);
+                        Thread.Sleep(30);
+                        while (ComPort_1.BytesToRead < 31)                          //等待仪器返回
                         {
-                            return "通讯故障";
+                            i++;
+                            Thread.Sleep(10);
+                            if (i == 200)
+                                return "通讯故障";
+                        }
+                        ReadData();                     //读取返回的数据
+                        if (Read_Buffer[3] == 0x38)
+                            return "命令不正常";
+                        else
+                        {
+                            try
+                            {
+                                string datastring = Encoding.Default.GetString(Read_Buffer, 7, 4);
+                                o2_unstandard_value = Convert.ToInt16(datastring, 16) * 0.01f;
+                                datastring = Encoding.Default.GetString(Read_Buffer, 11, 4);
+                                temp_unstandard_value = Convert.ToInt16(datastring, 16) * 0.1f;
+                                datastring = Encoding.Default.GetString(Read_Buffer, 15, 4);
+                                yali_unstandard_value = Convert.ToInt16(datastring, 16) * 0.01f;
+                                datastring = Encoding.Default.GetString(Read_Buffer, 19, 4);
+                                ll_unstandard_value = Convert.ToInt16(datastring, 16) * 28.3168f / 60f;
+                                datastring = Encoding.Default.GetString(Read_Buffer, 23, 4);
+                                ll_standard_value = Convert.ToInt16(datastring, 16) * 28.3168f / 60f;
+                                return "获取成功";//HC
+                            }
+                            catch
+                            {
+                                return "通讯故障";
 
+                            }
                         }
                     }
                     break;
@@ -1186,38 +1298,65 @@ namespace Exhaust
                     }
                     break;
                 case "nhf_1":
-                    SendDataOfNHF(getNHStandardData);
-                    Thread.Sleep(30);
-                    while (ComPort_1.BytesToRead < 31)                          //等待仪器返回
+                    if (isNhSelfUse)
                     {
-                        i++;
-                        Thread.Sleep(10);
-                        if (i == 200)
-                            return "通讯故障";
-                    }
-                    ReadData();                     //读取返回的数据
-                    if (Read_Buffer[3] == 0x38)
-                        return "命令不正常";
-                    else
-                    {
-                        try
+                        SendDataOfNHF2(getNHStandardData_selfuse);
+                        Thread.Sleep(30);
+                        while (ComPort_1.BytesToRead < 58)                          //等待仪器返回
                         {
-                            string datastring = Encoding.Default.GetString(Read_Buffer,7, 4);
-                            o2_standard_value = Convert.ToInt16(datastring, 16) * 0.01f;
-                            datastring = Encoding.Default.GetString(Read_Buffer, 11, 4);
-                            temp_standard_value = Convert.ToInt16(datastring, 16) * 0.1f;
-                            datastring = Encoding.Default.GetString(Read_Buffer, 15, 4);
-                            yali_standard_value = Convert.ToInt16(datastring, 16) * 0.01f;
-                            datastring = Encoding.Default.GetString(Read_Buffer, 19, 4);
-                            ll_unstandard_value = Convert.ToInt16(datastring, 16) * 28.3168f / 60f;
-                            datastring = Encoding.Default.GetString(Read_Buffer, 23, 4);
-                            ll_standard_value = Convert.ToInt16(datastring, 16) * 28.3168f / 60f;
+                            i++;
+                            Thread.Sleep(10);
+                            if (i == 200)
+                                return "通讯故障";
+                        }
+                        ReadData();                     //读取返回的数据
+                        if (Read_Buffer[0] == 0x37)
+                        {
+                            o2_standard_value = (float)(Read_Buffer[45] * 256 + Read_Buffer[44]) * 0.01f;
+                            temp_standard_value = (float)(Read_Buffer[47] * 256 + Read_Buffer[46]) * 0.1f;
+                            yali_standard_value = (float)(Read_Buffer[49] * 256 + Read_Buffer[48]) * 0.01f;
+                            ll_unstandard_value = (float)(Math.Round((Read_Buffer[51] * 256 + Read_Buffer[50]) * 28.3168f / 60f, 2));
+                            ll_standard_value = (float)(Math.Round((ll_unstandard_value * yali_standard_value / 100.325 * 273.15 / (temp_standard_value + 273.15)), 2));
                             return "获取成功";//HC
                         }
-                        catch
+                        else
+                            return "命令不正常";
+                    }
+                    else
+                    {
+                        SendDataOfNHF(getNHStandardData);
+                        Thread.Sleep(30);
+                        while (ComPort_1.BytesToRead < 31)                          //等待仪器返回
                         {
-                            return "通讯故障";
+                            i++;
+                            Thread.Sleep(10);
+                            if (i == 200)
+                                return "通讯故障";
+                        }
+                        ReadData();                     //读取返回的数据
+                        if (Read_Buffer[3] == 0x38)
+                            return "命令不正常";
+                        else
+                        {
+                            try
+                            {
+                                string datastring = Encoding.Default.GetString(Read_Buffer, 7, 4);
+                                o2_standard_value = Convert.ToInt16(datastring, 16) * 0.01f;
+                                datastring = Encoding.Default.GetString(Read_Buffer, 11, 4);
+                                temp_standard_value = Convert.ToInt16(datastring, 16) * 0.1f;
+                                datastring = Encoding.Default.GetString(Read_Buffer, 15, 4);
+                                yali_standard_value = Convert.ToInt16(datastring, 16) * 0.01f;
+                                datastring = Encoding.Default.GetString(Read_Buffer, 19, 4);
+                                ll_unstandard_value = Convert.ToInt16(datastring, 16) * 28.3168f / 60f;
+                                datastring = Encoding.Default.GetString(Read_Buffer, 23, 4);
+                                ll_standard_value = Convert.ToInt16(datastring, 16) * 28.3168f / 60f;
+                                return "获取成功";//HC
+                            }
+                            catch
+                            {
+                                return "通讯故障";
 
+                            }
                         }
                     }
                     break;
@@ -2043,24 +2182,44 @@ namespace Exhaust
             switch (yqxh)
             {
                 case "nhf_1":
-                    SendDataOfNHF(turnOnNHMotor);
-                    Thread.Sleep(20);
-                    while (ComPort_1.BytesToRead < 17)                          //等待仪器返回
+                    if (isNhSelfUse)
                     {
-                        i++;
-                        Thread.Sleep(10);
-                        if (i == 200)
-                            return "通讯故障";
+                        SendDataOfNHF2(turnOnNHMotor_selfuse);
+                        Thread.Sleep(20);
+                        while (ComPort_1.BytesToRead < 6)                          //等待仪器返回
+                        {
+                            i++;
+                            Thread.Sleep(10);
+                            if (i == 200)
+                                return "通讯故障";
+                        }
+                        ReadData();                     //读取返回的数据
+                        if (Read_Buffer[0] == 0x38)                           
+                                return "开启电机成功";//HC
+                            else
+                                return "开启电机失败";
                     }
-                    ReadData();                     //读取返回的数据
-                    if (Read_Buffer[3] == 0x38)
-                        return "命令不正常";
                     else
                     {
-                        if (Read_Buffer[12] == 0x31)
-                            return "开启电机成功";//HC
+                        SendDataOfNHF(turnOnNHMotor);
+                        Thread.Sleep(20);
+                        while (ComPort_1.BytesToRead < 17)                          //等待仪器返回
+                        {
+                            i++;
+                            Thread.Sleep(10);
+                            if (i == 200)
+                                return "通讯故障";
+                        }
+                        ReadData();                     //读取返回的数据
+                        if (Read_Buffer[3] == 0x38)
+                            return "命令不正常";
                         else
-                            return "开启电机失败";
+                        {
+                            if (Read_Buffer[12] == 0x31)
+                                return "开启电机成功";//HC
+                            else
+                                return "开启电机失败";
+                        }
                     }
                     break;
                 default: return "该仪器未提供该命令"; break;
@@ -2077,24 +2236,44 @@ namespace Exhaust
             switch (yqxh)
             {
                 case "nhf_1":
-                    SendDataOfNHF(turnOffNHMotor);
-                    Thread.Sleep(20);
-                    while (ComPort_1.BytesToRead < 17)                          //等待仪器返回
+                    if (isNhSelfUse)
                     {
-                        i++;
-                        Thread.Sleep(10);
-                        if (i == 200)
-                            return "通讯故障";
-                    }
-                    ReadData();                     //读取返回的数据
-                    if (Read_Buffer[3] == 0x38)
-                        return "命令不正常";
-                    else
-                    {
-                        if (Read_Buffer[12] == 0x31)
+                        SendDataOfNHF2(turnOffNHMotor_selfuse);
+                        Thread.Sleep(20);
+                        while (ComPort_1.BytesToRead < 6)                          //等待仪器返回
+                        {
+                            i++;
+                            Thread.Sleep(10);
+                            if (i == 200)
+                                return "通讯故障";
+                        }
+                        ReadData();                     //读取返回的数据
+                        if (Read_Buffer[0] == 0x38)
                             return "开启电机成功";//HC
                         else
                             return "开启电机失败";
+                    }
+                    else
+                    {
+                        SendDataOfNHF(turnOffNHMotor);
+                        Thread.Sleep(20);
+                        while (ComPort_1.BytesToRead < 17)                          //等待仪器返回
+                        {
+                            i++;
+                            Thread.Sleep(10);
+                            if (i == 200)
+                                return "通讯故障";
+                        }
+                        ReadData();                     //读取返回的数据
+                        if (Read_Buffer[3] == 0x38)
+                            return "命令不正常";
+                        else
+                        {
+                            if (Read_Buffer[12] == 0x31)
+                                return "开启电机成功";//HC
+                            else
+                                return "开启电机失败";
+                        }
                     }
                     break;
                 default: return "该仪器未提供该命令"; break;
