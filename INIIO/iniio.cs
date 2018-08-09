@@ -48,7 +48,7 @@ namespace ini
         [DllImport("Kernel32.dll")]
         public static extern int GetPrivateProfileInt(string strAppName, string strKeyName, int nDefault, string strFileName);//读配置文件 int（段名，字段，默认值，路径）
         public static string startpath = AppDomain.CurrentDomain.BaseDirectory;
-        public static bool isSaveLog = true;
+        public static bool isSaveLog = false;
         #region 创建文件夹
         public static bool createDir(string strPath)
         {
@@ -131,25 +131,31 @@ namespace ini
         }
         public static bool saveSocketLogInf(string inf)
         {
-            string filepath = ".\\Socketlog\\" + DateTime.Now.ToString("yyMMdd");
-            string pathname = filepath + "\\" + DateTime.Now.ToString("HH") + "report.log";
-            if (createDir(filepath))
+            if (isSaveLog)
             {
-                StreamWriter log = new StreamWriter(pathname, true);
-                log.WriteLine("time:" + System.DateTime.Now.ToLongTimeString() + " content:" + inf);
-                log.Close();
+                string filepath = ".\\Socketlog\\" + DateTime.Now.ToString("yyMMdd");
+                string pathname = filepath + "\\" + DateTime.Now.ToString("HH") + "report.log";
+                if (createDir(filepath))
+                {
+                    StreamWriter log = new StreamWriter(pathname, true);
+                    log.WriteLine("time:" + System.DateTime.Now.ToLongTimeString() + " content:" + inf);
+                    log.Close();
+                }
             }
             return true;
         }
         public static bool saveXmlInf(string inf, string filename)
         {
-            string filepath = ".\\Xmllog\\" + DateTime.Now.ToString("yyMMdd");
-            string pathname = filepath + "\\" + filename + ".xml";
-            if (createDir(filepath))
+            if (isSaveLog)
             {
-                StreamWriter log = new StreamWriter(pathname, true);
-                log.WriteLine(inf);
-                log.Close();
+                string filepath = ".\\Xmllog\\" + DateTime.Now.ToString("yyMMdd");
+                string pathname = filepath + "\\" + filename + ".xml";
+                if (createDir(filepath))
+                {
+                    StreamWriter log = new StreamWriter(pathname, true);
+                    log.WriteLine(inf);
+                    log.Close();
+                }
             }
             return true;
         }

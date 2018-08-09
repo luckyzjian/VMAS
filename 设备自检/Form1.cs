@@ -383,6 +383,17 @@ namespace 设备自检
                         }
                         else
                         {
+                            if (equipconfig.Lljxh.ToLower() == "nhf_1")
+                            {
+                                flv_1000.Get_Struct();
+                                Thread.Sleep(300);
+                                if (!(flv_1000.nhf_TurnOnMotor().Contains("成功")))
+                                {
+                                    Thread.Sleep(100);
+                                    flv_1000.nhf_TurnOnMotor();
+                                }
+                                Thread.Sleep(100);
+                            }
                             th_get_llj = new Thread(llj_Detect);
                             th_get_llj.Start();
                         }
@@ -3632,6 +3643,13 @@ namespace 设备自检
                             }
                             if (flv_1000 != null)
                             {
+                                try
+                                {
+                                    flv_1000.nhf_TurnOffMotor();
+                                    Thread.Sleep(100);
+                                }
+                                catch
+                                { }
                                 if (flv_1000.ComPort_1.IsOpen)
                                     flv_1000.ComPort_1.Close();
                             }
@@ -3723,6 +3741,13 @@ namespace 设备自检
                             }
                             if (flv_1000 != null)
                             {
+                                try
+                                {
+                                    flv_1000.nhf_TurnOffMotor();
+                                    Thread.Sleep(100);
+                                }
+                                catch
+                                { }
                                 if (flv_1000.ComPort_1.IsOpen)
                                     flv_1000.ComPort_1.Close();
                             }

@@ -2995,7 +2995,7 @@ namespace zyjsTest
                     //    Klist[GKSJ] = 0;
                     //    Nslist[GKSJ] =0;
                     //}
-                    Ywlist[GKSJ] = 0;
+                    //Ywlist[GKSJ] = 0;
                     if (GKSJ >= 1)
                     {
                         if (Sxnblist[GKSJ] != Sxnblist[GKSJ - 1])//时序类别改变，表示进行新的阶段，采样时序需要重新计时

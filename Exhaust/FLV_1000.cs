@@ -150,8 +150,8 @@ namespace Exhaust
         byte[] getNHStatus_selfuse = { 0x32, 0x00, 0x01, 0x00, 0x01, 0x00 };
         byte[] turnOnNHMotor = { 0x01, 0x06, 0x12, 0x5E, 0x00, 0x01 };
         byte[] turnOffNHMotor = { 0x01, 0x06, 0x12, 0x5E, 0x00, 0x00 };
-        byte[] turnOnNHMotor_selfuse = { 0x38, 0x00, 0x02, 0x00, 0x10, 0x00,0x10,0x00 };
-        byte[] turnOffNHMotor_selfuse = { 0x38, 0x00, 0x02, 0x00, 0x10, 0x00, 0x00,0x00 };
+        byte[] turnOnNHMotor_selfuse = { 0x38, 0x00, 0x02, 0x00, 0x01, 0x00,0x10,0x00 };
+        byte[] turnOffNHMotor_selfuse = { 0x38, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00,0x00 };
         byte[] setNHO2zero = { 0x01, 0x06, 0x12, 0x5F, 0x00, 0x01 };
         byte[] setNHQtylSingleDemarcate = { 0x01, 0x06, 0x12, 0x60, 0x00, 0x00 };//后两个数据为标定的压力值，单位为0.01kPa,如校准值为101.33kPa,则发送2795
         byte[] setNHQtylSingleDemarcate_selfuse = { 0x35, 0x00, 0x04, 0x00, 0x01, 0x00,0x02,0x00,0x00,0x00,0xff,0xff};//后两个数据为标定的压力值，单位为0.01kPa,如校准值为101.33kPa,则发送2795
@@ -2249,9 +2249,9 @@ namespace Exhaust
                         }
                         ReadData();                     //读取返回的数据
                         if (Read_Buffer[0] == 0x38)
-                            return "开启电机成功";//HC
+                            return "关闭电机成功";//HC
                         else
-                            return "开启电机失败";
+                            return "关闭电机失败";
                     }
                     else
                     {
@@ -2270,9 +2270,9 @@ namespace Exhaust
                         else
                         {
                             if (Read_Buffer[12] == 0x31)
-                                return "开启电机成功";//HC
+                                return "关闭电机成功";//HC
                             else
-                                return "开启电机失败";
+                                return "关闭电机失败";
                         }
                     }
                     break;

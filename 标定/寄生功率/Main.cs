@@ -3644,6 +3644,11 @@ namespace 汽油寄生功率
                         readThread.Abort();
                     if (ComPort_2 != null)
                         ComPort_2.Close();
+                    if (bpq != null)
+                    {
+                        if (bpq.ComPort_2.IsOpen)
+                            bpq.ComPort_2.Close();
+                    }
                     //parasiticdata = new parasitic();
                     //parasiticdata.Sdqj = "-1";
                     //parasiticdata.Mysd = "-1";
@@ -3673,6 +3678,11 @@ namespace 汽油寄生功率
                     readThread.Abort();
                 if (ComPort_2 != null)
                     ComPort_2.Close();
+                if (bpq != null)
+                {
+                    if (bpq.ComPort_2.IsOpen)
+                        bpq.ComPort_2.Close();
+                }
 
             }
 

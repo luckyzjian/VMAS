@@ -2491,11 +2491,27 @@ namespace sds
                                 sd = (float)SD;
                                 dqy = (float)DQY;
                             }
+                            else if (equipconfig.TempInstrument == "废气仪")
+                            {
+                                if (equipconfig.Fqyxh.ToLower() == "nha_503" || equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "cdf5000")
+                                {
+                                    Exhaust.Fla502_temp_data fla502_temp_data = fla_502.Get_Temp();
+                                    wd = fla502_temp_data.TEMP;
+                                    sd = fla502_temp_data.HUMIDITY;
+                                    dqy = fla502_temp_data.AIRPRESSURE;
+                                }
+                                else
+                                {
+                                    wd = Vmas_Exhaust_Now.HJWD;
+                                    sd = Vmas_Exhaust_Now.SD;
+                                    dqy = Vmas_Exhaust_Now.HJYL;
+                                }
+                            }
                             else
                             {
-                                wd = Vmas_Exhaust_Now.HJWD;
-                                sd = Vmas_Exhaust_Now.SD;
-                                dqy = Vmas_Exhaust_Now.HJYL;
+                                wd = (float)WD;
+                                sd = (float)SD;
+                                dqy = (float)DQY;
                             }
                             yw = Vmas_Exhaust_Now.YW;
                             Thread.Sleep(50);
