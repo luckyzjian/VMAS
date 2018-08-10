@@ -3213,9 +3213,24 @@ namespace vmasDetect
                         Vmas_Exhaust_nozl[cysx] = Vmas_Exhaust_fqsjll[cysx] * Vmas_Exhaust_Now.NO * md_no;//NO质量mg
                         Vmas_Exhaust_hczl[cysx] = Vmas_Exhaust_fqsjll[cysx] * Vmas_Exhaust_Now.HC * md_hc;//HC质量mg
                         Vmas_Exhaust_co2zl[cysx] = Vmas_Exhaust_fqsjll[cysx] * Vmas_Exhaust_Now.CO2 * md_co2;//CO质量mg
-                        Vmas_hjwd[cysx] = fla502_temp_data.TEMP;//温度
-                        Vmas_xdsd[cysx] = fla502_temp_data.HUMIDITY;//湿度
-                        Vmas_dqyl[cysx] = fla502_temp_data.AIRPRESSURE;//大气压
+                        if (IsUseTpTemp)
+                        {
+                            Vmas_hjwd[cysx] = (float)WD; //温度
+                            Vmas_xdsd[cysx] = (float)SD;//湿度
+                            Vmas_dqyl[cysx] = (float)DQY;//大气压
+                        }
+                        else if (equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503")
+                        {
+                            Vmas_hjwd[cysx] = fla502_temp_data.TEMP;//温度
+                            Vmas_xdsd[cysx] = fla502_temp_data.HUMIDITY;//湿度
+                            Vmas_dqyl[cysx] = fla502_temp_data.AIRPRESSURE;//大气压
+                        }
+                        else
+                        {
+                            Vmas_hjwd[cysx] = Vmas_Exhaust_Now.HJWD;//温度
+                            Vmas_xdsd[cysx] = Vmas_Exhaust_Now.SD;//湿度
+                            Vmas_dqyl[cysx] = Vmas_Exhaust_Now.HJYL;//大气压
+                        }
                         Vmas_xsxzxs[cysx] = (float)(Math.Round(caculateDf(Vmas_Exhaust_co2ld[cysx], Vmas_Exhaust_cold[cysx]), 3));//稀释修正系数
                         Vmas_sdxzxs[cysx] = (float)(Math.Round(caculateKh(Vmas_hjwd[cysx], Vmas_xdsd[cysx], Vmas_dqyl[cysx]), 3));//湿度修正系数
                         Vmas_Exhaust_qlyl[cysx] = Vmas_Exhaust_Now.QLYL;
@@ -3264,9 +3279,24 @@ namespace vmasDetect
                         Vmas_Exhaust_nozl[cysx] = Vmas_Exhaust_fqsjll[cysx] * Vmas_Exhaust_Now.NO * md_no;//NO质量mg
                         Vmas_Exhaust_hczl[cysx] = Vmas_Exhaust_fqsjll[cysx] * Vmas_Exhaust_Now.HC * md_hc;//HC质量mg
                         Vmas_Exhaust_co2zl[cysx] = Vmas_Exhaust_fqsjll[cysx] * Vmas_Exhaust_Now.CO2 * md_co2;//CO质量mg
-                        Vmas_hjwd[cysx] = fla502_temp_data.TEMP;//温度
-                        Vmas_xdsd[cysx] = fla502_temp_data.HUMIDITY;//湿度
-                        Vmas_dqyl[cysx] = fla502_temp_data.AIRPRESSURE;//大气压
+                        if (IsUseTpTemp)
+                        {
+                            Vmas_hjwd[cysx] = (float)WD; //温度
+                            Vmas_xdsd[cysx] = (float)SD;//湿度
+                            Vmas_dqyl[cysx] = (float)DQY;//大气压
+                        }
+                        else if (equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503")
+                        {
+                            Vmas_hjwd[cysx] = fla502_temp_data.TEMP;//温度
+                            Vmas_xdsd[cysx] = fla502_temp_data.HUMIDITY;//湿度
+                            Vmas_dqyl[cysx] = fla502_temp_data.AIRPRESSURE;//大气压
+                        }
+                        else
+                        {
+                            Vmas_hjwd[cysx] = Vmas_Exhaust_Now.HJWD;//温度
+                            Vmas_xdsd[cysx] = Vmas_Exhaust_Now.SD;//湿度
+                            Vmas_dqyl[cysx] = Vmas_Exhaust_Now.HJYL;//大气压
+                        }
                         Vmas_xsxzxs[cysx] = (float)(Math.Round(caculateDf(Vmas_Exhaust_co2ld[cysx], Vmas_Exhaust_cold[cysx]), 3));//稀释修正系数
                         Vmas_sdxzxs[cysx] = (float)(Math.Round(caculateKh(Vmas_hjwd[cysx], Vmas_xdsd[cysx], Vmas_dqyl[cysx]), 3));//湿度修正系数
                         Vmas_Exhaust_qlyl[cysx] = Vmas_Exhaust_Now.QLYL;
@@ -4374,7 +4404,7 @@ namespace vmasDetect
                             int dt_count = vmas_datatable.Rows.Count;
                             for (int i = 1; i < 196; i++)
                             {
-                                vmas_datatable.Rows[dt_count - 196 + i]["全程时序"] = i.ToString();
+                                vmas_datatable.Rows[dt_count - 196 + i]["采样时序"] = i.ToString();
                             }
                         }
                         else//将数据写入逐秒数据
@@ -4933,6 +4963,11 @@ namespace vmasDetect
                                 dr["尾气实际排放流量"] = Vmas_Exhaust_wqll_zb[i - vmasconfig.Dssj - fqy_delayTime - 2] * 0.6;
                                 dr["lambda"] = Vmas_lambda[i - vmasconfig.Dssj - fqy_delayTime - 2].ToString("0.000");
                                 vmas_datatable.Rows.Add(dr);
+                            }
+                            int dt_count = vmas_datatable.Rows.Count;
+                            for (int i = 1; i < 196; i++)
+                            {
+                                vmas_datatable.Rows[dt_count - 196 + i]["采样时序"] = i.ToString();
                             }
                         }
                     }
