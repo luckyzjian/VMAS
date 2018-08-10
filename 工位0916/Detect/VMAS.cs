@@ -4371,6 +4371,11 @@ namespace vmasDetect
                                 lambdasum += Vmas_lambda[i];
                                 vmas_datatable.Rows.Add(dr);
                             }
+                            int dt_count = vmas_datatable.Rows.Count;
+                            for (int i = 1; i < 196; i++)
+                            {
+                                vmas_datatable.Rows[dt_count - 196 + i]["全程时序"] = i.ToString();
+                            }
                         }
                         else//将数据写入逐秒数据
                         {
