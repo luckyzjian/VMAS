@@ -2006,12 +2006,13 @@ namespace lugdowm
 
                     #region 加载测试
                     ts1 = "加载测试开始";
+                    ts2 = "保持油门全开";
                     if (ledcontrol != null)
                     {
                         ledcontrol.writeLed("　加载测试开始　", 2, equipconfig.Ledxh);
                         Thread.Sleep(200);
                     }
-                    Msg(Msg_msg, panel_msg, "最大轮边功率扫描完毕，开始加载测试", true);
+                    Msg(Msg_msg, panel_msg, "扫描完毕，开始加载测试，保持油门全开", true);
                     Thread.Sleep(1000);
                     opno = 4;
                     opcode = 14;
@@ -2301,6 +2302,29 @@ namespace lugdowm
                                             return;
                                         }
                                     }
+                                    if (lugdownconfig.LugdownGljk)
+                                    {
+                                        if (double.Parse(HP)<double.Parse(jzjs_data.Lbgl)*lugdownconfig.Lugdown_Gljk_value*0.01)
+                                        {
+                                            JC_Status = false;
+                                            button_ss.Text = "重新检测";
+                                            Th_get_FqandLl.Abort();
+                                            Jzjs_status = false; fq_getdata = false;
+                                            Thread.Sleep(500);
+                                            Msg(Msg_msg, panel_msg, "加载功率过低，检测中止。", true);
+                                            ts1 = "加载功率过低";
+                                            ts2 = "检测中止";
+                                            if (ledcontrol != null)
+                                            {
+                                                ledcontrol.writeLed("　　检测中止　　", 2, equipconfig.Ledxh);
+                                                Thread.Sleep(200);
+                                                ledcontrol.writeLed("加载功率低于限值", 5, equipconfig.Ledxh);
+                                            }
+                                            igbt.Exit_Control();
+
+                                            return;
+                                        }
+                                    }
                                     break;
                                 case "VelMaxHP90%":
 
@@ -2396,6 +2420,29 @@ namespace lugdowm
                                             return;
                                         }
                                     }
+                                    if (lugdownconfig.LugdownGljk)
+                                    {
+                                        if (double.Parse(NP) < double.Parse(jzjs_data.Lbgl) * lugdownconfig.Lugdown_Gljk_value * 0.01)
+                                        {
+                                            JC_Status = false;
+                                            button_ss.Text = "重新检测";
+                                            Th_get_FqandLl.Abort();
+                                            Jzjs_status = false; fq_getdata = false;
+                                            Thread.Sleep(500);
+                                            Msg(Msg_msg, panel_msg, "加载功率过低，检测中止。", true);
+                                            ts1 = "加载功率过低";
+                                            ts2 = "检测中止";
+                                            if (ledcontrol != null)
+                                            {
+                                                ledcontrol.writeLed("　　检测中止　　", 2, equipconfig.Ledxh);
+                                                Thread.Sleep(200);
+                                                ledcontrol.writeLed("加载功率低于限值", 5, equipconfig.Ledxh);
+                                            }
+                                            igbt.Exit_Control();
+
+                                            return;
+                                        }
+                                    }
                                     break;
                                 case "VelMaxHP80%":
 
@@ -2454,6 +2501,29 @@ namespace lugdowm
                                         }
 
                                         return;
+                                    }
+                                    if (lugdownconfig.LugdownGljk)
+                                    {
+                                        if (double.Parse(EP) < double.Parse(jzjs_data.Lbgl) * lugdownconfig.Lugdown_Gljk_value * 0.01)
+                                        {
+                                            JC_Status = false;
+                                            button_ss.Text = "重新检测";
+                                            Th_get_FqandLl.Abort();
+                                            Jzjs_status = false; fq_getdata = false;
+                                            Thread.Sleep(500);
+                                            Msg(Msg_msg, panel_msg, "加载功率过低，检测中止。", true);
+                                            ts1 = "加载功率过低";
+                                            ts2 = "检测中止";
+                                            if (ledcontrol != null)
+                                            {
+                                                ledcontrol.writeLed("　　检测中止　　", 2, equipconfig.Ledxh);
+                                                Thread.Sleep(200);
+                                                ledcontrol.writeLed("加载功率低于限值", 5, equipconfig.Ledxh);
+                                            }
+                                            igbt.Exit_Control();
+
+                                            return;
+                                        }
                                     }
                                     Thread.Sleep(1000);
                                     Jc_Process = "结束";

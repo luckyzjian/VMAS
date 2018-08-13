@@ -717,12 +717,23 @@ namespace 动力性测量
         private bool IsUseTpTemp = false;
         public static bool isTestSpeedPerod = false;
         public float DynForceQj = 0;
+        private void resetStatus()
+        {
+            testStatus teststatus = new testStatus();
+            teststatus.OutlookID = carinfo.检测流水号;
+            teststatus.Clph = carinfo.车辆号牌;
+            teststatus.Hpzl = carinfo.号牌种类;
+            teststatus.Code = "0";
+            teststatus.Message = "准备" ;
+            carini.writeStatusData(teststatus);
+        }
         private void yhTest_Load(object sender, EventArgs e)
         {
+           
             //aquaGauge1.Value = 65f;
             //aquaGaugeRev.Value = 4500;
             carinfo = carini.getYhCarIni();
-            
+            resetStatus();
             initCurve();
             equipdata = configini.getEquipConfigIni();
             dynconfigdata = configini.getDynConfigIni();
@@ -1588,7 +1599,8 @@ namespace 动力性测量
                 Thread.Sleep(3000);
                 if (carinfo.检测类型==1)
                 {
-                    isTestSpeedPerod = true;
+                    carini.changeStatusData("1", "开始速度检测");
+                       isTestSpeedPerod = true;
                     Msg(labelTS, panelTS, "准备车速检测", true);
                     showLed(carinfo.车辆号牌, "准备车速检测");
                     Thread.Sleep(3000);
@@ -1654,6 +1666,7 @@ namespace 动力性测量
                     while (speednow > 0.1)
                         Thread.Sleep(1000);
                     igbt.Lifter_Up();
+                    carini.changeStatusData("2", "速度检测完成");
                     Thread.Sleep(5000);//等待举升升起后出车
                     Msg(labelTS, panelTS, "检测完毕", true);
                     showLed("　　检测完毕　　", "　　　　　　　　");
@@ -1665,6 +1678,7 @@ namespace 动力性测量
                 {
                     if (carinfo.检测类型 == 2)
                     {
+                        carini.changeStatusData("1", "开始速度检测");
                         isTestSpeedPerod = true;
                         Msg(labelTS, panelTS, "准备车速检测", true);
                         showLed(carinfo.车辆号牌, "准备车速检测");
@@ -1722,8 +1736,10 @@ namespace 动力性测量
                             showLed(addLength(speedTestResult.ToString("0.0") + "km/h", 10), "　　不合格　　　");
                         }
                         Thread.Sleep(2000);
+                        carini.changeStatusData("2", "速度检测完成");
                         isTestSpeedPerod = false;
                     }
+                    carini.changeStatusData("3", "开始动力性检测");
                     Msg(labelTS, panelTS, "准备动力性测量", true);
                     showLed(carinfo.车辆号牌, "准备动力性测量");
                     Thread.Sleep(3000);
@@ -2192,6 +2208,7 @@ namespace 动力性测量
                         }
                         csvwriter.SaveCSV(dyn_datatable, "D:/dataseconds/" + carinfo.车辆号牌+"_"+DateTime.Now.ToString("yyyyMMddHHmmss") + ".csv");
                         writeGasolineResult();
+                        carini.changeStatusData("4", "动力性检测完成");
                         Thread.Sleep(3000);
                         //System.IO.File.Delete(@"c:\jcdatatxt\carinfo.ini");
                         while (speednow > 0.1)
@@ -2462,6 +2479,7 @@ namespace 动力性测量
                         }
                         csvwriter.SaveCSV(dyn_datatable, "D:/dataseconds/" + carinfo.车辆号牌 + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".csv");
                         writeDieselResult();
+                        carini.changeStatusData("4", "动力性检测完成");
                         Thread.Sleep(3000);
                         //System.IO.File.Delete(@"c:\jcdatatxt\carinfo.ini");
                         while (speednow > 0.1)
@@ -2933,7 +2951,7 @@ namespace 动力性测量
                 else
                 {
                     showCurve = false;//暂停图表的显示 
-
+                    resetStatus();//将状态位置0
                     igbt.Exit_Control();
                     JC_Status = false;
                     jcStatus = false;

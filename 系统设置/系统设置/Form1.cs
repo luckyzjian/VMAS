@@ -129,6 +129,8 @@ namespace 系统设置
             checkBoxGSKCBPD.Checked = lugdownconfig.gsKcbPD;
             checkBoxGSKHGPD.Checked = lugdownconfig.gsKhgPD;
             checkBoxLugdownJcNox.Checked = lugdownconfig.testNOx;
+            checkBoxLugdownGljk.Checked = lugdownconfig.LugdownGljk;
+            textBoxLug_gljk_value.Text = lugdownconfig.Lugdown_Gljk_value.ToString("0");
 
             textBoxSdsFlowtime.Text = sdsconfig.FlowTime.ToString("0");
             textBoxSdsNdz.Text = sdsconfig.Ndz.ToString("0.0");
@@ -374,25 +376,39 @@ namespace 系统设置
 
         private void buttonLugdownSave_Click(object sender, EventArgs e)
         {
-            carinfor.LugdownConfigInfdata lugdownconfig = configini.getLugdownConfigIni();
-            lugdownconfig.MinSpeed = int.Parse(textBoxLugDownMinSpeed.Text);
-            lugdownconfig.MaxSpeed = float.Parse(textBoxLugDownMaxSpeed.Text);
-            lugdownconfig.Smpl = int.Parse(textBoxLugdownSmpl.Text);
-            lugdownconfig.IfSureTemp = checkBoxLugdownSureTemp.Checked;
-            lugdownconfig.isFdjzsJudge = checkBoxLugdownZsPd.Checked;
-            lugdownconfig.gsMaxPPD = checkBoxGSMAXPPD.Checked;
-            lugdownconfig.gsKcbPD = checkBoxGSKCBPD.Checked;
-            lugdownconfig.gsKhgPD = checkBoxGSKHGPD.Checked;
-            lugdownconfig.Zsj = comboBoxLugdownZsj.Text;
-            lugdownconfig.Zsjck = comboBoxLugdownZsjCom.Text;
-            lugdownconfig.IsTestYw = checkBoxLugdownYw.Checked;
-            lugdownconfig.Glsmms = (radioButtonLugdownHgl.Checked) ? "恒功率" : "恒速度";
-            lugdownconfig.LugdownMaxHpStyle = (radioButtonLugMaxHpVelmaxhp.Checked) ? 1 : 0;
-            lugdownconfig.testNOx = checkBoxLugdownJcNox.Checked;
-            if (configini.writeLugdownConfigIni(lugdownconfig))
-                MessageBox.Show("保存成功.", "系统提示");
-            else
+            try
+            {
+                carinfor.LugdownConfigInfdata lugdownconfig = configini.getLugdownConfigIni();
+                lugdownconfig.MinSpeed = int.Parse(textBoxLugDownMinSpeed.Text);
+                lugdownconfig.MaxSpeed = float.Parse(textBoxLugDownMaxSpeed.Text);
+                lugdownconfig.Smpl = int.Parse(textBoxLugdownSmpl.Text);
+                lugdownconfig.IfSureTemp = checkBoxLugdownSureTemp.Checked;
+                lugdownconfig.isFdjzsJudge = checkBoxLugdownZsPd.Checked;
+                lugdownconfig.gsMaxPPD = checkBoxGSMAXPPD.Checked;
+                lugdownconfig.gsKcbPD = checkBoxGSKCBPD.Checked;
+                lugdownconfig.gsKhgPD = checkBoxGSKHGPD.Checked;
+                lugdownconfig.Zsj = comboBoxLugdownZsj.Text;
+                lugdownconfig.Zsjck = comboBoxLugdownZsjCom.Text;
+                lugdownconfig.IsTestYw = checkBoxLugdownYw.Checked;
+                lugdownconfig.Glsmms = (radioButtonLugdownHgl.Checked) ? "恒功率" : "恒速度";
+                lugdownconfig.LugdownMaxHpStyle = (radioButtonLugMaxHpVelmaxhp.Checked) ? 1 : 0;
+                lugdownconfig.testNOx = checkBoxLugdownJcNox.Checked;
+                lugdownconfig.LugdownGljk = checkBoxLugdownGljk.Checked;
+                lugdownconfig.Lugdown_Gljk_value = float.Parse(textBoxLug_gljk_value.Text);
+                if (lugdownconfig.Lugdown_Gljk_value > 80f || lugdownconfig.Lugdown_Gljk_value < 40f)
+                {
+                    MessageBox.Show("加载功率规定值范围为40~80", "数值输入超出范围");
+                    return;
+                }
+                if (configini.writeLugdownConfigIni(lugdownconfig))
+                    MessageBox.Show("保存成功.", "系统提示");
+                else
+                    MessageBox.Show("数据输入有误,请检查.", "未成功保存");
+            }
+            catch
+            {
                 MessageBox.Show("数据输入有误,请检查.", "未成功保存");
+            }
         }
 
         private void buttonSdsSave_Click(object sender, EventArgs e)

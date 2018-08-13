@@ -424,6 +424,44 @@ namespace carinfor
         public bool ISMOTO { set; get; }
         public DateTime scrq { set; get; }
     }
+    public class testStatus
+    {
+        private string outlookID;
+
+        public string OutlookID
+        {
+            get { return outlookID; }
+            set { outlookID = value; }
+        }
+        private string clph;
+
+        public string Clph
+        {
+            get { return clph; }
+            set { clph = value; }
+        }
+        private string hpzl;
+
+        public string Hpzl
+        {
+            get { return hpzl; }
+            set { hpzl = value; }
+        }
+        private string code;
+
+        public string Code
+        {
+            get { return code; }
+            set { code = value; }
+        }
+        private string message;
+
+        public string Message
+        {
+            get { return message; }
+            set { message = value; }
+        }
+    }
     public class carIni
     {
         public carInidata getCarIni()
@@ -1387,6 +1425,43 @@ namespace carinfor
         public static object JsonToObject(string jsonString, object obj)
         {
             return JsonConvert.DeserializeObject(jsonString, obj.GetType());
+        }
+        public bool writeStatusData(testStatus teststatus)
+        {
+            try
+            {
+                if (System.IO.File.Exists("C://jcdatatxt/statusConfig.ini"))
+                {
+                    System.IO.File.Delete("C://jcdatatxt/statusConfig.ini");
+                }                
+                ini.INIIO.WritePrivateProfileString("检测设备", "状态", teststatus.Code, "C://jcdatatxt/statusConfig.ini");
+                ini.INIIO.WritePrivateProfileString("检测设备", "备注说明", teststatus.Message, "C://jcdatatxt/statusConfig.ini");
+                ini.INIIO.WritePrivateProfileString("检测设备", "时间", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), "C://jcdatatxt/statusConfig.ini");
+                ini.INIIO.WritePrivateProfileString("检测设备", "外观检验号", teststatus.OutlookID, "C://jcdatatxt/statusConfig.ini");
+                ini.INIIO.WritePrivateProfileString("检测设备", "车辆牌号", teststatus.Clph, "C://jcdatatxt/statusConfig.ini");
+                ini.INIIO.WritePrivateProfileString("检测设备", "号牌种类", teststatus.Hpzl, "C://jcdatatxt/statusConfig.ini");
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+        public bool changeStatusData(string code,string msg)
+        {
+            try
+            {
+                ini.INIIO.WritePrivateProfileString("检测设备", "状态", code, "C://jcdatatxt/statusConfig.ini");
+                ini.INIIO.WritePrivateProfileString("检测设备", "备注说明", msg, "C://jcdatatxt/statusConfig.ini");
+                ini.INIIO.WritePrivateProfileString("检测设备", "时间", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), "C://jcdatatxt/statusConfig.ini");
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
     }
 }

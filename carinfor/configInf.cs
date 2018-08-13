@@ -1111,6 +1111,8 @@ namespace carinfor
             set;
             get;
         }
+        public bool LugdownGljk { set; get; }
+        public float Lugdown_Gljk_value { set; get; }
         public bool gsMaxPPD { set; get; }
         public bool gsKcbPD { set; get; }
         public bool gsKhgPD { set; get; }
@@ -2962,6 +2964,16 @@ namespace carinfor
                 configinidata.testNOx = true;
             else
                 configinidata.testNOx = false;
+            ini.INIIO.GetPrivateProfileString("LUGDOWN", "测试过程功率监控", "true", temp, 2048, startUpPath + "/detectConfig.ini");
+            //if (temp.ToString().Trim() == "true")
+                configinidata.LugdownGljk = true;
+            //else
+            //    configinidata.LugdownGljk = false;
+            ini.INIIO.GetPrivateProfileString("LUGDOWN", "功率监控规定值", "50", temp, 2048, startUpPath + "/detectConfig.ini");
+            if (int.TryParse(temp.ToString().Trim(), out b))
+                configinidata.Lugdown_Gljk_value = b;
+            else
+                configinidata.Lugdown_Gljk_value = 50;
             return configinidata;
         }
 
@@ -2985,6 +2997,8 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "gsKcbPD", configinidata.gsKcbPD.ToString().ToLower(), startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "gsKhgPD", configinidata.gsKhgPD.ToString().ToLower(), startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "testNOx", configinidata.testNOx.ToString().ToLower(), startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("LUGDOWN", "测试过程功率监控", configinidata.LugdownGljk.ToString().ToLower(), startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("LUGDOWN", "功率监控规定值", configinidata.Lugdown_Gljk_value.ToString("0"), startUpPath + "/detectConfig.ini");
                 return true;
             }
 
