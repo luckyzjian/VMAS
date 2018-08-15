@@ -2172,7 +2172,7 @@ namespace lugdowm
                                     Speed_Count = 0;
                                     double glsum = 0;
 
-                                    HP = (glsum / 5f).ToString("0.00");
+                                    HP = (temp_gl / 5f).ToString("0.00");
                                     HK = (temp_gxxs / 5f).ToString("0.00");
                                     HV = (temp_zs / 5f).ToString("0");
                                     HNo = (temp_no / 5f).ToString("0");
