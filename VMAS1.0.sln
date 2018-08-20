@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vmasTest", "工位0916\Detect\vmasTest.csproj", "{945E7829-A243-4F7E-9954-DB5A9E9AFC48}"
 EndProject
@@ -42,8 +42,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SYS_DAL", "SYS_DAL\SYS_DAL.csproj", "{0C158118-DD0C-42DC-9B67-EA3055AE46CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SYS_MODEL", "SYS_MODEL\SYS_MODEL.csproj", "{E43A16D8-0BCA-42AB-B0DC-5D8FEE37958C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "培训", "培训\培训\培训.csproj", "{75A015CF-4432-4CAD-B93E-0DA0C8A00A67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "柴油寄生功率", "标定\柴油寄生功率\柴油寄生功率.csproj", "{94E93096-17F3-40CE-8C13-6F15DEF62036}"
 EndProject
@@ -293,16 +291,6 @@ Global
 		{E43A16D8-0BCA-42AB-B0DC-5D8FEE37958C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E43A16D8-0BCA-42AB-B0DC-5D8FEE37958C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E43A16D8-0BCA-42AB-B0DC-5D8FEE37958C}.Release|x86.ActiveCfg = Release|Any CPU
-		{75A015CF-4432-4CAD-B93E-0DA0C8A00A67}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{75A015CF-4432-4CAD-B93E-0DA0C8A00A67}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{75A015CF-4432-4CAD-B93E-0DA0C8A00A67}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{75A015CF-4432-4CAD-B93E-0DA0C8A00A67}.Debug|x86.ActiveCfg = Debug|x86
-		{75A015CF-4432-4CAD-B93E-0DA0C8A00A67}.Debug|x86.Build.0 = Debug|x86
-		{75A015CF-4432-4CAD-B93E-0DA0C8A00A67}.Release|Any CPU.ActiveCfg = Release|x86
-		{75A015CF-4432-4CAD-B93E-0DA0C8A00A67}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{75A015CF-4432-4CAD-B93E-0DA0C8A00A67}.Release|Mixed Platforms.Build.0 = Release|x86
-		{75A015CF-4432-4CAD-B93E-0DA0C8A00A67}.Release|x86.ActiveCfg = Release|x86
-		{75A015CF-4432-4CAD-B93E-0DA0C8A00A67}.Release|x86.Build.0 = Release|x86
 		{94E93096-17F3-40CE-8C13-6F15DEF62036}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{94E93096-17F3-40CE-8C13-6F15DEF62036}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{94E93096-17F3-40CE-8C13-6F15DEF62036}.Debug|Mixed Platforms.Build.0 = Debug|x86

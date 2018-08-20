@@ -241,10 +241,6 @@
       <Project>{043556C1-182E-499B-89CC-3C62F4343D4A}</Project>
       <Name>响应时间</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\培训\培训\培训.csproj">
-      <Project>{75A015CF-4432-4CAD-B93E-0DA0C8A00A67}</Project>
-      <Name>培训</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\工位0916\Detect\vmasTest.csproj">
       <Project>{945E7829-A243-4F7E-9954-DB5A9E9AFC48}</Project>
       <Name>vmasTest</Name>
