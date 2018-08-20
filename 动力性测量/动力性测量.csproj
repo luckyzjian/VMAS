@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="AquaGauge, Version=1.0.2800.27798, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\AquaGauge.dll</HintPath>
+      <HintPath>..\lugdown\lugdowm\bin\Debug\AquaGauge.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

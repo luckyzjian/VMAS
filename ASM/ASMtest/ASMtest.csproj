@@ -38,23 +38,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lugdown\lugdowm\bin\Debug\DevExpress.Data.v10.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Utils.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lugdown\lugdowm\bin\Debug\DevExpress.Utils.v10.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Program Files (x86)\DevExpress 2010.2\Components\Sources\DevExpress.DLL\DevExpress.XtraEditors.v10.2.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\lugdown\lugdowm\bin\Debug\DevExpress.XtraEditors.v10.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraGauges.v10.2.Core, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lugdown\lugdowm\bin\Debug\DevExpress.XtraGauges.v10.2.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraGauges.v10.2.Win, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Program Files (x86)\DevExpress 2010.2\Components\Sources\DevExpress.DLL\DevExpress.XtraGauges.v10.2.Win.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\lugdown\lugdowm\bin\Debug\DevExpress.XtraGauges.v10.2.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v10.2, Version=10.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lugdown\lugdowm\bin\Debug\DevExpress.XtraGrid.v10.2.dll</HintPath>
     </Reference>
     <Reference Include="LEDNumber">
       <HintPath>..\..\lugdown\lugdowm\bin\Debug\LEDNumber.dll</HintPath>
