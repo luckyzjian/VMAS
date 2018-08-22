@@ -39,6 +39,7 @@ namespace sds
         Exhaust.VMT_2000 vmt_2000 = null;
         Exhaust.RPM5300 rpm5300 = null;
         Exhaust.XCE_100 xce_100 = null;
+        Exhaust.Nhsjz nhsjz = null;
         thaxs thaxsdata = new thaxs();
         bool isUseRotater = false;
 
@@ -117,6 +118,7 @@ namespace sds
         private float dqy = 100f;
         private float yw = 0f;
         public static float Zs = 0;
+        private float yw_now = 0;
         public float hc_ld = 0;
         public float co_ld = 0;
         public float no_ld = 0;
@@ -699,6 +701,32 @@ namespace sds
                 xce_100 = null;
                 Init_flag = false;
             }
+
+            try
+            {
+                if (equipconfig.IsUseNhSjz)
+                {
+                    try
+                    {
+                        nhsjz = new Exhaust.Nhsjz();
+                        if (nhsjz.Init_Comm(equipconfig.NhSjz_Com, equipconfig.NhSjz_ComString) == false)
+                        {
+                            nhsjz = null;
+                            Init_flag = false;
+                            init_message += "南华司机助串口打开失败.";
+                        }
+                    }
+                    catch (Exception er)
+                    {
+                        nhsjz = null;
+                        Init_flag = false;
+                        MessageBox.Show("南华司机助串口" + equipconfig.NhSjz_Com + "打开失败:" + er.ToString(), "出错啦");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
         private void initDataResult()
         {
@@ -1150,9 +1178,20 @@ namespace sds
                     {
                         ledcontrol.writeLed("读取油温...", 2, equipconfig.Ledxh);
                     }
-                    Exhaust.Fla502_data Environment = fla_502.GetData();
+                    float ywnow = 0;
+                    if (nhsjz != null && sdsconfig.Ywj == "南华附件")
+                    {
+                        if (nhsjz.readData())
+                            ywnow = nhsjz.yw;
+                        else if (nhsjz.readData())
+                            ywnow = nhsjz.yw;
+                    }
+                    else
+                    {
+                        Exhaust.Fla502_data Environment = fla_502.GetData();
+                        ywnow = Environment.YW;
+                    }
                     Thread.Sleep(1000);
-                    float ywnow = Environment.YW;
                     if (ywnow < 80)
                     {
                         ts1 = "油温: " + ywnow.ToString("0.0") + " ℃";
@@ -2513,7 +2552,15 @@ namespace sds
                                 sd = (float)SD;
                                 dqy = (float)DQY;
                             }
-                            yw = Vmas_Exhaust_Now.YW;
+                            if (nhsjz != null && sdsconfig.Ywj == "南华附件")
+                            {
+                                if (nhsjz.readData())
+                                    yw = nhsjz.yw;
+                            }
+                            else
+                            {
+                                yw = Vmas_Exhaust_Now.YW;
+                            }
                             Thread.Sleep(50);
                             isLowFlow = fla_502.CheckIsLowFlow();
                             Thread.Sleep(50);
@@ -2582,7 +2629,15 @@ namespace sds
                                 sd = 0f;
                                 dqy = 0f;
                             }
-                            yw = Vmas_Exhaust_Now.YW;
+                            if (nhsjz != null && sdsconfig.Ywj == "南华附件")
+                            {
+                                if (nhsjz.readData())
+                                    yw = nhsjz.yw;
+                            }
+                            else
+                            {
+                                yw = Vmas_Exhaust_Now.YW;
+                            }
                             break;
                         case "fla_501":
                             Vmas_Exhaust501_Now = fla_501.Get_Data();
@@ -2647,7 +2702,16 @@ namespace sds
                                 sd = 0f;
                                 dqy = 0f;
                             }
-                            yw = Vmas_Exhaust501_Now.YW;
+                            if (nhsjz != null && sdsconfig.Ywj == "南华附件")
+                            {
+                                if (nhsjz.readData())
+                                    yw = nhsjz.yw;
+                            }
+                            else
+                            {
+                                yw = Vmas_Exhaust501_Now.YW;
+                            }
+                            //yw = Vmas_Exhaust501_Now.YW;
                             isLowFlow = 0;
                             break;
                     }
@@ -3073,6 +3137,11 @@ namespace sds
                             if (xce_100.ComPort_1.IsOpen)
                                 xce_100.ComPort_1.Close();
                         }
+                        if (nhsjz != null)
+                        {
+                            if (nhsjz.ComPort_1.IsOpen)
+                                nhsjz.ComPort_1.Close();
+                        }
                     }
                     catch
                     { }
@@ -3143,6 +3212,11 @@ namespace sds
                     {
                         if (xce_100.ComPort_1.IsOpen)
                             xce_100.ComPort_1.Close();
+                    }
+                    if (nhsjz != null)
+                    {
+                        if (nhsjz.ComPort_1.IsOpen)
+                            nhsjz.ComPort_1.Close();
                     }
                 }
                     catch

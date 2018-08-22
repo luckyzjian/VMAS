@@ -52,6 +52,7 @@
     <Compile Include="FLB_100.cs" />
     <Compile Include="Fla501.cs" />
     <Compile Include="VMT-2000.cs" />
+    <Compile Include="Nhsjz.cs" />
     <Compile Include="VUT-3000.cs" />
     <Compile Include="YD_1.cs" />
     <Compile Include="XCE-100.cs" />

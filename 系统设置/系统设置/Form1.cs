@@ -104,6 +104,7 @@ namespace 系统设置
             checkBoxASMyw.Checked = asmconfig.IsTestYw;
             checkBoxKsgk.Checked = asmconfig.IsKsgkUsed;
             checkBoxAsmHalfXzKsgk.Checked = asmconfig.IsAsmHalfXzKsgk;
+            comboBoxYWJ_ASM.Text = asmconfig.Ywj;
 
             textBoxLugDownMinSpeed.Text = lugdownconfig.MinSpeed.ToString("0");
             textBoxLugDownMaxSpeed.Text = lugdownconfig.MaxSpeed.ToString("0");
@@ -112,6 +113,7 @@ namespace 系统设置
             checkBoxLugdownSureTemp.Checked = lugdownconfig.IfSureTemp;
             checkBoxLugdownZsPd.Checked = lugdownconfig.isFdjzsJudge;
             checkBoxLugdownYw.Checked = lugdownconfig.IsTestYw;
+            comboBoxYWJ_LUGDOWN.Text = lugdownconfig.Ywj;
             radioButtonLugMaxHpGlsm.Checked = (lugdownconfig.LugdownMaxHpStyle == 0);
             radioButtonLugMaxHpVelmaxhp.Checked = (lugdownconfig.LugdownMaxHpStyle == 1);
             if (lugdownconfig.Glsmms == "恒功率")
@@ -142,6 +144,7 @@ namespace 系统设置
             comboBoxSdsZsj.Text = sdsconfig.Zsj;
             comboBoxSdsZsjCom.Text = sdsconfig.Zsjck;
             checkBoxSdsYw.Checked = sdsconfig.IsTestYw;
+            comboBoxYWJ_SDS.Text = sdsconfig.Ywj;
             comboBox3500.SelectedIndex = sdsconfig.TimerMode3500;
             comboBoxHPrepare.SelectedIndex = sdsconfig.TimerModeHP;
             comboBoxHTest.SelectedIndex = sdsconfig.TimerModeHT;
@@ -158,6 +161,7 @@ namespace 系统设置
             comboBoxBTGCLCS.Text = btgconfig.btgclcs.ToString();
             checkBoxBtgManualTantou.Checked = btgconfig.BtgManualTantou;
             checkBoxBTGJHGCJK.Checked = btgconfig.jhzsgcjk;
+            comboBoxYWJ_BTG.Text = btgconfig.Ywj;
             if (btgconfig.btgDszsValue == 0) radioButtonBTGDSZS.Checked = true;
             else radioButtonBTGDYZS.Checked = true;
 
@@ -303,6 +307,9 @@ namespace 系统设置
             checkBoxTPWSD.Checked = equipconfig.isTpTempInstrument;
             checkBoxCD_FQY.Checked = equipconfig.cd_fqy;
             checkBoxCD_YDJ.Checked = equipconfig.cd_ydj;
+            checkBoxNHSJZ.Checked = equipconfig.IsUseNhSjz;
+            comboBoxNHSJZ_COM.Text = equipconfig.NhSjz_Com;
+            comboBoxNHSJZ_COMSTRING.Text = equipconfig.NhSjz_ComString;
         }
 
         private void buttonVmasSave_Click(object sender, EventArgs e)
@@ -368,6 +375,7 @@ namespace 系统设置
             asmconfig.IsTestYw = checkBoxASMyw.Checked;
             asmconfig.IsKsgkUsed = checkBoxKsgk.Checked;
             asmconfig.IsAsmHalfXzKsgk = checkBoxAsmHalfXzKsgk.Checked;
+            asmconfig.Ywj = comboBoxYWJ_ASM.Text;
             if (configini.writeAsmConfigIni(asmconfig))
                 MessageBox.Show("保存成功.", "系统提示");
             else
@@ -395,6 +403,7 @@ namespace 系统设置
                 lugdownconfig.testNOx = checkBoxLugdownJcNox.Checked;
                 lugdownconfig.LugdownGljk = checkBoxLugdownGljk.Checked;
                 lugdownconfig.Lugdown_Gljk_value = float.Parse(textBoxLug_gljk_value.Text);
+                lugdownconfig.Ywj = comboBoxYWJ_LUGDOWN.Text;
                 if (lugdownconfig.Lugdown_Gljk_value > 80f || lugdownconfig.Lugdown_Gljk_value < 40f)
                 {
                     MessageBox.Show("加载功率规定值范围为40~80", "数值输入超出范围");
@@ -430,6 +439,7 @@ namespace 系统设置
             sdsconfig.TimerModeHT = comboBoxHTest.SelectedIndex;
             sdsconfig.TimerModeLP = comboBoxLPrepare.SelectedIndex;
             sdsconfig.TimerModeLT = comboBoxLTest.SelectedIndex;
+            sdsconfig.Ywj = comboBoxYWJ_SDS.Text;
             if (configini.writeSdsConfigIni(sdsconfig))
                 MessageBox.Show("保存成功.", "系统提示");
             else
@@ -449,6 +459,7 @@ namespace 系统设置
             btgconfig.btgclcs = int.Parse(comboBoxBTGCLCS.Text);
             btgconfig.BtgManualTantou = checkBoxBtgManualTantou.Checked;
             btgconfig.btgDszsValue = radioButtonBTGDSZS.Checked ? 0 : 1;
+            btgconfig.Ywj = comboBoxYWJ_BTG.Text;
             if (configini.writeBtgConfigIni(btgconfig))
                 MessageBox.Show("保存成功.", "系统提示");
             else
@@ -732,6 +743,9 @@ namespace 系统设置
             equipconfig.DATASECONDS_TYPE = comboBoxDataSecondsType.Text;
             equipconfig.cd_fqy = checkBoxCD_FQY.Checked;
             equipconfig.cd_ydj = checkBoxCD_YDJ.Checked;
+            equipconfig.IsUseNhSjz = checkBoxNHSJZ.Checked;
+            equipconfig.NhSjz_Com = comboBoxNHSJZ_COM.Text;
+            equipconfig.NhSjz_ComString = comboBoxNHSJZ_COMSTRING.Text;
             //equipconfig.ZzyEnable = comboBoxZZYXH.Text == "未配置";
             //equipconfig.ZzyXh = comboBoxZZYXH.Text;
             //equipconfig.ZzyCk = comboBoxZZYCK.Text;

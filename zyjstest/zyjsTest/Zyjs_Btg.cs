@@ -37,6 +37,7 @@ namespace zyjsTest
         Exhaust.VMT_2000 vmt_2000 = null;
         Exhaust.RPM5300 rpm5300 = null;
         Exhaust.XCE_100 xce_100 = null;
+        Exhaust.Nhsjz nhsjz = null;
         private Exhaust.yhControl yhy = null;
         thaxs thaxsdata = new thaxs();
         bool isUseRotater = false;
@@ -95,6 +96,7 @@ namespace zyjsTest
         public int deczs = 0;
         public int dsczs = 0;
         public double yw = 0.0;
+        public float yw_now = 0;
         public double dsicclz = 0.0;
         public double pjz = 0.0;
         public double wd = 20;
@@ -725,6 +727,32 @@ namespace zyjsTest
                 xce_100 = null;
                 Init_flag = false;
             }
+
+            try
+            {
+                if (equipconfig.IsUseNhSjz)
+                {
+                    try
+                    {
+                        nhsjz = new Exhaust.Nhsjz();
+                        if (nhsjz.Init_Comm(equipconfig.NhSjz_Com, equipconfig.NhSjz_ComString) == false)
+                        {
+                            nhsjz = null;
+                            Init_flag = false;
+                            init_message += "南华司机助串口打开失败.";
+                        }
+                    }
+                    catch (Exception er)
+                    {
+                        nhsjz = null;
+                        Init_flag = false;
+                        MessageBox.Show("南华司机助串口" + equipconfig.NhSjz_Com + "打开失败:" + er.ToString(), "出错啦");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
         private void initDataResult()
         {
@@ -1078,12 +1106,24 @@ namespace zyjsTest
                         }
                     }
                     Exhaust.Flb_100_smoke Environment = new Exhaust.Flb_100_smoke();
-                    if (equipconfig.Ydjxh.ToLower() == "cdf5000")
-                         Environment = fla_502.get_DirectData();
+                    float ywnow = 0;
+                    if (nhsjz != null && btgconfig.Ywj == "南华附件")
+                    {
+                        if (nhsjz.readData())
+                            ywnow = nhsjz.yw;
+                        else if (nhsjz.readData())
+                            ywnow = nhsjz.yw;
+                    }
                     else
-                         Environment = flb_100.get_DirectData();
+                    {
+
+                        if (equipconfig.Ydjxh.ToLower() == "cdf5000")
+                            Environment = fla_502.get_DirectData();
+                        else
+                            Environment = flb_100.get_DirectData();
+                        ywnow = Environment.Yw;
+                    }
                     Thread.Sleep(1000);
-                    float ywnow = Environment.Yw;
                     if (ywnow < 80)
                     {
                         ts1 = "油温: " + ywnow.ToString("0.0") + " ℃";
@@ -2820,6 +2860,11 @@ namespace zyjsTest
                             if (yhy.ComPort_1.IsOpen)
                                 yhy.ComPort_1.Close();
                         }
+                        if (nhsjz != null)
+                        {
+                            if (nhsjz.ComPort_1.IsOpen)
+                                nhsjz.ComPort_1.Close();
+                        }
                     }
                     else
                     {
@@ -2890,6 +2935,11 @@ namespace zyjsTest
                     {
                         if (yhy.ComPort_1.IsOpen)
                             yhy.ComPort_1.Close();
+                    }
+                    if (nhsjz != null)
+                    {
+                        if (nhsjz.ComPort_1.IsOpen)
+                            nhsjz.ComPort_1.Close();
                     }
                 }
             }
@@ -2967,6 +3017,15 @@ namespace zyjsTest
                                     ZS = vmt_2000.zs;
                             }
                         }
+                        if (nhsjz != null && btgconfig.Ywj == "南华附件")
+                        {
+                            if (nhsjz.readData())
+                                yw_now = nhsjz.yw;
+                        }
+                        else
+                        {
+                            yw_now = smoke.Yw;
+                        }
                         Msg(label_zstext, panel_zstext, ZS.ToString(), false);
                         arcScaleComponent3.Value = ZS;
                     }
@@ -2976,7 +3035,7 @@ namespace zyjsTest
                     Zslist[GKSJ] = ZS;
                     Klist[GKSJ] = Smoke;
                     Nslist[GKSJ] = smoke.Ns;
-                    Ywlist[GKSJ] = smoke.Yw;
+                    Ywlist[GKSJ] = yw_now;
                     wdlist[GKSJ] = (float)wd;
                     sdlist[GKSJ] = (float)sd;
                     dqylist[GKSJ] = (float)dqy;
@@ -3077,6 +3136,15 @@ namespace zyjsTest
                             if (vmt_2000.readRotateSpeed())
                                 ZS = vmt_2000.zs;
                         }
+                    }
+                    if (nhsjz != null && btgconfig.Ywj == "南华附件")
+                    {
+                        if (nhsjz.readData())
+                            yw_now = nhsjz.yw;
+                    }
+                    else
+                    {
+                        yw_now = smoke.Yw;
                     }
                     Msg(label_zstext, panel_zstext, ZS.ToString(), false);
                     arcScaleComponent3.Value = ZS;

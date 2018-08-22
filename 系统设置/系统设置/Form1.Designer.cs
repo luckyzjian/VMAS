@@ -338,6 +338,10 @@
             this.panel23 = new System.Windows.Forms.Panel();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panelJZJS = new System.Windows.Forms.Panel();
+            this.label188 = new System.Windows.Forms.Label();
+            this.textBoxLug_gljk_value = new System.Windows.Forms.TextBox();
+            this.label189 = new System.Windows.Forms.Label();
+            this.checkBoxLugdownGljk = new System.Windows.Forms.CheckBox();
             this.checkBoxLugdownJcNox = new System.Windows.Forms.CheckBox();
             this.checkBoxGSKHGPD = new System.Windows.Forms.CheckBox();
             this.checkBoxGSKCBPD = new System.Windows.Forms.CheckBox();
@@ -486,10 +490,20 @@
             this.comboBoxDynZsj = new System.Windows.Forms.ComboBox();
             this.panel32 = new System.Windows.Forms.Panel();
             this.label131 = new System.Windows.Forms.Label();
-            this.checkBoxLugdownGljk = new System.Windows.Forms.CheckBox();
-            this.label188 = new System.Windows.Forms.Label();
-            this.textBoxLug_gljk_value = new System.Windows.Forms.TextBox();
-            this.label189 = new System.Windows.Forms.Label();
+            this.comboBoxNHSJZ_COMSTRING = new System.Windows.Forms.ComboBox();
+            this.label190 = new System.Windows.Forms.Label();
+            this.comboBoxNHSJZ_COM = new System.Windows.Forms.ComboBox();
+            this.checkBoxNHSJZ = new System.Windows.Forms.CheckBox();
+            this.label191 = new System.Windows.Forms.Label();
+            this.comboBoxYWJ_SDS = new System.Windows.Forms.ComboBox();
+            this.label192 = new System.Windows.Forms.Label();
+            this.comboBoxYWJ_LUGDOWN = new System.Windows.Forms.ComboBox();
+            this.label193 = new System.Windows.Forms.Label();
+            this.comboBoxYWJ_BTG = new System.Windows.Forms.ComboBox();
+            this.label194 = new System.Windows.Forms.Label();
+            this.comboBoxYWJ_ASM = new System.Windows.Forms.ComboBox();
+            this.panel44 = new System.Windows.Forms.Panel();
+            this.label195 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -555,6 +569,7 @@
             this.panel30.SuspendLayout();
             this.panel31.SuspendLayout();
             this.panel32.SuspendLayout();
+            this.panel44.SuspendLayout();
             this.SuspendLayout();
             // 
             // checkBoxLugdownYw
@@ -649,7 +664,7 @@
             // 
             this.label44.AutoSize = true;
             this.label44.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label44.Location = new System.Drawing.Point(7, 357);
+            this.label44.Location = new System.Drawing.Point(7, 353);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(56, 16);
             this.label44.TabIndex = 38;
@@ -668,7 +683,8 @@
             "VUT-3000",
             "MQZ-2",
             "MQZ-3",
-            "RPM5300"});
+            "RPM5300",
+            "南华附件"});
             this.comboBoxLugdownZsj.Location = new System.Drawing.Point(111, 350);
             this.comboBoxLugdownZsj.Name = "comboBoxLugdownZsj";
             this.comboBoxLugdownZsj.Size = new System.Drawing.Size(86, 24);
@@ -809,6 +825,7 @@
             "MQZ-2",
             "MQZ-3",
             "RPM5300",
+            "南华附件",
             "无"});
             this.comboBoxBtgZsj.Location = new System.Drawing.Point(87, 158);
             this.comboBoxBtgZsj.Name = "comboBoxBtgZsj";
@@ -949,7 +966,8 @@
             "VUT-3000",
             "MQZ-2",
             "MQZ-3",
-            "RPM5300"});
+            "RPM5300",
+            "南华附件"});
             this.comboBoxSdsZsj.Location = new System.Drawing.Point(74, 281);
             this.comboBoxSdsZsj.Name = "comboBoxSdsZsj";
             this.comboBoxSdsZsj.Size = new System.Drawing.Size(79, 24);
@@ -2037,7 +2055,7 @@
             this.label75.AutoSize = true;
             this.label75.BackColor = System.Drawing.Color.Transparent;
             this.label75.Font = new System.Drawing.Font("宋体", 12F);
-            this.label75.Location = new System.Drawing.Point(-1, 372);
+            this.label75.Location = new System.Drawing.Point(-1, 403);
             this.label75.Name = "label75";
             this.label75.Size = new System.Drawing.Size(128, 16);
             this.label75.TabIndex = 104;
@@ -2048,7 +2066,7 @@
             this.textBoxLugdownWdsj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxLugdownWdsj.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxLugdownWdsj.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxLugdownWdsj.Location = new System.Drawing.Point(121, 367);
+            this.textBoxLugdownWdsj.Location = new System.Drawing.Point(121, 398);
             this.textBoxLugdownWdsj.Name = "textBoxLugdownWdsj";
             this.textBoxLugdownWdsj.Size = new System.Drawing.Size(95, 26);
             this.textBoxLugdownWdsj.TabIndex = 103;
@@ -2577,6 +2595,7 @@
             "DWSP_T5",
             "FTH_2",
             "RZ_1",
+            "南华附件",
             "模拟"});
             this.comboBoxTemp.Location = new System.Drawing.Point(89, 114);
             this.comboBoxTemp.Name = "comboBoxTemp";
@@ -2874,8 +2893,8 @@
             // 
             this.tabControl2.BackColor = System.Drawing.Color.Transparent;
             this.tabControl2.CanReorderTabs = true;
-            this.tabControl2.Controls.Add(this.tabControlPanel1);
             this.tabControl2.Controls.Add(this.tabControlPanel2);
+            this.tabControl2.Controls.Add(this.tabControlPanel1);
             this.tabControl2.Location = new System.Drawing.Point(3, 2);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedTabFont = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Bold);
@@ -2890,6 +2909,10 @@
             // 
             // tabControlPanel1
             // 
+            this.tabControlPanel1.Controls.Add(this.checkBoxNHSJZ);
+            this.tabControlPanel1.Controls.Add(this.comboBoxNHSJZ_COMSTRING);
+            this.tabControlPanel1.Controls.Add(this.label190);
+            this.tabControlPanel1.Controls.Add(this.comboBoxNHSJZ_COM);
             this.tabControlPanel1.Controls.Add(this.checkBoxIsLljNhSelfUse);
             this.tabControlPanel1.Controls.Add(this.checkBoxCD_YDJ);
             this.tabControlPanel1.Controls.Add(this.checkBoxCD_FQY);
@@ -3907,10 +3930,13 @@
             // 
             // panelASMSETTINGS
             // 
+            this.panelASMSETTINGS.Controls.Add(this.label194);
             this.panelASMSETTINGS.Controls.Add(this.panel14);
             this.panelASMSETTINGS.Controls.Add(this.label112);
+            this.panelASMSETTINGS.Controls.Add(this.comboBoxYWJ_ASM);
             this.panelASMSETTINGS.Controls.Add(this.label42);
             this.panelASMSETTINGS.Controls.Add(this.textBox3);
+            this.panelASMSETTINGS.Controls.Add(this.panel44);
             this.panelASMSETTINGS.Controls.Add(this.textBoxAsmGlwc);
             this.panelASMSETTINGS.Controls.Add(this.label109);
             this.panelASMSETTINGS.Controls.Add(this.label38);
@@ -3937,7 +3963,7 @@
             this.panelASMSETTINGS.Enabled = false;
             this.panelASMSETTINGS.Location = new System.Drawing.Point(0, 0);
             this.panelASMSETTINGS.Name = "panelASMSETTINGS";
-            this.panelASMSETTINGS.Size = new System.Drawing.Size(1051, 167);
+            this.panelASMSETTINGS.Size = new System.Drawing.Size(1051, 227);
             this.panelASMSETTINGS.TabIndex = 142;
             // 
             // panel14
@@ -4073,9 +4099,9 @@
             this.panelASM.Controls.Add(this.panel12);
             this.panelASM.Controls.Add(this.checkBoxAsmGljk);
             this.panelASM.Controls.Add(this.checkBoxAsmNdjk);
-            this.panelASM.Location = new System.Drawing.Point(2, 169);
+            this.panelASM.Location = new System.Drawing.Point(2, 232);
             this.panelASM.Name = "panelASM";
-            this.panelASM.Size = new System.Drawing.Size(1050, 157);
+            this.panelASM.Size = new System.Drawing.Size(1050, 94);
             this.panelASM.TabIndex = 133;
             this.panelASM.Visible = false;
             // 
@@ -4398,6 +4424,8 @@
             // 
             // panelJZJS
             // 
+            this.panelJZJS.Controls.Add(this.label192);
+            this.panelJZJS.Controls.Add(this.comboBoxYWJ_LUGDOWN);
             this.panelJZJS.Controls.Add(this.label188);
             this.panelJZJS.Controls.Add(this.textBoxLug_gljk_value);
             this.panelJZJS.Controls.Add(this.label189);
@@ -4434,6 +4462,48 @@
             this.panelJZJS.Name = "panelJZJS";
             this.panelJZJS.Size = new System.Drawing.Size(1051, 397);
             this.panelJZJS.TabIndex = 128;
+            // 
+            // label188
+            // 
+            this.label188.AutoSize = true;
+            this.label188.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label188.Location = new System.Drawing.Point(639, 237);
+            this.label188.Name = "label188";
+            this.label188.Size = new System.Drawing.Size(80, 16);
+            this.label188.TabIndex = 135;
+            this.label188.Text = "规定值：<";
+            // 
+            // textBoxLug_gljk_value
+            // 
+            this.textBoxLug_gljk_value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxLug_gljk_value.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxLug_gljk_value.ForeColor = System.Drawing.Color.Blue;
+            this.textBoxLug_gljk_value.Location = new System.Drawing.Point(725, 235);
+            this.textBoxLug_gljk_value.Name = "textBoxLug_gljk_value";
+            this.textBoxLug_gljk_value.Size = new System.Drawing.Size(71, 26);
+            this.textBoxLug_gljk_value.TabIndex = 134;
+            // 
+            // label189
+            // 
+            this.label189.AutoSize = true;
+            this.label189.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label189.Location = new System.Drawing.Point(802, 237);
+            this.label189.Name = "label189";
+            this.label189.Size = new System.Drawing.Size(160, 16);
+            this.label189.TabIndex = 136;
+            this.label189.Text = "%轮边功率时中止检测";
+            // 
+            // checkBoxLugdownGljk
+            // 
+            this.checkBoxLugdownGljk.AutoSize = true;
+            this.checkBoxLugdownGljk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBoxLugdownGljk.ForeColor = System.Drawing.Color.Red;
+            this.checkBoxLugdownGljk.Location = new System.Drawing.Point(7, 236);
+            this.checkBoxLugdownGljk.Name = "checkBoxLugdownGljk";
+            this.checkBoxLugdownGljk.Size = new System.Drawing.Size(603, 20);
+            this.checkBoxLugdownGljk.TabIndex = 133;
+            this.checkBoxLugdownGljk.Text = "在VelMaxHP,90%VelMaxHP,80%VelMaxHP任意工况加载功率低于规定值时，中止检测";
+            this.checkBoxLugdownGljk.UseVisualStyleBackColor = true;
             // 
             // checkBoxLugdownJcNox
             // 
@@ -4585,9 +4655,9 @@
             this.label89.ForeColor = System.Drawing.Color.White;
             this.label89.Location = new System.Drawing.Point(4, 7);
             this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(77, 14);
+            this.label89.Size = new System.Drawing.Size(63, 14);
             this.label89.TabIndex = 107;
-            this.label89.Text = "转速计设置";
+            this.label89.Text = "附件设置";
             // 
             // panel8
             // 
@@ -4632,6 +4702,8 @@
             // 
             // panelSDSSETTINGS
             // 
+            this.panelSDSSETTINGS.Controls.Add(this.label191);
+            this.panelSDSSETTINGS.Controls.Add(this.comboBoxYWJ_SDS);
             this.panelSDSSETTINGS.Controls.Add(this.checkBoxSdsSureTemp);
             this.panelSDSSETTINGS.Controls.Add(this.label124);
             this.panelSDSSETTINGS.Controls.Add(this.comboBoxLTest);
@@ -4892,9 +4964,9 @@
             this.label94.ForeColor = System.Drawing.Color.White;
             this.label94.Location = new System.Drawing.Point(4, 7);
             this.label94.Name = "label94";
-            this.label94.Size = new System.Drawing.Size(77, 14);
+            this.label94.Size = new System.Drawing.Size(63, 14);
             this.label94.TabIndex = 107;
-            this.label94.Text = "转速计设置";
+            this.label94.Text = "附件设置";
             // 
             // panelSDS
             // 
@@ -4949,6 +5021,8 @@
             // 
             // panelBTG
             // 
+            this.panelBTG.Controls.Add(this.label193);
+            this.panelBTG.Controls.Add(this.comboBoxYWJ_BTG);
             this.panelBTG.Controls.Add(this.panel40);
             this.panelBTG.Controls.Add(this.checkBoxBTGJHGCJK);
             this.panelBTG.Controls.Add(this.comboBoxBTGCLCS);
@@ -5130,9 +5204,9 @@
             this.label97.ForeColor = System.Drawing.Color.White;
             this.label97.Location = new System.Drawing.Point(4, 7);
             this.label97.Name = "label97";
-            this.label97.Size = new System.Drawing.Size(77, 14);
+            this.label97.Size = new System.Drawing.Size(63, 14);
             this.label97.TabIndex = 107;
-            this.label97.Text = "转速计设置";
+            this.label97.Text = "附件设置";
             // 
             // panel19
             // 
@@ -6092,6 +6166,7 @@
             "MQZ-2",
             "MQZ-3",
             "RPM5300",
+            "南华附件",
             "未配置"});
             this.comboBoxDynZsj.Location = new System.Drawing.Point(87, 502);
             this.comboBoxDynZsj.Name = "comboBoxDynZsj";
@@ -6119,47 +6194,174 @@
             this.label131.TabIndex = 107;
             this.label131.Text = "转速计设置";
             // 
-            // checkBoxLugdownGljk
+            // comboBoxNHSJZ_COMSTRING
             // 
-            this.checkBoxLugdownGljk.AutoSize = true;
-            this.checkBoxLugdownGljk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxLugdownGljk.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxLugdownGljk.Location = new System.Drawing.Point(7, 236);
-            this.checkBoxLugdownGljk.Name = "checkBoxLugdownGljk";
-            this.checkBoxLugdownGljk.Size = new System.Drawing.Size(603, 20);
-            this.checkBoxLugdownGljk.TabIndex = 133;
-            this.checkBoxLugdownGljk.Text = "在VelMaxHP,90%VelMaxHP,80%VelMaxHP任意工况加载功率低于规定值时，中止检测";
-            this.checkBoxLugdownGljk.UseVisualStyleBackColor = true;
+            this.comboBoxNHSJZ_COMSTRING.Font = new System.Drawing.Font("宋体", 12F);
+            this.comboBoxNHSJZ_COMSTRING.ForeColor = System.Drawing.Color.Blue;
+            this.comboBoxNHSJZ_COMSTRING.FormattingEnabled = true;
+            this.comboBoxNHSJZ_COMSTRING.Items.AddRange(new object[] {
+            "9600,N,8,1",
+            "4800,N,8,1"});
+            this.comboBoxNHSJZ_COMSTRING.Location = new System.Drawing.Point(469, 370);
+            this.comboBoxNHSJZ_COMSTRING.Name = "comboBoxNHSJZ_COMSTRING";
+            this.comboBoxNHSJZ_COMSTRING.Size = new System.Drawing.Size(177, 24);
+            this.comboBoxNHSJZ_COMSTRING.TabIndex = 176;
             // 
-            // label188
+            // label190
             // 
-            this.label188.AutoSize = true;
-            this.label188.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label188.Location = new System.Drawing.Point(639, 237);
-            this.label188.Name = "label188";
-            this.label188.Size = new System.Drawing.Size(80, 16);
-            this.label188.TabIndex = 135;
-            this.label188.Text = "规定值：<";
+            this.label190.AutoSize = true;
+            this.label190.BackColor = System.Drawing.Color.Transparent;
+            this.label190.Font = new System.Drawing.Font("宋体", 12F);
+            this.label190.Location = new System.Drawing.Point(391, 374);
+            this.label190.Name = "label190";
+            this.label190.Size = new System.Drawing.Size(72, 16);
+            this.label190.TabIndex = 177;
+            this.label190.Text = "串口配置";
             // 
-            // textBoxLug_gljk_value
+            // comboBoxNHSJZ_COM
             // 
-            this.textBoxLug_gljk_value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxLug_gljk_value.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxLug_gljk_value.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxLug_gljk_value.Location = new System.Drawing.Point(725, 235);
-            this.textBoxLug_gljk_value.Name = "textBoxLug_gljk_value";
-            this.textBoxLug_gljk_value.Size = new System.Drawing.Size(71, 26);
-            this.textBoxLug_gljk_value.TabIndex = 134;
+            this.comboBoxNHSJZ_COM.Font = new System.Drawing.Font("宋体", 12F);
+            this.comboBoxNHSJZ_COM.ForeColor = System.Drawing.Color.Blue;
+            this.comboBoxNHSJZ_COM.FormattingEnabled = true;
+            this.comboBoxNHSJZ_COM.Items.AddRange(new object[] {
+            "COM1",
+            "COM2",
+            "COM3",
+            "COM4",
+            "COM5",
+            "COM6"});
+            this.comboBoxNHSJZ_COM.Location = new System.Drawing.Point(290, 370);
+            this.comboBoxNHSJZ_COM.Name = "comboBoxNHSJZ_COM";
+            this.comboBoxNHSJZ_COM.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxNHSJZ_COM.TabIndex = 174;
             // 
-            // label189
+            // checkBoxNHSJZ
             // 
-            this.label189.AutoSize = true;
-            this.label189.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label189.Location = new System.Drawing.Point(802, 237);
-            this.label189.Name = "label189";
-            this.label189.Size = new System.Drawing.Size(160, 16);
-            this.label189.TabIndex = 136;
-            this.label189.Text = "%轮边功率时中止检测";
+            this.checkBoxNHSJZ.AutoSize = true;
+            this.checkBoxNHSJZ.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxNHSJZ.Font = new System.Drawing.Font("宋体", 12F);
+            this.checkBoxNHSJZ.Location = new System.Drawing.Point(3, 372);
+            this.checkBoxNHSJZ.Name = "checkBoxNHSJZ";
+            this.checkBoxNHSJZ.Size = new System.Drawing.Size(283, 20);
+            this.checkBoxNHSJZ.TabIndex = 178;
+            this.checkBoxNHSJZ.Text = "南华附件（转速、油温、环境参数）";
+            this.checkBoxNHSJZ.UseVisualStyleBackColor = false;
+            // 
+            // label191
+            // 
+            this.label191.AutoSize = true;
+            this.label191.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label191.Location = new System.Drawing.Point(521, 284);
+            this.label191.Name = "label191";
+            this.label191.Size = new System.Drawing.Size(56, 16);
+            this.label191.TabIndex = 150;
+            this.label191.Text = "油温计";
+            // 
+            // comboBoxYWJ_SDS
+            // 
+            this.comboBoxYWJ_SDS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxYWJ_SDS.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBoxYWJ_SDS.ForeColor = System.Drawing.Color.Blue;
+            this.comboBoxYWJ_SDS.FormattingEnabled = true;
+            this.comboBoxYWJ_SDS.Items.AddRange(new object[] {
+            "废气仪",
+            "南华附件"});
+            this.comboBoxYWJ_SDS.Location = new System.Drawing.Point(583, 281);
+            this.comboBoxYWJ_SDS.Name = "comboBoxYWJ_SDS";
+            this.comboBoxYWJ_SDS.Size = new System.Drawing.Size(131, 24);
+            this.comboBoxYWJ_SDS.TabIndex = 149;
+            // 
+            // label192
+            // 
+            this.label192.AutoSize = true;
+            this.label192.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label192.Location = new System.Drawing.Point(489, 352);
+            this.label192.Name = "label192";
+            this.label192.Size = new System.Drawing.Size(56, 16);
+            this.label192.TabIndex = 152;
+            this.label192.Text = "油温计";
+            // 
+            // comboBoxYWJ_LUGDOWN
+            // 
+            this.comboBoxYWJ_LUGDOWN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxYWJ_LUGDOWN.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBoxYWJ_LUGDOWN.ForeColor = System.Drawing.Color.Blue;
+            this.comboBoxYWJ_LUGDOWN.FormattingEnabled = true;
+            this.comboBoxYWJ_LUGDOWN.Items.AddRange(new object[] {
+            "烟度计",
+            "南华附件"});
+            this.comboBoxYWJ_LUGDOWN.Location = new System.Drawing.Point(551, 349);
+            this.comboBoxYWJ_LUGDOWN.Name = "comboBoxYWJ_LUGDOWN";
+            this.comboBoxYWJ_LUGDOWN.Size = new System.Drawing.Size(131, 24);
+            this.comboBoxYWJ_LUGDOWN.TabIndex = 151;
+            // 
+            // label193
+            // 
+            this.label193.AutoSize = true;
+            this.label193.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label193.Location = new System.Drawing.Point(485, 162);
+            this.label193.Name = "label193";
+            this.label193.Size = new System.Drawing.Size(56, 16);
+            this.label193.TabIndex = 154;
+            this.label193.Text = "油温计";
+            // 
+            // comboBoxYWJ_BTG
+            // 
+            this.comboBoxYWJ_BTG.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxYWJ_BTG.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBoxYWJ_BTG.ForeColor = System.Drawing.Color.Blue;
+            this.comboBoxYWJ_BTG.FormattingEnabled = true;
+            this.comboBoxYWJ_BTG.Items.AddRange(new object[] {
+            "烟度计",
+            "南华附件"});
+            this.comboBoxYWJ_BTG.Location = new System.Drawing.Point(547, 158);
+            this.comboBoxYWJ_BTG.Name = "comboBoxYWJ_BTG";
+            this.comboBoxYWJ_BTG.Size = new System.Drawing.Size(131, 24);
+            this.comboBoxYWJ_BTG.TabIndex = 153;
+            // 
+            // label194
+            // 
+            this.label194.AutoSize = true;
+            this.label194.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label194.Location = new System.Drawing.Point(8, 200);
+            this.label194.Name = "label194";
+            this.label194.Size = new System.Drawing.Size(56, 16);
+            this.label194.TabIndex = 153;
+            this.label194.Text = "油温计";
+            // 
+            // comboBoxYWJ_ASM
+            // 
+            this.comboBoxYWJ_ASM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxYWJ_ASM.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBoxYWJ_ASM.ForeColor = System.Drawing.Color.Blue;
+            this.comboBoxYWJ_ASM.FormattingEnabled = true;
+            this.comboBoxYWJ_ASM.Items.AddRange(new object[] {
+            "废气仪",
+            "南华附件"});
+            this.comboBoxYWJ_ASM.Location = new System.Drawing.Point(70, 197);
+            this.comboBoxYWJ_ASM.Name = "comboBoxYWJ_ASM";
+            this.comboBoxYWJ_ASM.Size = new System.Drawing.Size(131, 24);
+            this.comboBoxYWJ_ASM.TabIndex = 152;
+            // 
+            // panel44
+            // 
+            this.panel44.BackColor = System.Drawing.Color.Gray;
+            this.panel44.Controls.Add(this.label195);
+            this.panel44.Location = new System.Drawing.Point(1, 164);
+            this.panel44.Name = "panel44";
+            this.panel44.Size = new System.Drawing.Size(1051, 27);
+            this.panel44.TabIndex = 151;
+            // 
+            // label195
+            // 
+            this.label195.AutoSize = true;
+            this.label195.Font = new System.Drawing.Font("宋体", 10.5F);
+            this.label195.ForeColor = System.Drawing.Color.White;
+            this.label195.Location = new System.Drawing.Point(4, 7);
+            this.label195.Name = "label195";
+            this.label195.Size = new System.Drawing.Size(63, 14);
+            this.label195.TabIndex = 107;
+            this.label195.Text = "附件设置";
             // 
             // Form1
             // 
@@ -6287,6 +6489,8 @@
             this.panel31.PerformLayout();
             this.panel32.ResumeLayout(false);
             this.panel32.PerformLayout();
+            this.panel44.ResumeLayout(false);
+            this.panel44.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -6753,6 +6957,20 @@
         private System.Windows.Forms.Label label188;
         private System.Windows.Forms.TextBox textBoxLug_gljk_value;
         private System.Windows.Forms.Label label189;
+        private System.Windows.Forms.ComboBox comboBoxNHSJZ_COMSTRING;
+        private System.Windows.Forms.Label label190;
+        private System.Windows.Forms.ComboBox comboBoxNHSJZ_COM;
+        private System.Windows.Forms.CheckBox checkBoxNHSJZ;
+        private System.Windows.Forms.Label label192;
+        private System.Windows.Forms.ComboBox comboBoxYWJ_LUGDOWN;
+        private System.Windows.Forms.Label label191;
+        private System.Windows.Forms.ComboBox comboBoxYWJ_SDS;
+        private System.Windows.Forms.Label label193;
+        private System.Windows.Forms.ComboBox comboBoxYWJ_BTG;
+        private System.Windows.Forms.Label label194;
+        private System.Windows.Forms.ComboBox comboBoxYWJ_ASM;
+        private System.Windows.Forms.Panel panel44;
+        private System.Windows.Forms.Label label195;
     }
 }
 

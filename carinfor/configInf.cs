@@ -442,6 +442,9 @@ namespace carinfor
         public string DATASECONDS_TYPE { set; get; }
         public bool cd_fqy { set; get; }
         public bool cd_ydj { set; get; }
+        public bool IsUseNhSjz { set; get; }
+        public string NhSjz_Com { set; get; }
+        public string NhSjz_ComString { set; get; }
     }
     public class thaxs
     {
@@ -803,6 +806,7 @@ namespace carinfor
             }
         }
         public bool IsAsmHalfXzKsgk { set; get; }
+        public string Ywj { set; get; }
     }
     public class SdsConfigInfdata
     {
@@ -893,6 +897,7 @@ namespace carinfor
         public int TimerModeLP { set; get; }
         public int TimerModeLT { set; get; }
         public bool IsSureTemp { set; get; }
+        public string Ywj { set; get; }
     }
     public class BtgConfigInfdata
     {
@@ -963,6 +968,7 @@ namespace carinfor
         /// 0:取怠速转速 1：取断油转速
         /// </summary>
         public int btgDszsValue { set; get; }
+        public string Ywj { set; get; }
 
     }
     public class DynConfigInfdata
@@ -1117,6 +1123,7 @@ namespace carinfor
         public bool gsKcbPD { set; get; }
         public bool gsKhgPD { set; get; }
         public bool testNOx { set; get; }
+        public string Ywj { set; get; }
     }
     public class selfCheckItem
     {
@@ -1948,6 +1955,15 @@ namespace carinfor
                 configinidata.cd_ydj = true;
             else
                 configinidata.cd_ydj = false;
+            ini.INIIO.GetPrivateProfileString("配置参数", "南华司机助", "N", temp, 2048, startUpPath + "/detectConfig.ini");
+            if (temp.ToString().Trim() == "Y")
+                configinidata.IsUseNhSjz = true;
+            else
+                configinidata.IsUseNhSjz = false;
+            ini.INIIO.GetPrivateProfileString("配置参数", "南华司机助串口", "COM1", temp, 2048, startUpPath + "/detectConfig.ini");
+            configinidata.NhSjz_Com = temp.ToString();
+            ini.INIIO.GetPrivateProfileString("配置参数", "南华司机助串口配置", "9600,N,8,1", temp, 2048, startUpPath + "/detectConfig.ini");
+            configinidata.NhSjz_ComString = temp.ToString();
             return configinidata;
         }
         public bool writeEquipmentConfig(equipmentConfigInfdata equipconfig)
@@ -2040,6 +2056,10 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("配置参数", "过程数据", equipconfig.DATASECONDS_TYPE, startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("配置参数", "驰达废气仪", equipconfig.cd_fqy ? "Y" : "N", startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("配置参数", "驰达烟度计", equipconfig.cd_ydj ? "Y" : "N", startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("配置参数", "南华司机助", equipconfig.IsUseNhSjz ? "Y" : "N", startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("配置参数", "南华司机助串口", equipconfig.NhSjz_Com, startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("配置参数", "南华司机助串口配置", equipconfig.NhSjz_ComString, startUpPath + "/detectConfig.ini");
+                
                 return true;
             }
             catch
@@ -2084,16 +2104,16 @@ namespace carinfor
                 configinidata.ThinnerratioMonitor = true;
             else
                 configinidata.ThinnerratioMonitor = false;
-            ini.INIIO.GetPrivateProfileString("VMAS", "环境氧监测", "", temp, 2048, startUpPath+"/detectConfig.ini");
-            //if (temp.ToString().Trim() == "true")
+            ini.INIIO.GetPrivateProfileString("VMAS", "环境氧监测", "true", temp, 2048, startUpPath+"/detectConfig.ini");
+            if (temp.ToString().Trim() == "true")
                 configinidata.Huanjingo2Monitor = true;
-            //else
-            //    configinidata.Huanjingo2Monitor = false;
-            ini.INIIO.GetPrivateProfileString("VMAS", "残余量监测", "", temp, 2048, startUpPath+"/detectConfig.ini");
-            //if (temp.ToString().Trim() == "true")
+            else
+                configinidata.Huanjingo2Monitor = false;
+            ini.INIIO.GetPrivateProfileString("VMAS", "残余量监测", "true", temp, 2048, startUpPath+"/detectConfig.ini");
+            if (temp.ToString().Trim() == "true")
                 configinidata.RemainedMonitor = true;
-            //else
-            //    configinidata.RemainedMonitor = false;
+            else
+                configinidata.RemainedMonitor = false;
 
 
             ini.INIIO.GetPrivateProfileString("VMAS", "是否调零", "", temp, 2048, startUpPath+"/detectConfig.ini");
@@ -2359,7 +2379,9 @@ namespace carinfor
                 configinidata.IsAsmHalfXzKsgk = true;
             else
                 configinidata.IsAsmHalfXzKsgk = false;
-            
+
+            ini.INIIO.GetPrivateProfileString("ASM", "油温计", "废气仪", temp, 2048, startUpPath + "/detectConfig.ini");
+            configinidata.Ywj = temp.ToString();
             return configinidata;
         }
 
@@ -2386,6 +2408,7 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("ASM", "功率加载", configinidata.Gljz.ToString("0.0"), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("ASM", "连续超差", configinidata.Lxcc.ToString("0.0"), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("ASM", "反吹时间", configinidata.FlowTime.ToString("0"), startUpPath+"/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("ASM", "油温计", configinidata.Ywj, startUpPath + "/detectConfig.ini");
 
                 return true;
             }
@@ -2447,6 +2470,9 @@ namespace carinfor
 
             ini.INIIO.GetPrivateProfileString("SDS", "转速计串口", "", temp, 2048, startUpPath+"/detectConfig.ini");
             configinidata.Zsjck = temp.ToString();
+
+            ini.INIIO.GetPrivateProfileString("SDS", "油温计", "废气仪", temp, 2048, startUpPath + "/detectConfig.ini");
+            configinidata.Ywj = temp.ToString();
             ini.INIIO.GetPrivateProfileString("SDS", "是否检测油温", "false", temp, 2048, startUpPath+"/detectConfig.ini");
             if (temp.ToString().Trim() == "true")
                 configinidata.IsTestYw = true;
@@ -2504,6 +2530,7 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("SDS", "反吹时间", configinidata.FlowTime.ToString("0"), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("SDS", "转速计", configinidata.Zsj, startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("SDS", "转速计串口", configinidata.Zsjck, startUpPath+"/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("SDS", "油温计", configinidata.Ywj, startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("SDS", "预热计时模式", configinidata.TimerMode3500.ToString("0"), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("SDS", "高怠速准备计时模式", configinidata.TimerModeHP.ToString("0"), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("SDS", "高怠速测量计时模式", configinidata.TimerModeHT.ToString("0"), startUpPath+"/detectConfig.ini");
@@ -2546,6 +2573,9 @@ namespace carinfor
 
             ini.INIIO.GetPrivateProfileString("BTG", "转速计串口", "", temp, 2048, startUpPath+"/detectConfig.ini");
             configinidata.Zsjck = temp.ToString();
+
+            ini.INIIO.GetPrivateProfileString("BTG", "油温计", "烟度计", temp, 2048, startUpPath + "/detectConfig.ini");
+            configinidata.Ywj = temp.ToString();
 
             ini.INIIO.GetPrivateProfileString("BTG", "是否检测油温", "false", temp, 2048, startUpPath+"/detectConfig.ini");
             if (temp.ToString().Trim() == "true")
@@ -2596,6 +2626,7 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("BTG", "断油转速", configinidata.Dyzs.ToString("0"), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("BTG", "转速计", configinidata.Zsj, startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("BTG", "转速计串口", configinidata.Zsjck, startUpPath+"/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("BTG", "油温计", configinidata.Ywj, startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("BTG", "是否检测油温", configinidata.IsTestYw.ToString().ToLower(), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("BTG", "人工确认探头", configinidata.BtgManualTantou ? "Y" : "N", startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("BTG", "不透光吹拂次数", configinidata.Btgcfcs.ToString(), startUpPath+"/detectConfig.ini");
@@ -2920,6 +2951,10 @@ namespace carinfor
             ini.INIIO.GetPrivateProfileString("LUGDOWN", "转速计串口", "", temp, 2048, startUpPath+"/detectConfig.ini");
             configinidata.Zsjck = temp.ToString();
 
+
+            ini.INIIO.GetPrivateProfileString("LUGDOWN", "油温计", "烟度计", temp, 2048, startUpPath + "/detectConfig.ini");
+            configinidata.Ywj = temp.ToString();
+
             ini.INIIO.GetPrivateProfileString("LUGDOWN", "功率扫描模式", "", temp, 2048, startUpPath+"/detectConfig.ini");
             configinidata.Glsmms = temp.ToString();
 
@@ -2988,6 +3023,7 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("配置参数", "是否评价发动机转速", configinidata.isFdjzsJudge.ToString().ToLower(), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "转速计", configinidata.Zsj, startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "转速计串口", configinidata.Zsjck, startUpPath+"/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("LUGDOWN", "油温计", configinidata.Ywj, startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "功率扫描模式", configinidata.Glsmms, startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "扫描频率", configinidata.Smpl.ToString("0"), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "速度稳定区间", configinidata.Sdwdqj.ToString("0.0"), startUpPath+"/detectConfig.ini");

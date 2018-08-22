@@ -44,6 +44,7 @@ namespace lugdowm
         Exhaust.RPM5300 rpm5300 = null;
         Exhaust.XCE_100 xce_100 = null;
         Exhaust.FLB_100 notester = null;
+        Exhaust.Nhsjz nhsjz = null;
         private Exhaust.yhControl yhy = null;
         thaxs thaxsdata = new thaxs();
         bool isUseRotater = false;
@@ -76,6 +77,7 @@ namespace lugdowm
         public float Force = 0;                                                                     //力
         public float Power = 0;                                                                     //功率
         public static float ZS = 700;                                                                        //转速
+        private float yw_now = 0;
         public static float Smoke = 0;                                                                     //烟度
         public static float No = 0;
         public float GL = 0;                                                                          //功率
@@ -856,6 +858,31 @@ namespace lugdowm
             {
                 xce_100 = null;
                 Init_flag = false;
+            }
+            try
+            {
+                if (equipconfig.IsUseNhSjz)
+                {
+                    try
+                    {
+                        nhsjz = new Exhaust.Nhsjz();
+                        if (nhsjz.Init_Comm(equipconfig.NhSjz_Com, equipconfig.NhSjz_ComString) == false)
+                        {
+                            nhsjz = null;
+                            Init_flag = false;
+                            init_message += "南华司机助串口打开失败.";
+                        }
+                    }
+                    catch (Exception er)
+                    {
+                        nhsjz = null;
+                        Init_flag = false;
+                        MessageBox.Show("南华司机助串口" + equipconfig.NhSjz_Com + "打开失败:" + er.ToString(), "出错啦");
+                    }
+                }
+            }
+            catch (Exception)
+            {
             }
         }
         private void initChujian()
@@ -3135,6 +3162,15 @@ namespace lugdowm
                         {
                             ZS = smoke.Zs;
                         }
+                        if(nhsjz!=null&&lugdownconfig.Ywj=="南华附件")
+                        {
+                            if (nhsjz.readData())
+                                yw_now = nhsjz.yw;
+                        }
+                        else
+                        {
+                            yw_now = smoke.Yw;
+                        }
                         if (carbj.ISUSE)
                         {
                             Smoke = (float)(carbj.JZJS_K * smoke.K);
@@ -3327,7 +3363,7 @@ namespace lugdowm
                         dqylist[GKSJ] = (float)DQY;
                         dcf = (float)init_xzxs(WD, SD, DQY, carbj.jqfs);
                         DCFlist[GKSJ] = dcf;
-                        ywlist[GKSJ] = smoke.Yw;
+                        ywlist[GKSJ] = yw_now;
                         opnolist[GKSJ] = opno;
                         opcodelist[GKSJ] = opcode;
                         dynnlist[GKSJ] = (int)(igbt.Force);
@@ -3456,6 +3492,11 @@ namespace lugdowm
                                 if (yhy.ComPort_1.IsOpen)
                                     yhy.ComPort_1.Close();
                             }
+                            if (nhsjz != null)
+                            {
+                                if (nhsjz.ComPort_1.IsOpen)
+                                    nhsjz.ComPort_1.Close();
+                            }
                         }
                         catch
                         { }
@@ -3541,6 +3582,11 @@ namespace lugdowm
                         {
                             if (yhy.ComPort_1.IsOpen)
                                 yhy.ComPort_1.Close();
+                        }
+                        if (nhsjz != null)
+                        {
+                            if (nhsjz.ComPort_1.IsOpen)
+                                nhsjz.ComPort_1.Close();
                         }
                     }
                     catch

@@ -42,6 +42,7 @@ namespace ASMtest
         Exhaust.FLB_100 flb_100 = null;
         Exhaust.Flv_1000 flv_1000 = null;
         Exhaust.XCE_100 xce_100 = null;
+        Exhaust.Nhsjz nhsjz = null;
         thaxs thaxsdata = new thaxs();
         //LedControl.led ledcontrol = null;
         speed_data speedNow = new speed_data();//提前显示前4秒的状态
@@ -164,7 +165,7 @@ namespace ASMtest
         public float[] Vmas_Exhaust_k_zb = new float[195];//每秒NO质量
         public int[] lowflowarray = new int[300];
         public int isLowFlow = 0;
-
+        private float yw = 0;
         private bool jcStatus = false;
         private string djccyString = "";
         private string sjxlString = "";
@@ -743,6 +744,31 @@ namespace ASMtest
                 Init_flag = false;
             }
 
+            try
+            {
+                if (equipconfig.IsUseNhSjz)
+                {
+                    try
+                    {
+                        nhsjz = new Exhaust.Nhsjz();
+                        if (nhsjz.Init_Comm(equipconfig.NhSjz_Com, equipconfig.NhSjz_ComString) == false)
+                        {
+                            nhsjz = null;
+                            Init_flag = false;
+                            init_message += "南华司机助串口打开失败.";
+                        }
+                    }
+                    catch (Exception er)
+                    {
+                        nhsjz = null;
+                        Init_flag = false;
+                        MessageBox.Show("南华司机助串口" + equipconfig.NhSjz_Com + "打开失败:" + er.ToString(), "出错啦");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
         private void initChujian()
         {
@@ -898,7 +924,7 @@ namespace ASMtest
                             hjwdString += WD.ToString("0.0") + ",";
                             dqylString += DQY.ToString("0.0") + ",";
                             xdsdString += SD.ToString("0.0") + ",";
-                            ywString += Vmas_Exhaust_Now.YW.ToString() + ",";
+                            ywString += yw.ToString() + ",";
                             jcztString += jczt.ToString() + ",";
 
                         }
@@ -1000,7 +1026,7 @@ namespace ASMtest
                             //Vmas_xsxzxs[gksj_count] = xsxzxs;//稀释修正系数
                             //Vmas_sdxzxs[gksj_count] = sdxzxs;//湿度修正系数
                             Vmas_Exhaust_zs[gksj_count] = Vmas_Exhaust_Now.ZS;//转速
-                            Vmas_Exhaust_yw[gksj_count] = Vmas_Exhaust_Now.YW;//油温
+                            Vmas_Exhaust_yw[gksj_count] = yw;//油温
                             Vmas_Exhaust_nold[gksj_count] = Vmas_Exhaust_Now.NO;//NO浓度
                             if (asmconfig.IfDisplayData)
                             {
@@ -1295,6 +1321,15 @@ namespace ASMtest
                     Thread.Sleep(30);
                 }
                 isLowFlow = fla_502.CheckIsLowFlow();
+                if (nhsjz != null && asmconfig.Ywj == "南华附件")
+                {
+                    if (nhsjz.readData())
+                        yw = nhsjz.yw;
+                }
+                else
+                {
+                    yw = Vmas_Exhaust_Now.YW;
+                }
                 Thread.Sleep(50);
             }
         }
@@ -2654,6 +2689,11 @@ namespace ASMtest
                                 if (xce_100.ComPort_1.IsOpen)
                                     xce_100.ComPort_1.Close();
                             }
+                            if (nhsjz != null)
+                            {
+                                if (nhsjz.ComPort_1.IsOpen)
+                                    nhsjz.ComPort_1.Close();
+                            }
                         }
                         catch
                         { }
@@ -2694,8 +2734,13 @@ namespace ASMtest
                                 {
                                     if (xce_100.ComPort_1.IsOpen)
                                         xce_100.ComPort_1.Close();
-                                }
-                            }
+                        }
+                        if (nhsjz != null)
+                        {
+                            if (nhsjz.ComPort_1.IsOpen)
+                                nhsjz.ComPort_1.Close();
+                        }
+                    }
                             catch
                             { }
 
