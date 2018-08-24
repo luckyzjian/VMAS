@@ -1893,7 +1893,8 @@ namespace ASMtest
                         asm_data.No2540pd = "";
                         asm_data.RESULT = "合格";
                         double rev5025 = 0, lambda5025 = 0;
-                        for (int i = 0; i < 25; i++)//将数据写入逐秒数据
+                        int startseconds=(equipconfig.DATASECONDS_TYPE == "东软甘肃")?15:0;
+                        for (int i = startseconds; i < 25; i++)//将数据写入逐秒数据
                         {
                             dr = vmas_datatable.NewRow();
                             dr["全程时序"] = Vmas_qcsj[i];
@@ -2206,7 +2207,8 @@ namespace ASMtest
                                 asm_data.No2540pd = "合格";
                                 asm_data.RESULT = "合格";
                                 double rev2540 = 0, lambda2540 = 0;
-                                for (int i = 0; i < 25; i++)//将数据写入逐秒数据
+                                int startseconds = (equipconfig.DATASECONDS_TYPE == "东软甘肃") ? 15 : 0;
+                                for (int i = startseconds; i < 25; i++)//将数据写入逐秒数据
                                 {
                                     dr = vmas_datatable.NewRow();
                                     dr["全程时序"] = Vmas_qcsj[i];
