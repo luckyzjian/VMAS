@@ -2105,15 +2105,15 @@ namespace carinfor
             else
                 configinidata.ThinnerratioMonitor = false;
             ini.INIIO.GetPrivateProfileString("VMAS", "环境氧监测", "true", temp, 2048, startUpPath+"/detectConfig.ini");
-            if (temp.ToString().Trim() == "true")
+            //if (temp.ToString().Trim() == "true")
                 configinidata.Huanjingo2Monitor = true;
-            else
-                configinidata.Huanjingo2Monitor = false;
+            //else
+            //    configinidata.Huanjingo2Monitor = false;
             ini.INIIO.GetPrivateProfileString("VMAS", "残余量监测", "true", temp, 2048, startUpPath+"/detectConfig.ini");
-            if (temp.ToString().Trim() == "true")
+            //if (temp.ToString().Trim() == "true")
                 configinidata.RemainedMonitor = true;
-            else
-                configinidata.RemainedMonitor = false;
+            //else
+            //    configinidata.RemainedMonitor = false;
 
 
             ini.INIIO.GetPrivateProfileString("VMAS", "是否调零", "", temp, 2048, startUpPath+"/detectConfig.ini");

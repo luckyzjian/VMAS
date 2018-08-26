@@ -1599,60 +1599,63 @@ namespace vmasDetect
                     }
                     else if (GKSJ >= 3 && vmasconfig.ConcentrationMonitor == true&&!vmasconfig.SdCo2AndO2Monitor)//如果浓度监控开启的话
                     {
-                        if (((Vmas_Exhaust_cold[gksj_count] + Vmas_Exhaust_co2ld[gksj_count]) < vmasconfig.Ndz) && Vmas_Exhaust_accelerate[gksj_count - fqy_delayTime] == true)
+                        if ((Vmas_Exhaust_cold[gksj_count] + Vmas_Exhaust_co2ld[gksj_count]) < vmasconfig.Ndz )
                         {
-                                    co2excedlimit = 0;
-                                    o2excedlimit = 0;
-                                    ovalShapeNDZ.FillColor = Color.Red;
-                                    outTimeContinus = 0f;
-                                    outTimeTotal = 0f;
-                                    TH_ST.Abort();
-                                    Th_get_FqandLl.Abort();
-                                    th_get_llj.Abort();
-                                    Speed_Jc_flag = false;
-                                    Ig195_status = false;
-                                    gongkuangTime = 0f;
-                                    GKSJ = 0;
-                                    //fla_502.Stop();
-                                    Msg(label_message, panel_msg, "[CO]+[CO2]小于6%，请检查取样探头是否脱落", true);
-                                    ts1 = "检测中止";
-                                    ts2 = "浓度值低于规定值"; 
-                                    if (vmasconfig.AutoRestart)
-                                    {
-                                        power_flag = false;
-                                        isCcStop = true;
-                                        jctime = DateTime.Now.ToString();
-                                        TH_ST = new Thread(Jc_Exe);
-                                        Th_get_FqandLl = new Thread(Fq_Detect);
-                                        th_get_llj = new Thread(llj_Detect);
-                                        timer2.Start();
-                                        JC_Status = true;
-                                        pictureBox1.Location = new Point(1, -5303);
-                                        pictureBox2.Location = new Point(96, 5936);
-                                        pictureBox4.Location = new Point(96, 5936);
-                                        //1, -5304
-                                        ovalShapeLXCC.FillColor = Color.Lime;
-                                        ovalShapeLJCC.FillColor = Color.Lime;
-                                        //ovalShapeNDZ.FillColor = Color.Lime;
-                                        ovalShapeLLJLJ.FillColor = Color.Lime;
-                                        ovalShapeWQLL.FillColor = Color.Lime;
-                                        ovalShapeXSB.FillColor = Color.Lime;
-                                        ovalShapeJZGL.FillColor = Color.Lime;
-                                        Msg(labelGksj, panelGksj, "000.0", false);
-                                        Msg(labelCO, panelCO, "0.00", false);
-                                        Msg(labelCO2, panelCO2, "0.00", false);
-                                        Msg(labelOO2, panelO2, "0.00", false);
-                                        Msg(labelHC, panelHC, "0", false);
-                                        Msg(labelNO, panelNO, "0", false);
-                                        Msg(labelLL, panelLL, "0.0", false);
-                                        Msg(labelLXCC, panelLXCC, "0.0", false);
-                                        Msg(labelLJCC, panelLJCC, "0.0", false);
-                                        TH_ST.Start();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("[CO]+[CO2]小于6%，检测终止", "警告");
-                                    }
+                            if (vmasconfig.IsWholeProcessJK || Vmas_Exhaust_accelerate[gksj_count - fqy_delayTime] == true)
+                            {
+                                co2excedlimit = 0;
+                                o2excedlimit = 0;
+                                ovalShapeNDZ.FillColor = Color.Red;
+                                outTimeContinus = 0f;
+                                outTimeTotal = 0f;
+                                TH_ST.Abort();
+                                Th_get_FqandLl.Abort();
+                                th_get_llj.Abort();
+                                Speed_Jc_flag = false;
+                                Ig195_status = false;
+                                gongkuangTime = 0f;
+                                GKSJ = 0;
+                                //fla_502.Stop();
+                                Msg(label_message, panel_msg, "[CO]+[CO2]小于规定值，请检查取样探头是否脱落", true);
+                                ts1 = "检测中止";
+                                ts2 = "浓度值低于规定值";
+                                if (vmasconfig.AutoRestart)
+                                {
+                                    power_flag = false;
+                                    isCcStop = true;
+                                    jctime = DateTime.Now.ToString();
+                                    TH_ST = new Thread(Jc_Exe);
+                                    Th_get_FqandLl = new Thread(Fq_Detect);
+                                    th_get_llj = new Thread(llj_Detect);
+                                    timer2.Start();
+                                    JC_Status = true;
+                                    pictureBox1.Location = new Point(1, -5303);
+                                    pictureBox2.Location = new Point(96, 5936);
+                                    pictureBox4.Location = new Point(96, 5936);
+                                    //1, -5304
+                                    ovalShapeLXCC.FillColor = Color.Lime;
+                                    ovalShapeLJCC.FillColor = Color.Lime;
+                                    //ovalShapeNDZ.FillColor = Color.Lime;
+                                    ovalShapeLLJLJ.FillColor = Color.Lime;
+                                    ovalShapeWQLL.FillColor = Color.Lime;
+                                    ovalShapeXSB.FillColor = Color.Lime;
+                                    ovalShapeJZGL.FillColor = Color.Lime;
+                                    Msg(labelGksj, panelGksj, "000.0", false);
+                                    Msg(labelCO, panelCO, "0.00", false);
+                                    Msg(labelCO2, panelCO2, "0.00", false);
+                                    Msg(labelOO2, panelO2, "0.00", false);
+                                    Msg(labelHC, panelHC, "0", false);
+                                    Msg(labelNO, panelNO, "0", false);
+                                    Msg(labelLL, panelLL, "0.0", false);
+                                    Msg(labelLXCC, panelLXCC, "0.0", false);
+                                    Msg(labelLJCC, panelLJCC, "0.0", false);
+                                    TH_ST.Start();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("[CO]+[CO2]小于规定值，检测终止", "警告");
+                                }
+                            }
                         }
                     }
                     else if(GKSJ>=0)
