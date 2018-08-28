@@ -133,6 +133,11 @@ namespace 系统设置
             checkBoxLugdownJcNox.Checked = lugdownconfig.testNOx;
             checkBoxLugdownGljk.Checked = lugdownconfig.LugdownGljk;
             textBoxLug_gljk_value.Text = lugdownconfig.Lugdown_Gljk_value.ToString("0");
+            checkBoxLugdown_glsm_ydjk.Checked = lugdownconfig.isYdjk_glsm;
+            checkBoxLugdown_cl_ydjk.Checked = lugdownconfig.isYdjk_cl;
+            textBoxLugdown_glsm_ydjk.Text = lugdownconfig.ydjk_glsm_value.ToString("0.00");
+            textBoxLugdown_cl_ydjk.Text = lugdownconfig.ydjk_cl_value.ToString("0.00");
+            
 
             textBoxSdsFlowtime.Text = sdsconfig.FlowTime.ToString("0");
             textBoxSdsNdz.Text = sdsconfig.Ndz.ToString("0.0");
@@ -164,6 +169,8 @@ namespace 系统设置
             comboBoxYWJ_BTG.Text = btgconfig.Ywj;
             if (btgconfig.btgDszsValue == 0) radioButtonBTGDSZS.Checked = true;
             else radioButtonBTGDYZS.Checked = true;
+            checkBoxBtg_cl_ydjk.Checked = btgconfig.isYdjk;
+            textBoxBtg_cl_ydjk.Text = btgconfig.ydjk_value.ToString("0.00");
 
 
             comboBoxDynZsj.Text = dynconfig.Zsj;
@@ -404,6 +411,11 @@ namespace 系统设置
                 lugdownconfig.LugdownGljk = checkBoxLugdownGljk.Checked;
                 lugdownconfig.Lugdown_Gljk_value = float.Parse(textBoxLug_gljk_value.Text);
                 lugdownconfig.Ywj = comboBoxYWJ_LUGDOWN.Text;
+                lugdownconfig.isYdjk_glsm = checkBoxLugdown_glsm_ydjk.Checked;
+                lugdownconfig.ydjk_glsm_value = double.Parse(textBoxLugdown_glsm_ydjk.Text);
+                lugdownconfig.isYdjk_cl = checkBoxLugdown_cl_ydjk.Checked;
+                lugdownconfig.ydjk_cl_value = double.Parse(textBoxLugdown_cl_ydjk.Text);
+
                 if (lugdownconfig.Lugdown_Gljk_value > 80f || lugdownconfig.Lugdown_Gljk_value < 40f)
                 {
                     MessageBox.Show("加载功率规定值范围为40~80", "数值输入超出范围");
@@ -460,6 +472,8 @@ namespace 系统设置
             btgconfig.BtgManualTantou = checkBoxBtgManualTantou.Checked;
             btgconfig.btgDszsValue = radioButtonBTGDSZS.Checked ? 0 : 1;
             btgconfig.Ywj = comboBoxYWJ_BTG.Text;
+            btgconfig.isYdjk = checkBoxBtg_cl_ydjk.Checked;
+            btgconfig.ydjk_value = double.Parse(textBoxBtg_cl_ydjk.Text);
             if (configini.writeBtgConfigIni(btgconfig))
                 MessageBox.Show("保存成功.", "系统提示");
             else

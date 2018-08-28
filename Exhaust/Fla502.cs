@@ -9,7 +9,22 @@ namespace Exhaust
 {
     public class Fla502_data
     {
-
+        public Fla502_data()
+        { 
+            
+            CO2 = 0;
+            CO = 0;
+            HC = 0;
+            NO = 0;
+            O2 = 0;
+            SD = 0;
+            YW = 0;
+            HJWD = 0;
+            ZS = 0;
+            QLYL = 0;
+            λ = 0;
+            HJYL = 0;
+        }
         private float _hc = 0.0f;
         private float _co = 0.0f;
         private float _no = 0.0f;
@@ -1253,6 +1268,8 @@ namespace Exhaust
             // return Struct_Now;
         }
         #endregion
+
+        private Fla502_temp_data Fla502_tempdata = new Fla502_temp_data();
         #region 获取辅助数据
         /// <summary>
         /// byte cmdGetTemp = 0x02;
@@ -1265,10 +1282,6 @@ namespace Exhaust
             {
                 case "fla_502":
                     ReadData();
-                    Fla502_temp_data Fla502_tempdata = new Fla502_temp_data();
-                    Fla502_tempdata.TEMP = 0;
-                    Fla502_tempdata.AIRPRESSURE = 0;
-                    Fla502_tempdata.HUMIDITY = 0;
                     byte[] Content = new byte[] { cmdGetTemp };
                     ComPort_1.Write(Content, 0, 1);//
                     Thread.Sleep(20);
@@ -1300,9 +1313,6 @@ namespace Exhaust
                 case cdxh:
                     ReadData();
                     Fla502_temp_data cd_tempdata = new Fla502_temp_data();
-                    cd_tempdata.TEMP = 0;
-                    cd_tempdata.AIRPRESSURE = 0;
-                    cd_tempdata.HUMIDITY = 0;
                     byte[] ContentCD = new byte[] { CDcmdGetTemp };
                     ComPort_1.Write(ContentCD, 0, 1);//
                     Thread.Sleep(20);
@@ -1334,9 +1344,6 @@ namespace Exhaust
                 case "nha_503":
                     ReadData();
                     Fla502_temp_data na503_tempdata = new Fla502_temp_data();
-                    na503_tempdata.TEMP = 0;
-                    na503_tempdata.AIRPRESSURE = 0;
-                    na503_tempdata.HUMIDITY = 0;
                     byte[] naContent = new byte[] { cmdGetTemp_nh503 };
                     ComPort_1.Write(naContent, 0, 1);//
                     Thread.Sleep(20);
@@ -1375,9 +1382,6 @@ namespace Exhaust
                 default:
                     ReadData();
                     Fla502_temp_data de503_tempdata = new Fla502_temp_data();
-                    de503_tempdata.TEMP = 0;
-                    de503_tempdata.AIRPRESSURE = 0;
-                    de503_tempdata.HUMIDITY = 0;
                     return de503_tempdata;
                     break;
             }
@@ -4010,6 +4014,7 @@ namespace Exhaust
             }
         }
         #endregion
+        private Fla502_data Fla502_data = new Fla502_data();
         #region 获取实时数据
         /// <summary>
         /// 获取实时数据 至少耗时500ms
@@ -4018,19 +4023,6 @@ namespace Exhaust
         public Fla502_data GetData()
         {
             ReadData();
-            Fla502_data Fla502_data = new Fla502_data();
-            Fla502_data.CO2 = 0;
-            Fla502_data.CO = 0;
-            Fla502_data.HC = 0;
-            Fla502_data.NO = 0;
-            Fla502_data.O2 = 0;
-            Fla502_data.SD = 0;
-            Fla502_data.YW = 0;
-            Fla502_data.HJWD = 0;
-            Fla502_data.ZS = 0;
-            Fla502_data.QLYL = 0;
-            Fla502_data.λ = 0;
-            Fla502_data.HJYL = 0;
             int i = 0;
             switch (yqxh)
             {

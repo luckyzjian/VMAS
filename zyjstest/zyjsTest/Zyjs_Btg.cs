@@ -1445,6 +1445,31 @@ namespace zyjsTest
                             isReadRealTime = true;
                         }
                     }
+                    if(btgconfig.isYdjk)
+                    {
+                        if (preparedata < btgconfig.ydjk_value)
+                        {
+                            ts1 = "烟度值过低";
+                            ts2 = "检测中止";
+                            Msg(label_msg, panel_cp, "烟度值过低,检测中止,检查探头是否脱落", false);
+                            if (ledcontrol != null)
+                            {
+                                ledcontrol.writeLed("烟度值过低　　　", 2, equipconfig.Ledxh);
+                                ledcontrol.writeLed("　　检测中止　　", 5, equipconfig.Ledxh);
+                            }
+                            try
+                            {
+                                Th_get_FqandLl.Abort();
+                            }
+                            catch { }
+                            zyjs_status = false;
+                            JC_Status = false;
+                            SaveData_status = false;
+                            timer2.Stop();
+                            this.BeginInvoke(new wt_void(Ref_Button));
+                            return;
+                        }
+                    }
                     if (equipconfig.useJHJK)
                     {
                         thistimezslist.Clear();
@@ -1662,6 +1687,31 @@ namespace zyjsTest
                                 maxvalue = 0; maxzsvalue = 0;
                                 zyjs_data.PrepareData = preparedata.ToString("0.00");
                                 isReadRealTime = true;
+                            }
+                        }
+                        if (btgconfig.isYdjk)
+                        {
+                            if (preparedata < btgconfig.ydjk_value)
+                            {
+                                ts1 = "烟度值过低";
+                                ts2 = "检测中止";
+                                Msg(label_msg, panel_cp, "烟度值过低,检测中止,检查探头是否脱落", false);
+                                if (ledcontrol != null)
+                                {
+                                    ledcontrol.writeLed("烟度值过低　　　", 2, equipconfig.Ledxh);
+                                    ledcontrol.writeLed("　　检测中止　　", 5, equipconfig.Ledxh);
+                                }
+                                try
+                                {
+                                    Th_get_FqandLl.Abort();
+                                }
+                                catch { }
+                                zyjs_status = false;
+                                JC_Status = false;
+                                SaveData_status = false;
+                                timer2.Stop();
+                                this.BeginInvoke(new wt_void(Ref_Button));
+                                return;
                             }
                         }
                         if (equipconfig.useJHJK)
@@ -1883,7 +1933,7 @@ namespace zyjsTest
                         else
                             dszs = ZS;
                         maxvalue = 0; maxzsvalue = 0;
-                        if (dycclz < 0.01) dycclz = 0.01;
+                        //if (dycclz < 0.01) dycclz = 0.01;
                         dycyw = dycsmoke.Yw;
                         if (btgconfig.Zsj == "无")
                         {
@@ -1927,6 +1977,31 @@ namespace zyjsTest
                         drah["相对湿度"] = sd.ToString();
                         btg_ahdatatable.Rows.Add(drah);
                         isReadRealTime = true;
+                    }
+                }
+                if (btgconfig.isYdjk)
+                {
+                    if (dycclz < btgconfig.ydjk_value)
+                    {
+                        ts1 = "烟度值过低";
+                        ts2 = "检测中止";
+                        Msg(label_msg, panel_cp, "烟度值过低,检测中止,检查探头是否脱落", false);
+                        if (ledcontrol != null)
+                        {
+                            ledcontrol.writeLed("烟度值过低　　　", 2, equipconfig.Ledxh);
+                            ledcontrol.writeLed("　　检测中止　　", 5, equipconfig.Ledxh);
+                        }
+                        try
+                        {
+                            Th_get_FqandLl.Abort();
+                        }
+                        catch { }
+                        zyjs_status = false;
+                        JC_Status = false;
+                        SaveData_status = false;
+                        timer2.Stop();
+                        this.BeginInvoke(new wt_void(Ref_Button));
+                        return;
                     }
                 }
                 if (equipconfig.useJHJK)
@@ -2139,7 +2214,7 @@ namespace zyjsTest
                         if (equipconfig.Ydjxh == "mqy_200" || equipconfig.Ydjxh == "flb_100" || equipconfig.Ydjxh.ToLower() == "cdf5000" || equipconfig.Ydjxh.ToLower() == "nht_1")
                             decclz = maxvalue;
                         maxvalue = 0; maxzsvalue = 0;
-                        if (decclz < 0.01) decclz = 0.01;
+                        //if (decclz < 0.01) decclz = 0.01;
                         decyw = decsmoke.Yw;
                         datagridview_msg(dataGridView1, "结果", 2, decclz.ToString("0.00"));
                         datagridview_msg(dataGridView1, "转速", 2, deczs.ToString("0"));
@@ -2168,6 +2243,31 @@ namespace zyjsTest
                         drah["相对湿度"] = sd.ToString();
                         btg_ahdatatable.Rows.Add(drah);
                         isReadRealTime = true;
+                    }
+                }
+                if (btgconfig.isYdjk)
+                {
+                    if (decclz < btgconfig.ydjk_value)
+                    {
+                        ts1 = "烟度值过低";
+                        ts2 = "检测中止";
+                        Msg(label_msg, panel_cp, "烟度值过低,检测中止,检查探头是否脱落", false);
+                        if (ledcontrol != null)
+                        {
+                            ledcontrol.writeLed("烟度值过低　　　", 2, equipconfig.Ledxh);
+                            ledcontrol.writeLed("　　检测中止　　", 5, equipconfig.Ledxh);
+                        }
+                        try
+                        {
+                            Th_get_FqandLl.Abort();
+                        }
+                        catch { }
+                        zyjs_status = false;
+                        JC_Status = false;
+                        SaveData_status = false;
+                        timer2.Stop();
+                        this.BeginInvoke(new wt_void(Ref_Button));
+                        return;
                     }
                 }
                 if (equipconfig.useJHJK)
@@ -2381,7 +2481,7 @@ namespace zyjsTest
                         if (equipconfig.Ydjxh == "mqy_200" || equipconfig.Ydjxh == "flb_100" || equipconfig.Ydjxh.ToLower() == "cdf5000" || equipconfig.Ydjxh.ToLower() == "nht_1")
                             dscclz = maxvalue;
                         maxvalue = 0; maxzsvalue = 0;
-                        if (dscclz < 0.01) dscclz = 0.01;
+                        //if (dscclz < 0.01) dscclz = 0.01;
                         dscyw = dscsmoke.Yw;
                         datagridview_msg(dataGridView1, "结果", 3, dscclz.ToString("0.00"));
                         datagridview_msg(dataGridView1, "转速", 3, dyczs.ToString("0"));
@@ -2411,6 +2511,31 @@ namespace zyjsTest
                         drah["相对湿度"] = sd.ToString();
                         btg_ahdatatable.Rows.Add(drah);
                         isReadRealTime = true;
+                    }
+                }
+                if (btgconfig.isYdjk)
+                {
+                    if (dscclz < btgconfig.ydjk_value)
+                    {
+                        ts1 = "烟度值过低";
+                        ts2 = "检测中止";
+                        Msg(label_msg, panel_cp, "烟度值过低,检测中止,检查探头是否脱落", false);
+                        if (ledcontrol != null)
+                        {
+                            ledcontrol.writeLed("烟度值过低　　　", 2, equipconfig.Ledxh);
+                            ledcontrol.writeLed("　　检测中止　　", 5, equipconfig.Ledxh);
+                        }
+                        try
+                        {
+                            Th_get_FqandLl.Abort();
+                        }
+                        catch { }
+                        zyjs_status = false;
+                        JC_Status = false;
+                        SaveData_status = false;
+                        timer2.Stop();
+                        this.BeginInvoke(new wt_void(Ref_Button));
+                        return;
                     }
                 }
                 if (equipconfig.useJHJK)
@@ -2963,9 +3088,9 @@ namespace zyjsTest
             {
                 nowtime = DateTime.Now;
                 //if (Convert.ToInt16(gongkuangTime) != GKSJ)//100ms一次
-                if (DateTime.Compare(DateTime.Parse(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), DateTime.Parse(gc_time.ToString("yyyy-MM-dd HH:mm:ss"))) > 0)
+                if (DateTime.Compare(DateTime.Parse(nowtime.ToString("yyyy-MM-dd HH:mm:ss")), DateTime.Parse(gc_time.ToString("yyyy-MM-dd HH:mm:ss"))) > 0)
                 {
-                    gc_time = System.DateTime.Now;
+                    gc_time = nowtime;
                     if (equipconfig.DATASECONDS_TYPE == "安车通用联网")//如果为安车通用联网，在此取值，以保证子程序过程数据 与安车前置数据一致
                     {
                         if (isReadRealTime)
@@ -3075,6 +3200,75 @@ namespace zyjsTest
             }
             else
             {
+                if (equipconfig.DATASECONDS_TYPE == "安车通用联网")//如果为安车通用联网，在此取值，以保证在吹拂过程中也在取数
+                {
+                    if (isReadRealTime)
+                    {
+                        nowtime = DateTime.Now;
+                        //if (Convert.ToInt16(gongkuangTime) != GKSJ)//100ms一次
+                        if (DateTime.Compare(DateTime.Parse(nowtime.ToString("yyyy-MM-dd HH:mm:ss")), DateTime.Parse(gc_time.ToString("yyyy-MM-dd HH:mm:ss"))) > 0)
+                        {
+                            gc_time = nowtime;
+                            if (equipconfig.Ydjxh.ToLower() == "cdf5000")
+                            {
+                                smoke = fla_502.get_DirectData(0.01f);
+                            }
+                            else
+                            {
+                                if (equipconfig.Ydjxh == "mqy_200" || equipconfig.Ydjxh == "flb_100" || equipconfig.Ydjxh.ToLower() == "nht_1")
+                                {
+                                    if (equipconfig.IsOldMqy200)
+                                    {
+                                        smoke = flb_100.get_DirectData(0.01f);
+                                    }
+                                    else
+                                    {
+                                        smoke = flb_100.get_Data(0.01f);
+                                    }
+                                }
+                                else
+                                {
+                                    smoke = flb_100.get_StableData(0.01f);
+                                }
+                            }
+                            if (!isUseRotater)
+                                ZS = (int)(smoke.Zs);
+
+                            if (carbj.ISUSE)
+                            {
+                                Smoke = (float)(carbj.ZYJS_K * smoke.K);
+                            }
+                            else
+                            {
+                                Smoke = smoke.K;
+                            }
+                            Msg(labelK, panelK, Smoke.ToString("0.00"), false);
+                        }
+                        if (isUseRotater)
+                        {
+                            if (rpm5300 != null)
+                            {
+                                ZS = (int)rpm5300.ZS;
+                            }
+                            else if (vmt_2000 != null)
+                            {
+                                if (vmt_2000.readRotateSpeed())
+                                    ZS = vmt_2000.zs;
+                            }
+                        }
+                        if (nhsjz != null && btgconfig.Ywj == "南华附件")
+                        {
+                            if (nhsjz.readData())
+                                yw_now = nhsjz.yw;
+                        }
+                        else
+                        {
+                            yw_now = smoke.Yw;
+                        }
+                        Msg(label_zstext, panel_zstext, ZS.ToString(), false);
+                        arcScaleComponent3.Value = ZS;
+                    }
+                }
                 GKSJ = 0;
                 perGKSJ = 0;
                 gongkuangTime = 0f;
@@ -3092,7 +3286,7 @@ namespace zyjsTest
 
                         if (equipconfig.Ydjxh.ToLower() == "cdf5000")
                         {
-                            smoke = fla_502.get_DirectData(0.01f);
+                            smoke = fla_502.get_DirectData();
                         }
                         else
                         {
@@ -3100,16 +3294,16 @@ namespace zyjsTest
                             {
                                 if (equipconfig.IsOldMqy200)
                                 {
-                                    smoke = flb_100.get_DirectData(0.01f);
+                                    smoke = flb_100.get_DirectData();
                                 }
                                 else
                                 {
-                                    smoke = flb_100.get_Data(0.01f);
+                                    smoke = flb_100.get_Data();
                                 }
                             }
                             else
                             {
-                                smoke = flb_100.get_StableData(0.01f);
+                                smoke = flb_100.get_StableData();
                             }
                         }
                         if (!isUseRotater)

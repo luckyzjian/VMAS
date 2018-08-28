@@ -1681,6 +1681,7 @@ namespace sds
                         if (isLowFlow == -1)
                         {
                             Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到废气仪通讯故障，请重新检测", true);
+                            ts2 = "废气仪通讯故障";
                             if (ledcontrol != null)
                             {
                                 ledcontrol.writeLed("测试停止", 2, equipconfig.Ledxh);
@@ -1697,6 +1698,7 @@ namespace sds
                         else if (isLowFlow == -2)
                         {
                             Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到废气仪气路阻塞，请重新检测", true);
+                            ts2 = "废气仪低流量";
                             if (ledcontrol != null)
                             {
                                 ledcontrol.writeLed("测试停止", 2, equipconfig.Ledxh);
@@ -1791,6 +1793,7 @@ namespace sds
                         if (isLowFlow == -1)
                         {
                             Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到废气仪通讯故障，请重新检测", true);
+                            ts2 = "废气仪通讯故障";
                             if (ledcontrol != null)
                             {
                                 ledcontrol.writeLed("测试停止", 2, equipconfig.Ledxh);
@@ -1807,6 +1810,7 @@ namespace sds
                         else if (isLowFlow == -2)
                         {
                             Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到废气仪气路阻塞，请重新检测", true);
+                            ts2 = "废气仪低流量";
                             if (ledcontrol != null)
                             {
                                 ledcontrol.writeLed("测试停止", 2, equipconfig.Ledxh);
@@ -1826,6 +1830,7 @@ namespace sds
                             case "fla_502":
                                 if (Vmas_Exhaust_Now.CO + Vmas_Exhaust_Now.CO2 < sdsconfig.Ndz)
                                 {
+                                    ts2 = "浓度值过低";
                                     Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到探头脱落或气路阻塞，请重新检测", true);
                                     if (ledcontrol != null)
                                     {
@@ -1842,6 +1847,7 @@ namespace sds
                                 }
                                 if (Vmas_Exhaust_Now.λ == 0)
                                 {
+                                    ts2 = "λ值异常";
                                     Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到过量空气系数为0，请重新检测", true);
                                     if (ledcontrol != null)
                                     {
@@ -1861,6 +1867,7 @@ namespace sds
                             case "fla_501":
                                 if (Vmas_Exhaust501_Now.CO + Vmas_Exhaust501_Now.CO2 < sdsconfig.Ndz)
                                 {
+                                    ts2 = "浓度值过低";
                                     Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到到探头脱落或气路阻塞，请重新检测", true);
                                     if (ledcontrol != null)
                                     {
@@ -1877,6 +1884,43 @@ namespace sds
                                 }
                                 if (Vmas_Exhaust501_Now.λ == 0)
                                 {
+                                    ts2 = "λ值异常";
+                                    Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到过量空气系数为0，请重新检测", true);
+                                    if (ledcontrol != null)
+                                    {
+                                        ledcontrol.writeLed("测试停止", 2, equipconfig.Ledxh);
+                                        Thread.Sleep(200);
+                                        ledcontrol.writeLed("过量空气系数为0", 5, equipconfig.Ledxh);
+                                    }
+                                    Ref_Control_Text(label_st, "检测停止");
+                                    BeginInvoke(new wt_void(Ref_Button));
+                                    JC_Status = false;
+                                    sds_status = false;
+                                    Th_get_FqandLl.Abort();
+                                    return;
+                                }
+                                break;
+                            case "mqw_511":
+                                if (Vmas_Exhaust_Now.CO + Vmas_Exhaust_Now.CO2 < sdsconfig.Ndz)
+                                {
+                                    ts2 = "浓度值过低";
+                                    Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到到探头脱落或气路阻塞，请重新检测", true);
+                                    if (ledcontrol != null)
+                                    {
+                                        ledcontrol.writeLed("测试停止", 2, equipconfig.Ledxh);
+                                        Thread.Sleep(200);
+                                        ledcontrol.writeLed("监测到尾气异常", 5, equipconfig.Ledxh);
+                                    }
+                                    Ref_Control_Text(label_st, "检测停止");
+                                    BeginInvoke(new wt_void(Ref_Button));
+                                    JC_Status = false;
+                                    sds_status = false;
+                                    Th_get_FqandLl.Abort();
+                                    return;
+                                }
+                                if (Vmas_Exhaust_Now.λ == 0)
+                                {
+                                    ts2 = "λ值异常";
                                     Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到过量空气系数为0，请重新检测", true);
                                     if (ledcontrol != null)
                                     {
@@ -2027,6 +2071,7 @@ namespace sds
                     {
                         if (isLowFlow == -1)
                         {
+                            ts2 = "废气仪通讯故障";
                             Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到废气仪通讯故障，请重新检测", true);
                             if (ledcontrol != null)
                             {
@@ -2044,6 +2089,7 @@ namespace sds
                         else if (isLowFlow == -2)
                         {
                             Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到废气仪气路阻塞，请重新检测", true);
+                            ts2 = "废气仪低流量";
                             if (ledcontrol != null)
                             {
                                 ledcontrol.writeLed("测试停止", 2, equipconfig.Ledxh);
@@ -2105,6 +2151,7 @@ namespace sds
                         if (isLowFlow == -1)
                         {
                             Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到废气仪通讯故障，请重新检测", true);
+                            ts2 = "废气仪通讯故障";
                             if (ledcontrol != null)
                             {
                                 ledcontrol.writeLed("测试停止", 2, equipconfig.Ledxh);
@@ -2121,6 +2168,7 @@ namespace sds
                         else if (isLowFlow == -2)
                         {
                             Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到废气仪气路阻塞，请重新检测", true);
+                            ts2 = "废气仪低流量";
                             if (ledcontrol != null)
                             {
                                 ledcontrol.writeLed("测试停止", 2, equipconfig.Ledxh);
@@ -2140,6 +2188,7 @@ namespace sds
                                 if (Vmas_Exhaust_Now.CO + Vmas_Exhaust_Now.CO2 < sdsconfig.Ndz)
                                 {
                                     Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到探头脱落或气路阻塞，请重新检测", true);
+                                    ts2 = "浓度值过低";
                                     if (ledcontrol != null)
                                     {
                                         ledcontrol.writeLed("测试停止", 2, equipconfig.Ledxh);
@@ -2156,6 +2205,7 @@ namespace sds
                                 if (Vmas_Exhaust_Now.λ == 0)
                                 {
                                     Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到过量空气系数为0，请重新检测", true);
+                                    ts2 = "λ值异常";
                                     if (ledcontrol != null)
                                     {
                                         ledcontrol.writeLed("测试停止", 2, equipconfig.Ledxh);
@@ -2175,6 +2225,7 @@ namespace sds
                                 if (Vmas_Exhaust501_Now.CO + Vmas_Exhaust501_Now.CO2 < sdsconfig.Ndz)
                                 {
                                     Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到到探头脱落或气路阻塞，请重新检测", true);
+                                    ts2 = "浓度值过低";
                                     if (ledcontrol != null)
                                     {
                                         ledcontrol.writeLed("测试停止", 2, equipconfig.Ledxh);
@@ -2191,6 +2242,44 @@ namespace sds
                                 if (Vmas_Exhaust501_Now.λ == 0)
                                 {
                                     Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到过量空气系数为0，请重新检测", true);
+                                    ts2 = "λ值异常";
+                                    if (ledcontrol != null)
+                                    {
+                                        ledcontrol.writeLed("测试停止", 2, equipconfig.Ledxh);
+                                        Thread.Sleep(200);
+                                        ledcontrol.writeLed("过量空气系数为0", 5, equipconfig.Ledxh);
+                                    }
+                                    Ref_Control_Text(label_st, "检测停止");
+                                    BeginInvoke(new wt_void(Ref_Button));
+                                    JC_Status = false;
+                                    sds_status = false;
+                                    Th_get_FqandLl.Abort();
+                                    return;
+                                }
+                                break;
+                                
+                            case "mqw_511":
+                                if (Vmas_Exhaust_Now.CO + Vmas_Exhaust_Now.CO2 < sdsconfig.Ndz)
+                                {
+                                    Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到到探头脱落或气路阻塞，请重新检测", true);
+                                    ts2 = "浓度值过低";
+                                    if (ledcontrol != null)
+                                    {
+                                        ledcontrol.writeLed("测试停止", 2, equipconfig.Ledxh);
+                                        Thread.Sleep(200);
+                                        ledcontrol.writeLed("监测到尾气异常", 5, equipconfig.Ledxh);
+                                    }
+                                    Ref_Control_Text(label_st, "检测停止");
+                                    BeginInvoke(new wt_void(Ref_Button));
+                                    JC_Status = false;
+                                    sds_status = false;
+                                    Th_get_FqandLl.Abort();
+                                    return;
+                                }
+                                if (Vmas_Exhaust_Now.λ == 0)
+                                {
+                                    Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到过量空气系数为0，请重新检测", true);
+                                    ts2 = "λ值异常";
                                     if (ledcontrol != null)
                                     {
                                         ledcontrol.writeLed("测试停止", 2, equipconfig.Ledxh);
@@ -2625,9 +2714,9 @@ namespace sds
                             }
                             else
                             {
-                                wd = 0f;
-                                sd = 0f;
-                                dqy = 0f;
+                                wd = (float)WD;
+                                sd = (float)SD;
+                                dqy = (float)DQY;
                             }
                             if (nhsjz != null && sdsconfig.Ywj == "南华附件")
                             {
@@ -2698,9 +2787,9 @@ namespace sds
                             }
                             else
                             {
-                                wd = 0f;
-                                sd = 0f;
-                                dqy = 0f;
+                                wd = (float)WD;
+                                sd = (float)SD;
+                                dqy = (float)DQY;
                             }
                             if (nhsjz != null && sdsconfig.Ywj == "南华附件")
                             {

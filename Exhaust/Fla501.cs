@@ -500,6 +500,7 @@ namespace Exhaust
                 return false;
         }
         #endregion
+        private Fla501_data Fla502_testdata = new Fla501_data();
         #region 获取数据
         /// <summary>
         /// byte cmdGetTemp = 0x02;
@@ -508,13 +509,6 @@ namespace Exhaust
         public Fla501_data Get_Data()
         {
             ReadData();
-            Fla501_data Fla502_testdata = new Fla501_data();
-            Fla502_testdata.CO = 0f;
-            Fla502_testdata.O2 = 0f;
-            Fla502_testdata.CO2 = 0f;
-            Fla502_testdata.HC = 0f;
-            Fla502_testdata.NO = 0f;
-            Fla502_testdata.YW = 0f;
             int i = 0;
             byte[] Content = new byte[] { 0x02,0x01,0x40,0xbd };
             ComPort_1.Write(Content, 0, 4);//

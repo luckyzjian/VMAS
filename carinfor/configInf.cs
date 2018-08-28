@@ -969,6 +969,8 @@ namespace carinfor
         /// </summary>
         public int btgDszsValue { set; get; }
         public string Ywj { set; get; }
+        public bool isYdjk { set; get; }
+        public double ydjk_value { set; get; }
 
     }
     public class DynConfigInfdata
@@ -1124,6 +1126,10 @@ namespace carinfor
         public bool gsKhgPD { set; get; }
         public bool testNOx { set; get; }
         public string Ywj { set; get; }
+        public bool isYdjk_glsm { set; get; }
+        public double ydjk_glsm_value { set; get; }
+        public bool isYdjk_cl { set; get; }
+        public double ydjk_cl_value { set; get; }
     }
     public class selfCheckItem
     {
@@ -2110,10 +2116,10 @@ namespace carinfor
             //else
             //    configinidata.Huanjingo2Monitor = false;
             ini.INIIO.GetPrivateProfileString("VMAS", "残余量监测", "true", temp, 2048, startUpPath+"/detectConfig.ini");
-            //if (temp.ToString().Trim() == "true")
+            if (temp.ToString().Trim() == "true")
                 configinidata.RemainedMonitor = true;
-            //else
-            //    configinidata.RemainedMonitor = false;
+            else
+                configinidata.RemainedMonitor = false;
 
 
             ini.INIIO.GetPrivateProfileString("VMAS", "是否调零", "", temp, 2048, startUpPath+"/detectConfig.ini");
@@ -2545,7 +2551,7 @@ namespace carinfor
         }
         public BtgConfigInfdata getBtgConfigIni()
         {
-            float a = 0;
+            double a = 0;
             int b = 0;
             BtgConfigInfdata configinidata = new BtgConfigInfdata();
             StringBuilder temp = new StringBuilder();
@@ -2614,6 +2620,20 @@ namespace carinfor
             {
                 configinidata.btgDszsValue = 0;
             }
+            ini.INIIO.GetPrivateProfileString("BTG", "烟度监控", "Y", temp, 2048, startUpPath + "/detectConfig.ini");
+            if (temp.ToString().Trim() == "Y")
+                configinidata.isYdjk = true;
+            else
+                configinidata.isYdjk = false;
+            ini.INIIO.GetPrivateProfileString("BTG", "烟度监控值", "0.02", temp, 2048, startUpPath + "/detectConfig.ini");          //读配置文件（段名，字段，默认值，保存的strbuilder，大小，路径）
+            try
+            {
+                configinidata.ydjk_value = double.Parse(temp.ToString());
+            }
+            catch
+            {
+                configinidata.ydjk_value = 0.02;
+            }
             return configinidata;
         }
         public bool writeBtgConfigIni(BtgConfigInfdata configinidata)
@@ -2632,7 +2652,8 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("BTG", "不透光吹拂次数", configinidata.Btgcfcs.ToString(), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("BTG", "不透光测量次数", configinidata.btgclcs.ToString(), startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("BTG", "怠速转速取值点", configinidata.btgDszsValue.ToString(), startUpPath + "/detectConfig.ini");
-
+                ini.INIIO.WritePrivateProfileString("BTG", "烟度监控", configinidata.isYdjk ? "Y" : "N", startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("BTG", "烟度监控值", configinidata.ydjk_value.ToString("0.00"), startUpPath + "/detectConfig.ini");
                 return true;
             }
             catch
@@ -2855,6 +2876,7 @@ namespace carinfor
             configinidata.DynFlowBack = (temp.ToString() == "Y");
             ini.INIIO.GetPrivateProfileString("DYN", "动力性遥控确认", "Y", temp, 2048, startUpPath + "/detectConfig.ini");          //读配置文件（段名，字段，默认值，保存的strbuilder，大小，路径）
             configinidata.DynYkqr = (temp.ToString() == "Y");
+
             return configinidata;
         }
 
@@ -3009,6 +3031,34 @@ namespace carinfor
                 configinidata.Lugdown_Gljk_value = b;
             else
                 configinidata.Lugdown_Gljk_value = 50;
+            ini.INIIO.GetPrivateProfileString("LUGDOWN", "功率扫描阶段烟度监控", "N", temp, 2048, startUpPath + "/detectConfig.ini");
+            if (temp.ToString().Trim() == "Y")
+                configinidata.isYdjk_glsm = true;
+            else
+                configinidata.isYdjk_glsm = false;
+            ini.INIIO.GetPrivateProfileString("LUGDOWN", "功率扫描阶段烟度监控值", "0.02", temp, 2048, startUpPath + "/detectConfig.ini");          //读配置文件（段名，字段，默认值，保存的strbuilder，大小，路径）
+            try
+            {
+                configinidata.ydjk_glsm_value = double.Parse(temp.ToString());
+            }
+            catch
+            {
+                configinidata.ydjk_glsm_value = 0.02;
+            }
+            ini.INIIO.GetPrivateProfileString("LUGDOWN", "测量阶段烟度监控", "Y", temp, 2048, startUpPath + "/detectConfig.ini");
+            if (temp.ToString().Trim() == "Y")
+                configinidata.isYdjk_cl = true;
+            else
+                configinidata.isYdjk_cl = false;
+            ini.INIIO.GetPrivateProfileString("LUGDOWN", "测量阶段烟度监控值", "0.02", temp, 2048, startUpPath + "/detectConfig.ini");          //读配置文件（段名，字段，默认值，保存的strbuilder，大小，路径）
+            try
+            {
+                configinidata.ydjk_cl_value = double.Parse(temp.ToString());
+            }
+            catch
+            {
+                configinidata.ydjk_cl_value = 0.02;
+            }
             return configinidata;
         }
 
@@ -3035,6 +3085,10 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "testNOx", configinidata.testNOx.ToString().ToLower(), startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "测试过程功率监控", configinidata.LugdownGljk.ToString().ToLower(), startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "功率监控规定值", configinidata.Lugdown_Gljk_value.ToString("0"), startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("LUGDOWN", "功率扫描阶段烟度监控", configinidata.isYdjk_glsm ? "Y" : "N", startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("LUGDOWN", "功率扫描阶段烟度监控值", configinidata.ydjk_glsm_value.ToString("0.00"), startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("LUGDOWN", "测量阶段烟度监控", configinidata.isYdjk_cl ? "Y" : "N", startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("LUGDOWN", "测量阶段烟度监控值", configinidata.ydjk_cl_value.ToString("0.00"), startUpPath + "/detectConfig.ini");
                 return true;
             }
 

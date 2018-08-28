@@ -1849,7 +1849,29 @@ namespace lugdowm
                         sxnb = 1;//功率扫描开始
                         while (JC_Status)               //功率扫描
                         {
+                            if (lugdownconfig.isYdjk_glsm)
+                            {
+                                if (Smoke < lugdownconfig.ydjk_cl_value)
+                                {
+                                    JC_Status = false;
+                                    button_ss.Text = "重新检测";
+                                    Th_get_FqandLl.Abort();
+                                    Jzjs_status = false; fq_getdata = false;
+                                    Thread.Sleep(500);
+                                    Msg(Msg_msg, panel_msg, "烟度值过低,检测中止,检测探头是否脱落。", true);
+                                    ts1 = "烟度值过低";
+                                    ts2 = "检测中止";
+                                    if (ledcontrol != null)
+                                    {
+                                        ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                        Thread.Sleep(200);
+                                        ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                    }
+                                    igbt.Exit_Control();
 
+                                    return;
+                                }
+                            }
                             Msg(Msg_msg, panel_msg, "正在进行功率扫描，当前速度：" + igbt.Speed.ToString("0.0") + "km/h", true);
                             ts2 = "速度:" + igbt.Speed.ToString("0.0") + "功率:" + nowpower.ToString("0.0");
                             GL = (float)nowpower;
@@ -1894,6 +1916,29 @@ namespace lugdowm
                         sxnb = 1;//功率扫描开始
                         while (JC_Status)               //功率扫描
                         {
+                            if (lugdownconfig.isYdjk_glsm)
+                            {
+                                if (Smoke < lugdownconfig.ydjk_cl_value)
+                                {
+                                    JC_Status = false;
+                                    button_ss.Text = "重新检测";
+                                    Th_get_FqandLl.Abort();
+                                    Jzjs_status = false; fq_getdata = false;
+                                    Thread.Sleep(500);
+                                    Msg(Msg_msg, panel_msg, "烟度值过低,检测中止,检测探头是否脱落。", true);
+                                    ts1 = "烟度值过低";
+                                    ts2 = "检测中止";
+                                    if (ledcontrol != null)
+                                    {
+                                        ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                        Thread.Sleep(200);
+                                        ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                    }
+                                    igbt.Exit_Control();
+
+                                    return;
+                                }
+                            }
                             Msg(Msg_msg, panel_msg, "正在进行功率扫描，当前速度：" + igbt.Speed.ToString("0.0") + "km/h", true);
                             ts2 = "速度:" + igbt.Speed.ToString("0.0") + "功率:" + nowpower.ToString("0.0");
                             GL = (float)nowpower;
@@ -2329,6 +2374,29 @@ namespace lugdowm
                                             return;
                                         }
                                     }
+                                    if (lugdownconfig.isYdjk_cl)
+                                    {
+                                        if (double.Parse(HK) < lugdownconfig.ydjk_cl_value)
+                                        {
+                                            JC_Status = false;
+                                            button_ss.Text = "重新检测";
+                                            Th_get_FqandLl.Abort();
+                                            Jzjs_status = false; fq_getdata = false;
+                                            Thread.Sleep(500);
+                                            Msg(Msg_msg, panel_msg, "烟度值过低,检测中止,检查探头是否脱落", true);
+                                            ts1 = "烟度值过低";
+                                            ts2 = "检测中止";
+                                            if (ledcontrol != null)
+                                            {
+                                                ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                                Thread.Sleep(200);
+                                                ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                            }
+                                            igbt.Exit_Control();
+
+                                            return;
+                                        }
+                                    }
                                     if (lugdownconfig.LugdownGljk)
                                     {
                                         if (double.Parse(HP)<double.Parse(jzjs_data.Lbgl)*lugdownconfig.Lugdown_Gljk_value*0.01)
@@ -2338,7 +2406,7 @@ namespace lugdowm
                                             Th_get_FqandLl.Abort();
                                             Jzjs_status = false; fq_getdata = false;
                                             Thread.Sleep(500);
-                                            Msg(Msg_msg, panel_msg, "加载功率过低，检测中止。", true);
+                                            Msg(Msg_msg, panel_msg, "加载功率过低,检测中止,检查探头是否脱落", true);
                                             ts1 = "加载功率过低";
                                             ts2 = "检测中止";
                                             if (ledcontrol != null)
@@ -2447,6 +2515,29 @@ namespace lugdowm
                                             return;
                                         }
                                     }
+                                    if (lugdownconfig.isYdjk_cl)
+                                    {
+                                        if (double.Parse(NK) < lugdownconfig.ydjk_cl_value)
+                                        {
+                                            JC_Status = false;
+                                            button_ss.Text = "重新检测";
+                                            Th_get_FqandLl.Abort();
+                                            Jzjs_status = false; fq_getdata = false;
+                                            Thread.Sleep(500);
+                                            Msg(Msg_msg, panel_msg, "烟度值过低,检测中止,检查探头是否脱落", true);
+                                            ts1 = "烟度值过低";
+                                            ts2 = "检测中止";
+                                            if (ledcontrol != null)
+                                            {
+                                                ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                                Thread.Sleep(200);
+                                                ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                            }
+                                            igbt.Exit_Control();
+
+                                            return;
+                                        }
+                                    }
                                     if (lugdownconfig.LugdownGljk)
                                     {
                                         if (double.Parse(NP) < double.Parse(jzjs_data.Lbgl) * lugdownconfig.Lugdown_Gljk_value * 0.01)
@@ -2510,6 +2601,29 @@ namespace lugdowm
                                             return;
                                         }
                                     }
+                                    if (lugdownconfig.isYdjk_cl)
+                                    {
+                                        if (double.Parse(EK) < lugdownconfig.ydjk_cl_value)
+                                        {
+                                            JC_Status = false;
+                                            button_ss.Text = "重新检测";
+                                            Th_get_FqandLl.Abort();
+                                            Jzjs_status = false; fq_getdata = false;
+                                            Thread.Sleep(500);
+                                            Msg(Msg_msg, panel_msg, "烟度值过低，检测中止。", true);
+                                            ts1 = "烟度值过低";
+                                            ts2 = "检测中止";
+                                            if (ledcontrol != null)
+                                            {
+                                                ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                                Thread.Sleep(200);
+                                                ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                            }
+                                            igbt.Exit_Control();
+
+                                            return;
+                                        }
+                                    }
                                     if (double.Parse(EK) < 0.01 && double.Parse(NK) < 0.01 && double.Parse(HK) < 0.01)
                                     {
                                         JC_Status = false;
@@ -2529,6 +2643,8 @@ namespace lugdowm
 
                                         return;
                                     }
+
+                                    
                                     if (lugdownconfig.LugdownGljk)
                                     {
                                         if (double.Parse(EP) < double.Parse(jzjs_data.Lbgl) * lugdownconfig.Lugdown_Gljk_value * 0.01)
@@ -3114,16 +3230,16 @@ namespace lugdowm
                     try
                     {
                         if (equipconfig.Ydjxh.ToLower() == "cdf5000")
-                            smoke = fla_502.get_DirectData(0.01f);
+                            smoke = fla_502.get_DirectData();
                         else if (equipconfig.Ydjxh != yq_mqw5101)
                         {
                             if (equipconfig.IsOldMqy200)
                             {
-                                smoke = flb_100.get_DirectData(0.01f);
+                                smoke = flb_100.get_DirectData();
                             }
                             else
                             {
-                                smoke = flb_100.get_Data(0.01f);
+                                smoke = flb_100.get_Data();
                             }
                         }
                         else if (equipconfig.Ydjxh == yq_mqw5101)
