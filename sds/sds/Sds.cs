@@ -992,7 +992,7 @@ namespace sds
                         case "mqw_511":
                             break;
                     }
-
+                    if (sdsconfig.sdsNoReZero) sdsconfig.IfFqyTl = false;
                 }
                 ts1 = "读取环境参数...";
                 Msg(Msg_msg, panel_msg, "读取环境参数...", false);             
@@ -3327,9 +3327,10 @@ namespace sds
         private void Sds_KeyDown(object sender, KeyEventArgs e)
         {
 
-            if (e.Shift && e.KeyCode == Keys.M)
+            if (e.Control&&e.Shift && e.KeyCode == Keys.M)
             {
-                button1.Visible = true;
+                //button1.Visible = true;
+                comboBoxZSJK.Visible = !comboBoxZSJK.Visible;
             }
         }
 

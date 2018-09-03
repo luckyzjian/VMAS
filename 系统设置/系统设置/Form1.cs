@@ -87,6 +87,7 @@ namespace 系统设置
             textBoxVmasFlowbackTime.Text = vmasconfig.FlowTime.ToString("0");
             radioButtonCjBeforeTl.Checked = vmasconfig.CjBeforeTl;
             radioButtonCjAfterTl.Checked = !vmasconfig.CjBeforeTl;
+            checkBoxVmas_norezero.Checked = vmasconfig.vmasNoReZero;
 
             textBoxAsmNdz.Text = asmconfig.Ndz.ToString("0.0");
             textBoxAsmGlwc.Text = asmconfig.Gljz.ToString("0.0");
@@ -105,6 +106,7 @@ namespace 系统设置
             checkBoxKsgk.Checked = asmconfig.IsKsgkUsed;
             checkBoxAsmHalfXzKsgk.Checked = asmconfig.IsAsmHalfXzKsgk;
             comboBoxYWJ_ASM.Text = asmconfig.Ywj;
+            checkBoxAsm_nozero.Checked = asmconfig.asmNoReZero;
 
             textBoxLugDownMinSpeed.Text = lugdownconfig.MinSpeed.ToString("0");
             textBoxLugDownMaxSpeed.Text = lugdownconfig.MaxSpeed.ToString("0");
@@ -156,6 +158,7 @@ namespace 系统设置
             comboBoxLPrepare.SelectedIndex = sdsconfig.TimerModeLP;
             comboBoxLTest.SelectedIndex = sdsconfig.TimerModeLT;
             checkBoxSdsSureTemp.Checked = sdsconfig.IsSureTemp;
+            checkBoxSds_norezero.Checked = sdsconfig.sdsNoReZero;
 
             textBoxBtgDyzs.Text = btgconfig.Dyzs.ToString("0");
             checkBoxBtgZsjk.Checked = btgconfig.RotateSpeedMonitor;
@@ -351,6 +354,7 @@ namespace 系统设置
                 vmasconfig.AutoRestart = checkBoxAutoRestart.Checked;
                 vmasconfig.IsWholeProcessJK = radioButtonVmasWholeProcess.Checked;
                 vmasconfig.CjBeforeTl = radioButtonCjBeforeTl.Checked;
+                vmasconfig.vmasNoReZero = checkBoxVmas_norezero.Checked;
                 if (configini.writeVmasConfigIni(vmasconfig))
                     MessageBox.Show("保存成功.", "系统提示");
                 else
@@ -383,6 +387,7 @@ namespace 系统设置
             asmconfig.IsKsgkUsed = checkBoxKsgk.Checked;
             asmconfig.IsAsmHalfXzKsgk = checkBoxAsmHalfXzKsgk.Checked;
             asmconfig.Ywj = comboBoxYWJ_ASM.Text;
+            asmconfig.asmNoReZero = checkBoxAsm_nozero.Checked;
             if (configini.writeAsmConfigIni(asmconfig))
                 MessageBox.Show("保存成功.", "系统提示");
             else
@@ -452,6 +457,7 @@ namespace 系统设置
             sdsconfig.TimerModeLP = comboBoxLPrepare.SelectedIndex;
             sdsconfig.TimerModeLT = comboBoxLTest.SelectedIndex;
             sdsconfig.Ywj = comboBoxYWJ_SDS.Text;
+            sdsconfig.sdsNoReZero = checkBoxSds_norezero.Checked;
             if (configini.writeSdsConfigIni(sdsconfig))
                 MessageBox.Show("保存成功.", "系统提示");
             else

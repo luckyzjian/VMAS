@@ -3127,6 +3127,7 @@ namespace vmasDetect
                                     break;
                             }
                         }
+                        if (vmasconfig.vmasNoReZero) vmasconfig.IfFqyTl = false;
                     }
                     Thread.Sleep(500);
                     Exhaust.Fla502_data huanjiang_data = fla_502.GetData();

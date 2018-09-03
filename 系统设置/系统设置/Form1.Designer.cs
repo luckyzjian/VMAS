@@ -346,6 +346,14 @@
             this.panel23 = new System.Windows.Forms.Panel();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panelJZJS = new System.Windows.Forms.Panel();
+            this.label198 = new System.Windows.Forms.Label();
+            this.textBoxLugdown_cl_ydjk = new System.Windows.Forms.TextBox();
+            this.label199 = new System.Windows.Forms.Label();
+            this.checkBoxLugdown_cl_ydjk = new System.Windows.Forms.CheckBox();
+            this.label196 = new System.Windows.Forms.Label();
+            this.textBoxLugdown_glsm_ydjk = new System.Windows.Forms.TextBox();
+            this.label197 = new System.Windows.Forms.Label();
+            this.checkBoxLugdown_glsm_ydjk = new System.Windows.Forms.CheckBox();
             this.label192 = new System.Windows.Forms.Label();
             this.comboBoxYWJ_LUGDOWN = new System.Windows.Forms.ComboBox();
             this.label188 = new System.Windows.Forms.Label();
@@ -399,6 +407,10 @@
             this.panel15 = new System.Windows.Forms.Panel();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.panelBTG = new System.Windows.Forms.Panel();
+            this.label200 = new System.Windows.Forms.Label();
+            this.textBoxBtg_cl_ydjk = new System.Windows.Forms.TextBox();
+            this.label201 = new System.Windows.Forms.Label();
+            this.checkBoxBtg_cl_ydjk = new System.Windows.Forms.CheckBox();
             this.label193 = new System.Windows.Forms.Label();
             this.comboBoxYWJ_BTG = new System.Windows.Forms.ComboBox();
             this.panel40 = new System.Windows.Forms.Panel();
@@ -504,18 +516,9 @@
             this.comboBoxDynZsj = new System.Windows.Forms.ComboBox();
             this.panel32 = new System.Windows.Forms.Panel();
             this.label131 = new System.Windows.Forms.Label();
-            this.label196 = new System.Windows.Forms.Label();
-            this.textBoxLugdown_glsm_ydjk = new System.Windows.Forms.TextBox();
-            this.label197 = new System.Windows.Forms.Label();
-            this.checkBoxLugdown_glsm_ydjk = new System.Windows.Forms.CheckBox();
-            this.label198 = new System.Windows.Forms.Label();
-            this.textBoxLugdown_cl_ydjk = new System.Windows.Forms.TextBox();
-            this.label199 = new System.Windows.Forms.Label();
-            this.checkBoxLugdown_cl_ydjk = new System.Windows.Forms.CheckBox();
-            this.label200 = new System.Windows.Forms.Label();
-            this.textBoxBtg_cl_ydjk = new System.Windows.Forms.TextBox();
-            this.label201 = new System.Windows.Forms.Label();
-            this.checkBoxBtg_cl_ydjk = new System.Windows.Forms.CheckBox();
+            this.checkBoxVmas_norezero = new System.Windows.Forms.CheckBox();
+            this.checkBoxAsm_nozero = new System.Windows.Forms.CheckBox();
+            this.checkBoxSds_norezero = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1081,7 +1084,7 @@
             this.checkBoxSdsYw.AutoSize = true;
             this.checkBoxSdsYw.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxSdsYw.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxSdsYw.Location = new System.Drawing.Point(517, 97);
+            this.checkBoxSdsYw.Location = new System.Drawing.Point(329, 97);
             this.checkBoxSdsYw.Name = "checkBoxSdsYw";
             this.checkBoxSdsYw.Size = new System.Drawing.Size(91, 20);
             this.checkBoxSdsYw.TabIndex = 59;
@@ -1103,7 +1106,7 @@
             // 
             this.checkBoxSdsFlowback.AutoSize = true;
             this.checkBoxSdsFlowback.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxSdsFlowback.Location = new System.Drawing.Point(266, 97);
+            this.checkBoxSdsFlowback.Location = new System.Drawing.Point(182, 97);
             this.checkBoxSdsFlowback.Name = "checkBoxSdsFlowback";
             this.checkBoxSdsFlowback.Size = new System.Drawing.Size(91, 20);
             this.checkBoxSdsFlowback.TabIndex = 55;
@@ -1700,7 +1703,7 @@
             this.checkBoxAutoRestart.AutoSize = true;
             this.checkBoxAutoRestart.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxAutoRestart.ForeColor = System.Drawing.Color.Coral;
-            this.checkBoxAutoRestart.Location = new System.Drawing.Point(534, 197);
+            this.checkBoxAutoRestart.Location = new System.Drawing.Point(447, 197);
             this.checkBoxAutoRestart.Name = "checkBoxAutoRestart";
             this.checkBoxAutoRestart.Size = new System.Drawing.Size(123, 20);
             this.checkBoxAutoRestart.TabIndex = 61;
@@ -1712,7 +1715,7 @@
             this.checkBoxVmasYw.AutoSize = true;
             this.checkBoxVmasYw.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasYw.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxVmasYw.Location = new System.Drawing.Point(284, 197);
+            this.checkBoxVmasYw.Location = new System.Drawing.Point(223, 197);
             this.checkBoxVmasYw.Name = "checkBoxVmasYw";
             this.checkBoxVmasYw.Size = new System.Drawing.Size(91, 20);
             this.checkBoxVmasYw.TabIndex = 60;
@@ -1724,7 +1727,7 @@
             this.checkBoxVmasDisplayData.AutoSize = true;
             this.checkBoxVmasDisplayData.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasDisplayData.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxVmasDisplayData.Location = new System.Drawing.Point(534, 223);
+            this.checkBoxVmasDisplayData.Location = new System.Drawing.Point(447, 223);
             this.checkBoxVmasDisplayData.Name = "checkBoxVmasDisplayData";
             this.checkBoxVmasDisplayData.Size = new System.Drawing.Size(123, 20);
             this.checkBoxVmasDisplayData.TabIndex = 53;
@@ -1736,7 +1739,7 @@
             this.checkBoxVmasSureTemp.AutoSize = true;
             this.checkBoxVmasSureTemp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasSureTemp.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxVmasSureTemp.Location = new System.Drawing.Point(284, 223);
+            this.checkBoxVmasSureTemp.Location = new System.Drawing.Point(223, 223);
             this.checkBoxVmasSureTemp.Name = "checkBoxVmasSureTemp";
             this.checkBoxVmasSureTemp.Size = new System.Drawing.Size(123, 20);
             this.checkBoxVmasSureTemp.TabIndex = 54;
@@ -3995,6 +3998,7 @@
             // 
             // panelASMSETTINGS
             // 
+            this.panelASMSETTINGS.Controls.Add(this.checkBoxAsm_nozero);
             this.panelASMSETTINGS.Controls.Add(this.label194);
             this.panelASMSETTINGS.Controls.Add(this.panel14);
             this.panelASMSETTINGS.Controls.Add(this.label112);
@@ -4279,6 +4283,7 @@
             // 
             // panelVMASSETTINGS
             // 
+            this.panelVMASSETTINGS.Controls.Add(this.checkBoxVmas_norezero);
             this.panelVMASSETTINGS.Controls.Add(this.groupBox2);
             this.panelVMASSETTINGS.Controls.Add(this.textBoxVmasNdccsj);
             this.panelVMASSETTINGS.Controls.Add(this.label155);
@@ -4580,6 +4585,90 @@
             this.panelJZJS.Size = new System.Drawing.Size(1051, 397);
             this.panelJZJS.TabIndex = 128;
             // 
+            // label198
+            // 
+            this.label198.AutoSize = true;
+            this.label198.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label198.Location = new System.Drawing.Point(639, 289);
+            this.label198.Name = "label198";
+            this.label198.Size = new System.Drawing.Size(80, 16);
+            this.label198.TabIndex = 159;
+            this.label198.Text = "规定值：<";
+            // 
+            // textBoxLugdown_cl_ydjk
+            // 
+            this.textBoxLugdown_cl_ydjk.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxLugdown_cl_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxLugdown_cl_ydjk.ForeColor = System.Drawing.Color.Blue;
+            this.textBoxLugdown_cl_ydjk.Location = new System.Drawing.Point(725, 287);
+            this.textBoxLugdown_cl_ydjk.Name = "textBoxLugdown_cl_ydjk";
+            this.textBoxLugdown_cl_ydjk.Size = new System.Drawing.Size(71, 26);
+            this.textBoxLugdown_cl_ydjk.TabIndex = 158;
+            // 
+            // label199
+            // 
+            this.label199.AutoSize = true;
+            this.label199.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label199.Location = new System.Drawing.Point(802, 289);
+            this.label199.Name = "label199";
+            this.label199.Size = new System.Drawing.Size(96, 16);
+            this.label199.TabIndex = 160;
+            this.label199.Text = "时中止检测 ";
+            // 
+            // checkBoxLugdown_cl_ydjk
+            // 
+            this.checkBoxLugdown_cl_ydjk.AutoSize = true;
+            this.checkBoxLugdown_cl_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBoxLugdown_cl_ydjk.ForeColor = System.Drawing.Color.Red;
+            this.checkBoxLugdown_cl_ydjk.Location = new System.Drawing.Point(7, 288);
+            this.checkBoxLugdown_cl_ydjk.Name = "checkBoxLugdown_cl_ydjk";
+            this.checkBoxLugdown_cl_ydjk.Size = new System.Drawing.Size(507, 20);
+            this.checkBoxLugdown_cl_ydjk.TabIndex = 157;
+            this.checkBoxLugdown_cl_ydjk.Text = "在VelMaxHP,90%VelMaxHP,80%VelMaxHP烟度低于规定值时，中止检测";
+            this.checkBoxLugdown_cl_ydjk.UseVisualStyleBackColor = true;
+            // 
+            // label196
+            // 
+            this.label196.AutoSize = true;
+            this.label196.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label196.Location = new System.Drawing.Point(639, 263);
+            this.label196.Name = "label196";
+            this.label196.Size = new System.Drawing.Size(80, 16);
+            this.label196.TabIndex = 155;
+            this.label196.Text = "规定值：<";
+            // 
+            // textBoxLugdown_glsm_ydjk
+            // 
+            this.textBoxLugdown_glsm_ydjk.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxLugdown_glsm_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxLugdown_glsm_ydjk.ForeColor = System.Drawing.Color.Blue;
+            this.textBoxLugdown_glsm_ydjk.Location = new System.Drawing.Point(725, 261);
+            this.textBoxLugdown_glsm_ydjk.Name = "textBoxLugdown_glsm_ydjk";
+            this.textBoxLugdown_glsm_ydjk.Size = new System.Drawing.Size(71, 26);
+            this.textBoxLugdown_glsm_ydjk.TabIndex = 154;
+            // 
+            // label197
+            // 
+            this.label197.AutoSize = true;
+            this.label197.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label197.Location = new System.Drawing.Point(802, 263);
+            this.label197.Name = "label197";
+            this.label197.Size = new System.Drawing.Size(96, 16);
+            this.label197.TabIndex = 156;
+            this.label197.Text = "时中止检测 ";
+            // 
+            // checkBoxLugdown_glsm_ydjk
+            // 
+            this.checkBoxLugdown_glsm_ydjk.AutoSize = true;
+            this.checkBoxLugdown_glsm_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBoxLugdown_glsm_ydjk.ForeColor = System.Drawing.Color.Red;
+            this.checkBoxLugdown_glsm_ydjk.Location = new System.Drawing.Point(7, 262);
+            this.checkBoxLugdown_glsm_ydjk.Name = "checkBoxLugdown_glsm_ydjk";
+            this.checkBoxLugdown_glsm_ydjk.Size = new System.Drawing.Size(347, 20);
+            this.checkBoxLugdown_glsm_ydjk.TabIndex = 153;
+            this.checkBoxLugdown_glsm_ydjk.Text = "在功率扫描阶段烟度低于规定值时，中止检测";
+            this.checkBoxLugdown_glsm_ydjk.UseVisualStyleBackColor = true;
+            // 
             // label192
             // 
             this.label192.AutoSize = true;
@@ -4843,6 +4932,7 @@
             // 
             // panelSDSSETTINGS
             // 
+            this.panelSDSSETTINGS.Controls.Add(this.checkBoxSds_norezero);
             this.panelSDSSETTINGS.Controls.Add(this.label191);
             this.panelSDSSETTINGS.Controls.Add(this.comboBoxYWJ_SDS);
             this.panelSDSSETTINGS.Controls.Add(this.checkBoxSdsSureTemp);
@@ -4911,7 +5001,7 @@
             this.checkBoxSdsSureTemp.AutoSize = true;
             this.checkBoxSdsSureTemp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxSdsSureTemp.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxSdsSureTemp.Location = new System.Drawing.Point(736, 97);
+            this.checkBoxSdsSureTemp.Location = new System.Drawing.Point(481, 97);
             this.checkBoxSdsSureTemp.Name = "checkBoxSdsSureTemp";
             this.checkBoxSdsSureTemp.Size = new System.Drawing.Size(187, 20);
             this.checkBoxSdsSureTemp.TabIndex = 148;
@@ -5216,6 +5306,48 @@
             this.panelBTG.Name = "panelBTG";
             this.panelBTG.Size = new System.Drawing.Size(1052, 248);
             this.panelBTG.TabIndex = 139;
+            // 
+            // label200
+            // 
+            this.label200.AutoSize = true;
+            this.label200.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label200.Location = new System.Drawing.Point(245, 127);
+            this.label200.Name = "label200";
+            this.label200.Size = new System.Drawing.Size(80, 16);
+            this.label200.TabIndex = 159;
+            this.label200.Text = "规定值：<";
+            // 
+            // textBoxBtg_cl_ydjk
+            // 
+            this.textBoxBtg_cl_ydjk.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxBtg_cl_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxBtg_cl_ydjk.ForeColor = System.Drawing.Color.Blue;
+            this.textBoxBtg_cl_ydjk.Location = new System.Drawing.Point(331, 125);
+            this.textBoxBtg_cl_ydjk.Name = "textBoxBtg_cl_ydjk";
+            this.textBoxBtg_cl_ydjk.Size = new System.Drawing.Size(71, 26);
+            this.textBoxBtg_cl_ydjk.TabIndex = 158;
+            // 
+            // label201
+            // 
+            this.label201.AutoSize = true;
+            this.label201.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label201.Location = new System.Drawing.Point(408, 127);
+            this.label201.Name = "label201";
+            this.label201.Size = new System.Drawing.Size(96, 16);
+            this.label201.TabIndex = 160;
+            this.label201.Text = "时中止检测 ";
+            // 
+            // checkBoxBtg_cl_ydjk
+            // 
+            this.checkBoxBtg_cl_ydjk.AutoSize = true;
+            this.checkBoxBtg_cl_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBoxBtg_cl_ydjk.ForeColor = System.Drawing.Color.Red;
+            this.checkBoxBtg_cl_ydjk.Location = new System.Drawing.Point(12, 126);
+            this.checkBoxBtg_cl_ydjk.Name = "checkBoxBtg_cl_ydjk";
+            this.checkBoxBtg_cl_ydjk.Size = new System.Drawing.Size(235, 20);
+            this.checkBoxBtg_cl_ydjk.TabIndex = 157;
+            this.checkBoxBtg_cl_ydjk.Text = "烟度低于规定值时，中止检测";
+            this.checkBoxBtg_cl_ydjk.UseVisualStyleBackColor = true;
             // 
             // label193
             // 
@@ -6387,131 +6519,41 @@
             this.label131.TabIndex = 107;
             this.label131.Text = "转速计设置";
             // 
-            // label196
+            // checkBoxVmas_norezero
             // 
-            this.label196.AutoSize = true;
-            this.label196.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label196.Location = new System.Drawing.Point(639, 263);
-            this.label196.Name = "label196";
-            this.label196.Size = new System.Drawing.Size(80, 16);
-            this.label196.TabIndex = 155;
-            this.label196.Text = "规定值：<";
+            this.checkBoxVmas_norezero.AutoSize = true;
+            this.checkBoxVmas_norezero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBoxVmas_norezero.ForeColor = System.Drawing.Color.Black;
+            this.checkBoxVmas_norezero.Location = new System.Drawing.Point(672, 197);
+            this.checkBoxVmas_norezero.Name = "checkBoxVmas_norezero";
+            this.checkBoxVmas_norezero.Size = new System.Drawing.Size(107, 20);
+            this.checkBoxVmas_norezero.TabIndex = 144;
+            this.checkBoxVmas_norezero.Text = "重检不调零";
+            this.checkBoxVmas_norezero.UseVisualStyleBackColor = true;
             // 
-            // textBoxLugdown_glsm_ydjk
+            // checkBoxAsm_nozero
             // 
-            this.textBoxLugdown_glsm_ydjk.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxLugdown_glsm_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxLugdown_glsm_ydjk.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxLugdown_glsm_ydjk.Location = new System.Drawing.Point(725, 261);
-            this.textBoxLugdown_glsm_ydjk.Name = "textBoxLugdown_glsm_ydjk";
-            this.textBoxLugdown_glsm_ydjk.Size = new System.Drawing.Size(71, 26);
-            this.textBoxLugdown_glsm_ydjk.TabIndex = 154;
+            this.checkBoxAsm_nozero.AutoSize = true;
+            this.checkBoxAsm_nozero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBoxAsm_nozero.ForeColor = System.Drawing.Color.Black;
+            this.checkBoxAsm_nozero.Location = new System.Drawing.Point(824, 138);
+            this.checkBoxAsm_nozero.Name = "checkBoxAsm_nozero";
+            this.checkBoxAsm_nozero.Size = new System.Drawing.Size(107, 20);
+            this.checkBoxAsm_nozero.TabIndex = 154;
+            this.checkBoxAsm_nozero.Text = "重检不调零";
+            this.checkBoxAsm_nozero.UseVisualStyleBackColor = true;
             // 
-            // label197
+            // checkBoxSds_norezero
             // 
-            this.label197.AutoSize = true;
-            this.label197.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label197.Location = new System.Drawing.Point(802, 263);
-            this.label197.Name = "label197";
-            this.label197.Size = new System.Drawing.Size(96, 16);
-            this.label197.TabIndex = 156;
-            this.label197.Text = "时中止检测 ";
-            // 
-            // checkBoxLugdown_glsm_ydjk
-            // 
-            this.checkBoxLugdown_glsm_ydjk.AutoSize = true;
-            this.checkBoxLugdown_glsm_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxLugdown_glsm_ydjk.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxLugdown_glsm_ydjk.Location = new System.Drawing.Point(7, 262);
-            this.checkBoxLugdown_glsm_ydjk.Name = "checkBoxLugdown_glsm_ydjk";
-            this.checkBoxLugdown_glsm_ydjk.Size = new System.Drawing.Size(347, 20);
-            this.checkBoxLugdown_glsm_ydjk.TabIndex = 153;
-            this.checkBoxLugdown_glsm_ydjk.Text = "在功率扫描阶段烟度低于规定值时，中止检测";
-            this.checkBoxLugdown_glsm_ydjk.UseVisualStyleBackColor = true;
-            // 
-            // label198
-            // 
-            this.label198.AutoSize = true;
-            this.label198.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label198.Location = new System.Drawing.Point(639, 289);
-            this.label198.Name = "label198";
-            this.label198.Size = new System.Drawing.Size(80, 16);
-            this.label198.TabIndex = 159;
-            this.label198.Text = "规定值：<";
-            // 
-            // textBoxLugdown_cl_ydjk
-            // 
-            this.textBoxLugdown_cl_ydjk.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxLugdown_cl_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxLugdown_cl_ydjk.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxLugdown_cl_ydjk.Location = new System.Drawing.Point(725, 287);
-            this.textBoxLugdown_cl_ydjk.Name = "textBoxLugdown_cl_ydjk";
-            this.textBoxLugdown_cl_ydjk.Size = new System.Drawing.Size(71, 26);
-            this.textBoxLugdown_cl_ydjk.TabIndex = 158;
-            // 
-            // label199
-            // 
-            this.label199.AutoSize = true;
-            this.label199.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label199.Location = new System.Drawing.Point(802, 289);
-            this.label199.Name = "label199";
-            this.label199.Size = new System.Drawing.Size(96, 16);
-            this.label199.TabIndex = 160;
-            this.label199.Text = "时中止检测 ";
-            // 
-            // checkBoxLugdown_cl_ydjk
-            // 
-            this.checkBoxLugdown_cl_ydjk.AutoSize = true;
-            this.checkBoxLugdown_cl_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxLugdown_cl_ydjk.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxLugdown_cl_ydjk.Location = new System.Drawing.Point(7, 288);
-            this.checkBoxLugdown_cl_ydjk.Name = "checkBoxLugdown_cl_ydjk";
-            this.checkBoxLugdown_cl_ydjk.Size = new System.Drawing.Size(507, 20);
-            this.checkBoxLugdown_cl_ydjk.TabIndex = 157;
-            this.checkBoxLugdown_cl_ydjk.Text = "在VelMaxHP,90%VelMaxHP,80%VelMaxHP烟度低于规定值时，中止检测";
-            this.checkBoxLugdown_cl_ydjk.UseVisualStyleBackColor = true;
-            // 
-            // label200
-            // 
-            this.label200.AutoSize = true;
-            this.label200.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label200.Location = new System.Drawing.Point(245, 127);
-            this.label200.Name = "label200";
-            this.label200.Size = new System.Drawing.Size(80, 16);
-            this.label200.TabIndex = 159;
-            this.label200.Text = "规定值：<";
-            // 
-            // textBoxBtg_cl_ydjk
-            // 
-            this.textBoxBtg_cl_ydjk.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxBtg_cl_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxBtg_cl_ydjk.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxBtg_cl_ydjk.Location = new System.Drawing.Point(331, 125);
-            this.textBoxBtg_cl_ydjk.Name = "textBoxBtg_cl_ydjk";
-            this.textBoxBtg_cl_ydjk.Size = new System.Drawing.Size(71, 26);
-            this.textBoxBtg_cl_ydjk.TabIndex = 158;
-            // 
-            // label201
-            // 
-            this.label201.AutoSize = true;
-            this.label201.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label201.Location = new System.Drawing.Point(408, 127);
-            this.label201.Name = "label201";
-            this.label201.Size = new System.Drawing.Size(96, 16);
-            this.label201.TabIndex = 160;
-            this.label201.Text = "时中止检测 ";
-            // 
-            // checkBoxBtg_cl_ydjk
-            // 
-            this.checkBoxBtg_cl_ydjk.AutoSize = true;
-            this.checkBoxBtg_cl_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxBtg_cl_ydjk.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxBtg_cl_ydjk.Location = new System.Drawing.Point(12, 126);
-            this.checkBoxBtg_cl_ydjk.Name = "checkBoxBtg_cl_ydjk";
-            this.checkBoxBtg_cl_ydjk.Size = new System.Drawing.Size(235, 20);
-            this.checkBoxBtg_cl_ydjk.TabIndex = 157;
-            this.checkBoxBtg_cl_ydjk.Text = "烟度低于规定值时，中止检测";
-            this.checkBoxBtg_cl_ydjk.UseVisualStyleBackColor = true;
+            this.checkBoxSds_norezero.AutoSize = true;
+            this.checkBoxSds_norezero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBoxSds_norezero.ForeColor = System.Drawing.Color.Black;
+            this.checkBoxSds_norezero.Location = new System.Drawing.Point(690, 97);
+            this.checkBoxSds_norezero.Name = "checkBoxSds_norezero";
+            this.checkBoxSds_norezero.Size = new System.Drawing.Size(107, 20);
+            this.checkBoxSds_norezero.TabIndex = 151;
+            this.checkBoxSds_norezero.Text = "重检不调零";
+            this.checkBoxSds_norezero.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -7133,6 +7175,9 @@
         private System.Windows.Forms.TextBox textBoxBtg_cl_ydjk;
         private System.Windows.Forms.Label label201;
         private System.Windows.Forms.CheckBox checkBoxBtg_cl_ydjk;
+        private System.Windows.Forms.CheckBox checkBoxVmas_norezero;
+        private System.Windows.Forms.CheckBox checkBoxAsm_nozero;
+        private System.Windows.Forms.CheckBox checkBoxSds_norezero;
     }
 }
 

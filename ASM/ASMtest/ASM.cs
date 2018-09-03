@@ -1777,6 +1777,7 @@ namespace ASMtest
                                 break;
                         }
                     }
+                    if (asmconfig.asmNoReZero) asmconfig.IfFqyTl = false;
                 }
                 Thread.Sleep(500);
                 //statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.ZIJIANJIESHU, JCSJ.ToString());

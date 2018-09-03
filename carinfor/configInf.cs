@@ -672,6 +672,7 @@ namespace carinfor
         public int ndccsj { set; get; }
         public bool CjBeforeTl { set; get; }
         public float vmasPowerXs { set; get; }
+        public bool vmasNoReZero { set; get; }
     }
     public class AsmConfigInfdata
     {
@@ -807,6 +808,7 @@ namespace carinfor
         }
         public bool IsAsmHalfXzKsgk { set; get; }
         public string Ywj { set; get; }
+        public bool asmNoReZero { set; get; }
     }
     public class SdsConfigInfdata
     {
@@ -898,6 +900,7 @@ namespace carinfor
         public int TimerModeLT { set; get; }
         public bool IsSureTemp { set; get; }
         public string Ywj { set; get; }
+        public bool sdsNoReZero { set; get; }
     }
     public class BtgConfigInfdata
     {
@@ -2226,6 +2229,11 @@ namespace carinfor
             else
                 configinidata.CjBeforeTl = false;
 
+            ini.INIIO.GetPrivateProfileString("VMAS", "不重复调零", "false", temp, 2048, startUpPath + "/detectConfig.ini");
+            if (temp.ToString().Trim() == "true")
+                configinidata.vmasNoReZero = true;
+            else
+                configinidata.vmasNoReZero = false;
             ini.INIIO.GetPrivateProfileString("VMAS", "加载力比例", "1.0", temp, 2048, startUpPath + "/detectConfig.ini");
             if (float.TryParse(temp.ToString().Trim(), out a))
             {
@@ -2272,6 +2280,7 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("VMAS", "是否检测油温", configinidata.IsTestYw.ToString().ToLower(), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("VMAS", "山东浓度监控", configinidata.SdCo2AndO2Monitor.ToString().ToLower(), startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("VMAS", "在调零前初检", configinidata.CjBeforeTl.ToString().ToLower(), startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("VMAS", "不重复调零", configinidata.vmasNoReZero.ToString().ToLower(), startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("VMAS", "加载力比例", configinidata.vmasPowerXs.ToString("0.0"), startUpPath + "/detectConfig.ini");
 
                 return true;
@@ -2388,6 +2397,13 @@ namespace carinfor
 
             ini.INIIO.GetPrivateProfileString("ASM", "油温计", "废气仪", temp, 2048, startUpPath + "/detectConfig.ini");
             configinidata.Ywj = temp.ToString();
+
+
+            ini.INIIO.GetPrivateProfileString("ASM", "不重复调零", "false", temp, 2048, startUpPath + "/detectConfig.ini");
+            if (temp.ToString().Trim() == "true")
+                configinidata.asmNoReZero = true;
+            else
+                configinidata.asmNoReZero = false;
             return configinidata;
         }
 
@@ -2415,6 +2431,7 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("ASM", "连续超差", configinidata.Lxcc.ToString("0.0"), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("ASM", "反吹时间", configinidata.FlowTime.ToString("0"), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("ASM", "油温计", configinidata.Ywj, startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("ASM", "不重复调零", configinidata.asmNoReZero.ToString().ToLower(), startUpPath + "/detectConfig.ini");
 
                 return true;
             }
@@ -2515,6 +2532,12 @@ namespace carinfor
                 configinidata.TimerModeLT = b;
             else
                 configinidata.TimerModeLT = 30;
+
+            ini.INIIO.GetPrivateProfileString("SDS", "不重复调零", "false", temp, 2048, startUpPath + "/detectConfig.ini");
+            if (temp.ToString().Trim() == "true")
+                configinidata.sdsNoReZero = true;
+            else
+                configinidata.sdsNoReZero = false;
             return configinidata;
         }
 
@@ -2542,6 +2565,7 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("SDS", "高怠速测量计时模式", configinidata.TimerModeHT.ToString("0"), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("SDS", "怠速准备计时模式", configinidata.TimerModeLP.ToString("0"), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("SDS", "怠速测量计时模式", configinidata.TimerModeLT.ToString("0"), startUpPath+"/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("SDS", "不重复调零", configinidata.sdsNoReZero.ToString().ToLower(), startUpPath + "/detectConfig.ini");
                 return true;
             }
             catch

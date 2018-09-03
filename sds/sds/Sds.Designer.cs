@@ -52,23 +52,24 @@
             this.button_clear = new System.Windows.Forms.Button();
             this.button_ss = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panelMotoData = new System.Windows.Forms.Panel();
+            this.ledNumberNO = new LEDNumber.LEDNumber();
             this.label6 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.ledNumberλ = new LEDNumber.LEDNumber();
+            this.label12 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.ledNumberλ = new LEDNumber.LEDNumber();
-            this.ledNumberNO = new LEDNumber.LEDNumber();
             this.ledNumberHC = new LEDNumber.LEDNumber();
             this.ledNumberO2 = new LEDNumber.LEDNumber();
             this.ledNumberCO2 = new LEDNumber.LEDNumber();
             this.ledNumberCO = new LEDNumber.LEDNumber();
             this.ledNumberZS = new LEDNumber.LEDNumber();
-            this.label14 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -93,7 +94,6 @@
             this.buttonSDSR = new System.Windows.Forms.Button();
             this.buttonQR = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
-            this.panelMotoData = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -102,6 +102,7 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panelMotoData.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel11.SuspendLayout();
@@ -112,7 +113,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleComponentZs_value)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleNeedleComponent1)).BeginInit();
             this.panelWSD.SuspendLayout();
-            this.panelMotoData.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -252,7 +252,7 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.Yellow;
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 323);
+            this.panel6.Location = new System.Drawing.Point(0, 361);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1344, 3);
             this.panel6.TabIndex = 9;
@@ -268,6 +268,8 @@
             // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.SystemColors.Control;
             this.panel4.Controls.Add(this.comboBoxZSJK);
             this.panel4.Controls.Add(this.button1);
@@ -276,7 +278,6 @@
             this.panel4.Controls.Add(this.button_blowback);
             this.panel4.Controls.Add(this.button_clear);
             this.panel4.Controls.Add(this.button_ss);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 326);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1344, 38);
@@ -294,8 +295,9 @@
             "转速无法采样，参照汽车仪表"});
             this.comboBoxZSJK.Location = new System.Drawing.Point(399, 4);
             this.comboBoxZSJK.Name = "comboBoxZSJK";
-            this.comboBoxZSJK.Size = new System.Drawing.Size(243, 29);
+            this.comboBoxZSJK.Size = new System.Drawing.Size(202, 29);
             this.comboBoxZSJK.TabIndex = 14;
+            this.comboBoxZSJK.Visible = false;
             // 
             // button1
             // 
@@ -376,9 +378,9 @@
             this.button_ss.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_ss.BackgroundImage")));
             this.button_ss.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button_ss.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_ss.Location = new System.Drawing.Point(648, 0);
+            this.button_ss.Location = new System.Drawing.Point(607, 0);
             this.button_ss.Name = "button_ss";
-            this.button_ss.Size = new System.Drawing.Size(132, 37);
+            this.button_ss.Size = new System.Drawing.Size(148, 37);
             this.button_ss.TabIndex = 1;
             this.button_ss.Text = "开始检测";
             this.button_ss.UseVisualStyleBackColor = true;
@@ -414,6 +416,30 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "实时数据";
             // 
+            // panelMotoData
+            // 
+            this.panelMotoData.BackColor = System.Drawing.Color.Transparent;
+            this.panelMotoData.Controls.Add(this.ledNumberNO);
+            this.panelMotoData.Controls.Add(this.label6);
+            this.panelMotoData.Controls.Add(this.label14);
+            this.panelMotoData.Controls.Add(this.ledNumberλ);
+            this.panelMotoData.Controls.Add(this.label12);
+            this.panelMotoData.Location = new System.Drawing.Point(3, 223);
+            this.panelMotoData.Name = "panelMotoData";
+            this.panelMotoData.Size = new System.Drawing.Size(294, 81);
+            this.panelMotoData.TabIndex = 55;
+            // 
+            // ledNumberNO
+            // 
+            this.ledNumberNO.BackColor = System.Drawing.Color.Black;
+            this.ledNumberNO.LEDForeColor = System.Drawing.Color.Lime;
+            this.ledNumberNO.LEDShadowColor = System.Drawing.Color.Black;
+            this.ledNumberNO.LEDText = "0";
+            this.ledNumberNO.Location = new System.Drawing.Point(138, 1);
+            this.ledNumberNO.Name = "ledNumberNO";
+            this.ledNumberNO.Size = new System.Drawing.Size(141, 40);
+            this.ledNumberNO.TabIndex = 36;
+            // 
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -427,6 +453,43 @@
             this.label6.TabIndex = 54;
             this.label6.Text = "-6";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label14.ForeColor = System.Drawing.Color.Red;
+            this.label14.Location = new System.Drawing.Point(52, 52);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(23, 26);
+            this.label14.TabIndex = 30;
+            this.label14.Text = "λ";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ledNumberλ
+            // 
+            this.ledNumberλ.BackColor = System.Drawing.Color.Black;
+            this.ledNumberλ.LEDForeColor = System.Drawing.Color.Lime;
+            this.ledNumberλ.LEDShadowColor = System.Drawing.Color.Black;
+            this.ledNumberλ.LEDText = "0.00";
+            this.ledNumberλ.Location = new System.Drawing.Point(138, 42);
+            this.ledNumberλ.Name = "ledNumberλ";
+            this.ledNumberλ.Size = new System.Drawing.Size(141, 40);
+            this.ledNumberλ.TabIndex = 37;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(13, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(120, 26);
+            this.label12.TabIndex = 50;
+            this.label12.Text = "[NO](10    )";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
@@ -469,19 +532,6 @@
             this.label2.TabIndex = 51;
             this.label2.Text = "2";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(13, 9);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(120, 26);
-            this.label12.TabIndex = 50;
-            this.label12.Text = "[NO](10    )";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
@@ -539,28 +589,6 @@
             this.label8.Text = "[CO](%)";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ledNumberλ
-            // 
-            this.ledNumberλ.BackColor = System.Drawing.Color.Black;
-            this.ledNumberλ.LEDForeColor = System.Drawing.Color.Lime;
-            this.ledNumberλ.LEDShadowColor = System.Drawing.Color.Black;
-            this.ledNumberλ.LEDText = "0.00";
-            this.ledNumberλ.Location = new System.Drawing.Point(138, 42);
-            this.ledNumberλ.Name = "ledNumberλ";
-            this.ledNumberλ.Size = new System.Drawing.Size(141, 40);
-            this.ledNumberλ.TabIndex = 37;
-            // 
-            // ledNumberNO
-            // 
-            this.ledNumberNO.BackColor = System.Drawing.Color.Black;
-            this.ledNumberNO.LEDForeColor = System.Drawing.Color.Lime;
-            this.ledNumberNO.LEDShadowColor = System.Drawing.Color.Black;
-            this.ledNumberNO.LEDText = "0";
-            this.ledNumberNO.Location = new System.Drawing.Point(138, 1);
-            this.ledNumberNO.Name = "ledNumberNO";
-            this.ledNumberNO.Size = new System.Drawing.Size(141, 40);
-            this.ledNumberNO.TabIndex = 36;
-            // 
             // ledNumberHC
             // 
             this.ledNumberHC.BackColor = System.Drawing.Color.Black;
@@ -615,19 +643,6 @@
             this.ledNumberZS.Name = "ledNumberZS";
             this.ledNumberZS.Size = new System.Drawing.Size(141, 40);
             this.ledNumberZS.TabIndex = 31;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(52, 52);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(23, 26);
-            this.label14.TabIndex = 30;
-            this.label14.Text = "λ";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
@@ -725,6 +740,7 @@
             // 
             // arcScaleBackgroundLayerComponent1
             // 
+            this.arcScaleBackgroundLayerComponent1.AcceptOrder = -1000;
             this.arcScaleBackgroundLayerComponent1.ArcScale = this.arcScaleComponentZs;
             this.arcScaleBackgroundLayerComponent1.Name = "bg1";
             this.arcScaleBackgroundLayerComponent1.ScaleCenterPos = new DevExpress.XtraGauges.Core.Base.PointF2D(0.5F, 0.65F);
@@ -734,6 +750,7 @@
             // 
             // arcScaleComponentZs
             // 
+            this.arcScaleComponentZs.AcceptOrder = 0;
             this.arcScaleComponentZs.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 165F);
             this.arcScaleComponentZs.EndAngle = 20F;
             this.arcScaleComponentZs.MajorTickmark.FormatString = "{0:F0}";
@@ -750,6 +767,7 @@
             // 
             // arcScaleComponentZs_value
             // 
+            this.arcScaleComponentZs_value.AcceptOrder = 1000;
             this.arcScaleComponentZs_value.ArcScale = this.arcScaleComponentZs;
             this.arcScaleComponentZs_value.Name = "effect1";
             this.arcScaleComponentZs_value.ScaleCenterPos = new DevExpress.XtraGauges.Core.Base.PointF2D(0.5F, 0.8F);
@@ -760,6 +778,7 @@
             // 
             // arcScaleNeedleComponent1
             // 
+            this.arcScaleNeedleComponent1.AcceptOrder = 50;
             this.arcScaleNeedleComponent1.ArcScale = this.arcScaleComponentZs;
             this.arcScaleNeedleComponent1.EndOffset = -20F;
             this.arcScaleNeedleComponent1.Name = "needle1";
@@ -881,19 +900,6 @@
             this.label20.Text = "请确认温湿度与温湿度计是否一致";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panelMotoData
-            // 
-            this.panelMotoData.BackColor = System.Drawing.Color.Transparent;
-            this.panelMotoData.Controls.Add(this.ledNumberNO);
-            this.panelMotoData.Controls.Add(this.label6);
-            this.panelMotoData.Controls.Add(this.label14);
-            this.panelMotoData.Controls.Add(this.ledNumberλ);
-            this.panelMotoData.Controls.Add(this.label12);
-            this.panelMotoData.Location = new System.Drawing.Point(3, 223);
-            this.panelMotoData.Name = "panelMotoData";
-            this.panelMotoData.Size = new System.Drawing.Size(294, 81);
-            this.panelMotoData.TabIndex = 55;
-            // 
             // Sds
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -922,6 +928,8 @@
             this.panel4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panelMotoData.ResumeLayout(false);
+            this.panelMotoData.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel11.ResumeLayout(false);
@@ -933,8 +941,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleNeedleComponent1)).EndInit();
             this.panelWSD.ResumeLayout(false);
             this.panelWSD.PerformLayout();
-            this.panelMotoData.ResumeLayout(false);
-            this.panelMotoData.PerformLayout();
             this.ResumeLayout(false);
 
         }
