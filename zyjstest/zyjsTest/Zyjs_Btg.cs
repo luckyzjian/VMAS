@@ -833,6 +833,7 @@ namespace zyjsTest
         {
             try
             {
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_DAOWEI, "");
                 List<int> thistimezslist = new List<int>();
                 int time_踩油门点 = 0;
                 int maxzs = 0;
@@ -1278,6 +1279,7 @@ namespace zyjsTest
                     }
                 }
                 Msg(label_msg, panel_cp, "探头已经安置完毕，即将开始测量。", false);
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_TANTOU, "");
                 if (ledcontrol != null)
                 {
                     if (equipconfig.Ledxh == "同济单排")
@@ -1310,9 +1312,10 @@ namespace zyjsTest
                 isReadRealTime = true;
                 Thread.Sleep(500);
                 statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.DAOWEI, GKSJ.ToString());
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
                 statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.CHATANTOU, GKSJ.ToString());
                 statusconfigini.writeNeuStatusData("StartTest", DateTime.Now.ToString());
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_STARTSAMPLE, "");
                 zyjs_data.StartTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 startTime = DateTime.Now;
                 
@@ -2634,6 +2637,7 @@ namespace zyjsTest
                 sxnb++;
 
                 statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.GUOCHE, GKSJ.ToString());
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_ENDSAMPLE, "");
                 if (ledcontrol != null)
                 {
                     if (equipconfig.Ledxh == "同济单排")

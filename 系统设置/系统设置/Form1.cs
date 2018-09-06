@@ -421,9 +421,9 @@ namespace 系统设置
                 lugdownconfig.isYdjk_cl = checkBoxLugdown_cl_ydjk.Checked;
                 lugdownconfig.ydjk_cl_value = double.Parse(textBoxLugdown_cl_ydjk.Text);
 
-                if (lugdownconfig.Lugdown_Gljk_value > 80f || lugdownconfig.Lugdown_Gljk_value < 40f)
+                if (lugdownconfig.Lugdown_Gljk_value > 80f || lugdownconfig.Lugdown_Gljk_value < 20f)
                 {
-                    MessageBox.Show("加载功率规定值范围为40~80", "数值输入超出范围");
+                    MessageBox.Show("加载功率规定值范围为20~80", "数值输入超出范围");
                     return;
                 }
                 if (configini.writeLugdownConfigIni(lugdownconfig))

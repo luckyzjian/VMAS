@@ -72,18 +72,21 @@ namespace QxzDemarcate
             {
                 if (File.Exists("C://jcdatatxt/环境数据.ini"))
                 {
-                    string wd, sd, dqy;
+                    string wds, sds, dqys;
                     StringBuilder temp = new StringBuilder();
                     temp.Length = 2048;
                     ini.INIIO.GetPrivateProfileString("环境数据", "wd", "", temp, 2048, "C:/jcdatatxt/环境数据.ini");
-                    wd = temp.ToString();
+                    wds = temp.ToString();
                     ini.INIIO.GetPrivateProfileString("环境数据", "sd", "", temp, 2048, "C:/jcdatatxt/环境数据.ini");
-                    sd = temp.ToString();
+                    sds = temp.ToString();
                     ini.INIIO.GetPrivateProfileString("环境数据", "dqy", "", temp, 2048, "C:/jcdatatxt/环境数据.ini");
-                    dqy = temp.ToString();
-                    textBoxWd.Text = wd;
-                    textBoxSd.Text = sd;
-                    textBoxDqy.Text = dqy;
+                    dqys = temp.ToString();
+                    textBoxWd.Text = wds;
+                    textBoxSd.Text = sds;
+                    textBoxDqy.Text = dqys;
+                    wd = double.Parse(wds);
+                    sd = double.Parse(sds);
+                    dqy = double.Parse(dqys);
                     IsUseTpTemp = true;
                 }
             }

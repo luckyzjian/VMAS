@@ -2343,10 +2343,16 @@ namespace 动力油耗
                                     dr["扭力"] = forcelist[i].ToString("0");
                                     dr["功率"] = powerlist[i].ToString("0.0");
                                     dr["达标速度"] = Vm.ToString("0.0");
-                                    mmsd += speedlist[i].ToString("0.0");
-                                    mmnl += forcelist[i].ToString("0.0");
-                                    mmgl += powerlist[i].ToString("0.0");
+                                    mmsd += speedlist[i].ToString("0.0") + ",";
+                                    mmnl += forcelist[i].ToString("0.0") + ",";
+                                    mmgl += powerlist[i].ToString("0.0") + ",";
                                     dyn_datatable.Rows.Add(dr);
+                                }
+                                if(mmsd.Length>0)
+                                {
+                                    mmsd.Remove(mmsd.Length - 1, 1);
+                                    mmnl.Remove(mmnl.Length - 1, 1);
+                                    mmgl.Remove(mmgl.Length - 1, 1);
                                 }
                             }
                             catch (Exception er)
@@ -2581,10 +2587,16 @@ namespace 动力油耗
                                     dr["扭力"] = forcelist[i].ToString("0");
                                     dr["功率"] = powerlist[i].ToString("0.0");
                                     dr["达标速度"] = Ve.ToString("0.0");
-                                    mmsd+= speedlist[i].ToString("0.0");
-                                    mmnl += forcelist[i].ToString("0.0");
-                                    mmgl += powerlist[i].ToString("0.0");
+                                    mmsd+= speedlist[i].ToString("0.0")+",";
+                                    mmnl += forcelist[i].ToString("0.0") + ",";
+                                    mmgl += powerlist[i].ToString("0.0") + ",";
                                     dyn_datatable.Rows.Add(dr);
+                                }
+                                if (mmsd.Length > 0)
+                                {
+                                    mmsd.Remove(mmsd.Length - 1, 1);
+                                    mmnl.Remove(mmnl.Length - 1, 1);
+                                    mmgl.Remove(mmgl.Length - 1, 1);
                                 }
                             }
                             catch (Exception er)

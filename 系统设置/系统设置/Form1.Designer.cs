@@ -302,6 +302,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelASMSETTINGS = new System.Windows.Forms.Panel();
+            this.checkBoxAsm_nozero = new System.Windows.Forms.CheckBox();
             this.label194 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.label93 = new System.Windows.Forms.Label();
@@ -326,6 +327,7 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panelVMASSETTINGS = new System.Windows.Forms.Panel();
+            this.checkBoxVmas_norezero = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioButtonCjAfterTl = new System.Windows.Forms.RadioButton();
             this.radioButtonCjBeforeTl = new System.Windows.Forms.RadioButton();
@@ -379,6 +381,7 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.panelSDSSETTINGS = new System.Windows.Forms.Panel();
+            this.checkBoxSds_norezero = new System.Windows.Forms.CheckBox();
             this.label191 = new System.Windows.Forms.Label();
             this.comboBoxYWJ_SDS = new System.Windows.Forms.ComboBox();
             this.checkBoxSdsSureTemp = new System.Windows.Forms.CheckBox();
@@ -516,9 +519,6 @@
             this.comboBoxDynZsj = new System.Windows.Forms.ComboBox();
             this.panel32 = new System.Windows.Forms.Panel();
             this.label131 = new System.Windows.Forms.Label();
-            this.checkBoxVmas_norezero = new System.Windows.Forms.CheckBox();
-            this.checkBoxAsm_nozero = new System.Windows.Forms.CheckBox();
-            this.checkBoxSds_norezero = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -2907,8 +2907,8 @@
             // 
             this.tabControl2.BackColor = System.Drawing.Color.Transparent;
             this.tabControl2.CanReorderTabs = true;
-            this.tabControl2.Controls.Add(this.tabControlPanel1);
             this.tabControl2.Controls.Add(this.tabControlPanel2);
+            this.tabControl2.Controls.Add(this.tabControlPanel1);
             this.tabControl2.Location = new System.Drawing.Point(3, 2);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedTabFont = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Bold);
@@ -3655,7 +3655,8 @@
             "安徽",
             "安车通用联网",
             "江西",
-            "东软甘肃"});
+            "东软甘肃",
+            "云南保山"});
             this.comboBoxDataSecondsType.Location = new System.Drawing.Point(89, 354);
             this.comboBoxDataSecondsType.Name = "comboBoxDataSecondsType";
             this.comboBoxDataSecondsType.Size = new System.Drawing.Size(178, 24);
@@ -4035,6 +4036,18 @@
             this.panelASMSETTINGS.Size = new System.Drawing.Size(1051, 227);
             this.panelASMSETTINGS.TabIndex = 142;
             // 
+            // checkBoxAsm_nozero
+            // 
+            this.checkBoxAsm_nozero.AutoSize = true;
+            this.checkBoxAsm_nozero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBoxAsm_nozero.ForeColor = System.Drawing.Color.Black;
+            this.checkBoxAsm_nozero.Location = new System.Drawing.Point(824, 138);
+            this.checkBoxAsm_nozero.Name = "checkBoxAsm_nozero";
+            this.checkBoxAsm_nozero.Size = new System.Drawing.Size(107, 20);
+            this.checkBoxAsm_nozero.TabIndex = 154;
+            this.checkBoxAsm_nozero.Text = "重检不调零";
+            this.checkBoxAsm_nozero.UseVisualStyleBackColor = true;
+            // 
             // label194
             // 
             this.label194.AutoSize = true;
@@ -4331,6 +4344,18 @@
             this.panelVMASSETTINGS.Name = "panelVMASSETTINGS";
             this.panelVMASSETTINGS.Size = new System.Drawing.Size(1051, 309);
             this.panelVMASSETTINGS.TabIndex = 140;
+            // 
+            // checkBoxVmas_norezero
+            // 
+            this.checkBoxVmas_norezero.AutoSize = true;
+            this.checkBoxVmas_norezero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBoxVmas_norezero.ForeColor = System.Drawing.Color.Black;
+            this.checkBoxVmas_norezero.Location = new System.Drawing.Point(672, 197);
+            this.checkBoxVmas_norezero.Name = "checkBoxVmas_norezero";
+            this.checkBoxVmas_norezero.Size = new System.Drawing.Size(107, 20);
+            this.checkBoxVmas_norezero.TabIndex = 144;
+            this.checkBoxVmas_norezero.Text = "重检不调零";
+            this.checkBoxVmas_norezero.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -4971,6 +4996,18 @@
             this.panelSDSSETTINGS.Name = "panelSDSSETTINGS";
             this.panelSDSSETTINGS.Size = new System.Drawing.Size(1051, 315);
             this.panelSDSSETTINGS.TabIndex = 138;
+            // 
+            // checkBoxSds_norezero
+            // 
+            this.checkBoxSds_norezero.AutoSize = true;
+            this.checkBoxSds_norezero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBoxSds_norezero.ForeColor = System.Drawing.Color.Black;
+            this.checkBoxSds_norezero.Location = new System.Drawing.Point(690, 97);
+            this.checkBoxSds_norezero.Name = "checkBoxSds_norezero";
+            this.checkBoxSds_norezero.Size = new System.Drawing.Size(107, 20);
+            this.checkBoxSds_norezero.TabIndex = 151;
+            this.checkBoxSds_norezero.Text = "重检不调零";
+            this.checkBoxSds_norezero.UseVisualStyleBackColor = true;
             // 
             // label191
             // 
@@ -6518,42 +6555,6 @@
             this.label131.Size = new System.Drawing.Size(77, 14);
             this.label131.TabIndex = 107;
             this.label131.Text = "转速计设置";
-            // 
-            // checkBoxVmas_norezero
-            // 
-            this.checkBoxVmas_norezero.AutoSize = true;
-            this.checkBoxVmas_norezero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxVmas_norezero.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxVmas_norezero.Location = new System.Drawing.Point(672, 197);
-            this.checkBoxVmas_norezero.Name = "checkBoxVmas_norezero";
-            this.checkBoxVmas_norezero.Size = new System.Drawing.Size(107, 20);
-            this.checkBoxVmas_norezero.TabIndex = 144;
-            this.checkBoxVmas_norezero.Text = "重检不调零";
-            this.checkBoxVmas_norezero.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxAsm_nozero
-            // 
-            this.checkBoxAsm_nozero.AutoSize = true;
-            this.checkBoxAsm_nozero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxAsm_nozero.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxAsm_nozero.Location = new System.Drawing.Point(824, 138);
-            this.checkBoxAsm_nozero.Name = "checkBoxAsm_nozero";
-            this.checkBoxAsm_nozero.Size = new System.Drawing.Size(107, 20);
-            this.checkBoxAsm_nozero.TabIndex = 154;
-            this.checkBoxAsm_nozero.Text = "重检不调零";
-            this.checkBoxAsm_nozero.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxSds_norezero
-            // 
-            this.checkBoxSds_norezero.AutoSize = true;
-            this.checkBoxSds_norezero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxSds_norezero.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxSds_norezero.Location = new System.Drawing.Point(690, 97);
-            this.checkBoxSds_norezero.Name = "checkBoxSds_norezero";
-            this.checkBoxSds_norezero.Size = new System.Drawing.Size(107, 20);
-            this.checkBoxSds_norezero.TabIndex = 151;
-            this.checkBoxSds_norezero.Text = "重检不调零";
-            this.checkBoxSds_norezero.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

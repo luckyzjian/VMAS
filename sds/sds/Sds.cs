@@ -832,6 +832,7 @@ namespace sds
         private bool wsdValueIsRight = false;
         public void Jc_Exe()
         {
+
             int chaocha = 0;
             int zero_count = 0;
             DataRow dr = null;
@@ -841,6 +842,7 @@ namespace sds
             monizt = 0;
             try
             {
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_DAOWEI, "");
                 if (sdsconfig.RotateSpeedMonitor== false)
                     sdscc = 4000;
                 else
@@ -1292,6 +1294,7 @@ namespace sds
                 JC_Status = true;//开始存储逐秒数据
                 statusconfigini.writeNeuStatusData("StartTest", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                 sds_data.StartTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_STARTSAMPLE, "");
                 sxnb = 0;//70%额定转速
                 jczt = 0;
                 cysx = 1;//采样时序设为1
@@ -1633,6 +1636,7 @@ namespace sds
                 }
                 ts2 = "探头已插好";
                 Msg(Msg_msg, panel_msg, "探头已经插好，即将开始高怠速测试", false);
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_TANTOU, "");
 
                 if (ledcontrol != null)
                 {
@@ -2331,6 +2335,7 @@ namespace sds
                 //关泵
                 sds_dataseconds.Gksj = GKSJ;//保存工况时间
                 statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.GUOCHE, GKSJ.ToString());
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_ENDSAMPLE, "");
                 JC_Status = false;//停止工况时间
                 Msg(Msg_msg, panel_msg, "数据计算中……", false);
                 ts1 = "测量完毕";

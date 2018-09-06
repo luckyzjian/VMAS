@@ -1683,7 +1683,8 @@ namespace ASMtest
             vmas_datatable.Columns.Add("油温");
             try
             {
-                //statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.ZIJIAN, JCSJ.ToString());
+
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_DAOWEI, "");
                 Msg(label_message, panel_msg, "测试即将开始,检查废气仪状态", false);
                 ts1 = "测试即将开始";
                 ts2 = "稳态工况法";
@@ -1798,7 +1799,8 @@ namespace ASMtest
                 Thread.Sleep(2000);
                 while (Vmas_Exhaust_Now.CO + Vmas_Exhaust_Now.CO2 <= asmconfig.Ndz)
                     Thread.Sleep(500);
-                Msg(label_message, panel_msg, "探头已插好,检测开始", false);  
+                Msg(label_message, panel_msg, "探头已插好,检测开始", false);
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_TANTOU, "");
                 //Msg(label_message, panel_msg, "检测开始,举升下降", false);
                 //ts1 = "举升下降";
                 //igbt.Lifter_Down();     //举升下降
@@ -1827,6 +1829,7 @@ namespace ASMtest
                 saveProcessData = true;
                 statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.DAOWEI, JCSJ.ToString());
                 statusconfigini.writeNeuStatusData("Testing5025", JCSJ.ToString());//东软5025开始
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_STARTSAMPLE, "");
                 ts1 = "测5025工况";
                 ts2 = "保持25±1.5km/h";
                 jczt = 1;
@@ -2405,6 +2408,7 @@ namespace ASMtest
                     }
                 }
                 statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.GUOCHE, JCSJ.ToString());
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_ENDSAMPLE, "");
                 JC_Status = false; saveProcessData = false;
                 jcStatus = false;
                 asm2540 = false;

@@ -1359,6 +1359,8 @@ namespace lugdowm
             DataRow dr = null;
             try
             {
+
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_DAOWEI,"");
                 #region 初检
                 Clear_Chart();
                 igjzjsIsFinished = false;
@@ -1692,14 +1694,15 @@ namespace lugdowm
                 }
                 else
                 {
-                    for (int i = 5; i >= 0; i--)
+                    for (int i = 15; i >= 0; i--)
                     {
                         Msg(Msg_msg, panel_msg, "请安置好探头..." + i.ToString(), false);
                         Thread.Sleep(800);
                     }
                 }
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_TANTOU, "");
                 #endregion
-                
+
                 #region 开始检测，提示回事
                 fq_getdata = true;
                 ts1 = "检测开始";
@@ -1735,6 +1738,7 @@ namespace lugdowm
                     #region 加速阶段
                     Msg(Msg_msg, panel_msg, "测试开始，请用合适档位全油加速至70km/h以上", true);
                     statusconfigini.writeNeuStatusData("StartTest", DateTime.Now.ToString());
+                    statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_STARTSAMPLE, "");
                     jzjs_data.StartTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                     while (igbt.Speed < lugdownconfig.MinSpeed)
                     {
@@ -2073,7 +2077,7 @@ namespace lugdowm
                     }
                     #endregion
 
-                    if(equipconfig.DATASECONDS_TYPE == "江西")
+                    if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山")
                         sxnb = 2;
 
                     #region 加载测试
@@ -2109,7 +2113,7 @@ namespace lugdowm
                             case "VelMaxHP100%":
                                 statusconfigini.writeNeuStatusData("K100Testing", DateTime.Now.ToString());
                                 Modulus = 1;
-                                if (equipconfig.DATASECONDS_TYPE != "江西")
+                                if (equipconfig.DATASECONDS_TYPE != "江西"&&equipconfig.DATASECONDS_TYPE!="云南保山")
                                     sxnb = 2;
                                 opno = 5;
                                 opcode = 21;
@@ -2117,7 +2121,7 @@ namespace lugdowm
                             case "VelMaxHP90%":
                                 statusconfigini.writeNeuStatusData("K90Testing", DateTime.Now.ToString());
                                 Modulus = 0.9f;
-                                if (equipconfig.DATASECONDS_TYPE == "江西")
+                                if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山")
                                     sxnb = 4;
                                 else
                                     sxnb = 3;
@@ -2127,7 +2131,7 @@ namespace lugdowm
                             case "VelMaxHP80%":
                                 statusconfigini.writeNeuStatusData("K80Testing", DateTime.Now.ToString());
                                 Modulus = 0.8f;
-                                if (equipconfig.DATASECONDS_TYPE == "江西")
+                                if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山")
                                     sxnb = 5;
                                 else
                                     sxnb = 4;
@@ -2139,7 +2143,7 @@ namespace lugdowm
                         Thread.Sleep(200);
                         igbt.Start_Control_Speed();
 
-                        if (equipconfig.DATASECONDS_TYPE == "江西" && Jc_Process == "VelMaxHP100%")
+                        if ((equipconfig.DATASECONDS_TYPE == "江西"|| equipconfig.DATASECONDS_TYPE == "云南保山") && Jc_Process == "VelMaxHP100%")
                         {
                             while (igbt.Speed < VelMaxHP_real - 1)
                             {
@@ -2399,14 +2403,14 @@ namespace lugdowm
                                     }
                                     if (lugdownconfig.LugdownGljk)
                                     {
-                                        if (double.Parse(HP)<double.Parse(jzjs_data.Lbgl)*lugdownconfig.Lugdown_Gljk_value*0.01)
+                                        if (double.Parse(HP)*glxzxs<double.Parse(jzjs_data.Lbgl)*lugdownconfig.Lugdown_Gljk_value*0.01)
                                         {
                                             JC_Status = false;
                                             button_ss.Text = "重新检测";
                                             Th_get_FqandLl.Abort();
                                             Jzjs_status = false; fq_getdata = false;
                                             Thread.Sleep(500);
-                                            Msg(Msg_msg, panel_msg, "加载功率过低,检测中止,检查探头是否脱落", true);
+                                            Msg(Msg_msg, panel_msg, "加载功率过低,检测中止", true);
                                             ts1 = "加载功率过低";
                                             ts2 = "检测中止";
                                             if (ledcontrol != null)
@@ -2540,7 +2544,7 @@ namespace lugdowm
                                     }
                                     if (lugdownconfig.LugdownGljk)
                                     {
-                                        if (double.Parse(NP) < double.Parse(jzjs_data.Lbgl) * lugdownconfig.Lugdown_Gljk_value * 0.01)
+                                        if (double.Parse(NP) * glxzxs < double.Parse(jzjs_data.Lbgl) * lugdownconfig.Lugdown_Gljk_value * 0.01)
                                         {
                                             JC_Status = false;
                                             button_ss.Text = "重新检测";
@@ -2647,7 +2651,7 @@ namespace lugdowm
                                     
                                     if (lugdownconfig.LugdownGljk)
                                     {
-                                        if (double.Parse(EP) < double.Parse(jzjs_data.Lbgl) * lugdownconfig.Lugdown_Gljk_value * 0.01)
+                                        if (double.Parse(EP) * glxzxs < double.Parse(jzjs_data.Lbgl) * lugdownconfig.Lugdown_Gljk_value * 0.01)
                                         {
                                             JC_Status = false;
                                             button_ss.Text = "重新检测";
@@ -2685,6 +2689,7 @@ namespace lugdowm
                     ts2 = "松开节气门换至空档";
                     jzjs_dataseconds.Gksj = GKSJ;//记录总的工况时间
                     statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.GUOCHE, GKSJ.ToString());
+                    statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_ENDSAMPLE, "");
                     Jzjs_status = false; fq_getdata = false;
                     timer_show.Stop();//停止计时
                     Thread.Sleep(1000);
@@ -2716,7 +2721,7 @@ namespace lugdowm
                     jzjs_datatable.Columns.Add("OPCODE");
                     jzjs_datatable.Columns.Add("DYNN");
                     jzjs_datatable.Columns.Add("NO");
-                    if (equipconfig.DATASECONDS_TYPE == "江西")
+                    if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山")
                     {
                         for (int i = 10; i < jzjs_dataseconds.Gksj; i++)//从第10秒开始取过程 数据，以避免金华判断转速时，第一秒的转速为0
                         {

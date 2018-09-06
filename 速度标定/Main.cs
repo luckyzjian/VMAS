@@ -2554,10 +2554,21 @@ namespace 速度标定
                     { }
                     _continue = false;
                     Thread.Sleep(5);
-                    if (readThread != null)
-                        readThread.Abort();
-                    if (ComPort_2 != null)
+                    try
+                    {
+                        if (readThread != null)
+                            readThread.Abort();
+                    }
+                    catch
+                    { }
+
+                    try
+                    {
+                        if (ComPort_2 != null)
                         ComPort_2.Close();
+                    }
+                    catch
+                    { }
 
                     if (bpq != null)
                     {
@@ -2581,10 +2592,25 @@ namespace 速度标定
                 { }
                 _continue = false;
                 Thread.Sleep(5);
-                if (readThread != null)
-                    readThread.Abort();
-                if (ComPort_2 != null)
+                try
+                {
+                    if (readThread != null)
+                        readThread.Abort();
+                }
+                catch
+                { }
+                try
+                {
+                    if (ComPort_2 != null)
                     ComPort_2.Close();
+                }
+                catch
+                { }
+                if (bpq != null)
+                {
+                    if (bpq.ComPort_2.IsOpen)
+                        bpq.ComPort_2.Close();
+                }
 
             }
             

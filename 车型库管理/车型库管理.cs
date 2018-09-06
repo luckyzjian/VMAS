@@ -144,6 +144,7 @@ namespace 车型库管理
             catch(Exception er)
             {
                 expmsg = er.Message;
+                MessageBox.Show("异常:" + expmsg);
                 return null;
             }
         }
