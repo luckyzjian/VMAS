@@ -1828,6 +1828,36 @@ namespace 设备自检
                                         }
                                     }
                                 }
+                                else if (equipconfig.Fqyxh == "cdf5000")
+                                {
+                                    int leaktest = 0;
+                                    bool leaktesting = false;
+                                    while (!leaktesting)
+                                    {
+                                        string leakstring = fla_502.Get_fla502leckStruct();
+                                        if (leakstring == "无泄漏")
+                                        {
+                                            Ref_Control_Text(LabelFQYJL, "√");
+                                            fqysefdata.TightnessResult = "1";
+                                            Msg_Toollabel(toolStripLabel2, "检漏完毕");
+                                            leaktesting = true;
+                                        }
+                                        else if (leakstring == "泄漏超标")
+                                        {
+                                            Ref_Control_Text(LabelFQYJL, "×");
+                                            fqysefdata.TightnessResult = "0";
+                                            Msg_Toollabel(toolStripLabel2, "检漏完毕");
+                                            isfqycheckresult = false;
+                                            leaktesting = true;
+                                        }
+                                        else
+                                        {
+                                            Msg_Toollabel(toolStripLabel2, "检漏中..." + leaktest.ToString() + "s");
+                                            leaktest++;
+                                            Thread.Sleep(900);
+                                        }
+                                    }
+                                }
                                 else if (equipconfig.Fqyxh != "fla_501" && equipconfig.Fqyxh != "mqw_511")
                                 {
                                     int leaktest = 0;
@@ -2012,6 +2042,36 @@ namespace 设备自检
 
                                 }
                                 else if (equipconfig.Fqyxh == "fla_502")
+                                {
+                                    int leaktest = 0;
+                                    bool leaktesting = false;
+                                    while (!leaktesting)
+                                    {
+                                        string leakstring = fla_502.Get_fla502leckStruct();
+                                        if (leakstring == "无泄漏")
+                                        {
+                                            Ref_Control_Text(LabelFQYJL, "√");
+                                            fqysefdata.TightnessResult = "1";
+                                            Msg_Toollabel(toolStripLabel2, "检漏完毕");
+                                            leaktesting = true;
+                                        }
+                                        else if (leakstring == "泄漏超标")
+                                        {
+                                            Ref_Control_Text(LabelFQYJL, "×");
+                                            fqysefdata.TightnessResult = "0";
+                                            Msg_Toollabel(toolStripLabel2, "检漏完毕");
+                                            isfqycheckresult = false;
+                                            leaktesting = true;
+                                        }
+                                        else
+                                        {
+                                            Msg_Toollabel(toolStripLabel2, "检漏中..." + leaktest.ToString() + "s");
+                                            leaktest++;
+                                            Thread.Sleep(900);
+                                        }
+                                    }
+                                }
+                                else if (equipconfig.Fqyxh == "cdf5000")
                                 {
                                     int leaktest = 0;
                                     bool leaktesting = false;

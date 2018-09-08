@@ -19,7 +19,7 @@ namespace vmasDetect
     public partial class VMAS : Form
     {
         carinfor.carInidata carbj = new carInidata();
-        VmasConfigInfdata vmasconfig = new VmasConfigInfdata();
+        public static VmasConfigInfdata vmasconfig = new VmasConfigInfdata();
         equipmentConfigInfdata equipconfig = new equipmentConfigInfdata();
         carIni carini = new carIni();
         statusconfigIni statusconfigini = new statusconfigIni();
@@ -231,6 +231,14 @@ namespace vmasDetect
         private int rlzl = 0;//0为气油1为柴油 2为LPG 3为NG 4为双燃料
         public static string ts1 = "川AV7M82";
         public static string ts2 = "简易瞬态法";
+        public static float o2 = 0;
+        public static float xso2 = 0;
+        public static float lljll = 0;
+        public static float wqll = 0;
+        public static float co2 = 0;
+        public static float co = 0;
+        public static float hc = 0;
+        public static float no = 0;
         public static bool driverformmin = false;
         private bool isautostart = true;
         private bool isZkytNetMode = false;//是否是中科宇图联网模式
@@ -1494,6 +1502,14 @@ namespace vmasDetect
                         }
                         else
                         { Vmas_Exhaust_Gd[gksj_count] = true; }
+                        xso2 = Vmas_Exhaust_xso2now[gksj_count];
+                        o2 = Vmas_Exhaust_o2ld[gksj_count];
+                        lljll = Vmas_Exhaust_llList[gksj_count];
+                        wqll = Vmas_Exhaust_fqsjll[gksj_count];
+                        co2 = Vmas_Exhaust_Now.CO2;
+                        co = Vmas_Exhaust_Now.CO;
+                        hc = Vmas_Exhaust_Now.HC;
+                        no = Vmas_Exhaust_Now.NO;
                         if (vmasconfig.IfDisplayData)
                         {
                             Msg(labelCO, panelCO, Vmas_Exhaust_Now.CO.ToString("0.00"), false);

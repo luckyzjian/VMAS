@@ -2076,7 +2076,7 @@ namespace Exhaust
                 case cdxh:
 
                     ReadData();
-                    byte[] ContentCD = new byte[] { CDcmdGetDat };
+                    byte[] ContentCD = new byte[] { CDcmdLeakCheck };
                     i = 0;
 
                     if (!ComPort_1.IsOpen)      //串口出错
@@ -2084,24 +2084,25 @@ namespace Exhaust
                     ComPort_1.Write(ContentCD, 0, 1);
                     //SendData(Cmd_GetStatus, Content);    //取废气分析仪状态
                     Thread.Sleep(50);
-                    while (ComPort_1.BytesToRead < 19)                          //等待仪器返回
+                    while (ComPort_1.BytesToRead < 1)                          //等待仪器返回
                     {
                         i++;
                         Thread.Sleep(10);
-                        if (i == 200)
+                        if (i == 100)
                             return "仪器通讯失败";
                     }
                     ReadData();                     //读取返回的数据
-
-                    //[06](HC)(CO)(CO2)(O2)(NO)(转速)(油温)(流量)[Status](lamda)[CS]
-                    Status = Convert.ToByte(Read_Buffer[17] & 0xff);
-                    if (Status == 0x04)
-                    {
-                        msg = "检定中";
-                    }
-                    else
+                    if (Read_Buffer[0] == 0x00)
                     {
                         msg = "无泄漏";
+                    }
+                    else if (Read_Buffer[0] == 0x01)
+                    {
+                        msg = "泄漏超标";
+                    }
+                    else if (Read_Buffer[0] == 0x05)
+                    {
+                        msg = "检定中";
                     }
                     return msg;
                     break;

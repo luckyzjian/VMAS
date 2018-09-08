@@ -3050,11 +3050,11 @@ namespace carinfor
                 configinidata.LugdownGljk = true;
             //else
             //    configinidata.LugdownGljk = false;
-            ini.INIIO.GetPrivateProfileString("LUGDOWN", "功率监控规定值", "50", temp, 2048, startUpPath + "/detectConfig.ini");
+            ini.INIIO.GetPrivateProfileString("LUGDOWN", "功率监控规定值", "20", temp, 2048, startUpPath + "/detectConfig.ini");
             if (int.TryParse(temp.ToString().Trim(), out b))
                 configinidata.Lugdown_Gljk_value = b;
             else
-                configinidata.Lugdown_Gljk_value = 50;
+                configinidata.Lugdown_Gljk_value = 20;
             ini.INIIO.GetPrivateProfileString("LUGDOWN", "功率扫描阶段烟度监控", "N", temp, 2048, startUpPath + "/detectConfig.ini");
             if (temp.ToString().Trim() == "Y")
                 configinidata.isYdjk_glsm = true;

@@ -105,6 +105,28 @@ namespace vmasDetect
                         }
                         Msg(labelLxcc, panelLxcc, VMAS.outTimeContinus.ToString("0.0"), false);
                         Msg(labelLjcc, panelLjcc, VMAS.outTimeTotal.ToString("0.0"), false);
+                        if (VMAS.vmasconfig.IfDisplayData)
+                        {
+                            Msg(labelXSO2, panelXSO2, VMAS.xso2.ToString("0.00"), false);
+                            Msg(labelO2, panelO2, VMAS.o2.ToString("0.00"), false);
+                            Msg(labelLL, panelLL, VMAS.lljll.ToString("0.0"), false);
+                            Msg(labelWQLL, panelWQLL, VMAS.wqll.ToString("0.00"), false);
+                            Msg(labelCO2, panelCO2, VMAS.co2.ToString("0.00"), false);
+                            Msg(labelCO, panelCO, VMAS.co.ToString("0.00"), false);
+                            Msg(labelHC, panelHC, VMAS.hc.ToString("0"), false);
+                            Msg(labelNO, panelNO, VMAS.no.ToString("0"), false);
+                        }
+                        else
+                        {
+                            Msg(labelXSO2, panelXSO2, "—", false);
+                            Msg(labelO2, panelO2, "—", false);
+                            Msg(labelLL, panelLL, "—", false);
+                            Msg(labelWQLL, panelWQLL, "—", false);
+                            Msg(labelCO2, panelCO2, "—", false);
+                            Msg(labelCO, panelCO, "—", false);
+                            Msg(labelHC, panelHC, "—", false);
+                            Msg(labelNO, panelNO, "—", false);
+                        }
                     }
                     catch
                     { }
