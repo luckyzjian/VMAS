@@ -777,11 +777,25 @@ namespace sds
             try
             {
                 if (carbj.ISMOTO)
+                {
+                        if (carbj.CarEdzs * 0.7 > 3500)
+                            ZS_XZ = 3500;
+                        else if (carbj.CarEdzs * 0.7 < 2500)
+                            ZS_XZ = 2500;
+                        else
+                            ZS_XZ = (int)carbj.CarEdzs;
                     gds = 2500;
+                }
                 else if (carbj.CarZzl > 3500)
+                {
+                    ZS_XZ = 2520;
                     gds = 1800;
+                }
                 else
+                {
+                    ZS_XZ = 3500;
                     gds = 2500;
+                }
             }
             catch (Exception er)
             {
@@ -1252,13 +1266,7 @@ namespace sds
                 }
                 Thread.Sleep(3000);
                 Msg(label_msgcs, panel2, "检测开始", false);
-                if (carbj.ISMOTO)
-                {
-                    if (carbj.CarEdzs * 0.7 > 3500 || carbj.CarEdzs * 0.7 < 2500)
-                        ZS_XZ = 3500;
-                    else
-                        ZS_XZ = (int)carbj.CarEdzs;
-                }
+                
                 if (ledcontrol != null)
                 {
                     ledcontrol.writeLed("检测开始", 2, equipconfig.Ledxh);

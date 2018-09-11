@@ -1008,6 +1008,9 @@ namespace lzTest
                 zyjs_data.Rev1 = dyczs.ToString("0");
                 zyjs_data.Rev2 = deczs.ToString("0");
                 zyjs_data.Rev3 = dsczs.ToString("0");
+                zyjs_data.prepareData1 = "0";
+                zyjs_data.prepareData2 = "0";
+                zyjs_data.prepareData3 = "0";
                 zyjs_data.PrepareData = prepareclz.ToString("0.0");
                 zyjsdatacontrol.writeJzjsData(zyjs_data);
                 zyjsIsFinished = true;
@@ -1207,6 +1210,9 @@ namespace lzTest
                         zyjs_data.Rev1 = "-1";
                         zyjs_data.Rev2 = "-1";
                         zyjs_data.Rev3 = "-1";
+                        zyjs_data.prepareData1 = "-1";
+                        zyjs_data.prepareData2 = "-1";
+                        zyjs_data.prepareData3 = "-1";
                         zyjsdatacontrol.writeJzjsData(zyjs_data);
                         if (TH_ST != null) TH_ST.Abort();
                         if (flb_100 != null)

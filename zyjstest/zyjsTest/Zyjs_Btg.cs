@@ -86,6 +86,9 @@ namespace zyjsTest
         Exhaust.Flb_100_smoke dscsmoke = null;
         Exhaust.Flb_100_smoke dsicsmoke = null;
         Exhaust.Flb_100_smoke smoke = new Exhaust.Flb_100_smoke();
+        public double preclz1 = 0.0;
+        public double preclz2 = 0.0;
+        public double preclz3 = 0.0;
         public double dycclz = 0.0;
         public double decclz = 0.0;
         public double dscclz = 0.0;
@@ -1443,6 +1446,9 @@ namespace zyjsTest
                             preparedata = dycsmoke.K;
                             if (equipconfig.Ydjxh == "mqy_200" || equipconfig.Ydjxh == "flb_100" || equipconfig.Ydjxh.ToLower() == "cdf5000" || equipconfig.Ydjxh.ToLower() == "nht_1")
                                 preparedata = maxvalue;
+                            preclz1 = preparedata;
+                            preclz2 = preparedata;
+                            preclz3 = preparedata;
                             maxvalue = 0; maxzsvalue = 0;
                             zyjs_data.PrepareData = preparedata.ToString("0.00");
                             isReadRealTime = true;
@@ -1687,6 +1693,12 @@ namespace zyjsTest
                                 preparedata = dycsmoke.K;
                                 if (equipconfig.Ydjxh == "mqy_200" || equipconfig.Ydjxh == "flb_100" || equipconfig.Ydjxh.ToLower() == "cdf5000" || equipconfig.Ydjxh.ToLower() == "nht_1")
                                     preparedata = maxvalue;
+                                if(clcs==0)
+                                    preclz1 = preparedata;
+                                else if(clcs==1)
+                                     preclz2 = preparedata;
+                                else if(clcs==2)
+                                    preclz3 = preparedata;
                                 maxvalue = 0; maxzsvalue = 0;
                                 zyjs_data.PrepareData = preparedata.ToString("0.00");
                                 isReadRealTime = true;
@@ -2743,6 +2755,9 @@ namespace zyjsTest
                 zyjs_data.Wd = wd.ToString("0.0");
                 zyjs_data.Sd = sd.ToString("0.0");
                 zyjs_data.Dqy = dqy.ToString("0.0");
+                zyjs_data.prepareData1 = preclz1.ToString("0.00");
+                zyjs_data.prepareData2 = preclz2.ToString("0.00");
+                zyjs_data.prepareData3 = preclz3.ToString("0.00");
                 zyjs_data.FirstData = dycclz.ToString("0.00");
                 zyjs_data.SecondData = decclz.ToString("0.00");
                 zyjs_data.ThirdData = dscclz.ToString("0.00");
@@ -2938,6 +2953,9 @@ namespace zyjsTest
                         zyjs_data.Rev1 = "-1";
                         zyjs_data.Rev2 = "-1";
                         zyjs_data.Rev3 = "-1";
+                        zyjs_data.prepareData1 = "-1";
+                        zyjs_data.prepareData2 = "-1";
+                        zyjs_data.prepareData3 = "-1";
 
                         zyjsdatacontrol.writeJzjsData(zyjs_data);
                         if (TH_ST != null) TH_ST.Abort();

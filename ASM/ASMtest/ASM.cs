@@ -1007,20 +1007,29 @@ namespace ASMtest
                                 Vmas_xdsd[gksj_count] = (float)SD;//湿度
                                 Vmas_dqyl[gksj_count] = (float)DQY;//大气压
                             }
-                            else if (equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503" || equipconfig.Fqyxh.ToLower() == "cdf5000")
-                            {
-                                
-                                Vmas_hjwd[gksj_count] = fla502_temp_data.TEMP;//温度
-                                Vmas_xdsd[gksj_count] = fla502_temp_data.HUMIDITY;//湿度
-                                Vmas_dqyl[gksj_count] = fla502_temp_data.AIRPRESSURE;//大气压
+                            else if (equipconfig.TempInstrument == "废气仪")
+                            { 
+                                if (equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503" || equipconfig.Fqyxh.ToLower() == "cdf5000")
+                                {
+
+                                    Vmas_hjwd[gksj_count] = fla502_temp_data.TEMP;//温度
+                                    Vmas_xdsd[gksj_count] = fla502_temp_data.HUMIDITY;//湿度
+                                    Vmas_dqyl[gksj_count] = fla502_temp_data.AIRPRESSURE;//大气压
+                                }
+                                else
+                                {
+                                    Vmas_hjwd[gksj_count] = Vmas_Exhaust_Now.HJWD;//温度
+                                    Vmas_xdsd[gksj_count] = Vmas_Exhaust_Now.SD;//湿度
+                                    Vmas_dqyl[gksj_count] = Vmas_Exhaust_Now.HJYL;//大气压
+                                }
                             }
                             else
                             {
-                                Vmas_hjwd[gksj_count] = Vmas_Exhaust_Now.HJWD;//温度
-                                Vmas_xdsd[gksj_count] = Vmas_Exhaust_Now.SD;//湿度
-                                Vmas_dqyl[gksj_count] = Vmas_Exhaust_Now.HJYL;//大气压
+                                Vmas_hjwd[gksj_count] = (float)WD;//温度
+                                Vmas_xdsd[gksj_count] = (float)SD;//湿度
+                                Vmas_dqyl[gksj_count] = (float)DQY;//大气压
                             }
-                            Vmas_xsxzxs[gksj_count] = caculateDf(Vmas_Exhaust_co2ld[gksj_count], Vmas_Exhaust_cold[gksj_count]);//稀释修正系数
+                                Vmas_xsxzxs[gksj_count] = caculateDf(Vmas_Exhaust_co2ld[gksj_count], Vmas_Exhaust_cold[gksj_count]);//稀释修正系数
                             Vmas_sdxzxs[gksj_count] = caculateKh(Vmas_hjwd[gksj_count], Vmas_xdsd[gksj_count], Vmas_dqyl[gksj_count]);//湿度修正系数
 
                             //Vmas_xsxzxs[gksj_count] = xsxzxs;//稀释修正系数

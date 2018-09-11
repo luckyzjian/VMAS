@@ -110,6 +110,10 @@ namespace carinfor
         public string Rev2 { set; get; }
         public string Rev3 { set; get; }
 
+        public string prepareData1 { set; get; }
+        public string prepareData2 { set; get; }
+        public string prepareData3 { set; get; }
+
     }
     public class zyjsBtgdataControl
     {
@@ -138,6 +142,9 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("检测结果", "Rev1", jzjs_data.Rev1, "C:/jcdatatxt/" + jzjs_data.CarID + ".ini");
                 ini.INIIO.WritePrivateProfileString("检测结果", "Rev2", jzjs_data.Rev2, "C:/jcdatatxt/" + jzjs_data.CarID + ".ini");
                 ini.INIIO.WritePrivateProfileString("检测结果", "Rev3", jzjs_data.Rev3, "C:/jcdatatxt/" + jzjs_data.CarID + ".ini");
+                ini.INIIO.WritePrivateProfileString("检测结果", "prepareData1", jzjs_data.prepareData1, "C:/jcdatatxt/" + jzjs_data.CarID + ".ini");
+                ini.INIIO.WritePrivateProfileString("检测结果", "prepareData2", jzjs_data.prepareData2, "C:/jcdatatxt/" + jzjs_data.CarID + ".ini");
+                ini.INIIO.WritePrivateProfileString("检测结果", "prepareData3", jzjs_data.prepareData3, "C:/jcdatatxt/" + jzjs_data.CarID + ".ini");
                 return true;
             }
             catch

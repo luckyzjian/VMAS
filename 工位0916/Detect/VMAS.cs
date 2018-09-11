@@ -1470,17 +1470,33 @@ namespace vmasDetect
                             Vmas_xdsd[gksj_count] = (float)SD;//湿度
                             Vmas_dqyl[gksj_count] = (float)DQY;//大气压
                         }
-                        else if (equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503")
+                        else if (equipconfig.TempInstrument == "烟度计" && flb_100 != null)
                         {
-                            Vmas_hjwd[gksj_count] = fla502_temp_data.TEMP;//温度
-                            Vmas_xdsd[gksj_count] = fla502_temp_data.HUMIDITY;//湿度
-                            Vmas_dqyl[gksj_count] = fla502_temp_data.AIRPRESSURE;//大气压
+                            Vmas_hjwd[gksj_count] = (float)WD;//温度
+                            Vmas_xdsd[gksj_count] = (float)SD;//湿度
+                            Vmas_dqyl[gksj_count] = (float)DQY;//大气压
+                        }
+                        else if (equipconfig.TempInstrument == "废气仪")
+                        {
+                            if (equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503" || equipconfig.Fqyxh.ToLower() == "cdf5000")
+                            {
+
+                                Vmas_hjwd[gksj_count] = fla502_temp_data.TEMP;//温度
+                                Vmas_xdsd[gksj_count] = fla502_temp_data.HUMIDITY;//湿度
+                                Vmas_dqyl[gksj_count] = fla502_temp_data.AIRPRESSURE;//大气压
+                            }
+                            else
+                            {
+                                Vmas_hjwd[gksj_count] = Vmas_Exhaust_Now.HJWD;//温度
+                                Vmas_xdsd[gksj_count] = Vmas_Exhaust_Now.SD;//湿度
+                                Vmas_dqyl[gksj_count] = Vmas_Exhaust_Now.HJYL;//大气压
+                            }
                         }
                         else
                         {
-                            Vmas_hjwd[gksj_count] = Vmas_Exhaust_Now.HJWD;//温度
-                            Vmas_xdsd[gksj_count] = Vmas_Exhaust_Now.SD;//湿度
-                            Vmas_dqyl[gksj_count] = Vmas_Exhaust_Now.HJYL;//大气压
+                            Vmas_hjwd[gksj_count] = (float)WD;//温度
+                            Vmas_xdsd[gksj_count] = (float)SD;//湿度
+                            Vmas_dqyl[gksj_count] = (float)DQY;//大气压
                         }
                         Vmas_xsxzxs[gksj_count] = (float)(Math.Round(caculateDf(Vmas_Exhaust_co2ld[gksj_count], Vmas_Exhaust_cold[gksj_count]), 3));//稀释修正系数
                         Vmas_sdxzxs[gksj_count] = (float)(Math.Round(caculateKh(Vmas_hjwd[gksj_count], Vmas_xdsd[gksj_count], Vmas_dqyl[gksj_count]), 3));//湿度修正系数
@@ -5141,7 +5157,7 @@ namespace vmasDetect
                 if (equipconfig.useJHJK)
                 {
                     double jhlambda = double.Parse(vmas_data.LAMBDA);
-                    if (jhlambda > 1.1 || jhlambda < 0.9)
+                    if (jhlambda > equipconfig.JHLAMBDAMAX || jhlambda < equipconfig.JHLAMBDAMIN)
                     {
                         Msg(label_message, panel_msg, "λ值不在0.9~1.1之间,检测结果无效", true);
                         ts1 = "检测结果无效";
