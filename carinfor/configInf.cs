@@ -1044,6 +1044,7 @@ namespace carinfor
         public bool DynCO2Test { set; get; }
         public bool DynFlowBack { set; get; }
         public bool DynYkqr { set; get; }
+        public bool DynUseManualKey { set; get; }
 
     }
     public class LugdownConfigInfdata
@@ -2914,6 +2915,8 @@ namespace carinfor
             configinidata.DynFlowBack = (temp.ToString() == "Y");
             ini.INIIO.GetPrivateProfileString("DYN", "动力性遥控确认", "Y", temp, 2048, startUpPath + "/detectConfig.ini");          //读配置文件（段名，字段，默认值，保存的strbuilder，大小，路径）
             configinidata.DynYkqr = (temp.ToString() == "Y");
+            ini.INIIO.GetPrivateProfileString("DYN", "使用人工确认按钮", "Y", temp, 2048, startUpPath + "/detectConfig.ini");          //读配置文件（段名，字段，默认值，保存的strbuilder，大小，路径）
+            configinidata.DynUseManualKey = (temp.ToString() == "Y");
 
             return configinidata;
         }
@@ -2953,6 +2956,7 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("DYN", "CO2测定", configinidata.DynCO2Test ? "Y" : "N", startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("DYN", "反吹", configinidata.DynFlowBack ? "Y" : "N", startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("DYN", "动力性遥控确认", configinidata.DynYkqr ? "Y" : "N", startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("DYN", "使用人工确认按钮", configinidata.DynUseManualKey ? "Y" : "N", startUpPath + "/detectConfig.ini");
                 return true;
             }
             catch

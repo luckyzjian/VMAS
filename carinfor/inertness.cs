@@ -176,6 +176,12 @@ namespace carinfor
             get { return bdjg; }
             set { bdjg = value; }
         }
+        public string force1_1 { set; get; }
+        public string force1_2 { set; get; }
+        public string force1_3 { set; get; }
+        public string force2_1 { set; get; }
+        public string force2_2 { set; get; }
+        public string force2_3 { set; get; }
     }
     public class inertnessControl
     {
@@ -205,6 +211,12 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("标定数据", "第二次DIW", inertnessdata.Diw_2, "C:/jcdatatxt/Inertness.ini");
                 ini.INIIO.WritePrivateProfileString("标定数据", "第三次DIW", inertnessdata.Diw_3, "C:/jcdatatxt/Inertness.ini");
                 ini.INIIO.WritePrivateProfileString("标定数据", "平均值DIW", inertnessdata.Diw, "C:/jcdatatxt/Inertness.ini");
+                ini.INIIO.WritePrivateProfileString("标定数据", "force11", inertnessdata.force1_1, "C:/jcdatatxt/Inertness.ini");
+                ini.INIIO.WritePrivateProfileString("标定数据", "force12", inertnessdata.force1_2, "C:/jcdatatxt/Inertness.ini");
+                ini.INIIO.WritePrivateProfileString("标定数据", "force13", inertnessdata.force1_3, "C:/jcdatatxt/Inertness.ini");
+                ini.INIIO.WritePrivateProfileString("标定数据", "force21", inertnessdata.force2_1, "C:/jcdatatxt/Inertness.ini");
+                ini.INIIO.WritePrivateProfileString("标定数据", "force22", inertnessdata.force2_2, "C:/jcdatatxt/Inertness.ini");
+                ini.INIIO.WritePrivateProfileString("标定数据", "force23", inertnessdata.force2_3, "C:/jcdatatxt/Inertness.ini");
                 ini.INIIO.WritePrivateProfileString("标定数据", "标称", inertnessdata.Diw_bc, "C:/jcdatatxt/Inertness.ini");
                 ini.INIIO.WritePrivateProfileString("标定数据", "实测", inertnessdata.Diw_sc, "C:/jcdatatxt/Inertness.ini");
                 ini.INIIO.WritePrivateProfileString("标定数据", "误差", inertnessdata.Wc, "C:/jcdatatxt/Inertness.ini");

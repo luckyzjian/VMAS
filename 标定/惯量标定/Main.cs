@@ -1664,6 +1664,12 @@ namespace 惯量标定
                 inertnessdata.T2power = "13.00";
                 inertnessdata.StartSpeed = "48";
                 inertnessdata.EndSpeed = "16";
+                inertnessdata.force1_1 = dataGrid_gl.Rows[0].Cells["平均力f1"].Value.ToString();
+                inertnessdata.force1_2 = dataGrid_gl.Rows[1].Cells["平均力f1"].Value.ToString();
+                inertnessdata.force1_3 = dataGrid_gl.Rows[2].Cells["平均力f1"].Value.ToString();
+                inertnessdata.force2_1 = dataGrid_gl.Rows[0].Cells["平均力f2"].Value.ToString();
+                inertnessdata.force2_2 = dataGrid_gl.Rows[1].Cells["平均力f2"].Value.ToString();
+                inertnessdata.force2_3 = dataGrid_gl.Rows[2].Cells["平均力f2"].Value.ToString();
                 inertnessdata.Acd1_1 = t2.ToString("0.00");
                 inertnessdata.Acd1_2 = t4.ToString("0.00");
                 inertnessdata.Acd1_3 = t6.ToString("0.00");

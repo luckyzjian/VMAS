@@ -2075,12 +2075,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 722);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "dynamicTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "动力性检验(v180108)";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.yhTest_FormClosing);
             this.Load += new System.EventHandler(this.yhTest_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dynamicTest_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();

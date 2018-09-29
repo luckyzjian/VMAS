@@ -739,6 +739,7 @@ namespace 动力性测量
             dynconfigdata = configini.getDynConfigIni();
             DynForceQj = dynconfigdata.DynForceQj;
             initEquipment();
+            checkBox取车内仪表转速.Visible = dynconfigdata.DynUseManualKey;
             starttime = DateTime.Now;
             //showCurve = true;
             timer2.Start();
@@ -1520,6 +1521,14 @@ namespace 动力性测量
             // xzform.Show();
             if(File.Exists( Application.StartupPath+"/气象站示值修正.exe"))
                 Process.Start(Application.StartupPath + "/气象站示值修正.exe");
+        }
+
+        private void dynamicTest_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Shift && e.Control && e.KeyCode == Keys.M)
+            {
+                checkBox取车内仪表转速.Visible = true;
+            }
         }
 
         private void Jc_Exe()

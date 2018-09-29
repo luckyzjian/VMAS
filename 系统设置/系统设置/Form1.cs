@@ -212,6 +212,7 @@ namespace 系统设置
             checkBoxDynCO2Test.Checked = dynconfig.DynCO2Test;
             checkBoxDynFlowBack.Checked = dynconfig.DynFlowBack;
             checkBoxDynYkqr.Checked = dynconfig.DynYkqr;
+            checkBoxDynManulKey.Checked = dynconfig.DynUseManualKey;
 
             comboBoxBPQCOM.Text = equipconfig.BpqCom;
             comboBoxBPQDY.Text = equipconfig.BpqDy.ToString();
@@ -835,6 +836,7 @@ namespace 系统设置
                 btgconfig.DynCO2Test = checkBoxDynCO2Test.Checked;
                 btgconfig.DynFlowBack = checkBoxDynFlowBack.Checked;
                 btgconfig.DynYkqr = checkBoxDynYkqr.Checked;
+                btgconfig.DynUseManualKey = checkBoxDynManulKey.Checked;
                 if (configini.writeDynConfigIni(btgconfig))
                     MessageBox.Show("保存成功.", "系统提示");
                 else
