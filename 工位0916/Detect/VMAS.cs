@@ -1370,7 +1370,7 @@ namespace vmasDetect
                     {
                         if (gongkuangTime <= 11)
                         {
-                            pictureBox2.Location = new Point((int)(96 + 34 * igbt.Speed / 3), (int)(5936 - 1105 * gongkuangTime /39));
+                            pictureBox2.Location = new Point((int)(96 + 34 * igbt.Speed / 3), (int)(5936 - 1105 * gongkuangTime / 39));
                             pictureBox4.Location = new Point((int)(96 + 34 * igbt.Speed / 3), (int)(5936 - 1105 * gongkuangTime / 39));
                         }
                         else
@@ -1382,9 +1382,9 @@ namespace vmasDetect
                     }
 
                     //if (Convert.ToInt16(gongkuangTime*10)/10 !=GKSJ)           //每1s记录一次信息
-                    if(DateTime.Compare(DateTime.Parse(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), DateTime.Parse(gc_time.ToString("yyyy-MM-dd HH:mm:ss"))) > 0)
+                    if (DateTime.Compare(DateTime.Parse(nowtime.ToString("yyyy-MM-dd HH:mm:ss")), DateTime.Parse(gc_time.ToString("yyyy-MM-dd HH:mm:ss"))) > 0)
                     {
-                        gc_time = DateTime.Now;
+                        gc_time = nowtime;
                         Random rd2 = new Random();
                         if (equipconfig.DATASECONDS_TYPE == "江西")
                             gksj_count = GKSJ + vmasconfig.Dssj + 1;
@@ -1407,14 +1407,14 @@ namespace vmasDetect
                         lowflowarray[gksj_count] = isLowFlow;
                         lljpoweroffarray[gksj_count] = islljpoweroff;
                         cgjComSuccessarray[gksj_count] = igbt.isComSuccess;
-                        Vmas_qcsj[gksj_count] =DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");//全程时序
+                        Vmas_qcsj[gksj_count] = nowtime.ToString("yyyy-MM-dd HH:mm:ss.fff");//全程时序
                         Vmas_cysx[gksj_count] = (GKSJ + 1).ToString();
                         Vmas_sxnb[gksj_count] = sxnb.ToString();
                         Vmas_nj[gksj_count] = nl;
                         Vmas_fdjzs[gksj_count] = Vmas_Exhaust_Now.ZS;
                         Vmas_bzcs[gksj_count] = speedLimit.speed_now_data;//标准速度
                         Vmas_sscs[gksj_count] = igbt.Speed;//实时速度
-                        Vmas_jsgl[gksj_count] = (float)(Math.Round(jsgl,3));//功率
+                        Vmas_jsgl[gksj_count] = (float)(Math.Round(jsgl, 3));//功率
                         Vmas_zsgl[gksj_count] = (float)(Math.Round(zsgl, 3));//功率
                         Vmas_jzgl[gksj_count] = (float)(Math.Round(zgl, 3));//功率
                         Vmas_Exhaust_accelerate[gksj_count] = accelerate_flag;//是否处于加速和等速状态下
@@ -1547,7 +1547,7 @@ namespace vmasDetect
                         Msg(labelQY, panelQY, Vmas_dqyl[gksj_count].ToString("0.0"), false);
                         Msg(labelWQLL, panelWQLL, Vmas_Exhaust_fqsjll[gksj_count].ToString("0.00"), false);
                         GKSJ++;
-                        if (gksj_count >=vmasconfig.Dssj+fqy_delayTime)
+                        if (gksj_count >= vmasconfig.Dssj + fqy_delayTime)
                         {
                             if (vmasconfig.SdCo2AndO2Monitor)
                             {
@@ -1571,7 +1571,7 @@ namespace vmasDetect
                         }
 
                     }
-                    if (GKSJ > 143+fqy_delayTime && GKSJ < 155+fqy_delayTime && vmasconfig.ConcentrationMonitor == true)//如果浓度监控开启的话
+                    if (GKSJ > 143 + fqy_delayTime && GKSJ < 155 + fqy_delayTime && vmasconfig.ConcentrationMonitor == true)//如果浓度监控开启的话
                     {
                         if (((Vmas_Exhaust_cold[gksj_count] + Vmas_Exhaust_co2ld[gksj_count]) < 3.0))
                         {
@@ -1590,7 +1590,7 @@ namespace vmasDetect
                             //fla_502.Stop();
                             Msg(label_message, panel_msg, "50km/h时[CO]+[CO2]小于3.0%，请检查取样探头是否脱落", true);
                             ts1 = "检测中止";
-                            ts2 = "浓度值过低"; 
+                            ts2 = "浓度值过低";
                             if (vmasconfig.AutoRestart)
                             {
                                 power_flag = false;
@@ -1629,9 +1629,9 @@ namespace vmasDetect
                             }
                         }
                     }
-                    else if (GKSJ >= 3 && vmasconfig.ConcentrationMonitor == true&&!vmasconfig.SdCo2AndO2Monitor)//如果浓度监控开启的话
+                    else if (GKSJ >= 3 && vmasconfig.ConcentrationMonitor == true && !vmasconfig.SdCo2AndO2Monitor)//如果浓度监控开启的话
                     {
-                        if ((Vmas_Exhaust_cold[gksj_count] + Vmas_Exhaust_co2ld[gksj_count]) < vmasconfig.Ndz )
+                        if ((Vmas_Exhaust_cold[gksj_count] + Vmas_Exhaust_co2ld[gksj_count]) < vmasconfig.Ndz)
                         {
                             if (vmasconfig.IsWholeProcessJK || Vmas_Exhaust_accelerate[gksj_count - fqy_delayTime] == true)
                             {
@@ -1690,7 +1690,7 @@ namespace vmasDetect
                             }
                         }
                     }
-                    else if(GKSJ>=0)
+                    else if (GKSJ >= 0)
                     {
                         if (co2excedlimit >= vmasconfig.ndccsj)
                         {
@@ -1921,7 +1921,7 @@ namespace vmasDetect
                     }
                     if (GKSJ >= 3)//如果浓度监控开启的话
                     {
-                        if ((cgjComSuccessarray[gksj_count] == false) && (cgjComSuccessarray[gksj_count-1] == false))
+                        if ((cgjComSuccessarray[gksj_count] == false) && (cgjComSuccessarray[gksj_count - 1] == false))
                         {
                             co2excedlimit = 0;
                             o2excedlimit = 0;
@@ -2052,7 +2052,7 @@ namespace vmasDetect
                             gongkuangTime = 0f;
                             GKSJ = 0;
                             fla_502.Stop();
-                            Msg(label_message, panel_msg, "监测功率加载超出指定值±0.2KW，请检查后并重新开始", true); 
+                            Msg(label_message, panel_msg, "监测功率加载超出指定值±0.2KW，请检查后并重新开始", true);
                             ts1 = "检测中止";
                             ts2 = "加载功率超差";
                             if (vmasconfig.AutoRestart)
@@ -2205,11 +2205,11 @@ namespace vmasDetect
                             }
                             else
                             {
-                                MessageBox.Show("监测到流量计流量<" + vmasconfig.Lljll.ToString("0.0")+"，检测终止", "警告");
+                                MessageBox.Show("监测到流量计流量<" + vmasconfig.Lljll.ToString("0.0") + "，检测终止", "警告");
                             }
                         }
                     }
-                    if (GKSJ >= 5&&equipconfig.isIgbtContainGdyk)
+                    if (GKSJ >= 5 && equipconfig.isIgbtContainGdyk)
                     {
                         if ((Vmas_Exhaust_Gd[gksj_count] == true) && (Vmas_Exhaust_Gd[gksj_count - 1] == true) && (Vmas_Exhaust_Gd[gksj_count - 2] == true))
                         {
@@ -2300,7 +2300,7 @@ namespace vmasDetect
                         }
                         else if (GKSJ > 3 + fqy_delayTime)
                         {
-                            if (Vmas_Exhaust_fqsjll[gksj_count] < vmasconfig.Wqll&& Vmas_Exhaust_fqsjll[gksj_count-1] < vmasconfig.Wqll&& Vmas_Exhaust_fqsjll[gksj_count-2] < vmasconfig.Wqll)
+                            if (Vmas_Exhaust_fqsjll[gksj_count] < vmasconfig.Wqll && Vmas_Exhaust_fqsjll[gksj_count - 1] < vmasconfig.Wqll && Vmas_Exhaust_fqsjll[gksj_count - 2] < vmasconfig.Wqll)
                             {
                                 if (vmasconfig.IsWholeProcessJK || Vmas_Exhaust_accelerate[gksj_count - fqy_delayTime] == true)
                                 {
@@ -2361,7 +2361,7 @@ namespace vmasDetect
                                 //return;
                             }
                         }
-                        }
+                    }
                     if (gongkuangTime >= 195.0f)
                     {
 
@@ -2387,7 +2387,7 @@ namespace vmasDetect
                         pictureBox2.Visible = false;
                         pictureBox4.Visible = true;
                     }
-                    if (chaocha==true && speedLimit.isChangeD == false)
+                    if (chaocha == true && speedLimit.isChangeD == false)
                     {
                         outTimeContinus += thisTimeSpan;
                         outTimeTotal += thisTimeSpan;
@@ -2509,7 +2509,7 @@ namespace vmasDetect
                                 }
                             }
                         }
-                        
+
 
                     }
                     else
@@ -2525,37 +2525,87 @@ namespace vmasDetect
                 {
                 }
             }
-            else
+            else 
             {
+                
                 gongkuangTime = 0f;
                 outTimeTotal = 0f;
                 outTimeContinus = 0f;
             }
 
         }
+        private void getWqRealData()
+        {
+            Vmas_Exhaust_Now = fla_502.GetData();
+            Revise(Vmas_Exhaust_Now);
+            Thread.Sleep(20);
+            if (equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503")
+            {
+                fla502_temp_data = fla_502.Get_Temp();
+                Thread.Sleep(20);
+            }
+            if (equipconfig.DATASECONDS_TYPE == "安车通用联网")
+            {
+                isLowFlow = 0;
+            }
+            else
+            { 
+                isLowFlow = fla_502.CheckIsLowFlow();
+            }
+        }
+        private void getLlRealData()
+        {
+            string lljstatus = flv_1000.Get_standardDat();
+            islljpoweroff = (lljstatus == "通讯故障");
+        }
+        private DateTime fq_pre_time = DateTime.Now;
+        private DateTime fq_now_time = DateTime.Now;
+        private DateTime ll_pre_time = DateTime.Now;
+        private DateTime ll_now_time = DateTime.Now;
+        private int sampleCount = 0;
         public void Fq_Detect()
         {
             while (JC_Status)
             {
-                Vmas_Exhaust_Now = fla_502.GetData();
-                Revise(Vmas_Exhaust_Now);
-                Thread.Sleep(50);
-                if (equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503")
+                if (equipconfig.DATASECONDS_TYPE == "安车通用联网")
                 {
-                    fla502_temp_data = fla_502.Get_Temp();
-                    Thread.Sleep(50);
+                    fq_now_time = DateTime.Now;
+                    if (DateTime.Compare(DateTime.Parse(fq_now_time.ToString("yyyy-MM-dd HH:mm:ss")), DateTime.Parse(fq_pre_time.ToString("yyyy-MM-dd HH:mm:ss"))) > 0)
+                    {
+                        fq_pre_time = fq_now_time;
+                        getWqRealData();
+                        sampleCount++;
+                        Msg(labelSampleCount, panelSampleCount, sampleCount.ToString(), false);
+                    }
+                    //getLlRealData();
                 }
-                isLowFlow = fla_502.CheckIsLowFlow();
-                Thread.Sleep(50);
+                else
+                {
+                    getWqRealData();
+                }
+                Thread.Sleep(100);
+
             }
         }
         public void llj_Detect()
         {
             while (JC_Status)
             {
-                string lljstatus=flv_1000.Get_standardDat();
-                islljpoweroff = (lljstatus == "通讯故障");
-                Thread.Sleep(30);
+                if (equipconfig.DATASECONDS_TYPE == "安车通用联网")
+                {
+                    ll_now_time = DateTime.Now;
+                    if (DateTime.Compare(DateTime.Parse(ll_now_time.ToString("yyyy-MM-dd HH:mm:ss")), DateTime.Parse(ll_pre_time.ToString("yyyy-MM-dd HH:mm:ss"))) > 0)
+                    {
+                        ll_pre_time = ll_now_time;
+                        getLlRealData();
+                    }
+                    //getLlRealData();
+                }
+                else
+                {
+                    getLlRealData();
+                }
+                Thread.Sleep(100);
             }
         }
         public void Jc_Exe()
@@ -2572,6 +2622,7 @@ namespace vmasDetect
             chujianIsFinished = false;
             chujianIsOk = false;
             float lljo2 = 0f;
+
             Exhaust.Fla502_data huanjiang_data = null;
             
             try//获取环境参数
@@ -2848,6 +2899,7 @@ namespace vmasDetect
         /// </summary>
         public void Ig195_exe()
         {
+            sampleCount = 0;
             sxnb = 4;
             int temp_flag=0;                //计数临时变量
             int zero_count = 0;
@@ -5153,6 +5205,7 @@ namespace vmasDetect
                 vmas_data.Stopreason = "0";
                 vmas_data.LAMBDA = (lambdasum / 195.0).ToString("0.000");
                 vmas_data.AirFlowAll = (zll * 60.0 / ((195 + vmasconfig.Dssj) * 1.0)).ToString();
+                vmas_data.sampleCount = sampleCount.ToString();
                 Msg(label_message, panel_msg,carbj.CarPH + " IG195:" + "  检测结束,请拨出探测头", true);
                 if (equipconfig.useJHJK)
                 {

@@ -46,6 +46,7 @@ namespace zyjsTest
         private bool zyjsIsFinished = false;
 
         private float maxvalue = 0;
+        private float maxywvalue = 0;
         private int maxzsvalue = 0;
         private bool caculateStart = false;
 
@@ -81,10 +82,10 @@ namespace zyjsTest
         Thread TH_ST = null;                                        //检测线程
         Thread TH_YD = null;
         Thread Th_get_FqandLl = null;
-        Exhaust.Flb_100_smoke dycsmoke = null;
-        Exhaust.Flb_100_smoke decsmoke = null;
-        Exhaust.Flb_100_smoke dscsmoke = null;
-        Exhaust.Flb_100_smoke dsicsmoke = null;
+        //Exhaust.Flb_100_smoke dycsmoke = null;
+        //Exhaust.Flb_100_smoke decsmoke = null;
+        //Exhaust.Flb_100_smoke dscsmoke = null;
+        //Exhaust.Flb_100_smoke dsicsmoke = null;
         Exhaust.Flb_100_smoke smoke = new Exhaust.Flb_100_smoke();
         public double preclz1 = 0.0;
         public double preclz2 = 0.0;
@@ -1207,12 +1208,12 @@ namespace zyjsTest
                     }
                     if (!isQxc||equipconfig.useJHJK)
                     {
-                        Msg(label_msg, panel_cp, carbj.CarPH + "维持2s", true);
-                        ts2 = "维持2s";
-                        Thread.Sleep(900);
-                        Msg(label_msg, panel_cp, carbj.CarPH + "维持1s", true);
-                        ts2 = "维持1s";
-                        Thread.Sleep(900);
+                        for (int i = 2; i > 0; i--)
+                        {
+                            Msg(label_msg, panel_cp, carbj.CarPH + "维持"+i.ToString()+"s", true);
+                            ts2 = "维持" + i.ToString() + "s";
+                            Thread.Sleep(1000);
+                        }
                     }
                     Msg(label_msg, panel_cp, carbj.CarPH + "请松开踏板", true);
                     ts2 = "松开踏板";
@@ -1345,6 +1346,7 @@ namespace zyjsTest
                     isReadRealTime = true;
                     maxvalue = 0;
                     maxzsvalue = 0;
+                    maxywvalue = 0;
                     caculateStart = true;
                     sxnb = 1;
                     Msg(label_msgcs, panel1, "第" + sxnb.ToString() + "次测量", false);
@@ -1374,12 +1376,12 @@ namespace zyjsTest
                     }
                     if (!isQxc || equipconfig.useJHJK)
                     {
-                        Msg(label_msg, panel_cp, carbj.CarPH + "维持2s", true);
-                        ts2 = "维持2s";
-                        Thread.Sleep(900);
-                        Msg(label_msg, panel_cp, carbj.CarPH + "维持1s", true);
-                        ts2 = "维持1s";
-                        Thread.Sleep(900);
+                        for (int i = 2; i > 0; i--)
+                        {
+                            Msg(label_msg, panel_cp, carbj.CarPH + "维持" + i.ToString() + "s", true);
+                            ts2 = "维持" + i.ToString() + "s";
+                            Thread.Sleep(1000);
+                        }
                     }
                     Msg(label_msg, panel_cp, carbj.CarPH + "请松开踏板", true);
                     ts2 = "松开踏板";
@@ -1439,17 +1441,18 @@ namespace zyjsTest
                             else
                                 flb_100.Stop_StableMeasure();
                             Thread.Sleep(50);
-                            if (equipconfig.Ydjxh.ToLower() == "cdf5000")
-                                dycsmoke = fla_502.get_StableData(0.01f);
-                            else
-                                dycsmoke = flb_100.get_StableData(0.01f);
-                            preparedata = dycsmoke.K;
-                            if (equipconfig.Ydjxh == "mqy_200" || equipconfig.Ydjxh == "flb_100" || equipconfig.Ydjxh.ToLower() == "cdf5000" || equipconfig.Ydjxh.ToLower() == "nht_1")
+                            //if (equipconfig.Ydjxh.ToLower() == "cdf5000")
+                            //    dycsmoke = fla_502.get_StableData(0.01f);
+                            //else
+                            //    dycsmoke = flb_100.get_StableData(0.01f);
+                            //preparedata = dycsmoke.K;
+                            //if (equipconfig.Ydjxh == "mqy_200" || equipconfig.Ydjxh == "flb_100" || equipconfig.Ydjxh.ToLower() == "cdf5000" || equipconfig.Ydjxh.ToLower() == "nht_1")
                                 preparedata = maxvalue;
                             preclz1 = preparedata;
                             preclz2 = preparedata;
                             preclz3 = preparedata;
                             maxvalue = 0; maxzsvalue = 0;
+                            maxywvalue = 0;
                             zyjs_data.PrepareData = preparedata.ToString("0.00");
                             isReadRealTime = true;
                         }
@@ -1593,6 +1596,7 @@ namespace zyjsTest
                         Thread.Sleep(100);
                         isReadRealTime = true;
                         maxvalue = 0; maxzsvalue = 0;
+                        maxywvalue = 0;
                         caculateStart = true;
                         Msg(label_msgcs, panel1, "第" + sxnb.ToString() + "次测量", false);
                         Msg(label_msg, panel_cp, carbj.CarPH + "请迅猛将油门踩到底", true);
@@ -1621,12 +1625,12 @@ namespace zyjsTest
                         }
                         if (!isQxc || equipconfig.useJHJK)
                         {
-                            Msg(label_msg, panel_cp, carbj.CarPH + "维持2s", true);
-                            ts2 = "维持2s";
-                            Thread.Sleep(900);
-                            Msg(label_msg, panel_cp, carbj.CarPH + "维持1s", true);
-                            ts2 = "维持1s";
-                            Thread.Sleep(900);
+                            for (int i = 2; i > 0; i--)
+                            {
+                                Msg(label_msg, panel_cp, carbj.CarPH + "维持" + i.ToString() + "s", true);
+                                ts2 = "维持" + i.ToString() + "s";
+                                Thread.Sleep(1000);
+                            }
                         }
                         Msg(label_msg, panel_cp, carbj.CarPH + "请松开踏板", true);
                         ts2 = "松开踏板";
@@ -1686,12 +1690,12 @@ namespace zyjsTest
                                 else
                                     flb_100.Stop_StableMeasure();
                                 Thread.Sleep(50);
-                                if (equipconfig.Ydjxh.ToLower() == "cdf5000")
-                                    dycsmoke = fla_502.get_StableData(0.01f);
-                                else
-                                    dycsmoke = flb_100.get_StableData(0.01f);
-                                preparedata = dycsmoke.K;
-                                if (equipconfig.Ydjxh == "mqy_200" || equipconfig.Ydjxh == "flb_100" || equipconfig.Ydjxh.ToLower() == "cdf5000" || equipconfig.Ydjxh.ToLower() == "nht_1")
+                                //if (equipconfig.Ydjxh.ToLower() == "cdf5000")
+                                //    dycsmoke = fla_502.get_StableData(0.01f);
+                                //else
+                                //    dycsmoke = flb_100.get_StableData(0.01f);
+                                //preparedata = dycsmoke.K;
+                                //if (equipconfig.Ydjxh == "mqy_200" || equipconfig.Ydjxh == "flb_100" || equipconfig.Ydjxh.ToLower() == "cdf5000" || equipconfig.Ydjxh.ToLower() == "nht_1")
                                     preparedata = maxvalue;
                                 if(clcs==0)
                                     preclz1 = preparedata;
@@ -1700,6 +1704,7 @@ namespace zyjsTest
                                 else if(clcs==2)
                                     preclz3 = preparedata;
                                 maxvalue = 0; maxzsvalue = 0;
+                                maxywvalue = 0;
                                 zyjs_data.PrepareData = preparedata.ToString("0.00");
                                 isReadRealTime = true;
                             }
@@ -1823,6 +1828,7 @@ namespace zyjsTest
                 else
                 {
                     maxvalue = 0; maxzsvalue = 0;
+                    maxywvalue = 0;
                     zyjs_data.PrepareData = "0.01";
                 }
                 Thread.Sleep(500);
@@ -1870,12 +1876,12 @@ namespace zyjsTest
                 }
                 if (!isQxc || equipconfig.useJHJK)
                 {
-                    Msg(label_msg, panel_cp, carbj.CarPH + "维持2s", true);
-                    ts2 = "维持2s";
-                    Thread.Sleep(900);
-                    Msg(label_msg, panel_cp, carbj.CarPH + "维持1s", true);
-                    ts2 = "维持1s";
-                    Thread.Sleep(900);
+                    for (int i = 2; i > 0; i--)
+                    {
+                        Msg(label_msg, panel_cp, carbj.CarPH + "维持" + i.ToString() + "s", true);
+                        ts2 = "维持" + i.ToString() + "s";
+                        Thread.Sleep(1000);
+                    }
                 }
                 Msg(label_msg, panel_cp, carbj.CarPH + "请松开踏板", true);
                 ts2 = "松开踏板";
@@ -1935,21 +1941,22 @@ namespace zyjsTest
                         else
                             flb_100.Stop_StableMeasure();
                         Thread.Sleep(50);
-                        if (equipconfig.Ydjxh.ToLower() == "cdf5000")
-                            dycsmoke = fla_502.get_StableData(0.01f);
-                        else
-                            dycsmoke = flb_100.get_StableData(0.01f);
-                        dycclz = dycsmoke.K;
+                        //if (equipconfig.Ydjxh.ToLower() == "cdf5000")
+                        //    dycsmoke = fla_502.get_StableData(0.01f);
+                        //else
+                        //    dycsmoke = flb_100.get_StableData(0.01f);
+                        //dycclz = dycsmoke.K;
                         dyczs = maxzsvalue;
-                        if (equipconfig.Ydjxh == "mqy_200" || equipconfig.Ydjxh == "flb_100" || equipconfig.Ydjxh.ToLower() == "cdf5000" || equipconfig.Ydjxh.ToLower() == "nht_1")
+                        //if (equipconfig.Ydjxh == "mqy_200" || equipconfig.Ydjxh == "flb_100" || equipconfig.Ydjxh.ToLower() == "cdf5000" || equipconfig.Ydjxh.ToLower() == "nht_1")
                             dycclz = maxvalue;
                         if (btgconfig.btgDszsValue == 1)
                             dszs = maxzsvalue;
                         else
                             dszs = ZS;
                         maxvalue = 0; maxzsvalue = 0;
+                        maxywvalue = 0;
                         //if (dycclz < 0.01) dycclz = 0.01;
-                        dycyw = dycsmoke.Yw;
+                        dycyw = maxywvalue;
                         if (btgconfig.Zsj == "无")
                         {
                             dszs = 0;
@@ -1985,8 +1992,8 @@ namespace zyjsTest
                         drah["时序类别"] = (GKSJ/10).ToString("0");
                         drah["采样时序"] = (GKSJ / 10).ToString("0");
                         drah["烟度值读数"] = data1;
-                        drah["发动机转速"] = dycsmoke.Zs.ToString();
-                        drah["油温"] = dycsmoke.Yw.ToString();
+                        drah["发动机转速"] = dyczs.ToString();
+                        drah["油温"] = dycyw.ToString();
                         drah["环境温度"] = wd.ToString();
                         drah["大气压力"] = dqy.ToString();
                         drah["相对湿度"] = sd.ToString();
@@ -2155,12 +2162,12 @@ namespace zyjsTest
                 }
                 if (!isQxc || equipconfig.useJHJK)
                 {
-                    Msg(label_msg, panel_cp, carbj.CarPH + "维持2s", true);
-                    ts2 = "维持2s";
-                    Thread.Sleep(900);
-                    Msg(label_msg, panel_cp, carbj.CarPH + "维持1s", true);
-                    ts2 = "维持1s";
-                    Thread.Sleep(900);
+                    for (int i = 2; i > 0; i--)
+                    {
+                        Msg(label_msg, panel_cp, carbj.CarPH + "维持" + i.ToString() + "s", true);
+                        ts2 = "维持" + i.ToString() + "s";
+                        Thread.Sleep(1000);
+                    }
                 }
                 Msg(label_msg, panel_cp, carbj.CarPH + "请松开踏板", true);
                 ts2 = "松开踏板";
@@ -2220,17 +2227,19 @@ namespace zyjsTest
                         else
                             flb_100.Stop_StableMeasure();
                         Thread.Sleep(50);
-                        if (equipconfig.Ydjxh.ToLower() == "cdf5000")
-                            decsmoke = fla_502.get_StableData(0.01f);
-                        else
-                            decsmoke = flb_100.get_StableData(0.01f);
-                        decclz = decsmoke.K;
+                        //if (equipconfig.Ydjxh.ToLower() == "cdf5000")
+                        //    decsmoke = fla_502.get_StableData(0.01f);
+                        //else
+                        //    decsmoke = flb_100.get_StableData(0.01f);
+                        //decclz = decsmoke.K;
                         deczs = maxzsvalue;
-                        if (equipconfig.Ydjxh == "mqy_200" || equipconfig.Ydjxh == "flb_100" || equipconfig.Ydjxh.ToLower() == "cdf5000" || equipconfig.Ydjxh.ToLower() == "nht_1")
+                        //if (equipconfig.Ydjxh == "mqy_200" || equipconfig.Ydjxh == "flb_100" || equipconfig.Ydjxh.ToLower() == "cdf5000" || equipconfig.Ydjxh.ToLower() == "nht_1")
                             decclz = maxvalue;
-                        maxvalue = 0; maxzsvalue = 0;
+                        maxvalue = 0;
+                        maxzsvalue = 0;
+                        maxywvalue = 0;
                         //if (decclz < 0.01) decclz = 0.01;
-                        decyw = decsmoke.Yw;
+                        decyw = maxywvalue;
                         datagridview_msg(dataGridView1, "结果", 2, decclz.ToString("0.00"));
                         datagridview_msg(dataGridView1, "转速", 2, deczs.ToString("0"));
                         data2 = decclz.ToString("0.00");
@@ -2251,8 +2260,8 @@ namespace zyjsTest
                         drah["时序类别"] = (GKSJ / 10).ToString("0");
                         drah["采样时序"] = (GKSJ / 10).ToString("0");
                         drah["烟度值读数"] = data1;
-                        drah["发动机转速"] = decsmoke.Zs.ToString();
-                        drah["油温"] = decsmoke.Yw.ToString();
+                        drah["发动机转速"] = deczs.ToString();
+                        drah["油温"] = decyw.ToString();
                         drah["环境温度"] = wd.ToString();
                         drah["大气压力"] = dqy.ToString();
                         drah["相对湿度"] = sd.ToString();
@@ -2422,12 +2431,12 @@ namespace zyjsTest
                 }
                 if (!isQxc || equipconfig.useJHJK)
                 {
-                    Msg(label_msg, panel_cp, carbj.CarPH + "维持2s", true);
-                    ts2 = "维持2s";
-                    Thread.Sleep(900);
-                    Msg(label_msg, panel_cp, carbj.CarPH + "维持1s", true);
-                    ts2 = "维持1s";
-                    Thread.Sleep(900);
+                    for (int i = 2; i > 0; i--)
+                    {
+                        Msg(label_msg, panel_cp, carbj.CarPH + "维持" + i.ToString() + "s", true);
+                        ts2 = "维持" + i.ToString() + "s";
+                        Thread.Sleep(1000);
+                    }
                 }
                 Msg(label_msg, panel_cp, carbj.CarPH + "请松开踏板", true);
                 ts2 = "松开踏板";
@@ -2487,17 +2496,19 @@ namespace zyjsTest
                         else
                             flb_100.Stop_StableMeasure();
                         Thread.Sleep(50);
-                        if (equipconfig.Ydjxh.ToLower() == "cdf5000")
-                            dscsmoke = fla_502.get_StableData(0.01f);
-                        else
-                            dscsmoke = flb_100.get_StableData(0.01f);
-                        dscclz = dscsmoke.K;
+                        //if (equipconfig.Ydjxh.ToLower() == "cdf5000")
+                        //    dscsmoke = fla_502.get_StableData(0.01f);
+                        //else
+                        //    dscsmoke = flb_100.get_StableData(0.01f);
+                        //dscclz = dscsmoke.K;
                         dsczs = maxzsvalue;
-                        if (equipconfig.Ydjxh == "mqy_200" || equipconfig.Ydjxh == "flb_100" || equipconfig.Ydjxh.ToLower() == "cdf5000" || equipconfig.Ydjxh.ToLower() == "nht_1")
+                        //if (equipconfig.Ydjxh == "mqy_200" || equipconfig.Ydjxh == "flb_100" || equipconfig.Ydjxh.ToLower() == "cdf5000" || equipconfig.Ydjxh.ToLower() == "nht_1")
                             dscclz = maxvalue;
-                        maxvalue = 0; maxzsvalue = 0;
+                        maxvalue = 0;
+                        maxzsvalue = 0;
+                        maxywvalue = 0;
                         //if (dscclz < 0.01) dscclz = 0.01;
-                        dscyw = dscsmoke.Yw;
+                        dscyw = maxywvalue;
                         datagridview_msg(dataGridView1, "结果", 3, dscclz.ToString("0.00"));
                         datagridview_msg(dataGridView1, "转速", 3, dyczs.ToString("0"));
                         data3 = dscclz.ToString("0.00");
@@ -2519,8 +2530,8 @@ namespace zyjsTest
                         drah["时序类别"] = (GKSJ / 10).ToString("0");
                         drah["采样时序"] = (GKSJ / 10).ToString("0");
                         drah["烟度值读数"] = data1;
-                        drah["发动机转速"] = dscsmoke.Zs.ToString();
-                        drah["油温"] = dscsmoke.Yw.ToString();
+                        drah["发动机转速"] = dsczs.ToString();
+                        drah["油温"] = dscyw.ToString();
                         drah["环境温度"] = wd.ToString();
                         drah["大气压力"] = dqy.ToString();
                         drah["相对湿度"] = sd.ToString();
@@ -2878,6 +2889,7 @@ namespace zyjsTest
                 {
                     caculateStart = false;
                     maxvalue = 0; maxzsvalue = 0;
+                    maxywvalue = 0;
                     TH_ST.Abort();
                     try
                     {
@@ -3193,6 +3205,8 @@ namespace zyjsTest
                             maxvalue = Klist[GKSJ];
                         if (Zslist[GKSJ] > maxzsvalue)
                             maxzsvalue = (int)(Zslist[GKSJ]);
+                        if (Ywlist[GKSJ] > maxywvalue)
+                            maxywvalue = Ywlist[GKSJ];
                     }
                     //else
                     //{

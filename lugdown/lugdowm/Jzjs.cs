@@ -2721,7 +2721,7 @@ namespace lugdowm
                     jzjs_datatable.Columns.Add("OPCODE");
                     jzjs_datatable.Columns.Add("DYNN");
                     jzjs_datatable.Columns.Add("NO");
-                    if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山")
+                    if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山"||equipconfig.DATASECONDS_TYPE== "安徽")
                     {
                         for (int i = 10; i < jzjs_dataseconds.Gksj; i++)//从第10秒开始取过程 数据，以避免金华判断转速时，第一秒的转速为0
                         {

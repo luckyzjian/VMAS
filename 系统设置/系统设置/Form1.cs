@@ -159,6 +159,8 @@ namespace 系统设置
             comboBoxLTest.SelectedIndex = sdsconfig.TimerModeLT;
             checkBoxSdsSureTemp.Checked = sdsconfig.IsSureTemp;
             checkBoxSds_norezero.Checked = sdsconfig.sdsNoReZero;
+            checkBoxLAMBDA_HIGH.Checked = sdsconfig.sdsHighLambdaMonitor;
+            checkBoxLAMBDA_LOW.Checked = sdsconfig.sdsLowLambdaMonitor;
 
             textBoxBtgDyzs.Text = btgconfig.Dyzs.ToString("0");
             checkBoxBtgZsjk.Checked = btgconfig.RotateSpeedMonitor;
@@ -458,6 +460,8 @@ namespace 系统设置
             sdsconfig.TimerModeLT = comboBoxLTest.SelectedIndex;
             sdsconfig.Ywj = comboBoxYWJ_SDS.Text;
             sdsconfig.sdsNoReZero = checkBoxSds_norezero.Checked;
+            sdsconfig.sdsHighLambdaMonitor = checkBoxLAMBDA_HIGH.Checked;
+            sdsconfig.sdsLowLambdaMonitor = checkBoxLAMBDA_LOW.Checked;
             if (configini.writeSdsConfigIni(sdsconfig))
                 MessageBox.Show("保存成功.", "系统提示");
             else

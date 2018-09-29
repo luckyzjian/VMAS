@@ -140,7 +140,7 @@ namespace carinfor
             get { return lambda; }
             set { lambda = value; }
         }
-
+        public string sampleCount { set; get; }
     }
     public class vmasdataControl
     {
@@ -171,6 +171,7 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("检测结果", "Hcnox", vmas_data.Hcnox, "C:/jcdatatxt/" + vmas_data.CarID + ".ini");
                 ini.INIIO.WritePrivateProfileString("检测结果", "co2", vmas_data.Co2, "C:/jcdatatxt/" + vmas_data.CarID + ".ini");
                 ini.INIIO.WritePrivateProfileString("检测结果", "lambda", vmas_data.LAMBDA, "C:/jcdatatxt/" + vmas_data.CarID + ".ini");
+                ini.INIIO.WritePrivateProfileString("检测结果", "采样点数", vmas_data.sampleCount, "C:/jcdatatxt/" + vmas_data.CarID + ".ini");
                 return true;
             }
             catch

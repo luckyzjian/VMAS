@@ -901,6 +901,8 @@ namespace carinfor
         public bool IsSureTemp { set; get; }
         public string Ywj { set; get; }
         public bool sdsNoReZero { set; get; }
+        public bool sdsHighLambdaMonitor { set; get; }
+        public bool sdsLowLambdaMonitor { set; get; }
     }
     public class BtgConfigInfdata
     {
@@ -2538,6 +2540,16 @@ namespace carinfor
                 configinidata.sdsNoReZero = true;
             else
                 configinidata.sdsNoReZero = false;
+            ini.INIIO.GetPrivateProfileString("SDS", "sdsHighLambdaMonitor", "true", temp, 2048, startUpPath + "/detectConfig.ini");
+            if (temp.ToString().Trim() == "true")
+                configinidata.sdsHighLambdaMonitor = true;
+            else
+                configinidata.sdsHighLambdaMonitor = false;
+            ini.INIIO.GetPrivateProfileString("SDS", "sdsLowLambdaMonitor", "true", temp, 2048, startUpPath + "/detectConfig.ini");
+            if (temp.ToString().Trim() == "true")
+                configinidata.sdsLowLambdaMonitor = true;
+            else
+                configinidata.sdsLowLambdaMonitor = false;
             return configinidata;
         }
 
@@ -2566,6 +2578,8 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("SDS", "怠速准备计时模式", configinidata.TimerModeLP.ToString("0"), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("SDS", "怠速测量计时模式", configinidata.TimerModeLT.ToString("0"), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("SDS", "不重复调零", configinidata.sdsNoReZero.ToString().ToLower(), startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("SDS", "sdsHighLambdaMonitor", configinidata.sdsHighLambdaMonitor.ToString().ToLower(), startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("SDS", "sdsLowLambdaMonitor", configinidata.sdsLowLambdaMonitor.ToString().ToLower(), startUpPath + "/detectConfig.ini");
                 return true;
             }
             catch

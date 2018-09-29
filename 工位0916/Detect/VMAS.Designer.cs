@@ -198,6 +198,12 @@
             this.label19 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel19 = new System.Windows.Forms.Panel();
+            this.panelSampleCount = new System.Windows.Forms.Panel();
+            this.labelSampleCount = new System.Windows.Forms.Label();
+            this.panelO2EXCEDTIMES = new System.Windows.Forms.Panel();
+            this.labelO2EXCEDTIMES = new System.Windows.Forms.Label();
+            this.panelCO2EXCEDTIMES = new System.Windows.Forms.Panel();
+            this.labelCO2EXCEDTIMES = new System.Windows.Forms.Label();
             this.gaugeControl1 = new DevExpress.XtraGauges.Win.GaugeControl();
             this.panelCs = new System.Windows.Forms.Panel();
             this.labelCs = new System.Windows.Forms.Label();
@@ -228,10 +234,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.panelCO2EXCEDTIMES = new System.Windows.Forms.Panel();
-            this.labelCO2EXCEDTIMES = new System.Windows.Forms.Label();
-            this.panelO2EXCEDTIMES = new System.Windows.Forms.Panel();
-            this.labelO2EXCEDTIMES = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel21.SuspendLayout();
@@ -303,6 +305,9 @@
             this.panelNO.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel19.SuspendLayout();
+            this.panelSampleCount.SuspendLayout();
+            this.panelO2EXCEDTIMES.SuspendLayout();
+            this.panelCO2EXCEDTIMES.SuspendLayout();
             this.gaugeControl1.SuspendLayout();
             this.panelCs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.circularGauge3)).BeginInit();
@@ -321,8 +326,6 @@
             this.panel7.SuspendLayout();
             this.panelLJCC.SuspendLayout();
             this.panelLXCC.SuspendLayout();
-            this.panelCO2EXCEDTIMES.SuspendLayout();
-            this.panelO2EXCEDTIMES.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -600,6 +603,7 @@
             // 
             // arcScaleBackgroundLayerComponent9
             // 
+            this.arcScaleBackgroundLayerComponent9.AcceptOrder = -1000;
             this.arcScaleBackgroundLayerComponent9.ArcScale = this.arcScaleComponentPower;
             this.arcScaleBackgroundLayerComponent9.Name = "arcScaleBackgroundLayerComponent7";
             this.arcScaleBackgroundLayerComponent9.ShapeType = DevExpress.XtraGauges.Core.Model.BackgroundLayerShapeType.CircularFull_Style5;
@@ -607,6 +611,7 @@
             // 
             // arcScaleComponentPower
             // 
+            this.arcScaleComponentPower.AcceptOrder = 0;
             this.arcScaleComponentPower.AppearanceTickmarkText.Font = new System.Drawing.Font("Tahoma", 14F);
             this.arcScaleComponentPower.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:LightGrey");
             this.arcScaleComponentPower.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
@@ -629,6 +634,7 @@
             // 
             // arcScaleBackgroundLayerComponent10
             // 
+            this.arcScaleBackgroundLayerComponent10.AcceptOrder = -999;
             this.arcScaleBackgroundLayerComponent10.ArcScale = this.arcScaleComponentPower;
             this.arcScaleBackgroundLayerComponent10.Name = "arcScaleBackgroundLayerComponent10";
             this.arcScaleBackgroundLayerComponent10.ShapeType = DevExpress.XtraGauges.Core.Model.BackgroundLayerShapeType.CircularFull_Style5_1;
@@ -637,6 +643,7 @@
             // 
             // arcScaleNeedleComponent8
             // 
+            this.arcScaleNeedleComponent8.AcceptOrder = 50;
             this.arcScaleNeedleComponent8.ArcScale = this.arcScaleComponentPower;
             this.arcScaleNeedleComponent8.Name = "arcScaleNeedleComponent7";
             this.arcScaleNeedleComponent8.ShapeType = DevExpress.XtraGauges.Core.Model.NeedleShapeType.CircularFull_Style5;
@@ -645,6 +652,7 @@
             // 
             // arcScaleComponent13
             // 
+            this.arcScaleComponent13.AcceptOrder = 1;
             this.arcScaleComponent13.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Silver");
             this.arcScaleComponent13.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
             this.arcScaleComponent13.EndAngle = -30F;
@@ -675,6 +683,7 @@
             // 
             // arcScaleSpindleCapComponent1
             // 
+            this.arcScaleSpindleCapComponent1.AcceptOrder = 100;
             this.arcScaleSpindleCapComponent1.ArcScale = this.arcScaleComponent1;
             this.arcScaleSpindleCapComponent1.Name = "cap1";
             this.arcScaleSpindleCapComponent1.ShapeType = DevExpress.XtraGauges.Core.Model.SpindleCapShapeType.CircularFull_Style3;
@@ -682,6 +691,7 @@
             // 
             // arcScaleComponent1
             // 
+            this.arcScaleComponent1.AcceptOrder = 0;
             this.arcScaleComponent1.AppearanceTickmarkText.Font = new System.Drawing.Font("Tahoma", 12F);
             this.arcScaleComponent1.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FF8000");
             this.arcScaleComponent1.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
@@ -700,6 +710,7 @@
             // 
             // arcScaleNeedleComponent1
             // 
+            this.arcScaleNeedleComponent1.AcceptOrder = 50;
             this.arcScaleNeedleComponent1.ArcScale = this.arcScaleComponent1;
             this.arcScaleNeedleComponent1.EndOffset = -8F;
             this.arcScaleNeedleComponent1.Name = "needle1";
@@ -708,6 +719,7 @@
             // 
             // arcScaleBackgroundLayerComponent1
             // 
+            this.arcScaleBackgroundLayerComponent1.AcceptOrder = -1000;
             this.arcScaleBackgroundLayerComponent1.ArcScale = this.arcScaleComponent1;
             this.arcScaleBackgroundLayerComponent1.Name = "bg1";
             this.arcScaleBackgroundLayerComponent1.ShapeType = DevExpress.XtraGauges.Core.Model.BackgroundLayerShapeType.CircularFull_Style3;
@@ -728,6 +740,7 @@
             // 
             // arcScaleNeedleComponent2
             // 
+            this.arcScaleNeedleComponent2.AcceptOrder = 50;
             this.arcScaleNeedleComponent2.Name = "needle1";
             this.arcScaleNeedleComponent2.ShapeType = DevExpress.XtraGauges.Core.Model.NeedleShapeType.CircularFull_Style5;
             this.arcScaleNeedleComponent2.StartOffset = -23.5F;
@@ -735,6 +748,7 @@
             // 
             // arcScaleBackgroundLayerComponent2
             // 
+            this.arcScaleBackgroundLayerComponent2.AcceptOrder = -1000;
             this.arcScaleBackgroundLayerComponent2.Name = "bg1";
             this.arcScaleBackgroundLayerComponent2.ScaleCenterPos = new DevExpress.XtraGauges.Core.Base.PointF2D(0.5F, 0.59F);
             this.arcScaleBackgroundLayerComponent2.ShapeType = DevExpress.XtraGauges.Core.Model.BackgroundLayerShapeType.CircularThreeFourth_Style5;
@@ -743,6 +757,7 @@
             // 
             // arcScaleComponent3
             // 
+            this.arcScaleComponent3.AcceptOrder = 1;
             this.arcScaleComponent3.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Silver");
             this.arcScaleComponent3.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 140F);
             this.arcScaleComponent3.EndAngle = -30F;
@@ -765,6 +780,7 @@
             // 
             // arcScaleComponent2
             // 
+            this.arcScaleComponent2.AcceptOrder = 0;
             this.arcScaleComponent2.AppearanceTickmarkText.Font = new System.Drawing.Font("Tahoma", 14F);
             this.arcScaleComponent2.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:LightGrey");
             this.arcScaleComponent2.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 140F);
@@ -789,6 +805,7 @@
             // 
             // arcScaleComponent4
             // 
+            this.arcScaleComponent4.AcceptOrder = 0;
             this.arcScaleComponent4.AppearanceTickmarkText.Font = new System.Drawing.Font("Tahoma", 14F);
             this.arcScaleComponent4.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:LightGrey");
             this.arcScaleComponent4.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 140F);
@@ -812,6 +829,7 @@
             // 
             // arcScaleBackgroundLayerComponent3
             // 
+            this.arcScaleBackgroundLayerComponent3.AcceptOrder = -1000;
             this.arcScaleBackgroundLayerComponent3.ArcScale = this.arcScaleComponent4;
             this.arcScaleBackgroundLayerComponent3.Name = "bg1";
             this.arcScaleBackgroundLayerComponent3.ScaleCenterPos = new DevExpress.XtraGauges.Core.Base.PointF2D(0.5F, 0.59F);
@@ -821,6 +839,7 @@
             // 
             // arcScaleNeedleComponent3
             // 
+            this.arcScaleNeedleComponent3.AcceptOrder = 50;
             this.arcScaleNeedleComponent3.ArcScale = this.arcScaleComponent4;
             this.arcScaleNeedleComponent3.Name = "needle1";
             this.arcScaleNeedleComponent3.ShapeType = DevExpress.XtraGauges.Core.Model.NeedleShapeType.CircularFull_Style5;
@@ -829,6 +848,7 @@
             // 
             // arcScaleComponent6
             // 
+            this.arcScaleComponent6.AcceptOrder = 0;
             this.arcScaleComponent6.AppearanceTickmarkText.Font = new System.Drawing.Font("Tahoma", 12F);
             this.arcScaleComponent6.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Black");
             this.arcScaleComponent6.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
@@ -851,6 +871,7 @@
             // 
             // arcScaleComponent7
             // 
+            this.arcScaleComponent7.AcceptOrder = 1;
             this.arcScaleComponent7.AppearanceTickmarkText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.arcScaleComponent7.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Black");
             this.arcScaleComponent7.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
@@ -871,6 +892,7 @@
             // 
             // arcScaleBackgroundLayerComponent4
             // 
+            this.arcScaleBackgroundLayerComponent4.AcceptOrder = -1000;
             this.arcScaleBackgroundLayerComponent4.ArcScale = this.arcScaleComponent6;
             this.arcScaleBackgroundLayerComponent4.Name = "bg1";
             this.arcScaleBackgroundLayerComponent4.ShapeType = DevExpress.XtraGauges.Core.Model.BackgroundLayerShapeType.CircularFull_Style11;
@@ -878,6 +900,7 @@
             // 
             // arcScaleNeedleComponent4
             // 
+            this.arcScaleNeedleComponent4.AcceptOrder = 50;
             this.arcScaleNeedleComponent4.ArcScale = this.arcScaleComponent6;
             this.arcScaleNeedleComponent4.EndOffset = 5F;
             this.arcScaleNeedleComponent4.Name = "needle1";
@@ -887,6 +910,7 @@
             // 
             // arcScaleBackgroundLayerComponent5
             // 
+            this.arcScaleBackgroundLayerComponent5.AcceptOrder = -1000;
             this.arcScaleBackgroundLayerComponent5.ArcScale = this.arcScaleComponent8;
             this.arcScaleBackgroundLayerComponent5.Name = "bg1";
             this.arcScaleBackgroundLayerComponent5.ShapeType = DevExpress.XtraGauges.Core.Model.BackgroundLayerShapeType.CircularFull_Style11;
@@ -894,6 +918,7 @@
             // 
             // arcScaleComponent8
             // 
+            this.arcScaleComponent8.AcceptOrder = 0;
             this.arcScaleComponent8.AppearanceTickmarkText.Font = new System.Drawing.Font("Tahoma", 12F);
             this.arcScaleComponent8.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Black");
             this.arcScaleComponent8.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
@@ -916,6 +941,7 @@
             // 
             // arcScaleNeedleComponent5
             // 
+            this.arcScaleNeedleComponent5.AcceptOrder = 50;
             this.arcScaleNeedleComponent5.ArcScale = this.arcScaleComponent8;
             this.arcScaleNeedleComponent5.EndOffset = 5F;
             this.arcScaleNeedleComponent5.Name = "needle1";
@@ -925,6 +951,7 @@
             // 
             // arcScaleComponent9
             // 
+            this.arcScaleComponent9.AcceptOrder = 1;
             this.arcScaleComponent9.AppearanceTickmarkText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.arcScaleComponent9.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Black");
             this.arcScaleComponent9.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
@@ -956,6 +983,7 @@
             // 
             // arcScaleBackgroundLayerComponent6
             // 
+            this.arcScaleBackgroundLayerComponent6.AcceptOrder = -1000;
             this.arcScaleBackgroundLayerComponent6.ArcScale = this.arcScaleComponent5;
             this.arcScaleBackgroundLayerComponent6.Name = "bg1";
             this.arcScaleBackgroundLayerComponent6.ShapeType = DevExpress.XtraGauges.Core.Model.BackgroundLayerShapeType.CircularFull_Style3;
@@ -963,6 +991,7 @@
             // 
             // arcScaleComponent5
             // 
+            this.arcScaleComponent5.AcceptOrder = 0;
             this.arcScaleComponent5.AppearanceTickmarkText.Font = new System.Drawing.Font("Tahoma", 12F);
             this.arcScaleComponent5.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FF8000");
             this.arcScaleComponent5.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
@@ -981,6 +1010,7 @@
             // 
             // arcScaleNeedleComponent6
             // 
+            this.arcScaleNeedleComponent6.AcceptOrder = 50;
             this.arcScaleNeedleComponent6.ArcScale = this.arcScaleComponent5;
             this.arcScaleNeedleComponent6.EndOffset = -8F;
             this.arcScaleNeedleComponent6.Name = "needle1";
@@ -989,6 +1019,7 @@
             // 
             // arcScaleSpindleCapComponent2
             // 
+            this.arcScaleSpindleCapComponent2.AcceptOrder = 100;
             this.arcScaleSpindleCapComponent2.ArcScale = this.arcScaleComponent5;
             this.arcScaleSpindleCapComponent2.Name = "cap1";
             this.arcScaleSpindleCapComponent2.ShapeType = DevExpress.XtraGauges.Core.Model.SpindleCapShapeType.CircularFull_Style3;
@@ -2423,6 +2454,7 @@
             // 
             this.panel19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel19.BackgroundImage")));
             this.panel19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel19.Controls.Add(this.panelSampleCount);
             this.panel19.Controls.Add(this.panelO2EXCEDTIMES);
             this.panel19.Controls.Add(this.panelCO2EXCEDTIMES);
             this.panel19.Controls.Add(this.gaugeControl1);
@@ -2431,6 +2463,78 @@
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(190, 275);
             this.panel19.TabIndex = 31;
+            // 
+            // panelSampleCount
+            // 
+            this.panelSampleCount.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panelSampleCount.BackColor = System.Drawing.Color.White;
+            this.panelSampleCount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelSampleCount.Controls.Add(this.labelSampleCount);
+            this.panelSampleCount.Location = new System.Drawing.Point(128, 250);
+            this.panelSampleCount.Name = "panelSampleCount";
+            this.panelSampleCount.Size = new System.Drawing.Size(63, 23);
+            this.panelSampleCount.TabIndex = 40;
+            // 
+            // labelSampleCount
+            // 
+            this.labelSampleCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelSampleCount.AutoSize = true;
+            this.labelSampleCount.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.labelSampleCount.ForeColor = System.Drawing.Color.Black;
+            this.labelSampleCount.Location = new System.Drawing.Point(21, 0);
+            this.labelSampleCount.Name = "labelSampleCount";
+            this.labelSampleCount.Size = new System.Drawing.Size(17, 20);
+            this.labelSampleCount.TabIndex = 0;
+            this.labelSampleCount.Text = "0";
+            this.labelSampleCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panelO2EXCEDTIMES
+            // 
+            this.panelO2EXCEDTIMES.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panelO2EXCEDTIMES.BackColor = System.Drawing.Color.White;
+            this.panelO2EXCEDTIMES.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelO2EXCEDTIMES.Controls.Add(this.labelO2EXCEDTIMES);
+            this.panelO2EXCEDTIMES.Location = new System.Drawing.Point(64, 250);
+            this.panelO2EXCEDTIMES.Name = "panelO2EXCEDTIMES";
+            this.panelO2EXCEDTIMES.Size = new System.Drawing.Size(63, 23);
+            this.panelO2EXCEDTIMES.TabIndex = 39;
+            // 
+            // labelO2EXCEDTIMES
+            // 
+            this.labelO2EXCEDTIMES.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelO2EXCEDTIMES.AutoSize = true;
+            this.labelO2EXCEDTIMES.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.labelO2EXCEDTIMES.ForeColor = System.Drawing.Color.Black;
+            this.labelO2EXCEDTIMES.Location = new System.Drawing.Point(21, 0);
+            this.labelO2EXCEDTIMES.Name = "labelO2EXCEDTIMES";
+            this.labelO2EXCEDTIMES.Size = new System.Drawing.Size(17, 20);
+            this.labelO2EXCEDTIMES.TabIndex = 0;
+            this.labelO2EXCEDTIMES.Text = "0";
+            this.labelO2EXCEDTIMES.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panelCO2EXCEDTIMES
+            // 
+            this.panelCO2EXCEDTIMES.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panelCO2EXCEDTIMES.BackColor = System.Drawing.Color.White;
+            this.panelCO2EXCEDTIMES.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelCO2EXCEDTIMES.Controls.Add(this.labelCO2EXCEDTIMES);
+            this.panelCO2EXCEDTIMES.Location = new System.Drawing.Point(0, 250);
+            this.panelCO2EXCEDTIMES.Name = "panelCO2EXCEDTIMES";
+            this.panelCO2EXCEDTIMES.Size = new System.Drawing.Size(63, 23);
+            this.panelCO2EXCEDTIMES.TabIndex = 38;
+            // 
+            // labelCO2EXCEDTIMES
+            // 
+            this.labelCO2EXCEDTIMES.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelCO2EXCEDTIMES.AutoSize = true;
+            this.labelCO2EXCEDTIMES.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.labelCO2EXCEDTIMES.ForeColor = System.Drawing.Color.Black;
+            this.labelCO2EXCEDTIMES.Location = new System.Drawing.Point(21, 0);
+            this.labelCO2EXCEDTIMES.Name = "labelCO2EXCEDTIMES";
+            this.labelCO2EXCEDTIMES.Size = new System.Drawing.Size(17, 20);
+            this.labelCO2EXCEDTIMES.TabIndex = 0;
+            this.labelCO2EXCEDTIMES.Text = "0";
+            this.labelCO2EXCEDTIMES.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // gaugeControl1
             // 
@@ -2499,6 +2603,7 @@
             // 
             // arcScaleBackgroundLayerComponent8
             // 
+            this.arcScaleBackgroundLayerComponent8.AcceptOrder = -1000;
             this.arcScaleBackgroundLayerComponent8.ArcScale = this.arcScaleComponentCs;
             this.arcScaleBackgroundLayerComponent8.Name = "bg1";
             this.arcScaleBackgroundLayerComponent8.ShapeType = DevExpress.XtraGauges.Core.Model.BackgroundLayerShapeType.CircularFull_Style3;
@@ -2506,6 +2611,7 @@
             // 
             // arcScaleComponentCs
             // 
+            this.arcScaleComponentCs.AcceptOrder = 0;
             this.arcScaleComponentCs.AppearanceTickmarkText.Font = new System.Drawing.Font("Tahoma", 12F);
             this.arcScaleComponentCs.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FF8000");
             this.arcScaleComponentCs.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
@@ -2524,6 +2630,7 @@
             // 
             // arcScaleNeedleComponent9
             // 
+            this.arcScaleNeedleComponent9.AcceptOrder = 50;
             this.arcScaleNeedleComponent9.ArcScale = this.arcScaleComponentCs;
             this.arcScaleNeedleComponent9.EndOffset = -8F;
             this.arcScaleNeedleComponent9.Name = "needle1";
@@ -2532,6 +2639,7 @@
             // 
             // arcScaleSpindleCapComponent4
             // 
+            this.arcScaleSpindleCapComponent4.AcceptOrder = 100;
             this.arcScaleSpindleCapComponent4.ArcScale = this.arcScaleComponentCs;
             this.arcScaleSpindleCapComponent4.Name = "cap1";
             this.arcScaleSpindleCapComponent4.ShapeType = DevExpress.XtraGauges.Core.Model.SpindleCapShapeType.CircularFull_Style3;
@@ -2624,6 +2732,7 @@
             // 
             // arcScaleBackgroundLayerComponent7
             // 
+            this.arcScaleBackgroundLayerComponent7.AcceptOrder = -1000;
             this.arcScaleBackgroundLayerComponent7.ArcScale = this.arcScaleComponentGl;
             this.arcScaleBackgroundLayerComponent7.Name = "bg1";
             this.arcScaleBackgroundLayerComponent7.ShapeType = DevExpress.XtraGauges.Core.Model.BackgroundLayerShapeType.CircularFull_Style3;
@@ -2631,6 +2740,7 @@
             // 
             // arcScaleComponentGl
             // 
+            this.arcScaleComponentGl.AcceptOrder = 0;
             this.arcScaleComponentGl.AppearanceTickmarkText.Font = new System.Drawing.Font("Tahoma", 12F);
             this.arcScaleComponentGl.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FF8000");
             this.arcScaleComponentGl.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
@@ -2650,6 +2760,7 @@
             // 
             // arcScaleNeedleComponent7
             // 
+            this.arcScaleNeedleComponent7.AcceptOrder = 50;
             this.arcScaleNeedleComponent7.ArcScale = this.arcScaleComponentGl;
             this.arcScaleNeedleComponent7.EndOffset = -8F;
             this.arcScaleNeedleComponent7.Name = "needle1";
@@ -2658,6 +2769,7 @@
             // 
             // arcScaleSpindleCapComponent3
             // 
+            this.arcScaleSpindleCapComponent3.AcceptOrder = 100;
             this.arcScaleSpindleCapComponent3.ArcScale = this.arcScaleComponentGl;
             this.arcScaleSpindleCapComponent3.Name = "cap1";
             this.arcScaleSpindleCapComponent3.ShapeType = DevExpress.XtraGauges.Core.Model.SpindleCapShapeType.CircularFull_Style3;
@@ -2779,54 +2891,6 @@
             this.panel8.Size = new System.Drawing.Size(190, 3);
             this.panel8.TabIndex = 25;
             // 
-            // panelCO2EXCEDTIMES
-            // 
-            this.panelCO2EXCEDTIMES.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelCO2EXCEDTIMES.BackColor = System.Drawing.Color.White;
-            this.panelCO2EXCEDTIMES.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelCO2EXCEDTIMES.Controls.Add(this.labelCO2EXCEDTIMES);
-            this.panelCO2EXCEDTIMES.Location = new System.Drawing.Point(5, 250);
-            this.panelCO2EXCEDTIMES.Name = "panelCO2EXCEDTIMES";
-            this.panelCO2EXCEDTIMES.Size = new System.Drawing.Size(63, 23);
-            this.panelCO2EXCEDTIMES.TabIndex = 38;
-            // 
-            // labelCO2EXCEDTIMES
-            // 
-            this.labelCO2EXCEDTIMES.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelCO2EXCEDTIMES.AutoSize = true;
-            this.labelCO2EXCEDTIMES.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.labelCO2EXCEDTIMES.ForeColor = System.Drawing.Color.Black;
-            this.labelCO2EXCEDTIMES.Location = new System.Drawing.Point(21, 0);
-            this.labelCO2EXCEDTIMES.Name = "labelCO2EXCEDTIMES";
-            this.labelCO2EXCEDTIMES.Size = new System.Drawing.Size(17, 20);
-            this.labelCO2EXCEDTIMES.TabIndex = 0;
-            this.labelCO2EXCEDTIMES.Text = "0";
-            this.labelCO2EXCEDTIMES.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panelO2EXCEDTIMES
-            // 
-            this.panelO2EXCEDTIMES.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelO2EXCEDTIMES.BackColor = System.Drawing.Color.White;
-            this.panelO2EXCEDTIMES.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelO2EXCEDTIMES.Controls.Add(this.labelO2EXCEDTIMES);
-            this.panelO2EXCEDTIMES.Location = new System.Drawing.Point(120, 249);
-            this.panelO2EXCEDTIMES.Name = "panelO2EXCEDTIMES";
-            this.panelO2EXCEDTIMES.Size = new System.Drawing.Size(63, 23);
-            this.panelO2EXCEDTIMES.TabIndex = 39;
-            // 
-            // labelO2EXCEDTIMES
-            // 
-            this.labelO2EXCEDTIMES.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelO2EXCEDTIMES.AutoSize = true;
-            this.labelO2EXCEDTIMES.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.labelO2EXCEDTIMES.ForeColor = System.Drawing.Color.Black;
-            this.labelO2EXCEDTIMES.Location = new System.Drawing.Point(21, 0);
-            this.labelO2EXCEDTIMES.Name = "labelO2EXCEDTIMES";
-            this.labelO2EXCEDTIMES.Size = new System.Drawing.Size(17, 20);
-            this.labelO2EXCEDTIMES.TabIndex = 0;
-            this.labelO2EXCEDTIMES.Text = "0";
-            this.labelO2EXCEDTIMES.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // VMAS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2935,6 +2999,12 @@
             this.panelNO.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel19.ResumeLayout(false);
+            this.panelSampleCount.ResumeLayout(false);
+            this.panelSampleCount.PerformLayout();
+            this.panelO2EXCEDTIMES.ResumeLayout(false);
+            this.panelO2EXCEDTIMES.PerformLayout();
+            this.panelCO2EXCEDTIMES.ResumeLayout(false);
+            this.panelCO2EXCEDTIMES.PerformLayout();
             this.gaugeControl1.ResumeLayout(false);
             this.gaugeControl1.PerformLayout();
             this.panelCs.ResumeLayout(false);
@@ -2960,10 +3030,6 @@
             this.panelLJCC.PerformLayout();
             this.panelLXCC.ResumeLayout(false);
             this.panelLXCC.PerformLayout();
-            this.panelCO2EXCEDTIMES.ResumeLayout(false);
-            this.panelCO2EXCEDTIMES.PerformLayout();
-            this.panelO2EXCEDTIMES.ResumeLayout(false);
-            this.panelO2EXCEDTIMES.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3169,5 +3235,7 @@
         private System.Windows.Forms.Label labelO2EXCEDTIMES;
         private System.Windows.Forms.Panel panelCO2EXCEDTIMES;
         private System.Windows.Forms.Label labelCO2EXCEDTIMES;
+        private System.Windows.Forms.Panel panelSampleCount;
+        private System.Windows.Forms.Label labelSampleCount;
     }
 }

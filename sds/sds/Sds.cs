@@ -1857,7 +1857,7 @@ namespace sds
                                     Th_get_FqandLl.Abort();
                                     return;
                                 }
-                                if (Vmas_Exhaust_Now.λ == 0)
+                                if (Vmas_Exhaust_Now.λ == 0 && sdsconfig.sdsHighLambdaMonitor)
                                 {
                                     ts2 = "λ值异常";
                                     Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到过量空气系数为0，请重新检测", true);
@@ -1894,7 +1894,7 @@ namespace sds
                                     Th_get_FqandLl.Abort();
                                     return;
                                 }
-                                if (Vmas_Exhaust501_Now.λ == 0)
+                                if (Vmas_Exhaust501_Now.λ == 0 && sdsconfig.sdsHighLambdaMonitor)
                                 {
                                     ts2 = "λ值异常";
                                     Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到过量空气系数为0，请重新检测", true);
@@ -1930,7 +1930,7 @@ namespace sds
                                     Th_get_FqandLl.Abort();
                                     return;
                                 }
-                                if (Vmas_Exhaust_Now.λ == 0)
+                                if (Vmas_Exhaust_Now.λ == 0 && sdsconfig.sdsHighLambdaMonitor)
                                 {
                                     ts2 = "λ值异常";
                                     Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到过量空气系数为0，请重新检测", true);
@@ -2214,7 +2214,7 @@ namespace sds
                                     Th_get_FqandLl.Abort();
                                     return;
                                 }
-                                if (Vmas_Exhaust_Now.λ == 0)
+                                if (Vmas_Exhaust_Now.λ == 0&&sdsconfig.sdsLowLambdaMonitor)
                                 {
                                     Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到过量空气系数为0，请重新检测", true);
                                     ts2 = "λ值异常";
@@ -2251,7 +2251,7 @@ namespace sds
                                     Th_get_FqandLl.Abort();
                                     return;
                                 }
-                                if (Vmas_Exhaust501_Now.λ == 0)
+                                if (Vmas_Exhaust501_Now.λ == 0 && sdsconfig.sdsLowLambdaMonitor)
                                 {
                                     Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到过量空气系数为0，请重新检测", true);
                                     ts2 = "λ值异常";
@@ -2288,7 +2288,7 @@ namespace sds
                                     Th_get_FqandLl.Abort();
                                     return;
                                 }
-                                if (Vmas_Exhaust_Now.λ == 0)
+                                if (Vmas_Exhaust_Now.λ == 0 && sdsconfig.sdsLowLambdaMonitor)
                                 {
                                     Msg(Msg_msg, panel_msg, carbj.CarPH + "监测到过量空气系数为0，请重新检测", true);
                                     ts2 = "λ值异常";
@@ -2400,6 +2400,28 @@ namespace sds
                 if (equipconfig.DATASECONDS_TYPE == "安徽")
                 {
                     for (int i = preseconds; i < preseconds + 90; i++)//安微过程数据只要90s内的数据
+                    {
+                        dr = sds_datatable.NewRow();
+                        dr["全程时序"] = QcsxlistSY[i];
+                        dr["时序类别"] = SxnblistSY[i];
+                        dr["采样时序"] = CysxlistSY[i];
+                        dr["HC"] = HclistSY[i];
+                        dr["NO"] = NolistSY[i];
+                        dr["CO"] = ColistSY[i];
+                        dr["O2"] = O2listSY[i];
+                        dr["CO2"] = Co2listSY[i];
+                        dr["过量空气系数"] = λlistSY[i];
+                        dr["转速"] = ZslistSY[i];
+                        dr["油温"] = YwlistSY[i];
+                        dr["环境温度"] = WdlistSY[i];
+                        dr["相对湿度"] = SdlistSY[i];
+                        dr["大气压力"] = DqylistSY[i];
+                        sds_datatable.Rows.Add(dr);
+                    }
+                }
+                else if (equipconfig.DATASECONDS_TYPE == "安车通用联网")
+                {
+                    for (int i = 0; i < preseconds + 90; i++)//安微过程数据只要90s内的数据
                     {
                         dr = sds_datatable.NewRow();
                         dr["全程时序"] = QcsxlistSY[i];
@@ -2558,271 +2580,284 @@ namespace sds
             button_ss.Text = "重新检测";
             JC_Status = false;
         }
-        
+        int iSeed = 10;
+        Random ro = new Random(10);
+        float λ_value_temp = 1;
+        Random ran = new Random((int)(DateTime.Now.Ticks & 0xffffffffL) | (int)(DateTime.Now.Ticks >> 32));
+        private void getRealData()
+        {
+            
+            switch (UseFqy)
+            {
+                case "fla_502":
+                    Vmas_Exhaust_Now = fla_502.GetData();
+                    if (!monizs)
+                    {
+                        if (isUseRotater)
+                        {
+                            if (rpm5300 != null)
+                            {
+                                Zs = (float)rpm5300.ZS;
+                            }
+                            else if (vmt_2000 != null)
+                            {
+                                if (vmt_2000.readRotateSpeed())
+                                    Zs = vmt_2000.zs;
+                            }
+                        }
+                        else
+                        {
+                            Zs = Vmas_Exhaust_Now.ZS;
+                        }
+                    }
+                    else
+                    {
+
+
+                        if (monizt == 1)
+                        {
+                            Zs = ZS_XZ + ran.Next(50, 150);
+                        }
+                        else if (monizt == 2)
+                        {
+                            Zs = gds + ran.Next(-99, 99);
+                        }
+                        else if (monizt == 3)
+                        {
+                            Zs = 780 + ran.Next(-99, 99);
+                        }
+                    }
+                    //Vmas_Exhaust_tempNow = fla_502.Get_Temp();
+
+                    co_ld = Vmas_Exhaust_Now.CO;
+                    hc_ld = Vmas_Exhaust_Now.HC;
+                    o2_ld = Vmas_Exhaust_Now.O2;
+                    co2_ld = Vmas_Exhaust_Now.CO2;
+                    no_ld = Vmas_Exhaust_Now.NO;
+                    λ_value_temp = Vmas_Exhaust_Now.λ;
+                    if (carbj.ISUSE)
+                    {
+                        if (λ_value_temp > 0.97 && λ_value_temp < 1.03)
+                        { }
+                        else if (λ_value_temp < 1.6f && λ_value_temp > 0.7f)
+                            λ_value_temp = 1.0f + (DateTime.Now.Millisecond % 6 - 3) * 0.01f;
+                    }
+                    λ_value = λ_value_temp;
+                    if (IsUseTpTemp)
+                    {
+                        wd = (float)WD;
+                        sd = (float)SD;
+                        dqy = (float)DQY;
+                    }
+                    else if (equipconfig.TempInstrument == "废气仪")
+                    {
+                        if (equipconfig.Fqyxh.ToLower() == "nha_503" || equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "cdf5000")
+                        {
+                            Exhaust.Fla502_temp_data fla502_temp_data = fla_502.Get_Temp();
+                            wd = fla502_temp_data.TEMP;
+                            sd = fla502_temp_data.HUMIDITY;
+                            dqy = fla502_temp_data.AIRPRESSURE;
+                        }
+                        else
+                        {
+                            wd = Vmas_Exhaust_Now.HJWD;
+                            sd = Vmas_Exhaust_Now.SD;
+                            dqy = Vmas_Exhaust_Now.HJYL;
+                        }
+                    }
+                    else
+                    {
+                        wd = (float)WD;
+                        sd = (float)SD;
+                        dqy = (float)DQY;
+                    }
+                    if (nhsjz != null && sdsconfig.Ywj == "南华附件")
+                    {
+                        if (nhsjz.readData())
+                            yw = nhsjz.yw;
+                    }
+                    else
+                    {
+                        yw = Vmas_Exhaust_Now.YW;
+                    }
+                    Thread.Sleep(50);
+                    isLowFlow = fla_502.CheckIsLowFlow();
+                    Thread.Sleep(50);
+                    break;
+                case "mqw_511":
+                    Vmas_Exhaust_Now = fla_502.GetData();
+                    if (!monizs)
+                    {
+                        if (isUseRotater)
+                        {
+                            if (rpm5300 != null)
+                            {
+                                Zs = (float)rpm5300.ZS;
+                            }
+                            else if (vmt_2000 != null)
+                            {
+                                if (vmt_2000.readRotateSpeed())
+                                    Zs = vmt_2000.zs;
+                            }
+                        }
+                        else
+                        {
+                            Zs = Vmas_Exhaust_Now.ZS;
+                        }
+                    }
+                    else
+                    {
+                        if (monizt == 1)
+                        {
+                            Zs = ZS_XZ + ran.Next(50, 150);
+                        }
+                        else if (monizt == 2)
+                        {
+                            Zs = gds + ran.Next(-99, 99);
+                        }
+                        else if (monizt == 3)
+                        {
+                            Zs = 780 + ran.Next(-99, 99);
+                        }
+                    }
+                    //Vmas_Exhaust_tempNow = fla_502.Get_Temp();
+
+                    co_ld = Vmas_Exhaust_Now.CO;
+                    hc_ld = Vmas_Exhaust_Now.HC;
+                    o2_ld = Vmas_Exhaust_Now.O2;
+                    co2_ld = Vmas_Exhaust_Now.CO2;
+                    no_ld = Vmas_Exhaust_Now.NO;
+                    λ_value_temp = Vmas_Exhaust_Now.λ;
+                    if (carbj.ISUSE)
+                    {
+                        if (λ_value_temp > 0.97 && λ_value_temp < 1.03)
+                        { }
+                        else if (λ_value_temp < 1.6f && λ_value_temp > 0.7f)
+                            λ_value_temp = 1.0f + (DateTime.Now.Millisecond % 6 - 3) * 0.01f;
+                    }
+                    λ_value = λ_value_temp;
+                    if (IsUseTpTemp)
+                    {
+                        wd = (float)WD;
+                        sd = (float)SD;
+                        dqy = (float)DQY;
+                    }
+                    else
+                    {
+                        wd = (float)WD;
+                        sd = (float)SD;
+                        dqy = (float)DQY;
+                    }
+                    if (nhsjz != null && sdsconfig.Ywj == "南华附件")
+                    {
+                        if (nhsjz.readData())
+                            yw = nhsjz.yw;
+                    }
+                    else
+                    {
+                        yw = Vmas_Exhaust_Now.YW;
+                    }
+                    break;
+                case "fla_501":
+                    Vmas_Exhaust501_Now = fla_501.Get_Data();
+                    if (!monizs)
+                    {
+                        if (isUseRotater)
+                        {
+                            if (rpm5300 != null)
+                            {
+                                Zs = (float)rpm5300.ZS;
+                            }
+                            else if (vmt_2000 != null)
+                            {
+                                if (vmt_2000.readRotateSpeed())
+                                    Zs = vmt_2000.zs;
+                            }
+                        }
+                        else
+                        {
+                            Zs = Vmas_Exhaust501_Now.ZS;
+                        }
+                    }
+                    else
+                    {
+                        if (monizt == 1)
+                        {
+                            Zs = ZS_XZ + ran.Next(50, 150);
+                        }
+                        else if (monizt == 2)
+                        {
+                            Zs = gds + ran.Next(-99, 99);
+                        }
+                        else if (monizt == 3)
+                        {
+                            Zs = 780 + ran.Next(-99, 99);
+                        }
+                    }
+
+                    co_ld = Vmas_Exhaust501_Now.CO;
+                    co2_ld = Vmas_Exhaust501_Now.CO2;
+                    hc_ld = Vmas_Exhaust501_Now.HC;
+                    o2_ld = Vmas_Exhaust501_Now.O2;
+                    no_ld = Vmas_Exhaust501_Now.NO;
+                    λ_value_temp = Vmas_Exhaust_Now.λ;
+                    if (carbj.ISUSE)
+                    {
+                        if (λ_value_temp > 0.97 && λ_value_temp < 1.03)
+                        { }
+                        else if (λ_value_temp < 1.6f && λ_value_temp > 0.7f)
+                            λ_value_temp = 1.0f + (DateTime.Now.Millisecond % 6 - 3) * 0.01f;
+                    }
+                    λ_value = λ_value_temp;
+                    if (IsUseTpTemp)
+                    {
+                        wd = (float)WD;
+                        sd = (float)SD;
+                        dqy = (float)DQY;
+                    }
+                    else
+                    {
+                        wd = (float)WD;
+                        sd = (float)SD;
+                        dqy = (float)DQY;
+                    }
+                    if (nhsjz != null && sdsconfig.Ywj == "南华附件")
+                    {
+                        if (nhsjz.readData())
+                            yw = nhsjz.yw;
+                    }
+                    else
+                    {
+                        yw = Vmas_Exhaust501_Now.YW;
+                    }
+                    //yw = Vmas_Exhaust501_Now.YW;
+                    isLowFlow = 0;
+                    break;
+            }
+        }
+        private DateTime fq_pre_time = DateTime.Now;
+        private DateTime fq_now_time = DateTime.Now;
         public void Fq_Detect()
         {
-            int iSeed = 10;
-            Random ro = new Random(10);
-            long tick = DateTime.Now.Ticks;
-            float λ_value_temp = 1;
-            Random ran = new Random((int)(tick & 0xffffffffL) | (int)(tick >> 32));
             while (true)
             {
                 if (sds_status)
                 {
-                    switch (UseFqy)
+                    if (equipconfig.DATASECONDS_TYPE == "安车通用联网")
                     {
-                        case "fla_502":
-                            Vmas_Exhaust_Now = fla_502.GetData();
-                            if (!monizs)
-                            {
-                                if (isUseRotater)
-                                {
-                                    if (rpm5300 != null)
-                                    {
-                                        Zs = (float)rpm5300.ZS;
-                                    }
-                                    else if (vmt_2000 != null)
-                                    {
-                                        if (vmt_2000.readRotateSpeed())
-                                            Zs = vmt_2000.zs;
-                                    }
-                                }
-                                else
-                                {
-                                    Zs = Vmas_Exhaust_Now.ZS;
-                                }
-                            }
-                            else
-                            {
-                               
-
-                                if (monizt == 1)
-                                {
-                                    Zs = ZS_XZ + ran.Next(50,150);
-                                }
-                                else if (monizt == 2)
-                                {
-                                    Zs = gds + ran.Next(-99, 99);
-                                }
-                                else if (monizt == 3)
-                                {
-                                    Zs = 780 + ran.Next(-99, 99);
-                                }
-                            }
-                            //Vmas_Exhaust_tempNow = fla_502.Get_Temp();
-                            
-                            co_ld = Vmas_Exhaust_Now.CO;
-                            hc_ld = Vmas_Exhaust_Now.HC;
-                            o2_ld = Vmas_Exhaust_Now.O2;
-                            co2_ld = Vmas_Exhaust_Now.CO2;
-                            no_ld = Vmas_Exhaust_Now.NO;
-                            λ_value_temp = Vmas_Exhaust_Now.λ;
-                            if(carbj.ISUSE)
-                            {
-                                if (λ_value_temp > 0.97 && λ_value_temp < 1.03)
-                                { }
-                                else if (λ_value_temp < 1.6f && λ_value_temp > 0.7f)
-                                    λ_value_temp = 1.0f + (DateTime.Now.Millisecond % 6 - 3) * 0.01f;
-                            }
-                            λ_value = λ_value_temp;
-                            if (IsUseTpTemp)
-                            {
-                                wd = (float)WD;
-                                sd = (float)SD;
-                                dqy = (float)DQY;
-                            }
-                            else if (equipconfig.TempInstrument == "废气仪")
-                            {
-                                if (equipconfig.Fqyxh.ToLower() == "nha_503" || equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "cdf5000")
-                                {
-                                    Exhaust.Fla502_temp_data fla502_temp_data = fla_502.Get_Temp();
-                                    wd = fla502_temp_data.TEMP;
-                                    sd = fla502_temp_data.HUMIDITY;
-                                    dqy = fla502_temp_data.AIRPRESSURE;
-                                }
-                                else
-                                {
-                                    wd = Vmas_Exhaust_Now.HJWD;
-                                    sd = Vmas_Exhaust_Now.SD;
-                                    dqy = Vmas_Exhaust_Now.HJYL;
-                                }
-                            }
-                            else
-                            {
-                                wd = (float)WD;
-                                sd = (float)SD;
-                                dqy = (float)DQY;
-                            }
-                            if (nhsjz != null && sdsconfig.Ywj == "南华附件")
-                            {
-                                if (nhsjz.readData())
-                                    yw = nhsjz.yw;
-                            }
-                            else
-                            {
-                                yw = Vmas_Exhaust_Now.YW;
-                            }
-                            Thread.Sleep(50);
-                            isLowFlow = fla_502.CheckIsLowFlow();
-                            Thread.Sleep(50);
-                            break;
-                        case "mqw_511":
-                            Vmas_Exhaust_Now = fla_502.GetData();
-                            if (!monizs)
-                            {
-                                if (isUseRotater)
-                                {
-                                    if (rpm5300 != null)
-                                    {
-                                        Zs = (float)rpm5300.ZS;
-                                    }
-                                    else if (vmt_2000 != null)
-                                    {
-                                        if (vmt_2000.readRotateSpeed())
-                                            Zs = vmt_2000.zs;
-                                    }
-                                }
-                                else
-                                {
-                                    Zs = Vmas_Exhaust_Now.ZS;
-                                }
-                            }
-                            else
-                            {
-                                if (monizt == 1)
-                                {
-                                    Zs = ZS_XZ + ran.Next(50, 150);
-                                }
-                                else if (monizt == 2)
-                                {
-                                    Zs = gds + ran.Next(-99, 99);
-                                }
-                                else if (monizt == 3)
-                                {
-                                    Zs = 780 + ran.Next(-99, 99);
-                                }
-                            }
-                            //Vmas_Exhaust_tempNow = fla_502.Get_Temp();
-
-                            co_ld = Vmas_Exhaust_Now.CO;
-                            hc_ld = Vmas_Exhaust_Now.HC;
-                            o2_ld = Vmas_Exhaust_Now.O2;
-                            co2_ld = Vmas_Exhaust_Now.CO2;
-                            no_ld = Vmas_Exhaust_Now.NO;
-                            λ_value_temp = Vmas_Exhaust_Now.λ;
-                            if (carbj.ISUSE)
-                            {
-                                if (λ_value_temp > 0.97 && λ_value_temp < 1.03)
-                                { }
-                                else if (λ_value_temp < 1.6f && λ_value_temp > 0.7f)
-                                    λ_value_temp = 1.0f + (DateTime.Now.Millisecond % 6 - 3) * 0.01f;
-                            }
-                            λ_value = λ_value_temp;
-                            if (IsUseTpTemp)
-                            {
-                                wd = (float)WD;
-                                sd = (float)SD;
-                                dqy = (float)DQY;
-                            }
-                            else
-                            {
-                                wd = (float)WD;
-                                sd = (float)SD;
-                                dqy = (float)DQY;
-                            }
-                            if (nhsjz != null && sdsconfig.Ywj == "南华附件")
-                            {
-                                if (nhsjz.readData())
-                                    yw = nhsjz.yw;
-                            }
-                            else
-                            {
-                                yw = Vmas_Exhaust_Now.YW;
-                            }
-                            break;
-                        case "fla_501":
-                            Vmas_Exhaust501_Now = fla_501.Get_Data();
-                            if (!monizs)
-                            {
-                                if (isUseRotater)
-                                {
-                                    if (rpm5300 != null)
-                                    {
-                                        Zs = (float)rpm5300.ZS;
-                                    }
-                                    else if (vmt_2000 != null)
-                                    {
-                                        if (vmt_2000.readRotateSpeed())
-                                            Zs = vmt_2000.zs;
-                                    }
-                                }
-                                else
-                                {
-                                    Zs = Vmas_Exhaust501_Now.ZS;
-                                }
-                            }
-                            else
-                            {
-                                if (monizt == 1)
-                                {
-                                    Zs = ZS_XZ + ran.Next(50, 150);
-                                }
-                                else if (monizt == 2)
-                                {
-                                    Zs = gds + ran.Next(-99, 99);
-                                }
-                                else if (monizt == 3)
-                                {
-                                    Zs = 780 + ran.Next(-99, 99);
-                                }
-                            }
-
-                            co_ld = Vmas_Exhaust501_Now.CO;
-                            co2_ld = Vmas_Exhaust501_Now.CO2;
-                            hc_ld = Vmas_Exhaust501_Now.HC;
-                            o2_ld = Vmas_Exhaust501_Now.O2;
-                            no_ld = Vmas_Exhaust501_Now.NO;
-                            λ_value_temp = Vmas_Exhaust_Now.λ;
-                            if (carbj.ISUSE)
-                            {
-                                if (λ_value_temp > 0.97 && λ_value_temp < 1.03)
-                                { }
-                                else if (λ_value_temp < 1.6f && λ_value_temp > 0.7f)
-                                    λ_value_temp = 1.0f + (DateTime.Now.Millisecond % 6 - 3) * 0.01f;
-                            }
-                            λ_value = λ_value_temp;
-                            if (IsUseTpTemp)
-                            {
-                                wd = (float)WD;
-                                sd = (float)SD;
-                                dqy = (float)DQY;
-                            }
-                            else
-                            {
-                                wd = (float)WD;
-                                sd = (float)SD;
-                                dqy = (float)DQY;
-                            }
-                            if (nhsjz != null && sdsconfig.Ywj == "南华附件")
-                            {
-                                if (nhsjz.readData())
-                                    yw = nhsjz.yw;
-                            }
-                            else
-                            {
-                                yw = Vmas_Exhaust501_Now.YW;
-                            }
-                            //yw = Vmas_Exhaust501_Now.YW;
-                            isLowFlow = 0;
-                            break;
+                        fq_now_time = DateTime.Now;
+                        if (DateTime.Compare(DateTime.Parse(fq_now_time.ToString("yyyy-MM-dd HH:mm:ss")), DateTime.Parse(fq_pre_time.ToString("yyyy-MM-dd HH:mm:ss"))) > 0)
+                        {
+                            fq_pre_time = fq_now_time;
+                            getRealData();
+                        }
                     }
-                    Thread.Sleep(30);
+                    else
+                    {
+                        getRealData();
+                    }
                 }
-                else
-                {
-                    Thread.Sleep(100);
-                }
+                Thread.Sleep(100);
             }
         }
         private void button_ss_Click(object sender, EventArgs e)
@@ -2949,7 +2984,9 @@ namespace sds
             if (sds_status)
             {
                 arcScaleComponentZs.Value = Zs;
-                led_display(ledNumberZS, Zs.ToString("0"));
+                led_display(ledNumberWd, wd.ToString("0.0"));
+                led_display(ledNumberSd, sd.ToString("0.0"));
+                led_display(ledNumberDqy, dqy.ToString("0.0"));
                 led_display(ledNumberZS2, Zs.ToString("0"));
                 if (vmasconfig.IfDisplayData)
                 {
@@ -2975,7 +3012,7 @@ namespace sds
             }
             else
             {
-                led_display(ledNumberZS, "0");
+                led_display(ledNumberDqy, "0");
                 led_display(ledNumberZS2, "0");
                 arcScaleComponentZs.Value = 0f;
             }
@@ -3079,9 +3116,9 @@ namespace sds
                 nowtime = DateTime.Now;
                 led_display(ledNumber_gksj, gongkuangTime.ToString("000.0"));
                 //if(Convert.ToInt16(gongkuangTime * 10) / 10 != GKSJ)
-                if (DateTime.Compare(DateTime.Parse(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), DateTime.Parse(gc_time.ToString("yyyy-MM-dd HH:mm:ss"))) > 0)
+                if (DateTime.Compare(DateTime.Parse(nowtime.ToString("yyyy-MM-dd HH:mm:ss")), DateTime.Parse(gc_time.ToString("yyyy-MM-dd HH:mm:ss"))) > 0)
                 {
-                    gc_time = DateTime.Now;
+                    gc_time = nowtime;
                     if (GKSJ == 2048) GKSJ = 0;
                     Sxnblist[GKSJ] = sxnb.ToString("0");//时序类别
                     Qcsxlist[GKSJ] = nowtime.ToString("yyyy-MM-dd HH:mm:ss.fff");//全程时序
