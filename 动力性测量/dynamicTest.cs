@@ -1292,6 +1292,26 @@ namespace 动力性测量
                         MessageBox.Show(er.ToString(), "XCE100串口打开出错啦");
                     }
                 }
+                if (equipdata.TempInstrument == "XCE_101")
+                {
+                    try
+                    {
+                        xce_100 = new Exhaust.XCE_100("XCE_101");
+                        if (xce_100.Init_Comm(equipdata.Xce100ck, equipdata.Xce100Comstring) == false)
+                        {
+                            xce_100 = null;
+                            Init_flag = false;
+                            init_message += "XCE101串口打开失败.";
+
+                        }
+                    }
+                    catch (Exception er)
+                    {
+                        xce_100 = null;
+                        Init_flag = false;
+                        MessageBox.Show(er.ToString(), "XCE101串口打开出错啦");
+                    }
+                }
                 else if (equipdata.TempInstrument == "DWSP_T5")
                 {
                     try

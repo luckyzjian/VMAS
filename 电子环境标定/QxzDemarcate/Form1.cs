@@ -372,6 +372,26 @@ namespace QxzDemarcate
                         MessageBox.Show(er.ToString(), "XCE100串口打开出错啦");
                     }
                 }
+                else if (equipconfig.TempInstrument == "XCE_101")
+                {
+                    try
+                    {
+                        xce_100 = new Exhaust.XCE_100("XCE_101");
+                        if (xce_100.Init_Comm(equipconfig.Xce100ck, equipconfig.Xce100Comstring) == false)
+                        {
+                            xce_100 = null;
+                            Init_flag = false;
+                            init_message += "XCE_101串口打开失败.";
+
+                        }
+                    }
+                    catch (Exception er)
+                    {
+                        xce_100 = null;
+                        Init_flag = false;
+                        MessageBox.Show(er.ToString(), "XCE_101串口打开出错啦");
+                    }
+                }
                 else if (equipconfig.TempInstrument == "DWSP_T5")
                 {
                     try
@@ -495,6 +515,15 @@ namespace QxzDemarcate
                         }
                     }
                     else if (equipconfig.TempInstrument == "XCE_100")
+                    {
+                        if (xce_100.readEnvironment())
+                        {
+                            wd = xce_100.temp;
+                            sd = xce_100.humidity;
+                            dqy = xce_100.airpressure;
+                        }
+                    }
+                    else if (equipconfig.TempInstrument == "XCE_101")
                     {
                         if (xce_100.readEnvironment())
                         {
@@ -910,7 +939,7 @@ namespace QxzDemarcate
             if (equipconfig.TempInstrument == "废气仪" && fla_502 != null)
             {
                 double realwd, realsd, realdqy, equipwd, equipsd, equipdqy;
-                if (equipconfig.Fqyxh.ToLower() == "mqw_50a"|| equipconfig.Fqyxh.ToLower() == "fla_502"|| equipconfig.Fqyxh.ToLower() == "nha_503")
+                if (equipconfig.Fqyxh.ToLower() == "mqw_50a" || equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503")
                 {
                     try
                     {
@@ -939,12 +968,12 @@ namespace QxzDemarcate
                     readingTemp = true;
                     MessageBox.Show(msg, "提示");
                 }
-                
+
             }
             else if (equipconfig.TempInstrument == "烟度计" && flb_100 != null)// if(equipconfig.TempInstrument == "XCE_100"|| equipconfig.TempInstrument == "DWSP_T5" || equipconfig.TempInstrument == "FTH_2" || equipconfig.TempInstrument == "RZ_1")
             {
                 double realwd, realsd, realdqy, equipwd, equipsd, equipdqy;
-                if (equipconfig.Ydjxh.ToLower() == "mqy_200" )
+                if (equipconfig.Ydjxh.ToLower() == "mqy_200")
                 {
                     try
                     {
@@ -974,6 +1003,36 @@ namespace QxzDemarcate
                     MessageBox.Show(msg, "提示");
                 }
             }
+            else if (equipconfig.TempInstrument == "XCE_101")
+            {
+                double realwd;
+                try
+                {
+                    realwd = double.Parse(textBoxWd.Text);
+                    //realsd = double.Parse(textBoxSd.Text);
+                    //realdqy = double.Parse(textBoxDqy.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("输入格式有误");
+                    return;
+                }
+                readingTemp = false;
+                Thread.Sleep(500);
+                if (xce_100.XCE_101_BD(1, (float)realwd))
+                {
+                    Thread.Sleep(500);
+                    msg += "温度校正成功";
+                }
+                else
+                {
+                    Thread.Sleep(500);
+                    msg += "温度校正失败";
+                }
+                Thread.Sleep(500);
+                readingTemp = true;
+                MessageBox.Show(msg, "提示");
+            }
             else// if(equipconfig.TempInstrument == "XCE_100"|| equipconfig.TempInstrument == "DWSP_T5" || equipconfig.TempInstrument == "FTH_2" || equipconfig.TempInstrument == "RZ_1")
             {
                 double realwd, realsd, realdqy, equipwd, equipsd, equipdqy;
@@ -996,7 +1055,7 @@ namespace QxzDemarcate
                 else
                 {
                     msg += "温度校正失败";
-                }                
+                }
                 configini.writeThaxsConfigIni(thaxsdata);
                 MessageBox.Show(msg, "提示");
             }
@@ -1071,6 +1130,36 @@ namespace QxzDemarcate
                     readingTemp = true;
                     MessageBox.Show(msg, "提示");
                 }
+            }
+            else if (equipconfig.TempInstrument == "XCE_101")
+            {
+                double realsd;
+                try
+                {
+                    //realwd = double.Parse(textBoxWd.Text);
+                    realsd = double.Parse(textBoxSd.Text);
+                    //realdqy = double.Parse(textBoxDqy.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("输入格式有误");
+                    return;
+                }
+                readingTemp = false;
+                Thread.Sleep(500);
+                if (xce_100.XCE_101_BD(2, (float)realsd))
+                {
+                    Thread.Sleep(500);
+                    msg += "湿度校正成功";
+                }
+                else
+                {
+                    Thread.Sleep(500);
+                    msg += "湿度校正失败";
+                }
+                Thread.Sleep(500);
+                readingTemp = true;
+                MessageBox.Show(msg, "提示");
             }
             else// if(equipconfig.TempInstrument == "XCE_100"|| equipconfig.TempInstrument == "DWSP_T5" || equipconfig.TempInstrument == "FTH_2" || equipconfig.TempInstrument == "RZ_1")
             {
@@ -1169,6 +1258,36 @@ namespace QxzDemarcate
                     readingTemp = true;
                     MessageBox.Show(msg, "提示");
                 }
+            }
+            else if (equipconfig.TempInstrument == "XCE_101")
+            {
+                double realdqy;
+                try
+                {
+                    //realdqy = double.Parse(textBoxWd.Text);
+                    //realsd = double.Parse(textBoxSd.Text);
+                    realdqy = double.Parse(textBoxDqy.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("输入格式有误");
+                    return;
+                }
+                readingTemp = false;
+                Thread.Sleep(500);
+                if (xce_100.XCE_101_BD(3, (float)realdqy))
+                {
+                    Thread.Sleep(500);
+                    msg += "大气压校正成功";
+                }
+                else
+                {
+                    Thread.Sleep(500);
+                    msg += "大气压校正失败";
+                }
+                Thread.Sleep(500);
+                readingTemp = true;
+                MessageBox.Show(msg, "提示");
             }
             /*
             else if (equipconfig.TempInstrument == "XCE_100")// if(equipconfig.TempInstrument == "XCE_100"|| equipconfig.TempInstrument == "DWSP_T5" || equipconfig.TempInstrument == "FTH_2" || equipconfig.TempInstrument == "RZ_1")

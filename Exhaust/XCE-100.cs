@@ -127,16 +127,103 @@ namespace Exhaust
         /// </summary>
         public int ReadData()
         {
-            int bytesCount = 0;
-            Read_Buffer = new byte[100];
-            Read_Flag = false;
-            bytesCount= ComPort_1.BytesToRead;
-            ComPort_1.Read(Read_Buffer, 0, bytesCount);
+            //int bytesCount = 0;
+            //Read_Buffer = new byte[1000];
+            //Read_Flag = false;
+            //bytesCount= ComPort_1.BytesToRead;
+            //ComPort_1.Read(Read_Buffer, 0, bytesCount);
+            //return bytesCount;
+
+            //2018-09-30_gb_add
+            int bytesCount = ComPort_1.BytesToRead;
+            if (bytesCount > 0)
+            {
+                Read_Flag = true;
+                Read_Buffer = new byte[bytesCount];
+                ComPort_1.Read(Read_Buffer, 0, bytesCount);
+            }
+            else
+                Read_Flag = false;
             return bytesCount;
         }
         #endregion
 
-        
+        #region XCE_101标定
+        /// <summary>
+        /// 分类进行环境标定
+        /// </summary>
+        /// <param name="kind">1:稳定, 2:湿度, 3:大气压</param>
+        /// <param name="data">标定数据</param>
+        /// <returns></returns>
+        public bool XCE_101_BD(int kind, float data)
+        {
+            try
+            {
+                //发送“K”并等待系统返回“BDZB”，之后发送标定数据“B+Data+P”，等待系统返回“BDCG”或“BDSB”
+                bool have_enter_bd = false;
+                int length = 0;
+                for (int i = 0; i < 5; i++)
+                {
+                    XCE_101_Send("K");
+                    Thread.Sleep(50);
+                    length = ReadData();
+                    string temp1 = Encoding.Default.GetString(Read_Buffer, 0, length);
+                    if (length > 3 && temp1.Contains("BDZB"))
+                    {
+                        have_enter_bd = true;
+                        break;
+                    }
+                    Thread.Sleep(10);
+                }
+                if (!have_enter_bd)
+                    return false;
+                else
+                {
+                    string bd_data = (data * 10).ToString("0");
+                    if (bd_data.Length < 4)
+                    {
+                        int add_0_num = 4 - bd_data.Length;
+                        for (int i = 0; i < add_0_num; i++)
+                        {
+                            bd_data = " " + bd_data;
+                        }
+                    }
+                    switch (kind)
+                    {
+                        case 1:
+                            bd_data = "B" + bd_data + "T";
+                            XCE_101_Send(bd_data);
+                            break;
+                        case 2:
+                            bd_data = "B" + bd_data + "H";
+                            XCE_101_Send(bd_data);
+                            break;
+                        case 3:
+                            bd_data = "B" + bd_data + "P";
+                            XCE_101_Send(bd_data);
+                            break;
+                    }
+                    Thread.Sleep(50);
+                    length = ReadData();
+                    string temp = Encoding.Default.GetString(Read_Buffer, 0, length);
+                    if (temp.Contains("BDCG"))
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private void XCE_101_Send(string str)
+        {
+            byte[] SendBuffer = System.Text.Encoding.ASCII.GetBytes(str);
+            ComPort_1.Write(SendBuffer, 0, SendBuffer.Length);
+        }
+        #endregion
 
         public bool setWorkMode(string workmode)
         {
@@ -223,6 +310,51 @@ namespace Exhaust
                 }
                 else
                     return false;
+            }
+            else if (yqxh == "xce_101")
+            {
+                //先读数，等下一次返回
+                string datastring = "";
+                int length = 0;
+                if (ComPort_1.BytesToRead > 0)
+                {
+                    length = ReadData();
+                    if (Read_Buffer[length - 1] != 'E')
+                    {
+                        //末尾不为E表示当前一组数据正在传输，删除T之前的内容
+                        datastring = System.Text.Encoding.ASCII.GetString(Read_Buffer);
+                        int last_T = datastring.LastIndexOf("T");
+                        if (last_T > 0)
+                            datastring.Remove(0, last_T);
+                        else
+                            datastring = "";
+                    }
+                }
+                Thread.Sleep(250);
+                length = ReadData();
+                if (length < 1)
+                    return false;
+                try
+                {
+                    datastring += System.Text.Encoding.ASCII.GetString(Read_Buffer);
+                    int str_T = datastring.LastIndexOf("T");
+                    int str_H = datastring.LastIndexOf("H");
+                    int str_P = datastring.LastIndexOf("P");
+                    int str_E = datastring.LastIndexOf("E");
+                    if (str_T >= 0 && str_T < str_H && str_H < str_P && str_P < str_E)
+                    {
+                        temp = float.Parse(datastring.Substring(str_T + 1, str_H - str_T -1));
+                        humidity = float.Parse(datastring.Substring(str_H + 1, str_P - str_H - 1));
+                        airpressure = float.Parse(datastring.Substring(str_P + 1, str_E - str_P - 1));
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                catch
+                {
+                    return false;
+                }
             }
             else if (yqxh == "dwsp_t5")
             {

@@ -793,6 +793,26 @@ namespace lugdowm
                         MessageBox.Show("气象站串口" + equipconfig.Xce100ck + "打开失败:" + er.ToString(), "出错啦");
                     }
                 }
+                if (equipconfig.TempInstrument == "XCE_101")
+                {
+                    try
+                    {
+                        xce_100 = new Exhaust.XCE_100("XCE_101");
+                        if (xce_100.Init_Comm(equipconfig.Xce100ck, equipconfig.Xce100Comstring) == false)
+                        {
+                            xce_100 = null;
+                            Init_flag = false;
+                            init_message += "XCE101串口打开失败.";
+
+                        }
+                    }
+                    catch (Exception er)
+                    {
+                        xce_100 = null;
+                        Init_flag = false;
+                        MessageBox.Show(er.ToString(), "XCE101串口打开出错啦");
+                    }
+                }
                 else if (equipconfig.TempInstrument == "DWSP_T5")
                 {
                     try
