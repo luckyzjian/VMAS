@@ -2013,6 +2013,15 @@ namespace 动力油耗
                                     Dqy = xce_100.airpressure;
                                 }
                             }
+                            else if (equipdata.TempInstrument == "XCE_101")
+                            {
+                                if (xce_100.readEnvironment())
+                                {
+                                    Wd = xce_100.temp;
+                                    Sd = xce_100.humidity;
+                                    Dqy = xce_100.airpressure;
+                                }
+                            }
                             else if (equipdata.TempInstrument == "DWSP_T5")
                             {
                                 if (xce_100.readEnvironment())

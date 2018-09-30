@@ -1439,6 +1439,21 @@ namespace ASMtest
                         return;
                     }
                 }
+                else if (equipconfig.TempInstrument == "XCE_101")
+                {
+                    if (xce_100.readEnvironment())
+                    {
+                        WD = xce_100.temp;
+                        SD = xce_100.humidity;
+                        DQY = xce_100.airpressure;
+                    }
+                    else
+                    {
+                        Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", false);
+                        ts2 = "读取环境参数失败";
+                        return;
+                    }
+                }
                 else if (equipconfig.TempInstrument == "DWSP_T5" || equipconfig.TempInstrument == "FTH_2")
                 {
                     if (xce_100.readEnvironment())

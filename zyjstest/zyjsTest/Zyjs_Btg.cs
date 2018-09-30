@@ -1058,6 +1058,15 @@ namespace zyjsTest
                             dqy = xce_100.airpressure;
                         }
                     }
+                    else if (equipconfig.TempInstrument == "XCE_101")
+                    {
+                        if (xce_100.readEnvironment())
+                        {
+                            wd = xce_100.temp;
+                            sd = xce_100.humidity;
+                            dqy = xce_100.airpressure;
+                        }
+                    }
                     else if (equipconfig.TempInstrument == "DWSP_T5" || equipconfig.TempInstrument == "FTH_2")
                     {
                         if (xce_100.readEnvironment())

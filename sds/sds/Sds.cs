@@ -1086,6 +1086,15 @@ namespace sds
                             DQY = xce_100.airpressure;
                         }
                     }
+                    else if (equipconfig.TempInstrument == "XCE_101")
+                    {
+                        if (xce_100.readEnvironment())
+                        {
+                            WD = xce_100.temp;
+                            SD = xce_100.humidity;
+                            DQY = xce_100.airpressure;
+                        }
+                    }
                     else if (equipconfig.TempInstrument == "DWSP_T5" || equipconfig.TempInstrument == "FTH_2")
                     {
                         if (xce_100.readEnvironment())
