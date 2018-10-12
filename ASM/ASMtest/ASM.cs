@@ -20,7 +20,7 @@ namespace ASMtest
         int testvalue = 0;
         carinfor.carInidata carbj = new carInidata();
         equipmentConfigInfdata equipconfig = new equipmentConfigInfdata();
-        AsmConfigInfdata asmconfig = new AsmConfigInfdata();
+        public static AsmConfigInfdata asmconfig = new AsmConfigInfdata();
         carIni carini = new carIni();
         configIni configini = new configIni();
         statusconfigIni statusconfigini = new statusconfigIni();
@@ -99,14 +99,14 @@ namespace ASMtest
                            3.1690,3.3629,3.5670,3.7818,4.0078,
                            4.2455};                                                             //0到30度的饱和蒸汽压
         public double[] temperatureEveryMonth = { -4, 1, 9, 17, 25, 29, 30, 28, 23, 16, 6, -2 };
-        public double WD = 26;                                                                  //温度
-        public double SD = 75;                                                                  //相对湿度
-        public double DQY = 100;                                                                //大气压
+        public static double WD = 0;                                                                  //温度
+        public static double SD = 0;                                                                  //相对湿度
+        public static double DQY = 0;                                                                //大气压
         public float hjo2 = 20.8f;                                                               //环境O2浓度
         public float[] hjo2data = new float[10];
         public Exhaust.Fla502_data[] Vmas_Exhaust_ListIG195 = new Exhaust.Fla502_data[300];      //IG195工况每秒废气结果
         public Exhaust.Fla502_data[] Vmas_Exhaust_Revise_ListIG195 = new Exhaust.Fla502_data[300];//IG195工况每秒废气修正后结果
-        public Exhaust.Fla502_data Vmas_Exhaust_Now = new Exhaust.Fla502_data();
+        public static Exhaust.Fla502_data Vmas_Exhaust_Now = new Exhaust.Fla502_data();
         public Exhaust.Fla502_data Vmas_Exhaust_ReviseNow = new Exhaust.Fla502_data();
         public Exhaust.Fla502_temp_data fla502_temp_data = new Exhaust.Fla502_temp_data();
         public string[] Vmas_qcsj = new string[300];//全程时序
@@ -1015,41 +1015,51 @@ namespace ASMtest
                             Vmas_Exhaust_co2ld[gksj_count] = co2;//CO2浓度
                             Vmas_Exhaust_hcld[gksj_count] = Vmas_Exhaust_Now.HC;//HC浓度
                             Vmas_Exhaust_o2ld[gksj_count] = Vmas_Exhaust_Now.O2;//废气仪氧气浓度
-                            if (IsUseTpTemp)
-                            {
-                                Vmas_hjwd[gksj_count] = (float)WD; //温度
-                                Vmas_xdsd[gksj_count] = (float)SD;//湿度
-                                Vmas_dqyl[gksj_count] = (float)DQY;//大气压
-                            }
-                            else if (equipconfig.TempInstrument == "烟度计" && flb_100 != null)
-                            {
-                                Vmas_hjwd[gksj_count] = (float)WD;//温度
-                                Vmas_xdsd[gksj_count] = (float)SD;//湿度
-                                Vmas_dqyl[gksj_count] = (float)DQY;//大气压
-                            }
-                            else if (equipconfig.TempInstrument == "废气仪")
-                            { 
-                                if (equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503" || equipconfig.Fqyxh.ToLower() == "cdf5000")
-                                {
+                                                                                /*
+                                                                                if (IsUseTpTemp)
+                                                                                {
+                                                                                    Vmas_hjwd[gksj_count] = (float)WD; //温度
+                                                                                    Vmas_xdsd[gksj_count] = (float)SD;//湿度
+                                                                                    Vmas_dqyl[gksj_count] = (float)DQY;//大气压
+                                                                                }
+                                                                                else if (equipconfig.TempInstrument == "烟度计" && flb_100 != null)
+                                                                                {
+                                                                                    Vmas_hjwd[gksj_count] = (float)WD;//温度
+                                                                                    Vmas_xdsd[gksj_count] = (float)SD;//湿度
+                                                                                    Vmas_dqyl[gksj_count] = (float)DQY;//大气压
+                                                                                }
+                                                                                else if (equipconfig.TempInstrument == "废气仪")
+                                                                                { 
+                                                                                    if (equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503" || equipconfig.Fqyxh.ToLower() == "cdf5000")
+                                                                                    {
+                                                                                        WD= fla502_temp_data.TEMP;
+                                                                                        SD= fla502_temp_data.HUMIDITY;
+                                                                                        DQY= fla502_temp_data.AIRPRESSURE;
+                                                                                        Vmas_hjwd[gksj_count] = fla502_temp_data.TEMP;//温度
+                                                                                        Vmas_xdsd[gksj_count] = fla502_temp_data.HUMIDITY;//湿度
+                                                                                        Vmas_dqyl[gksj_count] = fla502_temp_data.AIRPRESSURE;//大气压
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        WD = Vmas_Exhaust_Now.HJWD;
+                                                                                        SD = Vmas_Exhaust_Now.SD;
+                                                                                        DQY = Vmas_Exhaust_Now.HJYL;
+                                                                                        Vmas_hjwd[gksj_count] = Vmas_Exhaust_Now.HJWD;//温度
+                                                                                        Vmas_xdsd[gksj_count] = Vmas_Exhaust_Now.SD;//湿度
+                                                                                        Vmas_dqyl[gksj_count] = Vmas_Exhaust_Now.HJYL;//大气压
+                                                                                    }
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    Vmas_hjwd[gksj_count] = (float)WD;//温度
+                                                                                    Vmas_xdsd[gksj_count] = (float)SD;//湿度
+                                                                                    Vmas_dqyl[gksj_count] = (float)DQY;//大气压
+                                                                                }*/
+                            Vmas_hjwd[gksj_count] = (float)WD;//温度
+                            Vmas_xdsd[gksj_count] = (float)SD;//湿度
+                            Vmas_dqyl[gksj_count] = (float)DQY;//大气压
 
-                                    Vmas_hjwd[gksj_count] = fla502_temp_data.TEMP;//温度
-                                    Vmas_xdsd[gksj_count] = fla502_temp_data.HUMIDITY;//湿度
-                                    Vmas_dqyl[gksj_count] = fla502_temp_data.AIRPRESSURE;//大气压
-                                }
-                                else
-                                {
-                                    Vmas_hjwd[gksj_count] = Vmas_Exhaust_Now.HJWD;//温度
-                                    Vmas_xdsd[gksj_count] = Vmas_Exhaust_Now.SD;//湿度
-                                    Vmas_dqyl[gksj_count] = Vmas_Exhaust_Now.HJYL;//大气压
-                                }
-                            }
-                            else
-                            {
-                                Vmas_hjwd[gksj_count] = (float)WD;//温度
-                                Vmas_xdsd[gksj_count] = (float)SD;//湿度
-                                Vmas_dqyl[gksj_count] = (float)DQY;//大气压
-                            }
-                                Vmas_xsxzxs[gksj_count] = caculateDf(Vmas_Exhaust_co2ld[gksj_count], Vmas_Exhaust_cold[gksj_count]);//稀释修正系数
+                            Vmas_xsxzxs[gksj_count] = caculateDf(Vmas_Exhaust_co2ld[gksj_count], Vmas_Exhaust_cold[gksj_count]);//稀释修正系数
                             Vmas_sdxzxs[gksj_count] = caculateKh(Vmas_hjwd[gksj_count], Vmas_xdsd[gksj_count], Vmas_dqyl[gksj_count]);//湿度修正系数
 
                             //Vmas_xsxzxs[gksj_count] = xsxzxs;//稀释修正系数
@@ -1358,6 +1368,21 @@ namespace ASMtest
                 else
                 {
                     yw = Vmas_Exhaust_Now.YW;
+                }
+                if (equipconfig.TempInstrument == "废气仪")
+                {
+                    if (equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503" || equipconfig.Fqyxh.ToLower() == "cdf5000")
+                    {
+                        WD = fla502_temp_data.TEMP;
+                        SD = fla502_temp_data.HUMIDITY;
+                        DQY = fla502_temp_data.AIRPRESSURE;
+                    }
+                    else
+                    {
+                        WD = Vmas_Exhaust_Now.HJWD;
+                        SD = Vmas_Exhaust_Now.SD;
+                        DQY = Vmas_Exhaust_Now.HJYL;
+                    }
                 }
                 Thread.Sleep(50);
             }

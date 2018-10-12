@@ -20,7 +20,7 @@ namespace lugdowm
     {
         const string yq_mqw5101 = "mqw_5101";
         carinfor.carInidata carbj = new carInidata();
-        equipmentConfigInfdata equipconfig = new equipmentConfigInfdata();
+        public static equipmentConfigInfdata equipconfig = new equipmentConfigInfdata();
         LugdownConfigInfdata lugdownconfig = new LugdownConfigInfdata();
         carIni carini = new carIni();
         configIni configini = new configIni();
@@ -295,6 +295,7 @@ namespace lugdowm
             //flv_1000 = new Exhaust.Flv_1000();
             panel_chujian.Visible = false;
             button1.Visible = false;
+
             initJsglXs();
             initCarInfo();
             initConfigInfo();
@@ -309,6 +310,22 @@ namespace lugdowm
             {
                 igbt.Lifter_Down();
             }*/
+            if (equipconfig.useJHSCREEN)
+            {
+                panel8.Visible = false;
+                label1.Visible = false;
+                ledNumberGL.Visible = false;
+                label10.Visible = false;
+                label6.Visible = false;
+                ledNumber_GXXS.Visible = false;
+                ledNumberNO.Visible = false;
+                label7.Visible = false;
+                label8.Visible = false;
+                label11.Visible = false;
+                ledNumberWd.Visible = false;
+                ledNumberSd.Visible = false;
+                ledNumberDqy.Visible = false;
+            }
             if (!isautostart)
             {
                 prepareFoem prepareform = new prepareFoem();
@@ -1062,11 +1079,14 @@ namespace lugdowm
 
         void ref_chart_data(float XSGL, float GXSXS, float FDJZS, float CS, float NL)
         {
-            chart1.Series["XSGL"].Points.AddY(XSGL);
-            chart1.Series["GXSXS"].Points.AddY(GXSXS);
-            chart1.Series["FDJZS"].Points.AddY(FDJZS);
             chart1.Series["CS"].Points.AddY(CS);
-            chart1.Series["NL"].Points.AddY(NL);
+            if (!equipconfig.useJHSCREEN)
+            {
+                chart1.Series["NL"].Points.AddY(NL);
+                chart1.Series["XSGL"].Points.AddY(XSGL);
+                chart1.Series["GXSXS"].Points.AddY(GXSXS);
+                chart1.Series["FDJZS"].Points.AddY(FDJZS);
+            }
         }
         public void Ref_Clear()
         {
@@ -1077,11 +1097,14 @@ namespace lugdowm
             try
             {
                 //chart1.Series[SeriesName].Points.RemoveAt(0);
-                chart1.Series["XSGL"].Points.RemoveAt(0);
-                chart1.Series["GXSXS"].Points.RemoveAt(0);
-                chart1.Series["FDJZS"].Points.RemoveAt(0);
                 chart1.Series["CS"].Points.RemoveAt(0);
-                chart1.Series["NL"].Points.RemoveAt(0);
+                if (!equipconfig.useJHSCREEN)
+                {
+                    chart1.Series["XSGL"].Points.RemoveAt(0);
+                    chart1.Series["GXSXS"].Points.RemoveAt(0);
+                    chart1.Series["FDJZS"].Points.RemoveAt(0);
+                    chart1.Series["NL"].Points.RemoveAt(0);
+                }
             }
             catch (Exception)
             {
@@ -2048,7 +2071,7 @@ namespace lugdowm
                             }
                         }
                     }
-                    Msg(Msg_msg, panel_msg, "功率扫描完成，最大轮边功率:" + jzjs_data.Lbgl + "kW,VelMaxHP为" + VelMaxHP_real.ToString("0.0") + "km/h", true);
+                    Msg(Msg_msg, panel_msg, equipconfig.useJHSCREEN? "功率扫描完成" : "功率扫描完成，最大轮边功率:" + jzjs_data.Lbgl + "kW,VelMaxHP为" + VelMaxHP_real.ToString("0.0") + "km/h", true);
                     if (ledcontrol != null)
                     {
                         ledcontrol.writeLed("　功率扫描结束　", 2, equipconfig.Ledxh);
@@ -2106,7 +2129,7 @@ namespace lugdowm
                     }
                     #endregion
 
-                    if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山")
+                    if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山"||equipconfig.DATASECONDS_TYPE=="安徽")
                         sxnb = 2;
 
                     #region 加载测试
@@ -2142,7 +2165,7 @@ namespace lugdowm
                             case "VelMaxHP100%":
                                 statusconfigini.writeNeuStatusData("K100Testing", DateTime.Now.ToString());
                                 Modulus = 1;
-                                if (equipconfig.DATASECONDS_TYPE != "江西"&&equipconfig.DATASECONDS_TYPE!="云南保山")
+                                if (equipconfig.DATASECONDS_TYPE != "江西"&&equipconfig.DATASECONDS_TYPE!="云南保山"&& equipconfig.DATASECONDS_TYPE != "安徽")
                                     sxnb = 2;
                                 opno = 5;
                                 opcode = 21;
@@ -2150,7 +2173,7 @@ namespace lugdowm
                             case "VelMaxHP90%":
                                 statusconfigini.writeNeuStatusData("K90Testing", DateTime.Now.ToString());
                                 Modulus = 0.9f;
-                                if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山")
+                                if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山"|| equipconfig.DATASECONDS_TYPE == "安徽")
                                     sxnb = 4;
                                 else
                                     sxnb = 3;
@@ -2160,7 +2183,7 @@ namespace lugdowm
                             case "VelMaxHP80%":
                                 statusconfigini.writeNeuStatusData("K80Testing", DateTime.Now.ToString());
                                 Modulus = 0.8f;
-                                if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山")
+                                if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山"|| equipconfig.DATASECONDS_TYPE == "安徽")
                                     sxnb = 5;
                                 else
                                     sxnb = 4;
@@ -2172,7 +2195,7 @@ namespace lugdowm
                         Thread.Sleep(200);
                         igbt.Start_Control_Speed();
 
-                        if ((equipconfig.DATASECONDS_TYPE == "江西"|| equipconfig.DATASECONDS_TYPE == "云南保山") && Jc_Process == "VelMaxHP100%")
+                        if ((equipconfig.DATASECONDS_TYPE == "江西"|| equipconfig.DATASECONDS_TYPE == "云南保山"|| equipconfig.DATASECONDS_TYPE == "安徽") && Jc_Process == "VelMaxHP100%")
                         {
                             while (igbt.Speed < VelMaxHP_real - 1)
                             {
@@ -2184,13 +2207,20 @@ namespace lugdowm
                             sxnb = 3;
                         }
 
-                        Msg(Msg_msg, panel_msg, "正在进行加载减速测试，将在" + Math.Round(VelMaxHP_real * Modulus, 2).ToString("0.0") + "km/h时取值", true);
+                        Msg(Msg_msg, panel_msg, equipconfig.useJHSCREEN ? "加载减速测试中": "正在进行加载减速测试，将在" + Math.Round(VelMaxHP_real * Modulus, 2).ToString("0.0") + "km/h时取值", true);
                         if (ledcontrol != null)
                         {
                             ledcontrol.writeLed("将在" + addLength(Math.Round(VelMaxHP_real * Modulus, 2).ToString("0.0"), 4) + "处取值 ", 2, equipconfig.Ledxh);
                             Thread.Sleep(200);
                         }
-                        ts2 = "将在" + Math.Round(VelMaxHP_real * Modulus, 2).ToString("0.0") + "km/h取值";
+                        if (!equipconfig.useJHSCREEN)
+                        {
+                            ts2 = "将在" + Math.Round(VelMaxHP_real * Modulus, 2).ToString("0.0") + "km/h取值";
+                        }
+                        else
+                        {
+                            ts2 = "加载减速测试中";
+                        }
                         Speed_Count = 0;
                         while (JC_Status)
                         {
@@ -2242,8 +2272,11 @@ namespace lugdowm
                             }
                             for (int i = 3; i > 0; i--)
                             {
-                                Msg(Msg_msg, panel_msg, "将在" + i.ToString() + "s后取值", false);
-                                ts2 = "将在" + i.ToString() + "s后取值";
+                                if (!equipconfig.useJHSCREEN)
+                                {
+                                    Msg(Msg_msg, panel_msg, "将在" + i.ToString() + "s后取值", false);
+                                    ts2 = "将在" + i.ToString() + "s后取值";
+                                }
                                 Thread.Sleep(900);
                             }
                             Speed_Count = 0;
@@ -2255,8 +2288,11 @@ namespace lugdowm
                             temp_no = 0;
                             for (int i = 1; i <= 5; i++)//取5s内的数据，以10HZ的采样率
                             {
-                                Msg(Msg_msg, panel_msg, "正在取值" + "(" + Jc_Process + ") " + i.ToString(), false);
-                                ts2 = "正在取值..." + (6 - i).ToString() + "s";
+                                if (!equipconfig.useJHSCREEN)
+                                {
+                                    Msg(Msg_msg, panel_msg, "正在取值" + "(" + Jc_Process + ") " + i.ToString(), false);
+                                    ts2 = "正在取值..." + (6 - i).ToString() + "s";
+                                }
                                 if (ledcontrol != null)
                                 {
                                     ledcontrol.writeLed("正在取值..." + (6 - i).ToString() + "s ", 2, equipconfig.Ledxh);
@@ -2289,8 +2325,11 @@ namespace lugdowm
                                     jzjs_data.Rev100 = HV;
                                     if (lugdownconfig.LugdownMaxHpStyle == 0)
                                     {
-                                        Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + HK, true);
-                                        ts2 = "结果：" + HK;
+                                        if (!equipconfig.useJHSCREEN)
+                                        {
+                                            Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + HK, true);
+                                            ts2 = "结果：" + HK;
+                                        }
                                     }
                                     else
                                     {
@@ -2302,8 +2341,11 @@ namespace lugdowm
                                         jzjs_data.Lbgl = glxz.ToString("0.0");
                                         led_display(ledNumberLBGL, jzjs_data.Lbgl);
                                         led_display(ledNumberDCF, jzjs_data.glxzxs);
-                                        Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，修正功率:" + jzjs_data.Lbgl + "kW,K:" + HK, true);
-                                        ts2 = "功率:" + jzjs_data.Lbgl + " K:" + HK;
+                                        if (!equipconfig.useJHSCREEN)
+                                        {
+                                            Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，修正功率:" + jzjs_data.Lbgl + "kW,K:" + HK, true);
+                                            ts2 = "功率:" + jzjs_data.Lbgl + " K:" + HK;
+                                        }
                                         if (equipconfig.useJHJK)//金华监控到轮边功率大于额定功率的80%，即限值的160%中断检测
                                         {
                                             if (double.Parse(jzjs_data.Lbgl) > carbj.Xz1 * 0.02 * equipconfig.JHLBGLB)
@@ -2463,12 +2505,15 @@ namespace lugdowm
                                     NP = (temp_gl / 5f).ToString("0.00");
                                     NK = (temp_gxxs / 5f).ToString("0.00");
                                     NNo = (temp_no / 5f).ToString("0");
-                                    Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + NK, true);
+                                    if (!equipconfig.useJHSCREEN)
+                                    {
+                                        Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + NK, true);
+                                        ts2 = "结果：" + NK;
+                                    }
                                     if (ledcontrol != null)
                                     {
                                         ledcontrol.writeLed("测试结果:" + addLength(NK, 4) + " ", 2, equipconfig.Ledxh);
                                     }
-                                    ts2 = "结果：" + NK;
                                     led_display(ledNumberGX_N, NK);
                                     /*if (double.Parse(NK) < 0.01)
                                     {
@@ -2604,12 +2649,15 @@ namespace lugdowm
                                     EP = (temp_gl / 5f).ToString("0.00");
                                     EK = (temp_gxxs / 5f).ToString("0.00");
                                     ENo = (temp_no / 5f).ToString("0");
-                                    Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + EK, true);
+                                    if (!equipconfig.useJHSCREEN)
+                                    {
+                                        Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + EK, true);
+                                        ts2 = "结果：" + EK;
+                                    }
                                     if (ledcontrol != null)
                                     {
                                         ledcontrol.writeLed("测试结果:" + addLength(EK, 4) + " ", 2, equipconfig.Ledxh);
                                     }
-                                    ts2 = "结果：" + EK;
                                     led_display(ledNumberGS_E, EK);
                                     if (equipconfig.useJHJK)
                                     {

@@ -20,7 +20,7 @@ namespace vmasDetect
     {
         carinfor.carInidata carbj = new carInidata();
         public static VmasConfigInfdata vmasconfig = new VmasConfigInfdata();
-        equipmentConfigInfdata equipconfig = new equipmentConfigInfdata();
+        public static equipmentConfigInfdata equipconfig = new equipmentConfigInfdata();
         carIni carini = new carIni();
         statusconfigIni statusconfigini = new statusconfigIni();
         configIni configini = new configIni();
@@ -343,6 +343,13 @@ namespace vmasDetect
                 igbt.Lifter_Down();
             }*/
             isSongpin = false;
+            if (equipconfig.useJHSCREEN)
+            {
+                panel14.Visible = false;
+                panel17.Visible = false;
+                panel13.Visible = false;
+                panel19.Visible = false;
+            }
             if (!isautostart)
             {
                 prepareFoem prepareform = new prepareFoem();
@@ -1153,8 +1160,8 @@ namespace vmasDetect
         }
         public void Init_Data()
         {
-            Msg(label_cp, panel_cp, carbj.CarPH,false);
-            Msg(label_message, panel_msg, "点击开始检测按钮,开始检测", false);
+            Msg(label_cp, panel_cp, carbj.CarPH, true);
+            Msg(label_message, panel_msg, "点击开始检测按钮,开始检测", true);
         }
         #endregion
         
@@ -1639,8 +1646,8 @@ namespace vmasDetect
                                 Msg(labelHC, panelHC, "0", false);
                                 Msg(labelNO, panelNO, "0", false);
                                 Msg(labelLL, panelLL, "0.0", false);
-                                Msg(labelLXCC, panelLXCC, "0.0", false);
-                                Msg(labelLJCC, panelLJCC, "0.0", false);
+                                Msg(labelLXCC, panelLXCC, "0.0", true);
+                                Msg(labelLJCC, panelLJCC, "0.0", true);
                                 TH_ST.Start();
                             }
                             else
@@ -1699,8 +1706,8 @@ namespace vmasDetect
                                     Msg(labelHC, panelHC, "0", false);
                                     Msg(labelNO, panelNO, "0", false);
                                     Msg(labelLL, panelLL, "0.0", false);
-                                    Msg(labelLXCC, panelLXCC, "0.0", false);
-                                    Msg(labelLJCC, panelLJCC, "0.0", false);
+                                    Msg(labelLXCC, panelLXCC, "0.0", true);
+                                    Msg(labelLJCC, panelLJCC, "0.0", true);
                                     TH_ST.Start();
                                 }
                                 else
@@ -1758,8 +1765,8 @@ namespace vmasDetect
                                 Msg(labelHC, panelHC, "0", false);
                                 Msg(labelNO, panelNO, "0", false);
                                 Msg(labelLL, panelLL, "0.0", false);
-                                Msg(labelLXCC, panelLXCC, "0.0", false);
-                                Msg(labelLJCC, panelLJCC, "0.0", false);
+                                Msg(labelLXCC, panelLXCC, "0.0", true);
+                                Msg(labelLJCC, panelLJCC, "0.0", true);
                                 TH_ST.Start();
                             }
                             else
@@ -1813,8 +1820,8 @@ namespace vmasDetect
                                 Msg(labelHC, panelHC, "0", false);
                                 Msg(labelNO, panelNO, "0", false);
                                 Msg(labelLL, panelLL, "0.0", false);
-                                Msg(labelLXCC, panelLXCC, "0.0", false);
-                                Msg(labelLJCC, panelLJCC, "0.0", false);
+                                Msg(labelLXCC, panelLXCC, "0.0", true);
+                                Msg(labelLJCC, panelLJCC, "0.0", true);
                                 TH_ST.Start();
                             }
                             else
@@ -1871,8 +1878,8 @@ namespace vmasDetect
                                 Msg(labelHC, panelHC, "0", false);
                                 Msg(labelNO, panelNO, "0", false);
                                 Msg(labelLL, panelLL, "0.0", false);
-                                Msg(labelLXCC, panelLXCC, "0.0", false);
-                                Msg(labelLJCC, panelLJCC, "0.0", false);
+                                Msg(labelLXCC, panelLXCC, "0.0", true);
+                                Msg(labelLJCC, panelLJCC, "0.0", true);
                                 TH_ST.Start();
                             }
                             else
@@ -1929,8 +1936,8 @@ namespace vmasDetect
                                 Msg(labelHC, panelHC, "0", false);
                                 Msg(labelNO, panelNO, "0", false);
                                 Msg(labelLL, panelLL, "0.0", false);
-                                Msg(labelLXCC, panelLXCC, "0.0", false);
-                                Msg(labelLJCC, panelLJCC, "0.0", false);
+                                Msg(labelLXCC, panelLXCC, "0.0", true);
+                                Msg(labelLJCC, panelLJCC, "0.0", true);
                                 TH_ST.Start();
                             }
                             else
@@ -1987,8 +1994,8 @@ namespace vmasDetect
                                 Msg(labelHC, panelHC, "0", false);
                                 Msg(labelNO, panelNO, "0", false);
                                 Msg(labelLL, panelLL, "0.0", false);
-                                Msg(labelLXCC, panelLXCC, "0.0", false);
-                                Msg(labelLJCC, panelLJCC, "0.0", false);
+                                Msg(labelLXCC, panelLXCC, "0.0", true);
+                                Msg(labelLJCC, panelLJCC, "0.0", true);
                                 TH_ST.Start();
                             }
                             else
@@ -2045,8 +2052,8 @@ namespace vmasDetect
                                 Msg(labelHC, panelHC, "0", false);
                                 Msg(labelNO, panelNO, "0", false);
                                 Msg(labelLL, panelLL, "0.0", false);
-                                Msg(labelLXCC, panelLXCC, "0.0", false);
-                                Msg(labelLJCC, panelLJCC, "0.0", false);
+                                Msg(labelLXCC, panelLXCC, "0.0", true);
+                                Msg(labelLJCC, panelLJCC, "0.0", true);
                                 TH_ST.Start();
                             }
                             else
@@ -2103,8 +2110,8 @@ namespace vmasDetect
                                 Msg(labelHC, panelHC, "0", false);
                                 Msg(labelNO, panelNO, "0", false);
                                 Msg(labelLL, panelLL, "0.0", false);
-                                Msg(labelLXCC, panelLXCC, "0.0", false);
-                                Msg(labelLJCC, panelLJCC, "0.0", false);
+                                Msg(labelLXCC, panelLXCC, "0.0", true);
+                                Msg(labelLJCC, panelLJCC, "0.0", true);
                                 TH_ST.Start();
                             }
                             else
@@ -2161,8 +2168,8 @@ namespace vmasDetect
                                 Msg(labelHC, panelHC, "0", false);
                                 Msg(labelNO, panelNO, "0", false);
                                 Msg(labelLL, panelLL, "0.0", false);
-                                Msg(labelLXCC, panelLXCC, "0.0", false);
-                                Msg(labelLJCC, panelLJCC, "0.0", false);
+                                Msg(labelLXCC, panelLXCC, "0.0", true);
+                                Msg(labelLJCC, panelLJCC, "0.0", true);
                                 TH_ST.Start();
                             }
                             else
@@ -2219,8 +2226,8 @@ namespace vmasDetect
                                 Msg(labelHC, panelHC, "0", false);
                                 Msg(labelNO, panelNO, "0", false);
                                 Msg(labelLL, panelLL, "0.0", false);
-                                Msg(labelLXCC, panelLXCC, "0.0", false);
-                                Msg(labelLJCC, panelLJCC, "0.0", false);
+                                Msg(labelLXCC, panelLXCC, "0.0", true);
+                                Msg(labelLJCC, panelLJCC, "0.0", true);
                                 TH_ST.Start();
                             }
                             else
@@ -2307,8 +2314,8 @@ namespace vmasDetect
                                     Msg(labelHC, panelHC, "0", false);
                                     Msg(labelNO, panelNO, "0", false);
                                     Msg(labelLL, panelLL, "0.0", false);
-                                    Msg(labelLXCC, panelLXCC, "0.0", false);
-                                    Msg(labelLJCC, panelLJCC, "0.0", false);
+                                    Msg(labelLXCC, panelLXCC, "0.0", true);
+                                    Msg(labelLJCC, panelLJCC, "0.0", true);
                                     TH_ST.Start();
                                 }
                                 else
@@ -2369,8 +2376,8 @@ namespace vmasDetect
                                         Msg(labelHC, panelHC, "0", false);
                                         Msg(labelNO, panelNO, "0", false);
                                         Msg(labelLL, panelLL, "0.0", false);
-                                        Msg(labelLXCC, panelLXCC, "0.0", false);
-                                        Msg(labelLJCC, panelLJCC, "0.0", false);
+                                        Msg(labelLXCC, panelLXCC, "0.0", true);
+                                        Msg(labelLJCC, panelLJCC, "0.0", true);
                                         TH_ST.Start();
                                     }
                                     else
@@ -2385,12 +2392,12 @@ namespace vmasDetect
                     if (gongkuangTime >= 195.0f)
                     {
 
-                        Msg(labelGksj, panelGksj, "195.0", false);
+                        Msg(labelGksj, panelGksj, "195.0", true);
                     }
                     else
                     {
 
-                        Msg(labelGksj, panelGksj, gongkuangTime.ToString("000.0"), false);
+                        Msg(labelGksj, panelGksj, gongkuangTime.ToString("000.0"), true);
                     }
                     float thisTimeSpan = gongkuangTime;
                     TimeSpan timespan = nowtime - startTime;
@@ -2459,8 +2466,8 @@ namespace vmasDetect
                                     Msg(labelHC, panelHC, "0", false);
                                     Msg(labelNO, panelNO, "0", false);
                                     Msg(labelLL, panelLL, "0.0", false);
-                                    Msg(labelLXCC, panelLXCC, "0.0", false);
-                                    Msg(labelLJCC, panelLJCC, "0.0", false);
+                                    Msg(labelLXCC, panelLXCC, "0.0", true);
+                                    Msg(labelLJCC, panelLJCC, "0.0", true);
                                     TH_ST.Start();
                                 }
                                 else
@@ -2519,8 +2526,8 @@ namespace vmasDetect
                                     Msg(labelHC, panelHC, "0", false);
                                     Msg(labelNO, panelNO, "0", false);
                                     Msg(labelLL, panelLL, "0.0", false);
-                                    Msg(labelLXCC, panelLXCC, "0.0", false);
-                                    Msg(labelLJCC, panelLJCC, "0.0", false);
+                                    Msg(labelLXCC, panelLXCC, "0.0", true);
+                                    Msg(labelLJCC, panelLJCC, "0.0", true);
                                     TH_ST.Start();
                                 }
                                 else
@@ -2536,10 +2543,10 @@ namespace vmasDetect
                     {
                         outTimeContinus = 0;
                     }
-                    Msg(labelLXCC, panelLXCC, outTimeContinus.ToString("0.0"), false);
-                    Msg(labelLJCC, panelLJCC, outTimeTotal.ToString("0.0"), false);
-                    Msg(labelCO2EXCEDTIMES, panelCO2EXCEDTIMES, co2excedlimit.ToString(), false);
-                    Msg(labelO2EXCEDTIMES, panelO2EXCEDTIMES, o2excedlimit.ToString(), false);
+                    Msg(labelLXCC, panelLXCC, outTimeContinus.ToString("0.0"), true);
+                    Msg(labelLJCC, panelLJCC, outTimeTotal.ToString("0.0"), true);
+                    Msg(labelCO2EXCEDTIMES, panelCO2EXCEDTIMES, co2excedlimit.ToString(), true);
+                    Msg(labelO2EXCEDTIMES, panelO2EXCEDTIMES, o2excedlimit.ToString(), true);
                 }
                 catch (Exception)
                 {
@@ -2595,7 +2602,7 @@ namespace vmasDetect
                         fq_pre_time = fq_now_time;
                         getWqRealData();
                         sampleCount++;
-                        Msg(labelSampleCount, panelSampleCount, sampleCount.ToString(), false);
+                        Msg(labelSampleCount, panelSampleCount, sampleCount.ToString(), true);
                     }
                     //getLlRealData();
                 }
@@ -2702,7 +2709,7 @@ namespace vmasDetect
                     }
                     else
                     {
-                        Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", false);
+                        Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", true);
                         ts2 = "读取环境参数失败";
                         return;
                     }
@@ -2717,7 +2724,7 @@ namespace vmasDetect
                     }
                     else
                     {
-                        Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", false);
+                        Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", true);
                         ts2 = "读取环境参数失败";
                         return;
                     }
@@ -2732,7 +2739,7 @@ namespace vmasDetect
                     }
                     else
                     {
-                        Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", false);
+                        Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", true);
                         ts2 = "读取环境参数失败";
                         return;
                     }
@@ -2747,7 +2754,7 @@ namespace vmasDetect
                     }
                     else
                     {
-                        Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", false);
+                        Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", true);
                         ts2 = "读取环境参数失败";
                         return;
                     }
@@ -2755,9 +2762,9 @@ namespace vmasDetect
                 WD = thaxsdata.Tempxs * WD;
                 SD = thaxsdata.Humixs * SD;
                 DQY = thaxsdata.Airpxs * DQY;
-                Msg(label_wd, panel_wd, WD.ToString("0.0"), false);
-                Msg(label_sd, panel_sd, SD.ToString("0.0"), false);
-                Msg(label_dqy, panel_dqy, DQY.ToString("0.0"), false);
+                Msg(label_wd, panel_wd, WD.ToString("0.0"), true);
+                Msg(label_sd, panel_sd, SD.ToString("0.0"), true);
+                Msg(label_dqy, panel_dqy, DQY.ToString("0.0"), true);
             }
             catch (Exception)
             {
@@ -2776,7 +2783,7 @@ namespace vmasDetect
                 panel_visible(panelWSD, false);
                 if (wsdValueIsRight == false)
                 {
-                    Msg(label_chujiantishi, panel_chujiantishi, "请先校正废气仪温湿度", false);
+                    Msg(label_chujiantishi, panel_chujiantishi, "请先校正废气仪温湿度", true);
                     return;
                 }
             }
@@ -2784,7 +2791,7 @@ namespace vmasDetect
             if (igbt.Speed > 0.5f)
             {
                 datagridview_msg(dataGridView1, "判定", 0, "×");
-                Msg(label_chujiantishi, panel_chujiantishi, "请等待滚筒停止再进行", false);
+                Msg(label_chujiantishi, panel_chujiantishi, "请等待滚筒停止再进行", true);
                 return;
             }
             else
@@ -2793,7 +2800,7 @@ namespace vmasDetect
             datagridview_msg(dataGridView1, "结果", 1, WD.ToString("0.0"));
             if (WD >40)
             {
-                Msg(label_chujiantishi, panel_chujiantishi, "环境温度过高,不能进行检测", false);
+                Msg(label_chujiantishi, panel_chujiantishi, "环境温度过高,不能进行检测", true);
                 ts2 = "环境温度过高";
                 datagridview_msg(dataGridView1, "判定", 1, "×");
                 return;
@@ -2804,7 +2811,7 @@ namespace vmasDetect
             datagridview_msg(dataGridView1, "结果", 2, SD.ToString("0.0"));
             if (SD >85)
             {
-                Msg(label_chujiantishi, panel_chujiantishi, "环境湿度不合格,不能进行检测", false);
+                Msg(label_chujiantishi, panel_chujiantishi, "环境湿度不合格,不能进行检测", true);
                 ts2 = "环境湿度过高";
                 datagridview_msg(dataGridView1, "判定",2, "×");
                 return;
@@ -2815,7 +2822,7 @@ namespace vmasDetect
             datagridview_msg(dataGridView1, "结果", 3, DQY.ToString("0.0"));
             if (DQY>120)
             {
-                Msg(label_chujiantishi, panel_chujiantishi, "环境大气压不合格,不能进行检测", false);
+                Msg(label_chujiantishi, panel_chujiantishi, "环境大气压不合格,不能进行检测", true);
                 datagridview_msg(dataGridView1, "判定", 3, "×");
                 return;
             }
@@ -2965,7 +2972,7 @@ namespace vmasDetect
                         Thread.Sleep(2000);
                         for (int i = 10; i >= 0; i--)
                         {
-                            Msg(label_message, panel_msg, "检测即将重新开始" + " " + i.ToString() + "s", false);
+                            Msg(label_message, panel_msg, "检测即将重新开始" + " " + i.ToString() + "s", true);
                             ts1 = "检测将重新开始";
                             ts2 = i.ToString() + "s";
                             Thread.Sleep(1000);
@@ -2980,13 +2987,13 @@ namespace vmasDetect
                         fla_502.Pump_Pipeair();
                         Th_get_FqandLl.Start();
                         th_get_llj.Start();
-                        Msg(label_message, panel_msg, "检测即将重新开始", false);
+                        Msg(label_message, panel_msg, "检测即将重新开始", true);
                         ts1 = "检测将重新开始";
                     }
                 }
                 else
                 {
-                    Msg(label_message, panel_msg, "测试即将开始,检查废气仪状态", false);
+                    Msg(label_message, panel_msg, "测试即将开始,检查废气仪状态", true);
                     ts1 = "检测即将开始";
                     ts2 = "检测废气仪...";
                     Thread.Sleep(1000);
@@ -3003,7 +3010,7 @@ namespace vmasDetect
                     Thread.Sleep(500);
                     if (vmasconfig.CjBeforeTl)
                     {
-                        Msg(label_message, panel_msg, "测试即将开始,正在进行初检", false);
+                        Msg(label_message, panel_msg, "测试即将开始,正在进行初检", true);
                         ts2 = "开始初检";
                         vmas_chujian();
                         if (chujianIsFinished == false)
@@ -3021,7 +3028,7 @@ namespace vmasDetect
                     if (vmasconfig.IsTestYw)
                     {
                         ts1 = "读取油温...";
-                        Msg(label_message, panel_msg, "读取油温...", false);
+                        Msg(label_message, panel_msg, "读取油温...", true);
                         Exhaust.Fla502_data Environment = fla_502.GetData();
                         Thread.Sleep(1000);
                         float ywnow = Environment.YW;
@@ -3029,7 +3036,7 @@ namespace vmasDetect
                         {
                             ts1 = "油温: " + ywnow.ToString("0.0") + " ℃";
                             ts2 = "低于限值,检测中止";
-                            Msg(label_message, panel_msg, "油温:" + ywnow.ToString("0.0") + "℃" + "低于限值,检测中止", false);
+                            Msg(label_message, panel_msg, "油温:" + ywnow.ToString("0.0") + "℃" + "低于限值,检测中止", true);
                             button_ss.Text = "重新检测";
                             JC_Status = false;
                             return;
@@ -3038,7 +3045,7 @@ namespace vmasDetect
                         {
                             ts1 = "油温: " + ywnow.ToString("0.0") + " ℃";
                             ts2 = "允许检测";
-                            Msg(label_message, panel_msg, "油温:" + ywnow.ToString("0.0") + "℃" + ",允许检测", false);
+                            Msg(label_message, panel_msg, "油温:" + ywnow.ToString("0.0") + "℃" + ",允许检测", true);
 
                         }
                         Thread.Sleep(1000);
@@ -3098,7 +3105,7 @@ namespace vmasDetect
                                 }
                                 else
                                 {
-                                    Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", false);
+                                    Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", true);
                                     ts2 = "读取环境参数失败";
                                     return;
                                 }
@@ -3113,7 +3120,7 @@ namespace vmasDetect
                                 }
                                 else
                                 {
-                                    Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", false);
+                                    Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", true);
                                     ts2 = "读取环境参数失败";
                                     return;
                                 }
@@ -3128,7 +3135,7 @@ namespace vmasDetect
                                 }
                                 else
                                 {
-                                    Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", false);
+                                    Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", true);
                                     ts2 = "读取环境参数失败";
                                     return;
                                 }
@@ -3143,7 +3150,7 @@ namespace vmasDetect
                                 }
                                 else
                                 {
-                                    Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", false);
+                                    Msg(label_chujiantishi, panel_chujiantishi, "读取环境参数失败,不能进行检测", true);
                                     ts2 = "读取环境参数失败";
                                     return;
                                 }
@@ -3267,7 +3274,7 @@ namespace vmasDetect
                     Exhaust.Fla502_data huanjiang_data = fla_502.GetData();
                     if (!vmasconfig.CjBeforeTl)
                     {
-                        Msg(label_message, panel_msg, "测试即将开始,正在进行初检", false);
+                        Msg(label_message, panel_msg, "测试即将开始,正在进行初检", true);
                         ts2 = "开始初检";
                         vmas_chujian();
                         if (chujianIsFinished == false)
@@ -3285,14 +3292,14 @@ namespace vmasDetect
                     Thread.Sleep(500);
                     fla_502.Pump_Pipeair();
                     ts2 = "请安置探头";
-                    Msg(label_message, panel_msg, "测试仪器开始工作,请安置好检测探头", false);
+                    Msg(label_message, panel_msg, "测试仪器开始工作,请安置好检测探头", true);
                     Thread.Sleep(500);
                     Th_get_FqandLl.Start();
                     th_get_llj.Start();
                     Thread.Sleep(2000);
                     while (Vmas_Exhaust_Now.CO + Vmas_Exhaust_Now.CO2 <= vmasconfig.Ndz)
                         Thread.Sleep(500);
-                    Msg(label_message, panel_msg, "探头已插好,检测开始", false);
+                    Msg(label_message, panel_msg, "探头已插好,检测开始", true);
                     Thread.Sleep(1500);
                 }
                 Msg(label_message, panel_msg, "检测开始，进行空档怠速", true);
@@ -3313,7 +3320,7 @@ namespace vmasDetect
                     if (equipconfig.DATASECONDS_TYPE == "江西")
                     {
                         cysx = vmasconfig.Dssj - timeDs + 1;//从数组的第二个开始存，第一存准备阶段的数
-                        Msg(label_message, panel_msg, "空档怠速中..." + timeDs.ToString() + "s", false);
+                        Msg(label_message, panel_msg, "空档怠速中..." + timeDs.ToString() + "s", true);
                         ts2 = "怠速中..." + timeDs.ToString() + "s";
                         Vmas_qcsj[cysx] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");//全程时序
                         Vmas_cysx[cysx] = cysx.ToString();//从0开始
@@ -3379,7 +3386,7 @@ namespace vmasDetect
                     else
                     {
                         cysx = vmasconfig.Dssj - timeDs;//从数组的第三个开始存，第一、二个存的是准备阶段的数
-                        Msg(label_message, panel_msg, "空档怠速中..." + timeDs.ToString() + "s", false);
+                        Msg(label_message, panel_msg, "空档怠速中..." + timeDs.ToString() + "s", true);
                         ts2 = "怠速中..." + timeDs.ToString() + "s";
                         Vmas_qcsj[cysx] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");//全程时序
                         Vmas_cysx[cysx] = cysx.ToString();//从0开始
@@ -3455,7 +3462,7 @@ namespace vmasDetect
                 Thread.Sleep(100);
                 Ig195_status = true;
                 startTime = DateTime.Now;
-                Msg(label_message, panel_msg, "空档怠速11s", false);
+                Msg(label_message, panel_msg, "空档怠速11s", true);
 
                 //ts1 = "空档怠速11s";
                 //Msg(label_tishi, panel_tishi, "空档", false);
@@ -3464,19 +3471,19 @@ namespace vmasDetect
                     ts1 = "怠速中..." + (11 - GKSJ).ToString() + "s";
                     if (GKSJ < 6)
                     {
-                        Msg(label_message, panel_msg, "怠速中..." + (11 - GKSJ).ToString() + "s", false);
+                        Msg(label_message, panel_msg, "怠速中..." + (11 - GKSJ).ToString() + "s", true);
                         ts2 = "空档";
                     }
                     else
                     {
                         ts2 = "变换至一档";
-                        Msg(label_message, panel_msg, "怠速中..." + (11 - GKSJ).ToString() + "s," + "请变换档位至一档", false);
+                        Msg(label_message, panel_msg, "怠速中..." + (11 - GKSJ).ToString() + "s," + "请变换档位至一档", true);
                         //Msg(label_tishi, panel_tishi, "挂一档", false);
                     }
                     Thread.Sleep(100);
                 }
                 sxnb = 5;
-                Msg(label_message, panel_msg, "一档加速到15km/h保持", false);
+                Msg(label_message, panel_msg, "一档加速到15km/h保持", true);
                 ts1 = "加速到15km/h";
                 ts2 = "一档";
                 //Msg(label_tishi, panel_tishi, "一档加速", false);
@@ -3484,30 +3491,30 @@ namespace vmasDetect
                 sxnb = 0;
                 //statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS., GKSJ.ToString());
                 statusconfigini.writeNeuStatusData("Testing15km", DateTime.Now.ToString());
-                Msg(label_message, panel_msg, "一档15km/h保持8s", false);
+                Msg(label_message, panel_msg, "一档15km/h保持8s", true);
                 //Msg(label_tishi, panel_tishi, "一档保持", false);
                 Thread.Sleep(600);
                 while (GKSJ <23)
                 {
                     ts1 = "保持..." + (23 - GKSJ).ToString() + "s";
                     ts2 = "一档";
-                    Msg(label_message, panel_msg, "一档15km/h保持中..." + (23 - GKSJ).ToString() + "s", false);
+                    Msg(label_message, panel_msg, "一档15km/h保持中..." + (23 - GKSJ).ToString() + "s", true);
                     Thread.Sleep(100);
                 }
                 sxnb = 6;
                 igbt.Exit_Control();
-                Msg(label_message, panel_msg, "一档减速到0km/h,离合器接合", false);
+                Msg(label_message, panel_msg, "一档减速到0km/h,离合器接合", true);
                 ts1 = "减速至0km/h";
                 ts2 = "一档";
                 //Msg(label_tishi, panel_tishi, "减速", false);
                 while (GKSJ < 25) Thread.Sleep(100);
-                Msg(label_message, panel_msg, "继续减速到0km/h,离合器脱离", false);
+                Msg(label_message, panel_msg, "继续减速到0km/h,离合器脱离", true);
                 ts1 = "减速至0km/h";
                 ts2 = "离合器脱离";
                 //Msg(label_tishi, panel_tishi, "脱离离合器", false);
                 while (GKSJ < 28) Thread.Sleep(100);
                 sxnb = 4;
-                Msg(label_message, panel_msg, "退档怠速21s", false);
+                Msg(label_message, panel_msg, "退档怠速21s", true);
                 ts1 = "怠速21s";
                 ts2 = "退档怠速";
                 //Msg(label_tishi, panel_tishi, "退档", false);
@@ -3518,12 +3525,12 @@ namespace vmasDetect
                     ts1 = "怠速中..." + (49 - GKSJ).ToString() + "s";
                     if (GKSJ < 44)
                     {
-                        Msg(label_message, panel_msg, "怠速中..." + (49 - GKSJ).ToString() + "s", false);
+                        Msg(label_message, panel_msg, "怠速中..." + (49 - GKSJ).ToString() + "s", true);
                         ts2 = "空档";
                     }
                     else
                     {
-                        Msg(label_message, panel_msg, "怠速中..." + (49 - GKSJ).ToString() + "s," + "请变换档位至一档", false);
+                        Msg(label_message, panel_msg, "怠速中..." + (49 - GKSJ).ToString() + "s," + "请变换档位至一档", true);
                         ts2 = "变换至一档";
                         //Msg(label_tishi, panel_tishi, "挂一档", false);
                     }
@@ -3535,11 +3542,11 @@ namespace vmasDetect
                 igbt.Start_Control_Force();
                 ts1 = "加速到15km/h";
                 ts2 = "一档";
-                Msg(label_message, panel_msg, "一档加速到15km/h变换为二档", false);
+                Msg(label_message, panel_msg, "一档加速到15km/h变换为二档", true);
                 //Msg(label_tishi, panel_tishi, "一档加速", false);
                 while (GKSJ < 54) Thread.Sleep(100);
                 igbt.Exit_Control();
-                Msg(label_message, panel_msg, "变换档位至二档，继续加速至32km/h", false);
+                Msg(label_message, panel_msg, "变换档位至二档，继续加速至32km/h", true);
                 ts1 = "加速到32km/h";
                 ts2 = "变换至二档";
                 while (GKSJ < 56) Thread.Sleep(100);
@@ -3550,31 +3557,31 @@ namespace vmasDetect
                 while (GKSJ<61) Thread.Sleep(100);
                 sxnb = 1;
                 statusconfigini.writeNeuStatusData("Testing32km", DateTime.Now.ToString());
-                Msg(label_message, panel_msg, "二档32km/h保持24s", false);
+                Msg(label_message, panel_msg, "二档32km/h保持24s", true);
                 ts1 = "32km/h保持24s";
                 ts2 = "二档";
                 //Msg(label_tishi, panel_tishi, "二档保持", false);
                 Thread.Sleep(1000);
                 while (GKSJ<85)
                 {
-                    Msg(label_message, panel_msg, "二档32km/h保持中..." + (85 - GKSJ).ToString() + "s", false);
+                    Msg(label_message, panel_msg, "二档32km/h保持中..." + (85 - GKSJ).ToString() + "s", true);
                     ts1 = "保持..." + (85 - GKSJ).ToString() + "s";
                     Thread.Sleep(100);
                 }
                 sxnb = 6;
                 igbt.Exit_Control();
-                Msg(label_message, panel_msg, "二档减速到0km/h,离合器接合", false);
+                Msg(label_message, panel_msg, "二档减速到0km/h,离合器接合", true);
                 ts1 = "减速至0km/h";
                 ts2 = "二档";
                // Msg(label_tishi, panel_tishi, "减速", false);
                 while (GKSJ < 93) Thread.Sleep(100);
-                Msg(label_message, panel_msg, "继续减速到0km/h,离合器脱离", false);
+                Msg(label_message, panel_msg, "继续减速到0km/h,离合器脱离", true);
                 ts1 = "减速至0km/h";
                 ts2 = "离合器脱离";
                 //Msg(label_tishi, panel_tishi, "脱离离合器", false);
                 while (GKSJ < 96) Thread.Sleep(100);
                 sxnb = 4;
-                Msg(label_message, panel_msg, "退档怠速21s", false);
+                Msg(label_message, panel_msg, "退档怠速21s", true);
                 ts1 = "怠速21s";
                 ts2 = "退档怠速";
                 //Msg(label_tishi, panel_tishi, "退档", false);
@@ -3586,12 +3593,12 @@ namespace vmasDetect
                     ts1 = "怠速中..." + (117 - GKSJ).ToString() + "s";
                     if (GKSJ < 112)
                     {
-                        Msg(label_message, panel_msg, "怠速中..." + (117 - GKSJ).ToString() + "s", false);
+                        Msg(label_message, panel_msg, "怠速中..." + (117 - GKSJ).ToString() + "s", true);
                         ts2 = "空档";
                     }
                     else
                     {
-                        Msg(label_message, panel_msg, "怠速中..." + (117 - GKSJ).ToString() + "s," + "请变换档位至一档", false);
+                        Msg(label_message, panel_msg, "怠速中..." + (117 - GKSJ).ToString() + "s," + "请变换档位至一档", true);
                         ts2 = "变换至一档";
                         //Msg(label_tishi, panel_tishi, "挂一档", false);
                     }
@@ -3604,10 +3611,10 @@ namespace vmasDetect
                 igbt.Start_Control_Force();
                 ts1 = "加速到15km/h";
                 ts2 = "一档";
-                Msg(label_message, panel_msg, "一档加速到15km/h变换为二档", false);
+                Msg(label_message, panel_msg, "一档加速到15km/h变换为二档", true);
                 //Msg(label_tishi, panel_tishi, "一档加速", false);
                 while (GKSJ < 122) Thread.Sleep(100);
-                Msg(label_message, panel_msg, "变换档位至二档，继续加速至32km/h变换为三档", false);
+                Msg(label_message, panel_msg, "变换档位至二档，继续加速至32km/h变换为三档", true);
                 ts1 = "加速到32km/h";
                 ts2 = "变换至二档";
                 while (GKSJ < 124) Thread.Sleep(100);
@@ -3616,7 +3623,7 @@ namespace vmasDetect
                 igbt.Start_Control_Force();
                 // Msg(label_tishi, panel_tishi, "挂二档加速", false);
                 while (GKSJ < 133) Thread.Sleep(100);
-                Msg(label_message, panel_msg, "变换档位至三档，继续加速至50km/h并保持", false);
+                Msg(label_message, panel_msg, "变换档位至三档，继续加速至50km/h并保持", true);
                 ts1 = "加速到50km/h";
                 ts2 = "变换至三档";
                 while (GKSJ < 135) Thread.Sleep(100);
@@ -3628,7 +3635,7 @@ namespace vmasDetect
                 sxnb = 2;
                 statusconfigini.writeNeuStatusData("Testing50km", DateTime.Now.ToString());
                 //statusconfigini.writeStatusData("Testing50km", DateTime.Now.ToString());
-                Msg(label_message, panel_msg, "三档50km/h保持12s", false);
+                Msg(label_message, panel_msg, "三档50km/h保持12s", true);
                 ts1 = "50km/h保持12s";
                 ts2 = "三档";
                 if (igbt != null)
@@ -3642,7 +3649,7 @@ namespace vmasDetect
                 //timeDs = 11;
                 while (GKSJ<155)
                 {
-                    Msg(label_message, panel_msg, "三档50km/h保持中..." + (155 - GKSJ).ToString() + "s" , false);
+                    Msg(label_message, panel_msg, "三档50km/h保持中..." + (155 - GKSJ).ToString() + "s" , true);
                     ts1 = "保持..." + (155 - GKSJ).ToString() + "s";
                     Thread.Sleep(100);
                     //timeDs--;
@@ -3653,13 +3660,13 @@ namespace vmasDetect
                 }
                 //igbt.Set_Control_Power(0f);
                 sxnb = 6;
-                Msg(label_message, panel_msg, "三档减速到35km/h并保持", false);
+                Msg(label_message, panel_msg, "三档减速到35km/h并保持", true);
                 ts1 = "减速至35km/h";
                 ts2 = "三档";
                 //Msg(label_tishi, panel_tishi, "减速", false);
                 while (GKSJ < 163) Thread.Sleep(100);
                 sxnb = 3;
-                Msg(label_message, panel_msg, "三档35km/h保持13s", false);
+                Msg(label_message, panel_msg, "三档35km/h保持13s", true);
                 ts1 = "32km/h保持13s";
                 ts2 = "三档";
                 //Msg(label_tishi, panel_tishi, "保持", false);
@@ -3667,14 +3674,14 @@ namespace vmasDetect
                 //timeDs = 12;
                 while (GKSJ<176)
                 {
-                    Msg(label_message, panel_msg, "三档35km/h保持中..." + (176 - GKSJ).ToString() + "s", false);
+                    Msg(label_message, panel_msg, "三档35km/h保持中..." + (176 - GKSJ).ToString() + "s", true);
                     ts1 = "保持..." + (176 - GKSJ).ToString() + "s";
                     //Msg(label_tishi, panel_tishi, "等待开始", true);
                     Thread.Sleep(100);
                     //timeDs--;
                 }
                 sxnb = 6;
-                Msg(label_message, panel_msg, "请换档至二档，减速到0km/h,离合器接合", false);
+                Msg(label_message, panel_msg, "请换档至二档，减速到0km/h,离合器接合", true);
                 ts1 = "减速至0km/h";
                 ts2 = "二档";
                 //Msg(label_tishi, panel_tishi, "挂二档减速", false);
@@ -3685,7 +3692,7 @@ namespace vmasDetect
                 //Msg(label_tishi, panel_tishi, "脱离离合器", false);
                 while (GKSJ < 188) Thread.Sleep(100);
                 sxnb = 4;
-                Msg(label_message, panel_msg, "退档怠速", false);
+                Msg(label_message, panel_msg, "退档怠速", true);
                 ts1 = "怠速";
                 ts2 = "退档怠速";
                 //Msg(label_tishi, panel_tishi, "退档", false);
@@ -3694,7 +3701,7 @@ namespace vmasDetect
                 while (GKSJ < 195 )
                 {
                     ts1 = "怠速中..." + (195 - GKSJ).ToString() + "s";
-                    Msg(label_message, panel_msg, "怠速中..." + (195  - GKSJ).ToString() + "s", false);
+                    Msg(label_message, panel_msg, "怠速中..." + (195  - GKSJ).ToString() + "s", true);
                     Thread.Sleep(100);
                     //timeDs--;
                 }
@@ -3702,7 +3709,7 @@ namespace vmasDetect
                 {
                     ts1 = "采样中..." + (195 + fqy_delayTime - GKSJ).ToString() + "s";
                     ts2 = "等待采样结束";
-                    Msg(label_message, panel_msg, "等待废气仪采样完毕..." + (195 + fqy_delayTime - GKSJ).ToString() + "s", false);
+                    Msg(label_message, panel_msg, "等待废气仪采样完毕..." + (195 + fqy_delayTime - GKSJ).ToString() + "s", true);
                     Thread.Sleep(100);
                     //timeDs--;
                 }
@@ -3710,7 +3717,7 @@ namespace vmasDetect
                 statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.GUOCHE, GKSJ.ToString());
                 Ig195_status = false;
 
-                Msg(label_message, panel_msg, "工况测试结束,请取探头，车辆怠速200s后驶离测功机", false);
+                Msg(label_message, panel_msg, "工况测试结束,请取探头，车辆怠速200s后驶离测功机", true);
                 ts1 = "工况测试结束";
                 ts2 = "取探头";
                 //Msg(label_tishi, panel_tishi, "结束", false);
@@ -5566,10 +5573,13 @@ namespace vmasDetect
         /// <param name="Msgfather">Label控件的父级Panel</param>
         /// <param name="Msgstr">要显示的信息</param>
         /// <param name="Update_DB">是不是要更新到检测状态</param>
-        public void Msg(Label Msgowner, Panel Msgfather, string Msgstr,bool Update_DB)
+        public void Msg(Label Msgowner, Panel Msgfather, string Msgstr,bool IsDisplay)
         {
-            BeginInvoke(new wtlsb(Msg_Show), Msgowner, Msgstr,Update_DB);
-            BeginInvoke(new wtlp(Msg_Position), Msgowner, Msgfather);
+            //if (IsDisplay)
+            //{
+                BeginInvoke(new wtlsb(Msg_Show), Msgowner, Msgstr, IsDisplay);
+                BeginInvoke(new wtlp(Msg_Position), Msgowner, Msgfather);
+            //}
         }
         public void Label_Msg(Label Msgowner, string Msgstr)
         {
@@ -5630,8 +5640,8 @@ namespace vmasDetect
                 switch (igbt.Status)
                 {
                     default:
-                        Msg(labelCs, panelCs, igbt.Speed.ToString("0.0"), false);
-                        Msg(labelGl, panelGl, igbt.Power.ToString("0.00"), false);
+                        Msg(labelCs, panelCs, igbt.Speed.ToString("0.0"), true);
+                        Msg(labelGl, panelGl, igbt.Power.ToString("0.00"), true);
                         arcScaleComponentCs.Value = igbt.Speed;
                         arcScaleComponentGl.Value = igbt.Power;
                         
@@ -5801,22 +5811,22 @@ namespace vmasDetect
                     ovalShapeWQLL.FillColor = Color.Lime;
                     ovalShapeXSB.FillColor = Color.Lime;
                     ovalShapeJZGL.FillColor = Color.Lime;
-                    Msg(labelGksj, panelGksj, "000.0", false);
+                    Msg(labelGksj, panelGksj, "000.0", true);
                     Msg(labelCO, panelCO, "0.0", false);
                     Msg(labelCO2, panelCO2, "0.0", false);
                     Msg(labelO2, panelO2, "0.0", false);
                     Msg(labelHC, panelHC, "0", false);
                     Msg(labelNO, panelNO, "0", false);
                     Msg(labelLL, panelLL, "0.0", false);
-                    Msg(labelLXCC, panelLXCC, "0.0", false);
-                    Msg(labelLJCC, panelLJCC, "0.0", false);
+                    Msg(labelLXCC, panelLXCC, "0.0", true);
+                    Msg(labelLJCC, panelLJCC, "0.0", true);
                     textBoxSDSD.Enabled = false;
                     textBoxSDWD.Enabled = false;
                     if (igbt != null)
                     {
                         igbt.Force_Zeroing();
                         Thread.Sleep(500);
-                        Msg(label_message, panel_msg, "检测开始,举升下降", false);
+                        Msg(label_message, panel_msg, "检测开始,举升下降", true);
                         ts2 = "举升下降...";
                         igbt.Lifter_Down();     //举升下降
                         Thread.Sleep(5000);

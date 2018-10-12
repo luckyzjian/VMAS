@@ -15,7 +15,7 @@ namespace zyjsTest
     public partial class Zyjs_Btg : Form
     {
         carinfor.carInidata carbj = new carInidata();
-        equipmentConfigInfdata equipconfig = new equipmentConfigInfdata();
+        public static equipmentConfigInfdata equipconfig = new equipmentConfigInfdata();
         BtgConfigInfdata btgconfig = new BtgConfigInfdata();
         statusconfigIni statusconfigini = new statusconfigIni();
         CSVcontrol.CSVwriter csvwriter = new CSVcontrol.CSVwriter();
@@ -199,7 +199,7 @@ namespace zyjsTest
             {
                 jhdszs = 1800;
             }
-            if (btgconfig.jhzsgcjk)
+            if (btgconfig.jhzsgcjk||equipconfig.useJHJK)
             {
                 ddsj = 10;
                 dyzs = jhdszs;
@@ -245,6 +245,11 @@ namespace zyjsTest
             {
                 Thread.Sleep(3000);
                 button1_Click(sender, e);
+            }
+            if(equipconfig.useJHSCREEN)
+            {
+                groupBox1.Visible = false;
+                groupBox2.Visible = false;
             }
         }
 
@@ -3156,6 +3161,20 @@ namespace zyjsTest
                     gc_time = nowtime;
                     if (equipconfig.DATASECONDS_TYPE == "安车通用联网")//如果为安车通用联网，在此取值，以保证子程序过程数据 与安车前置数据一致
                     {
+                        if (isUseRotater)
+                        {
+                            if (rpm5300 != null)
+                            {
+                                ZS = (int)rpm5300.ZS;
+                            }
+                            else if (vmt_2000 != null)
+                            {
+                                if (vmt_2000.readRotateSpeed())
+                                    ZS = vmt_2000.zs;
+                            }
+                        }
+                        Msg(label_zstext, panel_zstext, ZS.ToString(), false);
+                        arcScaleComponent3.Value = ZS;
                         if (isReadRealTime)
                         {
                             if (equipconfig.Ydjxh.ToLower() == "cdf5000")
@@ -3168,16 +3187,16 @@ namespace zyjsTest
                                 {
                                     if (equipconfig.IsOldMqy200)
                                     {
-                                        smoke = flb_100.get_DirectData(0.01f);
+                                        smoke = flb_100.get_DirectData();
                                     }
                                     else
                                     {
-                                        smoke = flb_100.get_Data(0.01f);
+                                        smoke = flb_100.get_Data();
                                     }
                                 }
                                 else
                                 {
-                                    smoke = flb_100.get_StableData(0.01f);
+                                    smoke = flb_100.get_StableData();
                                 }
                             }
                             if (!isUseRotater)
@@ -3192,70 +3211,101 @@ namespace zyjsTest
                                 Smoke = smoke.K;
                             }
                             Msg(labelK, panelK, Smoke.ToString("0.00"), false);
-                        }
-                        if (isUseRotater)
-                        {
-                            if (rpm5300 != null)
-                            {
-                                ZS = (int)rpm5300.ZS;
-                            }
-                            else if (vmt_2000 != null)
-                            {
-                                if (vmt_2000.readRotateSpeed())
-                                    ZS = vmt_2000.zs;
-                            }
-                        }
-                        if (nhsjz != null && btgconfig.Ywj == "南华附件")
-                        {
-                            if (nhsjz.readData())
-                                yw_now = nhsjz.yw;
-                        }
-                        else
-                        {
-                            yw_now = smoke.Yw;
-                        }
-                        Msg(label_zstext, panel_zstext, ZS.ToString(), false);
-                        arcScaleComponent3.Value = ZS;
-                    }
-                    if (GKSJ == 10230) GKSJ = 0;
-                    Sxnblist[GKSJ] = sxnb.ToString("0");//时序类别
-                    Qcsxlist[GKSJ] = nowtime.ToString("yyyy-MM-dd HH:mm:ss.fff");//全程时序
-                    Zslist[GKSJ] = ZS;
-                    Klist[GKSJ] = Smoke;
-                    Nslist[GKSJ] = smoke.Ns;
-                    Ywlist[GKSJ] = yw_now;
-                    wdlist[GKSJ] = (float)wd;
-                    sdlist[GKSJ] = (float)sd;
-                    dqylist[GKSJ] = (float)dqy;
 
-                    if (caculateStart)
-                    {
-                        if (Klist[GKSJ] > maxvalue)
-                            maxvalue = Klist[GKSJ];
-                        if (Zslist[GKSJ] > maxzsvalue)
-                            maxzsvalue = (int)(Zslist[GKSJ]);
-                        if (Ywlist[GKSJ] > maxywvalue)
-                            maxywvalue = Ywlist[GKSJ];
-                    }
-                    //else
-                    //{
-                    //    Klist[GKSJ] = 0;
-                    //    Nslist[GKSJ] =0;
-                    //}
-                    //Ywlist[GKSJ] = 0;
-                    if (GKSJ >= 1)
-                    {
-                        if (Sxnblist[GKSJ] != Sxnblist[GKSJ - 1])//时序类别改变，表示进行新的阶段，采样时序需要重新计时
-                        {
-                            cysx = 1;
+                            if (nhsjz != null && btgconfig.Ywj == "南华附件")
+                            {
+                                if (nhsjz.readData())
+                                    yw_now = nhsjz.yw;
+                            }
+                            else
+                            {
+                                yw_now = smoke.Yw;
+                            }
+
+                            if (GKSJ == 10230) GKSJ = 0;
+                            Sxnblist[GKSJ] = sxnb.ToString("0");//时序类别
+                            Qcsxlist[GKSJ] = nowtime.ToString("yyyy-MM-dd HH:mm:ss.fff");//全程时序
+                            Zslist[GKSJ] = ZS;
+                            Klist[GKSJ] = Smoke;
+                            Nslist[GKSJ] = smoke.Ns;
+                            Ywlist[GKSJ] = yw_now;
+                            wdlist[GKSJ] = (float)wd;
+                            sdlist[GKSJ] = (float)sd;
+                            dqylist[GKSJ] = (float)dqy;
+
+                            if (caculateStart)
+                            {
+                                if (Klist[GKSJ] > maxvalue)
+                                    maxvalue = Klist[GKSJ];
+                                if (Zslist[GKSJ] > maxzsvalue)
+                                    maxzsvalue = (int)(Zslist[GKSJ]);
+                                if (Ywlist[GKSJ] > maxywvalue)
+                                    maxywvalue = Ywlist[GKSJ];
+                            }
+                            //else
+                            //{
+                            //    Klist[GKSJ] = 0;
+                            //    Nslist[GKSJ] =0;
+                            //}
+                            //Ywlist[GKSJ] = 0;
+                            if (GKSJ >= 1)
+                            {
+                                if (Sxnblist[GKSJ] != Sxnblist[GKSJ - 1])//时序类别改变，表示进行新的阶段，采样时序需要重新计时
+                                {
+                                    cysx = 1;
+                                }
+                                else
+                                {
+                                    cysx++;
+                                }
+                            }
+                            Cysxlist[GKSJ] = GKSJ;
+                            GKSJ++;//工况时间加1
                         }
-                        else
-                        {
-                            cysx++;
-                        }
+
                     }
-                    Cysxlist[GKSJ] = GKSJ;
-                    GKSJ++;//工况时间加1
+                    else
+                    {
+                        if (GKSJ == 10230) GKSJ = 0;
+                        Sxnblist[GKSJ] = sxnb.ToString("0");//时序类别
+                        Qcsxlist[GKSJ] = nowtime.ToString("yyyy-MM-dd HH:mm:ss.fff");//全程时序
+                        Zslist[GKSJ] = ZS;
+                        Klist[GKSJ] = Smoke;
+                        Nslist[GKSJ] = smoke.Ns;
+                        Ywlist[GKSJ] = yw_now;
+                        wdlist[GKSJ] = (float)wd;
+                        sdlist[GKSJ] = (float)sd;
+                        dqylist[GKSJ] = (float)dqy;
+
+                        if (caculateStart)
+                        {
+                            if (Klist[GKSJ] > maxvalue)
+                                maxvalue = Klist[GKSJ];
+                            if (Zslist[GKSJ] > maxzsvalue)
+                                maxzsvalue = (int)(Zslist[GKSJ]);
+                            if (Ywlist[GKSJ] > maxywvalue)
+                                maxywvalue = Ywlist[GKSJ];
+                        }
+                        //else
+                        //{
+                        //    Klist[GKSJ] = 0;
+                        //    Nslist[GKSJ] =0;
+                        //}
+                        //Ywlist[GKSJ] = 0;
+                        if (GKSJ >= 1)
+                        {
+                            if (Sxnblist[GKSJ] != Sxnblist[GKSJ - 1])//时序类别改变，表示进行新的阶段，采样时序需要重新计时
+                            {
+                                cysx = 1;
+                            }
+                            else
+                            {
+                                cysx++;
+                            }
+                        }
+                        Cysxlist[GKSJ] = GKSJ;
+                        GKSJ++;//工况时间加1
+                    }
                 }
                 TimeSpan timespan = nowtime - startTime;
                 if(equipconfig.DATASECONDS_TYPE=="安徽")//安徽的过程数据，自由加速0.1s存一组数

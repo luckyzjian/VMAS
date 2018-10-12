@@ -1427,7 +1427,7 @@ namespace 设备自检
                                     Ref_Control_Text(textBoxYDJZERO, ydjN.ToString("0.0"));
                                     Msg_Toollabel(toolStripLabel2, "烟度计零点检查完毕");
                                     ydjcheckdata.NZero = ydjN;
-                                    if (ydjcheckdata.NZero <= 0.1)
+                                    if (ydjcheckdata.NZero < 0.2)
                                     {
                                         ydjcheckdata.ZeroResult = "1";
                                         Ref_Control_Text(labelYDJZERO, "√");
@@ -1595,7 +1595,7 @@ namespace 设备自检
                                     Ref_Control_Text(textBoxYDJZERO, ydjN.ToString("0.0"));
                                     Msg_Toollabel(toolStripLabel2, "烟度计零点检查完毕");
                                     ydjcheckdata.NZero = ydjN;
-                                    if (ydjcheckdata.NZero <= 0.1)
+                                    if (ydjcheckdata.NZero < 0.2)
                                     {
                                         ydjcheckdata.ZeroResult = "1";
                                         Ref_Control_Text(labelYDJZERO, "√");

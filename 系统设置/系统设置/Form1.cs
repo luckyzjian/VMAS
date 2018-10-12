@@ -302,6 +302,7 @@ namespace 系统设置
             checkBoxUseWeightWCF.Checked=equipconfig.useWeightWCF ;
             textBoxWeightWCF.Text=equipconfig.WeightWCFaddress;
             checkBoxJHJK.Checked = equipconfig.useJHJK;
+            checkBoxJH_SCREEN.Checked = equipconfig.useJHSCREEN;
             textBoxJHLBGLYJZ.Text=equipconfig.JHLBGLB.ToString("0");
             textBoxJHLAMBDAMIN.Text=equipconfig.JHLAMBDAMIN.ToString("0.00");
             textBoxJHLAMBDAMAX.Text=equipconfig.JHLAMBDAMAX.ToString("0.00");
@@ -762,6 +763,7 @@ namespace 系统设置
             equipconfig.useWeightWCF = checkBoxUseWeightWCF.Checked;
             equipconfig.WeightWCFaddress = textBoxWeightWCF.Text;
             equipconfig.useJHJK = checkBoxJHJK.Checked;
+            equipconfig.useJHSCREEN = checkBoxJH_SCREEN.Checked;
             equipconfig.JHLBGLB = double.Parse(textBoxJHLBGLYJZ.Text);
             equipconfig.JHLAMBDAMIN = double.Parse(textBoxJHLAMBDAMIN.Text);
             equipconfig.JHLAMBDAMAX = double.Parse(textBoxJHLAMBDAMAX.Text);

@@ -31,6 +31,8 @@ namespace ASMtest
             pictureBoxTrue.Visible = false;
             Msg(labelTs1, panelts1, ASM.ts1, false);
             Msg(labelts2, panelTs2, ASM.ts2, false);
+            if (!ASM.asmconfig.IfDisplayData)
+                panelRealData.Visible = false;
             timer1.Start();
             
         }
@@ -72,7 +74,6 @@ namespace ASMtest
         {
             Msg(labelTs1, panelts1,ASM.ts1, false);
             Msg(labelts2, panelTs2, ASM.ts2, false);
-            Msg(labelTS3, panelTS3, ASM.ts3, false);
             if (ASM.igbt != null)
             {
                 float speedNow=ASM.igbt.Speed;
@@ -132,6 +133,17 @@ namespace ASMtest
                 {
                     asm2540 = false;
                 }
+            }
+            if (ASM.asmconfig.IfDisplayData)
+            {
+                Msg(labelWD, panelWD, ASM.WD.ToString("0.0"), false);
+                Msg(labelSD, panelSD, ASM.SD.ToString("0.0"), false);
+                Msg(labelDQY, panelDQY, ASM.DQY.ToString("0.0"), false);
+                Msg(labelO2, panelO2, ASM.Vmas_Exhaust_Now.O2.ToString("0.00"), false);
+                Msg(labelCO2, panelCO2, ASM.Vmas_Exhaust_Now.CO2.ToString("0.00"), false);
+                Msg(labelCO, panelCO, ASM.Vmas_Exhaust_Now.CO.ToString("0.00"), false);
+                Msg(labelHC, panelHC, ASM.Vmas_Exhaust_Now.HC.ToString("0"), false);
+                Msg(labelNO, panelNO, ASM.Vmas_Exhaust_Now.NO.ToString("0"), false);
             }
             if (ASM.driverformmin) this.Close();
         }

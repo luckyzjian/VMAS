@@ -21,7 +21,7 @@ namespace vmasDetect
         {
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
-            panelData.Parent = panel3;
+            //panelData.Parent = panel3;
             pictureBoxTrack.Location = new Point(0, 0);
             pictureBoxRight.Parent = pictureBoxTrack;
             pictureBoxWrong.Parent = pictureBoxTrack;
@@ -31,6 +31,8 @@ namespace vmasDetect
             pictureBoxWrong.Visible = false;            
             Msg(labelTs1, panelTs1, VMAS.ts1, false);
             Msg(labelts2, panelTs2, VMAS.ts2, false);
+            if (VMAS.equipconfig.useJHSCREEN)
+                panel4.Visible = false;
             timer1.Start();            
         }
         /// <summary>

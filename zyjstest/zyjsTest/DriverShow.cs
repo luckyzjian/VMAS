@@ -26,6 +26,18 @@ namespace zyjsTest
 
             Msg(labelTs1, panelts1, Zyjs_Btg.ts1, false);
             Msg(labelts2, panelTs2, Zyjs_Btg.ts2, false);
+            if(Zyjs_Btg.equipconfig.useJHSCREEN)
+            {
+                panel9.Visible = false;
+                panel10.Visible = false;
+                panel11.Visible = false;
+                panel12.Visible = false;
+
+                paneldata1.Visible = false;
+                paneldata2.Visible = false;
+                paneldata3.Visible = false;
+                paneldata4.Visible = false;
+            }
             timer1.Start();
             
         }

@@ -22,6 +22,11 @@ namespace lugdowm
         {
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
+            if(Jzjs.equipconfig.useJHSCREEN)
+            {
+                panel5.Visible = false;
+                panel6.Visible = false;
+            }
             Msg(labelTs1, panelts1, Jzjs.ts1, false);
             Msg(labelts2, panelTs2, Jzjs.ts2, false);
             Init_Chart();
@@ -113,20 +118,26 @@ namespace lugdowm
                     {
 
                         chart1.Series["CS"].Points.AddY( speedNow);
-                        chart1.Series["FDJZS"].Points.AddY( Jzjs.ZS);
-                        chart2.Series["XSGL"].Points.AddY( powerNow);
-                        chart2.Series["GXSXS"].Points.AddY( Jzjs.Smoke); 
                         chart1.Series["CS"].Points.RemoveAt(0);
-                        chart1.Series["FDJZS"].Points.RemoveAt(0);
-                        chart2.Series["XSGL"].Points.RemoveAt(0);
-                        chart2.Series["GXSXS"].Points.RemoveAt(0);
+                        if (!Jzjs.equipconfig.useJHSCREEN)
+                        {
+                            chart1.Series["FDJZS"].Points.AddY(Jzjs.ZS);
+                            chart2.Series["XSGL"].Points.AddY(powerNow);
+                            chart2.Series["GXSXS"].Points.AddY(Jzjs.Smoke);
+                            chart1.Series["FDJZS"].Points.RemoveAt(0);
+                            chart2.Series["XSGL"].Points.RemoveAt(0);
+                            chart2.Series["GXSXS"].Points.RemoveAt(0);
+                        }
                     }
                     else
                     {
                         chart1.Series["CS"].Points.AddY( speedNow);
-                        chart1.Series["FDJZS"].Points.AddY( Jzjs.ZS);
-                        chart2.Series["XSGL"].Points.AddY( powerNow);
-                        chart2.Series["GXSXS"].Points.AddY( Jzjs.Smoke);
+                        if (!Jzjs.equipconfig.useJHSCREEN)
+                        {
+                            chart1.Series["FDJZS"].Points.AddY(Jzjs.ZS);
+                            chart2.Series["XSGL"].Points.AddY(powerNow);
+                            chart2.Series["GXSXS"].Points.AddY(Jzjs.Smoke);
+                        }
                         timerCount = timerCount + 0.1;
                     }
                 }

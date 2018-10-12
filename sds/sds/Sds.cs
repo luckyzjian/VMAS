@@ -15,9 +15,9 @@ namespace sds
     public partial class Sds : Form
     {
         carinfor.carInidata carbj = new carInidata();
-        equipmentConfigInfdata equipconfig = new equipmentConfigInfdata();
+        public static equipmentConfigInfdata equipconfig = new equipmentConfigInfdata();
         SdsConfigInfdata sdsconfig = new SdsConfigInfdata();
-        VmasConfigInfdata vmasconfig = new VmasConfigInfdata();
+        public static VmasConfigInfdata vmasconfig = new VmasConfigInfdata();
         carIni carini = new carIni();
         configIni configini = new configIni();
         CSVcontrol.CSVwriter csvwriter = new CSVcontrol.CSVwriter();
@@ -108,22 +108,22 @@ namespace sds
         DataTable Jccl = null;                                                                  //检测车辆信息
         public string Cllx = "";                                                                //车辆类型
         public string CLSYQK = "";                                                              //车辆使用情况
-        public double WD = 26;                                                                  //温度
-        public double SD = 75;                                                                  //相对湿度
-        public double DQY = 100;                                                                //大气压
+        public double WD = 0;                                                                  //温度
+        public double SD = 0;                                                                  //相对湿度
+        public double DQY = 0;                                                                //大气压
 
         public double[] temperatureEveryMonth = { -4, 1, 9, 17, 25, 29, 30, 28, 23, 16, 6, -2 };
-        private float wd = 26f;
-        private float sd = 20f;
-        private float dqy = 100f;
+        public static  float wd = 0f;
+        public static  float sd = 0f;
+        public static  float dqy = 0f;
         private float yw = 0f;
         public static float Zs = 0;
         private float yw_now = 0;
-        public float hc_ld = 0;
-        public float co_ld = 0;
-        public float no_ld = 0;
-        public float o2_ld = 0;
-        public float co2_ld = 0;
+        public static  float hc_ld = 0;
+        public static  float co_ld = 0;
+        public static  float no_ld = 0;
+        public static  float o2_ld = 0;
+        public static  float co2_ld = 0;
         public static bool sds_status = false;
         public Exhaust.Fla502_data Vmas_Exhaust_Now = new Exhaust.Fla502_data();
         public Exhaust.Fla502_temp_data Vmas_Exhaust_tempNow = new Exhaust.Fla502_temp_data();
@@ -275,6 +275,11 @@ namespace sds
                 fla_502.lockKeyboard();
                 Thread.Sleep(100);
                 fla_502.StopBlowback();
+            }
+            if(equipconfig.useJHSCREEN)
+            {
+                groupBox1.Visible = false;
+                groupBox2.Visible = false;
             }
         }
 
@@ -2611,7 +2616,7 @@ namespace sds
         }
         int iSeed = 10;
         Random ro = new Random(10);
-        float λ_value_temp = 1;
+        public static float λ_value_temp = 0;
         Random ran = new Random((int)(DateTime.Now.Ticks & 0xffffffffL) | (int)(DateTime.Now.Ticks >> 32));
         private void getRealData()
         {

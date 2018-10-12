@@ -522,6 +522,7 @@
             this.comboBoxDynZsj = new System.Windows.Forms.ComboBox();
             this.panel32 = new System.Windows.Forms.Panel();
             this.label131 = new System.Windows.Forms.Label();
+            this.checkBoxJH_SCREEN = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -2927,6 +2928,7 @@
             // 
             // tabControlPanel2
             // 
+            this.tabControlPanel2.Controls.Add(this.checkBoxJH_SCREEN);
             this.tabControlPanel2.Controls.Add(this.label186);
             this.tabControlPanel2.Controls.Add(this.comboBoxDataSecondsType);
             this.tabControlPanel2.Controls.Add(this.textBoxJHLAMBDAMAX);
@@ -3113,7 +3115,7 @@
             this.checkBoxJHJK.AutoSize = true;
             this.checkBoxJHJK.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxJHJK.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxJHJK.Location = new System.Drawing.Point(9, 260);
+            this.checkBoxJHJK.Location = new System.Drawing.Point(7, 260);
             this.checkBoxJHJK.Name = "checkBoxJHJK";
             this.checkBoxJHJK.Size = new System.Drawing.Size(171, 20);
             this.checkBoxJHJK.TabIndex = 168;
@@ -6596,13 +6598,24 @@
             this.label131.TabIndex = 107;
             this.label131.Text = "转速计设置";
             // 
+            // checkBoxJH_SCREEN
+            // 
+            this.checkBoxJH_SCREEN.AutoSize = true;
+            this.checkBoxJH_SCREEN.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxJH_SCREEN.Font = new System.Drawing.Font("宋体", 12F);
+            this.checkBoxJH_SCREEN.Location = new System.Drawing.Point(7, 286);
+            this.checkBoxJH_SCREEN.Name = "checkBoxJH_SCREEN";
+            this.checkBoxJH_SCREEN.Size = new System.Drawing.Size(251, 20);
+            this.checkBoxJH_SCREEN.TabIndex = 178;
+            this.checkBoxJH_SCREEN.Text = "金华市屏蔽界面相关数据及提示";
+            this.checkBoxJH_SCREEN.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1064, 602);
             this.Controls.Add(this.tabControl1);
-            this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -7222,6 +7235,7 @@
         private System.Windows.Forms.CheckBox checkBoxLAMBDA_LOW;
         private System.Windows.Forms.CheckBox checkBoxLAMBDA_HIGH;
         private System.Windows.Forms.CheckBox checkBoxDynManulKey;
+        private System.Windows.Forms.CheckBox checkBoxJH_SCREEN;
     }
 }
 

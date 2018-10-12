@@ -92,6 +92,8 @@
             this.panel_chujiantishi = new System.Windows.Forms.Panel();
             this.label_chujiantishi = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.ledNumberDCF = new LEDNumber.LEDNumber();
+            this.label12 = new System.Windows.Forms.Label();
             this.ledNumberGS_E = new LEDNumber.LEDNumber();
             this.ledNumberGX_N = new LEDNumber.LEDNumber();
             this.ledNumberGX_H = new LEDNumber.LEDNumber();
@@ -134,8 +136,6 @@
             this.arcScaleNeedleComponent7 = new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleNeedleComponent();
             this.arcScaleComponent11 = new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleComponent();
             this.Msg_cs = new System.Windows.Forms.Label();
-            this.ledNumberDCF = new LEDNumber.LEDNumber();
-            this.label12 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -842,10 +842,34 @@
             this.panel8.Controls.Add(this.label22);
             this.panel8.Controls.Add(this.label24);
             this.panel8.Controls.Add(this.label13);
-            this.panel8.Location = new System.Drawing.Point(203, 5);
+            this.panel8.Location = new System.Drawing.Point(214, 7);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(930, 109);
             this.panel8.TabIndex = 34;
+            // 
+            // ledNumberDCF
+            // 
+            this.ledNumberDCF.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ledNumberDCF.BackColor = System.Drawing.Color.Black;
+            this.ledNumberDCF.LEDShadowColor = System.Drawing.Color.Black;
+            this.ledNumberDCF.LEDText = "0.0";
+            this.ledNumberDCF.Location = new System.Drawing.Point(331, 19);
+            this.ledNumberDCF.Name = "ledNumberDCF";
+            this.ledNumberDCF.Size = new System.Drawing.Size(119, 36);
+            this.ledNumberDCF.TabIndex = 43;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("微软雅黑", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(246, 16);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(65, 38);
+            this.label12.TabIndex = 42;
+            this.label12.Text = "   功率\r\n补偿系数";
             // 
             // ledNumberGS_E
             // 
@@ -1221,6 +1245,7 @@
             // 
             // arcScaleBackgroundLayerComponent9
             // 
+            this.arcScaleBackgroundLayerComponent9.AcceptOrder = -1000;
             this.arcScaleBackgroundLayerComponent9.ArcScale = this.arcScaleComponentPower;
             this.arcScaleBackgroundLayerComponent9.Name = "arcScaleBackgroundLayerComponent7";
             this.arcScaleBackgroundLayerComponent9.ShapeType = DevExpress.XtraGauges.Core.Model.BackgroundLayerShapeType.CircularFull_Style5;
@@ -1228,6 +1253,7 @@
             // 
             // arcScaleComponentPower
             // 
+            this.arcScaleComponentPower.AcceptOrder = 0;
             this.arcScaleComponentPower.AppearanceTickmarkText.Font = new System.Drawing.Font("Tahoma", 14F);
             this.arcScaleComponentPower.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:LightGrey");
             this.arcScaleComponentPower.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
@@ -1250,6 +1276,7 @@
             // 
             // arcScaleBackgroundLayerComponent10
             // 
+            this.arcScaleBackgroundLayerComponent10.AcceptOrder = -999;
             this.arcScaleBackgroundLayerComponent10.ArcScale = this.arcScaleComponentPower;
             this.arcScaleBackgroundLayerComponent10.Name = "arcScaleBackgroundLayerComponent10";
             this.arcScaleBackgroundLayerComponent10.ShapeType = DevExpress.XtraGauges.Core.Model.BackgroundLayerShapeType.CircularFull_Style5_1;
@@ -1258,6 +1285,7 @@
             // 
             // arcScaleNeedleComponent8
             // 
+            this.arcScaleNeedleComponent8.AcceptOrder = 50;
             this.arcScaleNeedleComponent8.ArcScale = this.arcScaleComponentPower;
             this.arcScaleNeedleComponent8.Name = "arcScaleNeedleComponent7";
             this.arcScaleNeedleComponent8.ShapeType = DevExpress.XtraGauges.Core.Model.NeedleShapeType.CircularFull_Style5;
@@ -1266,6 +1294,7 @@
             // 
             // arcScaleComponent13
             // 
+            this.arcScaleComponent13.AcceptOrder = 1;
             this.arcScaleComponent13.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Silver");
             this.arcScaleComponent13.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
             this.arcScaleComponent13.EndAngle = -30F;
@@ -1286,6 +1315,7 @@
             // 
             // arcScaleBackgroundLayerComponent6
             // 
+            this.arcScaleBackgroundLayerComponent6.AcceptOrder = -1000;
             this.arcScaleBackgroundLayerComponent6.ArcScale = this.arcScaleComponentSpeed;
             this.arcScaleBackgroundLayerComponent6.Name = "bg1";
             this.arcScaleBackgroundLayerComponent6.ShapeType = DevExpress.XtraGauges.Core.Model.BackgroundLayerShapeType.CircularFull_Style3;
@@ -1293,6 +1323,7 @@
             // 
             // arcScaleComponentSpeed
             // 
+            this.arcScaleComponentSpeed.AcceptOrder = 0;
             this.arcScaleComponentSpeed.AppearanceTickmarkText.Font = new System.Drawing.Font("Tahoma", 12F);
             this.arcScaleComponentSpeed.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:#FF8000");
             this.arcScaleComponentSpeed.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
@@ -1311,6 +1342,7 @@
             // 
             // arcScaleNeedleComponent6
             // 
+            this.arcScaleNeedleComponent6.AcceptOrder = 50;
             this.arcScaleNeedleComponent6.ArcScale = this.arcScaleComponentSpeed;
             this.arcScaleNeedleComponent6.EndOffset = -8F;
             this.arcScaleNeedleComponent6.Name = "needle1";
@@ -1319,6 +1351,7 @@
             // 
             // arcScaleSpindleCapComponent2
             // 
+            this.arcScaleSpindleCapComponent2.AcceptOrder = 100;
             this.arcScaleSpindleCapComponent2.ArcScale = this.arcScaleComponentSpeed;
             this.arcScaleSpindleCapComponent2.Name = "cap1";
             this.arcScaleSpindleCapComponent2.ShapeType = DevExpress.XtraGauges.Core.Model.SpindleCapShapeType.CircularFull_Style3;
@@ -1326,6 +1359,7 @@
             // 
             // arcScaleBackgroundLayerComponent7
             // 
+            this.arcScaleBackgroundLayerComponent7.AcceptOrder = -1000;
             this.arcScaleBackgroundLayerComponent7.ArcScale = this.arcScaleComponentForce;
             this.arcScaleBackgroundLayerComponent7.Name = "arcScaleBackgroundLayerComponent7";
             this.arcScaleBackgroundLayerComponent7.ShapeType = DevExpress.XtraGauges.Core.Model.BackgroundLayerShapeType.CircularFull_Style5;
@@ -1333,6 +1367,7 @@
             // 
             // arcScaleComponentForce
             // 
+            this.arcScaleComponentForce.AcceptOrder = 0;
             this.arcScaleComponentForce.AppearanceTickmarkText.Font = new System.Drawing.Font("Tahoma", 14F);
             this.arcScaleComponentForce.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:LightGrey");
             this.arcScaleComponentForce.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
@@ -1355,6 +1390,7 @@
             // 
             // arcScaleBackgroundLayerComponent8
             // 
+            this.arcScaleBackgroundLayerComponent8.AcceptOrder = -999;
             this.arcScaleBackgroundLayerComponent8.ArcScale = this.arcScaleComponentForce;
             this.arcScaleBackgroundLayerComponent8.Name = "arcScaleBackgroundLayerComponent10";
             this.arcScaleBackgroundLayerComponent8.ShapeType = DevExpress.XtraGauges.Core.Model.BackgroundLayerShapeType.CircularFull_Style5_1;
@@ -1363,6 +1399,7 @@
             // 
             // arcScaleNeedleComponent7
             // 
+            this.arcScaleNeedleComponent7.AcceptOrder = 50;
             this.arcScaleNeedleComponent7.ArcScale = this.arcScaleComponentForce;
             this.arcScaleNeedleComponent7.Name = "arcScaleNeedleComponent7";
             this.arcScaleNeedleComponent7.ShapeType = DevExpress.XtraGauges.Core.Model.NeedleShapeType.CircularFull_Style5;
@@ -1371,6 +1408,7 @@
             // 
             // arcScaleComponent11
             // 
+            this.arcScaleComponent11.AcceptOrder = 1;
             this.arcScaleComponent11.AppearanceTickmarkText.TextBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Silver");
             this.arcScaleComponent11.Center = new DevExpress.XtraGauges.Core.Base.PointF2D(125F, 125F);
             this.arcScaleComponent11.EndAngle = -30F;
@@ -1400,30 +1438,6 @@
             this.Msg_cs.Size = new System.Drawing.Size(64, 41);
             this.Msg_cs.TabIndex = 0;
             this.Msg_cs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ledNumberDCF
-            // 
-            this.ledNumberDCF.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ledNumberDCF.BackColor = System.Drawing.Color.Black;
-            this.ledNumberDCF.LEDShadowColor = System.Drawing.Color.Black;
-            this.ledNumberDCF.LEDText = "0.0";
-            this.ledNumberDCF.Location = new System.Drawing.Point(331, 19);
-            this.ledNumberDCF.Name = "ledNumberDCF";
-            this.ledNumberDCF.Size = new System.Drawing.Size(119, 36);
-            this.ledNumberDCF.TabIndex = 43;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("微软雅黑", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(246, 16);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(65, 38);
-            this.label12.TabIndex = 42;
-            this.label12.Text = "   功率\r\n补偿系数";
             // 
             // Jzjs
             // 

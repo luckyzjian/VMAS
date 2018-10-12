@@ -34,6 +34,10 @@ namespace sds
             pictureBoxTrue.Visible = false;
             Msg(labelTs1, panelts1, Sds.ts1, false);
             Msg(labelts2, panelTs2, Sds.ts2, false);
+            if(!Sds.vmasconfig.IfDisplayData)
+            {
+                panelRealData.Visible = false;
+            }
             timer1.Start();
             
         }
@@ -75,7 +79,7 @@ namespace sds
         {
             Msg(labelTs1, panelts1,Sds.ts1, false);
             Msg(labelts2, panelTs2, Sds.ts2, false);
-            Msg(labelTS3, panelTS3, Sds.ts3, false);
+            //Msg(labelTS3, panelTS3, Sds.ts3, false);
             if (Sds.sds_status)
             {
                 int zs=(int)Sds.Zs;
@@ -126,6 +130,18 @@ namespace sds
                     pictureBoxTrue.Location = new Point(1274, 30);
                     pictureBoxFault.Location = new Point(1274, 30);
                 }
+            }
+
+            if (Sds.vmasconfig.IfDisplayData)
+            {
+                Msg(labelWD, panelWD, Sds.wd.ToString("0.0"), false);
+                Msg(labelSD, panelSD, Sds.sd.ToString("0.0"), false);
+                Msg(labelDQY, panelDQY, Sds.dqy.ToString("0.0"), false);
+                Msg(labelO2, panelO2, Sds.o2_ld.ToString("0.00"), false);
+                Msg(labelCO2, panelCO2, Sds.co2_ld.ToString("0.00"), false);
+                Msg(labelCO, panelCO, Sds.co_ld.ToString("0.00"), false);
+                Msg(labelHC, panelHC, Sds.hc_ld.ToString("0"), false);
+                Msg(labelNO, panelNO, Sds.λ_value_temp.ToString("0.00"), false);
             }
             if (Sds.driverformmin) this.Close();
         }

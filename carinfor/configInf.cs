@@ -436,6 +436,7 @@ namespace carinfor
         public string NOxCk { set; get; }
         public string NOxCkpz { set; get; }
         public bool useJHJK { set; get; }
+        public bool useJHSCREEN { set; get; }
         public double JHLBGLB { set; get; }
         public double JHLAMBDAMIN { set; get; }
         public double JHLAMBDAMAX { set; get; }
@@ -1924,6 +1925,11 @@ namespace carinfor
                 configinidata.useJHJK = true;
             else
                 configinidata.useJHJK = false;
+            ini.INIIO.GetPrivateProfileString("配置参数", "金华屏蔽显示", "N", temp, 2048, startUpPath + "/detectConfig.ini");
+            if (temp.ToString().Trim() == "Y")
+                configinidata.useJHSCREEN = true;
+            else
+                configinidata.useJHSCREEN = false;
             ini.INIIO.GetPrivateProfileString("配置参数", "金华轮边功率预警值", "80", temp, 2048, startUpPath + "/detectConfig.ini");          //读配置文件（段名，字段，默认值，保存的strbuilder，大小，路径）
             try
             {
@@ -2062,6 +2068,7 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("配置参数", "LEDTJPH", equipconfig.LEDTJPH.ToString(), startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("配置参数", "显示评价结果", equipconfig.displayJudge ? "Y" : "N", startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("配置参数", "使用金华监控选项", equipconfig.useJHJK ? "Y" : "N", startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("配置参数", "金华屏蔽显示", equipconfig.useJHSCREEN ? "Y" : "N", startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("配置参数", "金华轮边功率预警值", equipconfig.JHLBGLB.ToString(), startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("配置参数", "金华过量空气系数最小值", equipconfig.JHLAMBDAMIN.ToString(), startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("配置参数", "金华过量空气系数最大值", equipconfig.JHLAMBDAMAX.ToString(), startUpPath + "/detectConfig.ini");
