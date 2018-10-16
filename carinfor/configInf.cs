@@ -446,6 +446,39 @@ namespace carinfor
         public bool IsUseNhSjz { set; get; }
         public string NhSjz_Com { set; get; }
         public string NhSjz_ComString { set; get; }
+
+        public int BackGroundTestTime
+        {
+            get
+            {
+                return _BackGroundTestTime;
+            }
+
+            set
+            {
+                if (value < 3) _BackGroundTestTime = 3;
+                else if (value > 15) _BackGroundTestTime = 15;
+                else  _BackGroundTestTime = value;
+            }
+        }
+
+        public int CanliHCTestTime
+        {
+            get
+            {
+                return _CanliHCTestTime;
+            }
+
+            set
+            {
+                if (value < 3) _CanliHCTestTime = 3;
+                else if (value > 15) _CanliHCTestTime = 15;
+                else _CanliHCTestTime = value;
+            }
+        }
+
+        private int _BackGroundTestTime;
+        private int _CanliHCTestTime;
     }
     public class thaxs
     {
@@ -1137,6 +1170,10 @@ namespace carinfor
         public double ydjk_glsm_value { set; get; }
         public bool isYdjk_cl { set; get; }
         public double ydjk_cl_value { set; get; }
+        /// <summary>
+        /// 0-最大车速点 1-空档最大转速点
+        /// </summary>
+        public int maxRPMStyle { set; get; }
     }
     public class selfCheckItem
     {
@@ -1982,6 +2019,24 @@ namespace carinfor
             configinidata.NhSjz_Com = temp.ToString();
             ini.INIIO.GetPrivateProfileString("配置参数", "南华司机助串口配置", "9600,N,8,1", temp, 2048, startUpPath + "/detectConfig.ini");
             configinidata.NhSjz_ComString = temp.ToString();
+            ini.INIIO.GetPrivateProfileString("配置参数", "背景测定时间", "15", temp, 2048, startUpPath + "/detectConfig.ini");          //读配置文件（段名，字段，默认值，保存的strbuilder，大小，路径）
+            try
+            {
+                configinidata.BackGroundTestTime = int.Parse(temp.ToString());
+            }
+            catch
+            {
+                configinidata.BackGroundTestTime = 15;
+            }
+            ini.INIIO.GetPrivateProfileString("配置参数", "HC残留测定时间", "15", temp, 2048, startUpPath + "/detectConfig.ini");          //读配置文件（段名，字段，默认值，保存的strbuilder，大小，路径）
+            try
+            {
+                configinidata.CanliHCTestTime = int.Parse(temp.ToString());
+            }
+            catch
+            {
+                configinidata.CanliHCTestTime = 15;
+            }
             return configinidata;
         }
         public bool writeEquipmentConfig(equipmentConfigInfdata equipconfig)
@@ -2078,7 +2133,9 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("配置参数", "南华司机助", equipconfig.IsUseNhSjz ? "Y" : "N", startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("配置参数", "南华司机助串口", equipconfig.NhSjz_Com, startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("配置参数", "南华司机助串口配置", equipconfig.NhSjz_ComString, startUpPath + "/detectConfig.ini");
-                
+                ini.INIIO.WritePrivateProfileString("配置参数", "背景测定时间", equipconfig.BackGroundTestTime.ToString(), startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("配置参数", "HC残留测定时间", equipconfig.CanliHCTestTime.ToString(), startUpPath + "/detectConfig.ini");
+
                 return true;
             }
             catch
@@ -3050,6 +3107,11 @@ namespace carinfor
                 configinidata.LugdownMaxHpStyle = b;
             else
                 configinidata.LugdownMaxHpStyle = 0;
+            ini.INIIO.GetPrivateProfileString("LUGDOWN", "最大转速取值方式", "0", temp, 2048, startUpPath + "/detectConfig.ini");
+            if (int.TryParse(temp.ToString().Trim(), out b))
+                configinidata.maxRPMStyle = b;
+            else
+                configinidata.maxRPMStyle = 0;
             ini.INIIO.GetPrivateProfileString("LUGDOWN", "gsMaxPPD", "false", temp, 2048, startUpPath + "/detectConfig.ini");
             if (temp.ToString().Trim() == "true")
                 configinidata.gsMaxPPD = true;
@@ -3128,6 +3190,7 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "速度稳定区间", configinidata.Sdwdqj.ToString("0.0"), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "是否检测油温", configinidata.IsTestYw.ToString().ToLower(), startUpPath+"/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "轮边功率取值方式", configinidata.LugdownMaxHpStyle.ToString(), startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("LUGDOWN", "最大转速取值方式", configinidata.maxRPMStyle.ToString(), startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "gsMaxPPD", configinidata.gsMaxPPD.ToString().ToLower(), startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "gsKcbPD", configinidata.gsKcbPD.ToString().ToLower(), startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "gsKhgPD", configinidata.gsKhgPD.ToString().ToLower(), startUpPath + "/detectConfig.ini");

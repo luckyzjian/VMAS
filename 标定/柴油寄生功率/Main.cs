@@ -1501,6 +1501,12 @@ namespace 柴油寄生功率
         }
         #endregion
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ini.INIIO.WritePrivateProfileString("UseMK", "使用通道", (comboBox_bdtd.SelectedIndex+1).ToString(), startUpPath + "/detectConfig.ini");          //读配置文件（段名，字段，默认值，保存的strbuilder，大小，路径）
+            MessageBox.Show("选定使用通道" + (comboBox_bdtd.SelectedIndex + 1).ToString() + "成功");
+        }
+
         private void button_read_speed_dp_Click(object sender, EventArgs e)
         {
             

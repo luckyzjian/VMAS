@@ -59,6 +59,7 @@ namespace 柴油寄生功率
             this.toolStripButtonExit = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.buttonStartForce = new System.Windows.Forms.Button();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.chartForce = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -101,7 +102,7 @@ namespace 柴油寄生功率
             this.label5 = new System.Windows.Forms.Label();
             this.panel_nl = new System.Windows.Forms.Panel();
             this.Msg_nl = new System.Windows.Forms.Label();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel7.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -317,6 +318,17 @@ namespace 柴油寄生功率
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 17;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.AutoToolTip = false;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(73, 33);
+            this.toolStripButton1.Text = "快速刹车";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // buttonStartForce
             // 
@@ -569,6 +581,7 @@ namespace 柴油寄生功率
             // 
             // panel14
             // 
+            this.panel14.Controls.Add(this.button1);
             this.panel14.Controls.Add(this.buttonSbAisle);
             this.panel14.Controls.Add(this.button_read_force_m);
             this.panel14.Controls.Add(this.button_write);
@@ -588,9 +601,9 @@ namespace 柴油寄生功率
             // buttonSbAisle
             // 
             this.buttonSbAisle.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.buttonSbAisle.Location = new System.Drawing.Point(145, 12);
+            this.buttonSbAisle.Location = new System.Drawing.Point(169, 12);
             this.buttonSbAisle.Name = "buttonSbAisle";
-            this.buttonSbAisle.Size = new System.Drawing.Size(93, 31);
+            this.buttonSbAisle.Size = new System.Drawing.Size(86, 31);
             this.buttonSbAisle.TabIndex = 33;
             this.buttonSbAisle.Text = "设备通道";
             this.buttonSbAisle.UseVisualStyleBackColor = true;
@@ -599,9 +612,9 @@ namespace 柴油寄生功率
             // button_read_force_m
             // 
             this.button_read_force_m.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.button_read_force_m.Location = new System.Drawing.Point(244, 11);
+            this.button_read_force_m.Location = new System.Drawing.Point(255, 85);
             this.button_read_force_m.Name = "button_read_force_m";
-            this.button_read_force_m.Size = new System.Drawing.Size(75, 32);
+            this.button_read_force_m.Size = new System.Drawing.Size(86, 31);
             this.button_read_force_m.TabIndex = 32;
             this.button_read_force_m.Text = "读    取";
             this.button_read_force_m.UseVisualStyleBackColor = true;
@@ -610,9 +623,9 @@ namespace 柴油寄生功率
             // button_write
             // 
             this.button_write.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.button_write.Location = new System.Drawing.Point(244, 84);
+            this.button_write.Location = new System.Drawing.Point(169, 85);
             this.button_write.Name = "button_write";
-            this.button_write.Size = new System.Drawing.Size(178, 31);
+            this.button_write.Size = new System.Drawing.Size(86, 31);
             this.button_write.TabIndex = 11;
             this.button_write.Text = "写入设备";
             this.button_write.UseVisualStyleBackColor = true;
@@ -621,9 +634,9 @@ namespace 柴油寄生功率
             // button_addbdd
             // 
             this.button_addbdd.Font = new System.Drawing.Font("微软雅黑", 9.75F);
-            this.button_addbdd.Location = new System.Drawing.Point(276, 49);
+            this.button_addbdd.Location = new System.Drawing.Point(169, 49);
             this.button_addbdd.Name = "button_addbdd";
-            this.button_addbdd.Size = new System.Drawing.Size(61, 32);
+            this.button_addbdd.Size = new System.Drawing.Size(86, 31);
             this.button_addbdd.TabIndex = 11;
             this.button_addbdd.Text = "添加";
             this.button_addbdd.UseVisualStyleBackColor = true;
@@ -632,7 +645,7 @@ namespace 柴油寄生功率
             // button_scxs
             // 
             this.button_scxs.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_scxs.Location = new System.Drawing.Point(24, 85);
+            this.button_scxs.Location = new System.Drawing.Point(12, 85);
             this.button_scxs.Name = "button_scxs";
             this.button_scxs.Size = new System.Drawing.Size(75, 30);
             this.button_scxs.TabIndex = 11;
@@ -644,9 +657,9 @@ namespace 柴油寄生功率
             // 
             this.textBoxDq.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDq.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.textBoxDq.Location = new System.Drawing.Point(322, 12);
+            this.textBoxDq.Location = new System.Drawing.Point(343, 86);
             this.textBoxDq.Name = "textBoxDq";
-            this.textBoxDq.Size = new System.Drawing.Size(100, 29);
+            this.textBoxDq.Size = new System.Drawing.Size(87, 29);
             this.textBoxDq.TabIndex = 9;
             this.textBoxDq.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
@@ -655,9 +668,9 @@ namespace 柴油寄生功率
             this.textBox_xs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_xs.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox_xs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.textBox_xs.Location = new System.Drawing.Point(115, 84);
+            this.textBox_xs.Location = new System.Drawing.Point(88, 86);
             this.textBox_xs.Name = "textBox_xs";
-            this.textBox_xs.Size = new System.Drawing.Size(123, 29);
+            this.textBox_xs.Size = new System.Drawing.Size(79, 29);
             this.textBox_xs.TabIndex = 9;
             this.textBox_xs.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
@@ -670,9 +683,9 @@ namespace 柴油寄生功率
             "1",
             "2",
             "3"});
-            this.comboBox_bdtd.Location = new System.Drawing.Point(78, 14);
+            this.comboBox_bdtd.Location = new System.Drawing.Point(87, 14);
             this.comboBox_bdtd.Name = "comboBox_bdtd";
-            this.comboBox_bdtd.Size = new System.Drawing.Size(63, 28);
+            this.comboBox_bdtd.Size = new System.Drawing.Size(80, 28);
             this.comboBox_bdtd.TabIndex = 8;
             this.comboBox_bdtd.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
@@ -680,7 +693,7 @@ namespace 柴油寄生功率
             // 
             this.label57.AutoSize = true;
             this.label57.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label57.Location = new System.Drawing.Point(120, 54);
+            this.label57.Location = new System.Drawing.Point(27, 54);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(54, 20);
             this.label57.TabIndex = 7;
@@ -690,7 +703,7 @@ namespace 柴油寄生功率
             // 
             this.label43.AutoSize = true;
             this.label43.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label43.Location = new System.Drawing.Point(21, 19);
+            this.label43.Location = new System.Drawing.Point(26, 19);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(54, 20);
             this.label43.TabIndex = 7;
@@ -700,9 +713,9 @@ namespace 柴油寄生功率
             // 
             this.textBox_bdd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_bdd.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.textBox_bdd.Location = new System.Drawing.Point(177, 51);
+            this.textBox_bdd.Location = new System.Drawing.Point(87, 50);
             this.textBox_bdd.Name = "textBox_bdd";
-            this.textBox_bdd.Size = new System.Drawing.Size(93, 29);
+            this.textBox_bdd.Size = new System.Drawing.Size(80, 29);
             this.textBox_bdd.TabIndex = 1;
             this.textBox_bdd.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
@@ -852,16 +865,16 @@ namespace 柴油寄生功率
             this.Msg_nl.TabIndex = 0;
             this.Msg_nl.Text = "0.0";
             // 
-            // toolStripButton1
+            // button1
             // 
-            this.toolStripButton1.AutoToolTip = false;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(73, 33);
-            this.toolStripButton1.Text = "快速刹车";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.button1.Location = new System.Drawing.Point(255, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(86, 31);
+            this.button1.TabIndex = 34;
+            this.button1.Text = "选定通道";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Main
             // 
@@ -987,6 +1000,7 @@ namespace 柴油寄生功率
         private System.Windows.Forms.Panel panel_nl;
         private System.Windows.Forms.Label Msg_nl;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -118,6 +118,8 @@ namespace 系统设置
             comboBoxYWJ_LUGDOWN.Text = lugdownconfig.Ywj;
             radioButtonLugMaxHpGlsm.Checked = (lugdownconfig.LugdownMaxHpStyle == 0);
             radioButtonLugMaxHpVelmaxhp.Checked = (lugdownconfig.LugdownMaxHpStyle == 1);
+            radioButtonLugdown_MaxRPM_SD.Checked = (lugdownconfig.maxRPMStyle == 0);
+            radioButtonLugdown_MaxRPM_KD.Checked = (lugdownconfig.maxRPMStyle == 1);
             if (lugdownconfig.Glsmms == "恒功率")
             {
                 radioButtonLugdownHgl.Checked = true;
@@ -297,6 +299,8 @@ namespace 系统设置
             comboBoxLEDTJPH.Text = equipconfig.LEDTJPH.ToString();
             checkBoxDisplayJudge.Checked = equipconfig.displayJudge;
             textBoxLZYDJADD.Text = equipconfig.lzydjadd;
+            textBoxBackGroundTime.Text = equipconfig.BackGroundTestTime.ToString();
+            textBoxCanliHCTime.Text = equipconfig.CanliHCTestTime.ToString();
 
 
             checkBoxUseWeightWCF.Checked=equipconfig.useWeightWCF ;
@@ -416,6 +420,7 @@ namespace 系统设置
                 lugdownconfig.IsTestYw = checkBoxLugdownYw.Checked;
                 lugdownconfig.Glsmms = (radioButtonLugdownHgl.Checked) ? "恒功率" : "恒速度";
                 lugdownconfig.LugdownMaxHpStyle = (radioButtonLugMaxHpVelmaxhp.Checked) ? 1 : 0;
+                lugdownconfig.maxRPMStyle = (radioButtonLugdown_MaxRPM_SD.Checked) ? 0 : 1;
                 lugdownconfig.testNOx = checkBoxLugdownJcNox.Checked;
                 lugdownconfig.LugdownGljk = checkBoxLugdownGljk.Checked;
                 lugdownconfig.Lugdown_Gljk_value = float.Parse(textBoxLug_gljk_value.Text);
@@ -773,6 +778,8 @@ namespace 系统设置
             equipconfig.IsUseNhSjz = checkBoxNHSJZ.Checked;
             equipconfig.NhSjz_Com = comboBoxNHSJZ_COM.Text;
             equipconfig.NhSjz_ComString = comboBoxNHSJZ_COMSTRING.Text;
+            equipconfig.BackGroundTestTime = int.Parse(textBoxBackGroundTime.Text);
+            equipconfig.CanliHCTestTime = int.Parse(textBoxCanliHCTime.Text);
             //equipconfig.ZzyEnable = comboBoxZZYXH.Text == "未配置";
             //equipconfig.ZzyXh = comboBoxZZYXH.Text;
             //equipconfig.ZzyCk = comboBoxZZYCK.Text;

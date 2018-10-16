@@ -1757,6 +1757,49 @@ namespace lugdowm
 
                 #region 开始检测，提示回事
                 fq_getdata = true;
+                #region 判断转速
+                if (lugdownconfig.maxRPMStyle == 1)
+                {
+                    ts1 = "检测开始";
+                    ts2 = "请空档将油门踩死";
+                    Msg(Msg_msg, panel_msg, "请空档将油门踩死", true);
+                    while(ZS<carbj.CarEdzs/2||ZS<2000)
+                    {
+                        Thread.Sleep(100);
+                    }
+                    List<int> zswdlist = new List<int>();
+                    for(int wdcount=0;wdcount<30;wdcount++)
+                    {
+                        zswdlist.Add((int)ZS);
+                        Thread.Sleep(100);
+                    }
+                    double wdtime = 3;
+                    while(wdtime>0)
+                    {
+                        ts2 = "等待转速稳定："+wdtime.ToString("0.0")+"s";
+                        Msg(Msg_msg, panel_msg, "等待转速稳定：" + wdtime.ToString("0.0") + "s", true);
+                        if (zswdlist.Max() - zswdlist.Min() > 400)
+                        {
+                            wdtime = 3;
+                        }
+                        else
+                        {
+                            wdtime = wdtime - 0.1;
+                        }
+                        zswdlist.RemoveAt(0);
+                        zswdlist.Add((int)ZS);
+                        Thread.Sleep(100);
+                    }
+                    MaxRpm_sure = false;
+                    MaxRPM = zswdlist.Max();//确定最大转速                    
+                    jzjs_data.Velmaxhpzs = MaxRPM.ToString();
+                    jzjs_data.Lbzs = MaxRPM.ToString();
+                    led_display(ledNumber_ZDZS, MaxRPM.ToString("0"));
+                    ts2 = "最大转速已确定";
+                    Msg(Msg_msg, panel_msg, "最大转速已确定", true);
+                    Thread.Sleep(1500);
+                }
+                #endregion
                 ts1 = "检测开始";
                 ts2 = "请加速至70km/h左右";
                 if (ledcontrol != null)
@@ -1787,6 +1830,7 @@ namespace lugdowm
 
                 if (!isUsedata)
                 {
+                   
                     #region 加速阶段
                     Msg(Msg_msg, panel_msg, "测试开始，请用合适档位全油加速至70km/h以上", true);
                     statusconfigini.writeNeuStatusData("StartTest", DateTime.Now.ToString());
@@ -1828,17 +1872,20 @@ namespace lugdowm
                     #endregion
 
                     #region 判断转速
-                    MaxRpm_sure = false;
-                    MaxRPM = ZS;//确定最大转速
-                    if (Math.Abs(MaxRPM - carbj.CarEdzs) > 500)
+                    if (lugdownconfig.maxRPMStyle == 0)
                     {
-                        Random rd = new Random();
-                        MaxRPM = carbj.CarEdzs + DateTime.Now.Second * 10 - 300;
-                        if (MaxRPM < 0) MaxRPM = 0;
+                        MaxRpm_sure = false;
+                        MaxRPM = ZS;//确定最大转速
+                        if (Math.Abs(MaxRPM - carbj.CarEdzs) > 500)
+                        {
+                            Random rd = new Random();
+                            MaxRPM = carbj.CarEdzs + DateTime.Now.Second * 10 - 300;
+                            if (MaxRPM < 0) MaxRPM = 0;
+                        }
+                        jzjs_data.Velmaxhpzs = MaxRPM.ToString();
+                        jzjs_data.Lbzs = MaxRPM.ToString();
+                        led_display(ledNumber_ZDZS, MaxRPM.ToString("0"));
                     }
-                    jzjs_data.Velmaxhpzs = MaxRPM.ToString();
-                    jzjs_data.Lbzs = MaxRPM.ToString();
-                    led_display(ledNumber_ZDZS, MaxRPM.ToString("0"));
                     #endregion
                     
                     #region 判断速度

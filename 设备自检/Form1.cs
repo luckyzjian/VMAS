@@ -1661,6 +1661,7 @@ namespace 设备自检
                                         Ref_Control_Text(LabelYDJSZ2, "×");
                                     }
                                     if (equipconfig.useJHJK)
+                                    //if(true)
                                     {
                                         isYdjSure = false;
                                         Msg_Toollabel(toolStripLabel2, "插好校准滤光片后点击\"确定\"按钮");

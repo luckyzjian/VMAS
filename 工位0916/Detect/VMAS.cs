@@ -2860,7 +2860,7 @@ namespace vmasDetect
             {
                 Thread.Sleep(200);
                 fla_502.Pump_air();
-                for (int i = 15; i >= 0; i--)
+                for (int i = equipconfig.BackGroundTestTime; i >= 0; i--)
                 {
                     ts2 = "背景测定..." + i.ToString("0");
                     datagridview_msg(dataGridView1, "结果", 5, "检测中..." + i.ToString("0") + "秒");
@@ -2896,7 +2896,7 @@ namespace vmasDetect
             {
                 Thread.Sleep(500);
                 fla_502.Pump_Pipeair();
-                for (int i = 15; i >= 0; i--)
+                for (int i = equipconfig.CanliHCTestTime; i >= 0; i--)
                 {
                     ts2 = "HC测定..." + i.ToString("0");
                     datagridview_msg(dataGridView1, "结果", 6, "检测中..." + i.ToString("0") + "秒");
