@@ -105,6 +105,7 @@ namespace lugdowm
         {
             Msg(labelTs1, panelts1,Jzjs.ts1, false);
             Msg(labelts2, panelTs2, Jzjs.ts2, false);
+            Msg(labelZS, panelZS, Jzjs.ZS.ToString("0"), false);
             if (Jzjs.igbt != null)
             {
                 float speedNow=Jzjs.igbt.Speed;

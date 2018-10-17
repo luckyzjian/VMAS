@@ -100,7 +100,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DriverShow1366.designer.cs">
-      <SubType>DriverShow1366.cs</SubType>
+      <DependentUpon>DriverShow1366.cs</DependentUpon>
     </Compile>
     <Compile Include="Jzjs.cs">
       <SubType>Form</SubType>

@@ -141,7 +141,9 @@ namespace 系统设置
             checkBoxLugdown_cl_ydjk.Checked = lugdownconfig.isYdjk_cl;
             textBoxLugdown_glsm_ydjk.Text = lugdownconfig.ydjk_glsm_value.ToString("0.00");
             textBoxLugdown_cl_ydjk.Text = lugdownconfig.ydjk_cl_value.ToString("0.00");
-            
+            checkBoxLudown_prepare.Checked = lugdownconfig.IsLugdownPrepare;
+
+
 
             textBoxSdsFlowtime.Text = sdsconfig.FlowTime.ToString("0");
             textBoxSdsNdz.Text = sdsconfig.Ndz.ToString("0.0");
@@ -429,6 +431,7 @@ namespace 系统设置
                 lugdownconfig.ydjk_glsm_value = double.Parse(textBoxLugdown_glsm_ydjk.Text);
                 lugdownconfig.isYdjk_cl = checkBoxLugdown_cl_ydjk.Checked;
                 lugdownconfig.ydjk_cl_value = double.Parse(textBoxLugdown_cl_ydjk.Text);
+                lugdownconfig.IsLugdownPrepare = checkBoxLudown_prepare.Checked;
 
                 if (lugdownconfig.Lugdown_Gljk_value > 80f || lugdownconfig.Lugdown_Gljk_value < 20f)
                 {

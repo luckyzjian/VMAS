@@ -1166,38 +1166,7 @@ namespace lugdowm
             return rd.Next(1000, 2000);
         }
         #endregion
-
-        private void button_ss_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (JC_Status == false)
-                {
-                    TH_ST = new Thread(Jc_Exe);
-                    TH_ST.Start();
-                    Th_get_FqandLl = new Thread(Fq_Detect);
-                    Th_get_FqandLl.Start();
-                    timer_show.Start();
-                    JC_Status = true;
-                    Jzjs_status = false; fq_getdata = false;
-                    //button_yj.Enabled = false;
-                    button_ss.Text = "停止检测";
-                }
-                else
-                {
-                    TH_ST.Abort();
-                    Th_get_FqandLl.Abort();
-                    Jzjs_status = false; fq_getdata = false;
-                    timer_show.Stop();
-                    JC_Status = false;
-                    button_ss.Text = "重新检测";
-                }
-
-            }
-            catch (Exception)
-            {
-            }
-        }
+        
         #region 初检
         public void jzjs_chujian()
         {
@@ -1828,230 +1797,166 @@ namespace lugdowm
                 Jzjs_status = true;
                 #endregion
 
-                if (!isUsedata)
+                #region 加速阶段
+                Msg(Msg_msg, panel_msg, "测试开始，请用合适档位全油加速至70km/h以上", true);
+                statusconfigini.writeNeuStatusData("StartTest", DateTime.Now.ToString());
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_STARTSAMPLE, "");
+                jzjs_data.StartTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                while (igbt.Speed < lugdownconfig.MinSpeed)
                 {
-                   
-                    #region 加速阶段
-                    Msg(Msg_msg, panel_msg, "测试开始，请用合适档位全油加速至70km/h以上", true);
-                    statusconfigini.writeNeuStatusData("StartTest", DateTime.Now.ToString());
-                    statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_STARTSAMPLE, "");
-                    jzjs_data.StartTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                    while (igbt.Speed < lugdownconfig.MinSpeed)
+                    Thread.Sleep(500);
+                }
+                if (lugdownconfig.IfSureTemp)
+                {
+                    setButtonVisible(button1, true);
+                    Msg(Msg_msg, panel_msg, "待转速稳定后点击[确定最大转速]按钮开始功率扫描", true);
+                    while (MaxRpm_sure == false)
                     {
-                        Thread.Sleep(500);
+                        Thread.Sleep(100);
                     }
-                    if (lugdownconfig.IfSureTemp)
+                    setButtonVisible(button1, false);
+                }
+                else
+                {
+                    int stableTime = 0;
+                    float prespeed = 0;
+                    while (stableTime < 30)
                     {
-                        setButtonVisible(button1, true);
-                        Msg(Msg_msg, panel_msg, "待转速稳定后点击[确定最大转速]按钮开始功率扫描", true);
-                        while (MaxRpm_sure == false)
+                        Msg(Msg_msg, panel_msg, "测试开始，请用合适档位全油加速至70km/h以上", true);
+                        if (Math.Abs(prespeed - igbt.Speed) > 1f)
                         {
-                            Thread.Sleep(100);
+                            stableTime = 0;
+                            prespeed = igbt.Speed;
                         }
-                        setButtonVisible(button1, false);
-                    }
-                    else
-                    {
-                        int stableTime = 0;
-                        float prespeed = 0;
-                        while (stableTime < 30)
+                        else
                         {
-                            Msg(Msg_msg, panel_msg, "测试开始，请用合适档位全油加速至70km/h以上", true);
-                            if (Math.Abs(prespeed - igbt.Speed) > 1f)
-                            {
-                                stableTime = 0;
-                                prespeed = igbt.Speed;
-                            }
-                            else
-                            {
-                                stableTime++;
-                            }
-                            Thread.Sleep(100);
+                            stableTime++;
                         }
+                        Thread.Sleep(100);
                     }
-                    #endregion
+                }
+                #endregion
 
-                    #region 判断转速
-                    if (lugdownconfig.maxRPMStyle == 0)
+                #region 判断转速
+                if (lugdownconfig.maxRPMStyle == 0)
+                {
+                    MaxRpm_sure = false;
+                    MaxRPM = ZS;//确定最大转速
+                    if (Math.Abs(MaxRPM - carbj.CarEdzs) > 500)
                     {
-                        MaxRpm_sure = false;
-                        MaxRPM = ZS;//确定最大转速
-                        if (Math.Abs(MaxRPM - carbj.CarEdzs) > 500)
-                        {
-                            Random rd = new Random();
-                            MaxRPM = carbj.CarEdzs + DateTime.Now.Second * 10 - 300;
-                            if (MaxRPM < 0) MaxRPM = 0;
-                        }
-                        jzjs_data.Velmaxhpzs = MaxRPM.ToString();
-                        jzjs_data.Lbzs = MaxRPM.ToString();
-                        led_display(ledNumber_ZDZS, MaxRPM.ToString("0"));
+                        Random rd = new Random();
+                        MaxRPM = carbj.CarEdzs + DateTime.Now.Second * 10 - 300;
+                        if (MaxRPM < 0) MaxRPM = 0;
                     }
-                    #endregion
+                    jzjs_data.Velmaxhpzs = MaxRPM.ToString();
+                    jzjs_data.Lbzs = MaxRPM.ToString();
+                    led_display(ledNumber_ZDZS, MaxRPM.ToString("0"));
+                }
+                #endregion
                     
-                    #region 判断速度
-                    velMaxHpRation = MaxRPM / carbj.CarEdzs;
-                    VelMaxHP_real = igbt.Speed;
-                    jzjs_data.Velmaxhp = VelMaxHP_real.ToString();
-                    zdcs = VelMaxHP_real;
-                    Control_Speed = igbt.Speed; //计算VelMaxPH
-                    if (Control_Speed < lugdownconfig.MinSpeed || Control_Speed > lugdownconfig.MaxSpeed)
-                    {
-                        Msg(Msg_msg, panel_msg, "最大速度不正常，请调整档位重新开始。", true);
-                        ts1 = "检测终止";
-                        ts2 = "最大速度不正常";
-                        if (ledcontrol != null)
-                        {
-                            ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
-                            Thread.Sleep(200);
-                            ledcontrol.writeLed("　最大速度不正常", 5, equipconfig.Ledxh);
-                        }
-                        JC_Status = false;
-                        button_ss.Text = "重新检测";
-                        Th_get_FqandLl.Abort();
-                        Jzjs_status = false;
-                        fq_getdata = false;
-                        return;
-                    }
-                    #endregion
-                    
-                    #region 功率扫描
+                #region 判断速度
+                velMaxHpRation = MaxRPM / carbj.CarEdzs;
+                VelMaxHP_real = igbt.Speed;
+                jzjs_data.Velmaxhp = VelMaxHP_real.ToString();
+                zdcs = VelMaxHP_real;
+                Control_Speed = igbt.Speed; //计算VelMaxPH
+                if (Control_Speed < lugdownconfig.MinSpeed || Control_Speed > lugdownconfig.MaxSpeed)
+                {
+                    Msg(Msg_msg, panel_msg, "最大速度不正常，请调整档位重新开始。", true);
+                    ts1 = "检测终止";
+                    ts2 = "最大速度不正常";
                     if (ledcontrol != null)
                     {
-                        ledcontrol.writeLed("　开始功率扫描　", 2, equipconfig.Ledxh);
+                        ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
                         Thread.Sleep(200);
+                        ledcontrol.writeLed("　最大速度不正常", 5, equipconfig.Ledxh);
                     }
-                    opno = 2;
-                    opcode = 12;
-                    Msg(Msg_msg, panel_msg, "最大转速已确定，开始功率扫描，保持油门全开", true);
-                    ts1 = "开始功率扫描";
-                    ts2 = "保持油门全开";
-                    Thread.Sleep(1000);
-                    if (ledcontrol != null)
+                    JC_Status = false;
+                    button_ss.Text = "重新检测";
+                    Th_get_FqandLl.Abort();
+                    Jzjs_status = false;
+                    fq_getdata = false;
+                    return;
+                }
+                #endregion
+                    
+                #region 功率扫描
+                if (ledcontrol != null)
+                {
+                    ledcontrol.writeLed("　开始功率扫描　", 2, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                }
+                opno = 2;
+                opcode = 12;
+                Msg(Msg_msg, panel_msg, "最大转速已确定，开始功率扫描，保持油门全开", true);
+                ts1 = "开始功率扫描";
+                ts2 = "保持油门全开";
+                Thread.Sleep(1000);
+                if (ledcontrol != null)
+                {
+                    ledcontrol.writeLed("　速度　　功率　", 2, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                }
+                if (lugdownconfig.Glsmms == "恒速度")
+                {
+                    #region 恒速度功率扫描
+                    igbt.Set_Speed(Control_Speed);
+                    igbt.Start_Control_Speed();
+                    Msg(Msg_msg, panel_msg, "开始功率扫描，等待速度稳定", true);
+                    while (JC_Status)                           //等待速度稳定2秒
                     {
-                        ledcontrol.writeLed("　速度　　功率　", 2, equipconfig.Ledxh);
-                        Thread.Sleep(200);
+                        if (Math.Abs(igbt.Speed - Control_Speed) <= 1)
+                            flag++;
+                        else
+                            flag = 0;
+                        if (flag >= 20)
+                            break;
+                        Thread.Sleep(100);
                     }
-                    if (lugdownconfig.Glsmms == "恒速度")
+                    flag = 0;
+                    MaxP = 0f;
+                    sxnb = 1;//功率扫描开始
+                    while (JC_Status)               //功率扫描
                     {
-                        #region 恒速度功率扫描
-                        igbt.Set_Speed(Control_Speed);
-                        igbt.Start_Control_Speed();
-                        Msg(Msg_msg, panel_msg, "开始功率扫描，等待速度稳定", true);
-                        while (JC_Status)                           //等待速度稳定2秒
+                        if (lugdownconfig.isYdjk_glsm)
                         {
-                            if (Math.Abs(igbt.Speed - Control_Speed) <= 1)
-                                flag++;
-                            else
-                                flag = 0;
-                            if (flag >= 20)
-                                break;
+                            if (Smoke < lugdownconfig.ydjk_cl_value)
+                            {
+                                JC_Status = false;
+                                button_ss.Text = "重新检测";
+                                Th_get_FqandLl.Abort();
+                                Jzjs_status = false; fq_getdata = false;
+                                Thread.Sleep(500);
+                                Msg(Msg_msg, panel_msg, "烟度值过低,检测中止,检测探头是否脱落。", true);
+                                ts1 = "烟度值过低";
+                                ts2 = "检测中止";
+                                if (ledcontrol != null)
+                                {
+                                    ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                    Thread.Sleep(200);
+                                    ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                }
+                                igbt.Exit_Control();
+
+                                return;
+                            }
+                        }
+                        Msg(Msg_msg, panel_msg, "正在进行功率扫描，当前速度：" + igbt.Speed.ToString("0.0") + "km/h", true);
+                        ts2 = "速度:" + igbt.Speed.ToString("0.0") + "功率:" + nowpower.ToString("0.0");
+                        GL = (float)nowpower;
+                        flag++;
+                        Thread.Sleep(100);
+                        if (flag % 8 == 0)         //每隔一秒速度减少0.5km/h
+                        {
+                            Control_Speed -= 0.5f;
+                            igbt.Set_Speed(Control_Speed);
+                        }
+                        while (Math.Abs(igbt.Speed - Control_Speed) > lugdownconfig.Sdwdqj)
+                        {
                             Thread.Sleep(100);
                         }
-                        flag = 0;
-                        MaxP = 0f;
-                        sxnb = 1;//功率扫描开始
-                        while (JC_Status)               //功率扫描
+                        if (igbt.Speed < (zdcs - 1f))
                         {
-                            if (lugdownconfig.isYdjk_glsm)
-                            {
-                                if (Smoke < lugdownconfig.ydjk_cl_value)
-                                {
-                                    JC_Status = false;
-                                    button_ss.Text = "重新检测";
-                                    Th_get_FqandLl.Abort();
-                                    Jzjs_status = false; fq_getdata = false;
-                                    Thread.Sleep(500);
-                                    Msg(Msg_msg, panel_msg, "烟度值过低,检测中止,检测探头是否脱落。", true);
-                                    ts1 = "烟度值过低";
-                                    ts2 = "检测中止";
-                                    if (ledcontrol != null)
-                                    {
-                                        ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
-                                        Thread.Sleep(200);
-                                        ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
-                                    }
-                                    igbt.Exit_Control();
-
-                                    return;
-                                }
-                            }
-                            Msg(Msg_msg, panel_msg, "正在进行功率扫描，当前速度：" + igbt.Speed.ToString("0.0") + "km/h", true);
-                            ts2 = "速度:" + igbt.Speed.ToString("0.0") + "功率:" + nowpower.ToString("0.0");
-                            GL = (float)nowpower;
-                            flag++;
-                            Thread.Sleep(100);
-                            if (flag % 8 == 0)         //每隔一秒速度减少0.5km/h
-                            {
-                                Control_Speed -= 0.5f;
-                                igbt.Set_Speed(Control_Speed);
-                            }
-                            while (Math.Abs(igbt.Speed - Control_Speed) > lugdownconfig.Sdwdqj)
-                            {
-                                Thread.Sleep(100);
-                            }
-                            if (igbt.Speed < (zdcs - 1f))
-                            {
-                                if (MaxP < GL)
-                                {
-                                    MaxP = GL;
-                                    VelMaxHP_real = igbt.Speed;//真实VelMaxHP
-                                    MaxZ = ZS;
-                                }
-                                else
-                                {
-                                    if ((VelMaxHP_real - igbt.Speed) > VelMaxHP_real * 0.2f)                         //实际VelMaxHP,功率扫描完成
-                                        break;
-                                }
-                            }
-                            if (igbt.Speed <= 40)
-                                break;
-                        }
-                        #endregion
-                    }
-                    else
-                    {
-                        #region 恒功率功率扫描
-                        Control_Speed = 0f;
-                        igbt.Set_Control_Force(Control_Speed);
-                        igbt.Start_Control_Force();
-                        Msg(Msg_msg, panel_msg, "开始功率扫描，保持油门全开", true);
-                        MaxP = 0f;
-                        sxnb = 1;//功率扫描开始
-                        while (JC_Status)               //功率扫描
-                        {
-                            if (lugdownconfig.isYdjk_glsm)
-                            {
-                                if (Smoke < lugdownconfig.ydjk_cl_value)
-                                {
-                                    JC_Status = false;
-                                    button_ss.Text = "重新检测";
-                                    Th_get_FqandLl.Abort();
-                                    Jzjs_status = false; fq_getdata = false;
-                                    Thread.Sleep(500);
-                                    Msg(Msg_msg, panel_msg, "烟度值过低,检测中止,检测探头是否脱落。", true);
-                                    ts1 = "烟度值过低";
-                                    ts2 = "检测中止";
-                                    if (ledcontrol != null)
-                                    {
-                                        ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
-                                        Thread.Sleep(200);
-                                        ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
-                                    }
-                                    igbt.Exit_Control();
-
-                                    return;
-                                }
-                            }
-                            Msg(Msg_msg, panel_msg, "正在进行功率扫描，当前速度：" + igbt.Speed.ToString("0.0") + "km/h", true);
-                            ts2 = "速度:" + igbt.Speed.ToString("0.0") + "功率:" + nowpower.ToString("0.0");
-                            GL = (float)nowpower;
-                            flag++;
-                            Thread.Sleep(100);
-                            if (flag % 5 == 0)         //每隔一秒扭力增加lugdownconfig.Smpl
-                            {
-                                Control_Speed += lugdownconfig.Smpl / 2f;
-                                igbt.Set_Control_Force(Control_Speed);
-                            }
                             if (MaxP < GL)
                             {
                                 MaxP = GL;
@@ -2063,696 +1968,480 @@ namespace lugdowm
                                 if ((VelMaxHP_real - igbt.Speed) > VelMaxHP_real * 0.2f)                         //实际VelMaxHP,功率扫描完成
                                     break;
                             }
-                            if (igbt.Speed <= 40)
-                                break;
                         }
-                        #endregion
+                        if (igbt.Speed <= 40)
+                            break;
                     }
                     #endregion
-
-                    #region 核对最大轮边功率
-                    igbt.Exit_Control();
-                    igbt.Exit_Control();
-                    VelMaxHP_real = 0;
-                    MaxP = 0;
-                    for (int timecount = 0; timecount <= GKSJ - 1; timecount++)
+                }
+                else
+                {
+                    #region 恒功率功率扫描
+                    Control_Speed = 0f;
+                    igbt.Set_Control_Force(Control_Speed);
+                    igbt.Start_Control_Force();
+                    Msg(Msg_msg, panel_msg, "开始功率扫描，保持油门全开", true);
+                    MaxP = 0f;
+                    sxnb = 1;//功率扫描开始
+                    while (JC_Status)               //功率扫描
                     {
-                        if (ZGLlist[timecount] > MaxP)
+                        if (lugdownconfig.isYdjk_glsm)
                         {
-                            MaxP = ZGLlist[timecount];
-                            VelMaxHP_real = Speedlist[timecount];
-                        }
-                    }
-                    opno = 3;
-                    opcode = 13;
-                    glxzxs = dcf;
-                    VelMaxHP = VelMaxHP_real;//实际velMaxHp
-                    jzjs_data.RealVelmaxhp = VelMaxHP_real.ToString();
-                    jzjs_data.actualmaxhp = MaxP.ToString("0.0");
-                    jzjs_data.glxzxs = glxzxs.ToString("0.000");
-                    if (lugdownconfig.LugdownMaxHpStyle == 0)
-                    {
-                        jzjs_data.Lbgl = (MaxP * glxzxs).ToString("0.0");
-                        led_display(ledNumberLBGL, jzjs_data.Lbgl);
-                        led_display(ledNumberDCF, jzjs_data.glxzxs);
-                        if (equipconfig.useJHJK)//金华监控到轮边功率大于额定功率的80%，即限值的160%中断检测
-                        {
-                            if (double.Parse(jzjs_data.Lbgl) > carbj.Xz1 * 0.02 * equipconfig.JHLBGLB)
+                            if (Smoke < lugdownconfig.ydjk_cl_value)
                             {
                                 JC_Status = false;
                                 button_ss.Text = "重新检测";
                                 Th_get_FqandLl.Abort();
                                 Jzjs_status = false; fq_getdata = false;
                                 Thread.Sleep(500);
-                                Msg(Msg_msg, panel_msg, "轮边功率异常预警，检测中止。", true);
-                                ts1 = "轮边功率异常预警";
+                                Msg(Msg_msg, panel_msg, "烟度值过低,检测中止,检测探头是否脱落。", true);
+                                ts1 = "烟度值过低";
                                 ts2 = "检测中止";
                                 if (ledcontrol != null)
                                 {
                                     ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
                                     Thread.Sleep(200);
-                                    ledcontrol.writeLed("轮边功率异常预警", 5, equipconfig.Ledxh);
+                                    ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
                                 }
                                 igbt.Exit_Control();
+
                                 return;
                             }
                         }
+                        Msg(Msg_msg, panel_msg, "正在进行功率扫描，当前速度：" + igbt.Speed.ToString("0.0") + "km/h", true);
+                        ts2 = "速度:" + igbt.Speed.ToString("0.0") + "功率:" + nowpower.ToString("0.0");
+                        GL = (float)nowpower;
+                        flag++;
+                        Thread.Sleep(100);
+                        if (flag % 5 == 0)         //每隔一秒扭力增加lugdownconfig.Smpl
+                        {
+                            Control_Speed += lugdownconfig.Smpl / 2f;
+                            igbt.Set_Control_Force(Control_Speed);
+                        }
+                        if (MaxP < GL)
+                        {
+                            MaxP = GL;
+                            VelMaxHP_real = igbt.Speed;//真实VelMaxHP
+                            MaxZ = ZS;
+                        }
+                        else
+                        {
+                            if ((VelMaxHP_real - igbt.Speed) > VelMaxHP_real * 0.2f)                         //实际VelMaxHP,功率扫描完成
+                                break;
+                        }
+                        if (igbt.Speed <= 40)
+                            break;
                     }
-                    Msg(Msg_msg, panel_msg, equipconfig.useJHSCREEN? "功率扫描完成" : "功率扫描完成，最大轮边功率:" + jzjs_data.Lbgl + "kW,VelMaxHP为" + VelMaxHP_real.ToString("0.0") + "km/h", true);
-                    if (ledcontrol != null)
+                    #endregion
+                }
+                #endregion
+
+                #region 核对最大轮边功率
+                igbt.Exit_Control();
+                igbt.Exit_Control();
+                VelMaxHP_real = 0;
+                MaxP = 0;
+                for (int timecount = 0; timecount <= GKSJ - 1; timecount++)
+                {
+                    if (ZGLlist[timecount] > MaxP)
                     {
-                        ledcontrol.writeLed("　功率扫描结束　", 2, equipconfig.Ledxh);
-                        Thread.Sleep(200);
+                        MaxP = ZGLlist[timecount];
+                        VelMaxHP_real = Speedlist[timecount];
                     }
-                    ts1 = "功率扫描结束";
-                    ts2 = "HP:" + jzjs_data.Lbgl + "VelHP:" + VelMaxHP_real.ToString("0.0");
-                    led_display(ledNumber_JSVEL, (VelMaxHP_real * velMaxHpRation).ToString("0.0"));
-                    led_display(ledNumber_SJVEL, VelMaxHP.ToString("0.0"));
-                    //led_display(ledNumberLBGL, HP);
-                    statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.JIANCEZHONG, GKSJ.ToString());
-                    Thread.Sleep(1000);//显示时间
-                    if (equipconfig.useJHJK && carbj.CarZzl >= 3500)//金华重型车最大车速如果不在60-100之间则中止检测
+                }
+                opno = 3;
+                opcode = 13;
+                glxzxs = dcf;
+                VelMaxHP = VelMaxHP_real;//实际velMaxHp
+                jzjs_data.RealVelmaxhp = VelMaxHP_real.ToString();
+                jzjs_data.actualmaxhp = MaxP.ToString("0.0");
+                jzjs_data.glxzxs = glxzxs.ToString("0.000");
+                if (lugdownconfig.LugdownMaxHpStyle == 0)
+                {
+                    jzjs_data.Lbgl = (MaxP * glxzxs).ToString("0.0");
+                    led_display(ledNumberLBGL, jzjs_data.Lbgl);
+                    led_display(ledNumberDCF, jzjs_data.glxzxs);
+                    if (equipconfig.useJHJK)//金华监控到轮边功率大于额定功率的80%，即限值的160%中断检测
                     {
-                        if (VelMaxHP_real < 60 || VelMaxHP_real > 100)
+                        if (double.Parse(jzjs_data.Lbgl) > carbj.Xz1 * 0.02 * equipconfig.JHLBGLB)
                         {
                             JC_Status = false;
                             button_ss.Text = "重新检测";
                             Th_get_FqandLl.Abort();
                             Jzjs_status = false; fq_getdata = false;
                             Thread.Sleep(500);
-                            Msg(Msg_msg, panel_msg, "最高车速不正常，检测中止。", true);
-                            ts1 = "最高车速不正常";
+                            Msg(Msg_msg, panel_msg, "轮边功率异常预警，检测中止。", true);
+                            ts1 = "轮边功率异常预警";
                             ts2 = "检测中止";
                             if (ledcontrol != null)
                             {
                                 ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
                                 Thread.Sleep(200);
-                                ledcontrol.writeLed("最高车速不正常", 5, equipconfig.Ledxh);
+                                ledcontrol.writeLed("轮边功率异常预警", 5, equipconfig.Ledxh);
                             }
                             igbt.Exit_Control();
                             return;
                         }
                     }
-                    if (lugdownconfig.gsMaxPPD)
+                }
+                Msg(Msg_msg, panel_msg, equipconfig.useJHSCREEN? "功率扫描完成" : "功率扫描完成，最大轮边功率:" + jzjs_data.Lbgl + "kW,VelMaxHP为" + VelMaxHP_real.ToString("0.0") + "km/h", true);
+                if (ledcontrol != null)
+                {
+                    ledcontrol.writeLed("　功率扫描结束　", 2, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                }
+                ts1 = "功率扫描结束";
+                ts2 = "HP:" + jzjs_data.Lbgl + "VelHP:" + VelMaxHP_real.ToString("0.0");
+                led_display(ledNumber_JSVEL, (VelMaxHP_real * velMaxHpRation).ToString("0.0"));
+                led_display(ledNumber_SJVEL, VelMaxHP.ToString("0.0"));
+                //led_display(ledNumberLBGL, HP);
+                statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.JIANCEZHONG, GKSJ.ToString());
+                Thread.Sleep(1000);//显示时间
+                if (equipconfig.useJHJK && carbj.CarZzl >= 3500)//金华重型车最大车速如果不在60-100之间则中止检测
+                {
+                    if (VelMaxHP_real < 60 || VelMaxHP_real > 100)
                     {
-                        jzjs_data.Lbgl = (MaxP * glxzxs).ToString("0.0");
-                        if (double.Parse(jzjs_data.Lbgl) < carbj.Xz1)
+                        JC_Status = false;
+                        button_ss.Text = "重新检测";
+                        Th_get_FqandLl.Abort();
+                        Jzjs_status = false; fq_getdata = false;
+                        Thread.Sleep(500);
+                        Msg(Msg_msg, panel_msg, "最高车速不正常，检测中止。", true);
+                        ts1 = "最高车速不正常";
+                        ts2 = "检测中止";
+                        if (ledcontrol != null)
                         {
-                            ts1 = "轮边功率不合格";
-                            ts2 = "测试结束";
-                            HK = "";
-                            NK = "";
-                            EK = "";
-                            jzjs_data.Rev100 = "";
-                            if (ledcontrol != null)
-                            {
-                                ledcontrol.writeLed("功率过低测试结束", 2, equipconfig.Ledxh);
-                                Thread.Sleep(200);
-                            }
-                            Msg(Msg_msg, panel_msg, "最大轮边功率不合格，测试结束", true);
-                            Thread.Sleep(2000);
-                            goto Finish;
+                            ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                            Thread.Sleep(200);
+                            ledcontrol.writeLed("最高车速不正常", 5, equipconfig.Ledxh);
                         }
+                        igbt.Exit_Control();
+                        return;
                     }
-                    #endregion
+                }
+                if (lugdownconfig.gsMaxPPD)
+                {
+                    jzjs_data.Lbgl = (MaxP * glxzxs).ToString("0.0");
+                    if (double.Parse(jzjs_data.Lbgl) < carbj.Xz1)
+                    {
+                        ts1 = "轮边功率不合格";
+                        ts2 = "测试结束";
+                        HK = "";
+                        NK = "";
+                        EK = "";
+                        jzjs_data.Rev100 = "";
+                        if (ledcontrol != null)
+                        {
+                            ledcontrol.writeLed("功率过低测试结束", 2, equipconfig.Ledxh);
+                            Thread.Sleep(200);
+                        }
+                        Msg(Msg_msg, panel_msg, "最大轮边功率不合格，测试结束", true);
+                        Thread.Sleep(2000);
+                        goto Finish;
+                    }
+                }
+                #endregion
 
-                    if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山"||equipconfig.DATASECONDS_TYPE=="安徽")
-                        sxnb = 2;
+                if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山"||equipconfig.DATASECONDS_TYPE=="安徽")
+                    sxnb = 2;
 
-                    #region 加载测试
-                    ts1 = "加载测试开始";
-                    ts2 = "保持油门全开";
+                #region 加载测试
+                ts1 = "加载测试开始";
+                ts2 = "保持油门全开";
+                if (ledcontrol != null)
+                {
+                    ledcontrol.writeLed("　加载测试开始　", 2, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                }
+                Msg(Msg_msg, panel_msg, "扫描完毕，开始加载测试，保持油门全开", true);
+                Thread.Sleep(1000);
+                opno = 4;
+                opcode = 14;
+                if (lugdownconfig.Glsmms == "恒功率")
+                {
+                    igbt.Set_Control_Force(0f);
+                    Thread.Sleep(200);
+                }
+                Jc_Process = "VelMaxHP100%";
+                flag = 0;
+                while (JC_Status)
+                {
+                    ts1 = Jc_Process + "测试";
+                    float temp_speed = 0;
+                    float temp_force = 0;
+                    float temp_gl = 0;
+                    float temp_zs = 0;
+                    float temp_gxxs = 0;
+                    float temp_no = 0;
+                    switch (Jc_Process)
+                    {
+                        case "VelMaxHP100%":
+                            statusconfigini.writeNeuStatusData("K100Testing", DateTime.Now.ToString());
+                            Modulus = 1;
+                            if (equipconfig.DATASECONDS_TYPE != "江西"&&equipconfig.DATASECONDS_TYPE!="云南保山"&& equipconfig.DATASECONDS_TYPE != "安徽")
+                                sxnb = 2;
+                            opno = 5;
+                            opcode = 21;
+                            break;
+                        case "VelMaxHP90%":
+                            statusconfigini.writeNeuStatusData("K90Testing", DateTime.Now.ToString());
+                            Modulus = 0.9f;
+                            if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山"|| equipconfig.DATASECONDS_TYPE == "安徽")
+                                sxnb = 4;
+                            else
+                                sxnb = 3;
+                            opno = 9;
+                            opcode = 31;
+                            break;
+                        case "VelMaxHP80%":
+                            statusconfigini.writeNeuStatusData("K80Testing", DateTime.Now.ToString());
+                            Modulus = 0.8f;
+                            if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山"|| equipconfig.DATASECONDS_TYPE == "安徽")
+                                sxnb = 5;
+                            else
+                                sxnb = 4;
+                            opno = 13;
+                            opcode = 41;
+                            break;
+                    }
+                    igbt.Set_Speed(VelMaxHP_real * Modulus);
+                    Thread.Sleep(200);
+                    igbt.Start_Control_Speed();
+
+                    if ((equipconfig.DATASECONDS_TYPE == "江西"|| equipconfig.DATASECONDS_TYPE == "云南保山"|| equipconfig.DATASECONDS_TYPE == "安徽") && Jc_Process == "VelMaxHP100%")
+                    {
+                        while (igbt.Speed < VelMaxHP_real - 1)
+                        {
+                            if (ledcontrol != null)
+                                ledcontrol.writeLed("恢复100%VelMaxHP", 2, equipconfig.Ledxh);
+                            Msg(Msg_msg, panel_msg, "恢复100%VelMaxHP过程", true);
+                            Thread.Sleep(200);
+                        }
+                        sxnb = 3;
+                    }
+
+                    Msg(Msg_msg, panel_msg, equipconfig.useJHSCREEN ? "加载减速测试中": "正在进行加载减速测试，将在" + Math.Round(VelMaxHP_real * Modulus, 2).ToString("0.0") + "km/h时取值", true);
                     if (ledcontrol != null)
                     {
-                        ledcontrol.writeLed("　加载测试开始　", 2, equipconfig.Ledxh);
+                        ledcontrol.writeLed("将在" + addLength(Math.Round(VelMaxHP_real * Modulus, 2).ToString("0.0"), 4) + "处取值 ", 2, equipconfig.Ledxh);
                         Thread.Sleep(200);
                     }
-                    Msg(Msg_msg, panel_msg, "扫描完毕，开始加载测试，保持油门全开", true);
-                    Thread.Sleep(1000);
-                    opno = 4;
-                    opcode = 14;
-                    if (lugdownconfig.Glsmms == "恒功率")
+                    if (!equipconfig.useJHSCREEN)
                     {
-                        igbt.Set_Control_Force(0f);
-                        Thread.Sleep(200);
+                        ts2 = "将在" + Math.Round(VelMaxHP_real * Modulus, 2).ToString("0.0") + "km/h取值";
                     }
-                    Jc_Process = "VelMaxHP100%";
-                    flag = 0;
+                    else
+                    {
+                        ts2 = "加载减速测试中";
+                    }
+                    Speed_Count = 0;
                     while (JC_Status)
                     {
-                        ts1 = Jc_Process + "测试";
-                        float temp_speed = 0;
-                        float temp_force = 0;
-                        float temp_gl = 0;
-                        float temp_zs = 0;
-                        float temp_gxxs = 0;
-                        float temp_no = 0;
                         switch (Jc_Process)
                         {
                             case "VelMaxHP100%":
-                                statusconfigini.writeNeuStatusData("K100Testing", DateTime.Now.ToString());
-                                Modulus = 1;
-                                if (equipconfig.DATASECONDS_TYPE != "江西"&&equipconfig.DATASECONDS_TYPE!="云南保山"&& equipconfig.DATASECONDS_TYPE != "安徽")
-                                    sxnb = 2;
-                                opno = 5;
-                                opcode = 21;
+                                opno = 6;
+                                opcode = 22;
                                 break;
                             case "VelMaxHP90%":
-                                statusconfigini.writeNeuStatusData("K90Testing", DateTime.Now.ToString());
-                                Modulus = 0.9f;
-                                if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山"|| equipconfig.DATASECONDS_TYPE == "安徽")
-                                    sxnb = 4;
-                                else
-                                    sxnb = 3;
-                                opno = 9;
-                                opcode = 31;
+                                opno = 10;
+                                opcode = 32;
                                 break;
                             case "VelMaxHP80%":
-                                statusconfigini.writeNeuStatusData("K80Testing", DateTime.Now.ToString());
-                                Modulus = 0.8f;
-                                if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山"|| equipconfig.DATASECONDS_TYPE == "安徽")
-                                    sxnb = 5;
-                                else
-                                    sxnb = 4;
-                                opno = 13;
-                                opcode = 41;
+                                opno = 14;
+                                opcode = 42;
                                 break;
                         }
-                        igbt.Set_Speed(VelMaxHP_real * Modulus);
-                        Thread.Sleep(200);
-                        igbt.Start_Control_Speed();
-
-                        if ((equipconfig.DATASECONDS_TYPE == "江西"|| equipconfig.DATASECONDS_TYPE == "云南保山"|| equipconfig.DATASECONDS_TYPE == "安徽") && Jc_Process == "VelMaxHP100%")
+                        Thread.Sleep(100);
+                        if (Math.Abs(igbt.Speed - VelMaxHP_real * Modulus) < lugdownconfig.Sdwdqj)            //如果离目标速度小于1时
                         {
-                            while (igbt.Speed < VelMaxHP_real - 1)
-                            {
-                                if (ledcontrol != null)
-                                    ledcontrol.writeLed("恢复100%VelMaxHP", 2, equipconfig.Ledxh);
-                                Msg(Msg_msg, panel_msg, "恢复100%VelMaxHP过程", true);
-                                Thread.Sleep(200);
-                            }
-                            sxnb = 3;
-                        }
-
-                        Msg(Msg_msg, panel_msg, equipconfig.useJHSCREEN ? "加载减速测试中": "正在进行加载减速测试，将在" + Math.Round(VelMaxHP_real * Modulus, 2).ToString("0.0") + "km/h时取值", true);
-                        if (ledcontrol != null)
-                        {
-                            ledcontrol.writeLed("将在" + addLength(Math.Round(VelMaxHP_real * Modulus, 2).ToString("0.0"), 4) + "处取值 ", 2, equipconfig.Ledxh);
-                            Thread.Sleep(200);
-                        }
-                        if (!equipconfig.useJHSCREEN)
-                        {
-                            ts2 = "将在" + Math.Round(VelMaxHP_real * Modulus, 2).ToString("0.0") + "km/h取值";
+                            Speed_Count++;
                         }
                         else
                         {
-                            ts2 = "加载减速测试中";
-                        }
-                        Speed_Count = 0;
-                        while (JC_Status)
-                        {
-                            switch (Jc_Process)
-                            {
-                                case "VelMaxHP100%":
-                                    opno = 6;
-                                    opcode = 22;
-                                    break;
-                                case "VelMaxHP90%":
-                                    opno = 10;
-                                    opcode = 32;
-                                    break;
-                                case "VelMaxHP80%":
-                                    opno = 14;
-                                    opcode = 42;
-                                    break;
-                            }
-                            Thread.Sleep(100);
-                            if (Math.Abs(igbt.Speed - VelMaxHP_real * Modulus) < lugdownconfig.Sdwdqj)            //如果离目标速度小于1时
-                            {
-                                Speed_Count++;
-                            }
-                            else
-                            {
-                                //Speed_Count = 0;//如果大于1时，则表示未稳定
-                                continue;
-                            }
-                            if (Speed_Count >= 30)
-                                break;
+                            //Speed_Count = 0;//如果大于1时，则表示未稳定
+                            continue;
                         }
                         if (Speed_Count >= 30)
+                            break;
+                    }
+                    if (Speed_Count >= 30)
+                    {
+                        //取值
+                        switch (Jc_Process)
                         {
-                            //取值
-                            switch (Jc_Process)
+                            case "VelMaxHP100%":
+                                opno = 7;
+                                opcode = 23;
+                                break;
+                            case "VelMaxHP90%":
+                                opno = 11;
+                                opcode = 33;
+                                break;
+                            case "VelMaxHP80%":
+                                opno = 15;
+                                opcode = 43;
+                                break;
+                        }
+                        for (int i = 3; i > 0; i--)
+                        {
+                            if (!equipconfig.useJHSCREEN)
                             {
-                                case "VelMaxHP100%":
-                                    opno = 7;
-                                    opcode = 23;
-                                    break;
-                                case "VelMaxHP90%":
-                                    opno = 11;
-                                    opcode = 33;
-                                    break;
-                                case "VelMaxHP80%":
-                                    opno = 15;
-                                    opcode = 43;
-                                    break;
+                                Msg(Msg_msg, panel_msg, "将在" + i.ToString() + "s后取值", false);
+                                ts2 = "将在" + i.ToString() + "s后取值";
                             }
-                            for (int i = 3; i > 0; i--)
+                            Thread.Sleep(900);
+                        }
+                        Speed_Count = 0;
+                        temp_force = 0;
+                        temp_gl = 0;
+                        temp_gxxs = 0;
+                        temp_speed = 0;
+                        temp_zs = 0;
+                        temp_no = 0;
+                        for (int i = 1; i <= 5; i++)//取5s内的数据，以10HZ的采样率
+                        {
+                            if (!equipconfig.useJHSCREEN)
                             {
-                                if (!equipconfig.useJHSCREEN)
-                                {
-                                    Msg(Msg_msg, panel_msg, "将在" + i.ToString() + "s后取值", false);
-                                    ts2 = "将在" + i.ToString() + "s后取值";
-                                }
-                                Thread.Sleep(900);
+                                Msg(Msg_msg, panel_msg, "正在取值" + "(" + Jc_Process + ") " + i.ToString(), false);
+                                ts2 = "正在取值..." + (6 - i).ToString() + "s";
                             }
-                            Speed_Count = 0;
-                            temp_force = 0;
-                            temp_gl = 0;
-                            temp_gxxs = 0;
-                            temp_speed = 0;
-                            temp_zs = 0;
-                            temp_no = 0;
-                            for (int i = 1; i <= 5; i++)//取5s内的数据，以10HZ的采样率
+                            if (ledcontrol != null)
                             {
-                                if (!equipconfig.useJHSCREEN)
-                                {
-                                    Msg(Msg_msg, panel_msg, "正在取值" + "(" + Jc_Process + ") " + i.ToString(), false);
-                                    ts2 = "正在取值..." + (6 - i).ToString() + "s";
-                                }
+                                ledcontrol.writeLed("正在取值..." + (6 - i).ToString() + "s ", 2, equipconfig.Ledxh);
+                            }
+                            temp_speed += igbt.Speed;
+                            temp_force += igbt.Force;
+                            temp_gl += (float)nowpower;
+                            temp_gxxs += Smoke;
+                            temp_zs += ZS;
+                            temp_no += No;
+                            Thread.Sleep(900);
+                        }
+                        switch (Jc_Process)
+                        {
+                            case "VelMaxHP100%":
+                                opno = 8;
+                                opcode = 24;
+                                Speed_Count = 0;
+                                double glsum = 0;
+
+                                HP = (temp_gl / 5f).ToString("0.00");
+                                HK = (temp_gxxs / 5f).ToString("0.00");
+                                HV = (temp_zs / 5f).ToString("0");
+                                HNo = (temp_no / 5f).ToString("0");
                                 if (ledcontrol != null)
                                 {
-                                    ledcontrol.writeLed("正在取值..." + (6 - i).ToString() + "s ", 2, equipconfig.Ledxh);
+                                    ledcontrol.writeLed("测试结果:" + addLength(HK, 4) + " ", 2, equipconfig.Ledxh);
                                 }
-                                temp_speed += igbt.Speed;
-                                temp_force += igbt.Force;
-                                temp_gl += (float)nowpower;
-                                temp_gxxs += Smoke;
-                                temp_zs += ZS;
-                                temp_no += No;
-                                Thread.Sleep(900);
-                            }
-                            switch (Jc_Process)
-                            {
-                                case "VelMaxHP100%":
-                                    opno = 8;
-                                    opcode = 24;
-                                    Speed_Count = 0;
-                                    double glsum = 0;
-
-                                    HP = (temp_gl / 5f).ToString("0.00");
-                                    HK = (temp_gxxs / 5f).ToString("0.00");
-                                    HV = (temp_zs / 5f).ToString("0");
-                                    HNo = (temp_no / 5f).ToString("0");
+                                led_display(ledNumberGX_H, HK);
+                                jzjs_data.Rev100 = HV;
+                                if (lugdownconfig.LugdownMaxHpStyle == 0)
+                                {
+                                    if (!equipconfig.useJHSCREEN)
+                                    {
+                                        Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + HK, true);
+                                        ts2 = "结果：" + HK;
+                                    }
+                                }
+                                else
+                                {
+                                    for (int timecount = GKSJ - 5; timecount <= GKSJ - 1; timecount++)
+                                    {
+                                        glsum += ZGLlist[timecount];
+                                    }
+                                    double glxz = glsum * glxzxs / 5.0;
+                                    jzjs_data.Lbgl = glxz.ToString("0.0");
+                                    led_display(ledNumberLBGL, jzjs_data.Lbgl);
+                                    led_display(ledNumberDCF, jzjs_data.glxzxs);
+                                    if (!equipconfig.useJHSCREEN)
+                                    {
+                                        Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，修正功率:" + jzjs_data.Lbgl + "kW,K:" + HK, true);
+                                        ts2 = "功率:" + jzjs_data.Lbgl + " K:" + HK;
+                                    }
+                                    if (equipconfig.useJHJK)//金华监控到轮边功率大于额定功率的80%，即限值的160%中断检测
+                                    {
+                                        if (double.Parse(jzjs_data.Lbgl) > carbj.Xz1 * 0.02 * equipconfig.JHLBGLB)
+                                        {
+                                            JC_Status = false;
+                                            button_ss.Text = "重新检测";
+                                            Th_get_FqandLl.Abort();
+                                            Jzjs_status = false; fq_getdata = false;
+                                            Thread.Sleep(500);
+                                            Msg(Msg_msg, panel_msg, "轮边功率异常预警，检测中止。", true);
+                                            ts1 = "轮边功率异常预警";
+                                            ts2 = "检测中止";
+                                            if (ledcontrol != null)
+                                            {
+                                                ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                                Thread.Sleep(200);
+                                                ledcontrol.writeLed("轮边功率异常预警", 5, equipconfig.Ledxh);
+                                            }
+                                            igbt.Exit_Control();
+                                            return;
+                                        }
+                                    }
+                                }
+                                /*if (double.Parse(HK)<0.01)
+                                {
+                                    JC_Status = false;
+                                    button_ss.Text = "重新检测";
+                                    Th_get_FqandLl.Abort();
+                                    Jzjs_status = false;
+                                    Thread.Sleep(500);
+                                    Msg(Msg_msg, panel_msg, "烟度值为0，检测中止。", true);
+                                    ts1 = "烟度值为0";
+                                    ts2 = "检测中止";
                                     if (ledcontrol != null)
                                     {
-                                        ledcontrol.writeLed("测试结果:" + addLength(HK, 4) + " ", 2, equipconfig.Ledxh);
+                                        ledcontrol.writeLed("　　检测终止　　", 2);
+                                        Thread.Sleep(200);
+                                        ledcontrol.writeLed("检测探头是否脱落", 5);
                                     }
-                                    led_display(ledNumberGX_H, HK);
-                                    jzjs_data.Rev100 = HV;
-                                    if (lugdownconfig.LugdownMaxHpStyle == 0)
-                                    {
-                                        if (!equipconfig.useJHSCREEN)
-                                        {
-                                            Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + HK, true);
-                                            ts2 = "结果：" + HK;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        for (int timecount = GKSJ - 5; timecount <= GKSJ - 1; timecount++)
-                                        {
-                                            glsum += ZGLlist[timecount];
-                                        }
-                                        double glxz = glsum * glxzxs / 5.0;
-                                        jzjs_data.Lbgl = glxz.ToString("0.0");
-                                        led_display(ledNumberLBGL, jzjs_data.Lbgl);
-                                        led_display(ledNumberDCF, jzjs_data.glxzxs);
-                                        if (!equipconfig.useJHSCREEN)
-                                        {
-                                            Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，修正功率:" + jzjs_data.Lbgl + "kW,K:" + HK, true);
-                                            ts2 = "功率:" + jzjs_data.Lbgl + " K:" + HK;
-                                        }
-                                        if (equipconfig.useJHJK)//金华监控到轮边功率大于额定功率的80%，即限值的160%中断检测
-                                        {
-                                            if (double.Parse(jzjs_data.Lbgl) > carbj.Xz1 * 0.02 * equipconfig.JHLBGLB)
-                                            {
-                                                JC_Status = false;
-                                                button_ss.Text = "重新检测";
-                                                Th_get_FqandLl.Abort();
-                                                Jzjs_status = false; fq_getdata = false;
-                                                Thread.Sleep(500);
-                                                Msg(Msg_msg, panel_msg, "轮边功率异常预警，检测中止。", true);
-                                                ts1 = "轮边功率异常预警";
-                                                ts2 = "检测中止";
-                                                if (ledcontrol != null)
-                                                {
-                                                    ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
-                                                    Thread.Sleep(200);
-                                                    ledcontrol.writeLed("轮边功率异常预警", 5, equipconfig.Ledxh);
-                                                }
-                                                igbt.Exit_Control();
-                                                return;
-                                            }
-                                        }
-                                    }
-                                    /*if (double.Parse(HK)<0.01)
-                                    {
-                                        JC_Status = false;
-                                        button_ss.Text = "重新检测";
-                                        Th_get_FqandLl.Abort();
-                                        Jzjs_status = false;
-                                        Thread.Sleep(500);
-                                        Msg(Msg_msg, panel_msg, "烟度值为0，检测中止。", true);
-                                        ts1 = "烟度值为0";
-                                        ts2 = "检测中止";
-                                        if (ledcontrol != null)
-                                        {
-                                            ledcontrol.writeLed("　　检测终止　　", 2);
-                                            Thread.Sleep(200);
-                                            ledcontrol.writeLed("检测探头是否脱落", 5);
-                                        }
                                         
-                                        return;
-                                    }*/
-                                    Thread.Sleep(1000);
-                                    Jc_Process = "VelMaxHP90%";
-                                    if (lugdownconfig.gsKcbPD)
+                                    return;
+                                }*/
+                                Thread.Sleep(1000);
+                                Jc_Process = "VelMaxHP90%";
+                                if (lugdownconfig.gsKcbPD)
+                                {
+                                    if (double.Parse(HK) > carbj.Xz2)
                                     {
-                                        if (double.Parse(HK) > carbj.Xz2)
-                                        {
-                                            ts1 = "光吸收系数超标";
-                                            ts2 = "测试结束";
-                                            NK = "";
-                                            EK = "";
-                                            if (ledcontrol != null)
-                                            {
-                                                ledcontrol.writeLed("k超标  检测结束", 2, equipconfig.Ledxh);
-                                                Thread.Sleep(200);
-                                            }
-                                            Msg(Msg_msg, panel_msg, "光吸收系数超标，测试结束", true);
-                                            Thread.Sleep(2000);
-                                            goto Finish;
-                                        }
-                                    }
-                                    if (lugdownconfig.gsKhgPD)
-                                    {
-                                        if (double.Parse(HK) <= Math.Round(carbj.Xz2 * 0.9, 2))
-                                        {
-                                            ts1 = "k小于限值90%";
-                                            ts2 = "测试结束";
-                                            NK = "";
-                                            EK = "";
-                                            if (ledcontrol != null)
-                                            {
-                                                ledcontrol.writeLed("k合格  检测结束", 2, equipconfig.Ledxh);
-                                                Thread.Sleep(200);
-                                            }
-                                            Msg(Msg_msg, panel_msg, "k小于限值90%，测试结束", true);
-                                            Thread.Sleep(2000);
-                                            goto Finish;
-                                        }
-                                    }
-                                    if (equipconfig.useJHJK)
-                                    {
-                                        if (double.Parse(HK) == 0)
-                                        {
-                                            JC_Status = false;
-                                            button_ss.Text = "重新检测";
-                                            Th_get_FqandLl.Abort();
-                                            Jzjs_status = false; fq_getdata = false;
-                                            Thread.Sleep(500);
-                                            Msg(Msg_msg, panel_msg, "烟度值为0，检测中止。", true);
-                                            ts1 = "烟度值为0";
-                                            ts2 = "检测中止";
-                                            if (ledcontrol != null)
-                                            {
-                                                ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
-                                                Thread.Sleep(200);
-                                                ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
-                                            }
-                                            igbt.Exit_Control();
-
-                                            return;
-                                        }
-                                    }
-                                    if (lugdownconfig.isYdjk_cl)
-                                    {
-                                        if (double.Parse(HK) < lugdownconfig.ydjk_cl_value)
-                                        {
-                                            JC_Status = false;
-                                            button_ss.Text = "重新检测";
-                                            Th_get_FqandLl.Abort();
-                                            Jzjs_status = false; fq_getdata = false;
-                                            Thread.Sleep(500);
-                                            Msg(Msg_msg, panel_msg, "烟度值过低,检测中止,检查探头是否脱落", true);
-                                            ts1 = "烟度值过低";
-                                            ts2 = "检测中止";
-                                            if (ledcontrol != null)
-                                            {
-                                                ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
-                                                Thread.Sleep(200);
-                                                ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
-                                            }
-                                            igbt.Exit_Control();
-
-                                            return;
-                                        }
-                                    }
-                                    if (lugdownconfig.LugdownGljk)
-                                    {
-                                        if (double.Parse(HP)*glxzxs<double.Parse(jzjs_data.Lbgl)*lugdownconfig.Lugdown_Gljk_value*0.01)
-                                        {
-                                            JC_Status = false;
-                                            button_ss.Text = "重新检测";
-                                            Th_get_FqandLl.Abort();
-                                            Jzjs_status = false; fq_getdata = false;
-                                            Thread.Sleep(500);
-                                            Msg(Msg_msg, panel_msg, "加载功率过低,检测中止", true);
-                                            ts1 = "加载功率过低";
-                                            ts2 = "检测中止";
-                                            if (ledcontrol != null)
-                                            {
-                                                ledcontrol.writeLed("　　检测中止　　", 2, equipconfig.Ledxh);
-                                                Thread.Sleep(200);
-                                                ledcontrol.writeLed("加载功率低于限值", 5, equipconfig.Ledxh);
-                                            }
-                                            igbt.Exit_Control();
-
-                                            return;
-                                        }
-                                    }
-                                    break;
-                                case "VelMaxHP90%":
-
-                                    opno = 12;
-                                    opcode = 34;
-                                    Speed_Count = 0;
-                                    NV = (temp_zs / 5f).ToString("0");
-                                    NP = (temp_gl / 5f).ToString("0.00");
-                                    NK = (temp_gxxs / 5f).ToString("0.00");
-                                    NNo = (temp_no / 5f).ToString("0");
-                                    if (!equipconfig.useJHSCREEN)
-                                    {
-                                        Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + NK, true);
-                                        ts2 = "结果：" + NK;
-                                    }
-                                    if (ledcontrol != null)
-                                    {
-                                        ledcontrol.writeLed("测试结果:" + addLength(NK, 4) + " ", 2, equipconfig.Ledxh);
-                                    }
-                                    led_display(ledNumberGX_N, NK);
-                                    /*if (double.Parse(NK) < 0.01)
-                                    {
-                                        JC_Status = false;
-                                        button_ss.Text = "重新检测";
-                                        Th_get_FqandLl.Abort();
-                                        Jzjs_status = false;
-                                        Thread.Sleep(500);
-                                        Msg(Msg_msg, panel_msg, "烟度值为0，检测中止。", true);
-                                        ts1 = "烟度值为0";
-                                        ts2 = "检测中止";
+                                        ts1 = "光吸收系数超标";
+                                        ts2 = "测试结束";
+                                        NK = "";
+                                        EK = "";
                                         if (ledcontrol != null)
                                         {
-                                            ledcontrol.writeLed("　　检测终止　　", 2);
+                                            ledcontrol.writeLed("k超标  检测结束", 2, equipconfig.Ledxh);
                                             Thread.Sleep(200);
-                                            ledcontrol.writeLed("检测探头是否脱落", 5);
                                         }
-
-                                        return;
-                                    }*/
-                                    Thread.Sleep(1000);
-                                    Jc_Process = "VelMaxHP80%";
-                                    if (lugdownconfig.gsKcbPD)
+                                        Msg(Msg_msg, panel_msg, "光吸收系数超标，测试结束", true);
+                                        Thread.Sleep(2000);
+                                        goto Finish;
+                                    }
+                                }
+                                if (lugdownconfig.gsKhgPD)
+                                {
+                                    if (double.Parse(HK) <= Math.Round(carbj.Xz2 * 0.9, 2))
                                     {
-                                        if (double.Parse(NK) > carbj.Xz2)
+                                        ts1 = "k小于限值90%";
+                                        ts2 = "测试结束";
+                                        NK = "";
+                                        EK = "";
+                                        if (ledcontrol != null)
                                         {
-                                            ts1 = "光吸收系数超标";
-                                            ts2 = "测试结束";
-                                            EK = "0";
-                                            if (ledcontrol != null)
-                                            {
-                                                ledcontrol.writeLed("k超标  检测结束", 2, equipconfig.Ledxh);
-                                                Thread.Sleep(200);
-                                            }
-                                            Msg(Msg_msg, panel_msg, "光吸收系数超标，测试结束", true);
-                                            Thread.Sleep(2000);
-                                            goto Finish;
+                                            ledcontrol.writeLed("k合格  检测结束", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
                                         }
+                                        Msg(Msg_msg, panel_msg, "k小于限值90%，测试结束", true);
+                                        Thread.Sleep(2000);
+                                        goto Finish;
                                     }
-                                    if (lugdownconfig.gsKhgPD)
-                                    {
-                                        if (double.Parse(NK) <= Math.Round(carbj.Xz2 * 0.9, 2))
-                                        {
-                                            ts1 = "k小于限值90%";
-                                            ts2 = "测试结束";
-                                            EK = "";
-                                            if (ledcontrol != null)
-                                            {
-                                                ledcontrol.writeLed("k合格  检测结束", 2, equipconfig.Ledxh);
-                                                Thread.Sleep(200);
-                                            }
-                                            Msg(Msg_msg, panel_msg, "k小于限值90%，测试结束", true);
-                                            Thread.Sleep(2000);
-                                            goto Finish;
-                                        }
-                                    }
-                                    if (equipconfig.useJHJK)
-                                    {
-                                        if (double.Parse(NK) == 0)
-                                        {
-                                            JC_Status = false;
-                                            button_ss.Text = "重新检测";
-                                            Th_get_FqandLl.Abort();
-                                            Jzjs_status = false; fq_getdata = false;
-                                            Thread.Sleep(500);
-                                            Msg(Msg_msg, panel_msg, "烟度值为0，检测中止。", true);
-                                            ts1 = "烟度值为0";
-                                            ts2 = "检测中止";
-                                            if (ledcontrol != null)
-                                            {
-                                                ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
-                                                Thread.Sleep(200);
-                                                ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
-                                            }
-                                            igbt.Exit_Control();
-
-                                            return;
-                                        }
-                                    }
-                                    if (lugdownconfig.isYdjk_cl)
-                                    {
-                                        if (double.Parse(NK) < lugdownconfig.ydjk_cl_value)
-                                        {
-                                            JC_Status = false;
-                                            button_ss.Text = "重新检测";
-                                            Th_get_FqandLl.Abort();
-                                            Jzjs_status = false; fq_getdata = false;
-                                            Thread.Sleep(500);
-                                            Msg(Msg_msg, panel_msg, "烟度值过低,检测中止,检查探头是否脱落", true);
-                                            ts1 = "烟度值过低";
-                                            ts2 = "检测中止";
-                                            if (ledcontrol != null)
-                                            {
-                                                ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
-                                                Thread.Sleep(200);
-                                                ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
-                                            }
-                                            igbt.Exit_Control();
-
-                                            return;
-                                        }
-                                    }
-                                    if (lugdownconfig.LugdownGljk)
-                                    {
-                                        if (double.Parse(NP) * glxzxs < double.Parse(jzjs_data.Lbgl) * lugdownconfig.Lugdown_Gljk_value * 0.01)
-                                        {
-                                            JC_Status = false;
-                                            button_ss.Text = "重新检测";
-                                            Th_get_FqandLl.Abort();
-                                            Jzjs_status = false; fq_getdata = false;
-                                            Thread.Sleep(500);
-                                            Msg(Msg_msg, panel_msg, "加载功率过低，检测中止。", true);
-                                            ts1 = "加载功率过低";
-                                            ts2 = "检测中止";
-                                            if (ledcontrol != null)
-                                            {
-                                                ledcontrol.writeLed("　　检测中止　　", 2, equipconfig.Ledxh);
-                                                Thread.Sleep(200);
-                                                ledcontrol.writeLed("加载功率低于限值", 5, equipconfig.Ledxh);
-                                            }
-                                            igbt.Exit_Control();
-
-                                            return;
-                                        }
-                                    }
-                                    break;
-                                case "VelMaxHP80%":
-
-                                    opno = 16;
-                                    opcode = 44;
-                                    Speed_Count = 0;
-                                    EV = (temp_zs / 5f).ToString("0");
-                                    EP = (temp_gl / 5f).ToString("0.00");
-                                    EK = (temp_gxxs / 5f).ToString("0.00");
-                                    ENo = (temp_no / 5f).ToString("0");
-                                    if (!equipconfig.useJHSCREEN)
-                                    {
-                                        Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + EK, true);
-                                        ts2 = "结果：" + EK;
-                                    }
-                                    if (ledcontrol != null)
-                                    {
-                                        ledcontrol.writeLed("测试结果:" + addLength(EK, 4) + " ", 2, equipconfig.Ledxh);
-                                    }
-                                    led_display(ledNumberGS_E, EK);
-                                    if (equipconfig.useJHJK)
-                                    {
-                                        if (double.Parse(EK) == 0)
-                                        {
-                                            JC_Status = false;
-                                            button_ss.Text = "重新检测";
-                                            Th_get_FqandLl.Abort();
-                                            Jzjs_status = false; fq_getdata = false;
-                                            Thread.Sleep(500);
-                                            Msg(Msg_msg, panel_msg, "烟度值为0，检测中止。", true);
-                                            ts1 = "烟度值为0";
-                                            ts2 = "检测中止";
-                                            if (ledcontrol != null)
-                                            {
-                                                ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
-                                                Thread.Sleep(200);
-                                                ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
-                                            }
-                                            igbt.Exit_Control();
-
-                                            return;
-                                        }
-                                    }
-                                    if (lugdownconfig.isYdjk_cl)
-                                    {
-                                        if (double.Parse(EK) < lugdownconfig.ydjk_cl_value)
-                                        {
-                                            JC_Status = false;
-                                            button_ss.Text = "重新检测";
-                                            Th_get_FqandLl.Abort();
-                                            Jzjs_status = false; fq_getdata = false;
-                                            Thread.Sleep(500);
-                                            Msg(Msg_msg, panel_msg, "烟度值过低，检测中止。", true);
-                                            ts1 = "烟度值过低";
-                                            ts2 = "检测中止";
-                                            if (ledcontrol != null)
-                                            {
-                                                ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
-                                                Thread.Sleep(200);
-                                                ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
-                                            }
-                                            igbt.Exit_Control();
-
-                                            return;
-                                        }
-                                    }
-                                    if (double.Parse(EK) < 0.01 && double.Parse(NK) < 0.01 && double.Parse(HK) < 0.01)
+                                }
+                                if (equipconfig.useJHJK)
+                                {
+                                    if (double.Parse(HK) == 0)
                                     {
                                         JC_Status = false;
                                         button_ss.Text = "重新检测";
@@ -2768,143 +2457,369 @@ namespace lugdowm
                                             Thread.Sleep(200);
                                             ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
                                         }
+                                        igbt.Exit_Control();
 
                                         return;
                                     }
-
-                                    
-                                    if (lugdownconfig.LugdownGljk)
-                                    {
-                                        if (double.Parse(EP) * glxzxs < double.Parse(jzjs_data.Lbgl) * lugdownconfig.Lugdown_Gljk_value * 0.01)
-                                        {
-                                            JC_Status = false;
-                                            button_ss.Text = "重新检测";
-                                            Th_get_FqandLl.Abort();
-                                            Jzjs_status = false; fq_getdata = false;
-                                            Thread.Sleep(500);
-                                            Msg(Msg_msg, panel_msg, "加载功率过低，检测中止。", true);
-                                            ts1 = "加载功率过低";
-                                            ts2 = "检测中止";
-                                            if (ledcontrol != null)
-                                            {
-                                                ledcontrol.writeLed("　　检测中止　　", 2, equipconfig.Ledxh);
-                                                Thread.Sleep(200);
-                                                ledcontrol.writeLed("加载功率低于限值", 5, equipconfig.Ledxh);
-                                            }
-                                            igbt.Exit_Control();
-
-                                            return;
-                                        }
-                                    }
-                                    Thread.Sleep(1000);
-                                    Jc_Process = "结束";
-                                    break;
-                            }
-                            if (Jc_Process == "结束")
-                                break;
-                        }
-                    }
-                    #endregion
-                    Finish:
-                    #region 结束并保存数据
-                    statusconfigini.writeNeuStatusData("FinishTest", DateTime.Now.ToString());
-                    Msg(Msg_msg, panel_msg, "加载减速测试完毕。", true);
-                    ts1 = "测试完毕";
-                    ts2 = "松开节气门换至空档";
-                    jzjs_dataseconds.Gksj = GKSJ;//记录总的工况时间
-                    statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.GUOCHE, GKSJ.ToString());
-                    statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_ENDSAMPLE, "");
-                    Jzjs_status = false; fq_getdata = false;
-                    timer_show.Stop();//停止计时
-                    Thread.Sleep(1000);
-                    if (ledcontrol != null)
-                    {
-                        ledcontrol.writeLed("加载减速测试完毕", 2, equipconfig.Ledxh);
-                        Thread.Sleep(200);
-                        ledcontrol.writeLed("松节气门换至空档", 5, equipconfig.Ledxh);
-                    }
-                    DataTable jzjs_datatable = new DataTable();
-                    jzjs_datatable.Columns.Add("全程时序");
-                    jzjs_datatable.Columns.Add("时序类别");
-                    jzjs_datatable.Columns.Add("采样时序");
-                    jzjs_datatable.Columns.Add("车速");
-                    //jzjs_datatable.Columns.Add("转速");
-                    jzjs_datatable.Columns.Add("寄生功率");
-                    jzjs_datatable.Columns.Add("指示功率");
-                    jzjs_datatable.Columns.Add("功率");
-                    jzjs_datatable.Columns.Add("扭力");
-                    jzjs_datatable.Columns.Add("光吸收系数K");
-                    jzjs_datatable.Columns.Add("不透光度");
-                    jzjs_datatable.Columns.Add("环境温度");
-                    jzjs_datatable.Columns.Add("大气压力");
-                    jzjs_datatable.Columns.Add("相对湿度");
-                    jzjs_datatable.Columns.Add("油温");
-                    jzjs_datatable.Columns.Add("转速");
-                    jzjs_datatable.Columns.Add("DCF");
-                    jzjs_datatable.Columns.Add("OPNO");
-                    jzjs_datatable.Columns.Add("OPCODE");
-                    jzjs_datatable.Columns.Add("DYNN");
-                    jzjs_datatable.Columns.Add("NO");
-                    if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山"||equipconfig.DATASECONDS_TYPE== "安徽")
-                    {
-                        for (int i = 10; i < jzjs_dataseconds.Gksj; i++)//从第10秒开始取过程 数据，以避免金华判断转速时，第一秒的转速为0
-                        {
-                            if (int.Parse(Sxnblist[i]) > 0)
-                            {
-                                dr = jzjs_datatable.NewRow();
-                                dr["全程时序"] = Qcsxlist[i];
-                                dr["时序类别"] = (int.Parse(Sxnblist[i]) - 1).ToString();
-                                dr["采样时序"] = Cysxlist[i];
-                                dr["车速"] = Speedlist[i];
-                                //dr["转速"] = FDJZSlist[i].ToString();
-                                dr["寄生功率"] = JSGLlist[i];
-                                dr["指示功率"] = ZSGLlist[i];
-                                dr["功率"] = ZGLlist[i];
-                                dr["扭力"] = Forcelist[i];
-                                dr["光吸收系数K"] = GXXSlist[i];
-                                dr["不透光度"] = btglist[i];
-                                dr["环境温度"] = wdlist[i];
-                                dr["大气压力"] = dqylist[i];
-                                dr["相对湿度"] = sdlist[i];
-                                dr["油温"] = ywlist[i];
-                                dr["转速"] = FDJZSlist[i];
-                                dr["DCF"] = DCFlist[i];
-                                dr["OPNO"] = opnolist[i];
-                                dr["OPCODE"] = opcodelist[i];
-                                dr["DYNN"] = dynnlist[i];
-                                dr["NO"] = Nolist[i];
-                                jzjs_datatable.Rows.Add(dr);
-                                if (equipconfig.useJHJK)
+                                }
+                                if (lugdownconfig.isYdjk_cl)
                                 {
-                                    if (FDJZSlist[i] == 0)
+                                    if (double.Parse(HK) < lugdownconfig.ydjk_cl_value)
                                     {
                                         JC_Status = false;
                                         button_ss.Text = "重新检测";
                                         Th_get_FqandLl.Abort();
                                         Jzjs_status = false; fq_getdata = false;
                                         Thread.Sleep(500);
-                                        Msg(Msg_msg, panel_msg, "过程程有转速为0，检测中止。", true);
-                                        ts1 = "过程程有转速为0";
+                                        Msg(Msg_msg, panel_msg, "烟度值过低,检测中止,检查探头是否脱落", true);
+                                        ts1 = "烟度值过低";
                                         ts2 = "检测中止";
                                         if (ledcontrol != null)
                                         {
                                             ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
                                             Thread.Sleep(200);
-                                            ledcontrol.writeLed("过程程有转速为0", 5, equipconfig.Ledxh);
+                                            ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
                                         }
+                                        igbt.Exit_Control();
+
                                         return;
                                     }
                                 }
-                            }
+                                if (lugdownconfig.LugdownGljk)
+                                {
+                                    if (double.Parse(HP)*glxzxs<double.Parse(jzjs_data.Lbgl)*lugdownconfig.Lugdown_Gljk_value*0.01)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "加载功率过低,检测中止", true);
+                                        ts1 = "加载功率过低";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测中止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("加载功率低于限值", 5, equipconfig.Ledxh);
+                                        }
+                                        igbt.Exit_Control();
+
+                                        return;
+                                    }
+                                }
+                                break;
+                            case "VelMaxHP90%":
+
+                                opno = 12;
+                                opcode = 34;
+                                Speed_Count = 0;
+                                NV = (temp_zs / 5f).ToString("0");
+                                NP = (temp_gl / 5f).ToString("0.00");
+                                NK = (temp_gxxs / 5f).ToString("0.00");
+                                NNo = (temp_no / 5f).ToString("0");
+                                if (!equipconfig.useJHSCREEN)
+                                {
+                                    Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + NK, true);
+                                    ts2 = "结果：" + NK;
+                                }
+                                if (ledcontrol != null)
+                                {
+                                    ledcontrol.writeLed("测试结果:" + addLength(NK, 4) + " ", 2, equipconfig.Ledxh);
+                                }
+                                led_display(ledNumberGX_N, NK);
+                                /*if (double.Parse(NK) < 0.01)
+                                {
+                                    JC_Status = false;
+                                    button_ss.Text = "重新检测";
+                                    Th_get_FqandLl.Abort();
+                                    Jzjs_status = false;
+                                    Thread.Sleep(500);
+                                    Msg(Msg_msg, panel_msg, "烟度值为0，检测中止。", true);
+                                    ts1 = "烟度值为0";
+                                    ts2 = "检测中止";
+                                    if (ledcontrol != null)
+                                    {
+                                        ledcontrol.writeLed("　　检测终止　　", 2);
+                                        Thread.Sleep(200);
+                                        ledcontrol.writeLed("检测探头是否脱落", 5);
+                                    }
+
+                                    return;
+                                }*/
+                                Thread.Sleep(1000);
+                                Jc_Process = "VelMaxHP80%";
+                                if (lugdownconfig.gsKcbPD)
+                                {
+                                    if (double.Parse(NK) > carbj.Xz2)
+                                    {
+                                        ts1 = "光吸收系数超标";
+                                        ts2 = "测试结束";
+                                        EK = "0";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("k超标  检测结束", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                        }
+                                        Msg(Msg_msg, panel_msg, "光吸收系数超标，测试结束", true);
+                                        Thread.Sleep(2000);
+                                        goto Finish;
+                                    }
+                                }
+                                if (lugdownconfig.gsKhgPD)
+                                {
+                                    if (double.Parse(NK) <= Math.Round(carbj.Xz2 * 0.9, 2))
+                                    {
+                                        ts1 = "k小于限值90%";
+                                        ts2 = "测试结束";
+                                        EK = "";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("k合格  检测结束", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                        }
+                                        Msg(Msg_msg, panel_msg, "k小于限值90%，测试结束", true);
+                                        Thread.Sleep(2000);
+                                        goto Finish;
+                                    }
+                                }
+                                if (equipconfig.useJHJK)
+                                {
+                                    if (double.Parse(NK) == 0)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "烟度值为0，检测中止。", true);
+                                        ts1 = "烟度值为0";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                        }
+                                        igbt.Exit_Control();
+
+                                        return;
+                                    }
+                                }
+                                if (lugdownconfig.isYdjk_cl)
+                                {
+                                    if (double.Parse(NK) < lugdownconfig.ydjk_cl_value)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "烟度值过低,检测中止,检查探头是否脱落", true);
+                                        ts1 = "烟度值过低";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                        }
+                                        igbt.Exit_Control();
+
+                                        return;
+                                    }
+                                }
+                                if (lugdownconfig.LugdownGljk)
+                                {
+                                    if (double.Parse(NP) * glxzxs < double.Parse(jzjs_data.Lbgl) * lugdownconfig.Lugdown_Gljk_value * 0.01)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "加载功率过低，检测中止。", true);
+                                        ts1 = "加载功率过低";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测中止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("加载功率低于限值", 5, equipconfig.Ledxh);
+                                        }
+                                        igbt.Exit_Control();
+
+                                        return;
+                                    }
+                                }
+                                break;
+                            case "VelMaxHP80%":
+
+                                opno = 16;
+                                opcode = 44;
+                                Speed_Count = 0;
+                                EV = (temp_zs / 5f).ToString("0");
+                                EP = (temp_gl / 5f).ToString("0.00");
+                                EK = (temp_gxxs / 5f).ToString("0.00");
+                                ENo = (temp_no / 5f).ToString("0");
+                                if (!equipconfig.useJHSCREEN)
+                                {
+                                    Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + EK, true);
+                                    ts2 = "结果：" + EK;
+                                }
+                                if (ledcontrol != null)
+                                {
+                                    ledcontrol.writeLed("测试结果:" + addLength(EK, 4) + " ", 2, equipconfig.Ledxh);
+                                }
+                                led_display(ledNumberGS_E, EK);
+                                if (equipconfig.useJHJK)
+                                {
+                                    if (double.Parse(EK) == 0)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "烟度值为0，检测中止。", true);
+                                        ts1 = "烟度值为0";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                        }
+                                        igbt.Exit_Control();
+
+                                        return;
+                                    }
+                                }
+                                if (lugdownconfig.isYdjk_cl)
+                                {
+                                    if (double.Parse(EK) < lugdownconfig.ydjk_cl_value)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "烟度值过低，检测中止。", true);
+                                        ts1 = "烟度值过低";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                        }
+                                        igbt.Exit_Control();
+
+                                        return;
+                                    }
+                                }
+                                if (double.Parse(EK) < 0.01 && double.Parse(NK) < 0.01 && double.Parse(HK) < 0.01)
+                                {
+                                    JC_Status = false;
+                                    button_ss.Text = "重新检测";
+                                    Th_get_FqandLl.Abort();
+                                    Jzjs_status = false; fq_getdata = false;
+                                    Thread.Sleep(500);
+                                    Msg(Msg_msg, panel_msg, "烟度值为0，检测中止。", true);
+                                    ts1 = "烟度值为0";
+                                    ts2 = "检测中止";
+                                    if (ledcontrol != null)
+                                    {
+                                        ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                        Thread.Sleep(200);
+                                        ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                    }
+
+                                    return;
+                                }
+
+                                    
+                                if (lugdownconfig.LugdownGljk)
+                                {
+                                    if (double.Parse(EP) * glxzxs < double.Parse(jzjs_data.Lbgl) * lugdownconfig.Lugdown_Gljk_value * 0.01)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "加载功率过低，检测中止。", true);
+                                        ts1 = "加载功率过低";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测中止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("加载功率低于限值", 5, equipconfig.Ledxh);
+                                        }
+                                        igbt.Exit_Control();
+
+                                        return;
+                                    }
+                                }
+                                Thread.Sleep(1000);
+                                Jc_Process = "结束";
+                                break;
                         }
+                        if (Jc_Process == "结束")
+                            break;
                     }
-                    else
+                }
+                #endregion
+                Finish:
+                #region 结束并保存数据
+                statusconfigini.writeNeuStatusData("FinishTest", DateTime.Now.ToString());
+                Msg(Msg_msg, panel_msg, "加载减速测试完毕。", true);
+                ts1 = "测试完毕";
+                ts2 = "松开节气门换至空档";
+                jzjs_dataseconds.Gksj = GKSJ;//记录总的工况时间
+                statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.GUOCHE, GKSJ.ToString());
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_ENDSAMPLE, "");
+                Jzjs_status = false; fq_getdata = false;
+                timer_show.Stop();//停止计时
+                Thread.Sleep(1000);
+                if (ledcontrol != null)
+                {
+                    ledcontrol.writeLed("加载减速测试完毕", 2, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                    ledcontrol.writeLed("松节气门换至空档", 5, equipconfig.Ledxh);
+                }
+                DataTable jzjs_datatable = new DataTable();
+                jzjs_datatable.Columns.Add("全程时序");
+                jzjs_datatable.Columns.Add("时序类别");
+                jzjs_datatable.Columns.Add("采样时序");
+                jzjs_datatable.Columns.Add("车速");
+                //jzjs_datatable.Columns.Add("转速");
+                jzjs_datatable.Columns.Add("寄生功率");
+                jzjs_datatable.Columns.Add("指示功率");
+                jzjs_datatable.Columns.Add("功率");
+                jzjs_datatable.Columns.Add("扭力");
+                jzjs_datatable.Columns.Add("光吸收系数K");
+                jzjs_datatable.Columns.Add("不透光度");
+                jzjs_datatable.Columns.Add("环境温度");
+                jzjs_datatable.Columns.Add("大气压力");
+                jzjs_datatable.Columns.Add("相对湿度");
+                jzjs_datatable.Columns.Add("油温");
+                jzjs_datatable.Columns.Add("转速");
+                jzjs_datatable.Columns.Add("DCF");
+                jzjs_datatable.Columns.Add("OPNO");
+                jzjs_datatable.Columns.Add("OPCODE");
+                jzjs_datatable.Columns.Add("DYNN");
+                jzjs_datatable.Columns.Add("NO");
+                if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山"||equipconfig.DATASECONDS_TYPE== "安徽")
+                {
+                    for (int i = 10; i < jzjs_dataseconds.Gksj; i++)//从第10秒开始取过程 数据，以避免金华判断转速时，第一秒的转速为0
                     {
-                        for (int i = 10; i < jzjs_dataseconds.Gksj; i++)//从第10秒开始取过程 数据，以避免金华判断转速时，第一秒的转速为0
+                        if (int.Parse(Sxnblist[i]) > 0)
                         {
                             dr = jzjs_datatable.NewRow();
                             dr["全程时序"] = Qcsxlist[i];
-                            dr["时序类别"] = Sxnblist[i];
+                            dr["时序类别"] = (int.Parse(Sxnblist[i]) - 1).ToString();
                             dr["采样时序"] = Cysxlist[i];
                             dr["车速"] = Speedlist[i];
                             //dr["转速"] = FDJZSlist[i].ToString();
@@ -2948,193 +2863,1619 @@ namespace lugdowm
                             }
                         }
                     }
-                    jzjs_data.CarID = carbj.CarID;
-                    jzjs_data.Sd = SD.ToString("0.0");
-                    jzjs_data.Wd = WD.ToString("0.0");
-                    jzjs_data.Dqy = DQY.ToString("0.0");
-                    jzjs_data.Gxsxs_100 = HK;
-                    jzjs_data.Gxsxs_90 = NK;
-                    jzjs_data.Gxsxs_80 = EK;
-                    jzjs_data.hno = HNo;
-                    jzjs_data.nno = NNo;
-                    jzjs_data.eno = ENo;
-                    // jzjs_data.Lbgl = MaxP.ToString("0.0");
-                    jzjs_data.StopReason = "0";
-                    JC_Status = false;//停止测试，工况时间清零
-                    Th_get_FqandLl.Abort();//停止烟度采样
-                    igbt.Exit_Control();
-                    Thread.Sleep(1000);
-                    #endregion
-
-                    #region NO测量仪反吹
-                    if (equipconfig.Ydjxh.ToLower() == yq_mqw5101)
-                    {
-                        flb_100.stopAction();
-                        Thread.Sleep(500);
-                        flb_100.autoFlowBack();//自动反吹，时间30s
-                    }
-                    if (notester != null)
-                    {
-                        notester.stopAction();
-                        Thread.Sleep(500);
-                        notester.autoFlowBack();//自动反吹，时间30s
-                    }
-                    #endregion
-                    #region 等待车辆静止，举升升起
-                    for (int i = 30; i > 0; i--)
-                    {
-                        Msg(Msg_msg, panel_msg, "请松开节气门并换至空档，不要使用制动 " + i.ToString("00") + " 秒", true);
-                        Thread.Sleep(1000);
-                    }
-                    timer_show.Stop();
-                    while (true)
-                    {
-                        if (igbt.Speed < 1)
-                            break;
-                        Thread.Sleep(100);
-                    }
-                    Msg(Msg_msg, panel_msg, "检测完成,举升上升，请驶离测功机", false);
-                    ts2 = "请驶离测功机";
-                    if (ledcontrol != null)
-                    {
-                        ledcontrol.writeLed("　　检测完成　　", 2, equipconfig.Ledxh);
-                        Thread.Sleep(200);
-                        ledcontrol.writeLed("请车辆驶离测功机", 5, equipconfig.Ledxh);
-                    }
-                    igbt.Lifter_Up();           //检测完成举升上升
-                    button_ss.Text = "重新检测";
-                    JC_Status = false;
-                    writeDataIsFinished = false;
-                    //th_load = new Thread(load_progress);
-                    //th_load.Start();
-                    csvwriter.SaveCSV(jzjs_datatable, "C:/jcdatatxt/" + carbj.CarID + ".csv");
-                    jzjsdatacontrol.writeJzjsData(jzjs_data);//写carID.ini文件
-                    writeDataIsFinished = true;
-                    igjzjsIsFinished = true;
-                    #endregion
-                    this.Close();//自动关闭
                 }
                 else
                 {
-                    #region 其他
-                    Msg(Msg_msg, panel_msg, "测试开始，请用合适档位全油加速至70km/h左右", true);
-                    Thread.Sleep(5000);//等待5秒
-                    Msg(Msg_msg, panel_msg, "待转速稳定后点击[确定最大转速]按钮开始功率扫描", true);
-                    Thread.Sleep(5000);//等待5秒
-                    MaxRpm_sure = false;
-                    //MaxRPM = ZS;//确定最大转速
-                    //Msg(label_MaxRpm, panel_MaxRpm, MaxRPM.ToString("0"), true);
-                    //velMaxHpRation = MaxRPM / carbj.CarEdzs;
-                    //VelMaxHP_real = Speed;
-                    //zdcs = VelMaxHP_real;
-                    //Control_Speed = igbt.Speed; //计算VelMaxPH
-                    //if (Control_Speed < 50f || Control_Speed > 90f)
-                    //{
-                    //    Msg(Msg_msg, panel_msg, "最大转速不正常，请调整档位重新开始。", true);
-                    //    JC_Status = false;
-                    //    button_ss.Text = "重新检测";
-                    //    Th_get_FqandLl.Abort();
-                    //    Jzjs_status = false;
-                    //    return;
-                    //}
-                    //Control_Speed = 82f;
+                    for (int i = 10; i < jzjs_dataseconds.Gksj; i++)//从第10秒开始取过程 数据，以避免金华判断转速时，第一秒的转速为0
+                    {
+                        dr = jzjs_datatable.NewRow();
+                        dr["全程时序"] = Qcsxlist[i];
+                        dr["时序类别"] = Sxnblist[i];
+                        dr["采样时序"] = Cysxlist[i];
+                        dr["车速"] = Speedlist[i];
+                        //dr["转速"] = FDJZSlist[i].ToString();
+                        dr["寄生功率"] = JSGLlist[i];
+                        dr["指示功率"] = ZSGLlist[i];
+                        dr["功率"] = ZGLlist[i];
+                        dr["扭力"] = Forcelist[i];
+                        dr["光吸收系数K"] = GXXSlist[i];
+                        dr["不透光度"] = btglist[i];
+                        dr["环境温度"] = wdlist[i];
+                        dr["大气压力"] = dqylist[i];
+                        dr["相对湿度"] = sdlist[i];
+                        dr["油温"] = ywlist[i];
+                        dr["转速"] = FDJZSlist[i];
+                        dr["DCF"] = DCFlist[i];
+                        dr["OPNO"] = opnolist[i];
+                        dr["OPCODE"] = opcodelist[i];
+                        dr["DYNN"] = dynnlist[i];
+                        dr["NO"] = Nolist[i];
+                        jzjs_datatable.Rows.Add(dr);
+                        if (equipconfig.useJHJK)
+                        {
+                            if (FDJZSlist[i] == 0)
+                            {
+                                JC_Status = false;
+                                button_ss.Text = "重新检测";
+                                Th_get_FqandLl.Abort();
+                                Jzjs_status = false; fq_getdata = false;
+                                Thread.Sleep(500);
+                                Msg(Msg_msg, panel_msg, "过程程有转速为0，检测中止。", true);
+                                ts1 = "过程程有转速为0";
+                                ts2 = "检测中止";
+                                if (ledcontrol != null)
+                                {
+                                    ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                    Thread.Sleep(200);
+                                    ledcontrol.writeLed("过程程有转速为0", 5, equipconfig.Ledxh);
+                                }
+                                return;
+                            }
+                        }
+                    }
+                }
+                jzjs_data.CarID = carbj.CarID;
+                jzjs_data.Sd = SD.ToString("0.0");
+                jzjs_data.Wd = WD.ToString("0.0");
+                jzjs_data.Dqy = DQY.ToString("0.0");
+                jzjs_data.Gxsxs_100 = HK;
+                jzjs_data.Gxsxs_90 = NK;
+                jzjs_data.Gxsxs_80 = EK;
+                jzjs_data.hno = HNo;
+                jzjs_data.nno = NNo;
+                jzjs_data.eno = ENo;
+                // jzjs_data.Lbgl = MaxP.ToString("0.0");
+                jzjs_data.StopReason = "0";
+                JC_Status = false;//停止测试，工况时间清零
+                Th_get_FqandLl.Abort();//停止烟度采样
+                igbt.Exit_Control();
+                Thread.Sleep(1000);
+                #endregion
 
-                    Msg(Msg_msg, panel_msg, "最大转速已确定，开始功率扫描，保持油门全开", true);
+                #region NO测量仪反吹
+                if (equipconfig.Ydjxh.ToLower() == yq_mqw5101)
+                {
+                    flb_100.stopAction();
+                    Thread.Sleep(500);
+                    flb_100.autoFlowBack();//自动反吹，时间30s
+                }
+                if (notester != null)
+                {
+                    notester.stopAction();
+                    Thread.Sleep(500);
+                    notester.autoFlowBack();//自动反吹，时间30s
+                }
+                #endregion
+                #region 等待车辆静止，举升升起
+                for (int i = 30; i > 0; i--)
+                {
+                    Msg(Msg_msg, panel_msg, "请松开节气门并换至空档，不要使用制动 " + i.ToString("00") + " 秒", true);
                     Thread.Sleep(1000);
+                }
+                timer_show.Stop();
+                while (true)
+                {
+                    if (igbt.Speed < 1)
+                        break;
+                    Thread.Sleep(100);
+                }
+                Msg(Msg_msg, panel_msg, "检测完成,举升上升，请驶离测功机", false);
+                ts2 = "请驶离测功机";
+                if (ledcontrol != null)
+                {
+                    ledcontrol.writeLed("　　检测完成　　", 2, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                    ledcontrol.writeLed("请车辆驶离测功机", 5, equipconfig.Ledxh);
+                }
+                igbt.Lifter_Up();           //检测完成举升上升
+                button_ss.Text = "重新检测";
+                JC_Status = false;
+                writeDataIsFinished = false;
+                //th_load = new Thread(load_progress);
+                //th_load.Start();
+                csvwriter.SaveCSV(jzjs_datatable, "C:/jcdatatxt/" + carbj.CarID + ".csv");
+                jzjsdatacontrol.writeJzjsData(jzjs_data);//写carID.ini文件
+                writeDataIsFinished = true;
+                igjzjsIsFinished = true;
+                #endregion
+                this.Close();//自动关闭
+               
+            }
+            catch (Exception er)
+            {
+                ini.INIIO.saveLogInf("[jc_exe发生异常]:" + er.Message);
+            }
+        }
+
+        public void Jc_Exe2()
+        {
+            opno = 1;
+            opcode = 11;
+            int flag = 0;
+            float Last_Speed = 0;
+            float Modulus = 0;
+            float velMaxHpRation = 1f;
+            int Speed_Count = 0;
+            float zdcs = 0f;
+            DataRow dr = null;
+            try
+            {
+
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_DAOWEI, "");
+                #region 初检
+                Clear_Chart();
+                igjzjsIsFinished = false;
+                MaxRpm_sure = false;
+                Msg(Msg_msg, panel_msg, "测试开始，正在进行初检", true);
+                ts1 = "测试开始";
+                ts2 = "正在进行初检...";
+                if (ledcontrol != null)
+                {
+                    ledcontrol.writeLed("测试即将开始　　", 2, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                    ledcontrol.writeLed("　　正在进行初检", 5, equipconfig.Ledxh);
+                }
+                jzjs_chujian();
+                if (chujianIsFinished == false)
+                {
+                    Msg(Msg_msg, panel_msg, "初检不合格，请检查后重新开始。", true);
+                    ts2 = "初检不合格";
+                    if (ledcontrol != null)
+                    {
+                        ledcontrol.writeLed("测试中止　　　　", 2, equipconfig.Ledxh);
+                        Thread.Sleep(200);
+                        ledcontrol.writeLed("　　　初检不合格", 5, equipconfig.Ledxh);
+                    }
+                    JC_Status = false;
+                    button_ss.Text = "重新检测";
+                    Th_get_FqandLl.Abort();
+                    Jzjs_status = false; fq_getdata = false;
+                    return;
+                }
+                Msg(Msg_msg, panel_msg, "初检合格，正在检查烟度计状态", true);
+                Thread.Sleep(1000);
+                if (lugdownconfig.IsTestYw)
+                {
+                    ts1 = "读取油温...";
+                    Msg(Msg_msg, panel_msg, "读取油温...", false);
+                    if (ledcontrol != null)
+                    {
+                        ledcontrol.writeLed("读取油温...", 4, equipconfig.Ledxh);
+                    }
+                    Exhaust.Flb_100_smoke Environment = new Exhaust.Flb_100_smoke();
+                    if (equipconfig.Ydjxh.ToLower() == "cdf5000")
+                        Environment = fla_502.get_DirectData();
+                    else
+                        Environment = flb_100.get_DirectData();
+                    Thread.Sleep(1000);
+                    float ywnow = Environment.Yw;
+                    if (ywnow < 80)
+                    {
+                        ts1 = "油温: " + ywnow.ToString("0.0") + " ℃";
+                        ts2 = "低于限值,检测中止";
+                        Msg(Msg_msg, panel_msg, "油温:" + ywnow.ToString("0.0") + "℃" + "低于限值,检测中止", false);
+                        if (ledcontrol != null)
+                        {
+                            ledcontrol.writeLed("油温低于限值", 4, equipconfig.Ledxh);
+                            ledcontrol.writeLed("检测中止", 5, equipconfig.Ledxh);
+                        }
+                        JC_Status = false;
+                        button_ss.Text = "重新检测";
+                        Th_get_FqandLl.Abort();
+                        Jzjs_status = false; fq_getdata = false;
+                        return;
+                    }
+                    else
+                    {
+                        ts1 = "油温: " + ywnow.ToString("0.0") + " ℃";
+                        ts2 = "允许检测";
+                        Msg(Msg_msg, panel_msg, "油温:" + ywnow.ToString("0.0") + "℃" + ",允许检测", false);
+
+                    }
+                    Thread.Sleep(1000);
+                }
+                #endregion
+                #region 检查仪器状态
+                Thread.Sleep(1000);
+                Jc_Process = "VelMaxHP";        //该过程为确定VelMaxHP
+                for (int i = 0; i <= 10; i++)                        //检查烟度计状态
+                {
+                    if (equipconfig.Ydjxh != "nht_1" && equipconfig.Ydjxh.ToLower() != "cdf5000" && equipconfig.Ydjxh != yq_mqw5101)
+                    {
+                        string zt = flb_100.Get_Mode();
+                        if (zt != "通讯故障")
+                        {
+                            Msg(Msg_msg, panel_msg, "烟度计工作正常", true);
+                            break;
+                        }
+                        else if (i == 9)
+                        {
+                            ts2 = "通讯故障";
+                            Msg(Msg_msg, panel_msg, "烟度计无法正常连接，请检查后重新开始。", true);
+                            if (ledcontrol != null)
+                            {
+                                ledcontrol.writeLed("测试中止　　　　", 2, equipconfig.Ledxh);
+                                Thread.Sleep(200);
+                                ledcontrol.writeLed("　烟度计通讯故障", 5, equipconfig.Ledxh);
+                            }
+                            JC_Status = false;
+                            Th_get_FqandLl.Abort();
+                            button_ss.Text = "重新检测";
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        Msg(Msg_msg, panel_msg, "烟度计工作正常", true);
+                        break;
+                    }
+                    Thread.Sleep(500);
+                }
+
+                if (equipconfig.Ydjxh == yq_mqw5101)//如果烟度计型号是mqw5101
+                {
+                    Exhaust.mqw_5101_status status = new Exhaust.mqw_5101_status();
+                    if (flb_100.get_MQW5101_Status(out status))
+                    {
+                        if (status.isPrepare)
+                        {
+                            ts2 = "仪器预热中";
+                            Msg(Msg_msg, panel_msg, "仪器预热中，预热完毕后重新开始。", true);
+                            if (ledcontrol != null)
+                            {
+                                ledcontrol.writeLed("测试中止　　　　", 2, equipconfig.Ledxh);
+                                Thread.Sleep(200);
+                                ledcontrol.writeLed("　　　仪器预热中", 5, equipconfig.Ledxh);
+                            }
+                            JC_Status = false;
+                            Th_get_FqandLl.Abort();
+                            button_ss.Text = "重新检测";
+                            return;
+                        }
+                        if (status.isNOZeroing)
+                        {
+                            ts2 = "仪器调零中";
+                            Msg(Msg_msg, panel_msg, "仪器调零中，调零完毕后重新开始。", true);
+                            if (ledcontrol != null)
+                            {
+                                ledcontrol.writeLed("测试中止　　　　", 2, equipconfig.Ledxh);
+                                Thread.Sleep(200);
+                                ledcontrol.writeLed("　　　仪器调零中", 5, equipconfig.Ledxh);
+                            }
+                            JC_Status = false;
+                            Th_get_FqandLl.Abort();
+                            button_ss.Text = "重新检测";
+                            return;
+                        }
+                        flb_100.stopAction();
+                    }
+
+                }
+                if (notester != null)
+                {
+                    Exhaust.mqw_5101_status status = new Exhaust.mqw_5101_status();
+                    if (notester.get_MQW5101_Status(out status))
+                    {
+                        if (status.isPrepare)
+                        {
+                            ts2 = "仪器预热中";
+                            Msg(Msg_msg, panel_msg, "仪器预热中，预热完毕后重新开始。", true);
+                            if (ledcontrol != null)
+                            {
+                                ledcontrol.writeLed("测试中止　　　　", 2, equipconfig.Ledxh);
+                                Thread.Sleep(200);
+                                ledcontrol.writeLed("　　　仪器预热中", 5, equipconfig.Ledxh);
+                            }
+                            JC_Status = false;
+                            Th_get_FqandLl.Abort();
+                            button_ss.Text = "重新检测";
+                            return;
+                        }
+                        if (status.isNOZeroing)
+                        {
+                            ts2 = "仪器调零中";
+                            Msg(Msg_msg, panel_msg, "仪器调零中，调零完毕后重新开始。", true);
+                            if (ledcontrol != null)
+                            {
+                                ledcontrol.writeLed("测试中止　　　　", 2, equipconfig.Ledxh);
+                                Thread.Sleep(200);
+                                ledcontrol.writeLed("　　　仪器调零中", 5, equipconfig.Ledxh);
+                            }
+                            JC_Status = false;
+                            Th_get_FqandLl.Abort();
+                            button_ss.Text = "重新检测";
+                            return;
+                        }
+                        notester.stopAction();
+                    }
+                }
+                #endregion                   
+                #region 测功机准备
+                //Thread.Sleep(1000);                     //烟度计要求等待1秒后再发送数据
+                igbt.Exit_Control();            //退出igbt的所有控制状态
+                //igbt.Lifter_Down();//举升下降
+                //Msg(Msg_msg, panel_msg, "举升下降", false);
+                //ts2 = "举升下降";
+                Thread.Sleep(1000);
+                #endregion
+                #region 判断转速
+                if (equipconfig.Ydjxh.ToLower() == "cdf5000")
+                    fla_502.Set_Measure();
+                else if (equipconfig.Ydjxh != yq_mqw5101)
+                    flb_100.Set_Measure();
+                fq_getdata = true;
+                Thread.Sleep(2000);
+                ts1 = "检测开始";
+                ts2 = "空档油门至最大转速";
+                Msg(Msg_msg, panel_msg, "测试开始，空档油门至最大转速", true);
+                MaxRpm_sure = false;
+                while (ZS < 2000)
+                {
+                    Thread.Sleep(100);
+                }
+                List<int> zswdlist = new List<int>();
+                for (int no = 0; no < 50; no++)
+                {
+                    zswdlist.Add((int)ZS);
+                    Thread.Sleep(100);
+                }
+                double wdtime = 5;
+                while (wdtime > 0)
+                {
+                    ts2 = "等待转速稳定:" + wdtime.ToString("0.0") + "s";
+                    Msg(Msg_msg, panel_msg, "等待转速稳定:" + wdtime.ToString("0.0") + "s", true);
+                    if (zswdlist.Max() - zswdlist.Min() > 400)
+                        wdtime = 5;
+                    else
+                        wdtime = wdtime - 0.1;
+                    zswdlist.Add((int)ZS);
+                    zswdlist.RemoveAt(0);
+                    Thread.Sleep(100);
+                }
+                MaxRPM = (float)((zswdlist.Max() + zswdlist.Min()) / 2);//确定最大转速
+                jzjs_data.Velmaxhpzs = MaxRPM.ToString();
+                jzjs_data.Lbzs = MaxRPM.ToString();
+                led_display(ledNumber_ZDZS, MaxRPM.ToString("0"));
+                if (MaxRPM < carbj.CarEdzs * 0.9f || MaxRPM > carbj.CarEdzs * 1.1f)
+                {
+                    Msg(Msg_msg, panel_msg, "最大转速超过规定范围，检测中止", true);
+                    ts1 = "检测终止";
+                    ts2 = "最大转速超差";
+                    if (ledcontrol != null)
+                    {
+                        ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                        Thread.Sleep(200);
+                        ledcontrol.writeLed("　最大速度超差  ", 5, equipconfig.Ledxh);
+                    }
+                    JC_Status = false;
+                    button_ss.Text = "重新检测";
+                    Th_get_FqandLl.Abort();
+                    Jzjs_status = false;
+                    fq_getdata = false;
+                    return;
+                }
+                Msg(Msg_msg, panel_msg, "最大转速已确定", true);
+                ts2 = "最大转速已确定";
+                Thread.Sleep(2000);
+                #endregion
+                #region 确认档位
+                Msg(Msg_msg, panel_msg, "选择合适档位接近70km/h后按遥控确认", true);
+                ts1 = "选择合适档位接近70km/h";
+                ts2 = "后按遥控确认";
+                if (ledcontrol != null)
+                {
+                    ledcontrol.writeLed("　　确认档位　　", 2, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                    ledcontrol.writeLed("接近70km/h后确认", 5, equipconfig.Ledxh);
+                }
+                while (igbt.Speed < lugdownconfig.MinSpeed)
+                {
+                    Thread.Sleep(500);
+                }
+                if (true)
+                {
+                    if (equipconfig.isIgbtContainGdyk)
+                    {
+                        igbt.Set_ClearKey();
+                        Thread.Sleep(100);
+                        igbt.Set_ClearKey();
+                    }
+                    setButtonVisible(button1, true);
+                    Msg(Msg_msg, panel_msg, "档位确认后点击[确定档位]或按遥控开始功率扫描", true);
+                    ts2 = "档位确认后按遥控";
+                    while (MaxRpm_sure == false)
+                    {
+                        if (equipconfig.isIgbtContainGdyk)
+                        {
+
+                            if (((igbt.keyandgd) & 0xf0) != 0x00)
+                            {
+                                MaxRpm_sure = true;
+                            }
+                            igbt.Set_ClearKey();
+
+                        }
+                        Thread.Sleep(100);
+                    }
+                    setButtonVisible(button1, false);
+                }
+                /*else
+                {
+                    int stableTime = 0;
+                    float prespeed = 0;
+                    while (stableTime < 30)
+                    {
+                        Msg(Msg_msg, panel_msg, "测试开始，请用合适档位全油加速至70km/h以上", true);
+                        if (Math.Abs(prespeed - igbt.Speed) > 1f)
+                        {
+                            stableTime = 0;
+                            prespeed = igbt.Speed;
+                        }
+                        else
+                        {
+                            stableTime++;
+                        }
+                        Thread.Sleep(100);
+                    }
+                }*/
+                Msg(Msg_msg, panel_msg, "档位已确认，请松开油门减速", true);
+                ts1 = "档位已确认";
+                ts2 = "请松开油门减速";
+                Thread.Sleep(2000);
+
+                #endregion
+                #region 烟度计线性校正中
+
+                fq_getdata = false;
+                Thread.Sleep(1000);
+                ts1 = "烟度计准备";
+                ts2 = "校正烟度计...";
+                if (equipconfig.Ydjxh.ToLower() == "cdf5000")
+                {
+                    fla_502.set_linearDem();
+                    Msg(Msg_msg, panel_msg, "烟度计正在进行线性校正...", false);
+                    if (ledcontrol != null)
+                    {
+                        ledcontrol.writeLed("线性校正中... ", 2, equipconfig.Ledxh);
+                        Thread.Sleep(200);
+                        ledcontrol.writeLed("......  　　", 5, equipconfig.Ledxh);
+                    }
+                    Thread.Sleep(8000);//等待5s至线性校正结束
+                }
+                else if (equipconfig.Ydjxh != yq_mqw5101)
+                {
+                    flb_100.set_linearDem();//烟度计进行线性校正                
+                    Msg(Msg_msg, panel_msg, "烟度计正在进行线性校正...", false);
+                    if (ledcontrol != null)
+                    {
+                        ledcontrol.writeLed("线性校正中... ", 2, equipconfig.Ledxh);
+                        Thread.Sleep(200);
+                        ledcontrol.writeLed("......  　　", 5, equipconfig.Ledxh);
+                    }
+                    Thread.Sleep(8000);//等待5s至线性校正结束
+                }
+                #endregion
+
+                #region 仪器调零
+                if (equipconfig.Ydjxh == yq_mqw5101)
+                {
+                    if (!flb_100.zeroEquipment())
+                    {
+                        ts2 = "启动调零失败";
+                        Msg(Msg_msg, panel_msg, "启动调零失败。", true);
+                        if (ledcontrol != null)
+                        {
+                            ledcontrol.writeLed("测试中止　　　　", 2, equipconfig.Ledxh);
+                            Thread.Sleep(200);
+                            ledcontrol.writeLed("　　启动调零失败", 5, equipconfig.Ledxh);
+                        }
+                        JC_Status = false;
+                        Th_get_FqandLl.Abort();
+                        button_ss.Text = "重新检测";
+                        return;
+                    }
+                    Exhaust.mqw_5101_status status = new Exhaust.mqw_5101_status();
+                    status.isNOZeroing = true;
+                    int zero_count = 0;
+                    while (status.isNOZeroing)//等待调零结束
+                    {
+                        Thread.Sleep(900);
+                        flb_100.get_MQW5101_Status(out status);
+                        Msg(Msg_msg, panel_msg, "NO调零中..." + zero_count.ToString() + "s", true);
+                        ts2 = "NO调零中..." + zero_count.ToString() + "s";
+                        zero_count++;
+                        if (zero_count == 60)
+                            break;
+                    }
+                    Msg(Msg_msg, panel_msg, "NO调零完毕", true);
+                    ts2 = "NO调零完毕";
+                    Thread.Sleep(1000);
+                }
+                if (notester != null)
+                {
+                    if (!notester.zeroEquipment())
+                    {
+                        ts2 = "启动调零失败";
+                        Msg(Msg_msg, panel_msg, "启动调零失败。", true);
+                        if (ledcontrol != null)
+                        {
+                            ledcontrol.writeLed("测试中止　　　　", 2, equipconfig.Ledxh);
+                            Thread.Sleep(200);
+                            ledcontrol.writeLed("　　启动调零失败", 5, equipconfig.Ledxh);
+                        }
+                        JC_Status = false;
+                        Th_get_FqandLl.Abort();
+                        button_ss.Text = "重新检测";
+                        return;
+                    }
+                    Exhaust.mqw_5101_status status = new Exhaust.mqw_5101_status();
+                    status.isNOZeroing = true;
+                    int zero_count = 0;
+                    while (status.isNOZeroing)//等待调零结束
+                    {
+                        Thread.Sleep(900);
+                        notester.get_MQW5101_Status(out status);
+                        Msg(Msg_msg, panel_msg, "NO调零中..." + zero_count.ToString() + "s", true);
+                        ts2 = "NO调零中..." + zero_count.ToString() + "s";
+                        zero_count++;
+                        if (zero_count == 60)
+                            break;
+                    }
+                    Msg(Msg_msg, panel_msg, "NO调零完毕", true);
+                    ts2 = "NO调零完毕";
+                    Thread.Sleep(1000);
+                }
+                #endregion
+
+                #region 安置探头
+
+                while (igbt.Speed > 0.5)
+                {
+                    Msg(Msg_msg, panel_msg, "等待测功机减速", false);
+                    ts2 = "等待测功机减速";
+                    Thread.Sleep(500);
+                }
+                Msg(Msg_msg, panel_msg, "请安置不透光烟度计尾气探头", false);
+                ts2 = "请安置探头";
+                Thread.Sleep(1000);
+                if (ledcontrol != null)
+                {
+                    ledcontrol.writeLed("测试即将开始　　", 2, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                    ledcontrol.writeLed("　请安置好转速计", 5, equipconfig.Ledxh);
+                }
+                if (lugdownconfig.IfSureTemp)
+                {
+                    MessageBox.Show("确认探头是否已安好?", "系统提示");
+                }
+                else
+                {
+                    for (int i = 30; i >= 0; i--)
+                    {
+                        Msg(Msg_msg, panel_msg, "请安置好探头..." + i.ToString(), false);
+                        Thread.Sleep(800);
+                    }
+                }
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_TANTOU, "");
+                #endregion
+
+                #region 仪器开始测量
+                if (equipconfig.Ydjxh.ToLower() == "cdf5000")
+                    fla_502.Set_Measure();
+                else if (equipconfig.Ydjxh != yq_mqw5101)
+                    flb_100.Set_Measure();
+                if (equipconfig.Ydjxh == yq_mqw5101)
+                {
+                    if (!flb_100.pumpVehicleGas())
+                        if (!flb_100.pumpVehicleGas())
+                            flb_100.pumpVehicleGas();
+                }
+                if (notester != null)
+                {
+                    if (!notester.pumpVehicleGas())
+                        if (!notester.pumpVehicleGas())
+                            notester.pumpVehicleGas();
+                }
+                #endregion
+                #region 加速
+                fq_getdata = true;
+                Msg(Msg_msg, panel_msg, "检测开始，全油加速至70km/h", true);
+                ts1 = "检测开始";
+                ts2 = "全油加速至70km/h";
+                sxnb = 0;//时序类别设为0
+                cysx = 1;//采样时序设为1
+                Thread.Sleep(2000);
+                if (ledcontrol != null)
+                {
+                    ledcontrol.writeLed("　速度　　功率　", 2, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                    ledcontrol.writeLed("　　　　　　　　", 5, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                }
+                statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.DAOWEI, GKSJ.ToString());
+                Thread.Sleep(2000);
+                statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.CHATANTOU, GKSJ.ToString());
+                statusconfigini.writeNeuStatusData("StartTest", DateTime.Now.ToString());
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_STARTSAMPLE, "");
+                jzjs_data.StartTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                startTime = DateTime.Now;
+                Jzjs_status = true;
+                while (igbt.Speed < lugdownconfig.MinSpeed)
+                {
+                    Thread.Sleep(500);
+                }
+                if (lugdownconfig.IfSureTemp)
+                {
+                    if (equipconfig.isIgbtContainGdyk)
+                    {
+                        igbt.Set_ClearKey();
+                        Thread.Sleep(100);
+                        igbt.Set_ClearKey();
+                    }
+                    setButtonVisible(button1, true);
+                    Msg(Msg_msg, panel_msg, "速度稳定后按遥控开始功率扫描", true);
+                    ts2 = "速度稳定后按遥控";
+                    while (MaxRpm_sure == false)
+                    {
+                        if (equipconfig.isIgbtContainGdyk)
+                        {
+
+                            if (((igbt.keyandgd) & 0xf0) != 0x00)
+                            {
+                                MaxRpm_sure = true;
+                            }
+                            igbt.Set_ClearKey();
+
+                        }
+                        Thread.Sleep(100);
+                    }
+                    setButtonVisible(button1, false);
+                }
+                else
+                {
+                    int stableTime = 0;
+                    float prespeed = 0;
+                    while (stableTime < 30)
+                    {
+                        if (Math.Abs(prespeed - igbt.Speed) > 1f)
+                        {
+                            stableTime = 0;
+                            prespeed = igbt.Speed;
+                        }
+                        else
+                        {
+                            stableTime++;
+                        }
+                        Thread.Sleep(100);
+                    }
+                }
+                #endregion
+                /*
+                #region 判断转速
+                MaxRpm_sure = false;
+                MaxRPM = ZS;//确定最大转速
+                if (Math.Abs(MaxRPM - carbj.CarEdzs) > 500)
+                {
+                    Random rd = new Random();
+                    MaxRPM = carbj.CarEdzs + DateTime.Now.Second * 10 - 300;
+                    if (MaxRPM < 0) MaxRPM = 0;
+                }
+                jzjs_data.Velmaxhpzs = MaxRPM.ToString();
+                jzjs_data.Lbzs = MaxRPM.ToString();
+                led_display(ledNumber_ZDZS, MaxRPM.ToString("0"));
+                #endregion
+                */
+                #region 判断速度
+                velMaxHpRation = carbj.CarEdzs / MaxRPM;
+                VelMaxHP_real = igbt.Speed;
+                jzjs_data.Velmaxhp = VelMaxHP_real.ToString();
+                zdcs = VelMaxHP_real;
+                Control_Speed = igbt.Speed; //计算VelMaxPH
+                if (Control_Speed < lugdownconfig.MinSpeed || Control_Speed > lugdownconfig.MaxSpeed)
+                {
+                    Msg(Msg_msg, panel_msg, "最大速度不正常，请调整档位重新开始。", true);
+                    ts1 = "检测终止";
+                    ts2 = "最大速度不正常";
+                    if (ledcontrol != null)
+                    {
+                        ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                        Thread.Sleep(200);
+                        ledcontrol.writeLed("　最大速度不正常", 5, equipconfig.Ledxh);
+                    }
+                    JC_Status = false;
+                    button_ss.Text = "重新检测";
+                    Th_get_FqandLl.Abort();
+                    Jzjs_status = false;
+                    fq_getdata = false;
+                    return;
+                }
+                #endregion
+
+                #region 功率扫描
+                if (ledcontrol != null)
+                {
+                    ledcontrol.writeLed("　开始功率扫描　", 2, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                }
+                opno = 2;
+                opcode = 12;
+                Msg(Msg_msg, panel_msg, "开始功率扫描，保持油门全开", true);
+                ts1 = "开始功率扫描";
+                ts2 = "保持油门全开";
+                Thread.Sleep(1000);
+                if (ledcontrol != null)
+                {
+                    ledcontrol.writeLed("　速度　　功率　", 2, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                }
+                if (lugdownconfig.Glsmms == "恒速度")
+                {
+                    #region 恒速度功率扫描
+                    igbt.Set_Speed(Control_Speed);
+                    igbt.Start_Control_Speed();
                     Msg(Msg_msg, panel_msg, "开始功率扫描，等待速度稳定", true);
-                    while (GKSJ <= gksj0_zb) Thread.Sleep(800);
+                    while (JC_Status)                           //等待速度稳定2秒
+                    {
+                        if (Math.Abs(igbt.Speed - Control_Speed) <= 1)
+                            flag++;
+                        else
+                            flag = 0;
+                        if (flag >= 20)
+                            break;
+                        Thread.Sleep(100);
+                    }
                     flag = 0;
                     MaxP = 0f;
                     sxnb = 1;//功率扫描开始
-                    while (GKSJ <= gksj0_zb + gksj1_zb)               //功率扫描
+                    while (JC_Status)               //功率扫描
                     {
-                        Msg(Msg_msg, panel_msg, "正在进行功率扫描，当前速度：" + igbt.Speed.ToString("0.0") + "km/h", true);
-                        Thread.Sleep(800);
-                        if (GLlist_zb[GKSJ] > MaxP)
+                        if (lugdownconfig.isYdjk_glsm)
                         {
-                            MaxP = GLlist_zb[GKSJ];
-                            VelMaxHP_real = Speedlist_zb[GKSJ];
+                            if (Smoke < lugdownconfig.ydjk_cl_value)
+                            {
+                                JC_Status = false;
+                                button_ss.Text = "重新检测";
+                                Th_get_FqandLl.Abort();
+                                Jzjs_status = false; fq_getdata = false;
+                                Thread.Sleep(500);
+                                Msg(Msg_msg, panel_msg, "烟度值过低,检测中止,检测探头是否脱落。", true);
+                                ts1 = "烟度值过低";
+                                ts2 = "检测中止";
+                                if (ledcontrol != null)
+                                {
+                                    ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                    Thread.Sleep(200);
+                                    ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                }
+                                igbt.Exit_Control();
+
+                                return;
+                            }
+                        }
+                        Msg(Msg_msg, panel_msg, "正在进行功率扫描，当前速度：" + igbt.Speed.ToString("0.0") + "km/h", true);
+                        ts2 = "速度:" + igbt.Speed.ToString("0.0") + "功率:" + nowpower.ToString("0.0");
+                        GL = (float)nowpower;
+                        flag++;
+                        Thread.Sleep(100);
+                        if (flag % 8 == 0)         //每隔一秒速度减少0.5km/h
+                        {
+                            Control_Speed -= 0.5f;
+                            igbt.Set_Speed(Control_Speed);
+                        }
+                        while (Math.Abs(igbt.Speed - Control_Speed) > lugdownconfig.Sdwdqj)
+                        {
+                            Thread.Sleep(100);
+                        }
+                        if (igbt.Speed < (zdcs - 1f))
+                        {
+                            if (MaxP < GL)
+                            {
+                                MaxP = GL;
+                                VelMaxHP_real = igbt.Speed;//真实VelMaxHP
+                                MaxZ = ZS;
+                            }
+                            else
+                            {
+                                if ((VelMaxHP_real - igbt.Speed) > VelMaxHP_real * 0.2f)                         //实际VelMaxHP,功率扫描完成
+                                    break;
+                            }
+                        }
+                        if (igbt.Speed <= 40)
+                            break;
+                    }
+                    #endregion
+                }
+                else
+                {
+                    #region 恒功率功率扫描
+                    Control_Speed = 0f;
+                    igbt.Set_Control_Force(Control_Speed);
+                    igbt.Start_Control_Force();
+                    Msg(Msg_msg, panel_msg, "开始功率扫描，保持油门全开", true);
+                    MaxP = 0f;
+                    sxnb = 1;//功率扫描开始
+                    while (JC_Status)               //功率扫描
+                    {
+                        if (lugdownconfig.isYdjk_glsm)
+                        {
+                            if (Smoke < lugdownconfig.ydjk_cl_value)
+                            {
+                                JC_Status = false;
+                                button_ss.Text = "重新检测";
+                                Th_get_FqandLl.Abort();
+                                Jzjs_status = false; fq_getdata = false;
+                                Thread.Sleep(500);
+                                Msg(Msg_msg, panel_msg, "烟度值过低,检测中止,检测探头是否脱落。", true);
+                                ts1 = "烟度值过低";
+                                ts2 = "检测中止";
+                                if (ledcontrol != null)
+                                {
+                                    ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                    Thread.Sleep(200);
+                                    ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                }
+                                igbt.Exit_Control();
+
+                                return;
+                            }
+                        }
+                        Msg(Msg_msg, panel_msg, "正在进行功率扫描，当前速度：" + igbt.Speed.ToString("0.0") + "km/h", true);
+                        ts2 = "速度:" + igbt.Speed.ToString("0.0") + "功率:" + nowpower.ToString("0.0");
+                        GL = (float)nowpower;
+                        flag++;
+                        Thread.Sleep(100);
+                        if (flag % 5 == 0)         //每隔一秒扭力增加lugdownconfig.Smpl
+                        {
+                            if (igbt.Speed < 63)
+                                Control_Speed += lugdownconfig.Smpl / 4f;
+                            else
+                                Control_Speed += lugdownconfig.Smpl / 2f;
+                            igbt.Set_Control_Force(Control_Speed);
+                        }
+                        if (MaxP < GL)
+                        {
+                            MaxP = GL;
+                            VelMaxHP_real = igbt.Speed;//真实VelMaxHP
+                            MaxZ = ZS;
+                        }
+                        else
+                        {
+                            if ((VelMaxHP_real - igbt.Speed) > VelMaxHP_real * 0.2f)                         //实际VelMaxHP,功率扫描完成
+                                break;
+                        }
+                        if (igbt.Speed <= 40)
+                            break;
+                    }
+                    #endregion
+                }
+                #endregion
+
+                #region 核对最大轮边功率
+                igbt.Exit_Control();
+                igbt.Exit_Control();
+                VelMaxHP_real = 0;
+                MaxP = 0;
+                for (int timecount = 0; timecount <= GKSJ - 1; timecount++)
+                {
+                    if (ZGLlist[timecount] > MaxP)
+                    {
+                        MaxP = ZGLlist[timecount];
+                        VelMaxHP_real = Speedlist[timecount];
+                    }
+                }
+                opno = 3;
+                opcode = 13;
+                glxzxs = dcf;
+                VelMaxHP = VelMaxHP_real;//实际velMaxHp
+                jzjs_data.RealVelmaxhp = VelMaxHP_real.ToString();
+                jzjs_data.actualmaxhp = MaxP.ToString("0.0");
+                jzjs_data.glxzxs = glxzxs.ToString("0.000");
+                if (lugdownconfig.LugdownMaxHpStyle == 0)
+                {
+                    jzjs_data.Lbgl = (MaxP * glxzxs).ToString("0.0");
+                    led_display(ledNumberLBGL, jzjs_data.Lbgl);
+                    led_display(ledNumberDCF, jzjs_data.glxzxs);
+                    if (equipconfig.useJHJK)//金华监控到轮边功率大于额定功率的80%，即限值的160%中断检测
+                    {
+                        if (double.Parse(jzjs_data.Lbgl) > carbj.Xz1 * 0.02 * equipconfig.JHLBGLB)
+                        {
+                            JC_Status = false;
+                            button_ss.Text = "重新检测";
+                            Th_get_FqandLl.Abort();
+                            Jzjs_status = false; fq_getdata = false;
+                            Thread.Sleep(500);
+                            Msg(Msg_msg, panel_msg, "轮边功率异常预警，检测中止。", true);
+                            ts1 = "轮边功率异常预警";
+                            ts2 = "检测中止";
+                            if (ledcontrol != null)
+                            {
+                                ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                Thread.Sleep(200);
+                                ledcontrol.writeLed("轮边功率异常预警", 5, equipconfig.Ledxh);
+                            }
+                            igbt.Exit_Control();
+                            return;
                         }
                     }
-                    VelMaxHP = VelMaxHP_real;//实际velMaxHp
-                    HP = MaxP.ToString("0.0");//最大轮边功率
-                    Msg(Msg_msg, panel_msg, "功率扫描完成，最大轮边功率:" + HP + "kW,VelMaxHP为" + VelMaxHP_real.ToString("0.0") + "km/h", true);
-                    led_display(ledNumber_JSVEL, (VelMaxHP_real * velMaxHpRation).ToString("0.0"));
-                    led_display(ledNumber_SJVEL, VelMaxHP.ToString("0.0"));
-                    Thread.Sleep(1000);//显示时间
-                    Msg(Msg_msg, panel_msg, "最大轮边功率扫描完毕，开始加载测试", true);
-                    Thread.Sleep(1000);
-                    Jc_Process = "VelMaxHP100%";
-                    flag = 0;
+                }
+                Msg(Msg_msg, panel_msg, equipconfig.useJHSCREEN ? "功率扫描完成" : "功率扫描完成，最大轮边功率:" + jzjs_data.Lbgl + "kW,VelMaxHP为" + VelMaxHP_real.ToString("0.0") + "km/h", true);
+                if (ledcontrol != null)
+                {
+                    ledcontrol.writeLed("　功率扫描结束　", 2, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                }
+                ts1 = "功率扫描结束";
+                ts2 = "HP:" + jzjs_data.Lbgl + "VelHP:" + VelMaxHP_real.ToString("0.0");
+                led_display(ledNumber_JSVEL, (VelMaxHP_real * velMaxHpRation).ToString("0.0"));
+                led_display(ledNumber_SJVEL, VelMaxHP.ToString("0.0"));
+                //led_display(ledNumberLBGL, HP);
+                statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.JIANCEZHONG, GKSJ.ToString());
+                Thread.Sleep(1000);//显示时间
+                if (equipconfig.useJHJK && carbj.CarZzl >= 3500)//金华重型车最大车速如果不在60-100之间则中止检测
+                {
+                    if (VelMaxHP_real < 60 || VelMaxHP_real > 100)
+                    {
+                        JC_Status = false;
+                        button_ss.Text = "重新检测";
+                        Th_get_FqandLl.Abort();
+                        Jzjs_status = false; fq_getdata = false;
+                        Thread.Sleep(500);
+                        Msg(Msg_msg, panel_msg, "最高车速不正常，检测中止。", true);
+                        ts1 = "最高车速不正常";
+                        ts2 = "检测中止";
+                        if (ledcontrol != null)
+                        {
+                            ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                            Thread.Sleep(200);
+                            ledcontrol.writeLed("最高车速不正常", 5, equipconfig.Ledxh);
+                        }
+                        igbt.Exit_Control();
+                        return;
+                    }
+                }
+                if (lugdownconfig.gsMaxPPD)
+                {
+                    jzjs_data.Lbgl = (MaxP * glxzxs).ToString("0.0");
+                    if (double.Parse(jzjs_data.Lbgl) < carbj.Xz1)
+                    {
+                        ts1 = "轮边功率不合格";
+                        ts2 = "测试结束";
+                        HK = "";
+                        NK = "";
+                        EK = "";
+                        jzjs_data.Rev100 = "";
+                        if (ledcontrol != null)
+                        {
+                            ledcontrol.writeLed("功率过低测试结束", 2, equipconfig.Ledxh);
+                            Thread.Sleep(200);
+                        }
+                        Msg(Msg_msg, panel_msg, "最大轮边功率不合格，测试结束", true);
+                        Thread.Sleep(2000);
+                        goto Finish;
+                    }
+                }
+                #endregion
+
+                if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山" || equipconfig.DATASECONDS_TYPE == "安徽")
+                    sxnb = 2;
+
+                #region 加载测试
+                ts1 = "加载测试开始";
+                ts2 = "保持油门全开";
+                if (ledcontrol != null)
+                {
+                    ledcontrol.writeLed("　加载测试开始　", 2, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                }
+                Msg(Msg_msg, panel_msg, "扫描完毕，开始加载测试，保持油门全开", true);
+                Thread.Sleep(1000);
+                opno = 4;
+                opcode = 14;
+                if (lugdownconfig.Glsmms == "恒功率")
+                {
+                    igbt.Set_Control_Force(0f);
+                    Thread.Sleep(200);
+                }
+                Jc_Process = "VelMaxHP100%";
+                flag = 0;
+                while (JC_Status)
+                {
+                    ts1 = Jc_Process + "测试";
+                    float temp_speed = 0;
+                    float temp_force = 0;
+                    float temp_gl = 0;
+                    float temp_zs = 0;
+                    float temp_gxxs = 0;
+                    float temp_no = 0;
+                    switch (Jc_Process)
+                    {
+                        case "VelMaxHP100%":
+                            statusconfigini.writeNeuStatusData("K100Testing", DateTime.Now.ToString());
+                            Modulus = 1;
+                            if (equipconfig.DATASECONDS_TYPE != "江西" && equipconfig.DATASECONDS_TYPE != "云南保山" && equipconfig.DATASECONDS_TYPE != "安徽")
+                                sxnb = 2;
+                            opno = 5;
+                            opcode = 21;
+                            break;
+                        case "VelMaxHP90%":
+                            statusconfigini.writeNeuStatusData("K90Testing", DateTime.Now.ToString());
+                            Modulus = 0.9f;
+                            if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山" || equipconfig.DATASECONDS_TYPE == "安徽")
+                                sxnb = 4;
+                            else
+                                sxnb = 3;
+                            opno = 9;
+                            opcode = 31;
+                            break;
+                        case "VelMaxHP80%":
+                            statusconfigini.writeNeuStatusData("K80Testing", DateTime.Now.ToString());
+                            Modulus = 0.8f;
+                            if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山" || equipconfig.DATASECONDS_TYPE == "安徽")
+                                sxnb = 5;
+                            else
+                                sxnb = 4;
+                            opno = 13;
+                            opcode = 41;
+                            break;
+                    }
+                    igbt.Set_Speed(VelMaxHP_real * Modulus);
+                    Thread.Sleep(200);
+                    igbt.Start_Control_Speed();
+
+                    if ((equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山" || equipconfig.DATASECONDS_TYPE == "安徽") && Jc_Process == "VelMaxHP100%")
+                    {
+                        while (igbt.Speed < VelMaxHP_real - 1)
+                        {
+                            if (ledcontrol != null)
+                                ledcontrol.writeLed("恢复100%VelMaxHP", 2, equipconfig.Ledxh);
+                            Msg(Msg_msg, panel_msg, "恢复100%VelMaxHP过程", true);
+                            Thread.Sleep(200);
+                        }
+                        sxnb = 3;
+                    }
+
+                    Msg(Msg_msg, panel_msg, equipconfig.useJHSCREEN ? "加载减速测试中" : "正在进行加载减速测试，将在" + Math.Round(VelMaxHP_real * Modulus, 2).ToString("0.0") + "km/h时取值", true);
+                    if (ledcontrol != null)
+                    {
+                        ledcontrol.writeLed("将在" + addLength(Math.Round(VelMaxHP_real * Modulus, 2).ToString("0.0"), 4) + "处取值 ", 2, equipconfig.Ledxh);
+                        Thread.Sleep(200);
+                    }
+                    if (!equipconfig.useJHSCREEN)
+                    {
+                        ts2 = "将在" + Math.Round(VelMaxHP_real * Modulus, 2).ToString("0.0") + "km/h取值";
+                    }
+                    else
+                    {
+                        ts2 = "加载减速测试中";
+                    }
+                    Speed_Count = 0;
                     while (JC_Status)
                     {
-                        float temp_speed = 0;
-                        float temp_force = 0;
-                        float temp_gl = 0;
-                        float temp_zs = 0;
-                        float temp_gxxs = 0;
                         switch (Jc_Process)
                         {
                             case "VelMaxHP100%":
-                                Modulus = 1;
-                                sxnb = 2;
+                                opno = 6;
+                                opcode = 22;
                                 break;
                             case "VelMaxHP90%":
-                                Modulus = 0.9f;
-                                sxnb = 3;
+                                opno = 10;
+                                opcode = 32;
                                 break;
                             case "VelMaxHP80%":
-                                Modulus = 0.8f;
-                                sxnb = 4;
+                                opno = 14;
+                                opcode = 42;
                                 break;
                         }
-                        //igbt.Set_Speed(VelMaxHP_real * Modulus);
-                        Msg(Msg_msg, panel_msg, "正在进行加载减速测试，将在" + Math.Round(VelMaxHP_real * Modulus, 2).ToString("0.0") + "km/h时取值", true);
-                        Thread.Sleep(1000);
+                        Thread.Sleep(100);
+                        if (Math.Abs(igbt.Speed - VelMaxHP_real * Modulus) < lugdownconfig.Sdwdqj)            //如果离目标速度小于1时
+                        {
+                            Speed_Count++;
+                        }
+                        else
+                        {
+                            //Speed_Count = 0;//如果大于1时，则表示未稳定
+                            continue;
+                        }
+                        if (Speed_Count >= 30)
+                            break;
+                    }
+                    if (Speed_Count >= 30)
+                    {
+                        //取值
                         switch (Jc_Process)
                         {
                             case "VelMaxHP100%":
-                                while (GKSJ <= gksj0_zb + gksj1_zb + gksj2_zb - 5) Thread.Sleep(800);
-                                temp_gxxs = 0f;
-                                for (int i = 1; i <= 5; i++)//取5s内的数据，以10HZ的采样率
-                                {
-                                    Msg(Msg_msg, panel_msg, "正在取值" + "(" + Jc_Process + ") " + GXXSlist_zb[gksj0_zb + gksj1_zb + gksj2_zb - 6 + i].ToString("0.00"), false);
-                                    temp_gxxs += GXXSlist_zb[gksj0_zb + gksj1_zb + gksj2_zb - 6 + i];
-                                    Thread.Sleep(1000);
-                                }
-                                //Speed_Count = 0;
-                                HK = (temp_gxxs / 5f).ToString("0.00");
-                                Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + HK, true);
-                                Thread.Sleep(1000);
-                                Jc_Process = "VelMaxHP90%";
+                                opno = 7;
+                                opcode = 23;
                                 break;
                             case "VelMaxHP90%":
-                                while (GKSJ <= gksj0_zb + gksj1_zb + gksj2_zb + gksj3_zb - 5) Thread.Sleep(800);
-                                temp_gxxs = 0f;
-                                for (int i = 1; i <= 5; i++)//取5s内的数据，以10HZ的采样率
-                                {
-                                    Msg(Msg_msg, panel_msg, "正在取值" + "(" + Jc_Process + ") " + GXXSlist_zb[gksj0_zb + gksj1_zb + gksj2_zb + gksj3_zb - 6 + i].ToString("0.00"), false);
-                                    temp_gxxs += GXXSlist_zb[gksj0_zb + gksj1_zb + gksj2_zb + gksj3_zb - 6 + i];
-                                    Thread.Sleep(1000);
-                                }
-                                //Speed_Count = 0;
-                                NK = (temp_gxxs / 5f).ToString("0.00");
-                                Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + HK, true);
-                                Thread.Sleep(1000);
-                                Jc_Process = "VelMaxHP80%";
+                                opno = 11;
+                                opcode = 33;
                                 break;
                             case "VelMaxHP80%":
-                                while (GKSJ <= gksj0_zb + gksj1_zb + gksj2_zb + gksj3_zb + gksj4_zb - 5) Thread.Sleep(800);
-                                temp_gxxs = 0f;
-                                for (int i = 1; i <= 5; i++)//取5s内的数据，以10HZ的采样率
+                                opno = 15;
+                                opcode = 43;
+                                break;
+                        }
+                        for (int i = 3; i > 0; i--)
+                        {
+                            if (!equipconfig.useJHSCREEN)
+                            {
+                                Msg(Msg_msg, panel_msg, "将在" + i.ToString() + "s后取值", false);
+                                ts2 = "将在" + i.ToString() + "s后取值";
+                            }
+                            Thread.Sleep(900);
+                        }
+                        Speed_Count = 0;
+                        temp_force = 0;
+                        temp_gl = 0;
+                        temp_gxxs = 0;
+                        temp_speed = 0;
+                        temp_zs = 0;
+                        temp_no = 0;
+                        for (int i = 1; i <= 5; i++)//取5s内的数据，以10HZ的采样率
+                        {
+                            if (!equipconfig.useJHSCREEN)
+                            {
+                                Msg(Msg_msg, panel_msg, "正在取值" + "(" + Jc_Process + ") " + i.ToString(), false);
+                                ts2 = "正在取值..." + (6 - i).ToString() + "s";
+                            }
+                            if (ledcontrol != null)
+                            {
+                                ledcontrol.writeLed("正在取值..." + (6 - i).ToString() + "s ", 2, equipconfig.Ledxh);
+                            }
+                            temp_speed += igbt.Speed;
+                            temp_force += igbt.Force;
+                            temp_gl += (float)nowpower;
+                            temp_gxxs += Smoke;
+                            temp_zs += ZS;
+                            temp_no += No;
+                            Thread.Sleep(900);
+                        }
+                        switch (Jc_Process)
+                        {
+                            case "VelMaxHP100%":
+                                opno = 8;
+                                opcode = 24;
+                                Speed_Count = 0;
+                                double glsum = 0;
+
+                                HP = (temp_gl / 5f).ToString("0.00");
+                                HK = (temp_gxxs / 5f).ToString("0.00");
+                                HV = (temp_zs / 5f).ToString("0");
+                                HNo = (temp_no / 5f).ToString("0");
+                                if (ledcontrol != null)
                                 {
-                                    Msg(Msg_msg, panel_msg, "正在取值" + "(" + Jc_Process + ") " + GXXSlist_zb[gksj0_zb + gksj1_zb + gksj2_zb + gksj3_zb + gksj4_zb - 6 + i].ToString("0.00"), false);
-                                    temp_gxxs += GXXSlist_zb[gksj0_zb + gksj1_zb + gksj2_zb + gksj3_zb + gksj4_zb - 6 + i];
-                                    Thread.Sleep(1000);
+                                    ledcontrol.writeLed("测试结果:" + addLength(HK, 4) + " ", 2, equipconfig.Ledxh);
                                 }
-                                //Speed_Count = 0;
+                                led_display(ledNumberGX_H, HK);
+                                jzjs_data.Rev100 = HV;
+                                if (lugdownconfig.LugdownMaxHpStyle == 0)
+                                {
+                                    if (!equipconfig.useJHSCREEN)
+                                    {
+                                        Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + HK, true);
+                                        ts2 = "结果：" + HK;
+                                    }
+                                }
+                                else
+                                {
+                                    for (int timecount = GKSJ - 5; timecount <= GKSJ - 1; timecount++)
+                                    {
+                                        glsum += ZGLlist[timecount];
+                                    }
+                                    double glxz = glsum * glxzxs / 5.0;
+                                    jzjs_data.Lbgl = glxz.ToString("0.0");
+                                    led_display(ledNumberLBGL, jzjs_data.Lbgl);
+                                    led_display(ledNumberDCF, jzjs_data.glxzxs);
+                                    if (!equipconfig.useJHSCREEN)
+                                    {
+                                        Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，修正功率:" + jzjs_data.Lbgl + "kW,K:" + HK, true);
+                                        ts2 = "功率:" + jzjs_data.Lbgl + " K:" + HK;
+                                    }
+                                    if (equipconfig.useJHJK)//金华监控到轮边功率大于额定功率的80%，即限值的160%中断检测
+                                    {
+                                        if (double.Parse(jzjs_data.Lbgl) > carbj.Xz1 * 0.02 * equipconfig.JHLBGLB)
+                                        {
+                                            JC_Status = false;
+                                            button_ss.Text = "重新检测";
+                                            Th_get_FqandLl.Abort();
+                                            Jzjs_status = false; fq_getdata = false;
+                                            Thread.Sleep(500);
+                                            Msg(Msg_msg, panel_msg, "轮边功率异常预警，检测中止。", true);
+                                            ts1 = "轮边功率异常预警";
+                                            ts2 = "检测中止";
+                                            if (ledcontrol != null)
+                                            {
+                                                ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                                Thread.Sleep(200);
+                                                ledcontrol.writeLed("轮边功率异常预警", 5, equipconfig.Ledxh);
+                                            }
+                                            igbt.Exit_Control();
+                                            return;
+                                        }
+                                    }
+                                }
+                                /*if (double.Parse(HK)<0.01)
+                                {
+                                    JC_Status = false;
+                                    button_ss.Text = "重新检测";
+                                    Th_get_FqandLl.Abort();
+                                    Jzjs_status = false;
+                                    Thread.Sleep(500);
+                                    Msg(Msg_msg, panel_msg, "烟度值为0，检测中止。", true);
+                                    ts1 = "烟度值为0";
+                                    ts2 = "检测中止";
+                                    if (ledcontrol != null)
+                                    {
+                                        ledcontrol.writeLed("　　检测终止　　", 2);
+                                        Thread.Sleep(200);
+                                        ledcontrol.writeLed("检测探头是否脱落", 5);
+                                    }
+                                        
+                                    return;
+                                }*/
+                                Thread.Sleep(1000);
+                                Jc_Process = "VelMaxHP90%";
+                                if (lugdownconfig.gsKcbPD)
+                                {
+                                    if (double.Parse(HK) > carbj.Xz2)
+                                    {
+                                        ts1 = "光吸收系数超标";
+                                        ts2 = "测试结束";
+                                        NK = "";
+                                        EK = "";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("k超标  检测结束", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                        }
+                                        Msg(Msg_msg, panel_msg, "光吸收系数超标，测试结束", true);
+                                        Thread.Sleep(2000);
+                                        goto Finish;
+                                    }
+                                }
+                                if (lugdownconfig.gsKhgPD)
+                                {
+                                    if (double.Parse(HK) <= Math.Round(carbj.Xz2 * 0.9, 2))
+                                    {
+                                        ts1 = "k小于限值90%";
+                                        ts2 = "测试结束";
+                                        NK = "";
+                                        EK = "";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("k合格  检测结束", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                        }
+                                        Msg(Msg_msg, panel_msg, "k小于限值90%，测试结束", true);
+                                        Thread.Sleep(2000);
+                                        goto Finish;
+                                    }
+                                }
+                                if (equipconfig.useJHJK)
+                                {
+                                    if (double.Parse(HK) == 0)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "烟度值为0，检测中止。", true);
+                                        ts1 = "烟度值为0";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                        }
+                                        igbt.Exit_Control();
+
+                                        return;
+                                    }
+                                }
+                                if (lugdownconfig.isYdjk_cl)
+                                {
+                                    if (double.Parse(HK) < lugdownconfig.ydjk_cl_value)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "烟度值过低,检测中止,检查探头是否脱落", true);
+                                        ts1 = "烟度值过低";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                        }
+                                        igbt.Exit_Control();
+
+                                        return;
+                                    }
+                                }
+                                if (lugdownconfig.LugdownGljk)
+                                {
+                                    if (double.Parse(HP) * glxzxs < double.Parse(jzjs_data.Lbgl) * lugdownconfig.Lugdown_Gljk_value * 0.01)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "加载功率过低,检测中止", true);
+                                        ts1 = "加载功率过低";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测中止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("加载功率低于限值", 5, equipconfig.Ledxh);
+                                        }
+                                        igbt.Exit_Control();
+
+                                        return;
+                                    }
+                                }
+                                break;
+                            case "VelMaxHP90%":
+
+                                opno = 12;
+                                opcode = 34;
+                                Speed_Count = 0;
+                                NV = (temp_zs / 5f).ToString("0");
+                                NP = (temp_gl / 5f).ToString("0.00");
+                                NK = (temp_gxxs / 5f).ToString("0.00");
+                                NNo = (temp_no / 5f).ToString("0");
+                                if (!equipconfig.useJHSCREEN)
+                                {
+                                    Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + NK, true);
+                                    ts2 = "结果：" + NK;
+                                }
+                                if (ledcontrol != null)
+                                {
+                                    ledcontrol.writeLed("测试结果:" + addLength(NK, 4) + " ", 2, equipconfig.Ledxh);
+                                }
+                                led_display(ledNumberGX_N, NK);
+                                /*if (double.Parse(NK) < 0.01)
+                                {
+                                    JC_Status = false;
+                                    button_ss.Text = "重新检测";
+                                    Th_get_FqandLl.Abort();
+                                    Jzjs_status = false;
+                                    Thread.Sleep(500);
+                                    Msg(Msg_msg, panel_msg, "烟度值为0，检测中止。", true);
+                                    ts1 = "烟度值为0";
+                                    ts2 = "检测中止";
+                                    if (ledcontrol != null)
+                                    {
+                                        ledcontrol.writeLed("　　检测终止　　", 2);
+                                        Thread.Sleep(200);
+                                        ledcontrol.writeLed("检测探头是否脱落", 5);
+                                    }
+
+                                    return;
+                                }*/
+                                Thread.Sleep(1000);
+                                Jc_Process = "VelMaxHP80%";
+                                if (lugdownconfig.gsKcbPD)
+                                {
+                                    if (double.Parse(NK) > carbj.Xz2)
+                                    {
+                                        ts1 = "光吸收系数超标";
+                                        ts2 = "测试结束";
+                                        EK = "0";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("k超标  检测结束", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                        }
+                                        Msg(Msg_msg, panel_msg, "光吸收系数超标，测试结束", true);
+                                        Thread.Sleep(2000);
+                                        goto Finish;
+                                    }
+                                }
+                                if (lugdownconfig.gsKhgPD)
+                                {
+                                    if (double.Parse(NK) <= Math.Round(carbj.Xz2 * 0.9, 2))
+                                    {
+                                        ts1 = "k小于限值90%";
+                                        ts2 = "测试结束";
+                                        EK = "";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("k合格  检测结束", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                        }
+                                        Msg(Msg_msg, panel_msg, "k小于限值90%，测试结束", true);
+                                        Thread.Sleep(2000);
+                                        goto Finish;
+                                    }
+                                }
+                                if (equipconfig.useJHJK)
+                                {
+                                    if (double.Parse(NK) == 0)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "烟度值为0，检测中止。", true);
+                                        ts1 = "烟度值为0";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                        }
+                                        igbt.Exit_Control();
+
+                                        return;
+                                    }
+                                }
+                                if (lugdownconfig.isYdjk_cl)
+                                {
+                                    if (double.Parse(NK) < lugdownconfig.ydjk_cl_value)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "烟度值过低,检测中止,检查探头是否脱落", true);
+                                        ts1 = "烟度值过低";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                        }
+                                        igbt.Exit_Control();
+
+                                        return;
+                                    }
+                                }
+                                if (lugdownconfig.LugdownGljk)
+                                {
+                                    if (double.Parse(NP) * glxzxs < double.Parse(jzjs_data.Lbgl) * lugdownconfig.Lugdown_Gljk_value * 0.01)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "加载功率过低，检测中止。", true);
+                                        ts1 = "加载功率过低";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测中止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("加载功率低于限值", 5, equipconfig.Ledxh);
+                                        }
+                                        igbt.Exit_Control();
+
+                                        return;
+                                    }
+                                }
+                                break;
+                            case "VelMaxHP80%":
+
+                                opno = 16;
+                                opcode = 44;
+                                Speed_Count = 0;
+                                EV = (temp_zs / 5f).ToString("0");
+                                EP = (temp_gl / 5f).ToString("0.00");
                                 EK = (temp_gxxs / 5f).ToString("0.00");
-                                Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + HK, true);
+                                ENo = (temp_no / 5f).ToString("0");
+                                if (!equipconfig.useJHSCREEN)
+                                {
+                                    Msg(Msg_msg, panel_msg, "速度段：" + Jc_Process + "测试完成，测试结果：" + EK, true);
+                                    ts2 = "结果：" + EK;
+                                }
+                                if (ledcontrol != null)
+                                {
+                                    ledcontrol.writeLed("测试结果:" + addLength(EK, 4) + " ", 2, equipconfig.Ledxh);
+                                }
+                                led_display(ledNumberGS_E, EK);
+                                if (equipconfig.useJHJK)
+                                {
+                                    if (double.Parse(EK) == 0)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "烟度值为0，检测中止。", true);
+                                        ts1 = "烟度值为0";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                        }
+                                        igbt.Exit_Control();
+
+                                        return;
+                                    }
+                                }
+                                if (lugdownconfig.isYdjk_cl)
+                                {
+                                    if (double.Parse(EK) < lugdownconfig.ydjk_cl_value)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "烟度值过低，检测中止。", true);
+                                        ts1 = "烟度值过低";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                        }
+                                        igbt.Exit_Control();
+
+                                        return;
+                                    }
+                                }
+                                if (double.Parse(EK) < 0.01 && double.Parse(NK) < 0.01 && double.Parse(HK) < 0.01)
+                                {
+                                    JC_Status = false;
+                                    button_ss.Text = "重新检测";
+                                    Th_get_FqandLl.Abort();
+                                    Jzjs_status = false; fq_getdata = false;
+                                    Thread.Sleep(500);
+                                    Msg(Msg_msg, panel_msg, "烟度值为0，检测中止。", true);
+                                    ts1 = "烟度值为0";
+                                    ts2 = "检测中止";
+                                    if (ledcontrol != null)
+                                    {
+                                        ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                        Thread.Sleep(200);
+                                        ledcontrol.writeLed("检测探头是否脱落", 5, equipconfig.Ledxh);
+                                    }
+
+                                    return;
+                                }
+
+
+                                if (lugdownconfig.LugdownGljk)
+                                {
+                                    if (double.Parse(EP) * glxzxs < double.Parse(jzjs_data.Lbgl) * lugdownconfig.Lugdown_Gljk_value * 0.01)
+                                    {
+                                        JC_Status = false;
+                                        button_ss.Text = "重新检测";
+                                        Th_get_FqandLl.Abort();
+                                        Jzjs_status = false; fq_getdata = false;
+                                        Thread.Sleep(500);
+                                        Msg(Msg_msg, panel_msg, "加载功率过低，检测中止。", true);
+                                        ts1 = "加载功率过低";
+                                        ts2 = "检测中止";
+                                        if (ledcontrol != null)
+                                        {
+                                            ledcontrol.writeLed("　　检测中止　　", 2, equipconfig.Ledxh);
+                                            Thread.Sleep(200);
+                                            ledcontrol.writeLed("加载功率低于限值", 5, equipconfig.Ledxh);
+                                        }
+                                        igbt.Exit_Control();
+
+                                        return;
+                                    }
+                                }
                                 Thread.Sleep(1000);
                                 Jc_Process = "结束";
                                 break;
@@ -3142,67 +4483,217 @@ namespace lugdowm
                         if (Jc_Process == "结束")
                             break;
                     }
-                    Msg(Msg_msg, panel_msg, "加载减速测试完毕。", true);
-                    jzjs_dataseconds.Gksj = GKSJ;//记录总的工况时间
-                    statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.GUOCHE, GKSJ.ToString());
-                    Jzjs_status = false; fq_getdata = false;
-                    timer_show.Stop();//停止计时
-                    Thread.Sleep(1000);
-                    DataTable jzjs_datatable = new DataTable();
-                    jzjs_datatable.Columns.Add("全程时序");
-                    jzjs_datatable.Columns.Add("时序类别");
-                    jzjs_datatable.Columns.Add("采样时序");
-                    jzjs_datatable.Columns.Add("车速");
-                    jzjs_datatable.Columns.Add("功率");
-                    jzjs_datatable.Columns.Add("光吸收系数K");
-                    for (int i = 0; i < gksj_zb; i++)
+                }
+            #endregion
+            Finish:
+                #region 结束并保存数据
+                statusconfigini.writeNeuStatusData("FinishTest", DateTime.Now.ToString());
+                Msg(Msg_msg, panel_msg, "加载减速测试完毕。", true);
+                ts1 = "测试完毕";
+                ts2 = "松开节气门换至空档";
+                jzjs_dataseconds.Gksj = GKSJ;//记录总的工况时间
+                statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.GUOCHE, GKSJ.ToString());
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_ENDSAMPLE, "");
+                Jzjs_status = false; fq_getdata = false;
+                timer_show.Stop();//停止计时
+                Thread.Sleep(1000);
+                if (ledcontrol != null)
+                {
+                    ledcontrol.writeLed("加载减速测试完毕", 2, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                    ledcontrol.writeLed("松节气门换至空档", 5, equipconfig.Ledxh);
+                }
+                DataTable jzjs_datatable = new DataTable();
+                jzjs_datatable.Columns.Add("全程时序");
+                jzjs_datatable.Columns.Add("时序类别");
+                jzjs_datatable.Columns.Add("采样时序");
+                jzjs_datatable.Columns.Add("车速");
+                //jzjs_datatable.Columns.Add("转速");
+                jzjs_datatable.Columns.Add("寄生功率");
+                jzjs_datatable.Columns.Add("指示功率");
+                jzjs_datatable.Columns.Add("功率");
+                jzjs_datatable.Columns.Add("扭力");
+                jzjs_datatable.Columns.Add("光吸收系数K");
+                jzjs_datatable.Columns.Add("不透光度");
+                jzjs_datatable.Columns.Add("环境温度");
+                jzjs_datatable.Columns.Add("大气压力");
+                jzjs_datatable.Columns.Add("相对湿度");
+                jzjs_datatable.Columns.Add("油温");
+                jzjs_datatable.Columns.Add("转速");
+                jzjs_datatable.Columns.Add("DCF");
+                jzjs_datatable.Columns.Add("OPNO");
+                jzjs_datatable.Columns.Add("OPCODE");
+                jzjs_datatable.Columns.Add("DYNN");
+                jzjs_datatable.Columns.Add("NO");
+                if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山" || equipconfig.DATASECONDS_TYPE == "安徽")
+                {
+                    for (int i = 10; i < jzjs_dataseconds.Gksj; i++)//从第10秒开始取过程 数据，以避免金华判断转速时，第一秒的转速为0
+                    {
+                        if (int.Parse(Sxnblist[i]) > 0)
+                        {
+                            dr = jzjs_datatable.NewRow();
+                            dr["全程时序"] = Qcsxlist[i];
+                            dr["时序类别"] = (int.Parse(Sxnblist[i]) - 1).ToString();
+                            dr["采样时序"] = Cysxlist[i];
+                            dr["车速"] = Speedlist[i];
+                            //dr["转速"] = FDJZSlist[i].ToString();
+                            dr["寄生功率"] = JSGLlist[i];
+                            dr["指示功率"] = ZSGLlist[i];
+                            dr["功率"] = ZGLlist[i];
+                            dr["扭力"] = Forcelist[i];
+                            dr["光吸收系数K"] = GXXSlist[i];
+                            dr["不透光度"] = btglist[i];
+                            dr["环境温度"] = wdlist[i];
+                            dr["大气压力"] = dqylist[i];
+                            dr["相对湿度"] = sdlist[i];
+                            dr["油温"] = ywlist[i];
+                            dr["转速"] = FDJZSlist[i];
+                            dr["DCF"] = DCFlist[i];
+                            dr["OPNO"] = opnolist[i];
+                            dr["OPCODE"] = opcodelist[i];
+                            dr["DYNN"] = dynnlist[i];
+                            dr["NO"] = Nolist[i];
+                            jzjs_datatable.Rows.Add(dr);
+                            if (equipconfig.useJHJK)
+                            {
+                                if (FDJZSlist[i] == 0)
+                                {
+                                    JC_Status = false;
+                                    button_ss.Text = "重新检测";
+                                    Th_get_FqandLl.Abort();
+                                    Jzjs_status = false; fq_getdata = false;
+                                    Thread.Sleep(500);
+                                    Msg(Msg_msg, panel_msg, "过程程有转速为0，检测中止。", true);
+                                    ts1 = "过程程有转速为0";
+                                    ts2 = "检测中止";
+                                    if (ledcontrol != null)
+                                    {
+                                        ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                        Thread.Sleep(200);
+                                        ledcontrol.writeLed("过程程有转速为0", 5, equipconfig.Ledxh);
+                                    }
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 10; i < jzjs_dataseconds.Gksj; i++)//从第10秒开始取过程 数据，以避免金华判断转速时，第一秒的转速为0
                     {
                         dr = jzjs_datatable.NewRow();
                         dr["全程时序"] = Qcsxlist[i];
-                        dr["时序类别"] = Sxnblist_zb[i];
-                        dr["采样时序"] = Cysxlist_zb[i];
-                        dr["车速"] = Speedlist_zb[i];
-                        dr["功率"] = GLlist_zb[i];
-                        dr["光吸收系数K"] = GXXSlist_zb[i];
+                        dr["时序类别"] = Sxnblist[i];
+                        dr["采样时序"] = Cysxlist[i];
+                        dr["车速"] = Speedlist[i];
+                        //dr["转速"] = FDJZSlist[i].ToString();
+                        dr["寄生功率"] = JSGLlist[i];
+                        dr["指示功率"] = ZSGLlist[i];
+                        dr["功率"] = ZGLlist[i];
+                        dr["扭力"] = Forcelist[i];
+                        dr["光吸收系数K"] = GXXSlist[i];
+                        dr["不透光度"] = btglist[i];
+                        dr["环境温度"] = wdlist[i];
+                        dr["大气压力"] = dqylist[i];
+                        dr["相对湿度"] = sdlist[i];
+                        dr["油温"] = ywlist[i];
+                        dr["转速"] = FDJZSlist[i];
+                        dr["DCF"] = DCFlist[i];
+                        dr["OPNO"] = opnolist[i];
+                        dr["OPCODE"] = opcodelist[i];
+                        dr["DYNN"] = dynnlist[i];
+                        dr["NO"] = Nolist[i];
                         jzjs_datatable.Rows.Add(dr);
+                        if (equipconfig.useJHJK)
+                        {
+                            if (FDJZSlist[i] == 0)
+                            {
+                                JC_Status = false;
+                                button_ss.Text = "重新检测";
+                                Th_get_FqandLl.Abort();
+                                Jzjs_status = false; fq_getdata = false;
+                                Thread.Sleep(500);
+                                Msg(Msg_msg, panel_msg, "过程程有转速为0，检测中止。", true);
+                                ts1 = "过程程有转速为0";
+                                ts2 = "检测中止";
+                                if (ledcontrol != null)
+                                {
+                                    ledcontrol.writeLed("　　检测终止　　", 2, equipconfig.Ledxh);
+                                    Thread.Sleep(200);
+                                    ledcontrol.writeLed("过程程有转速为0", 5, equipconfig.Ledxh);
+                                }
+                                return;
+                            }
+                        }
                     }
-                    jzjs_data.CarID = carbj.CarID;
-                    jzjs_data.Sd = SD.ToString("0.0");
-                    jzjs_data.Wd = WD.ToString("0.0");
-                    jzjs_data.Dqy = DQY.ToString("0.0");
-                    jzjs_data.Gxsxs_100 = HK;
-                    jzjs_data.Gxsxs_90 = NK;
-                    jzjs_data.Gxsxs_80 = EK;
-                    jzjs_data.Lbgl = MaxP.ToString("0.0");
-                    JC_Status = false;//停止测试，工况时间清零
-                    Th_get_FqandLl.Abort();//停止烟度采样
-                    igbt.Exit_Control();
-                    for (int i = 15; i > 0; i--)
-                    {
-                        Msg(Msg_msg, panel_msg, "请松开节气门并换至空档，不要使用制动 " + i.ToString("00") + " 秒", true);
-                        Thread.Sleep(1000);
-                    }
-                    timer_show.Stop();
-                    while (true)
-                    {
-                        if (igbt.Speed < 1)
-                            break;
-                        Thread.Sleep(100);
-                    }
-                    Msg(Msg_msg, panel_msg, "检测完成,举升上升，请驶离测功机", false);
-                    igbt.Lifter_Up();           //检测完成举升上升
-                    button_ss.Text = "重新检测";
-                    JC_Status = false;
-                    writeDataIsFinished = false;
-                    //th_load = new Thread(load_progress);
-                    //th_load.Start();
-                    csvwriter.SaveCSV(jzjs_datatable, "C:/jcdatatxt/" + carbj.CarID + ".csv");
-                    jzjsdatacontrol.writeJzjsData(jzjs_data);//写carID.ini文件
-                    writeDataIsFinished = true;
-                    igjzjsIsFinished = true;
-                    this.Close();
-                    #endregion
                 }
+                jzjs_data.CarID = carbj.CarID;
+                jzjs_data.Sd = SD.ToString("0.0");
+                jzjs_data.Wd = WD.ToString("0.0");
+                jzjs_data.Dqy = DQY.ToString("0.0");
+                jzjs_data.Gxsxs_100 = HK;
+                jzjs_data.Gxsxs_90 = NK;
+                jzjs_data.Gxsxs_80 = EK;
+                jzjs_data.hno = HNo;
+                jzjs_data.nno = NNo;
+                jzjs_data.eno = ENo;
+                // jzjs_data.Lbgl = MaxP.ToString("0.0");
+                jzjs_data.StopReason = "0";
+                JC_Status = false;//停止测试，工况时间清零
+                Th_get_FqandLl.Abort();//停止烟度采样
+                igbt.Exit_Control();
+                Thread.Sleep(1000);
+                #endregion
+
+                #region NO测量仪反吹
+                if (equipconfig.Ydjxh.ToLower() == yq_mqw5101)
+                {
+                    flb_100.stopAction();
+                    Thread.Sleep(500);
+                    flb_100.autoFlowBack();//自动反吹，时间30s
+                }
+                if (notester != null)
+                {
+                    notester.stopAction();
+                    Thread.Sleep(500);
+                    notester.autoFlowBack();//自动反吹，时间30s
+                }
+                #endregion
+                #region 等待车辆静止，举升升起
+                for (int i = 30; i > 0; i--)
+                {
+                    Msg(Msg_msg, panel_msg, "请松开节气门并换至空档，不要使用制动 " + i.ToString("00") + " 秒", true);
+                    Thread.Sleep(1000);
+                }
+                timer_show.Stop();
+                while (true)
+                {
+                    if (igbt.Speed < 1)
+                        break;
+                    Thread.Sleep(100);
+                }
+                Msg(Msg_msg, panel_msg, "检测完成,举升上升，请驶离测功机", false);
+                ts2 = "请驶离测功机";
+                if (ledcontrol != null)
+                {
+                    ledcontrol.writeLed("　　检测完成　　", 2, equipconfig.Ledxh);
+                    Thread.Sleep(200);
+                    ledcontrol.writeLed("请车辆驶离测功机", 5, equipconfig.Ledxh);
+                }
+                igbt.Lifter_Up();           //检测完成举升上升
+                button_ss.Text = "重新检测";
+                JC_Status = false;
+                writeDataIsFinished = false;
+                //th_load = new Thread(load_progress);
+                //th_load.Start();
+                csvwriter.SaveCSV(jzjs_datatable, "C:/jcdatatxt/" + carbj.CarID + ".csv");
+                jzjsdatacontrol.writeJzjsData(jzjs_data);//写carID.ini文件
+                writeDataIsFinished = true;
+                igjzjsIsFinished = true;
+                #endregion
+                this.Close();//自动关闭
+
             }
             catch (Exception er)
             {
@@ -3322,12 +4813,17 @@ namespace lugdowm
         {
             while (true)
             {
-                if (carbj.ISUSE)
+                try
                 {
-                    nowpower = carbj.JZJS_GL * igbt.Power;
+                    if (carbj.ISUSE)
+                    {
+                        nowpower = carbj.JZJS_GL * igbt.Power;
+                    }
+                    else
+                        nowpower = igbt.Power;
                 }
-                else
-                    nowpower = igbt.Power;
+                catch
+                { }
                 Thread.Sleep(80);
                 try
                 {
@@ -3916,7 +5412,10 @@ namespace lugdowm
                         Thread.Sleep(5000);
                     }
                     jctime = DateTime.Now.ToString();
-                    TH_ST = new Thread(Jc_Exe);
+                    if (lugdownconfig.IsLugdownPrepare)
+                        TH_ST = new Thread(Jc_Exe2);
+                    else
+                        TH_ST = new Thread(Jc_Exe);
                     TH_ST.Start();
                     Th_get_FqandLl = new Thread(Fq_Detect);
                     Th_get_FqandLl.Start();
@@ -3961,55 +5460,7 @@ namespace lugdowm
             newSettings.ShowDialog();
             initConfigInfo();
         }
-
-        private void button_ss_MouseDown(object sender, MouseEventArgs e)
-        {
-            try
-            {
-                if (JC_Status == false)
-                {
-                    if (dt_zb != null)
-                        isUsedata = true;
-                    else
-                        isUsedata = false;
-                    igbt.Force_Zeroing();
-                    jctime = DateTime.Now.ToString();
-                    TH_ST = new Thread(Jc_Exe);
-                    TH_ST.Start();
-                    Th_get_FqandLl = new Thread(Fq_Detect);
-                    Th_get_FqandLl.Start();
-                    timer_show.Start();
-                    JC_Status = true;
-                    Jzjs_status = false;
-                    fq_getdata = false;
-                    //button_yj.Enabled = false;
-                    button_ss.Text = "停止检测";
-                }
-                else
-                {
-                    igbt.Exit_Control();
-                    TH_ST.Abort();
-                    Th_get_FqandLl.Abort();
-                    Jzjs_status = false;
-                    fq_getdata = false;
-                    timer_show.Stop();
-                    JC_Status = false;
-                    if (ledcontrol != null)
-                    {
-                        Thread.Sleep(500);
-                        ledcontrol.writeLed("测试被终止", 2, equipconfig.Ledxh);
-
-                        //ledcontrol.writeLed("请移除探测头", 5);
-                    }
-                    ts2 = "测试被终止";
-                    button_ss.Text = "重新检测";
-                }
-            }
-            catch (Exception)
-            {
-            }
-
-        }
+        
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {

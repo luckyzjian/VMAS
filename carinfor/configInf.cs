@@ -1174,6 +1174,7 @@ namespace carinfor
         /// 0-最大车速点 1-空档最大转速点
         /// </summary>
         public int maxRPMStyle { set; get; }
+        public bool IsLugdownPrepare { set; get; }
     }
     public class selfCheckItem
     {
@@ -3170,6 +3171,11 @@ namespace carinfor
             {
                 configinidata.ydjk_cl_value = 0.02;
             }
+            ini.INIIO.GetPrivateProfileString("LUGDOWN", "检测前进行转速及档位选择", "N", temp, 2048, startUpPath + "/detectConfig.ini");
+            if (temp.ToString().Trim() == "Y")
+                configinidata.IsLugdownPrepare = true;
+            else
+                configinidata.IsLugdownPrepare = false;
             return configinidata;
         }
 
@@ -3201,6 +3207,7 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "功率扫描阶段烟度监控值", configinidata.ydjk_glsm_value.ToString("0.00"), startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "测量阶段烟度监控", configinidata.isYdjk_cl ? "Y" : "N", startUpPath + "/detectConfig.ini");
                 ini.INIIO.WritePrivateProfileString("LUGDOWN", "测量阶段烟度监控值", configinidata.ydjk_cl_value.ToString("0.00"), startUpPath + "/detectConfig.ini");
+                ini.INIIO.WritePrivateProfileString("LUGDOWN", "检测前进行转速及档位选择", configinidata.IsLugdownPrepare ? "Y" : "N", startUpPath + "/detectConfig.ini");
                 return true;
             }
 

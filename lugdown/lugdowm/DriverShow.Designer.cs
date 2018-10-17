@@ -66,6 +66,11 @@
             this.panelts1 = new System.Windows.Forms.Panel();
             this.labelTs1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panelZS = new System.Windows.Forms.Panel();
+            this.labelZS = new System.Windows.Forms.Label();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panelTrack.SuspendLayout();
@@ -85,6 +90,9 @@
             this.panel2.SuspendLayout();
             this.panelTs2.SuspendLayout();
             this.panelts1.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panelZS.SuspendLayout();
+            this.panel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -112,6 +120,7 @@
             // panelTrack
             // 
             this.panelTrack.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panelTrack.Controls.Add(this.panel12);
             this.panelTrack.Controls.Add(this.panel8);
             this.panelTrack.Controls.Add(this.panel7);
             this.panelTrack.Controls.Add(this.panel6);
@@ -238,9 +247,9 @@
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.panelK);
             this.panel6.Controls.Add(this.panel11);
-            this.panel6.Location = new System.Drawing.Point(506, 266);
+            this.panel6.Location = new System.Drawing.Point(506, 308);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(386, 119);
+            this.panel6.Size = new System.Drawing.Size(386, 100);
             this.panel6.TabIndex = 4;
             // 
             // panelK
@@ -250,17 +259,17 @@
             this.panelK.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelK.Location = new System.Drawing.Point(90, 0);
             this.panelK.Name = "panelK";
-            this.panelK.Size = new System.Drawing.Size(294, 117);
+            this.panelK.Size = new System.Drawing.Size(294, 98);
             this.panelK.TabIndex = 7;
             // 
             // labelK
             // 
             this.labelK.AutoSize = true;
-            this.labelK.Font = new System.Drawing.Font("宋体", 80F, System.Drawing.FontStyle.Bold);
+            this.labelK.Font = new System.Drawing.Font("宋体", 60F, System.Drawing.FontStyle.Bold);
             this.labelK.ForeColor = System.Drawing.Color.Lime;
-            this.labelK.Location = new System.Drawing.Point(42, 5);
+            this.labelK.Location = new System.Drawing.Point(42, 8);
             this.labelK.Name = "labelK";
-            this.labelK.Size = new System.Drawing.Size(210, 107);
+            this.labelK.Size = new System.Drawing.Size(157, 80);
             this.labelK.TabIndex = 2;
             this.labelK.Text = "0.0";
             // 
@@ -271,17 +280,17 @@
             this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel11.Location = new System.Drawing.Point(0, 0);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(90, 117);
+            this.panel11.Size = new System.Drawing.Size(90, 98);
             this.panel11.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("宋体", 40F, System.Drawing.FontStyle.Bold);
+            this.label5.Font = new System.Drawing.Font("宋体", 30F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(20, 30);
+            this.label5.Location = new System.Drawing.Point(30, 34);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 54);
+            this.label5.Size = new System.Drawing.Size(38, 40);
             this.label5.TabIndex = 3;
             this.label5.Text = "K";
             // 
@@ -291,9 +300,9 @@
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.panelPower);
             this.panel5.Controls.Add(this.panel10);
-            this.panel5.Location = new System.Drawing.Point(506, 141);
+            this.panel5.Location = new System.Drawing.Point(506, 207);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(386, 119);
+            this.panel5.Size = new System.Drawing.Size(386, 100);
             this.panel5.TabIndex = 4;
             // 
             // panelPower
@@ -303,17 +312,17 @@
             this.panelPower.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPower.Location = new System.Drawing.Point(90, 0);
             this.panelPower.Name = "panelPower";
-            this.panelPower.Size = new System.Drawing.Size(294, 117);
+            this.panelPower.Size = new System.Drawing.Size(294, 98);
             this.panelPower.TabIndex = 7;
             // 
             // labelPower
             // 
             this.labelPower.AutoSize = true;
-            this.labelPower.Font = new System.Drawing.Font("宋体", 80F, System.Drawing.FontStyle.Bold);
+            this.labelPower.Font = new System.Drawing.Font("宋体", 60F, System.Drawing.FontStyle.Bold);
             this.labelPower.ForeColor = System.Drawing.Color.Lime;
-            this.labelPower.Location = new System.Drawing.Point(42, 5);
+            this.labelPower.Location = new System.Drawing.Point(42, 8);
             this.labelPower.Name = "labelPower";
-            this.labelPower.Size = new System.Drawing.Size(210, 107);
+            this.labelPower.Size = new System.Drawing.Size(157, 80);
             this.labelPower.TabIndex = 2;
             this.labelPower.Text = "0.0";
             // 
@@ -324,17 +333,17 @@
             this.panel10.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel10.Location = new System.Drawing.Point(0, 0);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(90, 117);
+            this.panel10.Size = new System.Drawing.Size(90, 98);
             this.panel10.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("宋体", 40F, System.Drawing.FontStyle.Bold);
+            this.label4.Font = new System.Drawing.Font("宋体", 30F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(7, 4);
+            this.label4.Location = new System.Drawing.Point(17, 8);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 108);
+            this.label4.Size = new System.Drawing.Size(58, 80);
             this.label4.TabIndex = 3;
             this.label4.Text = "功\r\n率";
             // 
@@ -344,9 +353,9 @@
             this.panel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel16.Controls.Add(this.panelSpeed);
             this.panel16.Controls.Add(this.panel9);
-            this.panel16.Location = new System.Drawing.Point(506, 16);
+            this.panel16.Location = new System.Drawing.Point(506, 106);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(386, 119);
+            this.panel16.Size = new System.Drawing.Size(386, 100);
             this.panel16.TabIndex = 3;
             // 
             // panelSpeed
@@ -356,17 +365,17 @@
             this.panelSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSpeed.Location = new System.Drawing.Point(90, 0);
             this.panelSpeed.Name = "panelSpeed";
-            this.panelSpeed.Size = new System.Drawing.Size(294, 117);
+            this.panelSpeed.Size = new System.Drawing.Size(294, 98);
             this.panelSpeed.TabIndex = 6;
             // 
             // labelSpeed
             // 
             this.labelSpeed.AutoSize = true;
-            this.labelSpeed.Font = new System.Drawing.Font("宋体", 80F, System.Drawing.FontStyle.Bold);
+            this.labelSpeed.Font = new System.Drawing.Font("宋体", 60F, System.Drawing.FontStyle.Bold);
             this.labelSpeed.ForeColor = System.Drawing.Color.Lime;
-            this.labelSpeed.Location = new System.Drawing.Point(42, 5);
+            this.labelSpeed.Location = new System.Drawing.Point(42, 7);
             this.labelSpeed.Name = "labelSpeed";
-            this.labelSpeed.Size = new System.Drawing.Size(210, 107);
+            this.labelSpeed.Size = new System.Drawing.Size(157, 80);
             this.labelSpeed.TabIndex = 2;
             this.labelSpeed.Text = "0.0";
             // 
@@ -377,17 +386,17 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(90, 117);
+            this.panel9.Size = new System.Drawing.Size(90, 98);
             this.panel9.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 40F, System.Drawing.FontStyle.Bold);
+            this.label3.Font = new System.Drawing.Font("宋体", 30F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(7, 4);
+            this.label3.Location = new System.Drawing.Point(17, 8);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 108);
+            this.label3.Size = new System.Drawing.Size(58, 80);
             this.label3.TabIndex = 3;
             this.label3.Text = "速\r\n度";
             // 
@@ -460,6 +469,59 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // panel12
+            // 
+            this.panel12.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel12.Controls.Add(this.panelZS);
+            this.panel12.Controls.Add(this.panel14);
+            this.panel12.Location = new System.Drawing.Point(506, 4);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(386, 100);
+            this.panel12.TabIndex = 7;
+            // 
+            // panelZS
+            // 
+            this.panelZS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelZS.Controls.Add(this.labelZS);
+            this.panelZS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelZS.Location = new System.Drawing.Point(90, 0);
+            this.panelZS.Name = "panelZS";
+            this.panelZS.Size = new System.Drawing.Size(294, 98);
+            this.panelZS.TabIndex = 6;
+            // 
+            // labelZS
+            // 
+            this.labelZS.AutoSize = true;
+            this.labelZS.Font = new System.Drawing.Font("宋体", 60F, System.Drawing.FontStyle.Bold);
+            this.labelZS.ForeColor = System.Drawing.Color.Lime;
+            this.labelZS.Location = new System.Drawing.Point(85, 7);
+            this.labelZS.Name = "labelZS";
+            this.labelZS.Size = new System.Drawing.Size(75, 80);
+            this.labelZS.TabIndex = 2;
+            this.labelZS.Text = "0";
+            // 
+            // panel14
+            // 
+            this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel14.Controls.Add(this.label2);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel14.Location = new System.Drawing.Point(0, 0);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(90, 98);
+            this.panel14.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("宋体", 30F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(17, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 80);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "转\r\n速";
+            // 
             // DriverShow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -497,6 +559,11 @@
             this.panelTs2.PerformLayout();
             this.panelts1.ResumeLayout(false);
             this.panelts1.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panelZS.ResumeLayout(false);
+            this.panelZS.PerformLayout();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -532,6 +599,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panelZS;
+        private System.Windows.Forms.Label labelZS;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Label label2;
     }
 }
 

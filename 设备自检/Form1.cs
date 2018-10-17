@@ -1849,7 +1849,7 @@ namespace 设备自检
                                         }
                                     }
                                 }
-                                else if (equipconfig.Fqyxh == "cdf5000")
+                                else if (equipconfig.Fqyxh.ToLower() == "cdf5000")
                                 {
                                     int leaktest = 0;
                                     bool leaktesting = false;
@@ -2092,7 +2092,7 @@ namespace 设备自检
                                         }
                                     }
                                 }
-                                else if (equipconfig.Fqyxh == "cdf5000")
+                                else if (equipconfig.Fqyxh.ToLower() == "cdf5000")
                                 {
                                     int leaktest = 0;
                                     bool leaktesting = false;
