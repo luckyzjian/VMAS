@@ -1616,7 +1616,7 @@ namespace 惯量标定
             //double t2 = 0;                 //拆去飞轮结构状态下（48-32）km/h滑行时间
             
             Lifter_Down();         //下降举升
-            Thread.Sleep(2000);         //等待2秒
+            Thread.Sleep(6000);         //等待2秒
 
 
             Motor_Open(70 * bpqXs);

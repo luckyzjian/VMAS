@@ -504,11 +504,11 @@ namespace carinfor
                 carinidata.CarEdgl = a;
             else
                 carinidata.CarEdgl = 0;
-            ini.INIIO.GetPrivateProfileString("检测信息", "额定转速", "", temp, 2048, @"C:\jcdatatxt\carinfo.ini");
+            ini.INIIO.GetPrivateProfileString("检测信息", "额定转速", "3000", temp, 2048, @"C:\jcdatatxt\carinfo.ini");
             if (float.TryParse(temp.ToString().Trim(), out a))
                 carinidata.CarEdzs = a;
             else
-                carinidata.CarEdzs = 0;
+                carinidata.CarEdzs = 3000;
             ini.INIIO.GetPrivateProfileString("检测信息", "变速箱", "", temp, 2048, @"C:\jcdatatxt\carinfo.ini");
             carinidata.CarBsxlx = temp.ToString().Trim();
             ini.INIIO.GetPrivateProfileString("检测信息", "连续超差", "", temp, 2048, @"C:\jcdatatxt\carinfo.ini");

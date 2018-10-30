@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Zyjs_Btg));
-            DevExpress.XtraGauges.Core.Drawing.BaseShapeAppearance baseShapeAppearance1 = new DevExpress.XtraGauges.Core.Drawing.BaseShapeAppearance();
             DevExpress.XtraGauges.Core.Model.LinearScaleRange linearScaleRange1 = new DevExpress.XtraGauges.Core.Model.LinearScaleRange();
             DevExpress.XtraGauges.Core.Model.LinearScaleRange linearScaleRange2 = new DevExpress.XtraGauges.Core.Model.LinearScaleRange();
             DevExpress.XtraGauges.Core.Model.LinearScaleRange linearScaleRange3 = new DevExpress.XtraGauges.Core.Model.LinearScaleRange();
@@ -90,6 +89,7 @@
             this.arcScaleBackgroundLayerComponent9 = new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleBackgroundLayerComponent();
             this.arcScaleComponentZs = new DevExpress.XtraGauges.Win.Gauges.Circular.ArcScaleComponent();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBoxVRM = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel_cp.SuspendLayout();
@@ -124,6 +124,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleBackgroundLayerComponent10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleBackgroundLayerComponent9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleComponentZs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVRM)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -261,6 +262,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel5.Controls.Add(this.pictureBoxVRM);
             this.panel5.Controls.Add(this.button_exit);
             this.panel5.Controls.Add(this.button_clear);
             this.panel5.Controls.Add(this.button_ss);
@@ -292,7 +294,7 @@
             this.button_clear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button_clear.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.button_clear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_clear.Location = new System.Drawing.Point(3, 8);
+            this.button_clear.Location = new System.Drawing.Point(44, 8);
             this.button_clear.Name = "button_clear";
             this.button_clear.Size = new System.Drawing.Size(132, 32);
             this.button_clear.TabIndex = 9;
@@ -677,8 +679,6 @@
             // linearScaleRangeBarComponent3
             // 
             this.linearScaleRangeBarComponent3.AcceptOrder = 100;
-            baseShapeAppearance1.ContentBrush = new DevExpress.XtraGauges.Core.Drawing.SolidBrushObject("Color:Black");
-            //this.linearScaleRangeBarComponent3.Appearance = baseShapeAppearance1;
             this.linearScaleRangeBarComponent3.EndOffset = 2F;
             this.linearScaleRangeBarComponent3.LinearScale = this.linearScaleComponent5;
             this.linearScaleRangeBarComponent3.Name = "newCustRange";
@@ -821,6 +821,17 @@
             this.timer2.Interval = 70;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // pictureBoxVRM
+            // 
+            this.pictureBoxVRM.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxVRM.Image")));
+            this.pictureBoxVRM.Location = new System.Drawing.Point(5, 6);
+            this.pictureBoxVRM.Name = "pictureBoxVRM";
+            this.pictureBoxVRM.Size = new System.Drawing.Size(39, 34);
+            this.pictureBoxVRM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxVRM.TabIndex = 11;
+            this.pictureBoxVRM.TabStop = false;
+            this.pictureBoxVRM.Visible = false;
+            // 
             // Zyjs_Btg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -874,6 +885,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleBackgroundLayerComponent10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleBackgroundLayerComponent9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcScaleComponentZs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVRM)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -933,5 +945,6 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.PictureBox pictureBoxVRM;
     }
 }

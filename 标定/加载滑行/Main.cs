@@ -1639,7 +1639,7 @@ namespace 加载滑行
             Set_Control_Power(power);
             Thread.Sleep(500);
             Lifter_Down();         //下降举升
-            Thread.Sleep(2000);
+            Thread.Sleep(6000);
             Motor_Open(70 * bpqXs); //启动电机加速
             while (testFinish == false)
             {

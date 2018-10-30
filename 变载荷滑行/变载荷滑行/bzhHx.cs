@@ -3928,7 +3928,7 @@ namespace 变载荷滑行
                 Standard2 = 0.04;
             }
             Lifter_Down();         //下降举升
-            Thread.Sleep(2000);         //等待2秒
+            Thread.Sleep(6000);         //等待2秒
             Motor_Open(90 * bpqXs);          //启动电机加速
             while (testFinish == false)
             {

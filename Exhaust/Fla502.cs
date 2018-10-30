@@ -4045,11 +4045,11 @@ namespace Exhaust
                         temp_byte[0] = Read_Buffer[2];
                         temp_byte[1] = Read_Buffer[1];
                         Fla502_data.HC =(float)(Math.Round(hcxs*( BitConverter.ToInt16(temp_byte, 0)),0));         //HC
-                        if (Fla502_data.HC <= 0) Fla502_data.HC = 1f;
+                       // if (Fla502_data.HC <= 0) Fla502_data.HC = 1f;
                         temp_byte[0] = Read_Buffer[4];
                         temp_byte[1] = Read_Buffer[3];
                         Fla502_data.CO = (float)(Math.Round(coxs * (BitConverter.ToInt16(temp_byte, 0) / 1000f),3));       //CO
-                        if (Fla502_data.CO <= 0) Fla502_data.CO = 0.01f;
+                       // if (Fla502_data.CO <= 0) Fla502_data.CO = 0.01f;
                         temp_byte[0] = Read_Buffer[6];
                         temp_byte[1] = Read_Buffer[5];
                         Fla502_data.CO2 = BitConverter.ToInt16(temp_byte, 0) / 100f;               //CO2
@@ -4059,7 +4059,7 @@ namespace Exhaust
                         temp_byte[0] = Read_Buffer[10];
                         temp_byte[1] = Read_Buffer[9];
                         Fla502_data.NO = (float)(Math.Round(noxs * (BitConverter.ToInt16(temp_byte, 0)), 0));          //NO
-                        if (Fla502_data.NO <= 0) Fla502_data.NO = 1f;
+                      //  if (Fla502_data.NO <= 0) Fla502_data.NO = 1f;
                         temp_byte[0] = Read_Buffer[12];
                         temp_byte[1] = Read_Buffer[11];
                         Fla502_data.ZS = BitConverter.ToInt16(temp_byte, 0);         //转速
@@ -4097,11 +4097,11 @@ namespace Exhaust
                         temp_byte[0] = Read_Buffer[2];
                         temp_byte[1] = Read_Buffer[1];
                         Fla502_data.HC = (float)(Math.Round(hcxs * (BitConverter.ToInt16(temp_byte, 0)), 0));         //HC
-                        if (Fla502_data.HC <= 0) Fla502_data.HC = 1f;
+                        //if (Fla502_data.HC <= 0) Fla502_data.HC = 1f;
                         temp_byte[0] = Read_Buffer[4];
                         temp_byte[1] = Read_Buffer[3];
                         Fla502_data.CO = (float)(Math.Round(coxs * (BitConverter.ToInt16(temp_byte, 0) / 100f), 2));       //CO
-                        if (Fla502_data.CO <= 0) Fla502_data.CO = 0.01f;
+                        //if (Fla502_data.CO <= 0) Fla502_data.CO = 0.01f;
                         temp_byte[0] = Read_Buffer[6];
                         temp_byte[1] = Read_Buffer[5];
                         Fla502_data.CO2 = BitConverter.ToInt16(temp_byte, 0) / 100f;               //CO2
@@ -4111,7 +4111,7 @@ namespace Exhaust
                         temp_byte[0] = Read_Buffer[10];
                         temp_byte[1] = Read_Buffer[9];
                         Fla502_data.NO = (float)(Math.Round(noxs * (BitConverter.ToInt16(temp_byte, 0)), 0));          //NO
-                        if (Fla502_data.NO <= 0) Fla502_data.NO = 1f;
+                        //if (Fla502_data.NO <= 0) Fla502_data.NO = 1f;
                         temp_byte[0] = Read_Buffer[12];
                         temp_byte[1] = Read_Buffer[11];
                         Fla502_data.ZS = BitConverter.ToInt16(temp_byte, 0);         //转速
@@ -4155,11 +4155,11 @@ namespace Exhaust
                         temp_byte[0] = Read_Buffer[2];
                         temp_byte[1] = Read_Buffer[1];
                         Fla502_data.HC = BitConverter.ToInt16(temp_byte, 0);         //HC
-                        if (Fla502_data.HC <= 0) Fla502_data.HC = 1f;
+                        //if (Fla502_data.HC <= 0) Fla502_data.HC = 1f;
                         temp_byte[0] = Read_Buffer[4];
                         temp_byte[1] = Read_Buffer[3];
                         Fla502_data.CO = BitConverter.ToInt16(temp_byte, 0) / 100f; ;       //CO
-                        if (Fla502_data.CO <= 0) Fla502_data.CO = 0.01f;
+                       // if (Fla502_data.CO <= 0) Fla502_data.CO = 0.01f;
                         temp_byte[0] = Read_Buffer[6];
                         temp_byte[1] = Read_Buffer[5];
                         Fla502_data.CO2 = BitConverter.ToInt16(temp_byte, 0) / 100f;               //CO2
@@ -4169,7 +4169,7 @@ namespace Exhaust
                         temp_byte[0] = Read_Buffer[10];
                         temp_byte[1] = Read_Buffer[9];
                         Fla502_data.NO = BitConverter.ToInt16(temp_byte, 0);          //NO
-                        if (Fla502_data.NO <= 0) Fla502_data.NO = 1f;
+                        //if (Fla502_data.NO <= 0) Fla502_data.NO = 1f;
                         temp_byte[0] = Read_Buffer[12];
                         temp_byte[1] = Read_Buffer[11];
                         Fla502_data.ZS = BitConverter.ToInt16(temp_byte, 0);         //转速
@@ -4221,11 +4221,11 @@ namespace Exhaust
                         temp_byte[0] = Read_Buffer[2];
                         temp_byte[1] = Read_Buffer[1];
                         Fla502_data.HC = BitConverter.ToInt16(temp_byte, 0);         //HC
-                        if (Fla502_data.HC <= 0) Fla502_data.HC = 1f;
+                        //if (Fla502_data.HC <= 0) Fla502_data.HC = 1f;
                         temp_byte[0] = Read_Buffer[4];
                         temp_byte[1] = Read_Buffer[3];
                         Fla502_data.CO = BitConverter.ToInt16(temp_byte, 0) / 100f; ;       //CO
-                        if (Fla502_data.CO <= 0) Fla502_data.CO = 0.01f;
+                        //if (Fla502_data.CO <= 0) Fla502_data.CO = 0.01f;
                         temp_byte[0] = Read_Buffer[6];
                         temp_byte[1] = Read_Buffer[5];
                         Fla502_data.CO2 = BitConverter.ToInt16(temp_byte, 0) / 100f;               //CO2
@@ -4235,7 +4235,7 @@ namespace Exhaust
                         temp_byte[0] = Read_Buffer[10];
                         temp_byte[1] = Read_Buffer[9];
                         Fla502_data.NO = BitConverter.ToInt16(temp_byte, 0);          //NO
-                        if (Fla502_data.NO <= 0) Fla502_data.NO = 1f;
+                        //if (Fla502_data.NO <= 0) Fla502_data.NO = 1f;
                         temp_byte[0] = Read_Buffer[12];
                         temp_byte[1] = Read_Buffer[11];
                         Fla502_data.ZS = BitConverter.ToInt16(temp_byte, 0);         //转速
@@ -4277,15 +4277,15 @@ namespace Exhaust
                         temp_byte[0] = Read_Buffer[6];
                         temp_byte[1] = Read_Buffer[5];
                         Fla502_data.CO = (float)(Math.Round(coxs * (BitConverter.ToInt16(temp_byte, 0) / 100f), 2));       //一氧化碳
-                        if (Fla502_data.CO <= 0) Fla502_data.CO = 0.01f;
+                       // if (Fla502_data.CO <= 0) Fla502_data.CO = 0.01f;
                         temp_byte[0] = Read_Buffer[8];
                         temp_byte[1] = Read_Buffer[7];
                         Fla502_data.HC = (float)(Math.Round(hcxs * (BitConverter.ToInt16(temp_byte, 0)), 0));               //碳氢
-                        if (Fla502_data.HC <= 0) Fla502_data.HC = 1f;
+                        //if (Fla502_data.HC <= 0) Fla502_data.HC = 1f;
                         temp_byte[0] = Read_Buffer[10];
                         temp_byte[1] = Read_Buffer[9];
                         Fla502_data.NO = (float)(Math.Round(noxs * (BitConverter.ToInt16(temp_byte, 0)), 0));               //一氧化氮
-                        if (Fla502_data.NO <= 0) Fla502_data.NO = 1f;
+                        //if (Fla502_data.NO <= 0) Fla502_data.NO = 1f;
                         temp_byte[0] = Read_Buffer[12];
                         temp_byte[1] = Read_Buffer[11];
                         Fla502_data.O2 = BitConverter.ToInt16(temp_byte, 0) / 100f;          //氧气
@@ -4337,11 +4337,11 @@ namespace Exhaust
                         temp_byte[0] = Read_Buffer[7];
                         temp_byte[1] = Read_Buffer[8];
                         Fla502_data.HC = BitConverter.ToInt16(temp_byte, 0);         //二氧化碳
-                        if (Fla502_data.HC <= 0) Fla502_data.HC = 1f;
+                        //if (Fla502_data.HC <= 0) Fla502_data.HC = 1f;
                         temp_byte[0] = Read_Buffer[9];
                         temp_byte[1] = Read_Buffer[10];
                         Fla502_data.CO = BitConverter.ToInt16(temp_byte, 0) / 100f; ;       //一氧化碳
-                        if (Fla502_data.CO <= 0) Fla502_data.CO = 0.01f;
+                        //if (Fla502_data.CO <= 0) Fla502_data.CO = 0.01f;
                         temp_byte[0] = Read_Buffer[11];
                         temp_byte[1] = Read_Buffer[12];
                         Fla502_data.CO2 = BitConverter.ToInt16(temp_byte, 0) / 100f;               //碳氢
@@ -4351,7 +4351,7 @@ namespace Exhaust
                         temp_byte[0] = Read_Buffer[15];
                         temp_byte[1] = Read_Buffer[16];
                         Fla502_data.NO = BitConverter.ToInt16(temp_byte, 0);          //氧气
-                        if (Fla502_data.NO <= 0) Fla502_data.NO = 1f;
+                       // if (Fla502_data.NO <= 0) Fla502_data.NO = 1f;
                         temp_byte[0] = Read_Buffer[17];
                         temp_byte[1] = Read_Buffer[18];
                         Fla502_data.λ = BitConverter.ToInt16(temp_byte, 0) / 100f;         //湿度

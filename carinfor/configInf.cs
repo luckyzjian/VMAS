@@ -2387,10 +2387,10 @@ namespace carinfor
             //    configinidata.ConcentrationMonitor = false;
 
             ini.INIIO.GetPrivateProfileString("ASM", "残余量监测", "", temp, 2048, startUpPath+"/detectConfig.ini");
-           // if (temp.ToString().Trim() == "true")
+            if (temp.ToString().Trim() == "true")
                 configinidata.RemainedMonitor = true;
-            //else
-            //    configinidata.RemainedMonitor = false;
+            else
+                configinidata.RemainedMonitor = false;
 
 
             ini.INIIO.GetPrivateProfileString("ASM", "是否调零", "", temp, 2048, startUpPath+"/detectConfig.ini");

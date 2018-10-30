@@ -260,7 +260,7 @@ namespace 预热
             {
                 Msg(label_tishi, panel_tishi, "正在检查测功机...", false);
                 setPanelColor(panel_cgj, Color.LightCoral);
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
                 if (igbt != null)
                 {
                     Msg(label_tishi, panel_tishi, "电机即将开启，请注意安全", false);

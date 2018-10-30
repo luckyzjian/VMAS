@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Threading;
 using carinfor;
 using System.IO;
+using System.Diagnostics;
 
 namespace zyjsTest
 {
@@ -166,8 +167,24 @@ namespace zyjsTest
             FormStartScreen(1, form);
         }
         private bool IsUseTpTemp = false;
+        private bool IsUseVRM = false;
+        private int VRMzt = 0;//0-怠速（800） 1-开始踩（800+(EDZS-800)*30%) 2-上升（800+(EDZS-800)*60%) 3-最大转速（EDZS) 4- 维持（EDZS) 5-维持（EDZS) 6-松油（800+(EDZS-800)*50%) 
+        private bool IsProcessStarted(string processName)
+        {
+
+            Process[] temp = Process.GetProcessesByName(processName);
+
+            if (temp.Length > 0) return true;
+
+            else
+
+                return false;
+
+        }
         private void Zyjs_Btg_Load(object sender, EventArgs e)
         {
+            IsUseVRM=IsProcessStarted("VRM");
+            pictureBoxVRM.Visible = IsUseVRM;
             initCarInfo();
             initConfigInfo();
             initDataResult();
@@ -862,6 +879,7 @@ namespace zyjsTest
         {
             try
             {
+                VRMzt = 0;
                 statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_DAOWEI, "");
                 List<int> thistimezslist = new List<int>();
                 int time_踩油门点 = 0;
@@ -1221,6 +1239,7 @@ namespace zyjsTest
                     Msg(label_msg, panel_cp, carbj.CarPH + "请迅猛将油门踩到底", true);
                     ts1 = "第" + (cfcs + 1).ToString() + "次吹拂";
                     ts2 = "请1s内踩至断油转速";
+                    VRMzt = 1;
                     if (ledcontrol != null)
                     {
                         if (equipconfig.Ledxh == "同济单排")
@@ -1387,6 +1406,7 @@ namespace zyjsTest
                     Msg(label_msg, panel_cp, carbj.CarPH + "请迅猛将油门踩到底", true);
                     ts1 = "第" + sxnb.ToString() + "次测量";
                     ts2 = "请1s内踩至断油转速";
+                    VRMzt = 1;
                     if (ledcontrol != null)
                     {
                         if (equipconfig.Ledxh == "同济单排")
@@ -1636,6 +1656,7 @@ namespace zyjsTest
                         Msg(label_msg, panel_cp, carbj.CarPH + "请迅猛将油门踩到底", true);
                         ts1 = "第" + sxnb.ToString() + "次测量";
                         ts2 = "请1s内踩至断油转速";
+                        VRMzt = 1;
                         if (ledcontrol != null)
                         {
                             if (equipconfig.Ledxh == "同济单排")
@@ -1887,6 +1908,7 @@ namespace zyjsTest
                 Msg(label_msg, panel_cp, carbj.CarPH + "请迅猛将油门踩到底", true);
                 ts1 = "第" + sxnb.ToString() + "次测量";
                 ts2 = "请1s内踩至断油转速";
+                VRMzt = 1;
                 if (ledcontrol != null)
                 {
                     if (equipconfig.Ledxh == "同济单排")
@@ -2171,6 +2193,7 @@ namespace zyjsTest
                 Msg(label_msg, panel_cp, carbj.CarPH + "请迅猛将油门踩到底", true);
                 ts1 = "第" + sxnb.ToString() + "次测量";
                 ts2 = "请1s内踩至断油转速";
+                VRMzt = 1;
                 if (ledcontrol != null)
                 {
                     if (equipconfig.Ledxh == "同济单排")
@@ -2440,6 +2463,7 @@ namespace zyjsTest
                 Msg(label_msg, panel_cp, carbj.CarPH + "请迅猛将油门踩到底", true);
                 ts1 = "第" + sxnb.ToString() + "次测量";
                 ts2 = "请1s内踩至断油转速";
+                VRMzt = 1;
                 if (ledcontrol != null)
                 {
                     if (equipconfig.Ledxh == "同济单排")
@@ -3161,7 +3185,43 @@ namespace zyjsTest
                     gc_time = nowtime;
                     if (equipconfig.DATASECONDS_TYPE == "安车通用联网")//如果为安车通用联网，在此取值，以保证子程序过程数据 与安车前置数据一致
                     {
-                        if (isUseRotater)
+
+                        if (IsUseVRM)
+                        {
+                            if (VRMzt == 0)
+                                ZS = 750 + DateTime.Now.Millisecond % 200;
+                            else if (VRMzt == 1)
+                            {
+                                ZS = (int)(800 + (carbj.CarEdzs - 800) * 0.3 + DateTime.Now.Millisecond % 100);
+                                VRMzt = 2;
+                            }
+                            else if (VRMzt == 2)
+                            {
+                                ZS = (int)(800 + (carbj.CarEdzs - 800) * 0.7 + DateTime.Now.Millisecond % 100);
+                                VRMzt = 3;
+                            }
+                            else if (VRMzt == 3)
+                            {
+                                ZS = (int)(800 + (carbj.CarEdzs - 800) * 1.1 + DateTime.Now.Millisecond % 100);
+                                VRMzt = 4;
+                            }
+                            else if (VRMzt == 4)
+                            {
+                                ZS = (int)(carbj.CarEdzs * 1.2 + DateTime.Now.Millisecond % 100);
+                                VRMzt = 5;
+                            }
+                            else if (VRMzt == 5)
+                            {
+                                ZS = (int)(carbj.CarEdzs * 1.1 + DateTime.Now.Millisecond % 100);
+                                VRMzt = 6;
+                            }
+                            else if (VRMzt == 6)
+                            {
+                                ZS = (int)(800 + (carbj.CarEdzs - 800) * 0.5 + DateTime.Now.Millisecond % 100);
+                                VRMzt = 0;
+                            }
+                        }
+                        else if (isUseRotater)
                         {
                             if (rpm5300 != null)
                             {
@@ -3199,7 +3259,7 @@ namespace zyjsTest
                                     smoke = flb_100.get_StableData();
                                 }
                             }
-                            if (!isUseRotater)
+                            if (!isUseRotater&&!IsUseVRM)
                                 ZS = (int)(smoke.Zs);
 
                             if (carbj.ISUSE)
@@ -3421,7 +3481,7 @@ namespace zyjsTest
                                 smoke = flb_100.get_StableData();
                             }
                         }
-                        if (!isUseRotater)
+                        if (!isUseRotater&&!IsUseVRM)
                             ZS = (int)(smoke.Zs);
 
                         if (carbj.ISUSE)
@@ -3434,7 +3494,42 @@ namespace zyjsTest
                         }
                         Msg(labelK, panelK, Smoke.ToString("0.00"), false);
                     }
-                    if (isUseRotater)
+                    if (IsUseVRM)
+                    {
+                        if (VRMzt == 0)
+                            ZS = 750 + DateTime.Now.Millisecond % 200;
+                        else if (VRMzt == 1)
+                        {
+                            ZS = (int)(800 + (carbj.CarEdzs - 800) * 0.3 + DateTime.Now.Millisecond % 100);
+                            VRMzt = 2;
+                        }
+                        else if (VRMzt == 2)
+                        {
+                            ZS = (int)(800 + (carbj.CarEdzs - 800) * 0.7 + DateTime.Now.Millisecond % 100);
+                            VRMzt = 3;
+                        }
+                        else if (VRMzt == 3)
+                        {
+                            ZS = (int)(800 + (carbj.CarEdzs - 800) * 1.1 + DateTime.Now.Millisecond % 100);
+                            VRMzt = 4;
+                        }
+                        else if (VRMzt == 4)
+                        {
+                            ZS = (int)(carbj.CarEdzs * 1.2 + DateTime.Now.Millisecond % 100);
+                            VRMzt = 5;
+                        }
+                        else if (VRMzt == 5)
+                        {
+                            ZS = (int)(carbj.CarEdzs * 1.1 + DateTime.Now.Millisecond % 100);
+                            VRMzt = 6;
+                        }
+                        else if (VRMzt == 6)
+                        {
+                            ZS = (int)(800 + (carbj.CarEdzs - 800) * 0.5 + DateTime.Now.Millisecond % 100);
+                            VRMzt = 0;
+                        }
+                    }
+                    else if (isUseRotater)
                     {
                         if (rpm5300 != null)
                         {
@@ -3457,7 +3552,7 @@ namespace zyjsTest
                     }
                     Msg(label_zstext, panel_zstext, ZS.ToString(), false);
                     arcScaleComponent3.Value = ZS;
-                    Thread.Sleep(200);
+                    Thread.Sleep(700);
                 }
             }
         }

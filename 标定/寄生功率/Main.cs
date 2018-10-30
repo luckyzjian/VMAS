@@ -1908,7 +1908,7 @@ namespace 汽油寄生功率
             jsgl9 = 0;
             jsgl10 = 0;
             Lifter_Down();         //下降举升
-            Thread.Sleep(2000);
+            Thread.Sleep(6000);
             if (configdata.TestStandard == "HJT290" || configdata.TestStandard == "HJT291" || configdata.TestStandard == "JJF1221点燃式")
             {
 

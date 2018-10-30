@@ -2289,7 +2289,7 @@ namespace 响应时间
             xysj_ss = false;
             xysj_start = false;
             Lifter_Down();         //下降举升
-            Thread.Sleep(2000);         //等待2秒
+            Thread.Sleep(6000);         //等待2秒
             Motor_Open(80*bpqXs);          //启动电机加速
             Set_Control_Force(xysj_forceStart);
             while (testFinish == false)

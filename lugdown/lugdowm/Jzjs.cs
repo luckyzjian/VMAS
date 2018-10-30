@@ -2777,18 +2777,27 @@ namespace lugdowm
                 Msg(Msg_msg, panel_msg, "加载减速测试完毕。", true);
                 ts1 = "测试完毕";
                 ts2 = "松开节气门换至空档";
-                jzjs_dataseconds.Gksj = GKSJ;//记录总的工况时间
-                statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.GUOCHE, GKSJ.ToString());
-                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_ENDSAMPLE, "");
-                Jzjs_status = false; fq_getdata = false;
-                timer_show.Stop();//停止计时
-                Thread.Sleep(1000);
+
                 if (ledcontrol != null)
                 {
                     ledcontrol.writeLed("加载减速测试完毕", 2, equipconfig.Ledxh);
                     Thread.Sleep(200);
                     ledcontrol.writeLed("松节气门换至空档", 5, equipconfig.Ledxh);
                 }
+                #region 安徽v2.8协议要求上传减速过程数据，这里等待车速降到30后继续下面的操作
+                if (equipconfig.DATASECONDS_TYPE == "安徽")
+                {
+                    sxnb = 6;
+                    while (igbt.Speed > 30)
+                        Thread.Sleep(500);
+                }
+                #endregion
+                jzjs_dataseconds.Gksj = GKSJ;//记录总的工况时间
+                statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.GUOCHE, GKSJ.ToString());
+                statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_ENDSAMPLE, "");
+                Jzjs_status = false; fq_getdata = false;
+                timer_show.Stop();//停止计时
+                Thread.Sleep(1000);
                 DataTable jzjs_datatable = new DataTable();
                 jzjs_datatable.Columns.Add("全程时序");
                 jzjs_datatable.Columns.Add("时序类别");
@@ -2947,18 +2956,24 @@ namespace lugdowm
                 }
                 #endregion
                 #region 等待车辆静止，举升升起
-                for (int i = 30; i > 0; i--)
+                if (equipconfig.DATASECONDS_TYPE != "安徽")
                 {
-                    Msg(Msg_msg, panel_msg, "请松开节气门并换至空档，不要使用制动 " + i.ToString("00") + " 秒", true);
-                    Thread.Sleep(1000);
+                    for (int i = 30; i > 0; i--)
+                    {
+                        Msg(Msg_msg, panel_msg, "请松开节气门并换至空档，不要使用制动 " + i.ToString("00") + " 秒", true);
+                        Thread.Sleep(1000);
+                    }
                 }
+                Msg(Msg_msg, panel_msg, "等待滚筒静止...", false);
+                ts2 = "等待滚筒静止...";
                 timer_show.Stop();
-                while (true)
-                {
-                    if (igbt.Speed < 1)
-                        break;
-                    Thread.Sleep(100);
-                }
+                Thread.Sleep(1000);
+                    while (true)
+                    {
+                        if (igbt.Speed < 1)
+                            break;
+                        Thread.Sleep(100);
+                    }
                 Msg(Msg_msg, panel_msg, "检测完成,举升上升，请驶离测功机", false);
                 ts2 = "请驶离测功机";
                 if (ledcontrol != null)

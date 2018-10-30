@@ -289,7 +289,7 @@
             // 
             this.Label20.AutoSize = true;
             this.Label20.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.Label20.Location = new System.Drawing.Point(241, 140);
+            this.Label20.Location = new System.Drawing.Point(241, 175);
             this.Label20.Name = "Label20";
             this.Label20.Size = new System.Drawing.Size(70, 14);
             this.Label20.TabIndex = 33;
@@ -298,7 +298,7 @@
             // Button4
             // 
             this.Button4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Button4.Location = new System.Drawing.Point(167, 161);
+            this.Button4.Location = new System.Drawing.Point(167, 196);
             this.Button4.Name = "Button4";
             this.Button4.Size = new System.Drawing.Size(66, 28);
             this.Button4.TabIndex = 30;
@@ -310,7 +310,7 @@
             // 
             this.Label19.AutoSize = true;
             this.Label19.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.Label19.Location = new System.Drawing.Point(98, 140);
+            this.Label19.Location = new System.Drawing.Point(98, 175);
             this.Label19.Name = "Label19";
             this.Label19.Size = new System.Drawing.Size(70, 14);
             this.Label19.TabIndex = 32;
@@ -319,7 +319,7 @@
             // TextBoxYDJSCZ
             // 
             this.TextBoxYDJSCZ.Font = new System.Drawing.Font("宋体", 11F);
-            this.TextBoxYDJSCZ.Location = new System.Drawing.Point(239, 164);
+            this.TextBoxYDJSCZ.Location = new System.Drawing.Point(239, 199);
             this.TextBoxYDJSCZ.Name = "TextBoxYDJSCZ";
             this.TextBoxYDJSCZ.Size = new System.Drawing.Size(73, 24);
             this.TextBoxYDJSCZ.TabIndex = 31;
@@ -337,7 +337,7 @@
             // TextBoxYDJSDZ
             // 
             this.TextBoxYDJSDZ.Font = new System.Drawing.Font("宋体", 11F);
-            this.TextBoxYDJSDZ.Location = new System.Drawing.Point(100, 165);
+            this.TextBoxYDJSDZ.Location = new System.Drawing.Point(100, 200);
             this.TextBoxYDJSDZ.Name = "TextBoxYDJSDZ";
             this.TextBoxYDJSDZ.Size = new System.Drawing.Size(62, 24);
             this.TextBoxYDJSDZ.TabIndex = 20;
@@ -347,7 +347,7 @@
             // 
             this.LabelYDJSZ.AutoSize = true;
             this.LabelYDJSZ.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Bold);
-            this.LabelYDJSZ.Location = new System.Drawing.Point(326, 164);
+            this.LabelYDJSZ.Location = new System.Drawing.Point(326, 199);
             this.LabelYDJSZ.Name = "LabelYDJSZ";
             this.LabelYDJSZ.Size = new System.Drawing.Size(26, 16);
             this.LabelYDJSZ.TabIndex = 19;
@@ -1257,7 +1257,7 @@
             // 
             this.label68.AutoSize = true;
             this.label68.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Bold);
-            this.label68.Location = new System.Drawing.Point(16, 226);
+            this.label68.Location = new System.Drawing.Point(16, 134);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(59, 32);
             this.label68.TabIndex = 70;
@@ -1267,7 +1267,7 @@
             // 
             this.label67.AutoSize = true;
             this.label67.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Bold);
-            this.label67.Location = new System.Drawing.Point(15, 201);
+            this.label67.Location = new System.Drawing.Point(15, 236);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(59, 16);
             this.label67.TabIndex = 69;
@@ -1277,7 +1277,7 @@
             // 
             this.label64.AutoSize = true;
             this.label64.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Bold);
-            this.label64.Location = new System.Drawing.Point(14, 167);
+            this.label64.Location = new System.Drawing.Point(14, 202);
             this.label64.Name = "label64";
             this.label64.Size = new System.Drawing.Size(59, 16);
             this.label64.TabIndex = 68;
@@ -1314,7 +1314,7 @@
             // textBoxYDJSCZ3
             // 
             this.textBoxYDJSCZ3.Font = new System.Drawing.Font("宋体", 11F);
-            this.textBoxYDJSCZ3.Location = new System.Drawing.Point(239, 229);
+            this.textBoxYDJSCZ3.Location = new System.Drawing.Point(239, 137);
             this.textBoxYDJSCZ3.Name = "textBoxYDJSCZ3";
             this.textBoxYDJSCZ3.Size = new System.Drawing.Size(73, 24);
             this.textBoxYDJSCZ3.TabIndex = 64;
@@ -1322,7 +1322,7 @@
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button6.Location = new System.Drawing.Point(167, 228);
+            this.button6.Location = new System.Drawing.Point(167, 136);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(66, 28);
             this.button6.TabIndex = 63;
@@ -1333,7 +1333,7 @@
             // textBoxYDJSDZ3
             // 
             this.textBoxYDJSDZ3.Font = new System.Drawing.Font("宋体", 11F);
-            this.textBoxYDJSDZ3.Location = new System.Drawing.Point(100, 230);
+            this.textBoxYDJSDZ3.Location = new System.Drawing.Point(100, 138);
             this.textBoxYDJSDZ3.Name = "textBoxYDJSDZ3";
             this.textBoxYDJSDZ3.Size = new System.Drawing.Size(62, 24);
             this.textBoxYDJSDZ3.TabIndex = 62;
@@ -1343,7 +1343,7 @@
             // 
             this.labelYDJSZ3.AutoSize = true;
             this.labelYDJSZ3.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Bold);
-            this.labelYDJSZ3.Location = new System.Drawing.Point(326, 231);
+            this.labelYDJSZ3.Location = new System.Drawing.Point(329, 142);
             this.labelYDJSZ3.Name = "labelYDJSZ3";
             this.labelYDJSZ3.Size = new System.Drawing.Size(26, 16);
             this.labelYDJSZ3.TabIndex = 61;
@@ -1352,7 +1352,7 @@
             // TextBoxYDJSCZ2
             // 
             this.TextBoxYDJSCZ2.Font = new System.Drawing.Font("宋体", 11F);
-            this.TextBoxYDJSCZ2.Location = new System.Drawing.Point(239, 196);
+            this.TextBoxYDJSCZ2.Location = new System.Drawing.Point(239, 231);
             this.TextBoxYDJSCZ2.Name = "TextBoxYDJSCZ2";
             this.TextBoxYDJSCZ2.Size = new System.Drawing.Size(73, 24);
             this.TextBoxYDJSCZ2.TabIndex = 60;
@@ -1360,7 +1360,7 @@
             // button14
             // 
             this.button14.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button14.Location = new System.Drawing.Point(167, 195);
+            this.button14.Location = new System.Drawing.Point(167, 230);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(66, 28);
             this.button14.TabIndex = 59;
@@ -1371,7 +1371,7 @@
             // TextBoxYDJSDZ2
             // 
             this.TextBoxYDJSDZ2.Font = new System.Drawing.Font("宋体", 11F);
-            this.TextBoxYDJSDZ2.Location = new System.Drawing.Point(100, 197);
+            this.TextBoxYDJSDZ2.Location = new System.Drawing.Point(100, 232);
             this.TextBoxYDJSDZ2.Name = "TextBoxYDJSDZ2";
             this.TextBoxYDJSDZ2.Size = new System.Drawing.Size(62, 24);
             this.TextBoxYDJSDZ2.TabIndex = 58;
@@ -1381,7 +1381,7 @@
             // 
             this.LabelYDJSZ2.AutoSize = true;
             this.LabelYDJSZ2.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Bold);
-            this.LabelYDJSZ2.Location = new System.Drawing.Point(326, 198);
+            this.LabelYDJSZ2.Location = new System.Drawing.Point(326, 233);
             this.LabelYDJSZ2.Name = "LabelYDJSZ2";
             this.LabelYDJSZ2.Size = new System.Drawing.Size(26, 16);
             this.LabelYDJSZ2.TabIndex = 57;

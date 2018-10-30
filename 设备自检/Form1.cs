@@ -898,7 +898,7 @@ namespace 设备自检
                             if (checkBoxItemJzhx.Checked)
                             {
                                 Msg_Toollabel(toolStripLabel2, "开始加载滑行:加速");
-                                Thread.Sleep(1000);
+                                Thread.Sleep(6000);
                                 DateTime starttime56, endtime56, starttime40, endtime40;
                                 DateTime starttime, endtime;
                                 CGJselfCheckdata jzhxselfcheckdata = new CGJselfCheckdata();
@@ -1065,7 +1065,7 @@ namespace 设备自检
                                 }
                                 else
                                 {
-                                    
+                                    //Thread.Sleep(4000);
                                         starttime = DateTime.Now;
                                         bool pdjg = true;
                                     bool highpd = true;
@@ -1438,6 +1438,41 @@ namespace 设备自检
                                         isYdjCheckResult = false;
                                         Ref_Control_Text(labelYDJZERO, "×");
                                     }
+                                    if (true)
+                                    {
+                                        isYdjSure = false;
+                                        Msg_Toollabel(toolStripLabel2, "插好遮光片后点击\"确定\"按钮");
+                                        while (!isYdjSure) Thread.Sleep(100);
+                                        smoke = new Exhaust.Flb_100_smoke();
+                                        smoke = fla_502.get_DirectData();
+
+                                        ydjN = (float)(Math.Round((1 - Math.Exp((double)(equipconfig.YdjL) * 1.0 * Math.Log(1 - smoke.Ns / 100.0) / 430.0)) * 100, 1));
+
+                                        Ref_Control_Text(textBoxYDJSCZ3, ydjN.ToString("0.0"));
+                                        Msg_Toollabel(toolStripLabel2, "烟度计满量程检查完毕");
+                                        ydjcheckdata.LabelValueN90 = float.Parse(textBoxYDJSDZ3.Text);
+                                        ydjcheckdata.N901 = ydjN;
+                                        ydjcheckdata.Error901 = Math.Abs(ydjN - float.Parse(textBoxYDJSDZ3.Text));
+                                        if (ydjcheckdata.Error901 <= 2.0f)
+                                        {
+                                            Ref_Control_Text(labelYDJSZ3, "√");
+                                        }
+                                        else
+                                        {
+                                            isYdjCheckResult = false;
+                                            Ref_Control_Text(labelYDJSZ3, "×");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        ydjcheckdata.LabelValueN90 = 0;
+                                        ydjcheckdata.N901 = 0;
+                                        ydjcheckdata.Error901 = 0;
+                                        Ref_Control_Text(textBoxYDJSCZ3, "—");
+                                        Ref_Control_Text(labelYDJSZ3, "—");
+                                    }
+
+                                    isYdjSure = false;
                                     Msg_Toollabel(toolStripLabel2, "插好校准滤光片后点击\"确定\"按钮");
                                     while (!isYdjSure) Thread.Sleep(100);
                                     smoke = new Exhaust.Flb_100_smoke();
@@ -1482,39 +1517,7 @@ namespace 设备自检
                                         isYdjCheckResult = false;
                                         Ref_Control_Text(LabelYDJSZ2, "×");
                                     }
-                                    if (equipconfig.useJHJK)
-                                    {
-                                        isYdjSure = false;
-                                        Msg_Toollabel(toolStripLabel2, "插好校准滤光片后点击\"确定\"按钮");
-                                        while (!isYdjSure) Thread.Sleep(100);
-                                        smoke = new Exhaust.Flb_100_smoke();
-                                        smoke = fla_502.get_DirectData();
-
-                                        ydjN = (float)(Math.Round((1 - Math.Exp((double)(equipconfig.YdjL) * 1.0 * Math.Log(1 - smoke.Ns / 100.0) / 430.0)) * 100, 1));
-
-                                        Ref_Control_Text(textBoxYDJSCZ3, ydjN.ToString("0.0"));
-                                        Msg_Toollabel(toolStripLabel2, "烟度计量程3检查完毕");
-                                        ydjcheckdata.LabelValueN90 = float.Parse(textBoxYDJSDZ3.Text);
-                                        ydjcheckdata.N901 = ydjN;
-                                        ydjcheckdata.Error901 = Math.Abs(ydjN - float.Parse(textBoxYDJSDZ3.Text));
-                                        if (ydjcheckdata.Error901 <= 2.0f)
-                                        {
-                                            Ref_Control_Text(labelYDJSZ3, "√");
-                                        }
-                                        else
-                                        {
-                                            isYdjCheckResult = false;
-                                            Ref_Control_Text(labelYDJSZ3, "×");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        ydjcheckdata.LabelValueN90 = 0;
-                                        ydjcheckdata.N901 = 0;
-                                        ydjcheckdata.Error901 =0;
-                                        Ref_Control_Text(textBoxYDJSCZ3, "—");
-                                        Ref_Control_Text(labelYDJSZ3, "—");
-                                    }
+                                    
                                     ydjcheckdata.CheckResult1 = (isYdjCheckResult ? "1" : "0");
                                     ydjcheckdata.Jcds = equipconfig.useJHJK?"3":"2";
                                     ydjcheckdata.Zjjg = (isYdjCheckResult ? "通过" : "不通过");
@@ -1606,6 +1609,48 @@ namespace 设备自检
                                         isYdjCheckResult = false;
                                         Ref_Control_Text(labelYDJZERO, "×");
                                     }
+                                    //if (equipconfig.useJHJK)
+                                    if(true)
+                                    {
+                                        isYdjSure = false;
+                                        Msg_Toollabel(toolStripLabel2, "插好遮光片后点击\"确定\"按钮");
+                                        while (!isYdjSure) Thread.Sleep(100);
+                                        smoke = new Exhaust.Flb_100_smoke();
+                                        if (equipconfig.IsOldMqy200)
+                                        {
+                                            smoke = flb_100.get_DirectData();
+                                        }
+                                        else
+                                        {
+                                            smoke = flb_100.get_Data();
+                                        }
+
+                                        ydjN = (float)(Math.Round((1 - Math.Exp((double)(equipconfig.YdjL) * 1.0 * Math.Log(1 - smoke.Ns / 100.0) / 430.0)) * 100, 1));
+
+                                        Ref_Control_Text(textBoxYDJSCZ3, ydjN.ToString("0.0"));
+                                        Msg_Toollabel(toolStripLabel2, "烟度计满量程检查完毕");
+                                        ydjcheckdata.LabelValueN90 = float.Parse(textBoxYDJSDZ3.Text);
+                                        ydjcheckdata.N901 = ydjN;
+                                        ydjcheckdata.Error901 = Math.Abs(ydjN - float.Parse(textBoxYDJSDZ3.Text));
+                                        if (ydjcheckdata.Error901 <= 2.0f)
+                                        {
+                                            Ref_Control_Text(labelYDJSZ3, "√");
+                                        }
+                                        else
+                                        {
+                                            isYdjCheckResult = false;
+                                            Ref_Control_Text(labelYDJSZ3, "×");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        ydjcheckdata.LabelValueN90 = 0;
+                                        ydjcheckdata.N901 = 0;
+                                        ydjcheckdata.Error901 = 0;
+                                        Ref_Control_Text(textBoxYDJSCZ3, "—");
+                                        Ref_Control_Text(labelYDJSZ3, "—");
+                                    }
+                                    isYdjSure = false;
                                     Msg_Toollabel(toolStripLabel2, "插好校准滤光片后点击\"确定\"按钮");
                                     while (!isYdjSure) Thread.Sleep(100);
                                     if (equipconfig.IsOldMqy200)
@@ -1660,47 +1705,7 @@ namespace 设备自检
                                         isYdjCheckResult = false;
                                         Ref_Control_Text(LabelYDJSZ2, "×");
                                     }
-                                    if (equipconfig.useJHJK)
-                                    //if(true)
-                                    {
-                                        isYdjSure = false;
-                                        Msg_Toollabel(toolStripLabel2, "插好校准滤光片后点击\"确定\"按钮");
-                                        while (!isYdjSure) Thread.Sleep(100);
-                                        smoke = new Exhaust.Flb_100_smoke();
-                                        if (equipconfig.IsOldMqy200)
-                                        {
-                                            smoke = flb_100.get_DirectData();
-                                        }
-                                        else
-                                        {
-                                            smoke = flb_100.get_Data();
-                                        }
-
-                                        ydjN = (float)(Math.Round((1 - Math.Exp((double)(equipconfig.YdjL) * 1.0 * Math.Log(1 - smoke.Ns / 100.0) / 430.0)) * 100, 1));
-
-                                        Ref_Control_Text(textBoxYDJSCZ3, ydjN.ToString("0.0"));
-                                        Msg_Toollabel(toolStripLabel2, "烟度计量程3检查完毕");
-                                        ydjcheckdata.LabelValueN90 = float.Parse(textBoxYDJSDZ3.Text);
-                                        ydjcheckdata.N901 = ydjN;
-                                        ydjcheckdata.Error901 = Math.Abs(ydjN - float.Parse(textBoxYDJSDZ3.Text));
-                                        if (ydjcheckdata.Error901 <= 2.0f)
-                                        {
-                                            Ref_Control_Text(labelYDJSZ3, "√");
-                                        }
-                                        else
-                                        {
-                                            isYdjCheckResult = false;
-                                            Ref_Control_Text(labelYDJSZ3, "×");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        ydjcheckdata.LabelValueN90 = 0;
-                                        ydjcheckdata.N901 = 0;
-                                        ydjcheckdata.Error901 = 0;
-                                        Ref_Control_Text(textBoxYDJSCZ3, "—");
-                                        Ref_Control_Text(labelYDJSZ3, "—");
-                                    }
+                                    
                                     ydjcheckdata.CheckResult1 = (isYdjCheckResult ? "1" : "0");
                                     ydjcheckdata.Jcds = "2";
                                     ydjcheckdata.Zjjg = (isYdjCheckResult ? "通过" : "不通过");
@@ -2995,8 +3000,35 @@ namespace 设备自检
                                     Ref_Control_Text(textBoxYDJZERO, "0.0");
                                     ydjcheckdata.ZeroResult = "1";
                                     Ref_Control_Text(labelYDJZERO, "√");
+                                    double ydjN;
+                                    if (equipconfig.useJHJK)
+                                    {
+                                        ydjcheckdata.LabelValueN90 = double.Parse(textBoxYDJSDZ3.Text);
+                                        ydjN = (double)(ydjcheckdata.LabelValueN90 + DateTime.Now.Millisecond % 10 * 0.1);
+                                        Ref_Control_Text(textBoxYDJSCZ3, ydjN.ToString("0.0"));
+                                        Msg_Toollabel(toolStripLabel2, "满量程检查完毕");
+                                        ydjcheckdata.N901 = ydjN;
+                                        ydjcheckdata.Error901 = Math.Round(Math.Abs(ydjN - double.Parse(textBoxYDJSDZ3.Text)), 2);
+                                        if (ydjcheckdata.Error901 <= 2.0f)
+                                        {
+                                            Ref_Control_Text(labelYDJSZ3, "√");
+                                        }
+                                        else
+                                        {
+                                            isYdjCheckResult = false;
+                                            Ref_Control_Text(labelYDJSZ3, "×");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        ydjcheckdata.LabelValueN90 = 0;
+                                        ydjcheckdata.N901 = 0;
+                                        ydjcheckdata.Error901 = 0;
+                                        Ref_Control_Text(textBoxYDJSCZ3, "—");
+                                        Ref_Control_Text(labelYDJSZ3, "—");
+                                    }
                                     ydjcheckdata.LabelValueN50 = double.Parse(TextBoxYDJSDZ.Text);
-                                    double ydjN = (double)(ydjcheckdata.LabelValueN50 + DateTime.Now.Millisecond % 10 * 0.1);
+                                    ydjN = (double)(ydjcheckdata.LabelValueN50 + DateTime.Now.Millisecond % 10 * 0.1);
                                     Ref_Control_Text(TextBoxYDJSCZ, ydjN.ToString("0.0"));
                                     Msg_Toollabel(toolStripLabel2, "烟度计量程1检查完毕");
                                     ydjcheckdata.N501 = ydjN;
@@ -3026,32 +3058,7 @@ namespace 设备自检
                                         Ref_Control_Text(LabelYDJSZ2, "×");
                                     }
 
-                                    if (equipconfig.useJHJK)
-                                    {
-                                        ydjcheckdata.LabelValueN90 = double.Parse(textBoxYDJSDZ3.Text);
-                                    ydjN = (double)(ydjcheckdata.LabelValueN90 + DateTime.Now.Millisecond % 10 * 0.1);
-                                    Ref_Control_Text(textBoxYDJSCZ3, ydjN.ToString("0.0"));
-                                    Msg_Toollabel(toolStripLabel2, "烟度计量程3检查完毕");
-                                    ydjcheckdata.N901 = ydjN;
-                                    ydjcheckdata.Error901 = Math.Round(Math.Abs(ydjN - double.Parse(textBoxYDJSDZ3.Text)), 2);
-                                    if (ydjcheckdata.Error901 <= 2.0f)
-                                    {
-                                        Ref_Control_Text(labelYDJSZ3, "√");
-                                    }
-                                    else
-                                    {
-                                        isYdjCheckResult = false;
-                                        Ref_Control_Text(labelYDJSZ3, "×");
-                                    }
-                                    }
-                                    else
-                                    {
-                                        ydjcheckdata.LabelValueN90 = 0;
-                                        ydjcheckdata.N901 = 0;
-                                        ydjcheckdata.Error901 = 0;
-                                        Ref_Control_Text(textBoxYDJSCZ3, "—");
-                                        Ref_Control_Text(labelYDJSZ3, "—");
-                                    }
+                                    
                                     ydjcheckdata.CheckResult1 = (isYdjCheckResult ? "1" : "0");
                                     ydjcheckdata.Jcds = equipconfig.useJHJK ? "3" : "2";
                                     ydjcheckdata.Zjjg = (isYdjCheckResult ? "通过" : "不通过");
@@ -3093,8 +3100,35 @@ namespace 设备自检
                                     Ref_Control_Text(textBoxYDJZERO, "0.0");
                                     ydjcheckdata.ZeroResult = "1";
                                     Ref_Control_Text(labelYDJZERO, "√");
+                                    double ydjN;
+                                    if (equipconfig.useJHJK)
+                                    {
+                                        ydjcheckdata.LabelValueN90 = double.Parse(textBoxYDJSDZ3.Text);
+                                        ydjN = (double)(ydjcheckdata.LabelValueN90 + DateTime.Now.Millisecond % 10 * 0.1);
+                                        Ref_Control_Text(textBoxYDJSCZ3, ydjN.ToString("0.0"));
+                                        Msg_Toollabel(toolStripLabel2, "烟度计满量程检查完毕");
+                                        ydjcheckdata.N901 = ydjN;
+                                        ydjcheckdata.Error901 = Math.Round(Math.Abs(ydjN - double.Parse(textBoxYDJSDZ3.Text)), 2);
+                                        if (ydjcheckdata.Error901 <= 2.0f)
+                                        {
+                                            Ref_Control_Text(labelYDJSZ3, "√");
+                                        }
+                                        else
+                                        {
+                                            isYdjCheckResult = false;
+                                            Ref_Control_Text(labelYDJSZ3, "×");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        ydjcheckdata.LabelValueN90 = 0;
+                                        ydjcheckdata.N901 = 0;
+                                        ydjcheckdata.Error901 = 0;
+                                        Ref_Control_Text(textBoxYDJSCZ3, "—");
+                                        Ref_Control_Text(labelYDJSZ3, "—");
+                                    }
                                     ydjcheckdata.LabelValueN50 = double.Parse(TextBoxYDJSDZ.Text);
-                                    double ydjN = (double)(ydjcheckdata.LabelValueN50 + DateTime.Now.Millisecond % 10 * 0.1);
+                                    ydjN = (double)(ydjcheckdata.LabelValueN50 + DateTime.Now.Millisecond % 10 * 0.1);
                                     Ref_Control_Text(TextBoxYDJSCZ, ydjN.ToString("0.0"));
                                     Msg_Toollabel(toolStripLabel2, "烟度计量程1检查完毕");
                                     ydjcheckdata.N501 = ydjN;
@@ -3124,32 +3158,7 @@ namespace 设备自检
                                         Ref_Control_Text(LabelYDJSZ2, "×");
                                     }
 
-                                    if (equipconfig.useJHJK)
-                                    {
-                                        ydjcheckdata.LabelValueN90 = double.Parse(textBoxYDJSDZ3.Text);
-                                        ydjN = (double)(ydjcheckdata.LabelValueN90 + DateTime.Now.Millisecond % 10 * 0.1);
-                                        Ref_Control_Text(textBoxYDJSCZ3, ydjN.ToString("0.0"));
-                                        Msg_Toollabel(toolStripLabel2, "烟度计量程3检查完毕");
-                                        ydjcheckdata.N901 = ydjN;
-                                        ydjcheckdata.Error901 = Math.Round(Math.Abs(ydjN - double.Parse(textBoxYDJSDZ3.Text)), 2);
-                                        if (ydjcheckdata.Error901 <= 2.0f)
-                                        {
-                                            Ref_Control_Text(labelYDJSZ3, "√");
-                                        }
-                                        else
-                                        {
-                                            isYdjCheckResult = false;
-                                            Ref_Control_Text(labelYDJSZ3, "×");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        ydjcheckdata.LabelValueN90 = 0;
-                                        ydjcheckdata.N901 = 0;
-                                        ydjcheckdata.Error901 = 0;
-                                        Ref_Control_Text(textBoxYDJSCZ3, "—");
-                                        Ref_Control_Text(labelYDJSZ3, "—");
-                                    }
+                                    
                                     ydjcheckdata.CheckResult1 = (isYdjCheckResult ? "1" : "0");
                                     ydjcheckdata.Jcds = "2";
                                     ydjcheckdata.Zjjg = (isYdjCheckResult ? "通过" : "不通过");
@@ -3605,6 +3614,11 @@ namespace 设备自检
 
         private void Button4_Click(object sender, EventArgs e)
         {
+
+
+
+
+
             isYdjSure = true;
         }
 
