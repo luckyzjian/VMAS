@@ -2210,6 +2210,13 @@ namespace lugdowm
 
                     if ((equipconfig.DATASECONDS_TYPE == "江西"|| equipconfig.DATASECONDS_TYPE == "云南保山"|| equipconfig.DATASECONDS_TYPE == "安徽") && Jc_Process == "VelMaxHP100%")
                     {
+                        if(equipconfig.DATASECONDS_TYPE == "安徽")//安徽要求恢复时间得5秒以上
+                        {
+                            if (ledcontrol != null)
+                                ledcontrol.writeLed("恢复100%VelMaxHP", 2, equipconfig.Ledxh);
+                            Msg(Msg_msg, panel_msg, "恢复100%VelMaxHP过程", true);
+                            Thread.Sleep(7000);
+                        }
                         while (igbt.Speed < VelMaxHP_real - 1)
                         {
                             if (ledcontrol != null)

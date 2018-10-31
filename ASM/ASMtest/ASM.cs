@@ -2196,6 +2196,7 @@ namespace ASMtest
                     asm5025 = false;
                     igbt.Set_Control_Power(0f);
                 }
+                statusconfigini.writeNeuStatusData("Finish5025", JCSJ.ToString());//5025结束
                 if (!asmconfig.IsKsgkUsed||!fast5025isOK)
                 {
                     if (!asm5025isOK)
@@ -2472,8 +2473,9 @@ namespace ASMtest
                                                               
                                     
                                 }
-                           
+
                         }
+                        statusconfigini.writeNeuStatusData("Finish2540", JCSJ.ToString());//5025结束
                     }
                 }
                 statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.GUOCHE, JCSJ.ToString());
