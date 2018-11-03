@@ -1602,7 +1602,7 @@ namespace 惯量标定
             {
                 glbccs = 1;
             }
-            if (glbccs > 1.03 || glbccs < 0.97)
+            if (glbccs > 2 || glbccs < 0.5)
                 glbccs = 1;
             gl_force_xs = glbccs;
             double limit_DIW_1 = DIWBC + 18.1;          //上限
