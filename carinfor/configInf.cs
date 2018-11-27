@@ -3134,10 +3134,10 @@ namespace carinfor
             else
                 configinidata.testNOx = false;
             ini.INIIO.GetPrivateProfileString("LUGDOWN", "测试过程功率监控", "true", temp, 2048, startUpPath + "/detectConfig.ini");
-            //if (temp.ToString().Trim() == "true")
+            if (temp.ToString().Trim() == "true")
                 configinidata.LugdownGljk = true;
-            //else
-            //    configinidata.LugdownGljk = false;
+            else
+                configinidata.LugdownGljk = false;
             ini.INIIO.GetPrivateProfileString("LUGDOWN", "功率监控规定值", "20", temp, 2048, startUpPath + "/detectConfig.ini");
             if (int.TryParse(temp.ToString().Trim(), out b))
                 configinidata.Lugdown_Gljk_value = b;

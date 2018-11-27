@@ -9,7 +9,7 @@ namespace LedControl
 {
     public class BX5k1
     {
-        HtmlExtractor.Gb2312Encoding encoding = new HtmlExtractor.Gb2312Encoding();
+        //HtmlExtractor.Gb2312Encoding encoding = new HtmlExtractor.Gb2312Encoding();
 
         public System.IO.Ports.SerialPort ComPort_2;
         private byte esc = 0x1b;

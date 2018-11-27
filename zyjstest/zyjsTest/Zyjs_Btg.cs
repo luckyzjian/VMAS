@@ -1505,9 +1505,20 @@ namespace zyjsTest
                             preclz1 = preparedata;
                             preclz2 = preparedata;
                             preclz3 = preparedata;
+                            zyjs_data.PrepareData = preparedata.ToString("0.00");
+                            drah = btg_ahdatatable.NewRow();
+                            drah["全程时序"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                            drah["时序类别"] = GKSJ.ToString("0");
+                            drah["采样时序"] = GKSJ.ToString("0");
+                            drah["烟度值读数"] = preclz1;
+                            drah["发动机转速"] = maxzsvalue.ToString();
+                            drah["油温"] = maxywvalue.ToString();
+                            drah["环境温度"] = wd.ToString();
+                            drah["大气压力"] = dqy.ToString();
+                            drah["相对湿度"] = sd.ToString();
+                            btg_ahdatatable.Rows.Add(drah);
                             maxvalue = 0; maxzsvalue = 0;
                             maxywvalue = 0;
-                            zyjs_data.PrepareData = preparedata.ToString("0.00");
                             isReadRealTime = true;
                         }
                     }
@@ -1752,12 +1763,25 @@ namespace zyjsTest
                                 //preparedata = dycsmoke.K;
                                 //if (equipconfig.Ydjxh == "mqy_200" || equipconfig.Ydjxh == "flb_100" || equipconfig.Ydjxh.ToLower() == "cdf5000" || equipconfig.Ydjxh.ToLower() == "nht_1")
                                     preparedata = maxvalue;
-                                if(clcs==0)
+                                if (clcs == 0)
                                     preclz1 = preparedata;
-                                else if(clcs==1)
-                                     preclz2 = preparedata;
-                                else if(clcs==2)
+                                else if (clcs == 1)
+                                    preclz2 = preparedata;
+                                else if (clcs == 2)
+                                {
                                     preclz3 = preparedata;
+                                    drah = btg_ahdatatable.NewRow();
+                                    drah["全程时序"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                                    drah["时序类别"] = GKSJ.ToString("0");
+                                    drah["采样时序"] = GKSJ.ToString("0");
+                                    drah["烟度值读数"] = preclz3;
+                                    drah["发动机转速"] = maxzsvalue.ToString();
+                                    drah["油温"] = maxywvalue.ToString();
+                                    drah["环境温度"] = wd.ToString();
+                                    drah["大气压力"] = dqy.ToString();
+                                    drah["相对湿度"] = sd.ToString();
+                                    btg_ahdatatable.Rows.Add(drah);
+                                }
                                 maxvalue = 0; maxzsvalue = 0;
                                 maxywvalue = 0;
                                 zyjs_data.PrepareData = preparedata.ToString("0.00");
@@ -2045,8 +2069,8 @@ namespace zyjsTest
                         }
                         drah = btg_ahdatatable.NewRow();
                         drah["全程时序"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                        drah["时序类别"] = (GKSJ/10).ToString("0");
-                        drah["采样时序"] = (GKSJ / 10).ToString("0");
+                        drah["时序类别"] = GKSJ.ToString("0");
+                        drah["采样时序"] = GKSJ.ToString("0");
                         drah["烟度值读数"] = data1;
                         drah["发动机转速"] = dyczs.ToString();
                         drah["油温"] = dycyw.ToString();
@@ -2314,9 +2338,9 @@ namespace zyjsTest
                         }
                         drah = btg_ahdatatable.NewRow();
                         drah["全程时序"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                        drah["时序类别"] = (GKSJ / 10).ToString("0");
-                        drah["采样时序"] = (GKSJ / 10).ToString("0");
-                        drah["烟度值读数"] = data1;
+                        drah["时序类别"] = GKSJ.ToString("0");
+                        drah["采样时序"] = GKSJ.ToString("0");
+                        drah["烟度值读数"] = data2;
                         drah["发动机转速"] = deczs.ToString();
                         drah["油温"] = decyw.ToString();
                         drah["环境温度"] = wd.ToString();
@@ -2585,9 +2609,9 @@ namespace zyjsTest
 
                         drah = btg_ahdatatable.NewRow();
                         drah["全程时序"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                        drah["时序类别"] = (GKSJ / 10).ToString("0");
-                        drah["采样时序"] = (GKSJ / 10).ToString("0");
-                        drah["烟度值读数"] = data1;
+                        drah["时序类别"] = GKSJ.ToString("0");
+                        drah["采样时序"] = GKSJ.ToString("0");
+                        drah["烟度值读数"] = data3;
                         drah["发动机转速"] = dsczs.ToString();
                         drah["油温"] = dscyw.ToString();
                         drah["环境温度"] = wd.ToString();

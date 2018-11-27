@@ -42,8 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BX5k1.cs" />
-    <Compile Include="Gb2312Encoding.cs" />
-    <Compile Include="Gb2312toUnicodeDictinary.cs" />
     <Compile Include="led.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

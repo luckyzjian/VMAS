@@ -1581,8 +1581,8 @@ namespace 加载滑行
                 plhp_24 = double.Parse(temp.ToString()) + glbccs;
                 if (comboBoxHxqj.Text == "64km/h~48km/h")
                 {
-                    power = (float)(THP - plhp_40);
-                    plhpInAct = plhp_40.ToString();
+                    power = (float)(THP - plhp_56);
+                    plhpInAct = plhp_56.ToString();
                 }
                 else if (comboBoxHxqj.Text == "48km/h~32km/h")
                 {
