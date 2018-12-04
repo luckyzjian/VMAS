@@ -407,6 +407,7 @@ namespace Exhaust
         byte cmdWDdemarcate_MQ = 0x87;
         byte cmdTurnOnLCD_MQ = 0x88;
         byte cmdTurnOffLCD_MQ = 0x89;
+        byte cmdGetPef_MQ50B = 0x8c;
 
         #endregion
         #region 佛分FASM-5000的通讯协议
@@ -672,6 +673,7 @@ namespace Exhaust
                     return msg;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     ReadData();
                     i = 0;
                     byte[] Content_MQ = new byte[] { DID, cmdGetStatus_MQ, 0X03, 0 };
@@ -880,6 +882,7 @@ namespace Exhaust
                         return Struct_Now;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     ReadData();
                     //Struct_Now = Get_Struct();
                     //Zeroing();
@@ -1035,6 +1038,7 @@ namespace Exhaust
                         return false;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     ReadData();
                     i = 0;
                     byte[] Content_MQ = new byte[] { DID, cmdStopTest_MQ, 0X03, 0 };
@@ -1434,6 +1438,7 @@ namespace Exhaust
                         return false;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     byte[] Content_MQ = new byte[] { DID, cmdPumpAir_MQ, 0X03, 0 };
                     Content_MQ[3] = getCS_MQ(Content_MQ, 3);
                     ComPort_1.Write(Content_MQ, 0, 4);        //发送开始测量命令
@@ -1544,6 +1549,7 @@ namespace Exhaust
                         return false;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     byte[] Content_MQ = new byte[] { DID, cmdPumpPipeair_MQ, 0X03, 0 };
                     Content_MQ[3] = getCS_MQ(Content_MQ, 3);
                     ComPort_1.Write(Content_MQ, 0, 4);        //发送开始测量命令
@@ -1697,6 +1703,7 @@ namespace Exhaust
                         return false;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     byte[] Content_MQ = new byte[] { DID, 0x87, 0X05, 0x00, 0x00, 0 };
                     Content_MQ[3] = (byte)((tempValue * 10) / 256);
                     Content_MQ[4] = (byte)((tempValue * 10) % 256);
@@ -1777,6 +1784,7 @@ namespace Exhaust
                         return false;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     byte[] Content_MQ = new byte[] { DID, 0x75, 0X05, 0x00, 0x00, 0 };
                     Content_MQ[3] = (byte)((tempValue * 10) / 256);
                     Content_MQ[4] = (byte)((tempValue * 10) % 256);
@@ -1857,6 +1865,7 @@ namespace Exhaust
                         return false;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     byte[] Content_MQ = new byte[] { DID, 0x86, 0X05, 0x00, 0x00, 0 };
                     Content_MQ[3] = (byte)((tempValue * 10) / 256);
                     Content_MQ[4] = (byte)((tempValue * 10) % 256);
@@ -1959,6 +1968,7 @@ namespace Exhaust
                     return msg;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     ReadData();
                     i = 0;
                     byte[] Content_MQ = new byte[] { DID, cmdGetStatus_MQ, 0X03, 0 };
@@ -2107,6 +2117,7 @@ namespace Exhaust
                     return msg;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     ReadData();
                     i = 0;
                     byte[] Content_MQ = new byte[] { DID, cmdGetStatus_MQ, 0X03, 0 };
@@ -2273,6 +2284,7 @@ namespace Exhaust
                     return true;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
 
                     byte[] Content_MQ = new byte[] { DID, cmdAutoLeakTest_MQ, 0X03, 0 };
                     Content_MQ[3] = getCS_MQ(Content_MQ, 3);
@@ -2398,6 +2410,7 @@ namespace Exhaust
                         return false;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     byte tvm = 0x00;
                     if (co2_density > 0) tvm |= 0x01;
                     if (co_density > 0) tvm |= 0x02;
@@ -2565,6 +2578,7 @@ namespace Exhaust
                         return false;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     byte[] Content_MQ = new byte[] { DID, cmdOpenDemarcateGas_MQ, 0X03, 0 };
                     Content_MQ[3] = getCS_MQ(Content_MQ, 3);
                     ComPort_1.Write(Content_MQ, 0, 4);        //发送开始测量命令
@@ -2645,6 +2659,7 @@ namespace Exhaust
                         return false;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     byte[] Content_MQ = new byte[] { DID, cmdStopAction_MQ, 0X03, 0 };
                     Content_MQ[3] = getCS_MQ(Content_MQ, 3);
                     ComPort_1.Write(Content_MQ, 0, 4);        //发送开始测量命令
@@ -2778,6 +2793,7 @@ namespace Exhaust
                     return 0;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     ReadData();
                     i = 0;
                     byte[] Content_MQ = new byte[] { DID, cmdGetStatus_MQ, 0X03, 0 };
@@ -2945,6 +2961,7 @@ namespace Exhaust
                         return false;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     byte[] Content_MQ = new byte[] { DID, cmdPumpAir_MQ, 0X03, 0 };
                     Content_MQ[3] = getCS_MQ(Content_MQ, 3);
                     ComPort_1.Write(Content_MQ, 0, 4);        //发送开始测量命令
@@ -3036,6 +3053,7 @@ namespace Exhaust
                         return false;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     byte[] Content_MQ = new byte[] { DID, cmdStopAction_MQ, 0X03, 0 };
                     Content_MQ[3] = getCS_MQ(Content_MQ, 3);
                     ComPort_1.Write(Content_MQ, 0, 4);        //发送开始测量命令
@@ -3144,6 +3162,7 @@ namespace Exhaust
                         return false;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     byte[] Content_MQ = new byte[] { DID, cmdOpenTestGas_MQ, 0X03, 0 };
                     Content_MQ[3] = getCS_MQ(Content_MQ, 3);
                     ComPort_1.Write(Content_MQ, 0, 4);        //发送开始测量命令
@@ -3254,6 +3273,7 @@ namespace Exhaust
                         return false;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     byte[] Content_MQ = new byte[] { DID, 0x78, 0X03, 0 };
                     Content_MQ[3] = getCS_MQ(Content_MQ, 3);
                     ComPort_1.Write(Content_MQ, 0, 4);        //发送开始测量命令
@@ -3445,6 +3465,7 @@ namespace Exhaust
                             return false;
                         break;
                     case "mqw_50a":
+                    case "mqw_50b":
                         ReadData();
                         i = 0;
                         byte[] Content_MQ = new byte[] { DID, cmdFlowBack_MQ, 0X03, 0 };
@@ -3612,6 +3633,7 @@ namespace Exhaust
                             return false;
                         break;
                     case "mqw_50a":
+                    case "mqw_50b":
                         ReadData();
                         i = 0;
                         byte[] Content_MQ = new byte[] { DID, cmdStopAction_MQ, 0X03, 0 };
@@ -3773,6 +3795,7 @@ namespace Exhaust
                         return false;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     ReadData();
                     i = 0;
                     byte[] Content_MQ = new byte[] { DID, cmdZero_MQ, 0X03, 0 };
@@ -4256,6 +4279,7 @@ namespace Exhaust
                     return Fla502_data;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     byte[] Content_MQ = new byte[] { DID, cmdGetDat_MQ, 0X03, 0 };
                     Content_MQ[3] = getCS_MQ(Content_MQ, 3);
                     ComPort_1.Write(Content_MQ, 0, 4);        //发送开始测量命令
@@ -4521,6 +4545,24 @@ namespace Exhaust
                     }
                     return 0.530f;
                     break;
+
+                case "mqw_50b":
+                    byte[] Content_MQ = new byte[] { DID, cmdGetPef_MQ50B, 0X03, 0 };
+                    Content_MQ[3] = getCS_MQ(Content_MQ, 3);
+                    ComPort_1.Write(Content_MQ, 0, 4);        //发送开始测量命令
+                    Thread.Sleep(10);
+                    while (ComPort_1.BytesToRead < 6)                          //等待仪器返回
+                    {
+                        i++;
+                        Thread.Sleep(10);
+                        if (i == 100)
+                            return 0.0f;
+                    }
+                    ReadData();
+                    temp_byte[0] = Read_Buffer[4];
+                    temp_byte[1] = Read_Buffer[3];
+                    return (BitConverter.ToInt16(temp_byte, 0) / 1000f);         //HC
+                    break;
                 default: return 0f; break;
             }
 
@@ -4560,6 +4602,7 @@ namespace Exhaust
                         return false;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     byte[] Content_MQ = new byte[] { DID, cmdLockKeyboard_MQ, 0X03, 0 };
                     Content_MQ[3] = getCS_MQ(Content_MQ, 3);
                     ComPort_1.Write(Content_MQ, 0, 4);        //发送开始测量命令
@@ -4617,6 +4660,7 @@ namespace Exhaust
                         return false;
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     byte[] Content_MQ = new byte[] { DID, cmdUnlockKeyboard_MQ, 0X03, 0 };
                     Content_MQ[3] = getCS_MQ(Content_MQ, 3);
                     ComPort_1.Write(Content_MQ, 0, 4);        //发送开始测量命令

@@ -333,6 +333,7 @@ namespace sds
                             }
                             break;
                         case "mqw_50a":
+                        case "mqw_50b":
                             try
                             {
                                 UseFqy = "fla_502";

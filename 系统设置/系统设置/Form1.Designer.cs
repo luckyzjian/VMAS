@@ -606,9 +606,10 @@
             this.checkBoxLugdownYw.AutoSize = true;
             this.checkBoxLugdownYw.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLugdownYw.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxLugdownYw.Location = new System.Drawing.Point(190, 99);
+            this.checkBoxLugdownYw.Location = new System.Drawing.Point(253, 124);
+            this.checkBoxLugdownYw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLugdownYw.Name = "checkBoxLugdownYw";
-            this.checkBoxLugdownYw.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxLugdownYw.Size = new System.Drawing.Size(111, 24);
             this.checkBoxLugdownYw.TabIndex = 65;
             this.checkBoxLugdownYw.Text = "检测油温";
             this.checkBoxLugdownYw.UseVisualStyleBackColor = true;
@@ -617,9 +618,10 @@
             // 
             this.label56.AutoSize = true;
             this.label56.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label56.Location = new System.Drawing.Point(485, 101);
+            this.label56.Location = new System.Drawing.Point(647, 126);
+            this.label56.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(104, 16);
+            this.label56.Size = new System.Drawing.Size(129, 20);
             this.label56.TabIndex = 63;
             this.label56.Text = "功率扫描模式";
             // 
@@ -627,9 +629,10 @@
             // 
             this.radioButtonLugdownHgl.AutoSize = true;
             this.radioButtonLugdownHgl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonLugdownHgl.Location = new System.Drawing.Point(678, 99);
+            this.radioButtonLugdownHgl.Location = new System.Drawing.Point(904, 124);
+            this.radioButtonLugdownHgl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonLugdownHgl.Name = "radioButtonLugdownHgl";
-            this.radioButtonLugdownHgl.Size = new System.Drawing.Size(74, 20);
+            this.radioButtonLugdownHgl.Size = new System.Drawing.Size(90, 24);
             this.radioButtonLugdownHgl.TabIndex = 62;
             this.radioButtonLugdownHgl.TabStop = true;
             this.radioButtonLugdownHgl.Text = "恒功率";
@@ -639,9 +642,10 @@
             // 
             this.radioButtonLugdownhs.AutoSize = true;
             this.radioButtonLugdownhs.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonLugdownhs.Location = new System.Drawing.Point(608, 99);
+            this.radioButtonLugdownhs.Location = new System.Drawing.Point(811, 124);
+            this.radioButtonLugdownhs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonLugdownhs.Name = "radioButtonLugdownhs";
-            this.radioButtonLugdownhs.Size = new System.Drawing.Size(58, 20);
+            this.radioButtonLugdownhs.Size = new System.Drawing.Size(70, 24);
             this.radioButtonLugdownhs.TabIndex = 61;
             this.radioButtonLugdownhs.TabStop = true;
             this.radioButtonLugdownhs.Text = "恒速";
@@ -652,9 +656,10 @@
             this.checkBoxLugdownSureTemp.AutoSize = true;
             this.checkBoxLugdownSureTemp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLugdownSureTemp.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxLugdownSureTemp.Location = new System.Drawing.Point(7, 99);
+            this.checkBoxLugdownSureTemp.Location = new System.Drawing.Point(9, 124);
+            this.checkBoxLugdownSureTemp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLugdownSureTemp.Name = "checkBoxLugdownSureTemp";
-            this.checkBoxLugdownSureTemp.Size = new System.Drawing.Size(123, 20);
+            this.checkBoxLugdownSureTemp.Size = new System.Drawing.Size(151, 24);
             this.checkBoxLugdownSureTemp.TabIndex = 60;
             this.checkBoxLugdownSureTemp.Text = "是否手动确认";
             this.checkBoxLugdownSureTemp.UseVisualStyleBackColor = true;
@@ -662,9 +667,10 @@
             // buttonLugdownSave
             // 
             this.buttonLugdownSave.Font = new System.Drawing.Font("宋体", 9F);
-            this.buttonLugdownSave.Location = new System.Drawing.Point(400, 0);
+            this.buttonLugdownSave.Location = new System.Drawing.Point(533, 0);
+            this.buttonLugdownSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonLugdownSave.Name = "buttonLugdownSave";
-            this.buttonLugdownSave.Size = new System.Drawing.Size(112, 30);
+            this.buttonLugdownSave.Size = new System.Drawing.Size(149, 38);
             this.buttonLugdownSave.TabIndex = 59;
             this.buttonLugdownSave.Text = "保存";
             this.buttonLugdownSave.UseVisualStyleBackColor = true;
@@ -684,18 +690,20 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.comboBoxLugdownZsjCom.Location = new System.Drawing.Point(341, 413);
+            this.comboBoxLugdownZsjCom.Location = new System.Drawing.Point(455, 516);
+            this.comboBoxLugdownZsjCom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLugdownZsjCom.Name = "comboBoxLugdownZsjCom";
-            this.comboBoxLugdownZsjCom.Size = new System.Drawing.Size(88, 24);
+            this.comboBoxLugdownZsjCom.Size = new System.Drawing.Size(116, 28);
             this.comboBoxLugdownZsjCom.TabIndex = 40;
             // 
             // label44
             // 
             this.label44.AutoSize = true;
             this.label44.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label44.Location = new System.Drawing.Point(7, 417);
+            this.label44.Location = new System.Drawing.Point(9, 521);
+            this.label44.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(56, 16);
+            this.label44.Size = new System.Drawing.Size(69, 20);
             this.label44.TabIndex = 38;
             this.label44.Text = "转速计";
             // 
@@ -714,9 +722,10 @@
             "MQZ-3",
             "RPM5300",
             "南华附件"});
-            this.comboBoxLugdownZsj.Location = new System.Drawing.Point(111, 414);
+            this.comboBoxLugdownZsj.Location = new System.Drawing.Point(148, 518);
+            this.comboBoxLugdownZsj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLugdownZsj.Name = "comboBoxLugdownZsj";
-            this.comboBoxLugdownZsj.Size = new System.Drawing.Size(86, 24);
+            this.comboBoxLugdownZsj.Size = new System.Drawing.Size(113, 28);
             this.comboBoxLugdownZsj.TabIndex = 37;
             this.comboBoxLugdownZsj.SelectedIndexChanged += new System.EventHandler(this.comboBoxLugdownZsj_SelectedValueChanged);
             // 
@@ -724,9 +733,10 @@
             // 
             this.label47.AutoSize = true;
             this.label47.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label47.Location = new System.Drawing.Point(675, 37);
+            this.label47.Location = new System.Drawing.Point(900, 46);
+            this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(32, 16);
+            this.label47.Size = new System.Drawing.Size(39, 20);
             this.label47.TabIndex = 59;
             this.label47.Text = "N/s";
             // 
@@ -735,18 +745,20 @@
             this.textBoxLugdownSmpl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxLugdownSmpl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxLugdownSmpl.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxLugdownSmpl.Location = new System.Drawing.Point(590, 35);
+            this.textBoxLugdownSmpl.Location = new System.Drawing.Point(787, 44);
+            this.textBoxLugdownSmpl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLugdownSmpl.Name = "textBoxLugdownSmpl";
-            this.textBoxLugdownSmpl.Size = new System.Drawing.Size(79, 26);
+            this.textBoxLugdownSmpl.Size = new System.Drawing.Size(105, 30);
             this.textBoxLugdownSmpl.TabIndex = 57;
             // 
             // label55
             // 
             this.label55.AutoSize = true;
             this.label55.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label55.Location = new System.Drawing.Point(512, 37);
+            this.label55.Location = new System.Drawing.Point(683, 46);
+            this.label55.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(72, 16);
+            this.label55.Size = new System.Drawing.Size(89, 20);
             this.label55.TabIndex = 58;
             this.label55.Text = "扫描频率";
             // 
@@ -754,9 +766,10 @@
             // 
             this.label53.AutoSize = true;
             this.label53.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label53.Location = new System.Drawing.Point(200, 40);
+            this.label53.Location = new System.Drawing.Point(267, 50);
+            this.label53.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(40, 16);
+            this.label53.Size = new System.Drawing.Size(49, 20);
             this.label53.TabIndex = 56;
             this.label53.Text = "km/h";
             // 
@@ -765,18 +778,20 @@
             this.textBoxLugDownMinSpeed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxLugDownMinSpeed.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxLugDownMinSpeed.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxLugDownMinSpeed.Location = new System.Drawing.Point(108, 35);
+            this.textBoxLugDownMinSpeed.Location = new System.Drawing.Point(144, 44);
+            this.textBoxLugDownMinSpeed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLugDownMinSpeed.Name = "textBoxLugDownMinSpeed";
-            this.textBoxLugDownMinSpeed.Size = new System.Drawing.Size(86, 26);
+            this.textBoxLugDownMinSpeed.Size = new System.Drawing.Size(114, 30);
             this.textBoxLugDownMinSpeed.TabIndex = 54;
             // 
             // label54
             // 
             this.label54.AutoSize = true;
             this.label54.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label54.Location = new System.Drawing.Point(4, 40);
+            this.label54.Location = new System.Drawing.Point(5, 50);
+            this.label54.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(104, 16);
+            this.label54.Size = new System.Drawing.Size(129, 20);
             this.label54.TabIndex = 55;
             this.label54.Text = "扫描最低速度";
             // 
@@ -784,9 +799,10 @@
             // 
             this.label49.AutoSize = true;
             this.label49.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label49.Location = new System.Drawing.Point(436, 37);
+            this.label49.Location = new System.Drawing.Point(581, 46);
+            this.label49.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(40, 16);
+            this.label49.Size = new System.Drawing.Size(49, 20);
             this.label49.TabIndex = 53;
             this.label49.Text = "km/h";
             // 
@@ -795,27 +811,30 @@
             this.textBoxLugDownMaxSpeed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxLugDownMaxSpeed.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxLugDownMaxSpeed.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxLugDownMaxSpeed.Location = new System.Drawing.Point(338, 35);
+            this.textBoxLugDownMaxSpeed.Location = new System.Drawing.Point(451, 44);
+            this.textBoxLugDownMaxSpeed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLugDownMaxSpeed.Name = "textBoxLugDownMaxSpeed";
-            this.textBoxLugDownMaxSpeed.Size = new System.Drawing.Size(88, 26);
+            this.textBoxLugDownMaxSpeed.Size = new System.Drawing.Size(117, 30);
             this.textBoxLugDownMaxSpeed.TabIndex = 51;
             // 
             // label52
             // 
             this.label52.AutoSize = true;
             this.label52.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label52.Location = new System.Drawing.Point(264, 40);
+            this.label52.Location = new System.Drawing.Point(352, 50);
+            this.label52.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(72, 16);
+            this.label52.Size = new System.Drawing.Size(89, 20);
             this.label52.TabIndex = 52;
             this.label52.Text = "最大速度";
             // 
             // buttonBtgSave
             // 
             this.buttonBtgSave.Font = new System.Drawing.Font("宋体", 9F);
-            this.buttonBtgSave.Location = new System.Drawing.Point(376, 0);
+            this.buttonBtgSave.Location = new System.Drawing.Point(501, 0);
+            this.buttonBtgSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonBtgSave.Name = "buttonBtgSave";
-            this.buttonBtgSave.Size = new System.Drawing.Size(127, 32);
+            this.buttonBtgSave.Size = new System.Drawing.Size(169, 40);
             this.buttonBtgSave.TabIndex = 59;
             this.buttonBtgSave.Text = "保存";
             this.buttonBtgSave.UseVisualStyleBackColor = true;
@@ -835,9 +854,10 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.comboBoxBtgZsjCom.Location = new System.Drawing.Point(328, 201);
+            this.comboBoxBtgZsjCom.Location = new System.Drawing.Point(437, 251);
+            this.comboBoxBtgZsjCom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBtgZsjCom.Name = "comboBoxBtgZsjCom";
-            this.comboBoxBtgZsjCom.Size = new System.Drawing.Size(97, 24);
+            this.comboBoxBtgZsjCom.Size = new System.Drawing.Size(128, 28);
             this.comboBoxBtgZsjCom.TabIndex = 40;
             // 
             // comboBoxBtgZsj
@@ -856,9 +876,10 @@
             "RPM5300",
             "南华附件",
             "无"});
-            this.comboBoxBtgZsj.Location = new System.Drawing.Point(87, 201);
+            this.comboBoxBtgZsj.Location = new System.Drawing.Point(116, 251);
+            this.comboBoxBtgZsj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBtgZsj.Name = "comboBoxBtgZsj";
-            this.comboBoxBtgZsj.Size = new System.Drawing.Size(88, 24);
+            this.comboBoxBtgZsj.Size = new System.Drawing.Size(116, 28);
             this.comboBoxBtgZsj.TabIndex = 37;
             this.comboBoxBtgZsj.SelectedIndexChanged += new System.EventHandler(this.comboBoxBtgZsj_SelectedValueChanged);
             // 
@@ -867,9 +888,10 @@
             this.checkBoxBtgManualTantou.AutoSize = true;
             this.checkBoxBtgManualTantou.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxBtgManualTantou.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxBtgManualTantou.Location = new System.Drawing.Point(482, 100);
+            this.checkBoxBtgManualTantou.Location = new System.Drawing.Point(643, 125);
+            this.checkBoxBtgManualTantou.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxBtgManualTantou.Name = "checkBoxBtgManualTantou";
-            this.checkBoxBtgManualTantou.Size = new System.Drawing.Size(123, 20);
+            this.checkBoxBtgManualTantou.Size = new System.Drawing.Size(151, 24);
             this.checkBoxBtgManualTantou.TabIndex = 67;
             this.checkBoxBtgManualTantou.Text = "手动确认探头";
             this.checkBoxBtgManualTantou.UseVisualStyleBackColor = true;
@@ -879,9 +901,10 @@
             this.checkBoxBtgYw.AutoSize = true;
             this.checkBoxBtgYw.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxBtgYw.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxBtgYw.Location = new System.Drawing.Point(258, 100);
+            this.checkBoxBtgYw.Location = new System.Drawing.Point(344, 125);
+            this.checkBoxBtgYw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxBtgYw.Name = "checkBoxBtgYw";
-            this.checkBoxBtgYw.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxBtgYw.Size = new System.Drawing.Size(111, 24);
             this.checkBoxBtgYw.TabIndex = 66;
             this.checkBoxBtgYw.Text = "检测油温";
             this.checkBoxBtgYw.UseVisualStyleBackColor = true;
@@ -890,9 +913,10 @@
             // 
             this.checkBoxBtgZsjk.AutoSize = true;
             this.checkBoxBtgZsjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxBtgZsjk.Location = new System.Drawing.Point(12, 100);
+            this.checkBoxBtgZsjk.Location = new System.Drawing.Point(16, 125);
+            this.checkBoxBtgZsjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxBtgZsjk.Name = "checkBoxBtgZsjk";
-            this.checkBoxBtgZsjk.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxBtgZsjk.Size = new System.Drawing.Size(111, 24);
             this.checkBoxBtgZsjk.TabIndex = 37;
             this.checkBoxBtgZsjk.Text = "转速监控";
             this.checkBoxBtgZsjk.UseVisualStyleBackColor = true;
@@ -901,9 +925,10 @@
             // 
             this.label72.AutoSize = true;
             this.label72.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label72.Location = new System.Drawing.Point(255, 39);
+            this.label72.Location = new System.Drawing.Point(340, 49);
+            this.label72.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(72, 16);
+            this.label72.Size = new System.Drawing.Size(89, 20);
             this.label72.TabIndex = 103;
             this.label72.Text = "吹拂次数";
             // 
@@ -919,18 +944,20 @@
             "2",
             "3",
             "4"});
-            this.comboBoxBTGCFCS.Location = new System.Drawing.Point(328, 35);
+            this.comboBoxBTGCFCS.Location = new System.Drawing.Point(437, 44);
+            this.comboBoxBTGCFCS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBTGCFCS.Name = "comboBoxBTGCFCS";
-            this.comboBoxBTGCFCS.Size = new System.Drawing.Size(97, 24);
+            this.comboBoxBTGCFCS.Size = new System.Drawing.Size(128, 28);
             this.comboBoxBTGCFCS.TabIndex = 104;
             // 
             // label45
             // 
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label45.Location = new System.Drawing.Point(179, 39);
+            this.label45.Location = new System.Drawing.Point(239, 49);
+            this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(48, 16);
+            this.label45.Size = new System.Drawing.Size(59, 20);
             this.label45.TabIndex = 50;
             this.label45.Text = "r/min";
             // 
@@ -939,18 +966,20 @@
             this.textBoxBtgDyzs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxBtgDyzs.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxBtgDyzs.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxBtgDyzs.Location = new System.Drawing.Point(87, 34);
+            this.textBoxBtgDyzs.Location = new System.Drawing.Point(116, 42);
+            this.textBoxBtgDyzs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxBtgDyzs.Name = "textBoxBtgDyzs";
-            this.textBoxBtgDyzs.Size = new System.Drawing.Size(88, 26);
+            this.textBoxBtgDyzs.Size = new System.Drawing.Size(117, 30);
             this.textBoxBtgDyzs.TabIndex = 11;
             // 
             // label50
             // 
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label50.Location = new System.Drawing.Point(9, 39);
+            this.label50.Location = new System.Drawing.Point(12, 49);
+            this.label50.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(72, 16);
+            this.label50.Size = new System.Drawing.Size(89, 20);
             this.label50.TabIndex = 12;
             this.label50.Text = "断油转速";
             // 
@@ -967,18 +996,20 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.comboBoxSdsZsjCom.Location = new System.Drawing.Point(339, 281);
+            this.comboBoxSdsZsjCom.Location = new System.Drawing.Point(452, 351);
+            this.comboBoxSdsZsjCom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxSdsZsjCom.Name = "comboBoxSdsZsjCom";
-            this.comboBoxSdsZsjCom.Size = new System.Drawing.Size(94, 24);
+            this.comboBoxSdsZsjCom.Size = new System.Drawing.Size(124, 28);
             this.comboBoxSdsZsjCom.TabIndex = 39;
             // 
             // label37
             // 
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label37.Location = new System.Drawing.Point(12, 284);
+            this.label37.Location = new System.Drawing.Point(16, 355);
+            this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(56, 16);
+            this.label37.Size = new System.Drawing.Size(69, 20);
             this.label37.TabIndex = 38;
             this.label37.Text = "转速计";
             // 
@@ -997,9 +1028,10 @@
             "MQZ-3",
             "RPM5300",
             "南华附件"});
-            this.comboBoxSdsZsj.Location = new System.Drawing.Point(74, 281);
+            this.comboBoxSdsZsj.Location = new System.Drawing.Point(99, 351);
+            this.comboBoxSdsZsj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxSdsZsj.Name = "comboBoxSdsZsj";
-            this.comboBoxSdsZsj.Size = new System.Drawing.Size(79, 24);
+            this.comboBoxSdsZsj.Size = new System.Drawing.Size(104, 28);
             this.comboBoxSdsZsj.TabIndex = 37;
             this.comboBoxSdsZsj.SelectedIndexChanged += new System.EventHandler(this.comboBoxSdsZsj_SelectedValueChanged);
             // 
@@ -1007,9 +1039,10 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(443, 39);
+            this.label9.Location = new System.Drawing.Point(591, 49);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(16, 16);
+            this.label9.Size = new System.Drawing.Size(19, 20);
             this.label9.TabIndex = 56;
             this.label9.Text = "s";
             // 
@@ -1017,9 +1050,10 @@
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label29.Location = new System.Drawing.Point(687, 39);
+            this.label29.Location = new System.Drawing.Point(916, 49);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(48, 16);
+            this.label29.Size = new System.Drawing.Size(59, 20);
             this.label29.TabIndex = 50;
             this.label29.Text = "r/min";
             // 
@@ -1027,9 +1061,10 @@
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label31.Location = new System.Drawing.Point(168, 39);
+            this.label31.Location = new System.Drawing.Point(224, 49);
+            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(16, 16);
+            this.label31.Size = new System.Drawing.Size(19, 20);
             this.label31.TabIndex = 54;
             this.label31.Text = "%";
             // 
@@ -1037,9 +1072,10 @@
             // 
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label36.Location = new System.Drawing.Point(261, 39);
+            this.label36.Location = new System.Drawing.Point(348, 49);
+            this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(72, 16);
+            this.label36.Size = new System.Drawing.Size(89, 20);
             this.label36.TabIndex = 54;
             this.label36.Text = "反吹时间";
             // 
@@ -1048,9 +1084,10 @@
             this.textBoxSdsFlowtime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxSdsFlowtime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxSdsFlowtime.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxSdsFlowtime.Location = new System.Drawing.Point(339, 34);
+            this.textBoxSdsFlowtime.Location = new System.Drawing.Point(452, 42);
+            this.textBoxSdsFlowtime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxSdsFlowtime.Name = "textBoxSdsFlowtime";
-            this.textBoxSdsFlowtime.Size = new System.Drawing.Size(94, 26);
+            this.textBoxSdsFlowtime.Size = new System.Drawing.Size(125, 30);
             this.textBoxSdsFlowtime.TabIndex = 53;
             // 
             // textBoxSdsZscc
@@ -1058,9 +1095,10 @@
             this.textBoxSdsZscc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxSdsZscc.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxSdsZscc.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxSdsZscc.Location = new System.Drawing.Point(583, 34);
+            this.textBoxSdsZscc.Location = new System.Drawing.Point(777, 42);
+            this.textBoxSdsZscc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxSdsZscc.Name = "textBoxSdsZscc";
-            this.textBoxSdsZscc.Size = new System.Drawing.Size(96, 26);
+            this.textBoxSdsZscc.Size = new System.Drawing.Size(127, 30);
             this.textBoxSdsZscc.TabIndex = 11;
             // 
             // textBoxSdsNdz
@@ -1068,18 +1106,20 @@
             this.textBoxSdsNdz.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxSdsNdz.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxSdsNdz.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxSdsNdz.Location = new System.Drawing.Point(74, 34);
+            this.textBoxSdsNdz.Location = new System.Drawing.Point(99, 42);
+            this.textBoxSdsNdz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxSdsNdz.Name = "textBoxSdsNdz";
-            this.textBoxSdsNdz.Size = new System.Drawing.Size(88, 26);
+            this.textBoxSdsNdz.Size = new System.Drawing.Size(117, 30);
             this.textBoxSdsNdz.TabIndex = 1;
             // 
             // label39
             // 
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label39.Location = new System.Drawing.Point(12, 39);
+            this.label39.Location = new System.Drawing.Point(16, 49);
+            this.label39.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(56, 16);
+            this.label39.Size = new System.Drawing.Size(69, 20);
             this.label39.TabIndex = 2;
             this.label39.Text = "浓度值";
             // 
@@ -1087,9 +1127,10 @@
             // 
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label41.Location = new System.Drawing.Point(505, 39);
+            this.label41.Location = new System.Drawing.Point(673, 49);
+            this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(72, 16);
+            this.label41.Size = new System.Drawing.Size(89, 20);
             this.label41.TabIndex = 12;
             this.label41.Text = "超差转速";
             // 
@@ -1098,9 +1139,10 @@
             this.checkBoxSdsYw.AutoSize = true;
             this.checkBoxSdsYw.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxSdsYw.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxSdsYw.Location = new System.Drawing.Point(329, 97);
+            this.checkBoxSdsYw.Location = new System.Drawing.Point(439, 121);
+            this.checkBoxSdsYw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSdsYw.Name = "checkBoxSdsYw";
-            this.checkBoxSdsYw.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxSdsYw.Size = new System.Drawing.Size(111, 24);
             this.checkBoxSdsYw.TabIndex = 59;
             this.checkBoxSdsYw.Text = "检测油温";
             this.checkBoxSdsYw.UseVisualStyleBackColor = true;
@@ -1109,9 +1151,10 @@
             // 
             this.checkBoxSdsZero.AutoSize = true;
             this.checkBoxSdsZero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxSdsZero.Location = new System.Drawing.Point(15, 97);
+            this.checkBoxSdsZero.Location = new System.Drawing.Point(20, 121);
+            this.checkBoxSdsZero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSdsZero.Name = "checkBoxSdsZero";
-            this.checkBoxSdsZero.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxSdsZero.Size = new System.Drawing.Size(111, 24);
             this.checkBoxSdsZero.TabIndex = 57;
             this.checkBoxSdsZero.Text = "是否调零";
             this.checkBoxSdsZero.UseVisualStyleBackColor = true;
@@ -1120,9 +1163,10 @@
             // 
             this.checkBoxSdsFlowback.AutoSize = true;
             this.checkBoxSdsFlowback.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxSdsFlowback.Location = new System.Drawing.Point(182, 97);
+            this.checkBoxSdsFlowback.Location = new System.Drawing.Point(243, 121);
+            this.checkBoxSdsFlowback.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSdsFlowback.Name = "checkBoxSdsFlowback";
-            this.checkBoxSdsFlowback.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxSdsFlowback.Size = new System.Drawing.Size(111, 24);
             this.checkBoxSdsFlowback.TabIndex = 55;
             this.checkBoxSdsFlowback.Text = "是否反吹";
             this.checkBoxSdsFlowback.UseVisualStyleBackColor = true;
@@ -1130,9 +1174,10 @@
             // buttonSdsSave
             // 
             this.buttonSdsSave.Font = new System.Drawing.Font("宋体", 9F);
-            this.buttonSdsSave.Location = new System.Drawing.Point(401, 0);
+            this.buttonSdsSave.Location = new System.Drawing.Point(535, 0);
+            this.buttonSdsSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSdsSave.Name = "buttonSdsSave";
-            this.buttonSdsSave.Size = new System.Drawing.Size(103, 33);
+            this.buttonSdsSave.Size = new System.Drawing.Size(137, 41);
             this.buttonSdsSave.TabIndex = 58;
             this.buttonSdsSave.Text = "保存";
             this.buttonSdsSave.UseVisualStyleBackColor = true;
@@ -1143,9 +1188,10 @@
             // 
             this.checkBoxSdsZsjk.AutoSize = true;
             this.checkBoxSdsZsjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxSdsZsjk.Location = new System.Drawing.Point(15, 34);
+            this.checkBoxSdsZsjk.Location = new System.Drawing.Point(20, 42);
+            this.checkBoxSdsZsjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSdsZsjk.Name = "checkBoxSdsZsjk";
-            this.checkBoxSdsZsjk.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxSdsZsjk.Size = new System.Drawing.Size(111, 24);
             this.checkBoxSdsZsjk.TabIndex = 37;
             this.checkBoxSdsZsjk.Text = "转速监控";
             this.checkBoxSdsZsjk.UseVisualStyleBackColor = true;
@@ -1154,9 +1200,10 @@
             // 
             this.checkBoxSdsNdjk.AutoSize = true;
             this.checkBoxSdsNdjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxSdsNdjk.Location = new System.Drawing.Point(248, 34);
+            this.checkBoxSdsNdjk.Location = new System.Drawing.Point(331, 42);
+            this.checkBoxSdsNdjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSdsNdjk.Name = "checkBoxSdsNdjk";
-            this.checkBoxSdsNdjk.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxSdsNdjk.Size = new System.Drawing.Size(111, 24);
             this.checkBoxSdsNdjk.TabIndex = 39;
             this.checkBoxSdsNdjk.Text = "浓度监控";
             this.checkBoxSdsNdjk.UseVisualStyleBackColor = true;
@@ -1166,9 +1213,10 @@
             this.checkBoxASMyw.AutoSize = true;
             this.checkBoxASMyw.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxASMyw.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxASMyw.Location = new System.Drawing.Point(674, 138);
+            this.checkBoxASMyw.Location = new System.Drawing.Point(899, 172);
+            this.checkBoxASMyw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxASMyw.Name = "checkBoxASMyw";
-            this.checkBoxASMyw.Size = new System.Drawing.Size(123, 20);
+            this.checkBoxASMyw.Size = new System.Drawing.Size(151, 24);
             this.checkBoxASMyw.TabIndex = 59;
             this.checkBoxASMyw.Text = "是否检测油温";
             this.checkBoxASMyw.UseVisualStyleBackColor = true;
@@ -1177,9 +1225,10 @@
             // 
             this.checkBoxAsmDispData.AutoSize = true;
             this.checkBoxAsmDispData.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxAsmDispData.Location = new System.Drawing.Point(342, 138);
+            this.checkBoxAsmDispData.Location = new System.Drawing.Point(456, 172);
+            this.checkBoxAsmDispData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmDispData.Name = "checkBoxAsmDispData";
-            this.checkBoxAsmDispData.Size = new System.Drawing.Size(123, 20);
+            this.checkBoxAsmDispData.Size = new System.Drawing.Size(151, 24);
             this.checkBoxAsmDispData.TabIndex = 53;
             this.checkBoxAsmDispData.Text = "显示过程数据";
             this.checkBoxAsmDispData.UseVisualStyleBackColor = true;
@@ -1189,9 +1238,10 @@
             this.checkBoxAsmSuretemp.AutoSize = true;
             this.checkBoxAsmSuretemp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxAsmSuretemp.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxAsmSuretemp.Location = new System.Drawing.Point(172, 138);
+            this.checkBoxAsmSuretemp.Location = new System.Drawing.Point(229, 172);
+            this.checkBoxAsmSuretemp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmSuretemp.Name = "checkBoxAsmSuretemp";
-            this.checkBoxAsmSuretemp.Size = new System.Drawing.Size(123, 20);
+            this.checkBoxAsmSuretemp.Size = new System.Drawing.Size(151, 24);
             this.checkBoxAsmSuretemp.TabIndex = 54;
             this.checkBoxAsmSuretemp.Text = "是否手动确认";
             this.checkBoxAsmSuretemp.UseVisualStyleBackColor = true;
@@ -1200,9 +1250,10 @@
             // 
             this.checkBoxAsmZero.AutoSize = true;
             this.checkBoxAsmZero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxAsmZero.Location = new System.Drawing.Point(9, 138);
+            this.checkBoxAsmZero.Location = new System.Drawing.Point(12, 172);
+            this.checkBoxAsmZero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmZero.Name = "checkBoxAsmZero";
-            this.checkBoxAsmZero.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxAsmZero.Size = new System.Drawing.Size(111, 24);
             this.checkBoxAsmZero.TabIndex = 57;
             this.checkBoxAsmZero.Text = "是否调零";
             this.checkBoxAsmZero.UseVisualStyleBackColor = true;
@@ -1211,9 +1262,10 @@
             // 
             this.checkBoxAsmFlowback.AutoSize = true;
             this.checkBoxAsmFlowback.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxAsmFlowback.Location = new System.Drawing.Point(510, 138);
+            this.checkBoxAsmFlowback.Location = new System.Drawing.Point(680, 172);
+            this.checkBoxAsmFlowback.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmFlowback.Name = "checkBoxAsmFlowback";
-            this.checkBoxAsmFlowback.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxAsmFlowback.Size = new System.Drawing.Size(111, 24);
             this.checkBoxAsmFlowback.TabIndex = 55;
             this.checkBoxAsmFlowback.Text = "是否反吹";
             this.checkBoxAsmFlowback.UseVisualStyleBackColor = true;
@@ -1221,9 +1273,10 @@
             // buttonAsmSave
             // 
             this.buttonAsmSave.Font = new System.Drawing.Font("宋体", 9F);
-            this.buttonAsmSave.Location = new System.Drawing.Point(392, 1);
+            this.buttonAsmSave.Location = new System.Drawing.Point(523, 1);
+            this.buttonAsmSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAsmSave.Name = "buttonAsmSave";
-            this.buttonAsmSave.Size = new System.Drawing.Size(111, 30);
+            this.buttonAsmSave.Size = new System.Drawing.Size(148, 38);
             this.buttonAsmSave.TabIndex = 60;
             this.buttonAsmSave.Text = "保存";
             this.buttonAsmSave.UseVisualStyleBackColor = true;
@@ -1234,9 +1287,10 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label30.Location = new System.Drawing.Point(416, 75);
+            this.label30.Location = new System.Drawing.Point(555, 94);
+            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(16, 16);
+            this.label30.Size = new System.Drawing.Size(19, 20);
             this.label30.TabIndex = 56;
             this.label30.Text = "s";
             // 
@@ -1244,9 +1298,10 @@
             // 
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label32.Location = new System.Drawing.Point(884, 40);
+            this.label32.Location = new System.Drawing.Point(1179, 50);
+            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(16, 16);
+            this.label32.Size = new System.Drawing.Size(19, 20);
             this.label32.TabIndex = 50;
             this.label32.Text = "s";
             // 
@@ -1254,9 +1309,10 @@
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label33.Location = new System.Drawing.Point(199, 40);
+            this.label33.Location = new System.Drawing.Point(265, 50);
+            this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(16, 16);
+            this.label33.Size = new System.Drawing.Size(19, 20);
             this.label33.TabIndex = 54;
             this.label33.Text = "%";
             // 
@@ -1264,9 +1320,10 @@
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label34.Location = new System.Drawing.Point(253, 75);
+            this.label34.Location = new System.Drawing.Point(337, 94);
+            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(72, 16);
+            this.label34.Size = new System.Drawing.Size(89, 20);
             this.label34.TabIndex = 54;
             this.label34.Text = "反吹时间";
             // 
@@ -1274,9 +1331,10 @@
             // 
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label35.Location = new System.Drawing.Point(198, 75);
+            this.label35.Location = new System.Drawing.Point(264, 94);
+            this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(24, 16);
+            this.label35.Size = new System.Drawing.Size(29, 20);
             this.label35.TabIndex = 49;
             this.label35.Text = "kW";
             // 
@@ -1285,9 +1343,10 @@
             this.textBoxAsmFlowtime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxAsmFlowtime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxAsmFlowtime.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxAsmFlowtime.Location = new System.Drawing.Point(327, 70);
+            this.textBoxAsmFlowtime.Location = new System.Drawing.Point(436, 88);
+            this.textBoxAsmFlowtime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxAsmFlowtime.Name = "textBoxAsmFlowtime";
-            this.textBoxAsmFlowtime.Size = new System.Drawing.Size(82, 26);
+            this.textBoxAsmFlowtime.Size = new System.Drawing.Size(109, 30);
             this.textBoxAsmFlowtime.TabIndex = 53;
             // 
             // textBoxAsmCcsj
@@ -1295,9 +1354,10 @@
             this.textBoxAsmCcsj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxAsmCcsj.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxAsmCcsj.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxAsmCcsj.Location = new System.Drawing.Point(797, 35);
+            this.textBoxAsmCcsj.Location = new System.Drawing.Point(1063, 44);
+            this.textBoxAsmCcsj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxAsmCcsj.Name = "textBoxAsmCcsj";
-            this.textBoxAsmCcsj.Size = new System.Drawing.Size(76, 26);
+            this.textBoxAsmCcsj.Size = new System.Drawing.Size(101, 30);
             this.textBoxAsmCcsj.TabIndex = 11;
             // 
             // textBoxAsmNdz
@@ -1305,18 +1365,20 @@
             this.textBoxAsmNdz.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxAsmNdz.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxAsmNdz.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxAsmNdz.Location = new System.Drawing.Point(110, 35);
+            this.textBoxAsmNdz.Location = new System.Drawing.Point(147, 44);
+            this.textBoxAsmNdz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxAsmNdz.Name = "textBoxAsmNdz";
-            this.textBoxAsmNdz.Size = new System.Drawing.Size(82, 26);
+            this.textBoxAsmNdz.Size = new System.Drawing.Size(109, 30);
             this.textBoxAsmNdz.TabIndex = 1;
             // 
             // label38
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label38.Location = new System.Drawing.Point(6, 40);
+            this.label38.Location = new System.Drawing.Point(8, 50);
+            this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(104, 16);
+            this.label38.Size = new System.Drawing.Size(129, 20);
             this.label38.TabIndex = 2;
             this.label38.Text = "CO+CO2报警值";
             // 
@@ -1325,18 +1387,20 @@
             this.textBoxAsmGlwc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxAsmGlwc.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxAsmGlwc.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxAsmGlwc.Location = new System.Drawing.Point(110, 70);
+            this.textBoxAsmGlwc.Location = new System.Drawing.Point(147, 88);
+            this.textBoxAsmGlwc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxAsmGlwc.Name = "textBoxAsmGlwc";
-            this.textBoxAsmGlwc.Size = new System.Drawing.Size(82, 26);
+            this.textBoxAsmGlwc.Size = new System.Drawing.Size(109, 30);
             this.textBoxAsmGlwc.TabIndex = 9;
             // 
             // label42
             // 
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label42.Location = new System.Drawing.Point(4, 75);
+            this.label42.Location = new System.Drawing.Point(5, 94);
+            this.label42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(104, 16);
+            this.label42.Size = new System.Drawing.Size(129, 20);
             this.label42.TabIndex = 10;
             this.label42.Text = "功率加载误差";
             // 
@@ -1344,9 +1408,10 @@
             // 
             this.label43.AutoSize = true;
             this.label43.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label43.Location = new System.Drawing.Point(689, 40);
+            this.label43.Location = new System.Drawing.Point(919, 50);
+            this.label43.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(104, 16);
+            this.label43.Size = new System.Drawing.Size(129, 20);
             this.label43.TabIndex = 12;
             this.label43.Text = "连续超差时间";
             // 
@@ -1354,9 +1419,10 @@
             // 
             this.checkBoxKsgk.AutoSize = true;
             this.checkBoxKsgk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxKsgk.Location = new System.Drawing.Point(672, 34);
+            this.checkBoxKsgk.Location = new System.Drawing.Point(896, 42);
+            this.checkBoxKsgk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxKsgk.Name = "checkBoxKsgk";
-            this.checkBoxKsgk.Size = new System.Drawing.Size(123, 20);
+            this.checkBoxKsgk.Size = new System.Drawing.Size(151, 24);
             this.checkBoxKsgk.TabIndex = 60;
             this.checkBoxKsgk.Text = "快速工况结束";
             this.checkBoxKsgk.UseVisualStyleBackColor = true;
@@ -1365,9 +1431,10 @@
             // 
             this.checkBoxAsmClljk.AutoSize = true;
             this.checkBoxAsmClljk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxAsmClljk.Location = new System.Drawing.Point(508, 34);
+            this.checkBoxAsmClljk.Location = new System.Drawing.Point(677, 42);
+            this.checkBoxAsmClljk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmClljk.Name = "checkBoxAsmClljk";
-            this.checkBoxAsmClljk.Size = new System.Drawing.Size(107, 20);
+            this.checkBoxAsmClljk.Size = new System.Drawing.Size(131, 24);
             this.checkBoxAsmClljk.TabIndex = 43;
             this.checkBoxAsmClljk.Text = "残余量监控";
             this.checkBoxAsmClljk.UseVisualStyleBackColor = true;
@@ -1376,9 +1443,10 @@
             // 
             this.checkBoxAsmSdjk.AutoSize = true;
             this.checkBoxAsmSdjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxAsmSdjk.Location = new System.Drawing.Point(7, 34);
+            this.checkBoxAsmSdjk.Location = new System.Drawing.Point(9, 42);
+            this.checkBoxAsmSdjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmSdjk.Name = "checkBoxAsmSdjk";
-            this.checkBoxAsmSdjk.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxAsmSdjk.Size = new System.Drawing.Size(111, 24);
             this.checkBoxAsmSdjk.TabIndex = 37;
             this.checkBoxAsmSdjk.Text = "速度监控";
             this.checkBoxAsmSdjk.UseVisualStyleBackColor = true;
@@ -1387,9 +1455,10 @@
             // 
             this.checkBoxAsmGljk.AutoSize = true;
             this.checkBoxAsmGljk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxAsmGljk.Location = new System.Drawing.Point(340, 34);
+            this.checkBoxAsmGljk.Location = new System.Drawing.Point(453, 42);
+            this.checkBoxAsmGljk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmGljk.Name = "checkBoxAsmGljk";
-            this.checkBoxAsmGljk.Size = new System.Drawing.Size(123, 20);
+            this.checkBoxAsmGljk.Size = new System.Drawing.Size(151, 24);
             this.checkBoxAsmGljk.TabIndex = 38;
             this.checkBoxAsmGljk.Text = "加载功率监控";
             this.checkBoxAsmGljk.UseVisualStyleBackColor = true;
@@ -1398,9 +1467,10 @@
             // 
             this.checkBoxAsmNdjk.AutoSize = true;
             this.checkBoxAsmNdjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxAsmNdjk.Location = new System.Drawing.Point(170, 34);
+            this.checkBoxAsmNdjk.Location = new System.Drawing.Point(227, 42);
+            this.checkBoxAsmNdjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmNdjk.Name = "checkBoxAsmNdjk";
-            this.checkBoxAsmNdjk.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxAsmNdjk.Size = new System.Drawing.Size(111, 24);
             this.checkBoxAsmNdjk.TabIndex = 39;
             this.checkBoxAsmNdjk.Text = "浓度监控";
             this.checkBoxAsmNdjk.UseVisualStyleBackColor = true;
@@ -1409,9 +1479,11 @@
             // 
             this.groupBox1.Controls.Add(this.radioButtonVmasWholeProcess);
             this.groupBox1.Controls.Add(this.radioButtonVmasAccelerateProcess);
-            this.groupBox1.Location = new System.Drawing.Point(17, 249);
+            this.groupBox1.Location = new System.Drawing.Point(23, 311);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(390, 57);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(520, 71);
             this.groupBox1.TabIndex = 63;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "深度及流量监控模式";
@@ -1420,9 +1492,10 @@
             // 
             this.radioButtonVmasWholeProcess.AutoSize = true;
             this.radioButtonVmasWholeProcess.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonVmasWholeProcess.Location = new System.Drawing.Point(267, 26);
+            this.radioButtonVmasWholeProcess.Location = new System.Drawing.Point(356, 32);
+            this.radioButtonVmasWholeProcess.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonVmasWholeProcess.Name = "radioButtonVmasWholeProcess";
-            this.radioButtonVmasWholeProcess.Size = new System.Drawing.Size(106, 20);
+            this.radioButtonVmasWholeProcess.Size = new System.Drawing.Size(130, 24);
             this.radioButtonVmasWholeProcess.TabIndex = 64;
             this.radioButtonVmasWholeProcess.TabStop = true;
             this.radioButtonVmasWholeProcess.Text = "全过程监控";
@@ -1432,9 +1505,10 @@
             // 
             this.radioButtonVmasAccelerateProcess.AutoSize = true;
             this.radioButtonVmasAccelerateProcess.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonVmasAccelerateProcess.Location = new System.Drawing.Point(20, 26);
+            this.radioButtonVmasAccelerateProcess.Location = new System.Drawing.Point(27, 32);
+            this.radioButtonVmasAccelerateProcess.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonVmasAccelerateProcess.Name = "radioButtonVmasAccelerateProcess";
-            this.radioButtonVmasAccelerateProcess.Size = new System.Drawing.Size(106, 20);
+            this.radioButtonVmasAccelerateProcess.Size = new System.Drawing.Size(130, 24);
             this.radioButtonVmasAccelerateProcess.TabIndex = 63;
             this.radioButtonVmasAccelerateProcess.TabStop = true;
             this.radioButtonVmasAccelerateProcess.Text = "加速时监控";
@@ -1443,9 +1517,10 @@
             // buttonVmasSave
             // 
             this.buttonVmasSave.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonVmasSave.Location = new System.Drawing.Point(401, 0);
+            this.buttonVmasSave.Location = new System.Drawing.Point(535, 0);
+            this.buttonVmasSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonVmasSave.Name = "buttonVmasSave";
-            this.buttonVmasSave.Size = new System.Drawing.Size(120, 33);
+            this.buttonVmasSave.Size = new System.Drawing.Size(160, 41);
             this.buttonVmasSave.TabIndex = 61;
             this.buttonVmasSave.Text = "保存";
             this.buttonVmasSave.UseVisualStyleBackColor = true;
@@ -1456,9 +1531,10 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label25.Location = new System.Drawing.Point(730, 38);
+            this.label25.Location = new System.Drawing.Point(973, 48);
+            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(16, 16);
+            this.label25.Size = new System.Drawing.Size(19, 20);
             this.label25.TabIndex = 52;
             this.label25.Text = "s";
             // 
@@ -1466,9 +1542,10 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label27.Location = new System.Drawing.Point(730, 70);
+            this.label27.Location = new System.Drawing.Point(973, 88);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(16, 16);
+            this.label27.Size = new System.Drawing.Size(19, 20);
             this.label27.TabIndex = 56;
             this.label27.Text = "s";
             // 
@@ -1476,9 +1553,10 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label24.Location = new System.Drawing.Point(488, 70);
+            this.label24.Location = new System.Drawing.Point(651, 88);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(16, 16);
+            this.label24.Size = new System.Drawing.Size(19, 20);
             this.label24.TabIndex = 51;
             this.label24.Text = "s";
             // 
@@ -1486,9 +1564,10 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label23.Location = new System.Drawing.Point(220, 70);
+            this.label23.Location = new System.Drawing.Point(293, 88);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(16, 16);
+            this.label23.Size = new System.Drawing.Size(19, 20);
             this.label23.TabIndex = 50;
             this.label23.Text = "s";
             // 
@@ -1496,9 +1575,10 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label19.Location = new System.Drawing.Point(223, 41);
+            this.label19.Location = new System.Drawing.Point(297, 51);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(16, 16);
+            this.label19.Size = new System.Drawing.Size(19, 20);
             this.label19.TabIndex = 54;
             this.label19.Text = "%";
             // 
@@ -1506,9 +1586,10 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label26.Location = new System.Drawing.Point(531, 70);
+            this.label26.Location = new System.Drawing.Point(708, 88);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(72, 16);
+            this.label26.Size = new System.Drawing.Size(89, 20);
             this.label26.TabIndex = 54;
             this.label26.Text = "反吹时间";
             // 
@@ -1516,9 +1597,10 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label22.Location = new System.Drawing.Point(730, 99);
+            this.label22.Location = new System.Drawing.Point(973, 124);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(24, 16);
+            this.label22.Size = new System.Drawing.Size(29, 20);
             this.label22.TabIndex = 49;
             this.label22.Text = "kW";
             // 
@@ -1526,9 +1608,10 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label21.Location = new System.Drawing.Point(491, 128);
+            this.label21.Location = new System.Drawing.Point(655, 160);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(32, 16);
+            this.label21.Size = new System.Drawing.Size(39, 20);
             this.label21.TabIndex = 48;
             this.label21.Text = "L/s";
             // 
@@ -1537,18 +1620,20 @@
             this.textBoxVmasFlowbackTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxVmasFlowbackTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasFlowbackTime.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxVmasFlowbackTime.Location = new System.Drawing.Point(637, 64);
+            this.textBoxVmasFlowbackTime.Location = new System.Drawing.Point(849, 80);
+            this.textBoxVmasFlowbackTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasFlowbackTime.Name = "textBoxVmasFlowbackTime";
-            this.textBoxVmasFlowbackTime.Size = new System.Drawing.Size(87, 26);
+            this.textBoxVmasFlowbackTime.Size = new System.Drawing.Size(115, 30);
             this.textBoxVmasFlowbackTime.TabIndex = 53;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label20.Location = new System.Drawing.Point(223, 99);
+            this.label20.Location = new System.Drawing.Point(297, 124);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(32, 16);
+            this.label20.Size = new System.Drawing.Size(39, 20);
             this.label20.TabIndex = 47;
             this.label20.Text = "L/s";
             // 
@@ -1557,9 +1642,10 @@
             this.textBoxVmasLxcc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxVmasLxcc.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasLxcc.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxVmasLxcc.Location = new System.Drawing.Point(145, 65);
+            this.textBoxVmasLxcc.Location = new System.Drawing.Point(193, 81);
+            this.textBoxVmasLxcc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasLxcc.Name = "textBoxVmasLxcc";
-            this.textBoxVmasLxcc.Size = new System.Drawing.Size(72, 26);
+            this.textBoxVmasLxcc.Size = new System.Drawing.Size(95, 30);
             this.textBoxVmasLxcc.TabIndex = 11;
             // 
             // textBoxVmasNdz
@@ -1567,18 +1653,20 @@
             this.textBoxVmasNdz.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxVmasNdz.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasNdz.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxVmasNdz.Location = new System.Drawing.Point(124, 36);
+            this.textBoxVmasNdz.Location = new System.Drawing.Point(165, 45);
+            this.textBoxVmasNdz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasNdz.Name = "textBoxVmasNdz";
-            this.textBoxVmasNdz.Size = new System.Drawing.Size(93, 26);
+            this.textBoxVmasNdz.Size = new System.Drawing.Size(123, 30);
             this.textBoxVmasNdz.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(14, 41);
+            this.label2.Location = new System.Drawing.Point(19, 51);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 16);
+            this.label2.Size = new System.Drawing.Size(129, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "CO+CO2报警值";
             // 
@@ -1587,18 +1675,20 @@
             this.textBoxVmasLljll.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxVmasLljll.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasLljll.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxVmasLljll.Location = new System.Drawing.Point(124, 94);
+            this.textBoxVmasLljll.Location = new System.Drawing.Point(165, 118);
+            this.textBoxVmasLljll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasLljll.Name = "textBoxVmasLljll";
-            this.textBoxVmasLljll.Size = new System.Drawing.Size(93, 26);
+            this.textBoxVmasLljll.Size = new System.Drawing.Size(123, 30);
             this.textBoxVmasLljll.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(14, 99);
+            this.label3.Location = new System.Drawing.Point(19, 124);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 16);
+            this.label3.Size = new System.Drawing.Size(109, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "流量计流量";
             // 
@@ -1607,18 +1697,20 @@
             this.textBoxVmasWqll.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxVmasWqll.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasWqll.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxVmasWqll.Location = new System.Drawing.Point(418, 123);
+            this.textBoxVmasWqll.Location = new System.Drawing.Point(557, 154);
+            this.textBoxVmasWqll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasWqll.Name = "textBoxVmasWqll";
-            this.textBoxVmasWqll.Size = new System.Drawing.Size(67, 26);
+            this.textBoxVmasWqll.Size = new System.Drawing.Size(89, 30);
             this.textBoxVmasWqll.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(279, 128);
+            this.label4.Location = new System.Drawing.Point(372, 160);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 16);
+            this.label4.Size = new System.Drawing.Size(149, 20);
             this.label4.TabIndex = 6;
             this.label4.Text = "全程尾气流量值";
             // 
@@ -1627,18 +1719,20 @@
             this.textBoxVmasXsb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxVmasXsb.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasXsb.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxVmasXsb.Location = new System.Drawing.Point(392, 94);
+            this.textBoxVmasXsb.Location = new System.Drawing.Point(523, 118);
+            this.textBoxVmasXsb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasXsb.Name = "textBoxVmasXsb";
-            this.textBoxVmasXsb.Size = new System.Drawing.Size(93, 26);
+            this.textBoxVmasXsb.Size = new System.Drawing.Size(123, 30);
             this.textBoxVmasXsb.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(281, 99);
+            this.label5.Location = new System.Drawing.Point(375, 124);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 16);
+            this.label5.Size = new System.Drawing.Size(69, 20);
             this.label5.TabIndex = 8;
             this.label5.Text = "稀释比";
             // 
@@ -1647,18 +1741,20 @@
             this.textBoxVmasJzgl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxVmasJzgl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasJzgl.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxVmasJzgl.Location = new System.Drawing.Point(637, 94);
+            this.textBoxVmasJzgl.Location = new System.Drawing.Point(849, 118);
+            this.textBoxVmasJzgl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasJzgl.Name = "textBoxVmasJzgl";
-            this.textBoxVmasJzgl.Size = new System.Drawing.Size(87, 26);
+            this.textBoxVmasJzgl.Size = new System.Drawing.Size(115, 30);
             this.textBoxVmasJzgl.TabIndex = 9;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(531, 99);
+            this.label6.Location = new System.Drawing.Point(708, 124);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(104, 16);
+            this.label6.Size = new System.Drawing.Size(129, 20);
             this.label6.TabIndex = 10;
             this.label6.Text = "功率加载误差";
             // 
@@ -1666,9 +1762,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(11, 70);
+            this.label7.Location = new System.Drawing.Point(15, 88);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(136, 16);
+            this.label7.Size = new System.Drawing.Size(169, 20);
             this.label7.TabIndex = 12;
             this.label7.Text = "车速连续超差时间";
             // 
@@ -1677,18 +1774,20 @@
             this.textBoxVmasLjcc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxVmasLjcc.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasLjcc.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxVmasLjcc.Location = new System.Drawing.Point(416, 65);
+            this.textBoxVmasLjcc.Location = new System.Drawing.Point(555, 81);
+            this.textBoxVmasLjcc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasLjcc.Name = "textBoxVmasLjcc";
-            this.textBoxVmasLjcc.Size = new System.Drawing.Size(69, 26);
+            this.textBoxVmasLjcc.Size = new System.Drawing.Size(91, 30);
             this.textBoxVmasLjcc.TabIndex = 13;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(279, 70);
+            this.label8.Location = new System.Drawing.Point(372, 88);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(136, 16);
+            this.label8.Size = new System.Drawing.Size(169, 20);
             this.label8.TabIndex = 14;
             this.label8.Text = "车速累计超差时间";
             // 
@@ -1697,18 +1796,20 @@
             this.textBoxVmasDssj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxVmasDssj.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasDssj.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxVmasDssj.Location = new System.Drawing.Point(637, 35);
+            this.textBoxVmasDssj.Location = new System.Drawing.Point(849, 44);
+            this.textBoxVmasDssj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasDssj.Name = "textBoxVmasDssj";
-            this.textBoxVmasDssj.Size = new System.Drawing.Size(87, 26);
+            this.textBoxVmasDssj.Size = new System.Drawing.Size(115, 30);
             this.textBoxVmasDssj.TabIndex = 17;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(531, 40);
+            this.label10.Location = new System.Drawing.Point(708, 50);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(72, 16);
+            this.label10.Size = new System.Drawing.Size(89, 20);
             this.label10.TabIndex = 18;
             this.label10.Text = "怠速时间";
             // 
@@ -1717,9 +1818,10 @@
             this.checkBoxAutoRestart.AutoSize = true;
             this.checkBoxAutoRestart.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxAutoRestart.ForeColor = System.Drawing.Color.Coral;
-            this.checkBoxAutoRestart.Location = new System.Drawing.Point(447, 197);
+            this.checkBoxAutoRestart.Location = new System.Drawing.Point(596, 246);
+            this.checkBoxAutoRestart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAutoRestart.Name = "checkBoxAutoRestart";
-            this.checkBoxAutoRestart.Size = new System.Drawing.Size(123, 20);
+            this.checkBoxAutoRestart.Size = new System.Drawing.Size(151, 24);
             this.checkBoxAutoRestart.TabIndex = 61;
             this.checkBoxAutoRestart.Text = "自动重新开始";
             this.checkBoxAutoRestart.UseVisualStyleBackColor = true;
@@ -1729,9 +1831,10 @@
             this.checkBoxVmasYw.AutoSize = true;
             this.checkBoxVmasYw.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasYw.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxVmasYw.Location = new System.Drawing.Point(223, 197);
+            this.checkBoxVmasYw.Location = new System.Drawing.Point(297, 246);
+            this.checkBoxVmasYw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasYw.Name = "checkBoxVmasYw";
-            this.checkBoxVmasYw.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxVmasYw.Size = new System.Drawing.Size(111, 24);
             this.checkBoxVmasYw.TabIndex = 60;
             this.checkBoxVmasYw.Text = "检测油温";
             this.checkBoxVmasYw.UseVisualStyleBackColor = true;
@@ -1741,9 +1844,10 @@
             this.checkBoxVmasDisplayData.AutoSize = true;
             this.checkBoxVmasDisplayData.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasDisplayData.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxVmasDisplayData.Location = new System.Drawing.Point(447, 223);
+            this.checkBoxVmasDisplayData.Location = new System.Drawing.Point(596, 279);
+            this.checkBoxVmasDisplayData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasDisplayData.Name = "checkBoxVmasDisplayData";
-            this.checkBoxVmasDisplayData.Size = new System.Drawing.Size(123, 20);
+            this.checkBoxVmasDisplayData.Size = new System.Drawing.Size(151, 24);
             this.checkBoxVmasDisplayData.TabIndex = 53;
             this.checkBoxVmasDisplayData.Text = "显示过程数据";
             this.checkBoxVmasDisplayData.UseVisualStyleBackColor = true;
@@ -1753,9 +1857,10 @@
             this.checkBoxVmasSureTemp.AutoSize = true;
             this.checkBoxVmasSureTemp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasSureTemp.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxVmasSureTemp.Location = new System.Drawing.Point(223, 223);
+            this.checkBoxVmasSureTemp.Location = new System.Drawing.Point(297, 279);
+            this.checkBoxVmasSureTemp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasSureTemp.Name = "checkBoxVmasSureTemp";
-            this.checkBoxVmasSureTemp.Size = new System.Drawing.Size(123, 20);
+            this.checkBoxVmasSureTemp.Size = new System.Drawing.Size(151, 24);
             this.checkBoxVmasSureTemp.TabIndex = 54;
             this.checkBoxVmasSureTemp.Text = "是否手动确认";
             this.checkBoxVmasSureTemp.UseVisualStyleBackColor = true;
@@ -1765,9 +1870,10 @@
             this.checkBoxVmasZero.AutoSize = true;
             this.checkBoxVmasZero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasZero.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxVmasZero.Location = new System.Drawing.Point(17, 197);
+            this.checkBoxVmasZero.Location = new System.Drawing.Point(23, 246);
+            this.checkBoxVmasZero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasZero.Name = "checkBoxVmasZero";
-            this.checkBoxVmasZero.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxVmasZero.Size = new System.Drawing.Size(111, 24);
             this.checkBoxVmasZero.TabIndex = 57;
             this.checkBoxVmasZero.Text = "是否调零";
             this.checkBoxVmasZero.UseVisualStyleBackColor = true;
@@ -1777,9 +1883,10 @@
             this.checkBoxVmasFlowback.AutoSize = true;
             this.checkBoxVmasFlowback.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasFlowback.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxVmasFlowback.Location = new System.Drawing.Point(17, 223);
+            this.checkBoxVmasFlowback.Location = new System.Drawing.Point(23, 279);
+            this.checkBoxVmasFlowback.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasFlowback.Name = "checkBoxVmasFlowback";
-            this.checkBoxVmasFlowback.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxVmasFlowback.Size = new System.Drawing.Size(111, 24);
             this.checkBoxVmasFlowback.TabIndex = 55;
             this.checkBoxVmasFlowback.Text = "是否反吹";
             this.checkBoxVmasFlowback.UseVisualStyleBackColor = true;
@@ -1788,9 +1895,10 @@
             // 
             this.checkBoxVmasCyljk.AutoSize = true;
             this.checkBoxVmasCyljk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxVmasCyljk.Location = new System.Drawing.Point(447, 34);
+            this.checkBoxVmasCyljk.Location = new System.Drawing.Point(596, 42);
+            this.checkBoxVmasCyljk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasCyljk.Name = "checkBoxVmasCyljk";
-            this.checkBoxVmasCyljk.Size = new System.Drawing.Size(107, 20);
+            this.checkBoxVmasCyljk.Size = new System.Drawing.Size(131, 24);
             this.checkBoxVmasCyljk.TabIndex = 43;
             this.checkBoxVmasCyljk.Text = "残余量监控";
             this.checkBoxVmasCyljk.UseVisualStyleBackColor = true;
@@ -1800,9 +1908,10 @@
             this.checkBoxVmasLljk.AutoSize = true;
             this.checkBoxVmasLljk.Enabled = false;
             this.checkBoxVmasLljk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxVmasLljk.Location = new System.Drawing.Point(447, 60);
+            this.checkBoxVmasLljk.Location = new System.Drawing.Point(596, 75);
+            this.checkBoxVmasLljk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasLljk.Name = "checkBoxVmasLljk";
-            this.checkBoxVmasLljk.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxVmasLljk.Size = new System.Drawing.Size(111, 24);
             this.checkBoxVmasLljk.TabIndex = 40;
             this.checkBoxVmasLljk.Text = "流量监控";
             this.checkBoxVmasLljk.UseVisualStyleBackColor = true;
@@ -1812,9 +1921,10 @@
             this.checkBoxVmasHjyjk.AutoSize = true;
             this.checkBoxVmasHjyjk.Enabled = false;
             this.checkBoxVmasHjyjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxVmasHjyjk.Location = new System.Drawing.Point(298, 60);
+            this.checkBoxVmasHjyjk.Location = new System.Drawing.Point(397, 75);
+            this.checkBoxVmasHjyjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasHjyjk.Name = "checkBoxVmasHjyjk";
-            this.checkBoxVmasHjyjk.Size = new System.Drawing.Size(107, 20);
+            this.checkBoxVmasHjyjk.Size = new System.Drawing.Size(131, 24);
             this.checkBoxVmasHjyjk.TabIndex = 42;
             this.checkBoxVmasHjyjk.Text = "环境氧监控";
             this.checkBoxVmasHjyjk.UseVisualStyleBackColor = true;
@@ -1824,9 +1934,10 @@
             this.checkBoxVmasSdjk.AutoSize = true;
             this.checkBoxVmasSdjk.Enabled = false;
             this.checkBoxVmasSdjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxVmasSdjk.Location = new System.Drawing.Point(165, 60);
+            this.checkBoxVmasSdjk.Location = new System.Drawing.Point(220, 75);
+            this.checkBoxVmasSdjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasSdjk.Name = "checkBoxVmasSdjk";
-            this.checkBoxVmasSdjk.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxVmasSdjk.Size = new System.Drawing.Size(111, 24);
             this.checkBoxVmasSdjk.TabIndex = 37;
             this.checkBoxVmasSdjk.Text = "速度监控";
             this.checkBoxVmasSdjk.UseVisualStyleBackColor = true;
@@ -1835,9 +1946,10 @@
             // 
             this.checkBoxVmasXsbjk.AutoSize = true;
             this.checkBoxVmasXsbjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxVmasXsbjk.Location = new System.Drawing.Point(165, 34);
+            this.checkBoxVmasXsbjk.Location = new System.Drawing.Point(220, 42);
+            this.checkBoxVmasXsbjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasXsbjk.Name = "checkBoxVmasXsbjk";
-            this.checkBoxVmasXsbjk.Size = new System.Drawing.Size(107, 20);
+            this.checkBoxVmasXsbjk.Size = new System.Drawing.Size(131, 24);
             this.checkBoxVmasXsbjk.TabIndex = 41;
             this.checkBoxVmasXsbjk.Text = "稀释比监控";
             this.checkBoxVmasXsbjk.UseVisualStyleBackColor = true;
@@ -1846,9 +1958,10 @@
             // 
             this.checkBoxVmasJzgljk.AutoSize = true;
             this.checkBoxVmasJzgljk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxVmasJzgljk.Location = new System.Drawing.Point(298, 34);
+            this.checkBoxVmasJzgljk.Location = new System.Drawing.Point(397, 42);
+            this.checkBoxVmasJzgljk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasJzgljk.Name = "checkBoxVmasJzgljk";
-            this.checkBoxVmasJzgljk.Size = new System.Drawing.Size(123, 20);
+            this.checkBoxVmasJzgljk.Size = new System.Drawing.Size(151, 24);
             this.checkBoxVmasJzgljk.TabIndex = 38;
             this.checkBoxVmasJzgljk.Text = "加载功率监控";
             this.checkBoxVmasJzgljk.UseVisualStyleBackColor = true;
@@ -1858,9 +1971,10 @@
             this.checkBoxVmasNdjk.AutoSize = true;
             this.checkBoxVmasNdjk.Enabled = false;
             this.checkBoxVmasNdjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxVmasNdjk.Location = new System.Drawing.Point(14, 58);
+            this.checkBoxVmasNdjk.Location = new System.Drawing.Point(19, 72);
+            this.checkBoxVmasNdjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasNdjk.Name = "checkBoxVmasNdjk";
-            this.checkBoxVmasNdjk.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxVmasNdjk.Size = new System.Drawing.Size(111, 24);
             this.checkBoxVmasNdjk.TabIndex = 39;
             this.checkBoxVmasNdjk.Text = "浓度监控";
             this.checkBoxVmasNdjk.UseVisualStyleBackColor = true;
@@ -1870,9 +1984,10 @@
             this.label80.AutoSize = true;
             this.label80.BackColor = System.Drawing.Color.Transparent;
             this.label80.Font = new System.Drawing.Font("宋体", 12F);
-            this.label80.Location = new System.Drawing.Point(177, 92);
+            this.label80.Location = new System.Drawing.Point(236, 115);
+            this.label80.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(88, 16);
+            this.label80.Size = new System.Drawing.Size(109, 20);
             this.label80.TabIndex = 121;
             this.label80.Text = "条码枪串口";
             // 
@@ -1888,9 +2003,10 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.comboBoxTMQCK.Location = new System.Drawing.Point(266, 88);
+            this.comboBoxTMQCK.Location = new System.Drawing.Point(355, 110);
+            this.comboBoxTMQCK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxTMQCK.Name = "comboBoxTMQCK";
-            this.comboBoxTMQCK.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxTMQCK.Size = new System.Drawing.Size(125, 28);
             this.comboBoxTMQCK.TabIndex = 120;
             // 
             // label81
@@ -1898,9 +2014,10 @@
             this.label81.AutoSize = true;
             this.label81.BackColor = System.Drawing.Color.Transparent;
             this.label81.Font = new System.Drawing.Font("宋体", 12F);
-            this.label81.Location = new System.Drawing.Point(367, 93);
+            this.label81.Location = new System.Drawing.Point(489, 116);
+            this.label81.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(72, 16);
+            this.label81.Size = new System.Drawing.Size(89, 20);
             this.label81.TabIndex = 119;
             this.label81.Text = "串口配置";
             // 
@@ -1913,9 +2030,10 @@
             "9600,N,8,1",
             "4800,N,8,1",
             "19200,N,8,1"});
-            this.comboBoxTMQPZ.Location = new System.Drawing.Point(447, 88);
+            this.comboBoxTMQPZ.Location = new System.Drawing.Point(596, 110);
+            this.comboBoxTMQPZ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxTMQPZ.Name = "comboBoxTMQPZ";
-            this.comboBoxTMQPZ.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxTMQPZ.Size = new System.Drawing.Size(125, 28);
             this.comboBoxTMQPZ.TabIndex = 118;
             // 
             // label82
@@ -1923,9 +2041,10 @@
             this.label82.AutoSize = true;
             this.label82.BackColor = System.Drawing.Color.Transparent;
             this.label82.Font = new System.Drawing.Font("宋体", 12F);
-            this.label82.Location = new System.Drawing.Point(-1, 92);
+            this.label82.Location = new System.Drawing.Point(-1, 115);
+            this.label82.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label82.Name = "label82";
-            this.label82.Size = new System.Drawing.Size(88, 16);
+            this.label82.Size = new System.Drawing.Size(109, 20);
             this.label82.TabIndex = 117;
             this.label82.Text = "条码扫描枪";
             // 
@@ -1938,9 +2057,10 @@
             this.comboBoxTMQXH.Items.AddRange(new object[] {
             "无",
             "YZ_1"});
-            this.comboBoxTMQXH.Location = new System.Drawing.Point(89, 88);
+            this.comboBoxTMQXH.Location = new System.Drawing.Point(119, 110);
+            this.comboBoxTMQXH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxTMQXH.Name = "comboBoxTMQXH";
-            this.comboBoxTMQXH.Size = new System.Drawing.Size(91, 24);
+            this.comboBoxTMQXH.Size = new System.Drawing.Size(120, 28);
             this.comboBoxTMQXH.TabIndex = 116;
             // 
             // label79
@@ -1948,9 +2068,10 @@
             this.label79.AutoSize = true;
             this.label79.BackColor = System.Drawing.Color.Transparent;
             this.label79.Font = new System.Drawing.Font("宋体", 12F);
-            this.label79.Location = new System.Drawing.Point(638, 127);
+            this.label79.Location = new System.Drawing.Point(851, 159);
+            this.label79.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(72, 16);
+            this.label79.Size = new System.Drawing.Size(89, 20);
             this.label79.TabIndex = 115;
             this.label79.Text = "检测模式";
             // 
@@ -1963,9 +2084,10 @@
             this.comboBoxWorkMode.Items.AddRange(new object[] {
             "全自动",
             "半自动"});
-            this.comboBoxWorkMode.Location = new System.Drawing.Point(714, 124);
+            this.comboBoxWorkMode.Location = new System.Drawing.Point(952, 155);
+            this.comboBoxWorkMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxWorkMode.Name = "comboBoxWorkMode";
-            this.comboBoxWorkMode.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxWorkMode.Size = new System.Drawing.Size(125, 28);
             this.comboBoxWorkMode.TabIndex = 114;
             // 
             // checkBoxOldMqy200
@@ -1973,9 +2095,10 @@
             this.checkBoxOldMqy200.AutoSize = true;
             this.checkBoxOldMqy200.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxOldMqy200.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxOldMqy200.Location = new System.Drawing.Point(723, 209);
+            this.checkBoxOldMqy200.Location = new System.Drawing.Point(964, 261);
+            this.checkBoxOldMqy200.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxOldMqy200.Name = "checkBoxOldMqy200";
-            this.checkBoxOldMqy200.Size = new System.Drawing.Size(171, 20);
+            this.checkBoxOldMqy200.Size = new System.Drawing.Size(211, 24);
             this.checkBoxOldMqy200.TabIndex = 113;
             this.checkBoxOldMqy200.Text = "鸣泉10年以前烟度计";
             this.checkBoxOldMqy200.UseVisualStyleBackColor = false;
@@ -1985,9 +2108,10 @@
             this.label78.AutoSize = true;
             this.label78.BackColor = System.Drawing.Color.Transparent;
             this.label78.Font = new System.Drawing.Font("宋体", 12F);
-            this.label78.Location = new System.Drawing.Point(541, 186);
+            this.label78.Location = new System.Drawing.Point(721, 232);
+            this.label78.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(80, 16);
+            this.label78.Size = new System.Drawing.Size(99, 20);
             this.label78.TabIndex = 112;
             this.label78.Text = "PEF(鸣泉)";
             // 
@@ -1996,9 +2120,10 @@
             this.textBoxPEF.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxPEF.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxPEF.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxPEF.Location = new System.Drawing.Point(630, 179);
+            this.textBoxPEF.Location = new System.Drawing.Point(840, 224);
+            this.textBoxPEF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxPEF.Name = "textBoxPEF";
-            this.textBoxPEF.Size = new System.Drawing.Size(90, 26);
+            this.textBoxPEF.Size = new System.Drawing.Size(119, 30);
             this.textBoxPEF.TabIndex = 111;
             // 
             // label77
@@ -2007,9 +2132,10 @@
             this.label77.BackColor = System.Drawing.Color.Transparent;
             this.label77.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label77.ForeColor = System.Drawing.Color.Black;
-            this.label77.Location = new System.Drawing.Point(425, 42);
+            this.label77.Location = new System.Drawing.Point(567, 52);
+            this.label77.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(72, 16);
+            this.label77.Size = new System.Drawing.Size(89, 20);
             this.label77.TabIndex = 110;
             this.label77.Text = "铭牌惯量";
             // 
@@ -2018,9 +2144,10 @@
             this.textBoxDIWMP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDIWMP.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDIWMP.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxDIWMP.Location = new System.Drawing.Point(503, 35);
+            this.textBoxDIWMP.Location = new System.Drawing.Point(671, 44);
+            this.textBoxDIWMP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDIWMP.Name = "textBoxDIWMP";
-            this.textBoxDIWMP.Size = new System.Drawing.Size(94, 26);
+            this.textBoxDIWMP.Size = new System.Drawing.Size(125, 30);
             this.textBoxDIWMP.TabIndex = 109;
             // 
             // comboBoxHJT
@@ -2035,9 +2162,10 @@
             "HJT292",
             "JJF1221压燃式",
             "JJF1221点燃式"});
-            this.comboBoxHJT.Location = new System.Drawing.Point(87, 64);
+            this.comboBoxHJT.Location = new System.Drawing.Point(116, 80);
+            this.comboBoxHJT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxHJT.Name = "comboBoxHJT";
-            this.comboBoxHJT.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxHJT.Size = new System.Drawing.Size(125, 28);
             this.comboBoxHJT.TabIndex = 107;
             // 
             // label51
@@ -2046,9 +2174,10 @@
             this.label51.BackColor = System.Drawing.Color.Transparent;
             this.label51.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label51.ForeColor = System.Drawing.Color.Black;
-            this.label51.Location = new System.Drawing.Point(0, 68);
+            this.label51.Location = new System.Drawing.Point(0, 85);
+            this.label51.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(72, 16);
+            this.label51.Size = new System.Drawing.Size(89, 20);
             this.label51.TabIndex = 108;
             this.label51.Text = "系统标准";
             // 
@@ -2061,9 +2190,10 @@
             this.comboBoxCgjlx.Items.AddRange(new object[] {
             "轻型测功机",
             "重型测功机"});
-            this.comboBoxCgjlx.Location = new System.Drawing.Point(87, 37);
+            this.comboBoxCgjlx.Location = new System.Drawing.Point(116, 46);
+            this.comboBoxCgjlx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCgjlx.Name = "comboBoxCgjlx";
-            this.comboBoxCgjlx.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxCgjlx.Size = new System.Drawing.Size(125, 28);
             this.comboBoxCgjlx.TabIndex = 105;
             // 
             // label76
@@ -2072,9 +2202,10 @@
             this.label76.BackColor = System.Drawing.Color.Transparent;
             this.label76.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label76.ForeColor = System.Drawing.Color.Black;
-            this.label76.Location = new System.Drawing.Point(-2, 41);
+            this.label76.Location = new System.Drawing.Point(-3, 51);
+            this.label76.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(88, 16);
+            this.label76.Size = new System.Drawing.Size(109, 20);
             this.label76.TabIndex = 106;
             this.label76.Text = "测功机类型";
             // 
@@ -2083,9 +2214,10 @@
             this.label75.AutoSize = true;
             this.label75.BackColor = System.Drawing.Color.Transparent;
             this.label75.Font = new System.Drawing.Font("宋体", 12F);
-            this.label75.Location = new System.Drawing.Point(-1, 403);
+            this.label75.Location = new System.Drawing.Point(-1, 504);
+            this.label75.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(128, 16);
+            this.label75.Size = new System.Drawing.Size(159, 20);
             this.label75.TabIndex = 104;
             this.label75.Text = "lugdown稳定时间";
             // 
@@ -2094,9 +2226,10 @@
             this.textBoxLugdownWdsj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxLugdownWdsj.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxLugdownWdsj.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxLugdownWdsj.Location = new System.Drawing.Point(121, 398);
+            this.textBoxLugdownWdsj.Location = new System.Drawing.Point(161, 498);
+            this.textBoxLugdownWdsj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLugdownWdsj.Name = "textBoxLugdownWdsj";
-            this.textBoxLugdownWdsj.Size = new System.Drawing.Size(95, 26);
+            this.textBoxLugdownWdsj.Size = new System.Drawing.Size(126, 30);
             this.textBoxLugdownWdsj.TabIndex = 103;
             // 
             // label73
@@ -2104,9 +2237,10 @@
             this.label73.AutoSize = true;
             this.label73.BackColor = System.Drawing.Color.Transparent;
             this.label73.Font = new System.Drawing.Font("宋体", 12F);
-            this.label73.Location = new System.Drawing.Point(540, 293);
+            this.label73.Location = new System.Drawing.Point(720, 366);
+            this.label73.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(88, 16);
+            this.label73.Size = new System.Drawing.Size(109, 20);
             this.label73.TabIndex = 102;
             this.label73.Text = "O2响应时间";
             // 
@@ -2115,9 +2249,10 @@
             this.textBoxLLjO2xysj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxLLjO2xysj.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxLLjO2xysj.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxLLjO2xysj.Location = new System.Drawing.Point(630, 288);
+            this.textBoxLLjO2xysj.Location = new System.Drawing.Point(840, 360);
+            this.textBoxLLjO2xysj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLLjO2xysj.Name = "textBoxLLjO2xysj";
-            this.textBoxLLjO2xysj.Size = new System.Drawing.Size(90, 26);
+            this.textBoxLLjO2xysj.Size = new System.Drawing.Size(119, 30);
             this.textBoxLLjO2xysj.TabIndex = 101;
             // 
             // label74
@@ -2125,9 +2260,10 @@
             this.label74.AutoSize = true;
             this.label74.BackColor = System.Drawing.Color.Transparent;
             this.label74.Font = new System.Drawing.Font("宋体", 12F);
-            this.label74.Location = new System.Drawing.Point(724, 186);
+            this.label74.Location = new System.Drawing.Point(965, 232);
+            this.label74.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(72, 16);
+            this.label74.Size = new System.Drawing.Size(89, 20);
             this.label74.TabIndex = 100;
             this.label74.Text = "响应时间";
             // 
@@ -2136,9 +2272,10 @@
             this.textBoxFqyxysj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxFqyxysj.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxFqyxysj.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxFqyxysj.Location = new System.Drawing.Point(794, 179);
+            this.textBoxFqyxysj.Location = new System.Drawing.Point(1059, 224);
+            this.textBoxFqyxysj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxFqyxysj.Name = "textBoxFqyxysj";
-            this.textBoxFqyxysj.Size = new System.Drawing.Size(95, 26);
+            this.textBoxFqyxysj.Size = new System.Drawing.Size(126, 30);
             this.textBoxFqyxysj.TabIndex = 99;
             // 
             // comboBoxDisplayMethod
@@ -2150,9 +2287,10 @@
             this.comboBoxDisplayMethod.Items.AddRange(new object[] {
             "复制",
             "扩展"});
-            this.comboBoxDisplayMethod.Location = new System.Drawing.Point(118, 124);
+            this.comboBoxDisplayMethod.Location = new System.Drawing.Point(157, 155);
+            this.comboBoxDisplayMethod.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxDisplayMethod.Name = "comboBoxDisplayMethod";
-            this.comboBoxDisplayMethod.Size = new System.Drawing.Size(90, 24);
+            this.comboBoxDisplayMethod.Size = new System.Drawing.Size(119, 28);
             this.comboBoxDisplayMethod.TabIndex = 95;
             // 
             // label70
@@ -2160,9 +2298,10 @@
             this.label70.AutoSize = true;
             this.label70.BackColor = System.Drawing.Color.Transparent;
             this.label70.Font = new System.Drawing.Font("宋体", 12F);
-            this.label70.Location = new System.Drawing.Point(-3, 128);
+            this.label70.Location = new System.Drawing.Point(-4, 160);
+            this.label70.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(120, 16);
+            this.label70.Size = new System.Drawing.Size(149, 20);
             this.label70.TabIndex = 96;
             this.label70.Text = "司机助显示方式";
             // 
@@ -2171,9 +2310,10 @@
             this.label71.AutoSize = true;
             this.label71.BackColor = System.Drawing.Color.Transparent;
             this.label71.Font = new System.Drawing.Font("宋体", 12F);
-            this.label71.Location = new System.Drawing.Point(214, 128);
+            this.label71.Location = new System.Drawing.Point(285, 160);
+            this.label71.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(88, 16);
+            this.label71.Size = new System.Drawing.Size(109, 20);
             this.label71.TabIndex = 98;
             this.label71.Text = "司机助屏号";
             // 
@@ -2186,9 +2326,10 @@
             this.comboBoxDriverScreen.Items.AddRange(new object[] {
             "0",
             "1"});
-            this.comboBoxDriverScreen.Location = new System.Drawing.Point(303, 124);
+            this.comboBoxDriverScreen.Location = new System.Drawing.Point(404, 155);
+            this.comboBoxDriverScreen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxDriverScreen.Name = "comboBoxDriverScreen";
-            this.comboBoxDriverScreen.Size = new System.Drawing.Size(84, 24);
+            this.comboBoxDriverScreen.Size = new System.Drawing.Size(111, 28);
             this.comboBoxDriverScreen.TabIndex = 97;
             // 
             // label69
@@ -2196,9 +2337,10 @@
             this.label69.AutoSize = true;
             this.label69.BackColor = System.Drawing.Color.Transparent;
             this.label69.Font = new System.Drawing.Font("宋体", 12F);
-            this.label69.Location = new System.Drawing.Point(366, 293);
+            this.label69.Location = new System.Drawing.Point(488, 366);
+            this.label69.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(72, 16);
+            this.label69.Size = new System.Drawing.Size(89, 20);
             this.label69.TabIndex = 94;
             this.label69.Text = "串口配置";
             // 
@@ -2210,9 +2352,10 @@
             this.comboBoxLljckpzz.Items.AddRange(new object[] {
             "9600,N,8,1",
             "4800,N,8,1"});
-            this.comboBoxLljckpzz.Location = new System.Drawing.Point(444, 289);
+            this.comboBoxLljckpzz.Location = new System.Drawing.Point(592, 361);
+            this.comboBoxLljckpzz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLljckpzz.Name = "comboBoxLljckpzz";
-            this.comboBoxLljckpzz.Size = new System.Drawing.Size(94, 24);
+            this.comboBoxLljckpzz.Size = new System.Drawing.Size(124, 28);
             this.comboBoxLljckpzz.TabIndex = 93;
             // 
             // label68
@@ -2220,9 +2363,10 @@
             this.label68.AutoSize = true;
             this.label68.BackColor = System.Drawing.Color.Transparent;
             this.label68.Font = new System.Drawing.Font("宋体", 12F);
-            this.label68.Location = new System.Drawing.Point(366, 184);
+            this.label68.Location = new System.Drawing.Point(488, 230);
+            this.label68.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(72, 16);
+            this.label68.Size = new System.Drawing.Size(89, 20);
             this.label68.TabIndex = 92;
             this.label68.Text = "串口配置";
             // 
@@ -2234,9 +2378,10 @@
             this.comboBoxFqyckppz.Items.AddRange(new object[] {
             "9600,N,8,1",
             "4800,N,8,1"});
-            this.comboBoxFqyckppz.Location = new System.Drawing.Point(444, 180);
+            this.comboBoxFqyckppz.Location = new System.Drawing.Point(592, 225);
+            this.comboBoxFqyckppz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxFqyckppz.Name = "comboBoxFqyckppz";
-            this.comboBoxFqyckppz.Size = new System.Drawing.Size(94, 24);
+            this.comboBoxFqyckppz.Size = new System.Drawing.Size(124, 28);
             this.comboBoxFqyckppz.TabIndex = 91;
             // 
             // label67
@@ -2244,9 +2389,10 @@
             this.label67.AutoSize = true;
             this.label67.BackColor = System.Drawing.Color.Transparent;
             this.label67.Font = new System.Drawing.Font("宋体", 12F);
-            this.label67.Location = new System.Drawing.Point(366, 210);
+            this.label67.Location = new System.Drawing.Point(488, 262);
+            this.label67.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(72, 16);
+            this.label67.Size = new System.Drawing.Size(89, 20);
             this.label67.TabIndex = 90;
             this.label67.Text = "串口配置";
             // 
@@ -2260,9 +2406,10 @@
             "4800,N,8,1",
             "2400,N,8,1",
             "1200,N,8,1"});
-            this.comboBoxYdjckppz.Location = new System.Drawing.Point(444, 206);
+            this.comboBoxYdjckppz.Location = new System.Drawing.Point(592, 258);
+            this.comboBoxYdjckppz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYdjckppz.Name = "comboBoxYdjckppz";
-            this.comboBoxYdjckppz.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxYdjckppz.Size = new System.Drawing.Size(125, 28);
             this.comboBoxYdjckppz.TabIndex = 89;
             // 
             // label66
@@ -2270,9 +2417,10 @@
             this.label66.AutoSize = true;
             this.label66.BackColor = System.Drawing.Color.Transparent;
             this.label66.Font = new System.Drawing.Font("宋体", 12F);
-            this.label66.Location = new System.Drawing.Point(367, 118);
+            this.label66.Location = new System.Drawing.Point(489, 148);
+            this.label66.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(72, 16);
+            this.label66.Size = new System.Drawing.Size(89, 20);
             this.label66.TabIndex = 88;
             this.label66.Text = "串口配置";
             // 
@@ -2285,9 +2433,10 @@
             "9600,N,8,1",
             "4800,N,8,1",
             "19200,N,8,1"});
-            this.comboBoxXCECOMSTRING.Location = new System.Drawing.Point(446, 114);
+            this.comboBoxXCECOMSTRING.Location = new System.Drawing.Point(595, 142);
+            this.comboBoxXCECOMSTRING.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxXCECOMSTRING.Name = "comboBoxXCECOMSTRING";
-            this.comboBoxXCECOMSTRING.Size = new System.Drawing.Size(96, 24);
+            this.comboBoxXCECOMSTRING.Size = new System.Drawing.Size(127, 28);
             this.comboBoxXCECOMSTRING.TabIndex = 87;
             // 
             // label65
@@ -2295,9 +2444,10 @@
             this.label65.AutoSize = true;
             this.label65.BackColor = System.Drawing.Color.Transparent;
             this.label65.Font = new System.Drawing.Font("宋体", 12F);
-            this.label65.Location = new System.Drawing.Point(367, 66);
+            this.label65.Location = new System.Drawing.Point(489, 82);
+            this.label65.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(72, 16);
+            this.label65.Size = new System.Drawing.Size(89, 20);
             this.label65.TabIndex = 86;
             this.label65.Text = "串口配置";
             // 
@@ -2309,9 +2459,10 @@
             this.comboBoxLEDCOMSTRING.Items.AddRange(new object[] {
             "9600,N,8,1",
             "4800,N,8,1"});
-            this.comboBoxLEDCOMSTRING.Location = new System.Drawing.Point(445, 62);
+            this.comboBoxLEDCOMSTRING.Location = new System.Drawing.Point(593, 78);
+            this.comboBoxLEDCOMSTRING.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLEDCOMSTRING.Name = "comboBoxLEDCOMSTRING";
-            this.comboBoxLEDCOMSTRING.Size = new System.Drawing.Size(97, 24);
+            this.comboBoxLEDCOMSTRING.Size = new System.Drawing.Size(128, 28);
             this.comboBoxLEDCOMSTRING.TabIndex = 85;
             // 
             // label64
@@ -2319,9 +2470,10 @@
             this.label64.AutoSize = true;
             this.label64.BackColor = System.Drawing.Color.Transparent;
             this.label64.Font = new System.Drawing.Font("宋体", 12F);
-            this.label64.Location = new System.Drawing.Point(1, 66);
+            this.label64.Location = new System.Drawing.Point(1, 82);
+            this.label64.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(64, 16);
+            this.label64.Size = new System.Drawing.Size(79, 20);
             this.label64.TabIndex = 84;
             this.label64.Text = "LED型号";
             // 
@@ -2341,9 +2493,10 @@
             "荆州广佛",
             "安通",
             "成保"});
-            this.comboBoxLEDXH.Location = new System.Drawing.Point(89, 62);
+            this.comboBoxLEDXH.Location = new System.Drawing.Point(119, 78);
+            this.comboBoxLEDXH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLEDXH.Name = "comboBoxLEDXH";
-            this.comboBoxLEDXH.Size = new System.Drawing.Size(90, 24);
+            this.comboBoxLEDXH.Size = new System.Drawing.Size(119, 28);
             this.comboBoxLEDXH.TabIndex = 83;
             // 
             // label63
@@ -2351,9 +2504,10 @@
             this.label63.AutoSize = true;
             this.label63.BackColor = System.Drawing.Color.Transparent;
             this.label63.Font = new System.Drawing.Font("宋体", 12F);
-            this.label63.Location = new System.Drawing.Point(178, 119);
+            this.label63.Location = new System.Drawing.Point(237, 149);
+            this.label63.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(88, 16);
+            this.label63.Size = new System.Drawing.Size(109, 20);
             this.label63.TabIndex = 82;
             this.label63.Text = "温湿度串口";
             // 
@@ -2370,9 +2524,10 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.comboBoxCOMXCE.Location = new System.Drawing.Point(266, 114);
+            this.comboBoxCOMXCE.Location = new System.Drawing.Point(355, 142);
+            this.comboBoxCOMXCE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCOMXCE.Name = "comboBoxCOMXCE";
-            this.comboBoxCOMXCE.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxCOMXCE.Size = new System.Drawing.Size(125, 28);
             this.comboBoxCOMXCE.TabIndex = 81;
             // 
             // comboBoxLZYDJXH
@@ -2385,9 +2540,10 @@
             "无",
             "yd_1",
             "fby_201"});
-            this.comboBoxLZYDJXH.Location = new System.Drawing.Point(121, 341);
+            this.comboBoxLZYDJXH.Location = new System.Drawing.Point(161, 426);
+            this.comboBoxLZYDJXH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLZYDJXH.Name = "comboBoxLZYDJXH";
-            this.comboBoxLZYDJXH.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxLZYDJXH.Size = new System.Drawing.Size(125, 28);
             this.comboBoxLZYDJXH.TabIndex = 77;
             // 
             // label61
@@ -2395,9 +2551,10 @@
             this.label61.AutoSize = true;
             this.label61.BackColor = System.Drawing.Color.Transparent;
             this.label61.Font = new System.Drawing.Font("宋体", 12F);
-            this.label61.Location = new System.Drawing.Point(-1, 346);
+            this.label61.Location = new System.Drawing.Point(-1, 432);
+            this.label61.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(120, 16);
+            this.label61.Size = new System.Drawing.Size(149, 20);
             this.label61.TabIndex = 78;
             this.label61.Text = "滤纸烟度计型号";
             // 
@@ -2413,9 +2570,10 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.comboBoxLZYDJCK.Location = new System.Drawing.Point(546, 340);
+            this.comboBoxLZYDJCK.Location = new System.Drawing.Point(728, 425);
+            this.comboBoxLZYDJCK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLZYDJCK.Name = "comboBoxLZYDJCK";
-            this.comboBoxLZYDJCK.Size = new System.Drawing.Size(100, 24);
+            this.comboBoxLZYDJCK.Size = new System.Drawing.Size(132, 28);
             this.comboBoxLZYDJCK.TabIndex = 79;
             // 
             // label62
@@ -2423,9 +2581,10 @@
             this.label62.AutoSize = true;
             this.label62.BackColor = System.Drawing.Color.Transparent;
             this.label62.Font = new System.Drawing.Font("宋体", 12F);
-            this.label62.Location = new System.Drawing.Point(422, 344);
+            this.label62.Location = new System.Drawing.Point(563, 430);
+            this.label62.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(120, 16);
+            this.label62.Size = new System.Drawing.Size(149, 20);
             this.label62.TabIndex = 80;
             this.label62.Text = "滤纸烟度计串口";
             // 
@@ -2434,9 +2593,10 @@
             this.label57.AutoSize = true;
             this.label57.BackColor = System.Drawing.Color.Transparent;
             this.label57.Font = new System.Drawing.Font("宋体", 12F);
-            this.label57.Location = new System.Drawing.Point(185, 204);
+            this.label57.Location = new System.Drawing.Point(247, 255);
+            this.label57.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(72, 16);
+            this.label57.Size = new System.Drawing.Size(89, 20);
             this.label57.TabIndex = 75;
             this.label57.Text = "紧急停车\r\n";
             // 
@@ -2450,9 +2610,10 @@
             "1",
             "2",
             "3"});
-            this.comboBoxEmergency.Location = new System.Drawing.Point(266, 200);
+            this.comboBoxEmergency.Location = new System.Drawing.Point(355, 250);
+            this.comboBoxEmergency.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxEmergency.Name = "comboBoxEmergency";
-            this.comboBoxEmergency.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxEmergency.Size = new System.Drawing.Size(125, 28);
             this.comboBoxEmergency.TabIndex = 76;
             // 
             // comboBoxBPQDY
@@ -2465,9 +2626,10 @@
             "1",
             "2",
             "3"});
-            this.comboBoxBPQDY.Location = new System.Drawing.Point(631, 37);
+            this.comboBoxBPQDY.Location = new System.Drawing.Point(841, 46);
+            this.comboBoxBPQDY.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBPQDY.Name = "comboBoxBPQDY";
-            this.comboBoxBPQDY.Size = new System.Drawing.Size(90, 24);
+            this.comboBoxBPQDY.Size = new System.Drawing.Size(119, 28);
             this.comboBoxBPQDY.TabIndex = 71;
             // 
             // label59
@@ -2475,9 +2637,10 @@
             this.label59.AutoSize = true;
             this.label59.BackColor = System.Drawing.Color.Transparent;
             this.label59.Font = new System.Drawing.Font("宋体", 12F);
-            this.label59.Location = new System.Drawing.Point(1, 205);
+            this.label59.Location = new System.Drawing.Point(1, 256);
+            this.label59.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(72, 16);
+            this.label59.Size = new System.Drawing.Size(89, 20);
             this.label59.TabIndex = 72;
             this.label59.Text = "散热风扇";
             // 
@@ -2486,9 +2649,10 @@
             this.label60.AutoSize = true;
             this.label60.BackColor = System.Drawing.Color.Transparent;
             this.label60.Font = new System.Drawing.Font("宋体", 12F);
-            this.label60.Location = new System.Drawing.Point(546, 41);
+            this.label60.Location = new System.Drawing.Point(728, 51);
+            this.label60.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(88, 16);
+            this.label60.Size = new System.Drawing.Size(109, 20);
             this.label60.TabIndex = 74;
             this.label60.Text = "变频器电源";
             // 
@@ -2502,9 +2666,10 @@
             "1",
             "2",
             "3"});
-            this.comboBoxFAN.Location = new System.Drawing.Point(88, 200);
+            this.comboBoxFAN.Location = new System.Drawing.Point(117, 250);
+            this.comboBoxFAN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxFAN.Name = "comboBoxFAN";
-            this.comboBoxFAN.Size = new System.Drawing.Size(90, 24);
+            this.comboBoxFAN.Size = new System.Drawing.Size(119, 28);
             this.comboBoxFAN.TabIndex = 73;
             // 
             // comboBoxBPQFS
@@ -2516,9 +2681,10 @@
             this.comboBoxBPQFS.Items.AddRange(new object[] {
             "串口",
             "端子"});
-            this.comboBoxBPQFS.Location = new System.Drawing.Point(445, 37);
+            this.comboBoxBPQFS.Location = new System.Drawing.Point(593, 46);
+            this.comboBoxBPQFS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBPQFS.Name = "comboBoxBPQFS";
-            this.comboBoxBPQFS.Size = new System.Drawing.Size(97, 24);
+            this.comboBoxBPQFS.Size = new System.Drawing.Size(128, 28);
             this.comboBoxBPQFS.TabIndex = 69;
             // 
             // label58
@@ -2526,18 +2692,20 @@
             this.label58.AutoSize = true;
             this.label58.BackColor = System.Drawing.Color.Transparent;
             this.label58.Font = new System.Drawing.Font("宋体", 12F);
-            this.label58.Location = new System.Drawing.Point(366, 40);
+            this.label58.Location = new System.Drawing.Point(488, 50);
+            this.label58.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(72, 16);
+            this.label58.Size = new System.Drawing.Size(89, 20);
             this.label58.TabIndex = 70;
             this.label58.Text = "控制方式";
             // 
             // buttonSaveEquipment
             // 
             this.buttonSaveEquipment.Font = new System.Drawing.Font("宋体", 9F);
-            this.buttonSaveEquipment.Location = new System.Drawing.Point(372, 2);
+            this.buttonSaveEquipment.Location = new System.Drawing.Point(496, 2);
+            this.buttonSaveEquipment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSaveEquipment.Name = "buttonSaveEquipment";
-            this.buttonSaveEquipment.Size = new System.Drawing.Size(123, 29);
+            this.buttonSaveEquipment.Size = new System.Drawing.Size(164, 36);
             this.buttonSaveEquipment.TabIndex = 60;
             this.buttonSaveEquipment.Text = "保存";
             this.buttonSaveEquipment.UseVisualStyleBackColor = true;
@@ -2554,9 +2722,10 @@
             "SB60",
             "X11",
             "AMB100"});
-            this.comboBoxBPQXH.Location = new System.Drawing.Point(89, 37);
+            this.comboBoxBPQXH.Location = new System.Drawing.Point(119, 46);
+            this.comboBoxBPQXH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBPQXH.Name = "comboBoxBPQXH";
-            this.comboBoxBPQXH.Size = new System.Drawing.Size(90, 24);
+            this.comboBoxBPQXH.Size = new System.Drawing.Size(119, 28);
             this.comboBoxBPQXH.TabIndex = 63;
             // 
             // label1
@@ -2564,9 +2733,10 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("宋体", 12F);
-            this.label1.Location = new System.Drawing.Point(1, 41);
+            this.label1.Location = new System.Drawing.Point(1, 51);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 16);
+            this.label1.Size = new System.Drawing.Size(109, 20);
             this.label1.TabIndex = 64;
             this.label1.Text = "变频器型号";
             // 
@@ -2575,9 +2745,10 @@
             this.label48.AutoSize = true;
             this.label48.BackColor = System.Drawing.Color.Transparent;
             this.label48.Font = new System.Drawing.Font("宋体", 12F);
-            this.label48.Location = new System.Drawing.Point(179, 41);
+            this.label48.Location = new System.Drawing.Point(239, 51);
+            this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(88, 16);
+            this.label48.Size = new System.Drawing.Size(109, 20);
             this.label48.TabIndex = 66;
             this.label48.Text = "变频器串口";
             // 
@@ -2593,9 +2764,10 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.comboBoxBPQCOM.Location = new System.Drawing.Point(266, 37);
+            this.comboBoxBPQCOM.Location = new System.Drawing.Point(355, 46);
+            this.comboBoxBPQCOM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBPQCOM.Name = "comboBoxBPQCOM";
-            this.comboBoxBPQCOM.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxBPQCOM.Size = new System.Drawing.Size(125, 28);
             this.comboBoxBPQCOM.TabIndex = 65;
             // 
             // label46
@@ -2603,9 +2775,10 @@
             this.label46.AutoSize = true;
             this.label46.BackColor = System.Drawing.Color.Transparent;
             this.label46.Font = new System.Drawing.Font("宋体", 12F);
-            this.label46.Location = new System.Drawing.Point(-1, 118);
+            this.label46.Location = new System.Drawing.Point(-1, 148);
+            this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(72, 16);
+            this.label46.Size = new System.Drawing.Size(89, 20);
             this.label46.TabIndex = 62;
             this.label46.Text = "温湿度计";
             // 
@@ -2626,9 +2799,10 @@
             "南华附件",
             "模拟",
             "XCE_101"});
-            this.comboBoxTemp.Location = new System.Drawing.Point(89, 114);
+            this.comboBoxTemp.Location = new System.Drawing.Point(119, 142);
+            this.comboBoxTemp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxTemp.Name = "comboBoxTemp";
-            this.comboBoxTemp.Size = new System.Drawing.Size(90, 24);
+            this.comboBoxTemp.Size = new System.Drawing.Size(119, 28);
             this.comboBoxTemp.TabIndex = 61;
             // 
             // label18
@@ -2636,9 +2810,10 @@
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("宋体", 12F);
-            this.label18.Location = new System.Drawing.Point(185, 66);
+            this.label18.Location = new System.Drawing.Point(247, 82);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(64, 16);
+            this.label18.Size = new System.Drawing.Size(79, 20);
             this.label18.TabIndex = 36;
             this.label18.Text = "LED串口";
             // 
@@ -2656,9 +2831,10 @@
             "nht_1",
             "fty_100",
             "CDF5000"});
-            this.comboBoxYdjxh.Location = new System.Drawing.Point(87, 206);
+            this.comboBoxYdjxh.Location = new System.Drawing.Point(116, 258);
+            this.comboBoxYdjxh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYdjxh.Name = "comboBoxYdjxh";
-            this.comboBoxYdjxh.Size = new System.Drawing.Size(91, 24);
+            this.comboBoxYdjxh.Size = new System.Drawing.Size(120, 28);
             this.comboBoxYdjxh.TabIndex = 21;
             // 
             // comboBoxLEDck
@@ -2674,9 +2850,10 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.comboBoxLEDck.Location = new System.Drawing.Point(266, 62);
+            this.comboBoxLEDck.Location = new System.Drawing.Point(355, 78);
+            this.comboBoxLEDck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLEDck.Name = "comboBoxLEDck";
-            this.comboBoxLEDck.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxLEDck.Size = new System.Drawing.Size(125, 28);
             this.comboBoxLEDck.TabIndex = 35;
             // 
             // comboBoxCgjxh
@@ -2692,9 +2869,10 @@
             "DCG-13LS|DCG-13LX",
             "DCG-26L|DCG-26LD",
             "DCG-26LX"});
-            this.comboBoxCgjxh.Location = new System.Drawing.Point(305, 38);
+            this.comboBoxCgjxh.Location = new System.Drawing.Point(407, 48);
+            this.comboBoxCgjxh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCgjxh.Name = "comboBoxCgjxh";
-            this.comboBoxCgjxh.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxCgjxh.Size = new System.Drawing.Size(125, 28);
             this.comboBoxCgjxh.TabIndex = 19;
             // 
             // label17
@@ -2702,9 +2880,10 @@
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("宋体", 12F);
-            this.label17.Location = new System.Drawing.Point(177, 184);
+            this.label17.Location = new System.Drawing.Point(236, 230);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(88, 16);
+            this.label17.Size = new System.Drawing.Size(109, 20);
             this.label17.TabIndex = 34;
             this.label17.Text = "废气仪串口";
             // 
@@ -2713,9 +2892,10 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label11.Location = new System.Drawing.Point(217, 42);
+            this.label11.Location = new System.Drawing.Point(289, 52);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(88, 16);
+            this.label11.Size = new System.Drawing.Size(109, 20);
             this.label11.TabIndex = 20;
             this.label11.Text = "测功机型号";
             // 
@@ -2731,9 +2911,10 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.comboBoxFqyck.Location = new System.Drawing.Point(265, 180);
+            this.comboBoxFqyck.Location = new System.Drawing.Point(353, 225);
+            this.comboBoxFqyck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxFqyck.Name = "comboBoxFqyck";
-            this.comboBoxFqyck.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxFqyck.Size = new System.Drawing.Size(125, 28);
             this.comboBoxFqyck.TabIndex = 33;
             // 
             // label12
@@ -2741,9 +2922,10 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("宋体", 12F);
-            this.label12.Location = new System.Drawing.Point(0, 210);
+            this.label12.Location = new System.Drawing.Point(0, 262);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(88, 16);
+            this.label12.Size = new System.Drawing.Size(109, 20);
             this.label12.TabIndex = 22;
             this.label12.Text = "烟度计型号";
             // 
@@ -2752,9 +2934,10 @@
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("宋体", 12F);
-            this.label16.Location = new System.Drawing.Point(-1, 184);
+            this.label16.Location = new System.Drawing.Point(-1, 230);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(88, 16);
+            this.label16.Size = new System.Drawing.Size(109, 20);
             this.label16.TabIndex = 32;
             this.label16.Text = "废气仪型号";
             // 
@@ -2770,9 +2953,10 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.comboBoxYdjck.Location = new System.Drawing.Point(265, 206);
+            this.comboBoxYdjck.Location = new System.Drawing.Point(353, 258);
+            this.comboBoxYdjck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYdjck.Name = "comboBoxYdjck";
-            this.comboBoxYdjck.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxYdjck.Size = new System.Drawing.Size(125, 28);
             this.comboBoxYdjck.TabIndex = 23;
             // 
             // comboBoxFqyxh
@@ -2786,14 +2970,18 @@
             "fla_502",
             "fla_501",
             "mqw_50a",
+            "mqw_50b",
+            "mqw_5102",
+            "mqw_5105",
             "mqw_511",
             "nha_503",
             "fasm_5000",
             "CDF5000",
             "nha_506"});
-            this.comboBoxFqyxh.Location = new System.Drawing.Point(87, 180);
+            this.comboBoxFqyxh.Location = new System.Drawing.Point(116, 225);
+            this.comboBoxFqyxh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxFqyxh.Name = "comboBoxFqyxh";
-            this.comboBoxFqyxh.Size = new System.Drawing.Size(90, 24);
+            this.comboBoxFqyxh.Size = new System.Drawing.Size(119, 28);
             this.comboBoxFqyxh.TabIndex = 31;
             // 
             // label13
@@ -2801,9 +2989,10 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("宋体", 12F);
-            this.label13.Location = new System.Drawing.Point(177, 210);
+            this.label13.Location = new System.Drawing.Point(236, 262);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(88, 16);
+            this.label13.Size = new System.Drawing.Size(109, 20);
             this.label13.TabIndex = 24;
             this.label13.Text = "烟度计串口";
             // 
@@ -2812,9 +3001,10 @@
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label15.Location = new System.Drawing.Point(216, 67);
+            this.label15.Location = new System.Drawing.Point(288, 84);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(88, 16);
+            this.label15.Size = new System.Drawing.Size(109, 20);
             this.label15.TabIndex = 30;
             this.label15.Text = "测功机串口";
             // 
@@ -2829,9 +3019,10 @@
             "flv_1000",
             "mql_100",
             "nhf_1"});
-            this.comboBoxLljxh.Location = new System.Drawing.Point(87, 289);
+            this.comboBoxLljxh.Location = new System.Drawing.Point(116, 361);
+            this.comboBoxLljxh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLljxh.Name = "comboBoxLljxh";
-            this.comboBoxLljxh.Size = new System.Drawing.Size(90, 24);
+            this.comboBoxLljxh.Size = new System.Drawing.Size(119, 28);
             this.comboBoxLljxh.TabIndex = 25;
             // 
             // comboBoxCgjck
@@ -2846,9 +3037,10 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.comboBoxCgjck.Location = new System.Drawing.Point(305, 63);
+            this.comboBoxCgjck.Location = new System.Drawing.Point(407, 79);
+            this.comboBoxCgjck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCgjck.Name = "comboBoxCgjck";
-            this.comboBoxCgjck.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxCgjck.Size = new System.Drawing.Size(125, 28);
             this.comboBoxCgjck.TabIndex = 29;
             // 
             // label14
@@ -2856,9 +3048,10 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("宋体", 12F);
-            this.label14.Location = new System.Drawing.Point(-1, 293);
+            this.label14.Location = new System.Drawing.Point(-1, 366);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(88, 16);
+            this.label14.Size = new System.Drawing.Size(109, 20);
             this.label14.TabIndex = 26;
             this.label14.Text = "流量计型号";
             // 
@@ -2867,9 +3060,10 @@
             this.label28.AutoSize = true;
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("宋体", 12F);
-            this.label28.Location = new System.Drawing.Point(177, 293);
+            this.label28.Location = new System.Drawing.Point(236, 366);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(88, 16);
+            this.label28.Size = new System.Drawing.Size(109, 20);
             this.label28.TabIndex = 28;
             this.label28.Text = "流量计串口";
             // 
@@ -2885,9 +3079,10 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.comboBoxLljck.Location = new System.Drawing.Point(265, 289);
+            this.comboBoxLljck.Location = new System.Drawing.Point(353, 361);
+            this.comboBoxLljck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLljck.Name = "comboBoxLljck";
-            this.comboBoxLljck.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxLljck.Size = new System.Drawing.Size(125, 28);
             this.comboBoxLljck.TabIndex = 27;
             // 
             // tabControl1
@@ -2901,19 +3096,21 @@
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Font = new System.Drawing.Font("宋体", 11F);
             this.tabControl1.Location = new System.Drawing.Point(1, -1);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1062, 602);
+            this.tabControl1.Size = new System.Drawing.Size(1416, 752);
             this.tabControl1.TabIndex = 117;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.tabControl2);
             this.tabPage1.Controls.Add(this.panel6);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1054, 573);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Size = new System.Drawing.Size(1408, 720);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "仪器配置";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -2922,13 +3119,14 @@
             // 
             this.tabControl2.BackColor = System.Drawing.Color.Transparent;
             this.tabControl2.CanReorderTabs = true;
-            this.tabControl2.Controls.Add(this.tabControlPanel2);
             this.tabControl2.Controls.Add(this.tabControlPanel1);
-            this.tabControl2.Location = new System.Drawing.Point(3, 2);
+            this.tabControl2.Controls.Add(this.tabControlPanel2);
+            this.tabControl2.Location = new System.Drawing.Point(4, 2);
+            this.tabControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedTabFont = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Bold);
             this.tabControl2.SelectedTabIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1048, 532);
+            this.tabControl2.Size = new System.Drawing.Size(1397, 665);
             this.tabControl2.TabAlignment = DevComponents.DotNetBar.eTabStripAlignment.Left;
             this.tabControl2.TabIndex = 161;
             this.tabControl2.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
@@ -2995,10 +3193,11 @@
             this.tabControlPanel2.Controls.Add(this.comboBoxLEDck);
             this.tabControlPanel2.Controls.Add(this.label18);
             this.tabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel2.Location = new System.Drawing.Point(28, 0);
+            this.tabControlPanel2.Location = new System.Drawing.Point(33, 0);
+            this.tabControlPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControlPanel2.Name = "tabControlPanel2";
             this.tabControlPanel2.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel2.Size = new System.Drawing.Size(1020, 532);
+            this.tabControlPanel2.Size = new System.Drawing.Size(1364, 665);
             this.tabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
             this.tabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
             this.tabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -3013,9 +3212,10 @@
             this.checkBoxJH_SCREEN.AutoSize = true;
             this.checkBoxJH_SCREEN.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxJH_SCREEN.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxJH_SCREEN.Location = new System.Drawing.Point(7, 286);
+            this.checkBoxJH_SCREEN.Location = new System.Drawing.Point(9, 358);
+            this.checkBoxJH_SCREEN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxJH_SCREEN.Name = "checkBoxJH_SCREEN";
-            this.checkBoxJH_SCREEN.Size = new System.Drawing.Size(235, 20);
+            this.checkBoxJH_SCREEN.Size = new System.Drawing.Size(291, 24);
             this.checkBoxJH_SCREEN.TabIndex = 178;
             this.checkBoxJH_SCREEN.Text = "屏蔽检测界面数据及提示显示";
             this.checkBoxJH_SCREEN.UseVisualStyleBackColor = false;
@@ -3025,9 +3225,10 @@
             this.label186.AutoSize = true;
             this.label186.BackColor = System.Drawing.Color.Transparent;
             this.label186.Font = new System.Drawing.Font("宋体", 12F);
-            this.label186.Location = new System.Drawing.Point(1, 357);
+            this.label186.Location = new System.Drawing.Point(1, 446);
+            this.label186.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label186.Name = "label186";
-            this.label186.Size = new System.Drawing.Size(72, 16);
+            this.label186.Size = new System.Drawing.Size(89, 20);
             this.label186.TabIndex = 176;
             this.label186.Text = "过程数据";
             // 
@@ -3044,9 +3245,10 @@
             "江西",
             "东软甘肃",
             "云南保山"});
-            this.comboBoxDataSecondsType.Location = new System.Drawing.Point(89, 354);
+            this.comboBoxDataSecondsType.Location = new System.Drawing.Point(119, 442);
+            this.comboBoxDataSecondsType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxDataSecondsType.Name = "comboBoxDataSecondsType";
-            this.comboBoxDataSecondsType.Size = new System.Drawing.Size(178, 24);
+            this.comboBoxDataSecondsType.Size = new System.Drawing.Size(236, 28);
             this.comboBoxDataSecondsType.TabIndex = 177;
             // 
             // textBoxJHLAMBDAMAX
@@ -3054,9 +3256,10 @@
             this.textBoxJHLAMBDAMAX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxJHLAMBDAMAX.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxJHLAMBDAMAX.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxJHLAMBDAMAX.Location = new System.Drawing.Point(603, 322);
+            this.textBoxJHLAMBDAMAX.Location = new System.Drawing.Point(804, 402);
+            this.textBoxJHLAMBDAMAX.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxJHLAMBDAMAX.Name = "textBoxJHLAMBDAMAX";
-            this.textBoxJHLAMBDAMAX.Size = new System.Drawing.Size(84, 26);
+            this.textBoxJHLAMBDAMAX.Size = new System.Drawing.Size(111, 31);
             this.textBoxJHLAMBDAMAX.TabIndex = 175;
             // 
             // label184
@@ -3064,9 +3267,10 @@
             this.label184.AutoSize = true;
             this.label184.BackColor = System.Drawing.Color.Transparent;
             this.label184.Font = new System.Drawing.Font("宋体", 12F);
-            this.label184.Location = new System.Drawing.Point(270, 327);
+            this.label184.Location = new System.Drawing.Point(360, 409);
+            this.label184.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label184.Name = "label184";
-            this.label184.Size = new System.Drawing.Size(152, 16);
+            this.label184.Size = new System.Drawing.Size(189, 20);
             this.label184.TabIndex = 174;
             this.label184.Text = "λ值高于该值时预警";
             // 
@@ -3075,9 +3279,10 @@
             this.textBoxJHLAMBDAMIN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxJHLAMBDAMIN.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxJHLAMBDAMIN.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxJHLAMBDAMIN.Location = new System.Drawing.Point(603, 290);
+            this.textBoxJHLAMBDAMIN.Location = new System.Drawing.Point(804, 362);
+            this.textBoxJHLAMBDAMIN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxJHLAMBDAMIN.Name = "textBoxJHLAMBDAMIN";
-            this.textBoxJHLAMBDAMIN.Size = new System.Drawing.Size(84, 26);
+            this.textBoxJHLAMBDAMIN.Size = new System.Drawing.Size(111, 31);
             this.textBoxJHLAMBDAMIN.TabIndex = 173;
             // 
             // label183
@@ -3085,9 +3290,10 @@
             this.label183.AutoSize = true;
             this.label183.BackColor = System.Drawing.Color.Transparent;
             this.label183.Font = new System.Drawing.Font("宋体", 12F);
-            this.label183.Location = new System.Drawing.Point(270, 295);
+            this.label183.Location = new System.Drawing.Point(360, 369);
+            this.label183.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label183.Name = "label183";
-            this.label183.Size = new System.Drawing.Size(152, 16);
+            this.label183.Size = new System.Drawing.Size(189, 20);
             this.label183.TabIndex = 172;
             this.label183.Text = "λ值低于该值时预警";
             // 
@@ -3096,9 +3302,10 @@
             this.textBoxJHLBGLYJZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxJHLBGLYJZ.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxJHLBGLYJZ.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxJHLBGLYJZ.Location = new System.Drawing.Point(603, 258);
+            this.textBoxJHLBGLYJZ.Location = new System.Drawing.Point(804, 322);
+            this.textBoxJHLBGLYJZ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxJHLBGLYJZ.Name = "textBoxJHLBGLYJZ";
-            this.textBoxJHLBGLYJZ.Size = new System.Drawing.Size(84, 26);
+            this.textBoxJHLBGLYJZ.Size = new System.Drawing.Size(111, 31);
             this.textBoxJHLBGLYJZ.TabIndex = 171;
             // 
             // label182
@@ -3106,9 +3313,10 @@
             this.label182.AutoSize = true;
             this.label182.BackColor = System.Drawing.Color.Transparent;
             this.label182.Font = new System.Drawing.Font("宋体", 12F);
-            this.label182.Location = new System.Drawing.Point(270, 263);
+            this.label182.Location = new System.Drawing.Point(360, 329);
+            this.label182.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label182.Name = "label182";
-            this.label182.Size = new System.Drawing.Size(336, 16);
+            this.label182.Size = new System.Drawing.Size(419, 20);
             this.label182.TabIndex = 170;
             this.label182.Text = "最大轮边功率相比额定功率高于该值时预警(%)";
             // 
@@ -3116,9 +3324,10 @@
             // 
             this.panel43.BackColor = System.Drawing.Color.Gray;
             this.panel43.Controls.Add(this.label181);
-            this.panel43.Location = new System.Drawing.Point(0, 227);
+            this.panel43.Location = new System.Drawing.Point(0, 284);
+            this.panel43.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel43.Name = "panel43";
-            this.panel43.Size = new System.Drawing.Size(1015, 27);
+            this.panel43.Size = new System.Drawing.Size(1353, 34);
             this.panel43.TabIndex = 169;
             // 
             // label181
@@ -3126,9 +3335,10 @@
             this.label181.AutoSize = true;
             this.label181.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label181.ForeColor = System.Drawing.Color.White;
-            this.label181.Location = new System.Drawing.Point(4, 7);
+            this.label181.Location = new System.Drawing.Point(5, 9);
+            this.label181.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label181.Name = "label181";
-            this.label181.Size = new System.Drawing.Size(63, 14);
+            this.label181.Size = new System.Drawing.Size(80, 18);
             this.label181.TabIndex = 107;
             this.label181.Text = "其他配置";
             // 
@@ -3137,9 +3347,10 @@
             this.checkBoxJHJK.AutoSize = true;
             this.checkBoxJHJK.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxJHJK.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxJHJK.Location = new System.Drawing.Point(7, 260);
+            this.checkBoxJHJK.Location = new System.Drawing.Point(9, 325);
+            this.checkBoxJHJK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxJHJK.Name = "checkBoxJHJK";
-            this.checkBoxJHJK.Size = new System.Drawing.Size(171, 20);
+            this.checkBoxJHJK.Size = new System.Drawing.Size(211, 24);
             this.checkBoxJHJK.TabIndex = 168;
             this.checkBoxJHJK.Text = "采用金华市监控选项";
             this.checkBoxJHJK.UseVisualStyleBackColor = false;
@@ -3148,9 +3359,10 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.Gray;
             this.panel4.Controls.Add(this.label85);
-            this.panel4.Location = new System.Drawing.Point(1, 4);
+            this.panel4.Location = new System.Drawing.Point(1, 5);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1016, 27);
+            this.panel4.Size = new System.Drawing.Size(1355, 34);
             this.panel4.TabIndex = 125;
             // 
             // label85
@@ -3158,9 +3370,10 @@
             this.label85.AutoSize = true;
             this.label85.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label85.ForeColor = System.Drawing.Color.White;
-            this.label85.Location = new System.Drawing.Point(4, 7);
+            this.label85.Location = new System.Drawing.Point(5, 9);
+            this.label85.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(168, 14);
+            this.label85.Size = new System.Drawing.Size(215, 18);
             this.label85.TabIndex = 107;
             this.label85.Text = "LED屏、变频器等仪器配置";
             // 
@@ -3169,9 +3382,10 @@
             this.checkBoxUseWeightWCF.AutoSize = true;
             this.checkBoxUseWeightWCF.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxUseWeightWCF.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxUseWeightWCF.Location = new System.Drawing.Point(8, 144);
+            this.checkBoxUseWeightWCF.Location = new System.Drawing.Point(11, 180);
+            this.checkBoxUseWeightWCF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxUseWeightWCF.Name = "checkBoxUseWeightWCF";
-            this.checkBoxUseWeightWCF.Size = new System.Drawing.Size(299, 20);
+            this.checkBoxUseWeightWCF.Size = new System.Drawing.Size(371, 24);
             this.checkBoxUseWeightWCF.TabIndex = 160;
             this.checkBoxUseWeightWCF.Text = "使用称重工位进行驱动轴称重，地址：";
             this.checkBoxUseWeightWCF.UseVisualStyleBackColor = false;
@@ -3181,9 +3395,10 @@
             this.textBoxWeightWCF.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxWeightWCF.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxWeightWCF.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxWeightWCF.Location = new System.Drawing.Point(313, 140);
+            this.textBoxWeightWCF.Location = new System.Drawing.Point(417, 175);
+            this.textBoxWeightWCF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxWeightWCF.Name = "textBoxWeightWCF";
-            this.textBoxWeightWCF.Size = new System.Drawing.Size(682, 26);
+            this.textBoxWeightWCF.Size = new System.Drawing.Size(909, 30);
             this.textBoxWeightWCF.TabIndex = 159;
             // 
             // label163
@@ -3191,9 +3406,10 @@
             this.label163.AutoSize = true;
             this.label163.BackColor = System.Drawing.Color.Transparent;
             this.label163.Font = new System.Drawing.Font("宋体", 12F);
-            this.label163.Location = new System.Drawing.Point(547, 67);
+            this.label163.Location = new System.Drawing.Point(729, 84);
+            this.label163.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label163.Name = "label163";
-            this.label163.Size = new System.Drawing.Size(40, 16);
+            this.label163.Size = new System.Drawing.Size(49, 20);
             this.label163.TabIndex = 155;
             this.label163.Text = "屏号";
             // 
@@ -3211,9 +3427,10 @@
             "5",
             "6",
             "7"});
-            this.comboBoxLEDTJPH.Location = new System.Drawing.Point(631, 63);
+            this.comboBoxLEDTJPH.Location = new System.Drawing.Point(841, 79);
+            this.comboBoxLEDTJPH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLEDTJPH.Name = "comboBoxLEDTJPH";
-            this.comboBoxLEDTJPH.Size = new System.Drawing.Size(90, 24);
+            this.comboBoxLEDTJPH.Size = new System.Drawing.Size(119, 28);
             this.comboBoxLEDTJPH.TabIndex = 154;
             // 
             // label149
@@ -3221,9 +3438,10 @@
             this.label149.AutoSize = true;
             this.label149.BackColor = System.Drawing.Color.Transparent;
             this.label149.Font = new System.Drawing.Font("宋体", 12F);
-            this.label149.Location = new System.Drawing.Point(860, 66);
+            this.label149.Location = new System.Drawing.Point(1147, 82);
+            this.label149.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label149.Name = "label149";
-            this.label149.Size = new System.Drawing.Size(72, 16);
+            this.label149.Size = new System.Drawing.Size(89, 20);
             this.label149.TabIndex = 151;
             this.label149.Text = "下排地址";
             // 
@@ -3241,9 +3459,10 @@
             "5",
             "6",
             "7"});
-            this.comboBoxLEDROW2.Location = new System.Drawing.Point(937, 62);
+            this.comboBoxLEDROW2.Location = new System.Drawing.Point(1249, 78);
+            this.comboBoxLEDROW2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLEDROW2.Name = "comboBoxLEDROW2";
-            this.comboBoxLEDROW2.Size = new System.Drawing.Size(58, 24);
+            this.comboBoxLEDROW2.Size = new System.Drawing.Size(76, 28);
             this.comboBoxLEDROW2.TabIndex = 150;
             // 
             // label148
@@ -3251,9 +3470,10 @@
             this.label148.AutoSize = true;
             this.label148.BackColor = System.Drawing.Color.Transparent;
             this.label148.Font = new System.Drawing.Font("宋体", 12F);
-            this.label148.Location = new System.Drawing.Point(723, 67);
+            this.label148.Location = new System.Drawing.Point(964, 84);
+            this.label148.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label148.Name = "label148";
-            this.label148.Size = new System.Drawing.Size(72, 16);
+            this.label148.Size = new System.Drawing.Size(89, 20);
             this.label148.TabIndex = 149;
             this.label148.Text = "上排地址";
             // 
@@ -3271,9 +3491,10 @@
             "5",
             "6",
             "7"});
-            this.comboBoxLEDROW1.Location = new System.Drawing.Point(807, 63);
+            this.comboBoxLEDROW1.Location = new System.Drawing.Point(1076, 79);
+            this.comboBoxLEDROW1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLEDROW1.Name = "comboBoxLEDROW1";
-            this.comboBoxLEDROW1.Size = new System.Drawing.Size(56, 24);
+            this.comboBoxLEDROW1.Size = new System.Drawing.Size(73, 28);
             this.comboBoxLEDROW1.TabIndex = 148;
             // 
             // comboBoxCarGd
@@ -3287,9 +3508,10 @@
             "2",
             "3",
             "4"});
-            this.comboBoxCarGd.Location = new System.Drawing.Point(494, 201);
+            this.comboBoxCarGd.Location = new System.Drawing.Point(659, 251);
+            this.comboBoxCarGd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCarGd.Name = "comboBoxCarGd";
-            this.comboBoxCarGd.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxCarGd.Size = new System.Drawing.Size(125, 28);
             this.comboBoxCarGd.TabIndex = 145;
             // 
             // label137
@@ -3297,9 +3519,10 @@
             this.label137.AutoSize = true;
             this.label137.BackColor = System.Drawing.Color.Transparent;
             this.label137.Font = new System.Drawing.Font("宋体", 12F);
-            this.label137.Location = new System.Drawing.Point(373, 204);
+            this.label137.Location = new System.Drawing.Point(497, 255);
+            this.label137.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label137.Name = "label137";
-            this.label137.Size = new System.Drawing.Size(120, 16);
+            this.label137.Size = new System.Drawing.Size(149, 20);
             this.label137.TabIndex = 144;
             this.label137.Text = "测功机到位光电";
             // 
@@ -3308,9 +3531,10 @@
             this.checkBoxTPWSD.AutoSize = true;
             this.checkBoxTPWSD.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxTPWSD.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxTPWSD.Location = new System.Drawing.Point(557, 116);
+            this.checkBoxTPWSD.Location = new System.Drawing.Point(743, 145);
+            this.checkBoxTPWSD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxTPWSD.Name = "checkBoxTPWSD";
-            this.checkBoxTPWSD.Size = new System.Drawing.Size(235, 20);
+            this.checkBoxTPWSD.Size = new System.Drawing.Size(291, 24);
             this.checkBoxTPWSD.TabIndex = 132;
             this.checkBoxTPWSD.Text = "自检时是否自动统配环境单元";
             this.checkBoxTPWSD.UseVisualStyleBackColor = false;
@@ -3320,9 +3544,10 @@
             this.textBoxBrakePWM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxBrakePWM.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxBrakePWM.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxBrakePWM.Location = new System.Drawing.Point(807, 35);
+            this.textBoxBrakePWM.Location = new System.Drawing.Point(1076, 44);
+            this.textBoxBrakePWM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxBrakePWM.Name = "textBoxBrakePWM";
-            this.textBoxBrakePWM.Size = new System.Drawing.Size(84, 26);
+            this.textBoxBrakePWM.Size = new System.Drawing.Size(111, 31);
             this.textBoxBrakePWM.TabIndex = 131;
             // 
             // label111
@@ -3330,9 +3555,10 @@
             this.label111.AutoSize = true;
             this.label111.BackColor = System.Drawing.Color.Transparent;
             this.label111.Font = new System.Drawing.Font("宋体", 12F);
-            this.label111.Location = new System.Drawing.Point(722, 40);
+            this.label111.Location = new System.Drawing.Point(963, 50);
+            this.label111.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label111.Name = "label111";
-            this.label111.Size = new System.Drawing.Size(88, 16);
+            this.label111.Size = new System.Drawing.Size(109, 20);
             this.label111.TabIndex = 130;
             this.label111.Text = "刹车PWM(%)";
             // 
@@ -3340,9 +3566,10 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.Gray;
             this.panel5.Controls.Add(this.label86);
-            this.panel5.Location = new System.Drawing.Point(1, 170);
+            this.panel5.Location = new System.Drawing.Point(1, 212);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1015, 27);
+            this.panel5.Size = new System.Drawing.Size(1353, 34);
             this.panel5.TabIndex = 126;
             // 
             // label86
@@ -3350,9 +3577,10 @@
             this.label86.AutoSize = true;
             this.label86.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label86.ForeColor = System.Drawing.Color.White;
-            this.label86.Location = new System.Drawing.Point(4, 7);
+            this.label86.Location = new System.Drawing.Point(5, 9);
+            this.label86.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(105, 14);
+            this.label86.Size = new System.Drawing.Size(134, 18);
             this.label86.TabIndex = 107;
             this.label86.Text = "继电器通道配置";
             // 
@@ -3457,10 +3685,11 @@
             this.tabControlPanel1.Controls.Add(this.label15);
             this.tabControlPanel1.Controls.Add(this.comboBoxLljxh);
             this.tabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel1.Location = new System.Drawing.Point(28, 0);
+            this.tabControlPanel1.Location = new System.Drawing.Point(33, 0);
+            this.tabControlPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControlPanel1.Name = "tabControlPanel1";
             this.tabControlPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel1.Size = new System.Drawing.Size(1020, 532);
+            this.tabControlPanel1.Size = new System.Drawing.Size(1364, 665);
             this.tabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
             this.tabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
             this.tabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -3475,9 +3704,10 @@
             this.textBoxCanliHCTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxCanliHCTime.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxCanliHCTime.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxCanliHCTime.Location = new System.Drawing.Point(444, 430);
+            this.textBoxCanliHCTime.Location = new System.Drawing.Point(592, 538);
+            this.textBoxCanliHCTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxCanliHCTime.Name = "textBoxCanliHCTime";
-            this.textBoxCanliHCTime.Size = new System.Drawing.Size(95, 26);
+            this.textBoxCanliHCTime.Size = new System.Drawing.Size(126, 30);
             this.textBoxCanliHCTime.TabIndex = 181;
             // 
             // label203
@@ -3485,9 +3715,10 @@
             this.label203.AutoSize = true;
             this.label203.BackColor = System.Drawing.Color.Transparent;
             this.label203.Font = new System.Drawing.Font("宋体", 12F);
-            this.label203.Location = new System.Drawing.Point(322, 435);
+            this.label203.Location = new System.Drawing.Point(429, 544);
+            this.label203.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label203.Name = "label203";
-            this.label203.Size = new System.Drawing.Size(104, 16);
+            this.label203.Size = new System.Drawing.Size(129, 20);
             this.label203.TabIndex = 182;
             this.label203.Text = "残留测定时间";
             // 
@@ -3496,9 +3727,10 @@
             this.textBoxBackGroundTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxBackGroundTime.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxBackGroundTime.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxBackGroundTime.Location = new System.Drawing.Point(121, 430);
+            this.textBoxBackGroundTime.Location = new System.Drawing.Point(161, 538);
+            this.textBoxBackGroundTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxBackGroundTime.Name = "textBoxBackGroundTime";
-            this.textBoxBackGroundTime.Size = new System.Drawing.Size(95, 26);
+            this.textBoxBackGroundTime.Size = new System.Drawing.Size(126, 30);
             this.textBoxBackGroundTime.TabIndex = 179;
             // 
             // label202
@@ -3506,9 +3738,10 @@
             this.label202.AutoSize = true;
             this.label202.BackColor = System.Drawing.Color.Transparent;
             this.label202.Font = new System.Drawing.Font("宋体", 12F);
-            this.label202.Location = new System.Drawing.Point(-1, 435);
+            this.label202.Location = new System.Drawing.Point(-1, 544);
+            this.label202.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label202.Name = "label202";
-            this.label202.Size = new System.Drawing.Size(104, 16);
+            this.label202.Size = new System.Drawing.Size(129, 20);
             this.label202.TabIndex = 180;
             this.label202.Text = "背景测定时间";
             // 
@@ -3517,9 +3750,10 @@
             this.checkBoxNHSJZ.AutoSize = true;
             this.checkBoxNHSJZ.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxNHSJZ.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxNHSJZ.Location = new System.Drawing.Point(3, 372);
+            this.checkBoxNHSJZ.Location = new System.Drawing.Point(4, 465);
+            this.checkBoxNHSJZ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxNHSJZ.Name = "checkBoxNHSJZ";
-            this.checkBoxNHSJZ.Size = new System.Drawing.Size(283, 20);
+            this.checkBoxNHSJZ.Size = new System.Drawing.Size(351, 24);
             this.checkBoxNHSJZ.TabIndex = 178;
             this.checkBoxNHSJZ.Text = "南华附件（转速、油温、环境参数）";
             this.checkBoxNHSJZ.UseVisualStyleBackColor = false;
@@ -3532,9 +3766,10 @@
             this.comboBoxNHSJZ_COMSTRING.Items.AddRange(new object[] {
             "9600,N,8,1",
             "4800,N,8,1"});
-            this.comboBoxNHSJZ_COMSTRING.Location = new System.Drawing.Point(469, 370);
+            this.comboBoxNHSJZ_COMSTRING.Location = new System.Drawing.Point(625, 462);
+            this.comboBoxNHSJZ_COMSTRING.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxNHSJZ_COMSTRING.Name = "comboBoxNHSJZ_COMSTRING";
-            this.comboBoxNHSJZ_COMSTRING.Size = new System.Drawing.Size(177, 24);
+            this.comboBoxNHSJZ_COMSTRING.Size = new System.Drawing.Size(235, 28);
             this.comboBoxNHSJZ_COMSTRING.TabIndex = 176;
             // 
             // label190
@@ -3542,9 +3777,10 @@
             this.label190.AutoSize = true;
             this.label190.BackColor = System.Drawing.Color.Transparent;
             this.label190.Font = new System.Drawing.Font("宋体", 12F);
-            this.label190.Location = new System.Drawing.Point(391, 374);
+            this.label190.Location = new System.Drawing.Point(521, 468);
+            this.label190.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label190.Name = "label190";
-            this.label190.Size = new System.Drawing.Size(72, 16);
+            this.label190.Size = new System.Drawing.Size(89, 20);
             this.label190.TabIndex = 177;
             this.label190.Text = "串口配置";
             // 
@@ -3560,9 +3796,10 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.comboBoxNHSJZ_COM.Location = new System.Drawing.Point(290, 370);
+            this.comboBoxNHSJZ_COM.Location = new System.Drawing.Point(387, 462);
+            this.comboBoxNHSJZ_COM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxNHSJZ_COM.Name = "comboBoxNHSJZ_COM";
-            this.comboBoxNHSJZ_COM.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxNHSJZ_COM.Size = new System.Drawing.Size(125, 28);
             this.comboBoxNHSJZ_COM.TabIndex = 174;
             // 
             // checkBoxIsLljNhSelfUse
@@ -3570,9 +3807,10 @@
             this.checkBoxIsLljNhSelfUse.AutoSize = true;
             this.checkBoxIsLljNhSelfUse.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxIsLljNhSelfUse.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxIsLljNhSelfUse.Location = new System.Drawing.Point(911, 291);
+            this.checkBoxIsLljNhSelfUse.Location = new System.Drawing.Point(1215, 364);
+            this.checkBoxIsLljNhSelfUse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxIsLljNhSelfUse.Name = "checkBoxIsLljNhSelfUse";
-            this.checkBoxIsLljNhSelfUse.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxIsLljNhSelfUse.Size = new System.Drawing.Size(111, 24);
             this.checkBoxIsLljNhSelfUse.TabIndex = 171;
             this.checkBoxIsLljNhSelfUse.Text = "南华自用";
             this.checkBoxIsLljNhSelfUse.UseVisualStyleBackColor = false;
@@ -3582,9 +3820,10 @@
             this.checkBoxCD_YDJ.AutoSize = true;
             this.checkBoxCD_YDJ.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxCD_YDJ.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxCD_YDJ.Location = new System.Drawing.Point(265, 238);
+            this.checkBoxCD_YDJ.Location = new System.Drawing.Point(353, 298);
+            this.checkBoxCD_YDJ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxCD_YDJ.Name = "checkBoxCD_YDJ";
-            this.checkBoxCD_YDJ.Size = new System.Drawing.Size(75, 20);
+            this.checkBoxCD_YDJ.Size = new System.Drawing.Size(91, 24);
             this.checkBoxCD_YDJ.TabIndex = 170;
             this.checkBoxCD_YDJ.Text = "烟度计";
             this.checkBoxCD_YDJ.UseVisualStyleBackColor = false;
@@ -3594,9 +3833,10 @@
             this.checkBoxCD_FQY.AutoSize = true;
             this.checkBoxCD_FQY.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxCD_FQY.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxCD_FQY.Location = new System.Drawing.Point(180, 238);
+            this.checkBoxCD_FQY.Location = new System.Drawing.Point(240, 298);
+            this.checkBoxCD_FQY.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxCD_FQY.Name = "checkBoxCD_FQY";
-            this.checkBoxCD_FQY.Size = new System.Drawing.Size(75, 20);
+            this.checkBoxCD_FQY.Size = new System.Drawing.Size(91, 24);
             this.checkBoxCD_FQY.TabIndex = 0;
             this.checkBoxCD_FQY.Text = "废气仪";
             this.checkBoxCD_FQY.UseVisualStyleBackColor = false;
@@ -3606,9 +3846,10 @@
             this.label187.AutoSize = true;
             this.label187.BackColor = System.Drawing.Color.Transparent;
             this.label187.Font = new System.Drawing.Font("宋体", 12F);
-            this.label187.Location = new System.Drawing.Point(86, 238);
+            this.label187.Location = new System.Drawing.Point(115, 298);
+            this.label187.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label187.Name = "label187";
-            this.label187.Size = new System.Drawing.Size(88, 16);
+            this.label187.Size = new System.Drawing.Size(109, 20);
             this.label187.TabIndex = 169;
             this.label187.Text = "驰达仪器：";
             // 
@@ -3617,9 +3858,10 @@
             this.textBoxLLjLlmyz.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxLLjLlmyz.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxLLjLlmyz.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxLLjLlmyz.Location = new System.Drawing.Point(815, 287);
+            this.textBoxLLjLlmyz.Location = new System.Drawing.Point(1087, 359);
+            this.textBoxLLjLlmyz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLLjLlmyz.Name = "textBoxLLjLlmyz";
-            this.textBoxLLjLlmyz.Size = new System.Drawing.Size(74, 26);
+            this.textBoxLLjLlmyz.Size = new System.Drawing.Size(98, 30);
             this.textBoxLLjLlmyz.TabIndex = 167;
             // 
             // label185
@@ -3627,9 +3869,10 @@
             this.label185.AutoSize = true;
             this.label185.BackColor = System.Drawing.Color.Transparent;
             this.label185.Font = new System.Drawing.Font("宋体", 12F);
-            this.label185.Location = new System.Drawing.Point(724, 292);
+            this.label185.Location = new System.Drawing.Point(965, 365);
+            this.label185.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label185.Name = "label185";
-            this.label185.Size = new System.Drawing.Size(96, 16);
+            this.label185.Size = new System.Drawing.Size(119, 20);
             this.label185.TabIndex = 168;
             this.label185.Text = "名义值(L/s)";
             // 
@@ -3643,9 +3886,10 @@
             "4800,N,8,1",
             "300,N,8,2",
             "9600,N,8,1"});
-            this.comboBoxLZCKPZZ.Location = new System.Drawing.Point(741, 339);
+            this.comboBoxLZCKPZZ.Location = new System.Drawing.Point(988, 424);
+            this.comboBoxLZCKPZZ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLZCKPZZ.Name = "comboBoxLZCKPZZ";
-            this.comboBoxLZCKPZZ.Size = new System.Drawing.Size(147, 24);
+            this.comboBoxLZCKPZZ.Size = new System.Drawing.Size(195, 28);
             this.comboBoxLZCKPZZ.TabIndex = 165;
             // 
             // label177
@@ -3653,9 +3897,10 @@
             this.label177.AutoSize = true;
             this.label177.BackColor = System.Drawing.Color.Transparent;
             this.label177.Font = new System.Drawing.Font("宋体", 12F);
-            this.label177.Location = new System.Drawing.Point(663, 345);
+            this.label177.Location = new System.Drawing.Point(884, 431);
+            this.label177.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label177.Name = "label177";
-            this.label177.Size = new System.Drawing.Size(72, 16);
+            this.label177.Size = new System.Drawing.Size(89, 20);
             this.label177.TabIndex = 166;
             this.label177.Text = "串口配置";
             // 
@@ -3664,9 +3909,10 @@
             this.textBoxLZYDJADD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxLZYDJADD.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxLZYDJADD.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxLZYDJADD.Location = new System.Drawing.Point(334, 340);
+            this.textBoxLZYDJADD.Location = new System.Drawing.Point(445, 425);
+            this.textBoxLZYDJADD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLZYDJADD.Name = "textBoxLZYDJADD";
-            this.textBoxLZYDJADD.Size = new System.Drawing.Size(82, 26);
+            this.textBoxLZYDJADD.Size = new System.Drawing.Size(109, 30);
             this.textBoxLZYDJADD.TabIndex = 163;
             // 
             // label176
@@ -3674,9 +3920,10 @@
             this.label176.AutoSize = true;
             this.label176.BackColor = System.Drawing.Color.Transparent;
             this.label176.Font = new System.Drawing.Font("宋体", 12F);
-            this.label176.Location = new System.Drawing.Point(214, 346);
+            this.label176.Location = new System.Drawing.Point(285, 432);
+            this.label176.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label176.Name = "label176";
-            this.label176.Size = new System.Drawing.Size(120, 16);
+            this.label176.Size = new System.Drawing.Size(149, 20);
             this.label176.TabIndex = 164;
             this.label176.Text = "滤纸烟度计地址";
             // 
@@ -3690,9 +3937,10 @@
             "4800,N,8,1",
             "2400,N,8,1",
             "1200,N,8,1"});
-            this.comboBoxNOxCkpz.Location = new System.Drawing.Point(597, 262);
+            this.comboBoxNOxCkpz.Location = new System.Drawing.Point(796, 328);
+            this.comboBoxNOxCkpz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxNOxCkpz.Name = "comboBoxNOxCkpz";
-            this.comboBoxNOxCkpz.Size = new System.Drawing.Size(123, 24);
+            this.comboBoxNOxCkpz.Size = new System.Drawing.Size(163, 28);
             this.comboBoxNOxCkpz.TabIndex = 161;
             // 
             // label171
@@ -3700,9 +3948,10 @@
             this.label171.AutoSize = true;
             this.label171.BackColor = System.Drawing.Color.Transparent;
             this.label171.Font = new System.Drawing.Font("宋体", 12F);
-            this.label171.Location = new System.Drawing.Point(519, 266);
+            this.label171.Location = new System.Drawing.Point(692, 332);
+            this.label171.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label171.Name = "label171";
-            this.label171.Size = new System.Drawing.Size(72, 16);
+            this.label171.Size = new System.Drawing.Size(89, 20);
             this.label171.TabIndex = 162;
             this.label171.Text = "串口配置";
             // 
@@ -3715,9 +3964,10 @@
             this.comboBoxNOxXh.Items.AddRange(new object[] {
             "无",
             "mqw_5101"});
-            this.comboBoxNOxXh.Location = new System.Drawing.Point(176, 262);
+            this.comboBoxNOxXh.Location = new System.Drawing.Point(235, 328);
+            this.comboBoxNOxXh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxNOxXh.Name = "comboBoxNOxXh";
-            this.comboBoxNOxXh.Size = new System.Drawing.Size(91, 24);
+            this.comboBoxNOxXh.Size = new System.Drawing.Size(120, 28);
             this.comboBoxNOxXh.TabIndex = 157;
             // 
             // label172
@@ -3725,9 +3975,10 @@
             this.label172.AutoSize = true;
             this.label172.BackColor = System.Drawing.Color.Transparent;
             this.label172.Font = new System.Drawing.Font("宋体", 12F);
-            this.label172.Location = new System.Drawing.Point(-1, 266);
+            this.label172.Location = new System.Drawing.Point(-1, 332);
+            this.label172.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label172.Name = "label172";
-            this.label172.Size = new System.Drawing.Size(128, 16);
+            this.label172.Size = new System.Drawing.Size(159, 20);
             this.label172.TabIndex = 158;
             this.label172.Text = "柴油车NOx测量仪";
             // 
@@ -3743,9 +3994,10 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.comboBoxNOxCk.Location = new System.Drawing.Point(392, 262);
+            this.comboBoxNOxCk.Location = new System.Drawing.Point(523, 328);
+            this.comboBoxNOxCk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxNOxCk.Name = "comboBoxNOxCk";
-            this.comboBoxNOxCk.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxNOxCk.Size = new System.Drawing.Size(160, 28);
             this.comboBoxNOxCk.TabIndex = 159;
             // 
             // label173
@@ -3753,9 +4005,10 @@
             this.label173.AutoSize = true;
             this.label173.BackColor = System.Drawing.Color.Transparent;
             this.label173.Font = new System.Drawing.Font("宋体", 12F);
-            this.label173.Location = new System.Drawing.Point(273, 266);
+            this.label173.Location = new System.Drawing.Point(364, 332);
+            this.label173.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label173.Name = "label173";
-            this.label173.Size = new System.Drawing.Size(112, 16);
+            this.label173.Size = new System.Drawing.Size(139, 20);
             this.label173.TabIndex = 160;
             this.label173.Text = "NOx测量仪串口";
             // 
@@ -3763,9 +4016,10 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Gray;
             this.panel1.Controls.Add(this.label40);
-            this.panel1.Location = new System.Drawing.Point(0, 5);
+            this.panel1.Location = new System.Drawing.Point(0, 6);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1016, 27);
+            this.panel1.Size = new System.Drawing.Size(1355, 34);
             this.panel1.TabIndex = 122;
             // 
             // label40
@@ -3773,9 +4027,10 @@
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label40.ForeColor = System.Drawing.Color.White;
-            this.label40.Location = new System.Drawing.Point(4, 7);
+            this.label40.Location = new System.Drawing.Point(5, 9);
+            this.label40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(77, 14);
+            this.label40.Size = new System.Drawing.Size(98, 18);
             this.label40.TabIndex = 107;
             this.label40.Text = "测功机配置";
             // 
@@ -3784,9 +4039,10 @@
             this.checkBoxDisplayJudge.AutoSize = true;
             this.checkBoxDisplayJudge.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxDisplayJudge.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxDisplayJudge.Location = new System.Drawing.Point(815, 127);
+            this.checkBoxDisplayJudge.Location = new System.Drawing.Point(1087, 159);
+            this.checkBoxDisplayJudge.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDisplayJudge.Name = "checkBoxDisplayJudge";
-            this.checkBoxDisplayJudge.Size = new System.Drawing.Size(187, 20);
+            this.checkBoxDisplayJudge.Size = new System.Drawing.Size(231, 24);
             this.checkBoxDisplayJudge.TabIndex = 156;
             this.checkBoxDisplayJudge.Text = "检测完毕显示评判结果";
             this.checkBoxDisplayJudge.UseVisualStyleBackColor = false;
@@ -3796,9 +4052,10 @@
             this.label151.AutoSize = true;
             this.label151.BackColor = System.Drawing.Color.Transparent;
             this.label151.Font = new System.Drawing.Font("宋体", 12F);
-            this.label151.Location = new System.Drawing.Point(425, 66);
+            this.label151.Location = new System.Drawing.Point(567, 82);
+            this.label151.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label151.Name = "label151";
-            this.label151.Size = new System.Drawing.Size(72, 16);
+            this.label151.Size = new System.Drawing.Size(89, 20);
             this.label151.TabIndex = 153;
             this.label151.Text = "串口配置";
             // 
@@ -3812,9 +4069,10 @@
             "38400,N,8,1",
             "9600,N,8,1",
             "4800,N,8,1"});
-            this.comboBoxCgjckpzz.Location = new System.Drawing.Point(503, 63);
+            this.comboBoxCgjckpzz.Location = new System.Drawing.Point(671, 79);
+            this.comboBoxCgjckpzz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCgjckpzz.Name = "comboBoxCgjckpzz";
-            this.comboBoxCgjckpzz.Size = new System.Drawing.Size(199, 24);
+            this.comboBoxCgjckpzz.Size = new System.Drawing.Size(264, 28);
             this.comboBoxCgjckpzz.TabIndex = 152;
             // 
             // checkBoxIsYdjNhSelfUse
@@ -3822,9 +4080,10 @@
             this.checkBoxIsYdjNhSelfUse.AutoSize = true;
             this.checkBoxIsYdjNhSelfUse.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxIsYdjNhSelfUse.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxIsYdjNhSelfUse.Location = new System.Drawing.Point(912, 207);
+            this.checkBoxIsYdjNhSelfUse.Location = new System.Drawing.Point(1216, 259);
+            this.checkBoxIsYdjNhSelfUse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxIsYdjNhSelfUse.Name = "checkBoxIsYdjNhSelfUse";
-            this.checkBoxIsYdjNhSelfUse.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxIsYdjNhSelfUse.Size = new System.Drawing.Size(111, 24);
             this.checkBoxIsYdjNhSelfUse.TabIndex = 147;
             this.checkBoxIsYdjNhSelfUse.Text = "南华自用";
             this.checkBoxIsYdjNhSelfUse.UseVisualStyleBackColor = false;
@@ -3834,9 +4093,10 @@
             this.checkBoxIsFqyNhSelfUse.AutoSize = true;
             this.checkBoxIsFqyNhSelfUse.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxIsFqyNhSelfUse.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxIsFqyNhSelfUse.Location = new System.Drawing.Point(912, 183);
+            this.checkBoxIsFqyNhSelfUse.Location = new System.Drawing.Point(1216, 229);
+            this.checkBoxIsFqyNhSelfUse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxIsFqyNhSelfUse.Name = "checkBoxIsFqyNhSelfUse";
-            this.checkBoxIsFqyNhSelfUse.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxIsFqyNhSelfUse.Size = new System.Drawing.Size(111, 24);
             this.checkBoxIsFqyNhSelfUse.TabIndex = 146;
             this.checkBoxIsFqyNhSelfUse.Text = "南华自用";
             this.checkBoxIsFqyNhSelfUse.UseVisualStyleBackColor = false;
@@ -3846,9 +4106,10 @@
             this.checkBoxGdyk.AutoSize = true;
             this.checkBoxGdyk.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxGdyk.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxGdyk.Location = new System.Drawing.Point(725, 41);
+            this.checkBoxGdyk.Location = new System.Drawing.Point(967, 51);
+            this.checkBoxGdyk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxGdyk.Name = "checkBoxGdyk";
-            this.checkBoxGdyk.Size = new System.Drawing.Size(107, 20);
+            this.checkBoxGdyk.Size = new System.Drawing.Size(131, 24);
             this.checkBoxGdyk.TabIndex = 143;
             this.checkBoxGdyk.Text = "带光电遥控";
             this.checkBoxGdyk.UseVisualStyleBackColor = false;
@@ -3858,9 +4119,10 @@
             this.label119.AutoSize = true;
             this.label119.BackColor = System.Drawing.Color.Transparent;
             this.label119.Font = new System.Drawing.Font("宋体", 12F);
-            this.label119.Location = new System.Drawing.Point(540, 318);
+            this.label119.Location = new System.Drawing.Point(720, 398);
+            this.label119.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label119.Name = "label119";
-            this.label119.Size = new System.Drawing.Size(72, 16);
+            this.label119.Size = new System.Drawing.Size(89, 20);
             this.label119.TabIndex = 142;
             this.label119.Text = "台架内阻";
             // 
@@ -3873,9 +4135,10 @@
             this.comboBoxCgjNz.Items.AddRange(new object[] {
             "使用推荐值",
             "反拖法测定"});
-            this.comboBoxCgjNz.Location = new System.Drawing.Point(630, 315);
+            this.comboBoxCgjNz.Location = new System.Drawing.Point(840, 394);
+            this.comboBoxCgjNz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCgjNz.Name = "comboBoxCgjNz";
-            this.comboBoxCgjNz.Size = new System.Drawing.Size(125, 24);
+            this.comboBoxCgjNz.Size = new System.Drawing.Size(165, 28);
             this.comboBoxCgjNz.TabIndex = 141;
             // 
             // label116
@@ -3883,9 +4146,10 @@
             this.label116.AutoSize = true;
             this.label116.BackColor = System.Drawing.Color.Transparent;
             this.label116.Font = new System.Drawing.Font("宋体", 12F);
-            this.label116.Location = new System.Drawing.Point(389, 128);
+            this.label116.Location = new System.Drawing.Point(519, 160);
+            this.label116.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label116.Name = "label116";
-            this.label116.Size = new System.Drawing.Size(104, 16);
+            this.label116.Size = new System.Drawing.Size(129, 20);
             this.label116.TabIndex = 140;
             this.label116.Text = "司机屏分辨率";
             // 
@@ -3898,9 +4162,10 @@
             this.comboBoxDriveFbl.Items.AddRange(new object[] {
             "1440*960",
             "1366*768"});
-            this.comboBoxDriveFbl.Location = new System.Drawing.Point(495, 123);
+            this.comboBoxDriveFbl.Location = new System.Drawing.Point(660, 154);
+            this.comboBoxDriveFbl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxDriveFbl.Name = "comboBoxDriveFbl";
-            this.comboBoxDriveFbl.Size = new System.Drawing.Size(142, 24);
+            this.comboBoxDriveFbl.Size = new System.Drawing.Size(188, 28);
             this.comboBoxDriveFbl.TabIndex = 139;
             // 
             // comboBoxYhyck
@@ -3915,9 +4180,10 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.comboBoxYhyck.Location = new System.Drawing.Point(265, 314);
+            this.comboBoxYhyck.Location = new System.Drawing.Point(353, 392);
+            this.comboBoxYhyck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYhyck.Name = "comboBoxYhyck";
-            this.comboBoxYhyck.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxYhyck.Size = new System.Drawing.Size(125, 28);
             this.comboBoxYhyck.TabIndex = 135;
             // 
             // labelYhyCk
@@ -3925,9 +4191,10 @@
             this.labelYhyCk.AutoSize = true;
             this.labelYhyCk.BackColor = System.Drawing.Color.Transparent;
             this.labelYhyCk.Font = new System.Drawing.Font("宋体", 12F);
-            this.labelYhyCk.Location = new System.Drawing.Point(177, 318);
+            this.labelYhyCk.Location = new System.Drawing.Point(236, 398);
+            this.labelYhyCk.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelYhyCk.Name = "labelYhyCk";
-            this.labelYhyCk.Size = new System.Drawing.Size(88, 16);
+            this.labelYhyCk.Size = new System.Drawing.Size(109, 20);
             this.labelYhyCk.TabIndex = 136;
             this.labelYhyCk.Text = "油耗仪串口";
             // 
@@ -3936,9 +4203,10 @@
             this.label117.AutoSize = true;
             this.label117.BackColor = System.Drawing.Color.Transparent;
             this.label117.Font = new System.Drawing.Font("宋体", 12F);
-            this.label117.Location = new System.Drawing.Point(-1, 318);
+            this.label117.Location = new System.Drawing.Point(-1, 398);
+            this.label117.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label117.Name = "label117";
-            this.label117.Size = new System.Drawing.Size(88, 16);
+            this.label117.Size = new System.Drawing.Size(109, 20);
             this.label117.TabIndex = 134;
             this.label117.Text = "油耗仪型号";
             // 
@@ -3953,9 +4221,10 @@
             "mql_8201",
             "fly_2000",
             "nhty_1"});
-            this.comboBoxYhyxh.Location = new System.Drawing.Point(87, 314);
+            this.comboBoxYhyxh.Location = new System.Drawing.Point(116, 392);
+            this.comboBoxYhyxh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYhyxh.Name = "comboBoxYhyxh";
-            this.comboBoxYhyxh.Size = new System.Drawing.Size(90, 24);
+            this.comboBoxYhyxh.Size = new System.Drawing.Size(119, 28);
             this.comboBoxYhyxh.TabIndex = 133;
             // 
             // label118
@@ -3963,9 +4232,10 @@
             this.label118.AutoSize = true;
             this.label118.BackColor = System.Drawing.Color.Transparent;
             this.label118.Font = new System.Drawing.Font("宋体", 12F);
-            this.label118.Location = new System.Drawing.Point(366, 318);
+            this.label118.Location = new System.Drawing.Point(488, 398);
+            this.label118.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label118.Name = "label118";
-            this.label118.Size = new System.Drawing.Size(72, 16);
+            this.label118.Size = new System.Drawing.Size(89, 20);
             this.label118.TabIndex = 138;
             this.label118.Text = "串口配置";
             // 
@@ -3977,9 +4247,10 @@
             this.comboBoxYhyckpz.Items.AddRange(new object[] {
             "9600,N,8,1",
             "4800,N,8,1"});
-            this.comboBoxYhyckpz.Location = new System.Drawing.Point(444, 314);
+            this.comboBoxYhyckpz.Location = new System.Drawing.Point(592, 392);
+            this.comboBoxYhyckpz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYhyckpz.Name = "comboBoxYhyckpz";
-            this.comboBoxYhyckpz.Size = new System.Drawing.Size(94, 24);
+            this.comboBoxYhyckpz.Size = new System.Drawing.Size(124, 28);
             this.comboBoxYhyckpz.TabIndex = 137;
             // 
             // textBoxYdjL
@@ -3987,9 +4258,10 @@
             this.textBoxYdjL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxYdjL.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxYdjL.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxYdjL.Location = new System.Drawing.Point(666, 205);
+            this.textBoxYdjL.Location = new System.Drawing.Point(888, 256);
+            this.textBoxYdjL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxYdjL.Name = "textBoxYdjL";
-            this.textBoxYdjL.Size = new System.Drawing.Size(54, 26);
+            this.textBoxYdjL.Size = new System.Drawing.Size(71, 31);
             this.textBoxYdjL.TabIndex = 129;
             // 
             // label113
@@ -3997,9 +4269,10 @@
             this.label113.AutoSize = true;
             this.label113.BackColor = System.Drawing.Color.Transparent;
             this.label113.Font = new System.Drawing.Font("宋体", 12F);
-            this.label113.Location = new System.Drawing.Point(541, 209);
+            this.label113.Location = new System.Drawing.Point(721, 261);
+            this.label113.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label113.Name = "label113";
-            this.label113.Size = new System.Drawing.Size(120, 16);
+            this.label113.Size = new System.Drawing.Size(149, 20);
             this.label113.TabIndex = 128;
             this.label113.Text = "光通道长度(mm)";
             // 
@@ -4007,9 +4280,10 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Gray;
             this.panel3.Controls.Add(this.label84);
-            this.panel3.Location = new System.Drawing.Point(0, 152);
+            this.panel3.Location = new System.Drawing.Point(0, 190);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1016, 27);
+            this.panel3.Size = new System.Drawing.Size(1355, 34);
             this.panel3.TabIndex = 124;
             // 
             // label84
@@ -4017,9 +4291,10 @@
             this.label84.AutoSize = true;
             this.label84.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label84.ForeColor = System.Drawing.Color.White;
-            this.label84.Location = new System.Drawing.Point(4, 7);
+            this.label84.Location = new System.Drawing.Point(5, 9);
+            this.label84.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(175, 14);
+            this.label84.Size = new System.Drawing.Size(224, 18);
             this.label84.TabIndex = 107;
             this.label84.Text = "废气仪、烟度计等仪器配置";
             // 
@@ -4027,9 +4302,10 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Gray;
             this.panel2.Controls.Add(this.label83);
-            this.panel2.Location = new System.Drawing.Point(0, 93);
+            this.panel2.Location = new System.Drawing.Point(0, 116);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1016, 27);
+            this.panel2.Size = new System.Drawing.Size(1355, 34);
             this.panel2.TabIndex = 123;
             // 
             // label83
@@ -4037,9 +4313,10 @@
             this.label83.AutoSize = true;
             this.label83.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label83.ForeColor = System.Drawing.Color.White;
-            this.label83.Location = new System.Drawing.Point(4, 7);
+            this.label83.Location = new System.Drawing.Point(5, 9);
+            this.label83.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(91, 14);
+            this.label83.Size = new System.Drawing.Size(116, 18);
             this.label83.TabIndex = 107;
             this.label83.Text = "检测方式配置";
             // 
@@ -4053,9 +4330,10 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.Gray;
             this.panel6.Controls.Add(this.buttonSaveEquipment);
-            this.panel6.Location = new System.Drawing.Point(3, 538);
+            this.panel6.Location = new System.Drawing.Point(4, 672);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1051, 32);
+            this.panel6.Size = new System.Drawing.Size(1401, 40);
             this.panel6.TabIndex = 127;
             // 
             // tabPage2
@@ -4063,10 +4341,11 @@
             this.tabPage2.Controls.Add(this.panelASMSETTINGS);
             this.tabPage2.Controls.Add(this.panelASM);
             this.tabPage2.Controls.Add(this.panel11);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1054, 573);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Size = new System.Drawing.Size(1408, 720);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "稳态工况法";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -4106,8 +4385,9 @@
             this.panelASMSETTINGS.Controls.Add(this.checkBoxAsmDispData);
             this.panelASMSETTINGS.Enabled = false;
             this.panelASMSETTINGS.Location = new System.Drawing.Point(0, 0);
+            this.panelASMSETTINGS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelASMSETTINGS.Name = "panelASMSETTINGS";
-            this.panelASMSETTINGS.Size = new System.Drawing.Size(1051, 227);
+            this.panelASMSETTINGS.Size = new System.Drawing.Size(1401, 284);
             this.panelASMSETTINGS.TabIndex = 142;
             // 
             // checkBoxAsm_nozero
@@ -4115,9 +4395,10 @@
             this.checkBoxAsm_nozero.AutoSize = true;
             this.checkBoxAsm_nozero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxAsm_nozero.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxAsm_nozero.Location = new System.Drawing.Point(824, 138);
+            this.checkBoxAsm_nozero.Location = new System.Drawing.Point(1099, 172);
+            this.checkBoxAsm_nozero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsm_nozero.Name = "checkBoxAsm_nozero";
-            this.checkBoxAsm_nozero.Size = new System.Drawing.Size(107, 20);
+            this.checkBoxAsm_nozero.Size = new System.Drawing.Size(131, 24);
             this.checkBoxAsm_nozero.TabIndex = 154;
             this.checkBoxAsm_nozero.Text = "重检不调零";
             this.checkBoxAsm_nozero.UseVisualStyleBackColor = true;
@@ -4126,9 +4407,10 @@
             // 
             this.label194.AutoSize = true;
             this.label194.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label194.Location = new System.Drawing.Point(8, 200);
+            this.label194.Location = new System.Drawing.Point(11, 250);
+            this.label194.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label194.Name = "label194";
-            this.label194.Size = new System.Drawing.Size(56, 16);
+            this.label194.Size = new System.Drawing.Size(69, 20);
             this.label194.TabIndex = 153;
             this.label194.Text = "油温计";
             // 
@@ -4136,9 +4418,10 @@
             // 
             this.panel14.BackColor = System.Drawing.Color.Gray;
             this.panel14.Controls.Add(this.label93);
-            this.panel14.Location = new System.Drawing.Point(0, 3);
+            this.panel14.Location = new System.Drawing.Point(0, 4);
+            this.panel14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(1051, 27);
+            this.panel14.Size = new System.Drawing.Size(1401, 34);
             this.panel14.TabIndex = 128;
             // 
             // label93
@@ -4146,9 +4429,10 @@
             this.label93.AutoSize = true;
             this.label93.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label93.ForeColor = System.Drawing.Color.White;
-            this.label93.Location = new System.Drawing.Point(4, 7);
+            this.label93.Location = new System.Drawing.Point(5, 9);
+            this.label93.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label93.Name = "label93";
-            this.label93.Size = new System.Drawing.Size(63, 14);
+            this.label93.Size = new System.Drawing.Size(80, 18);
             this.label93.TabIndex = 107;
             this.label93.Text = "参数设置";
             // 
@@ -4156,9 +4440,10 @@
             // 
             this.label112.AutoSize = true;
             this.label112.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label112.Location = new System.Drawing.Point(627, 75);
+            this.label112.Location = new System.Drawing.Point(836, 94);
+            this.label112.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label112.Name = "label112";
-            this.label112.Size = new System.Drawing.Size(168, 16);
+            this.label112.Size = new System.Drawing.Size(209, 20);
             this.label112.TabIndex = 141;
             this.label112.Text = "通讯失败允许重发次数";
             // 
@@ -4171,9 +4456,10 @@
             this.comboBoxYWJ_ASM.Items.AddRange(new object[] {
             "废气仪",
             "南华附件"});
-            this.comboBoxYWJ_ASM.Location = new System.Drawing.Point(70, 197);
+            this.comboBoxYWJ_ASM.Location = new System.Drawing.Point(93, 246);
+            this.comboBoxYWJ_ASM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYWJ_ASM.Name = "comboBoxYWJ_ASM";
-            this.comboBoxYWJ_ASM.Size = new System.Drawing.Size(131, 24);
+            this.comboBoxYWJ_ASM.Size = new System.Drawing.Size(173, 28);
             this.comboBoxYWJ_ASM.TabIndex = 152;
             // 
             // textBox3
@@ -4181,9 +4467,10 @@
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox3.ForeColor = System.Drawing.Color.Blue;
-            this.textBox3.Location = new System.Drawing.Point(797, 71);
+            this.textBox3.Location = new System.Drawing.Point(1063, 89);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(76, 26);
+            this.textBox3.Size = new System.Drawing.Size(101, 30);
             this.textBox3.TabIndex = 140;
             this.textBox3.Text = "3";
             // 
@@ -4191,9 +4478,10 @@
             // 
             this.panel44.BackColor = System.Drawing.Color.Gray;
             this.panel44.Controls.Add(this.label195);
-            this.panel44.Location = new System.Drawing.Point(1, 164);
+            this.panel44.Location = new System.Drawing.Point(1, 205);
+            this.panel44.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel44.Name = "panel44";
-            this.panel44.Size = new System.Drawing.Size(1051, 27);
+            this.panel44.Size = new System.Drawing.Size(1401, 34);
             this.panel44.TabIndex = 151;
             // 
             // label195
@@ -4201,9 +4489,10 @@
             this.label195.AutoSize = true;
             this.label195.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label195.ForeColor = System.Drawing.Color.White;
-            this.label195.Location = new System.Drawing.Point(4, 7);
+            this.label195.Location = new System.Drawing.Point(5, 9);
+            this.label195.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label195.Name = "label195";
-            this.label195.Size = new System.Drawing.Size(63, 14);
+            this.label195.Size = new System.Drawing.Size(80, 18);
             this.label195.TabIndex = 107;
             this.label195.Text = "附件设置";
             // 
@@ -4211,9 +4500,10 @@
             // 
             this.label109.AutoSize = true;
             this.label109.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label109.Location = new System.Drawing.Point(616, 40);
+            this.label109.Location = new System.Drawing.Point(821, 50);
+            this.label109.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label109.Name = "label109";
-            this.label109.Size = new System.Drawing.Size(40, 16);
+            this.label109.Size = new System.Drawing.Size(49, 20);
             this.label109.TabIndex = 139;
             this.label109.Text = "km/h";
             // 
@@ -4222,9 +4512,10 @@
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox2.ForeColor = System.Drawing.Color.Blue;
-            this.textBox2.Location = new System.Drawing.Point(528, 35);
+            this.textBox2.Location = new System.Drawing.Point(704, 44);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(82, 26);
+            this.textBox2.Size = new System.Drawing.Size(109, 30);
             this.textBox2.TabIndex = 137;
             this.textBox2.Text = "1.5";
             // 
@@ -4232,9 +4523,10 @@
             // 
             this.label110.AutoSize = true;
             this.label110.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label110.Location = new System.Drawing.Point(455, 40);
+            this.label110.Location = new System.Drawing.Point(607, 50);
+            this.label110.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label110.Name = "label110";
-            this.label110.Size = new System.Drawing.Size(72, 16);
+            this.label110.Size = new System.Drawing.Size(89, 20);
             this.label110.TabIndex = 138;
             this.label110.Text = "有效车速";
             // 
@@ -4242,9 +4534,10 @@
             // 
             this.label107.AutoSize = true;
             this.label107.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label107.Location = new System.Drawing.Point(416, 40);
+            this.label107.Location = new System.Drawing.Point(555, 50);
+            this.label107.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label107.Name = "label107";
-            this.label107.Size = new System.Drawing.Size(16, 16);
+            this.label107.Size = new System.Drawing.Size(19, 20);
             this.label107.TabIndex = 136;
             this.label107.Text = "%";
             // 
@@ -4252,9 +4545,10 @@
             // 
             this.panel13.BackColor = System.Drawing.Color.Gray;
             this.panel13.Controls.Add(this.label92);
-            this.panel13.Location = new System.Drawing.Point(0, 102);
+            this.panel13.Location = new System.Drawing.Point(0, 128);
+            this.panel13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(1051, 27);
+            this.panel13.Size = new System.Drawing.Size(1401, 34);
             this.panel13.TabIndex = 129;
             // 
             // label92
@@ -4262,9 +4556,10 @@
             this.label92.AutoSize = true;
             this.label92.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label92.ForeColor = System.Drawing.Color.White;
-            this.label92.Location = new System.Drawing.Point(4, 7);
+            this.label92.Location = new System.Drawing.Point(5, 9);
+            this.label92.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(91, 14);
+            this.label92.Size = new System.Drawing.Size(116, 18);
             this.label92.TabIndex = 107;
             this.label92.Text = "检测过程设置";
             // 
@@ -4273,9 +4568,10 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox1.ForeColor = System.Drawing.Color.Blue;
-            this.textBox1.Location = new System.Drawing.Point(327, 35);
+            this.textBox1.Location = new System.Drawing.Point(436, 44);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(82, 26);
+            this.textBox1.Size = new System.Drawing.Size(109, 30);
             this.textBox1.TabIndex = 134;
             this.textBox1.Text = "3.0";
             // 
@@ -4283,9 +4579,10 @@
             // 
             this.label108.AutoSize = true;
             this.label108.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label108.Location = new System.Drawing.Point(254, 40);
+            this.label108.Location = new System.Drawing.Point(339, 50);
+            this.label108.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label108.Name = "label108";
-            this.label108.Size = new System.Drawing.Size(72, 16);
+            this.label108.Size = new System.Drawing.Size(89, 20);
             this.label108.TabIndex = 135;
             this.label108.Text = "O2报警值";
             // 
@@ -4299,9 +4596,10 @@
             this.panelASM.Controls.Add(this.panel12);
             this.panelASM.Controls.Add(this.checkBoxAsmGljk);
             this.panelASM.Controls.Add(this.checkBoxAsmNdjk);
-            this.panelASM.Location = new System.Drawing.Point(2, 232);
+            this.panelASM.Location = new System.Drawing.Point(3, 290);
+            this.panelASM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelASM.Name = "panelASM";
-            this.panelASM.Size = new System.Drawing.Size(1050, 94);
+            this.panelASM.Size = new System.Drawing.Size(1400, 118);
             this.panelASM.TabIndex = 133;
             this.panelASM.Visible = false;
             // 
@@ -4309,9 +4607,10 @@
             // 
             this.checkBoxAsmHalfXzKsgk.AutoSize = true;
             this.checkBoxAsmHalfXzKsgk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxAsmHalfXzKsgk.Location = new System.Drawing.Point(170, 60);
+            this.checkBoxAsmHalfXzKsgk.Location = new System.Drawing.Point(227, 75);
+            this.checkBoxAsmHalfXzKsgk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmHalfXzKsgk.Name = "checkBoxAsmHalfXzKsgk";
-            this.checkBoxAsmHalfXzKsgk.Size = new System.Drawing.Size(179, 20);
+            this.checkBoxAsmHalfXzKsgk.Size = new System.Drawing.Size(221, 24);
             this.checkBoxAsmHalfXzKsgk.TabIndex = 134;
             this.checkBoxAsmHalfXzKsgk.Text = "50%限值快速工况要求";
             this.checkBoxAsmHalfXzKsgk.UseVisualStyleBackColor = true;
@@ -4320,9 +4619,10 @@
             // 
             this.checkBox05Sdjk.AutoSize = true;
             this.checkBox05Sdjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBox05Sdjk.Location = new System.Drawing.Point(7, 60);
+            this.checkBox05Sdjk.Location = new System.Drawing.Point(9, 75);
+            this.checkBox05Sdjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBox05Sdjk.Name = "checkBox05Sdjk";
-            this.checkBox05Sdjk.Size = new System.Drawing.Size(115, 20);
+            this.checkBox05Sdjk.Size = new System.Drawing.Size(141, 24);
             this.checkBox05Sdjk.TabIndex = 133;
             this.checkBox05Sdjk.Text = "0.5km/h监控";
             this.checkBox05Sdjk.UseVisualStyleBackColor = true;
@@ -4332,8 +4632,9 @@
             this.panel12.BackColor = System.Drawing.Color.Gray;
             this.panel12.Controls.Add(this.label104);
             this.panel12.Location = new System.Drawing.Point(1, 1);
+            this.panel12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(1049, 27);
+            this.panel12.Size = new System.Drawing.Size(1399, 34);
             this.panel12.TabIndex = 132;
             // 
             // label104
@@ -4341,9 +4642,10 @@
             this.label104.AutoSize = true;
             this.label104.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label104.ForeColor = System.Drawing.Color.White;
-            this.label104.Location = new System.Drawing.Point(4, 7);
+            this.label104.Location = new System.Drawing.Point(5, 9);
+            this.label104.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label104.Name = "label104";
-            this.label104.Size = new System.Drawing.Size(91, 14);
+            this.label104.Size = new System.Drawing.Size(116, 18);
             this.label104.TabIndex = 107;
             this.label104.Text = "检测过程设置";
             // 
@@ -4351,9 +4653,10 @@
             // 
             this.panel11.BackColor = System.Drawing.Color.Gray;
             this.panel11.Controls.Add(this.buttonAsmSave);
-            this.panel11.Location = new System.Drawing.Point(3, 538);
+            this.panel11.Location = new System.Drawing.Point(4, 672);
+            this.panel11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(1051, 33);
+            this.panel11.Size = new System.Drawing.Size(1401, 41);
             this.panel11.TabIndex = 131;
             // 
             // tabPage3
@@ -4361,9 +4664,10 @@
             this.tabPage3.Controls.Add(this.panelVMASSETTINGS);
             this.tabPage3.Controls.Add(this.panelVMAS);
             this.tabPage3.Controls.Add(this.panel23);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1054, 573);
+            this.tabPage3.Size = new System.Drawing.Size(1408, 720);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "简易瞬态工况法";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -4414,9 +4718,10 @@
             this.panelVMASSETTINGS.Controls.Add(this.label23);
             this.panelVMASSETTINGS.Controls.Add(this.label22);
             this.panelVMASSETTINGS.Enabled = false;
-            this.panelVMASSETTINGS.Location = new System.Drawing.Point(3, 0);
+            this.panelVMASSETTINGS.Location = new System.Drawing.Point(4, 0);
+            this.panelVMASSETTINGS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelVMASSETTINGS.Name = "panelVMASSETTINGS";
-            this.panelVMASSETTINGS.Size = new System.Drawing.Size(1051, 309);
+            this.panelVMASSETTINGS.Size = new System.Drawing.Size(1401, 386);
             this.panelVMASSETTINGS.TabIndex = 140;
             // 
             // checkBoxVmas_norezero
@@ -4424,9 +4729,10 @@
             this.checkBoxVmas_norezero.AutoSize = true;
             this.checkBoxVmas_norezero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmas_norezero.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxVmas_norezero.Location = new System.Drawing.Point(672, 197);
+            this.checkBoxVmas_norezero.Location = new System.Drawing.Point(896, 246);
+            this.checkBoxVmas_norezero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmas_norezero.Name = "checkBoxVmas_norezero";
-            this.checkBoxVmas_norezero.Size = new System.Drawing.Size(107, 20);
+            this.checkBoxVmas_norezero.Size = new System.Drawing.Size(131, 24);
             this.checkBoxVmas_norezero.TabIndex = 144;
             this.checkBoxVmas_norezero.Text = "重检不调零";
             this.checkBoxVmas_norezero.UseVisualStyleBackColor = true;
@@ -4435,9 +4741,11 @@
             // 
             this.groupBox2.Controls.Add(this.radioButtonCjAfterTl);
             this.groupBox2.Controls.Add(this.radioButtonCjBeforeTl);
-            this.groupBox2.Location = new System.Drawing.Point(416, 249);
+            this.groupBox2.Location = new System.Drawing.Point(555, 311);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(390, 57);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(520, 71);
             this.groupBox2.TabIndex = 143;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "初检模式";
@@ -4446,9 +4754,10 @@
             // 
             this.radioButtonCjAfterTl.AutoSize = true;
             this.radioButtonCjAfterTl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonCjAfterTl.Location = new System.Drawing.Point(267, 26);
+            this.radioButtonCjAfterTl.Location = new System.Drawing.Point(356, 32);
+            this.radioButtonCjAfterTl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonCjAfterTl.Name = "radioButtonCjAfterTl";
-            this.radioButtonCjAfterTl.Size = new System.Drawing.Size(106, 20);
+            this.radioButtonCjAfterTl.Size = new System.Drawing.Size(130, 24);
             this.radioButtonCjAfterTl.TabIndex = 64;
             this.radioButtonCjAfterTl.TabStop = true;
             this.radioButtonCjAfterTl.Text = "调零后初检";
@@ -4458,9 +4767,10 @@
             // 
             this.radioButtonCjBeforeTl.AutoSize = true;
             this.radioButtonCjBeforeTl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonCjBeforeTl.Location = new System.Drawing.Point(20, 26);
+            this.radioButtonCjBeforeTl.Location = new System.Drawing.Point(27, 32);
+            this.radioButtonCjBeforeTl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonCjBeforeTl.Name = "radioButtonCjBeforeTl";
-            this.radioButtonCjBeforeTl.Size = new System.Drawing.Size(106, 20);
+            this.radioButtonCjBeforeTl.Size = new System.Drawing.Size(130, 24);
             this.radioButtonCjBeforeTl.TabIndex = 63;
             this.radioButtonCjBeforeTl.TabStop = true;
             this.radioButtonCjBeforeTl.Text = "调零前初检";
@@ -4471,18 +4781,20 @@
             this.textBoxVmasNdccsj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxVmasNdccsj.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasNdccsj.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxVmasNdccsj.Location = new System.Drawing.Point(392, 36);
+            this.textBoxVmasNdccsj.Location = new System.Drawing.Point(523, 45);
+            this.textBoxVmasNdccsj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasNdccsj.Name = "textBoxVmasNdccsj";
-            this.textBoxVmasNdccsj.Size = new System.Drawing.Size(93, 26);
+            this.textBoxVmasNdccsj.Size = new System.Drawing.Size(123, 30);
             this.textBoxVmasNdccsj.TabIndex = 140;
             // 
             // label155
             // 
             this.label155.AutoSize = true;
             this.label155.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label155.Location = new System.Drawing.Point(279, 41);
+            this.label155.Location = new System.Drawing.Point(372, 51);
+            this.label155.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label155.Name = "label155";
-            this.label155.Size = new System.Drawing.Size(104, 16);
+            this.label155.Size = new System.Drawing.Size(129, 20);
             this.label155.TabIndex = 141;
             this.label155.Text = "浓度超差时间";
             // 
@@ -4490,9 +4802,10 @@
             // 
             this.label156.AutoSize = true;
             this.label156.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label156.Location = new System.Drawing.Point(488, 41);
+            this.label156.Location = new System.Drawing.Point(651, 51);
+            this.label156.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label156.Name = "label156";
-            this.label156.Size = new System.Drawing.Size(16, 16);
+            this.label156.Size = new System.Drawing.Size(19, 20);
             this.label156.TabIndex = 142;
             this.label156.Text = "s";
             // 
@@ -4500,9 +4813,10 @@
             // 
             this.panel26.BackColor = System.Drawing.Color.Gray;
             this.panel26.Controls.Add(this.label102);
-            this.panel26.Location = new System.Drawing.Point(1, 3);
+            this.panel26.Location = new System.Drawing.Point(1, 4);
+            this.panel26.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(1050, 27);
+            this.panel26.Size = new System.Drawing.Size(1400, 34);
             this.panel26.TabIndex = 132;
             // 
             // label102
@@ -4510,9 +4824,10 @@
             this.label102.AutoSize = true;
             this.label102.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label102.ForeColor = System.Drawing.Color.White;
-            this.label102.Location = new System.Drawing.Point(4, 7);
+            this.label102.Location = new System.Drawing.Point(5, 9);
+            this.label102.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label102.Name = "label102";
-            this.label102.Size = new System.Drawing.Size(63, 14);
+            this.label102.Size = new System.Drawing.Size(80, 18);
             this.label102.TabIndex = 107;
             this.label102.Text = "参数设置";
             // 
@@ -4521,9 +4836,10 @@
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox4.ForeColor = System.Drawing.Color.Blue;
-            this.textBox4.Location = new System.Drawing.Point(156, 123);
+            this.textBox4.Location = new System.Drawing.Point(208, 154);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(61, 26);
+            this.textBox4.Size = new System.Drawing.Size(81, 30);
             this.textBox4.TabIndex = 137;
             this.textBox4.Text = "2.0";
             // 
@@ -4531,9 +4847,10 @@
             // 
             this.label114.AutoSize = true;
             this.label114.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label114.Location = new System.Drawing.Point(14, 128);
+            this.label114.Location = new System.Drawing.Point(19, 160);
+            this.label114.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label114.Name = "label114";
-            this.label114.Size = new System.Drawing.Size(136, 16);
+            this.label114.Size = new System.Drawing.Size(169, 20);
             this.label114.TabIndex = 138;
             this.label114.Text = "50km/h尾气流量值";
             // 
@@ -4541,9 +4858,10 @@
             // 
             this.label115.AutoSize = true;
             this.label115.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label115.Location = new System.Drawing.Point(223, 128);
+            this.label115.Location = new System.Drawing.Point(297, 160);
+            this.label115.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label115.Name = "label115";
-            this.label115.Size = new System.Drawing.Size(32, 16);
+            this.label115.Size = new System.Drawing.Size(39, 20);
             this.label115.TabIndex = 139;
             this.label115.Text = "L/s";
             // 
@@ -4551,9 +4869,10 @@
             // 
             this.panel25.BackColor = System.Drawing.Color.Gray;
             this.panel25.Controls.Add(this.label101);
-            this.panel25.Location = new System.Drawing.Point(1, 164);
+            this.panel25.Location = new System.Drawing.Point(1, 205);
+            this.panel25.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(1050, 27);
+            this.panel25.Size = new System.Drawing.Size(1400, 34);
             this.panel25.TabIndex = 133;
             // 
             // label101
@@ -4561,9 +4880,10 @@
             this.label101.AutoSize = true;
             this.label101.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label101.ForeColor = System.Drawing.Color.White;
-            this.label101.Location = new System.Drawing.Point(4, 7);
+            this.label101.Location = new System.Drawing.Point(5, 9);
+            this.label101.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label101.Name = "label101";
-            this.label101.Size = new System.Drawing.Size(91, 14);
+            this.label101.Size = new System.Drawing.Size(116, 18);
             this.label101.TabIndex = 107;
             this.label101.Text = "检测过程设置";
             // 
@@ -4578,9 +4898,10 @@
             this.panelVMAS.Controls.Add(this.checkBoxVmasNdjk);
             this.panelVMAS.Controls.Add(this.checkBoxVmasXsbjk);
             this.panelVMAS.Controls.Add(this.checkBoxVmasJzgljk);
-            this.panelVMAS.Location = new System.Drawing.Point(3, 308);
+            this.panelVMAS.Location = new System.Drawing.Point(4, 385);
+            this.panelVMAS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelVMAS.Name = "panelVMAS";
-            this.panelVMAS.Size = new System.Drawing.Size(1051, 157);
+            this.panelVMAS.Size = new System.Drawing.Size(1401, 196);
             this.panelVMAS.TabIndex = 136;
             this.panelVMAS.Visible = false;
             // 
@@ -4588,9 +4909,10 @@
             // 
             this.checkBoxVMAS_CO2ANDO2.AutoSize = true;
             this.checkBoxVMAS_CO2ANDO2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxVMAS_CO2ANDO2.Location = new System.Drawing.Point(14, 34);
+            this.checkBoxVMAS_CO2ANDO2.Location = new System.Drawing.Point(19, 42);
+            this.checkBoxVMAS_CO2ANDO2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVMAS_CO2ANDO2.Name = "checkBoxVMAS_CO2ANDO2";
-            this.checkBoxVMAS_CO2ANDO2.Size = new System.Drawing.Size(123, 20);
+            this.checkBoxVMAS_CO2ANDO2.Size = new System.Drawing.Size(151, 24);
             this.checkBoxVMAS_CO2ANDO2.TabIndex = 133;
             this.checkBoxVMAS_CO2ANDO2.Text = "山东浓度监控";
             this.checkBoxVMAS_CO2ANDO2.UseVisualStyleBackColor = true;
@@ -4600,8 +4922,9 @@
             this.panel27.BackColor = System.Drawing.Color.Gray;
             this.panel27.Controls.Add(this.label105);
             this.panel27.Location = new System.Drawing.Point(1, 1);
+            this.panel27.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(1050, 27);
+            this.panel27.Size = new System.Drawing.Size(1400, 34);
             this.panel27.TabIndex = 132;
             // 
             // label105
@@ -4609,9 +4932,10 @@
             this.label105.AutoSize = true;
             this.label105.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label105.ForeColor = System.Drawing.Color.White;
-            this.label105.Location = new System.Drawing.Point(4, 7);
+            this.label105.Location = new System.Drawing.Point(5, 9);
+            this.label105.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label105.Name = "label105";
-            this.label105.Size = new System.Drawing.Size(91, 14);
+            this.label105.Size = new System.Drawing.Size(116, 18);
             this.label105.TabIndex = 107;
             this.label105.Text = "检测过程设置";
             // 
@@ -4619,18 +4943,20 @@
             // 
             this.panel23.BackColor = System.Drawing.Color.Gray;
             this.panel23.Controls.Add(this.buttonVmasSave);
-            this.panel23.Location = new System.Drawing.Point(3, 536);
+            this.panel23.Location = new System.Drawing.Point(4, 670);
+            this.panel23.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(1051, 33);
+            this.panel23.Size = new System.Drawing.Size(1401, 41);
             this.panel23.TabIndex = 135;
             // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.panelJZJS);
             this.tabPage4.Controls.Add(this.panel10);
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Location = new System.Drawing.Point(4, 28);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1054, 573);
+            this.tabPage4.Size = new System.Drawing.Size(1408, 720);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "加载减速工况法";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -4681,9 +5007,10 @@
             this.panelJZJS.Controls.Add(this.radioButtonLugdownhs);
             this.panelJZJS.Controls.Add(this.radioButtonLugdownHgl);
             this.panelJZJS.Enabled = false;
-            this.panelJZJS.Location = new System.Drawing.Point(3, 3);
+            this.panelJZJS.Location = new System.Drawing.Point(4, 4);
+            this.panelJZJS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelJZJS.Name = "panelJZJS";
-            this.panelJZJS.Size = new System.Drawing.Size(1051, 466);
+            this.panelJZJS.Size = new System.Drawing.Size(1401, 582);
             this.panelJZJS.TabIndex = 128;
             // 
             // checkBoxLudown_prepare
@@ -4691,9 +5018,10 @@
             this.checkBoxLudown_prepare.AutoSize = true;
             this.checkBoxLudown_prepare.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLudown_prepare.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxLudown_prepare.Location = new System.Drawing.Point(7, 194);
+            this.checkBoxLudown_prepare.Location = new System.Drawing.Point(9, 242);
+            this.checkBoxLudown_prepare.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLudown_prepare.Name = "checkBoxLudown_prepare";
-            this.checkBoxLudown_prepare.Size = new System.Drawing.Size(283, 20);
+            this.checkBoxLudown_prepare.Size = new System.Drawing.Size(351, 24);
             this.checkBoxLudown_prepare.TabIndex = 162;
             this.checkBoxLudown_prepare.Text = "检测前进行最大转速确认及档位选择";
             this.checkBoxLudown_prepare.UseVisualStyleBackColor = true;
@@ -4703,18 +5031,20 @@
             this.panel45.Controls.Add(this.label204);
             this.panel45.Controls.Add(this.radioButtonLugdown_MaxRPM_KD);
             this.panel45.Controls.Add(this.radioButtonLugdown_MaxRPM_SD);
-            this.panel45.Location = new System.Drawing.Point(4, 153);
+            this.panel45.Location = new System.Drawing.Point(5, 191);
+            this.panel45.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel45.Name = "panel45";
-            this.panel45.Size = new System.Drawing.Size(750, 31);
+            this.panel45.Size = new System.Drawing.Size(1000, 39);
             this.panel45.TabIndex = 161;
             // 
             // label204
             // 
             this.label204.AutoSize = true;
             this.label204.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label204.Location = new System.Drawing.Point(3, 7);
+            this.label204.Location = new System.Drawing.Point(4, 9);
+            this.label204.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label204.Name = "label204";
-            this.label204.Size = new System.Drawing.Size(120, 16);
+            this.label204.Size = new System.Drawing.Size(149, 20);
             this.label204.TabIndex = 66;
             this.label204.Text = "最大转速取值点";
             // 
@@ -4722,9 +5052,10 @@
             // 
             this.radioButtonLugdown_MaxRPM_KD.AutoSize = true;
             this.radioButtonLugdown_MaxRPM_KD.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonLugdown_MaxRPM_KD.Location = new System.Drawing.Point(186, 5);
+            this.radioButtonLugdown_MaxRPM_KD.Location = new System.Drawing.Point(248, 6);
+            this.radioButtonLugdown_MaxRPM_KD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonLugdown_MaxRPM_KD.Name = "radioButtonLugdown_MaxRPM_KD";
-            this.radioButtonLugdown_MaxRPM_KD.Size = new System.Drawing.Size(138, 20);
+            this.radioButtonLugdown_MaxRPM_KD.Size = new System.Drawing.Size(170, 24);
             this.radioButtonLugdown_MaxRPM_KD.TabIndex = 64;
             this.radioButtonLugdown_MaxRPM_KD.TabStop = true;
             this.radioButtonLugdown_MaxRPM_KD.Text = "空档最大转速点";
@@ -4734,9 +5065,10 @@
             // 
             this.radioButtonLugdown_MaxRPM_SD.AutoSize = true;
             this.radioButtonLugdown_MaxRPM_SD.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonLugdown_MaxRPM_SD.Location = new System.Drawing.Point(484, 5);
+            this.radioButtonLugdown_MaxRPM_SD.Location = new System.Drawing.Point(645, 6);
+            this.radioButtonLugdown_MaxRPM_SD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonLugdown_MaxRPM_SD.Name = "radioButtonLugdown_MaxRPM_SD";
-            this.radioButtonLugdown_MaxRPM_SD.Size = new System.Drawing.Size(106, 20);
+            this.radioButtonLugdown_MaxRPM_SD.Size = new System.Drawing.Size(130, 24);
             this.radioButtonLugdown_MaxRPM_SD.TabIndex = 65;
             this.radioButtonLugdown_MaxRPM_SD.TabStop = true;
             this.radioButtonLugdown_MaxRPM_SD.Text = "最大车速点";
@@ -4746,9 +5078,10 @@
             // 
             this.label198.AutoSize = true;
             this.label198.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label198.Location = new System.Drawing.Point(639, 353);
+            this.label198.Location = new System.Drawing.Point(852, 441);
+            this.label198.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label198.Name = "label198";
-            this.label198.Size = new System.Drawing.Size(80, 16);
+            this.label198.Size = new System.Drawing.Size(99, 20);
             this.label198.TabIndex = 159;
             this.label198.Text = "规定值：<";
             // 
@@ -4757,18 +5090,20 @@
             this.textBoxLugdown_cl_ydjk.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxLugdown_cl_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxLugdown_cl_ydjk.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxLugdown_cl_ydjk.Location = new System.Drawing.Point(725, 351);
+            this.textBoxLugdown_cl_ydjk.Location = new System.Drawing.Point(967, 439);
+            this.textBoxLugdown_cl_ydjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLugdown_cl_ydjk.Name = "textBoxLugdown_cl_ydjk";
-            this.textBoxLugdown_cl_ydjk.Size = new System.Drawing.Size(71, 26);
+            this.textBoxLugdown_cl_ydjk.Size = new System.Drawing.Size(94, 30);
             this.textBoxLugdown_cl_ydjk.TabIndex = 158;
             // 
             // label199
             // 
             this.label199.AutoSize = true;
             this.label199.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label199.Location = new System.Drawing.Point(802, 353);
+            this.label199.Location = new System.Drawing.Point(1069, 441);
+            this.label199.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label199.Name = "label199";
-            this.label199.Size = new System.Drawing.Size(96, 16);
+            this.label199.Size = new System.Drawing.Size(119, 20);
             this.label199.TabIndex = 160;
             this.label199.Text = "时中止检测 ";
             // 
@@ -4777,9 +5112,10 @@
             this.checkBoxLugdown_cl_ydjk.AutoSize = true;
             this.checkBoxLugdown_cl_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLugdown_cl_ydjk.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxLugdown_cl_ydjk.Location = new System.Drawing.Point(7, 352);
+            this.checkBoxLugdown_cl_ydjk.Location = new System.Drawing.Point(9, 440);
+            this.checkBoxLugdown_cl_ydjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLugdown_cl_ydjk.Name = "checkBoxLugdown_cl_ydjk";
-            this.checkBoxLugdown_cl_ydjk.Size = new System.Drawing.Size(507, 20);
+            this.checkBoxLugdown_cl_ydjk.Size = new System.Drawing.Size(631, 24);
             this.checkBoxLugdown_cl_ydjk.TabIndex = 157;
             this.checkBoxLugdown_cl_ydjk.Text = "在VelMaxHP,90%VelMaxHP,80%VelMaxHP烟度低于规定值时，中止检测";
             this.checkBoxLugdown_cl_ydjk.UseVisualStyleBackColor = true;
@@ -4788,9 +5124,10 @@
             // 
             this.label196.AutoSize = true;
             this.label196.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label196.Location = new System.Drawing.Point(639, 327);
+            this.label196.Location = new System.Drawing.Point(852, 409);
+            this.label196.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label196.Name = "label196";
-            this.label196.Size = new System.Drawing.Size(80, 16);
+            this.label196.Size = new System.Drawing.Size(99, 20);
             this.label196.TabIndex = 155;
             this.label196.Text = "规定值：<";
             // 
@@ -4799,18 +5136,20 @@
             this.textBoxLugdown_glsm_ydjk.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxLugdown_glsm_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxLugdown_glsm_ydjk.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxLugdown_glsm_ydjk.Location = new System.Drawing.Point(725, 325);
+            this.textBoxLugdown_glsm_ydjk.Location = new System.Drawing.Point(967, 406);
+            this.textBoxLugdown_glsm_ydjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLugdown_glsm_ydjk.Name = "textBoxLugdown_glsm_ydjk";
-            this.textBoxLugdown_glsm_ydjk.Size = new System.Drawing.Size(71, 26);
+            this.textBoxLugdown_glsm_ydjk.Size = new System.Drawing.Size(94, 30);
             this.textBoxLugdown_glsm_ydjk.TabIndex = 154;
             // 
             // label197
             // 
             this.label197.AutoSize = true;
             this.label197.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label197.Location = new System.Drawing.Point(802, 327);
+            this.label197.Location = new System.Drawing.Point(1069, 409);
+            this.label197.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label197.Name = "label197";
-            this.label197.Size = new System.Drawing.Size(96, 16);
+            this.label197.Size = new System.Drawing.Size(119, 20);
             this.label197.TabIndex = 156;
             this.label197.Text = "时中止检测 ";
             // 
@@ -4819,9 +5158,10 @@
             this.checkBoxLugdown_glsm_ydjk.AutoSize = true;
             this.checkBoxLugdown_glsm_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLugdown_glsm_ydjk.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxLugdown_glsm_ydjk.Location = new System.Drawing.Point(7, 326);
+            this.checkBoxLugdown_glsm_ydjk.Location = new System.Drawing.Point(9, 408);
+            this.checkBoxLugdown_glsm_ydjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLugdown_glsm_ydjk.Name = "checkBoxLugdown_glsm_ydjk";
-            this.checkBoxLugdown_glsm_ydjk.Size = new System.Drawing.Size(347, 20);
+            this.checkBoxLugdown_glsm_ydjk.Size = new System.Drawing.Size(431, 24);
             this.checkBoxLugdown_glsm_ydjk.TabIndex = 153;
             this.checkBoxLugdown_glsm_ydjk.Text = "在功率扫描阶段烟度低于规定值时，中止检测";
             this.checkBoxLugdown_glsm_ydjk.UseVisualStyleBackColor = true;
@@ -4830,9 +5170,10 @@
             // 
             this.label192.AutoSize = true;
             this.label192.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label192.Location = new System.Drawing.Point(489, 416);
+            this.label192.Location = new System.Drawing.Point(652, 520);
+            this.label192.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label192.Name = "label192";
-            this.label192.Size = new System.Drawing.Size(56, 16);
+            this.label192.Size = new System.Drawing.Size(69, 20);
             this.label192.TabIndex = 152;
             this.label192.Text = "油温计";
             // 
@@ -4845,18 +5186,20 @@
             this.comboBoxYWJ_LUGDOWN.Items.AddRange(new object[] {
             "烟度计",
             "南华附件"});
-            this.comboBoxYWJ_LUGDOWN.Location = new System.Drawing.Point(551, 413);
+            this.comboBoxYWJ_LUGDOWN.Location = new System.Drawing.Point(735, 516);
+            this.comboBoxYWJ_LUGDOWN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYWJ_LUGDOWN.Name = "comboBoxYWJ_LUGDOWN";
-            this.comboBoxYWJ_LUGDOWN.Size = new System.Drawing.Size(131, 24);
+            this.comboBoxYWJ_LUGDOWN.Size = new System.Drawing.Size(173, 28);
             this.comboBoxYWJ_LUGDOWN.TabIndex = 151;
             // 
             // label188
             // 
             this.label188.AutoSize = true;
             this.label188.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label188.Location = new System.Drawing.Point(639, 301);
+            this.label188.Location = new System.Drawing.Point(852, 376);
+            this.label188.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label188.Name = "label188";
-            this.label188.Size = new System.Drawing.Size(80, 16);
+            this.label188.Size = new System.Drawing.Size(99, 20);
             this.label188.TabIndex = 135;
             this.label188.Text = "规定值：<";
             // 
@@ -4865,18 +5208,20 @@
             this.textBoxLug_gljk_value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxLug_gljk_value.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxLug_gljk_value.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxLug_gljk_value.Location = new System.Drawing.Point(725, 299);
+            this.textBoxLug_gljk_value.Location = new System.Drawing.Point(967, 374);
+            this.textBoxLug_gljk_value.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLug_gljk_value.Name = "textBoxLug_gljk_value";
-            this.textBoxLug_gljk_value.Size = new System.Drawing.Size(71, 26);
+            this.textBoxLug_gljk_value.Size = new System.Drawing.Size(94, 30);
             this.textBoxLug_gljk_value.TabIndex = 134;
             // 
             // label189
             // 
             this.label189.AutoSize = true;
             this.label189.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label189.Location = new System.Drawing.Point(802, 301);
+            this.label189.Location = new System.Drawing.Point(1069, 376);
+            this.label189.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label189.Name = "label189";
-            this.label189.Size = new System.Drawing.Size(160, 16);
+            this.label189.Size = new System.Drawing.Size(199, 20);
             this.label189.TabIndex = 136;
             this.label189.Text = "%轮边功率时中止检测";
             // 
@@ -4885,9 +5230,10 @@
             this.checkBoxLugdownGljk.AutoSize = true;
             this.checkBoxLugdownGljk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLugdownGljk.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxLugdownGljk.Location = new System.Drawing.Point(7, 300);
+            this.checkBoxLugdownGljk.Location = new System.Drawing.Point(9, 375);
+            this.checkBoxLugdownGljk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLugdownGljk.Name = "checkBoxLugdownGljk";
-            this.checkBoxLugdownGljk.Size = new System.Drawing.Size(603, 20);
+            this.checkBoxLugdownGljk.Size = new System.Drawing.Size(751, 24);
             this.checkBoxLugdownGljk.TabIndex = 133;
             this.checkBoxLugdownGljk.Text = "在VelMaxHP,90%VelMaxHP,80%VelMaxHP任意工况加载功率低于规定值时，中止检测";
             this.checkBoxLugdownGljk.UseVisualStyleBackColor = true;
@@ -4897,9 +5243,10 @@
             this.checkBoxLugdownJcNox.AutoSize = true;
             this.checkBoxLugdownJcNox.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLugdownJcNox.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxLugdownJcNox.Location = new System.Drawing.Point(761, 36);
+            this.checkBoxLugdownJcNox.Location = new System.Drawing.Point(1015, 45);
+            this.checkBoxLugdownJcNox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLugdownJcNox.Name = "checkBoxLugdownJcNox";
-            this.checkBoxLugdownJcNox.Size = new System.Drawing.Size(83, 20);
+            this.checkBoxLugdownJcNox.Size = new System.Drawing.Size(101, 24);
             this.checkBoxLugdownJcNox.TabIndex = 132;
             this.checkBoxLugdownJcNox.Text = "检测NOx";
             this.checkBoxLugdownJcNox.UseVisualStyleBackColor = true;
@@ -4909,9 +5256,10 @@
             this.checkBoxGSKHGPD.AutoSize = true;
             this.checkBoxGSKHGPD.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxGSKHGPD.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxGSKHGPD.Location = new System.Drawing.Point(7, 274);
+            this.checkBoxGSKHGPD.Location = new System.Drawing.Point(9, 342);
+            this.checkBoxGSKHGPD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxGSKHGPD.Name = "checkBoxGSKHGPD";
-            this.checkBoxGSKHGPD.Size = new System.Drawing.Size(731, 20);
+            this.checkBoxGSKHGPD.Size = new System.Drawing.Size(911, 24);
             this.checkBoxGSKHGPD.TabIndex = 131;
             this.checkBoxGSKHGPD.Text = "在VelMaxHP,90%VelMaxHP,80%VelMaxHP任意工况k小于等于90%限值测试结束，判定合格（甘肃地标）";
             this.checkBoxGSKHGPD.UseVisualStyleBackColor = true;
@@ -4921,9 +5269,10 @@
             this.checkBoxGSKCBPD.AutoSize = true;
             this.checkBoxGSKCBPD.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxGSKCBPD.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxGSKCBPD.Location = new System.Drawing.Point(7, 248);
+            this.checkBoxGSKCBPD.Location = new System.Drawing.Point(9, 310);
+            this.checkBoxGSKCBPD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxGSKCBPD.Name = "checkBoxGSKCBPD";
-            this.checkBoxGSKCBPD.Size = new System.Drawing.Size(691, 20);
+            this.checkBoxGSKCBPD.Size = new System.Drawing.Size(861, 24);
             this.checkBoxGSKCBPD.TabIndex = 130;
             this.checkBoxGSKCBPD.Text = "在VelMaxHP,90%VelMaxHP,80%VelMaxHP任意工况k大于限值测试结束，判定不合格（甘肃地标）";
             this.checkBoxGSKCBPD.UseVisualStyleBackColor = true;
@@ -4933,9 +5282,10 @@
             this.checkBoxGSMAXPPD.AutoSize = true;
             this.checkBoxGSMAXPPD.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxGSMAXPPD.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxGSMAXPPD.Location = new System.Drawing.Point(7, 222);
+            this.checkBoxGSMAXPPD.Location = new System.Drawing.Point(9, 278);
+            this.checkBoxGSMAXPPD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxGSMAXPPD.Name = "checkBoxGSMAXPPD";
-            this.checkBoxGSMAXPPD.Size = new System.Drawing.Size(483, 20);
+            this.checkBoxGSMAXPPD.Size = new System.Drawing.Size(601, 24);
             this.checkBoxGSMAXPPD.TabIndex = 129;
             this.checkBoxGSMAXPPD.Text = "MaxP值小于50%额定功率值时测试结束，判定不合格（甘肃地标）";
             this.checkBoxGSMAXPPD.UseVisualStyleBackColor = true;
@@ -4945,18 +5295,20 @@
             this.panel34.Controls.Add(this.label146);
             this.panel34.Controls.Add(this.radioButtonLugMaxHpGlsm);
             this.panel34.Controls.Add(this.radioButtonLugMaxHpVelmaxhp);
-            this.panel34.Location = new System.Drawing.Point(4, 121);
+            this.panel34.Location = new System.Drawing.Point(5, 151);
+            this.panel34.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel34.Name = "panel34";
-            this.panel34.Size = new System.Drawing.Size(750, 31);
+            this.panel34.Size = new System.Drawing.Size(1000, 39);
             this.panel34.TabIndex = 128;
             // 
             // label146
             // 
             this.label146.AutoSize = true;
             this.label146.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label146.Location = new System.Drawing.Point(3, 7);
+            this.label146.Location = new System.Drawing.Point(4, 9);
+            this.label146.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label146.Name = "label146";
-            this.label146.Size = new System.Drawing.Size(120, 16);
+            this.label146.Size = new System.Drawing.Size(149, 20);
             this.label146.TabIndex = 66;
             this.label146.Text = "轮边功率取值点";
             // 
@@ -4964,9 +5316,10 @@
             // 
             this.radioButtonLugMaxHpGlsm.AutoSize = true;
             this.radioButtonLugMaxHpGlsm.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonLugMaxHpGlsm.Location = new System.Drawing.Point(186, 5);
+            this.radioButtonLugMaxHpGlsm.Location = new System.Drawing.Point(248, 6);
+            this.radioButtonLugMaxHpGlsm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonLugMaxHpGlsm.Name = "radioButtonLugMaxHpGlsm";
-            this.radioButtonLugMaxHpGlsm.Size = new System.Drawing.Size(170, 20);
+            this.radioButtonLugMaxHpGlsm.Size = new System.Drawing.Size(210, 24);
             this.radioButtonLugMaxHpGlsm.TabIndex = 64;
             this.radioButtonLugMaxHpGlsm.TabStop = true;
             this.radioButtonLugMaxHpGlsm.Text = "功率扫描阶段最大点";
@@ -4976,9 +5329,10 @@
             // 
             this.radioButtonLugMaxHpVelmaxhp.AutoSize = true;
             this.radioButtonLugMaxHpVelmaxhp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonLugMaxHpVelmaxhp.Location = new System.Drawing.Point(484, 5);
+            this.radioButtonLugMaxHpVelmaxhp.Location = new System.Drawing.Point(645, 6);
+            this.radioButtonLugMaxHpVelmaxhp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonLugMaxHpVelmaxhp.Name = "radioButtonLugMaxHpVelmaxhp";
-            this.radioButtonLugMaxHpVelmaxhp.Size = new System.Drawing.Size(170, 20);
+            this.radioButtonLugMaxHpVelmaxhp.Size = new System.Drawing.Size(210, 24);
             this.radioButtonLugMaxHpVelmaxhp.TabIndex = 65;
             this.radioButtonLugMaxHpVelmaxhp.TabStop = true;
             this.radioButtonLugMaxHpVelmaxhp.Text = "100%Velmaxhp测试点";
@@ -4989,9 +5343,10 @@
             this.checkBoxLugdownZsPd.AutoSize = true;
             this.checkBoxLugdownZsPd.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLugdownZsPd.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxLugdownZsPd.Location = new System.Drawing.Point(327, 99);
+            this.checkBoxLugdownZsPd.Location = new System.Drawing.Point(436, 124);
+            this.checkBoxLugdownZsPd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLugdownZsPd.Name = "checkBoxLugdownZsPd";
-            this.checkBoxLugdownZsPd.Size = new System.Drawing.Size(139, 20);
+            this.checkBoxLugdownZsPd.Size = new System.Drawing.Size(171, 24);
             this.checkBoxLugdownZsPd.TabIndex = 127;
             this.checkBoxLugdownZsPd.Text = "评价发动机转速";
             this.checkBoxLugdownZsPd.UseVisualStyleBackColor = true;
@@ -5000,9 +5355,10 @@
             // 
             this.panel7.BackColor = System.Drawing.Color.Gray;
             this.panel7.Controls.Add(this.label87);
-            this.panel7.Location = new System.Drawing.Point(0, 3);
+            this.panel7.Location = new System.Drawing.Point(0, 4);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1051, 27);
+            this.panel7.Size = new System.Drawing.Size(1401, 34);
             this.panel7.TabIndex = 123;
             // 
             // label87
@@ -5010,9 +5366,10 @@
             this.label87.AutoSize = true;
             this.label87.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label87.ForeColor = System.Drawing.Color.White;
-            this.label87.Location = new System.Drawing.Point(4, 7);
+            this.label87.Location = new System.Drawing.Point(5, 9);
+            this.label87.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(63, 14);
+            this.label87.Size = new System.Drawing.Size(80, 18);
             this.label87.TabIndex = 107;
             this.label87.Text = "参数设置";
             // 
@@ -5020,9 +5377,10 @@
             // 
             this.label90.AutoSize = true;
             this.label90.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label90.Location = new System.Drawing.Point(251, 417);
+            this.label90.Location = new System.Drawing.Point(335, 521);
+            this.label90.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(88, 16);
+            this.label90.Size = new System.Drawing.Size(109, 20);
             this.label90.TabIndex = 126;
             this.label90.Text = "转速计串口";
             // 
@@ -5030,9 +5388,10 @@
             // 
             this.panel9.BackColor = System.Drawing.Color.Gray;
             this.panel9.Controls.Add(this.label89);
-            this.panel9.Location = new System.Drawing.Point(3, 381);
+            this.panel9.Location = new System.Drawing.Point(4, 476);
+            this.panel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1051, 27);
+            this.panel9.Size = new System.Drawing.Size(1401, 34);
             this.panel9.TabIndex = 125;
             // 
             // label89
@@ -5040,9 +5399,10 @@
             this.label89.AutoSize = true;
             this.label89.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label89.ForeColor = System.Drawing.Color.White;
-            this.label89.Location = new System.Drawing.Point(4, 7);
+            this.label89.Location = new System.Drawing.Point(5, 9);
+            this.label89.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(63, 14);
+            this.label89.Size = new System.Drawing.Size(80, 18);
             this.label89.TabIndex = 107;
             this.label89.Text = "附件设置";
             // 
@@ -5050,9 +5410,10 @@
             // 
             this.panel8.BackColor = System.Drawing.Color.Gray;
             this.panel8.Controls.Add(this.label88);
-            this.panel8.Location = new System.Drawing.Point(0, 64);
+            this.panel8.Location = new System.Drawing.Point(0, 80);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1051, 27);
+            this.panel8.Size = new System.Drawing.Size(1401, 34);
             this.panel8.TabIndex = 124;
             // 
             // label88
@@ -5060,9 +5421,10 @@
             this.label88.AutoSize = true;
             this.label88.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label88.ForeColor = System.Drawing.Color.White;
-            this.label88.Location = new System.Drawing.Point(4, 7);
+            this.label88.Location = new System.Drawing.Point(5, 9);
+            this.label88.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(91, 14);
+            this.label88.Size = new System.Drawing.Size(116, 18);
             this.label88.TabIndex = 107;
             this.label88.Text = "检测过程设置";
             // 
@@ -5070,9 +5432,10 @@
             // 
             this.panel10.BackColor = System.Drawing.Color.Gray;
             this.panel10.Controls.Add(this.buttonLugdownSave);
-            this.panel10.Location = new System.Drawing.Point(3, 537);
+            this.panel10.Location = new System.Drawing.Point(4, 671);
+            this.panel10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(1051, 33);
+            this.panel10.Size = new System.Drawing.Size(1401, 41);
             this.panel10.TabIndex = 127;
             // 
             // tabPage5
@@ -5080,9 +5443,10 @@
             this.tabPage5.Controls.Add(this.panelSDSSETTINGS);
             this.tabPage5.Controls.Add(this.panelSDS);
             this.tabPage5.Controls.Add(this.panel15);
-            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Location = new System.Drawing.Point(4, 28);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1054, 573);
+            this.tabPage5.Size = new System.Drawing.Size(1408, 720);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "双怠速法";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -5124,9 +5488,10 @@
             this.panelSDSSETTINGS.Controls.Add(this.checkBoxSdsZero);
             this.panelSDSSETTINGS.Controls.Add(this.label9);
             this.panelSDSSETTINGS.Enabled = false;
-            this.panelSDSSETTINGS.Location = new System.Drawing.Point(3, 3);
+            this.panelSDSSETTINGS.Location = new System.Drawing.Point(4, 4);
+            this.panelSDSSETTINGS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelSDSSETTINGS.Name = "panelSDSSETTINGS";
-            this.panelSDSSETTINGS.Size = new System.Drawing.Size(1051, 315);
+            this.panelSDSSETTINGS.Size = new System.Drawing.Size(1401, 394);
             this.panelSDSSETTINGS.TabIndex = 138;
             // 
             // checkBoxSds_norezero
@@ -5134,9 +5499,10 @@
             this.checkBoxSds_norezero.AutoSize = true;
             this.checkBoxSds_norezero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxSds_norezero.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxSds_norezero.Location = new System.Drawing.Point(690, 97);
+            this.checkBoxSds_norezero.Location = new System.Drawing.Point(920, 121);
+            this.checkBoxSds_norezero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSds_norezero.Name = "checkBoxSds_norezero";
-            this.checkBoxSds_norezero.Size = new System.Drawing.Size(107, 20);
+            this.checkBoxSds_norezero.Size = new System.Drawing.Size(131, 24);
             this.checkBoxSds_norezero.TabIndex = 151;
             this.checkBoxSds_norezero.Text = "重检不调零";
             this.checkBoxSds_norezero.UseVisualStyleBackColor = true;
@@ -5145,9 +5511,10 @@
             // 
             this.label191.AutoSize = true;
             this.label191.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label191.Location = new System.Drawing.Point(521, 284);
+            this.label191.Location = new System.Drawing.Point(695, 355);
+            this.label191.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label191.Name = "label191";
-            this.label191.Size = new System.Drawing.Size(56, 16);
+            this.label191.Size = new System.Drawing.Size(69, 20);
             this.label191.TabIndex = 150;
             this.label191.Text = "油温计";
             // 
@@ -5160,9 +5527,10 @@
             this.comboBoxYWJ_SDS.Items.AddRange(new object[] {
             "废气仪",
             "南华附件"});
-            this.comboBoxYWJ_SDS.Location = new System.Drawing.Point(583, 281);
+            this.comboBoxYWJ_SDS.Location = new System.Drawing.Point(777, 351);
+            this.comboBoxYWJ_SDS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYWJ_SDS.Name = "comboBoxYWJ_SDS";
-            this.comboBoxYWJ_SDS.Size = new System.Drawing.Size(131, 24);
+            this.comboBoxYWJ_SDS.Size = new System.Drawing.Size(173, 28);
             this.comboBoxYWJ_SDS.TabIndex = 149;
             // 
             // checkBoxSdsSureTemp
@@ -5170,9 +5538,10 @@
             this.checkBoxSdsSureTemp.AutoSize = true;
             this.checkBoxSdsSureTemp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxSdsSureTemp.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxSdsSureTemp.Location = new System.Drawing.Point(481, 97);
+            this.checkBoxSdsSureTemp.Location = new System.Drawing.Point(641, 121);
+            this.checkBoxSdsSureTemp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSdsSureTemp.Name = "checkBoxSdsSureTemp";
-            this.checkBoxSdsSureTemp.Size = new System.Drawing.Size(187, 20);
+            this.checkBoxSdsSureTemp.Size = new System.Drawing.Size(231, 24);
             this.checkBoxSdsSureTemp.TabIndex = 148;
             this.checkBoxSdsSureTemp.Text = "是否手动确认环境参数";
             this.checkBoxSdsSureTemp.UseVisualStyleBackColor = true;
@@ -5181,9 +5550,10 @@
             // 
             this.label124.AutoSize = true;
             this.label124.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label124.Location = new System.Drawing.Point(245, 220);
+            this.label124.Location = new System.Drawing.Point(327, 275);
+            this.label124.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label124.Name = "label124";
-            this.label124.Size = new System.Drawing.Size(72, 16);
+            this.label124.Size = new System.Drawing.Size(89, 20);
             this.label124.TabIndex = 147;
             this.label124.Text = "怠速测量";
             this.label124.Visible = false;
@@ -5197,9 +5567,10 @@
             this.comboBoxLTest.Items.AddRange(new object[] {
             "累计计时",
             "重新计时"});
-            this.comboBoxLTest.Location = new System.Drawing.Point(339, 217);
+            this.comboBoxLTest.Location = new System.Drawing.Point(452, 271);
+            this.comboBoxLTest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLTest.Name = "comboBoxLTest";
-            this.comboBoxLTest.Size = new System.Drawing.Size(125, 24);
+            this.comboBoxLTest.Size = new System.Drawing.Size(165, 28);
             this.comboBoxLTest.TabIndex = 146;
             this.comboBoxLTest.Visible = false;
             // 
@@ -5207,9 +5578,10 @@
             // 
             this.label125.AutoSize = true;
             this.label125.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label125.Location = new System.Drawing.Point(12, 220);
+            this.label125.Location = new System.Drawing.Point(16, 275);
+            this.label125.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label125.Name = "label125";
-            this.label125.Size = new System.Drawing.Size(72, 16);
+            this.label125.Size = new System.Drawing.Size(89, 20);
             this.label125.TabIndex = 145;
             this.label125.Text = "怠速准备";
             this.label125.Visible = false;
@@ -5223,9 +5595,10 @@
             this.comboBoxLPrepare.Items.AddRange(new object[] {
             "累计计时",
             "重新计时"});
-            this.comboBoxLPrepare.Location = new System.Drawing.Point(106, 217);
+            this.comboBoxLPrepare.Location = new System.Drawing.Point(141, 271);
+            this.comboBoxLPrepare.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLPrepare.Name = "comboBoxLPrepare";
-            this.comboBoxLPrepare.Size = new System.Drawing.Size(125, 24);
+            this.comboBoxLPrepare.Size = new System.Drawing.Size(165, 28);
             this.comboBoxLPrepare.TabIndex = 144;
             this.comboBoxLPrepare.Visible = false;
             // 
@@ -5233,9 +5606,10 @@
             // 
             this.label123.AutoSize = true;
             this.label123.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label123.Location = new System.Drawing.Point(245, 190);
+            this.label123.Location = new System.Drawing.Point(327, 238);
+            this.label123.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label123.Name = "label123";
-            this.label123.Size = new System.Drawing.Size(88, 16);
+            this.label123.Size = new System.Drawing.Size(109, 20);
             this.label123.TabIndex = 143;
             this.label123.Text = "高怠速测量";
             // 
@@ -5248,18 +5622,20 @@
             this.comboBoxHTest.Items.AddRange(new object[] {
             "累计计时",
             "重新计时"});
-            this.comboBoxHTest.Location = new System.Drawing.Point(339, 187);
+            this.comboBoxHTest.Location = new System.Drawing.Point(452, 234);
+            this.comboBoxHTest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxHTest.Name = "comboBoxHTest";
-            this.comboBoxHTest.Size = new System.Drawing.Size(125, 24);
+            this.comboBoxHTest.Size = new System.Drawing.Size(165, 28);
             this.comboBoxHTest.TabIndex = 142;
             // 
             // label122
             // 
             this.label122.AutoSize = true;
             this.label122.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label122.Location = new System.Drawing.Point(12, 190);
+            this.label122.Location = new System.Drawing.Point(16, 238);
+            this.label122.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label122.Name = "label122";
-            this.label122.Size = new System.Drawing.Size(88, 16);
+            this.label122.Size = new System.Drawing.Size(109, 20);
             this.label122.TabIndex = 141;
             this.label122.Text = "高怠速准备";
             // 
@@ -5272,18 +5648,20 @@
             this.comboBoxHPrepare.Items.AddRange(new object[] {
             "累计计时",
             "重新计时"});
-            this.comboBoxHPrepare.Location = new System.Drawing.Point(106, 187);
+            this.comboBoxHPrepare.Location = new System.Drawing.Point(141, 234);
+            this.comboBoxHPrepare.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxHPrepare.Name = "comboBoxHPrepare";
-            this.comboBoxHPrepare.Size = new System.Drawing.Size(125, 24);
+            this.comboBoxHPrepare.Size = new System.Drawing.Size(165, 28);
             this.comboBoxHPrepare.TabIndex = 140;
             // 
             // panel24
             // 
             this.panel24.BackColor = System.Drawing.Color.Gray;
             this.panel24.Controls.Add(this.label121);
-            this.panel24.Location = new System.Drawing.Point(0, 123);
+            this.panel24.Location = new System.Drawing.Point(0, 154);
+            this.panel24.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(1051, 27);
+            this.panel24.Size = new System.Drawing.Size(1401, 34);
             this.panel24.TabIndex = 139;
             // 
             // label121
@@ -5291,9 +5669,10 @@
             this.label121.AutoSize = true;
             this.label121.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label121.ForeColor = System.Drawing.Color.White;
-            this.label121.Location = new System.Drawing.Point(4, 7);
+            this.label121.Location = new System.Drawing.Point(5, 9);
+            this.label121.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label121.Name = "label121";
-            this.label121.Size = new System.Drawing.Size(119, 14);
+            this.label121.Size = new System.Drawing.Size(152, 18);
             this.label121.TabIndex = 107;
             this.label121.Text = "转速超差计时设置";
             // 
@@ -5301,9 +5680,10 @@
             // 
             this.label120.AutoSize = true;
             this.label120.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label120.Location = new System.Drawing.Point(12, 160);
+            this.label120.Location = new System.Drawing.Point(16, 200);
+            this.label120.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label120.Name = "label120";
-            this.label120.Size = new System.Drawing.Size(56, 16);
+            this.label120.Size = new System.Drawing.Size(69, 20);
             this.label120.TabIndex = 138;
             this.label120.Text = "3500转";
             // 
@@ -5317,18 +5697,20 @@
             "累计计时",
             "重新计时",
             "达到3500转即可"});
-            this.comboBox3500.Location = new System.Drawing.Point(106, 156);
+            this.comboBox3500.Location = new System.Drawing.Point(141, 195);
+            this.comboBox3500.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox3500.Name = "comboBox3500";
-            this.comboBox3500.Size = new System.Drawing.Size(125, 24);
+            this.comboBox3500.Size = new System.Drawing.Size(165, 28);
             this.comboBox3500.TabIndex = 137;
             // 
             // panel18
             // 
             this.panel18.BackColor = System.Drawing.Color.Gray;
             this.panel18.Controls.Add(this.label96);
-            this.panel18.Location = new System.Drawing.Point(0, 3);
+            this.panel18.Location = new System.Drawing.Point(0, 4);
+            this.panel18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(1051, 27);
+            this.panel18.Size = new System.Drawing.Size(1401, 34);
             this.panel18.TabIndex = 132;
             // 
             // label96
@@ -5336,9 +5718,10 @@
             this.label96.AutoSize = true;
             this.label96.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label96.ForeColor = System.Drawing.Color.White;
-            this.label96.Location = new System.Drawing.Point(4, 7);
+            this.label96.Location = new System.Drawing.Point(5, 9);
+            this.label96.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label96.Name = "label96";
-            this.label96.Size = new System.Drawing.Size(63, 14);
+            this.label96.Size = new System.Drawing.Size(80, 18);
             this.label96.TabIndex = 107;
             this.label96.Text = "参数设置";
             // 
@@ -5346,9 +5729,10 @@
             // 
             this.label91.AutoSize = true;
             this.label91.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label91.Location = new System.Drawing.Point(245, 284);
+            this.label91.Location = new System.Drawing.Point(327, 355);
+            this.label91.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(88, 16);
+            this.label91.Size = new System.Drawing.Size(109, 20);
             this.label91.TabIndex = 136;
             this.label91.Text = "转速计串口";
             // 
@@ -5356,9 +5740,10 @@
             // 
             this.panel17.BackColor = System.Drawing.Color.Gray;
             this.panel17.Controls.Add(this.label95);
-            this.panel17.Location = new System.Drawing.Point(0, 64);
+            this.panel17.Location = new System.Drawing.Point(0, 80);
+            this.panel17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(1051, 27);
+            this.panel17.Size = new System.Drawing.Size(1401, 34);
             this.panel17.TabIndex = 133;
             // 
             // label95
@@ -5366,9 +5751,10 @@
             this.label95.AutoSize = true;
             this.label95.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label95.ForeColor = System.Drawing.Color.White;
-            this.label95.Location = new System.Drawing.Point(4, 7);
+            this.label95.Location = new System.Drawing.Point(5, 9);
+            this.label95.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label95.Name = "label95";
-            this.label95.Size = new System.Drawing.Size(91, 14);
+            this.label95.Size = new System.Drawing.Size(116, 18);
             this.label95.TabIndex = 107;
             this.label95.Text = "检测过程设置";
             // 
@@ -5376,9 +5762,10 @@
             // 
             this.panel16.BackColor = System.Drawing.Color.Gray;
             this.panel16.Controls.Add(this.label94);
-            this.panel16.Location = new System.Drawing.Point(0, 248);
+            this.panel16.Location = new System.Drawing.Point(0, 310);
+            this.panel16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(1051, 27);
+            this.panel16.Size = new System.Drawing.Size(1401, 34);
             this.panel16.TabIndex = 134;
             // 
             // label94
@@ -5386,9 +5773,10 @@
             this.label94.AutoSize = true;
             this.label94.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label94.ForeColor = System.Drawing.Color.White;
-            this.label94.Location = new System.Drawing.Point(4, 7);
+            this.label94.Location = new System.Drawing.Point(5, 9);
+            this.label94.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label94.Name = "label94";
-            this.label94.Size = new System.Drawing.Size(63, 14);
+            this.label94.Size = new System.Drawing.Size(80, 18);
             this.label94.TabIndex = 107;
             this.label94.Text = "附件设置";
             // 
@@ -5399,9 +5787,10 @@
             this.panelSDS.Controls.Add(this.checkBoxSdsZsjk);
             this.panelSDS.Controls.Add(this.checkBoxSdsNdjk);
             this.panelSDS.Controls.Add(this.panel28);
-            this.panelSDS.Location = new System.Drawing.Point(3, 324);
+            this.panelSDS.Location = new System.Drawing.Point(4, 405);
+            this.panelSDS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelSDS.Name = "panelSDS";
-            this.panelSDS.Size = new System.Drawing.Size(1051, 102);
+            this.panelSDS.Size = new System.Drawing.Size(1401, 128);
             this.panelSDS.TabIndex = 137;
             this.panelSDS.Visible = false;
             // 
@@ -5409,9 +5798,10 @@
             // 
             this.checkBoxLAMBDA_LOW.AutoSize = true;
             this.checkBoxLAMBDA_LOW.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxLAMBDA_LOW.Location = new System.Drawing.Point(721, 34);
+            this.checkBoxLAMBDA_LOW.Location = new System.Drawing.Point(961, 42);
+            this.checkBoxLAMBDA_LOW.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLAMBDA_LOW.Name = "checkBoxLAMBDA_LOW";
-            this.checkBoxLAMBDA_LOW.Size = new System.Drawing.Size(139, 20);
+            this.checkBoxLAMBDA_LOW.Size = new System.Drawing.Size(171, 24);
             this.checkBoxLAMBDA_LOW.TabIndex = 134;
             this.checkBoxLAMBDA_LOW.Text = "怠速lambda监控";
             this.checkBoxLAMBDA_LOW.UseVisualStyleBackColor = true;
@@ -5420,9 +5810,10 @@
             // 
             this.checkBoxLAMBDA_HIGH.AutoSize = true;
             this.checkBoxLAMBDA_HIGH.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxLAMBDA_HIGH.Location = new System.Drawing.Point(481, 34);
+            this.checkBoxLAMBDA_HIGH.Location = new System.Drawing.Point(641, 42);
+            this.checkBoxLAMBDA_HIGH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLAMBDA_HIGH.Name = "checkBoxLAMBDA_HIGH";
-            this.checkBoxLAMBDA_HIGH.Size = new System.Drawing.Size(155, 20);
+            this.checkBoxLAMBDA_HIGH.Size = new System.Drawing.Size(191, 24);
             this.checkBoxLAMBDA_HIGH.TabIndex = 133;
             this.checkBoxLAMBDA_HIGH.Text = "高怠速lambda监控";
             this.checkBoxLAMBDA_HIGH.UseVisualStyleBackColor = true;
@@ -5432,8 +5823,9 @@
             this.panel28.BackColor = System.Drawing.Color.Gray;
             this.panel28.Controls.Add(this.label106);
             this.panel28.Location = new System.Drawing.Point(1, 1);
+            this.panel28.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel28.Name = "panel28";
-            this.panel28.Size = new System.Drawing.Size(1050, 27);
+            this.panel28.Size = new System.Drawing.Size(1400, 34);
             this.panel28.TabIndex = 132;
             // 
             // label106
@@ -5441,9 +5833,10 @@
             this.label106.AutoSize = true;
             this.label106.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label106.ForeColor = System.Drawing.Color.White;
-            this.label106.Location = new System.Drawing.Point(4, 7);
+            this.label106.Location = new System.Drawing.Point(5, 9);
+            this.label106.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label106.Name = "label106";
-            this.label106.Size = new System.Drawing.Size(91, 14);
+            this.label106.Size = new System.Drawing.Size(116, 18);
             this.label106.TabIndex = 107;
             this.label106.Text = "检测过程设置";
             // 
@@ -5451,18 +5844,20 @@
             // 
             this.panel15.BackColor = System.Drawing.Color.Gray;
             this.panel15.Controls.Add(this.buttonSdsSave);
-            this.panel15.Location = new System.Drawing.Point(3, 537);
+            this.panel15.Location = new System.Drawing.Point(4, 671);
+            this.panel15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(1051, 33);
+            this.panel15.Size = new System.Drawing.Size(1401, 41);
             this.panel15.TabIndex = 135;
             // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.panelBTG);
             this.tabPage6.Controls.Add(this.panel19);
-            this.tabPage6.Location = new System.Drawing.Point(4, 25);
+            this.tabPage6.Location = new System.Drawing.Point(4, 28);
+            this.tabPage6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(1054, 573);
+            this.tabPage6.Size = new System.Drawing.Size(1408, 720);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "不透光自由加速法";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -5495,18 +5890,20 @@
             this.panelBTG.Controls.Add(this.label72);
             this.panelBTG.Controls.Add(this.checkBoxBtgZsjk);
             this.panelBTG.Enabled = false;
-            this.panelBTG.Location = new System.Drawing.Point(2, 4);
+            this.panelBTG.Location = new System.Drawing.Point(3, 5);
+            this.panelBTG.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelBTG.Name = "panelBTG";
-            this.panelBTG.Size = new System.Drawing.Size(1052, 248);
+            this.panelBTG.Size = new System.Drawing.Size(1403, 310);
             this.panelBTG.TabIndex = 139;
             // 
             // label200
             // 
             this.label200.AutoSize = true;
             this.label200.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label200.Location = new System.Drawing.Point(245, 127);
+            this.label200.Location = new System.Drawing.Point(327, 159);
+            this.label200.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label200.Name = "label200";
-            this.label200.Size = new System.Drawing.Size(80, 16);
+            this.label200.Size = new System.Drawing.Size(99, 20);
             this.label200.TabIndex = 159;
             this.label200.Text = "规定值：<";
             // 
@@ -5515,18 +5912,20 @@
             this.textBoxBtg_cl_ydjk.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxBtg_cl_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxBtg_cl_ydjk.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxBtg_cl_ydjk.Location = new System.Drawing.Point(331, 125);
+            this.textBoxBtg_cl_ydjk.Location = new System.Drawing.Point(441, 156);
+            this.textBoxBtg_cl_ydjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxBtg_cl_ydjk.Name = "textBoxBtg_cl_ydjk";
-            this.textBoxBtg_cl_ydjk.Size = new System.Drawing.Size(71, 26);
+            this.textBoxBtg_cl_ydjk.Size = new System.Drawing.Size(94, 30);
             this.textBoxBtg_cl_ydjk.TabIndex = 158;
             // 
             // label201
             // 
             this.label201.AutoSize = true;
             this.label201.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label201.Location = new System.Drawing.Point(408, 127);
+            this.label201.Location = new System.Drawing.Point(544, 159);
+            this.label201.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label201.Name = "label201";
-            this.label201.Size = new System.Drawing.Size(96, 16);
+            this.label201.Size = new System.Drawing.Size(119, 20);
             this.label201.TabIndex = 160;
             this.label201.Text = "时中止检测 ";
             // 
@@ -5535,9 +5934,10 @@
             this.checkBoxBtg_cl_ydjk.AutoSize = true;
             this.checkBoxBtg_cl_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxBtg_cl_ydjk.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxBtg_cl_ydjk.Location = new System.Drawing.Point(12, 126);
+            this.checkBoxBtg_cl_ydjk.Location = new System.Drawing.Point(16, 158);
+            this.checkBoxBtg_cl_ydjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxBtg_cl_ydjk.Name = "checkBoxBtg_cl_ydjk";
-            this.checkBoxBtg_cl_ydjk.Size = new System.Drawing.Size(235, 20);
+            this.checkBoxBtg_cl_ydjk.Size = new System.Drawing.Size(291, 24);
             this.checkBoxBtg_cl_ydjk.TabIndex = 157;
             this.checkBoxBtg_cl_ydjk.Text = "烟度低于规定值时，中止检测";
             this.checkBoxBtg_cl_ydjk.UseVisualStyleBackColor = true;
@@ -5546,9 +5946,10 @@
             // 
             this.label193.AutoSize = true;
             this.label193.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label193.Location = new System.Drawing.Point(485, 205);
+            this.label193.Location = new System.Drawing.Point(647, 256);
+            this.label193.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label193.Name = "label193";
-            this.label193.Size = new System.Drawing.Size(56, 16);
+            this.label193.Size = new System.Drawing.Size(69, 20);
             this.label193.TabIndex = 154;
             this.label193.Text = "油温计";
             // 
@@ -5561,9 +5962,10 @@
             this.comboBoxYWJ_BTG.Items.AddRange(new object[] {
             "烟度计",
             "南华附件"});
-            this.comboBoxYWJ_BTG.Location = new System.Drawing.Point(547, 201);
+            this.comboBoxYWJ_BTG.Location = new System.Drawing.Point(729, 251);
+            this.comboBoxYWJ_BTG.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYWJ_BTG.Name = "comboBoxYWJ_BTG";
-            this.comboBoxYWJ_BTG.Size = new System.Drawing.Size(131, 24);
+            this.comboBoxYWJ_BTG.Size = new System.Drawing.Size(173, 28);
             this.comboBoxYWJ_BTG.TabIndex = 153;
             // 
             // panel40
@@ -5571,18 +5973,20 @@
             this.panel40.Controls.Add(this.label170);
             this.panel40.Controls.Add(this.radioButtonBTGDSZS);
             this.panel40.Controls.Add(this.radioButtonBTGDYZS);
-            this.panel40.Location = new System.Drawing.Point(637, 32);
+            this.panel40.Location = new System.Drawing.Point(849, 40);
+            this.panel40.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel40.Name = "panel40";
-            this.panel40.Size = new System.Drawing.Size(325, 31);
+            this.panel40.Size = new System.Drawing.Size(433, 39);
             this.panel40.TabIndex = 142;
             // 
             // label170
             // 
             this.label170.AutoSize = true;
             this.label170.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label170.Location = new System.Drawing.Point(3, 7);
+            this.label170.Location = new System.Drawing.Point(4, 9);
+            this.label170.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label170.Name = "label170";
-            this.label170.Size = new System.Drawing.Size(88, 16);
+            this.label170.Size = new System.Drawing.Size(109, 20);
             this.label170.TabIndex = 66;
             this.label170.Text = "怠速转速取";
             // 
@@ -5590,9 +5994,10 @@
             // 
             this.radioButtonBTGDSZS.AutoSize = true;
             this.radioButtonBTGDSZS.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonBTGDSZS.Location = new System.Drawing.Point(97, 5);
+            this.radioButtonBTGDSZS.Location = new System.Drawing.Point(129, 6);
+            this.radioButtonBTGDSZS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonBTGDSZS.Name = "radioButtonBTGDSZS";
-            this.radioButtonBTGDSZS.Size = new System.Drawing.Size(106, 20);
+            this.radioButtonBTGDSZS.Size = new System.Drawing.Size(130, 24);
             this.radioButtonBTGDSZS.TabIndex = 64;
             this.radioButtonBTGDSZS.TabStop = true;
             this.radioButtonBTGDSZS.Text = "怠速转速点";
@@ -5602,9 +6007,10 @@
             // 
             this.radioButtonBTGDYZS.AutoSize = true;
             this.radioButtonBTGDYZS.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonBTGDYZS.Location = new System.Drawing.Point(209, 5);
+            this.radioButtonBTGDYZS.Location = new System.Drawing.Point(279, 6);
+            this.radioButtonBTGDYZS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonBTGDYZS.Name = "radioButtonBTGDYZS";
-            this.radioButtonBTGDYZS.Size = new System.Drawing.Size(106, 20);
+            this.radioButtonBTGDYZS.Size = new System.Drawing.Size(130, 24);
             this.radioButtonBTGDYZS.TabIndex = 65;
             this.radioButtonBTGDYZS.TabStop = true;
             this.radioButtonBTGDYZS.Text = "断油转速点";
@@ -5614,9 +6020,10 @@
             // 
             this.checkBoxBTGJHGCJK.AutoSize = true;
             this.checkBoxBTGJHGCJK.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkBoxBTGJHGCJK.Location = new System.Drawing.Point(702, 100);
+            this.checkBoxBTGJHGCJK.Location = new System.Drawing.Point(936, 125);
+            this.checkBoxBTGJHGCJK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxBTGJHGCJK.Name = "checkBoxBTGJHGCJK";
-            this.checkBoxBTGJHGCJK.Size = new System.Drawing.Size(155, 20);
+            this.checkBoxBTGJHGCJK.Size = new System.Drawing.Size(191, 24);
             this.checkBoxBTGJHGCJK.TabIndex = 141;
             this.checkBoxBTGJHGCJK.Text = "金华转速过程监控";
             this.checkBoxBTGJHGCJK.UseVisualStyleBackColor = true;
@@ -5631,18 +6038,20 @@
             "3",
             "4",
             "6"});
-            this.comboBoxBTGCLCS.Location = new System.Drawing.Point(519, 36);
+            this.comboBoxBTGCLCS.Location = new System.Drawing.Point(692, 45);
+            this.comboBoxBTGCLCS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBTGCLCS.Name = "comboBoxBTGCLCS";
-            this.comboBoxBTGCLCS.Size = new System.Drawing.Size(97, 24);
+            this.comboBoxBTGCLCS.Size = new System.Drawing.Size(128, 28);
             this.comboBoxBTGCLCS.TabIndex = 140;
             // 
             // label157
             // 
             this.label157.AutoSize = true;
             this.label157.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label157.Location = new System.Drawing.Point(446, 40);
+            this.label157.Location = new System.Drawing.Point(595, 50);
+            this.label157.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label157.Name = "label157";
-            this.label157.Size = new System.Drawing.Size(72, 16);
+            this.label157.Size = new System.Drawing.Size(89, 20);
             this.label157.TabIndex = 139;
             this.label157.Text = "测量次数";
             // 
@@ -5650,9 +6059,10 @@
             // 
             this.panel22.BackColor = System.Drawing.Color.Gray;
             this.panel22.Controls.Add(this.label99);
-            this.panel22.Location = new System.Drawing.Point(0, 3);
+            this.panel22.Location = new System.Drawing.Point(0, 4);
+            this.panel22.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(1052, 27);
+            this.panel22.Size = new System.Drawing.Size(1403, 34);
             this.panel22.TabIndex = 132;
             // 
             // label99
@@ -5660,9 +6070,10 @@
             this.label99.AutoSize = true;
             this.label99.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label99.ForeColor = System.Drawing.Color.White;
-            this.label99.Location = new System.Drawing.Point(4, 7);
+            this.label99.Location = new System.Drawing.Point(5, 9);
+            this.label99.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label99.Name = "label99";
-            this.label99.Size = new System.Drawing.Size(63, 14);
+            this.label99.Size = new System.Drawing.Size(80, 18);
             this.label99.TabIndex = 107;
             this.label99.Text = "参数设置";
             // 
@@ -5670,9 +6081,10 @@
             // 
             this.label100.AutoSize = true;
             this.label100.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label100.Location = new System.Drawing.Point(234, 206);
+            this.label100.Location = new System.Drawing.Point(312, 258);
+            this.label100.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label100.Name = "label100";
-            this.label100.Size = new System.Drawing.Size(88, 16);
+            this.label100.Size = new System.Drawing.Size(109, 20);
             this.label100.TabIndex = 138;
             this.label100.Text = "转速计串口";
             // 
@@ -5680,9 +6092,10 @@
             // 
             this.label103.AutoSize = true;
             this.label103.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label103.Location = new System.Drawing.Point(9, 207);
+            this.label103.Location = new System.Drawing.Point(12, 259);
+            this.label103.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label103.Name = "label103";
-            this.label103.Size = new System.Drawing.Size(56, 16);
+            this.label103.Size = new System.Drawing.Size(69, 20);
             this.label103.TabIndex = 137;
             this.label103.Text = "转速计";
             // 
@@ -5690,9 +6103,10 @@
             // 
             this.panel21.BackColor = System.Drawing.Color.Gray;
             this.panel21.Controls.Add(this.label98);
-            this.panel21.Location = new System.Drawing.Point(0, 64);
+            this.panel21.Location = new System.Drawing.Point(0, 80);
+            this.panel21.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(1052, 27);
+            this.panel21.Size = new System.Drawing.Size(1403, 34);
             this.panel21.TabIndex = 133;
             // 
             // label98
@@ -5700,9 +6114,10 @@
             this.label98.AutoSize = true;
             this.label98.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label98.ForeColor = System.Drawing.Color.White;
-            this.label98.Location = new System.Drawing.Point(4, 7);
+            this.label98.Location = new System.Drawing.Point(5, 9);
+            this.label98.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label98.Name = "label98";
-            this.label98.Size = new System.Drawing.Size(91, 14);
+            this.label98.Size = new System.Drawing.Size(116, 18);
             this.label98.TabIndex = 107;
             this.label98.Text = "检测过程设置";
             // 
@@ -5710,9 +6125,10 @@
             // 
             this.panel20.BackColor = System.Drawing.Color.Gray;
             this.panel20.Controls.Add(this.label97);
-            this.panel20.Location = new System.Drawing.Point(0, 169);
+            this.panel20.Location = new System.Drawing.Point(0, 211);
+            this.panel20.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(1052, 27);
+            this.panel20.Size = new System.Drawing.Size(1403, 34);
             this.panel20.TabIndex = 134;
             // 
             // label97
@@ -5720,9 +6136,10 @@
             this.label97.AutoSize = true;
             this.label97.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label97.ForeColor = System.Drawing.Color.White;
-            this.label97.Location = new System.Drawing.Point(4, 7);
+            this.label97.Location = new System.Drawing.Point(5, 9);
+            this.label97.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label97.Name = "label97";
-            this.label97.Size = new System.Drawing.Size(63, 14);
+            this.label97.Size = new System.Drawing.Size(80, 18);
             this.label97.TabIndex = 107;
             this.label97.Text = "附件设置";
             // 
@@ -5730,19 +6147,21 @@
             // 
             this.panel19.BackColor = System.Drawing.Color.Gray;
             this.panel19.Controls.Add(this.buttonBtgSave);
-            this.panel19.Location = new System.Drawing.Point(3, 537);
+            this.panel19.Location = new System.Drawing.Point(4, 671);
+            this.panel19.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(1052, 33);
+            this.panel19.Size = new System.Drawing.Size(1403, 41);
             this.panel19.TabIndex = 135;
             // 
             // tabPage7
             // 
             this.tabPage7.Controls.Add(this.panel33);
             this.tabPage7.Controls.Add(this.panel29);
-            this.tabPage7.Location = new System.Drawing.Point(4, 25);
+            this.tabPage7.Location = new System.Drawing.Point(4, 28);
+            this.tabPage7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(1054, 573);
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage7.Size = new System.Drawing.Size(1408, 720);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "动力性检测&油耗检测";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -5751,17 +6170,19 @@
             // 
             this.panel33.BackColor = System.Drawing.Color.Gray;
             this.panel33.Controls.Add(this.button1);
-            this.panel33.Location = new System.Drawing.Point(3, 538);
+            this.panel33.Location = new System.Drawing.Point(4, 672);
+            this.panel33.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel33.Name = "panel33";
-            this.panel33.Size = new System.Drawing.Size(1051, 33);
+            this.panel33.Size = new System.Drawing.Size(1401, 41);
             this.panel33.TabIndex = 141;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("宋体", 9F);
-            this.button1.Location = new System.Drawing.Point(376, 0);
+            this.button1.Location = new System.Drawing.Point(501, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 32);
+            this.button1.Size = new System.Drawing.Size(169, 40);
             this.button1.TabIndex = 59;
             this.button1.Text = "保存";
             this.button1.UseVisualStyleBackColor = true;
@@ -5823,18 +6244,20 @@
             this.panel29.Controls.Add(this.comboBoxDynZsj);
             this.panel29.Controls.Add(this.panel32);
             this.panel29.Enabled = false;
-            this.panel29.Location = new System.Drawing.Point(3, 1);
+            this.panel29.Location = new System.Drawing.Point(4, 1);
+            this.panel29.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel29.Name = "panel29";
-            this.panel29.Size = new System.Drawing.Size(1051, 531);
+            this.panel29.Size = new System.Drawing.Size(1401, 664);
             this.panel29.TabIndex = 140;
             // 
             // checkBoxDynManulKey
             // 
             this.checkBoxDynManulKey.AutoSize = true;
             this.checkBoxDynManulKey.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxDynManulKey.Location = new System.Drawing.Point(7, 232);
+            this.checkBoxDynManulKey.Location = new System.Drawing.Point(9, 290);
+            this.checkBoxDynManulKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynManulKey.Name = "checkBoxDynManulKey";
-            this.checkBoxDynManulKey.Size = new System.Drawing.Size(155, 20);
+            this.checkBoxDynManulKey.Size = new System.Drawing.Size(191, 24);
             this.checkBoxDynManulKey.TabIndex = 184;
             this.checkBoxDynManulKey.Text = "使用人工确认按钮";
             this.checkBoxDynManulKey.UseVisualStyleBackColor = true;
@@ -5843,9 +6266,10 @@
             // 
             this.checkBoxDynYkqr.AutoSize = true;
             this.checkBoxDynYkqr.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxDynYkqr.Location = new System.Drawing.Point(619, 232);
+            this.checkBoxDynYkqr.Location = new System.Drawing.Point(825, 290);
+            this.checkBoxDynYkqr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynYkqr.Name = "checkBoxDynYkqr";
-            this.checkBoxDynYkqr.Size = new System.Drawing.Size(203, 20);
+            this.checkBoxDynYkqr.Size = new System.Drawing.Size(251, 24);
             this.checkBoxDynYkqr.TabIndex = 183;
             this.checkBoxDynYkqr.Text = "动力性遥控确认最大速度";
             this.checkBoxDynYkqr.UseVisualStyleBackColor = true;
@@ -5854,9 +6278,10 @@
             // 
             this.checkBoxDynFlowBack.AutoSize = true;
             this.checkBoxDynFlowBack.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxDynFlowBack.Location = new System.Drawing.Point(529, 232);
+            this.checkBoxDynFlowBack.Location = new System.Drawing.Point(705, 290);
+            this.checkBoxDynFlowBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynFlowBack.Name = "checkBoxDynFlowBack";
-            this.checkBoxDynFlowBack.Size = new System.Drawing.Size(59, 20);
+            this.checkBoxDynFlowBack.Size = new System.Drawing.Size(71, 24);
             this.checkBoxDynFlowBack.TabIndex = 182;
             this.checkBoxDynFlowBack.Text = "反吹";
             this.checkBoxDynFlowBack.UseVisualStyleBackColor = true;
@@ -5865,9 +6290,10 @@
             // 
             this.checkBoxDynCO2Test.AutoSize = true;
             this.checkBoxDynCO2Test.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxDynCO2Test.Location = new System.Drawing.Point(418, 232);
+            this.checkBoxDynCO2Test.Location = new System.Drawing.Point(557, 290);
+            this.checkBoxDynCO2Test.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynCO2Test.Name = "checkBoxDynCO2Test";
-            this.checkBoxDynCO2Test.Size = new System.Drawing.Size(83, 20);
+            this.checkBoxDynCO2Test.Size = new System.Drawing.Size(101, 24);
             this.checkBoxDynCO2Test.TabIndex = 181;
             this.checkBoxDynCO2Test.Text = "修正CO2";
             this.checkBoxDynCO2Test.UseVisualStyleBackColor = true;
@@ -5876,9 +6302,10 @@
             // 
             this.checkBoxDynBackTest.AutoSize = true;
             this.checkBoxDynBackTest.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxDynBackTest.Location = new System.Drawing.Point(301, 232);
+            this.checkBoxDynBackTest.Location = new System.Drawing.Point(401, 290);
+            this.checkBoxDynBackTest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynBackTest.Name = "checkBoxDynBackTest";
-            this.checkBoxDynBackTest.Size = new System.Drawing.Size(91, 20);
+            this.checkBoxDynBackTest.Size = new System.Drawing.Size(111, 24);
             this.checkBoxDynBackTest.TabIndex = 180;
             this.checkBoxDynBackTest.Text = "背景测定";
             this.checkBoxDynBackTest.UseVisualStyleBackColor = true;
@@ -5887,9 +6314,10 @@
             // 
             this.checkBoxDYNTL.AutoSize = true;
             this.checkBoxDYNTL.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxDYNTL.Location = new System.Drawing.Point(211, 232);
+            this.checkBoxDYNTL.Location = new System.Drawing.Point(281, 290);
+            this.checkBoxDYNTL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDYNTL.Name = "checkBoxDYNTL";
-            this.checkBoxDYNTL.Size = new System.Drawing.Size(59, 20);
+            this.checkBoxDYNTL.Size = new System.Drawing.Size(71, 24);
             this.checkBoxDYNTL.TabIndex = 179;
             this.checkBoxDYNTL.Text = "调零";
             this.checkBoxDYNTL.UseVisualStyleBackColor = true;
@@ -5901,9 +6329,10 @@
             this.panel42.Controls.Add(this.label179);
             this.panel42.Controls.Add(this.checkBoxDynStopUnstable);
             this.panel42.Controls.Add(this.label180);
-            this.panel42.Location = new System.Drawing.Point(4, 381);
+            this.panel42.Location = new System.Drawing.Point(5, 476);
+            this.panel42.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel42.Name = "panel42";
-            this.panel42.Size = new System.Drawing.Size(1044, 29);
+            this.panel42.Size = new System.Drawing.Size(1392, 36);
             this.panel42.TabIndex = 178;
             // 
             // textBoxDynUnstableTime
@@ -5911,18 +6340,20 @@
             this.textBoxDynUnstableTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDynUnstableTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynUnstableTime.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxDynUnstableTime.Location = new System.Drawing.Point(630, 1);
+            this.textBoxDynUnstableTime.Location = new System.Drawing.Point(840, 1);
+            this.textBoxDynUnstableTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynUnstableTime.Name = "textBoxDynUnstableTime";
-            this.textBoxDynUnstableTime.Size = new System.Drawing.Size(88, 26);
+            this.textBoxDynUnstableTime.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynUnstableTime.TabIndex = 149;
             // 
             // label178
             // 
             this.label178.AutoSize = true;
             this.label178.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label178.Location = new System.Drawing.Point(722, 6);
+            this.label178.Location = new System.Drawing.Point(963, 8);
+            this.label178.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label178.Name = "label178";
-            this.label178.Size = new System.Drawing.Size(16, 16);
+            this.label178.Size = new System.Drawing.Size(19, 20);
             this.label178.TabIndex = 150;
             this.label178.Text = "s";
             // 
@@ -5930,9 +6361,10 @@
             // 
             this.label179.AutoSize = true;
             this.label179.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label179.Location = new System.Drawing.Point(501, 6);
+            this.label179.Location = new System.Drawing.Point(668, 8);
+            this.label179.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label179.Name = "label179";
-            this.label179.Size = new System.Drawing.Size(120, 16);
+            this.label179.Size = new System.Drawing.Size(149, 20);
             this.label179.TabIndex = 148;
             this.label179.Text = "不稳定时间限值";
             // 
@@ -5940,9 +6372,10 @@
             // 
             this.checkBoxDynStopUnstable.AutoSize = true;
             this.checkBoxDynStopUnstable.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxDynStopUnstable.Location = new System.Drawing.Point(207, 5);
+            this.checkBoxDynStopUnstable.Location = new System.Drawing.Point(276, 6);
+            this.checkBoxDynStopUnstable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynStopUnstable.Name = "checkBoxDynStopUnstable";
-            this.checkBoxDynStopUnstable.Size = new System.Drawing.Size(219, 20);
+            this.checkBoxDynStopUnstable.Size = new System.Drawing.Size(271, 24);
             this.checkBoxDynStopUnstable.TabIndex = 147;
             this.checkBoxDynStopUnstable.Text = "长时间加载不稳定停止检测";
             this.checkBoxDynStopUnstable.UseVisualStyleBackColor = true;
@@ -5951,9 +6384,10 @@
             // 
             this.label180.AutoSize = true;
             this.label180.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label180.Location = new System.Drawing.Point(81, 6);
+            this.label180.Location = new System.Drawing.Point(108, 8);
+            this.label180.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label180.Name = "label180";
-            this.label180.Size = new System.Drawing.Size(120, 16);
+            this.label180.Size = new System.Drawing.Size(149, 20);
             this.label180.TabIndex = 66;
             this.label180.Text = "动力性检测模式";
             // 
@@ -5962,18 +6396,20 @@
             this.panel41.Controls.Add(this.label175);
             this.panel41.Controls.Add(this.radioButtonDynFileJson);
             this.panel41.Controls.Add(this.radioButtonDynFileIni);
-            this.panel41.Location = new System.Drawing.Point(4, 442);
+            this.panel41.Location = new System.Drawing.Point(5, 552);
+            this.panel41.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel41.Name = "panel41";
-            this.panel41.Size = new System.Drawing.Size(1044, 29);
+            this.panel41.Size = new System.Drawing.Size(1392, 36);
             this.panel41.TabIndex = 177;
             // 
             // label175
             // 
             this.label175.AutoSize = true;
             this.label175.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label175.Location = new System.Drawing.Point(66, 6);
+            this.label175.Location = new System.Drawing.Point(88, 8);
+            this.label175.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label175.Name = "label175";
-            this.label175.Size = new System.Drawing.Size(136, 16);
+            this.label175.Size = new System.Drawing.Size(169, 20);
             this.label175.TabIndex = 66;
             this.label175.Text = "检测结果文件格式";
             // 
@@ -5981,9 +6417,10 @@
             // 
             this.radioButtonDynFileJson.AutoSize = true;
             this.radioButtonDynFileJson.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonDynFileJson.Location = new System.Drawing.Point(208, 4);
+            this.radioButtonDynFileJson.Location = new System.Drawing.Point(277, 5);
+            this.radioButtonDynFileJson.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonDynFileJson.Name = "radioButtonDynFileJson";
-            this.radioButtonDynFileJson.Size = new System.Drawing.Size(90, 20);
+            this.radioButtonDynFileJson.Size = new System.Drawing.Size(110, 24);
             this.radioButtonDynFileJson.TabIndex = 64;
             this.radioButtonDynFileJson.TabStop = true;
             this.radioButtonDynFileJson.Text = "Json格式";
@@ -5993,9 +6430,10 @@
             // 
             this.radioButtonDynFileIni.AutoSize = true;
             this.radioButtonDynFileIni.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonDynFileIni.Location = new System.Drawing.Point(454, 4);
+            this.radioButtonDynFileIni.Location = new System.Drawing.Point(605, 5);
+            this.radioButtonDynFileIni.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonDynFileIni.Name = "radioButtonDynFileIni";
-            this.radioButtonDynFileIni.Size = new System.Drawing.Size(146, 20);
+            this.radioButtonDynFileIni.Size = new System.Drawing.Size(180, 24);
             this.radioButtonDynFileIni.TabIndex = 65;
             this.radioButtonDynFileIni.TabStop = true;
             this.radioButtonDynFileIni.Text = "ini配置文件格式";
@@ -6005,9 +6443,10 @@
             // 
             this.label169.AutoSize = true;
             this.label169.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label169.Location = new System.Drawing.Point(320, 181);
+            this.label169.Location = new System.Drawing.Point(427, 226);
+            this.label169.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label169.Name = "label169";
-            this.label169.Size = new System.Drawing.Size(40, 16);
+            this.label169.Size = new System.Drawing.Size(49, 20);
             this.label169.TabIndex = 176;
             this.label169.Text = "km/h";
             // 
@@ -6015,9 +6454,10 @@
             // 
             this.label168.AutoSize = true;
             this.label168.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label168.Location = new System.Drawing.Point(25, 181);
+            this.label168.Location = new System.Drawing.Point(33, 226);
+            this.label168.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label168.Name = "label168";
-            this.label168.Size = new System.Drawing.Size(200, 16);
+            this.label168.Size = new System.Drawing.Size(249, 20);
             this.label168.TabIndex = 175;
             this.label168.Text = "动力性稳定车速稳定要求±";
             // 
@@ -6026,18 +6466,20 @@
             this.textBoxDynVwSdqj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDynVwSdqj.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynVwSdqj.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxDynVwSdqj.Location = new System.Drawing.Point(228, 176);
+            this.textBoxDynVwSdqj.Location = new System.Drawing.Point(304, 220);
+            this.textBoxDynVwSdqj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynVwSdqj.Name = "textBoxDynVwSdqj";
-            this.textBoxDynVwSdqj.Size = new System.Drawing.Size(88, 26);
+            this.textBoxDynVwSdqj.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynVwSdqj.TabIndex = 174;
             // 
             // label166
             // 
             this.label166.AutoSize = true;
             this.label166.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label166.Location = new System.Drawing.Point(415, 181);
+            this.label166.Location = new System.Drawing.Point(553, 226);
+            this.label166.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label166.Name = "label166";
-            this.label166.Size = new System.Drawing.Size(216, 16);
+            this.label166.Size = new System.Drawing.Size(269, 20);
             this.label166.TabIndex = 172;
             this.label166.Text = "动力性稳定车速最长等待时间";
             // 
@@ -6046,18 +6488,20 @@
             this.textBoxDynMaxWaitTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDynMaxWaitTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynMaxWaitTime.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxDynMaxWaitTime.Location = new System.Drawing.Point(635, 176);
+            this.textBoxDynMaxWaitTime.Location = new System.Drawing.Point(847, 220);
+            this.textBoxDynMaxWaitTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynMaxWaitTime.Name = "textBoxDynMaxWaitTime";
-            this.textBoxDynMaxWaitTime.Size = new System.Drawing.Size(88, 26);
+            this.textBoxDynMaxWaitTime.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynMaxWaitTime.TabIndex = 171;
             // 
             // label167
             // 
             this.label167.AutoSize = true;
             this.label167.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label167.Location = new System.Drawing.Point(727, 181);
+            this.label167.Location = new System.Drawing.Point(969, 226);
+            this.label167.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label167.Name = "label167";
-            this.label167.Size = new System.Drawing.Size(16, 16);
+            this.label167.Size = new System.Drawing.Size(19, 20);
             this.label167.TabIndex = 173;
             this.label167.Text = "s";
             // 
@@ -6065,9 +6509,10 @@
             // 
             this.label164.AutoSize = true;
             this.label164.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label164.Location = new System.Drawing.Point(9, 94);
+            this.label164.Location = new System.Drawing.Point(12, 118);
+            this.label164.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label164.Name = "label164";
-            this.label164.Size = new System.Drawing.Size(216, 16);
+            this.label164.Size = new System.Drawing.Size(269, 20);
             this.label164.TabIndex = 169;
             this.label164.Text = "动力性压燃式速度稳定要求±";
             // 
@@ -6076,18 +6521,20 @@
             this.textBoxDynSdqj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDynSdqj.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynSdqj.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxDynSdqj.Location = new System.Drawing.Point(228, 89);
+            this.textBoxDynSdqj.Location = new System.Drawing.Point(304, 111);
+            this.textBoxDynSdqj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynSdqj.Name = "textBoxDynSdqj";
-            this.textBoxDynSdqj.Size = new System.Drawing.Size(88, 26);
+            this.textBoxDynSdqj.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynSdqj.TabIndex = 168;
             // 
             // label165
             // 
             this.label165.AutoSize = true;
             this.label165.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label165.Location = new System.Drawing.Point(320, 94);
+            this.label165.Location = new System.Drawing.Point(427, 118);
+            this.label165.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label165.Name = "label165";
-            this.label165.Size = new System.Drawing.Size(40, 16);
+            this.label165.Size = new System.Drawing.Size(49, 20);
             this.label165.TabIndex = 170;
             this.label165.Text = "km/h";
             // 
@@ -6095,9 +6542,10 @@
             // 
             this.label162.AutoSize = true;
             this.label162.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label162.Location = new System.Drawing.Point(461, 64);
+            this.label162.Location = new System.Drawing.Point(615, 80);
+            this.label162.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label162.Name = "label162";
-            this.label162.Size = new System.Drawing.Size(168, 16);
+            this.label162.Size = new System.Drawing.Size(209, 20);
             this.label162.TabIndex = 167;
             this.label162.Text = "油耗测试自动复检次数";
             // 
@@ -6106,9 +6554,10 @@
             this.textBoxFuelTestFjcs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxFuelTestFjcs.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxFuelTestFjcs.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxFuelTestFjcs.Location = new System.Drawing.Point(635, 59);
+            this.textBoxFuelTestFjcs.Location = new System.Drawing.Point(847, 74);
+            this.textBoxFuelTestFjcs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxFuelTestFjcs.Name = "textBoxFuelTestFjcs";
-            this.textBoxFuelTestFjcs.Size = new System.Drawing.Size(88, 26);
+            this.textBoxFuelTestFjcs.Size = new System.Drawing.Size(117, 30);
             this.textBoxFuelTestFjcs.TabIndex = 166;
             // 
             // panel39
@@ -6118,9 +6567,10 @@
             this.panel39.Controls.Add(this.label159);
             this.panel39.Controls.Add(this.checkBoxDynJkYh);
             this.panel39.Controls.Add(this.label161);
-            this.panel39.Location = new System.Drawing.Point(4, 412);
+            this.panel39.Location = new System.Drawing.Point(5, 515);
+            this.panel39.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel39.Name = "panel39";
-            this.panel39.Size = new System.Drawing.Size(1044, 29);
+            this.panel39.Size = new System.Drawing.Size(1392, 36);
             this.panel39.TabIndex = 165;
             // 
             // textBoxDynYhxz
@@ -6128,18 +6578,20 @@
             this.textBoxDynYhxz.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDynYhxz.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynYhxz.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxDynYhxz.Location = new System.Drawing.Point(630, 1);
+            this.textBoxDynYhxz.Location = new System.Drawing.Point(840, 1);
+            this.textBoxDynYhxz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynYhxz.Name = "textBoxDynYhxz";
-            this.textBoxDynYhxz.Size = new System.Drawing.Size(88, 26);
+            this.textBoxDynYhxz.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynYhxz.TabIndex = 149;
             // 
             // label158
             // 
             this.label158.AutoSize = true;
             this.label158.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label158.Location = new System.Drawing.Point(722, 6);
+            this.label158.Location = new System.Drawing.Point(963, 8);
+            this.label158.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label158.Name = "label158";
-            this.label158.Size = new System.Drawing.Size(24, 16);
+            this.label158.Size = new System.Drawing.Size(29, 20);
             this.label158.TabIndex = 150;
             this.label158.Text = "mL";
             // 
@@ -6147,9 +6599,10 @@
             // 
             this.label159.AutoSize = true;
             this.label159.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label159.Location = new System.Drawing.Point(517, 6);
+            this.label159.Location = new System.Drawing.Point(689, 8);
+            this.label159.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label159.Name = "label159";
-            this.label159.Size = new System.Drawing.Size(104, 16);
+            this.label159.Size = new System.Drawing.Size(129, 20);
             this.label159.TabIndex = 148;
             this.label159.Text = "实时油耗限值";
             // 
@@ -6157,9 +6610,10 @@
             // 
             this.checkBoxDynJkYh.AutoSize = true;
             this.checkBoxDynJkYh.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxDynJkYh.Location = new System.Drawing.Point(207, 5);
+            this.checkBoxDynJkYh.Location = new System.Drawing.Point(276, 6);
+            this.checkBoxDynJkYh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynJkYh.Name = "checkBoxDynJkYh";
-            this.checkBoxDynJkYh.Size = new System.Drawing.Size(123, 20);
+            this.checkBoxDynJkYh.Size = new System.Drawing.Size(151, 24);
             this.checkBoxDynJkYh.TabIndex = 147;
             this.checkBoxDynJkYh.Text = "监控实时油耗";
             this.checkBoxDynJkYh.UseVisualStyleBackColor = true;
@@ -6168,9 +6622,10 @@
             // 
             this.label161.AutoSize = true;
             this.label161.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label161.Location = new System.Drawing.Point(98, 6);
+            this.label161.Location = new System.Drawing.Point(131, 8);
+            this.label161.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label161.Name = "label161";
-            this.label161.Size = new System.Drawing.Size(104, 16);
+            this.label161.Size = new System.Drawing.Size(129, 20);
             this.label161.TabIndex = 66;
             this.label161.Text = "油耗实时监控";
             // 
@@ -6178,18 +6633,20 @@
             // 
             this.panel38.Controls.Add(this.checkBoxDynYkdw);
             this.panel38.Controls.Add(this.label160);
-            this.panel38.Location = new System.Drawing.Point(4, 288);
+            this.panel38.Location = new System.Drawing.Point(5, 360);
+            this.panel38.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel38.Name = "panel38";
-            this.panel38.Size = new System.Drawing.Size(1044, 29);
+            this.panel38.Size = new System.Drawing.Size(1392, 36);
             this.panel38.TabIndex = 164;
             // 
             // checkBoxDynYkdw
             // 
             this.checkBoxDynYkdw.AutoSize = true;
             this.checkBoxDynYkdw.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxDynYkdw.Location = new System.Drawing.Point(207, 5);
+            this.checkBoxDynYkdw.Location = new System.Drawing.Point(276, 6);
+            this.checkBoxDynYkdw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynYkdw.Name = "checkBoxDynYkdw";
-            this.checkBoxDynYkdw.Size = new System.Drawing.Size(203, 20);
+            this.checkBoxDynYkdw.Size = new System.Drawing.Size(251, 24);
             this.checkBoxDynYkdw.TabIndex = 147;
             this.checkBoxDynYkdw.Text = "遥控按键按下后开始检测";
             this.checkBoxDynYkdw.UseVisualStyleBackColor = true;
@@ -6198,9 +6655,10 @@
             // 
             this.label160.AutoSize = true;
             this.label160.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label160.Location = new System.Drawing.Point(129, 6);
+            this.label160.Location = new System.Drawing.Point(172, 8);
+            this.label160.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label160.Name = "label160";
-            this.label160.Size = new System.Drawing.Size(72, 16);
+            this.label160.Size = new System.Drawing.Size(89, 20);
             this.label160.TabIndex = 66;
             this.label160.Text = "遥控到位";
             // 
@@ -6211,9 +6669,10 @@
             this.panel37.Controls.Add(this.label153);
             this.panel37.Controls.Add(this.checkBoxDynGddw);
             this.panel37.Controls.Add(this.label152);
-            this.panel37.Location = new System.Drawing.Point(4, 258);
+            this.panel37.Location = new System.Drawing.Point(5, 322);
+            this.panel37.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel37.Name = "panel37";
-            this.panel37.Size = new System.Drawing.Size(1044, 29);
+            this.panel37.Size = new System.Drawing.Size(1392, 36);
             this.panel37.TabIndex = 163;
             // 
             // textBoxDynGddwTime
@@ -6221,18 +6680,20 @@
             this.textBoxDynGddwTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDynGddwTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynGddwTime.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxDynGddwTime.Location = new System.Drawing.Point(630, 1);
+            this.textBoxDynGddwTime.Location = new System.Drawing.Point(840, 1);
+            this.textBoxDynGddwTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynGddwTime.Name = "textBoxDynGddwTime";
-            this.textBoxDynGddwTime.Size = new System.Drawing.Size(88, 26);
+            this.textBoxDynGddwTime.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynGddwTime.TabIndex = 149;
             // 
             // label154
             // 
             this.label154.AutoSize = true;
             this.label154.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label154.Location = new System.Drawing.Point(722, 6);
+            this.label154.Location = new System.Drawing.Point(963, 8);
+            this.label154.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label154.Name = "label154";
-            this.label154.Size = new System.Drawing.Size(16, 16);
+            this.label154.Size = new System.Drawing.Size(19, 20);
             this.label154.TabIndex = 150;
             this.label154.Text = "s";
             // 
@@ -6240,9 +6701,10 @@
             // 
             this.label153.AutoSize = true;
             this.label153.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label153.Location = new System.Drawing.Point(517, 6);
+            this.label153.Location = new System.Drawing.Point(689, 8);
+            this.label153.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label153.Name = "label153";
-            this.label153.Size = new System.Drawing.Size(104, 16);
+            this.label153.Size = new System.Drawing.Size(129, 20);
             this.label153.TabIndex = 148;
             this.label153.Text = "光电遮挡时间";
             // 
@@ -6250,9 +6712,10 @@
             // 
             this.checkBoxDynGddw.AutoSize = true;
             this.checkBoxDynGddw.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBoxDynGddw.Location = new System.Drawing.Point(207, 5);
+            this.checkBoxDynGddw.Location = new System.Drawing.Point(276, 6);
+            this.checkBoxDynGddw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynGddw.Name = "checkBoxDynGddw";
-            this.checkBoxDynGddw.Size = new System.Drawing.Size(219, 20);
+            this.checkBoxDynGddw.Size = new System.Drawing.Size(271, 24);
             this.checkBoxDynGddw.TabIndex = 147;
             this.checkBoxDynGddw.Text = "光电检测到到位后开始检测";
             this.checkBoxDynGddw.UseVisualStyleBackColor = true;
@@ -6261,9 +6724,10 @@
             // 
             this.label152.AutoSize = true;
             this.label152.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label152.Location = new System.Drawing.Point(129, 6);
+            this.label152.Location = new System.Drawing.Point(172, 8);
+            this.label152.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label152.Name = "label152";
-            this.label152.Size = new System.Drawing.Size(72, 16);
+            this.label152.Size = new System.Drawing.Size(89, 20);
             this.label152.TabIndex = 66;
             this.label152.Text = "光电到位";
             // 
@@ -6272,18 +6736,20 @@
             this.panel36.Controls.Add(this.label150);
             this.panel36.Controls.Add(this.radioButtonDynReStartForm15);
             this.panel36.Controls.Add(this.radioButtonDynReStartFrom60);
-            this.panel36.Location = new System.Drawing.Point(4, 350);
+            this.panel36.Location = new System.Drawing.Point(5, 438);
+            this.panel36.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel36.Name = "panel36";
-            this.panel36.Size = new System.Drawing.Size(1044, 29);
+            this.panel36.Size = new System.Drawing.Size(1392, 36);
             this.panel36.TabIndex = 162;
             // 
             // label150
             // 
             this.label150.AutoSize = true;
             this.label150.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label150.Location = new System.Drawing.Point(98, 6);
+            this.label150.Location = new System.Drawing.Point(131, 8);
+            this.label150.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label150.Name = "label150";
-            this.label150.Size = new System.Drawing.Size(104, 16);
+            this.label150.Size = new System.Drawing.Size(129, 20);
             this.label150.TabIndex = 66;
             this.label150.Text = "重新开始模式";
             // 
@@ -6291,9 +6757,10 @@
             // 
             this.radioButtonDynReStartForm15.AutoSize = true;
             this.radioButtonDynReStartForm15.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonDynReStartForm15.Location = new System.Drawing.Point(208, 4);
+            this.radioButtonDynReStartForm15.Location = new System.Drawing.Point(277, 5);
+            this.radioButtonDynReStartForm15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonDynReStartForm15.Name = "radioButtonDynReStartForm15";
-            this.radioButtonDynReStartForm15.Size = new System.Drawing.Size(162, 20);
+            this.radioButtonDynReStartForm15.Size = new System.Drawing.Size(200, 24);
             this.radioButtonDynReStartForm15.TabIndex = 64;
             this.radioButtonDynReStartForm15.TabStop = true;
             this.radioButtonDynReStartForm15.Text = "从15s稳定重新开始";
@@ -6303,9 +6770,10 @@
             // 
             this.radioButtonDynReStartFrom60.AutoSize = true;
             this.radioButtonDynReStartFrom60.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonDynReStartFrom60.Location = new System.Drawing.Point(454, 4);
+            this.radioButtonDynReStartFrom60.Location = new System.Drawing.Point(605, 5);
+            this.radioButtonDynReStartFrom60.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonDynReStartFrom60.Name = "radioButtonDynReStartFrom60";
-            this.radioButtonDynReStartFrom60.Size = new System.Drawing.Size(162, 20);
+            this.radioButtonDynReStartFrom60.Size = new System.Drawing.Size(200, 24);
             this.radioButtonDynReStartFrom60.TabIndex = 65;
             this.radioButtonDynReStartFrom60.TabStop = true;
             this.radioButtonDynReStartFrom60.Text = "从60s测量重新开始";
@@ -6319,18 +6787,20 @@
             this.panel35.Controls.Add(this.label147);
             this.panel35.Controls.Add(this.radioButtonDynZdyk);
             this.panel35.Controls.Add(this.radioButtonDynWjyk);
-            this.panel35.Location = new System.Drawing.Point(4, 320);
+            this.panel35.Location = new System.Drawing.Point(5, 400);
+            this.panel35.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel35.Name = "panel35";
-            this.panel35.Size = new System.Drawing.Size(1044, 29);
+            this.panel35.Size = new System.Drawing.Size(1392, 36);
             this.panel35.TabIndex = 161;
             // 
             // label174
             // 
             this.label174.AutoSize = true;
             this.label174.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label174.Location = new System.Drawing.Point(335, 6);
+            this.label174.Location = new System.Drawing.Point(447, 8);
+            this.label174.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label174.Name = "label174";
-            this.label174.Size = new System.Drawing.Size(320, 16);
+            this.label174.Size = new System.Drawing.Size(399, 20);
             this.label174.TabIndex = 151;
             this.label174.Text = "按键值（多按键值之间用\'|\'连接，如\'1|2\')";
             // 
@@ -6339,9 +6809,10 @@
             this.textBoxDynYkKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDynYkKey.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynYkKey.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxDynYkKey.Location = new System.Drawing.Point(657, 2);
+            this.textBoxDynYkKey.Location = new System.Drawing.Point(876, 2);
+            this.textBoxDynYkKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynYkKey.Name = "textBoxDynYkKey";
-            this.textBoxDynYkKey.Size = new System.Drawing.Size(88, 26);
+            this.textBoxDynYkKey.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynYkKey.TabIndex = 150;
             // 
             // comboBoxDynYkTd
@@ -6355,18 +6826,20 @@
             "2",
             "3",
             "4"});
-            this.comboBoxDynYkTd.Location = new System.Drawing.Point(947, 2);
+            this.comboBoxDynYkTd.Location = new System.Drawing.Point(1263, 2);
+            this.comboBoxDynYkTd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxDynYkTd.Name = "comboBoxDynYkTd";
-            this.comboBoxDynYkTd.Size = new System.Drawing.Size(95, 24);
+            this.comboBoxDynYkTd.Size = new System.Drawing.Size(125, 28);
             this.comboBoxDynYkTd.TabIndex = 146;
             // 
             // label147
             // 
             this.label147.AutoSize = true;
             this.label147.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label147.Location = new System.Drawing.Point(114, 6);
+            this.label147.Location = new System.Drawing.Point(152, 8);
+            this.label147.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label147.Name = "label147";
-            this.label147.Size = new System.Drawing.Size(88, 16);
+            this.label147.Size = new System.Drawing.Size(109, 20);
             this.label147.TabIndex = 66;
             this.label147.Text = "遥控器选择";
             // 
@@ -6374,9 +6847,10 @@
             // 
             this.radioButtonDynZdyk.AutoSize = true;
             this.radioButtonDynZdyk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonDynZdyk.Location = new System.Drawing.Point(208, 4);
+            this.radioButtonDynZdyk.Location = new System.Drawing.Point(277, 5);
+            this.radioButtonDynZdyk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonDynZdyk.Name = "radioButtonDynZdyk";
-            this.radioButtonDynZdyk.Size = new System.Drawing.Size(122, 20);
+            this.radioButtonDynZdyk.Size = new System.Drawing.Size(150, 24);
             this.radioButtonDynZdyk.TabIndex = 64;
             this.radioButtonDynZdyk.TabStop = true;
             this.radioButtonDynZdyk.Text = "板卡自带遥控";
@@ -6386,9 +6860,10 @@
             // 
             this.radioButtonDynWjyk.AutoSize = true;
             this.radioButtonDynWjyk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButtonDynWjyk.Location = new System.Drawing.Point(771, 4);
+            this.radioButtonDynWjyk.Location = new System.Drawing.Point(1028, 5);
+            this.radioButtonDynWjyk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonDynWjyk.Name = "radioButtonDynWjyk";
-            this.radioButtonDynWjyk.Size = new System.Drawing.Size(170, 20);
+            this.radioButtonDynWjyk.Size = new System.Drawing.Size(210, 24);
             this.radioButtonDynWjyk.TabIndex = 65;
             this.radioButtonDynWjyk.TabStop = true;
             this.radioButtonDynWjyk.Text = "外接遥控至光电通道";
@@ -6398,9 +6873,10 @@
             // 
             this.label144.AutoSize = true;
             this.label144.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label144.Location = new System.Drawing.Point(415, 151);
+            this.label144.Location = new System.Drawing.Point(553, 189);
+            this.label144.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label144.Name = "label144";
-            this.label144.Size = new System.Drawing.Size(216, 16);
+            this.label144.Size = new System.Drawing.Size(269, 20);
             this.label144.TabIndex = 158;
             this.label144.Text = "动力性测试加载力稳定要求±";
             // 
@@ -6409,18 +6885,20 @@
             this.textBoxDynForceQj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDynForceQj.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynForceQj.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxDynForceQj.Location = new System.Drawing.Point(634, 146);
+            this.textBoxDynForceQj.Location = new System.Drawing.Point(845, 182);
+            this.textBoxDynForceQj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynForceQj.Name = "textBoxDynForceQj";
-            this.textBoxDynForceQj.Size = new System.Drawing.Size(88, 26);
+            this.textBoxDynForceQj.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynForceQj.TabIndex = 157;
             // 
             // label145
             // 
             this.label145.AutoSize = true;
             this.label145.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label145.Location = new System.Drawing.Point(726, 151);
+            this.label145.Location = new System.Drawing.Point(968, 189);
+            this.label145.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label145.Name = "label145";
-            this.label145.Size = new System.Drawing.Size(16, 16);
+            this.label145.Size = new System.Drawing.Size(19, 20);
             this.label145.TabIndex = 159;
             this.label145.Text = "N";
             // 
@@ -6428,9 +6906,10 @@
             // 
             this.label142.AutoSize = true;
             this.label142.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label142.Location = new System.Drawing.Point(432, 35);
+            this.label142.Location = new System.Drawing.Point(576, 44);
+            this.label142.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label142.Name = "label142";
-            this.label142.Size = new System.Drawing.Size(200, 16);
+            this.label142.Size = new System.Drawing.Size(249, 20);
             this.label142.TabIndex = 155;
             this.label142.Text = "油耗测试加载力稳定要求±";
             // 
@@ -6439,18 +6918,20 @@
             this.textBoxFuelForceQj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxFuelForceQj.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxFuelForceQj.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxFuelForceQj.Location = new System.Drawing.Point(635, 30);
+            this.textBoxFuelForceQj.Location = new System.Drawing.Point(847, 38);
+            this.textBoxFuelForceQj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxFuelForceQj.Name = "textBoxFuelForceQj";
-            this.textBoxFuelForceQj.Size = new System.Drawing.Size(88, 26);
+            this.textBoxFuelForceQj.Size = new System.Drawing.Size(117, 30);
             this.textBoxFuelForceQj.TabIndex = 154;
             // 
             // label143
             // 
             this.label143.AutoSize = true;
             this.label143.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label143.Location = new System.Drawing.Point(727, 35);
+            this.label143.Location = new System.Drawing.Point(969, 44);
+            this.label143.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label143.Name = "label143";
-            this.label143.Size = new System.Drawing.Size(16, 16);
+            this.label143.Size = new System.Drawing.Size(19, 20);
             this.label143.TabIndex = 156;
             this.label143.Text = "N";
             // 
@@ -6458,9 +6939,10 @@
             // 
             this.label140.AutoSize = true;
             this.label140.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label140.Location = new System.Drawing.Point(43, 35);
+            this.label140.Location = new System.Drawing.Point(57, 44);
+            this.label140.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label140.Name = "label140";
-            this.label140.Size = new System.Drawing.Size(184, 16);
+            this.label140.Size = new System.Drawing.Size(229, 20);
             this.label140.TabIndex = 152;
             this.label140.Text = "油耗测试速度稳定要求±";
             // 
@@ -6469,18 +6951,20 @@
             this.textBoxFuelSdQj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxFuelSdQj.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxFuelSdQj.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxFuelSdQj.Location = new System.Drawing.Point(228, 30);
+            this.textBoxFuelSdQj.Location = new System.Drawing.Point(304, 38);
+            this.textBoxFuelSdQj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxFuelSdQj.Name = "textBoxFuelSdQj";
-            this.textBoxFuelSdQj.Size = new System.Drawing.Size(88, 26);
+            this.textBoxFuelSdQj.Size = new System.Drawing.Size(117, 30);
             this.textBoxFuelSdQj.TabIndex = 151;
             // 
             // label141
             // 
             this.label141.AutoSize = true;
             this.label141.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label141.Location = new System.Drawing.Point(320, 35);
+            this.label141.Location = new System.Drawing.Point(427, 44);
+            this.label141.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label141.Name = "label141";
-            this.label141.Size = new System.Drawing.Size(40, 16);
+            this.label141.Size = new System.Drawing.Size(49, 20);
             this.label141.TabIndex = 153;
             this.label141.Text = "km/h";
             // 
@@ -6488,9 +6972,10 @@
             // 
             this.label138.AutoSize = true;
             this.label138.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label138.Location = new System.Drawing.Point(43, 64);
+            this.label138.Location = new System.Drawing.Point(57, 80);
+            this.label138.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label138.Name = "label138";
-            this.label138.Size = new System.Drawing.Size(184, 16);
+            this.label138.Size = new System.Drawing.Size(229, 20);
             this.label138.TabIndex = 149;
             this.label138.Text = "油耗测试加载力上升频率";
             // 
@@ -6499,18 +6984,20 @@
             this.textBoxFuelForceTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxFuelForceTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxFuelForceTime.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxFuelForceTime.Location = new System.Drawing.Point(228, 59);
+            this.textBoxFuelForceTime.Location = new System.Drawing.Point(304, 74);
+            this.textBoxFuelForceTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxFuelForceTime.Name = "textBoxFuelForceTime";
-            this.textBoxFuelForceTime.Size = new System.Drawing.Size(88, 26);
+            this.textBoxFuelForceTime.Size = new System.Drawing.Size(117, 30);
             this.textBoxFuelForceTime.TabIndex = 148;
             // 
             // label139
             // 
             this.label139.AutoSize = true;
             this.label139.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label139.Location = new System.Drawing.Point(320, 64);
+            this.label139.Location = new System.Drawing.Point(427, 80);
+            this.label139.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label139.Name = "label139";
-            this.label139.Size = new System.Drawing.Size(32, 16);
+            this.label139.Size = new System.Drawing.Size(39, 20);
             this.label139.TabIndex = 150;
             this.label139.Text = "N/s";
             // 
@@ -6518,9 +7005,10 @@
             // 
             this.label135.AutoSize = true;
             this.label135.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label135.Location = new System.Drawing.Point(24, 152);
+            this.label135.Location = new System.Drawing.Point(32, 190);
+            this.label135.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label135.Name = "label135";
-            this.label135.Size = new System.Drawing.Size(200, 16);
+            this.label135.Size = new System.Drawing.Size(249, 20);
             this.label135.TabIndex = 146;
             this.label135.Text = "动力性测试加载力上升频率";
             // 
@@ -6529,18 +7017,20 @@
             this.textBoxDynForceTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDynForceTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynForceTime.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxDynForceTime.Location = new System.Drawing.Point(228, 147);
+            this.textBoxDynForceTime.Location = new System.Drawing.Point(304, 184);
+            this.textBoxDynForceTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynForceTime.Name = "textBoxDynForceTime";
-            this.textBoxDynForceTime.Size = new System.Drawing.Size(88, 26);
+            this.textBoxDynForceTime.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynForceTime.TabIndex = 145;
             // 
             // label136
             // 
             this.label136.AutoSize = true;
             this.label136.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label136.Location = new System.Drawing.Point(320, 152);
+            this.label136.Location = new System.Drawing.Point(427, 190);
+            this.label136.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label136.Name = "label136";
-            this.label136.Size = new System.Drawing.Size(32, 16);
+            this.label136.Size = new System.Drawing.Size(39, 20);
             this.label136.TabIndex = 147;
             this.label136.Text = "N/s";
             // 
@@ -6548,9 +7038,10 @@
             // 
             this.label133.AutoSize = true;
             this.label133.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label133.Location = new System.Drawing.Point(33, 123);
+            this.label133.Location = new System.Drawing.Point(44, 154);
+            this.label133.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label133.Name = "label133";
-            this.label133.Size = new System.Drawing.Size(192, 16);
+            this.label133.Size = new System.Drawing.Size(239, 20);
             this.label133.TabIndex = 143;
             this.label133.Text = "动力性转速/速度稳定时间";
             // 
@@ -6559,18 +7050,20 @@
             this.textBoxDynZsTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDynZsTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynZsTime.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxDynZsTime.Location = new System.Drawing.Point(228, 118);
+            this.textBoxDynZsTime.Location = new System.Drawing.Point(304, 148);
+            this.textBoxDynZsTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynZsTime.Name = "textBoxDynZsTime";
-            this.textBoxDynZsTime.Size = new System.Drawing.Size(88, 26);
+            this.textBoxDynZsTime.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynZsTime.TabIndex = 142;
             // 
             // label134
             // 
             this.label134.AutoSize = true;
             this.label134.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label134.Location = new System.Drawing.Point(320, 123);
+            this.label134.Location = new System.Drawing.Point(427, 154);
+            this.label134.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label134.Name = "label134";
-            this.label134.Size = new System.Drawing.Size(16, 16);
+            this.label134.Size = new System.Drawing.Size(19, 20);
             this.label134.TabIndex = 144;
             this.label134.Text = "s";
             // 
@@ -6578,9 +7071,10 @@
             // 
             this.label128.AutoSize = true;
             this.label128.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label128.Location = new System.Drawing.Point(414, 93);
+            this.label128.Location = new System.Drawing.Point(552, 116);
+            this.label128.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label128.Name = "label128";
-            this.label128.Size = new System.Drawing.Size(216, 16);
+            this.label128.Size = new System.Drawing.Size(269, 20);
             this.label128.TabIndex = 140;
             this.label128.Text = "动力性点燃式转速稳定要求±\r\n";
             // 
@@ -6589,18 +7083,20 @@
             this.textBoxDynZs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDynZs.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynZs.ForeColor = System.Drawing.Color.Blue;
-            this.textBoxDynZs.Location = new System.Drawing.Point(634, 89);
+            this.textBoxDynZs.Location = new System.Drawing.Point(845, 111);
+            this.textBoxDynZs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynZs.Name = "textBoxDynZs";
-            this.textBoxDynZs.Size = new System.Drawing.Size(89, 26);
+            this.textBoxDynZs.Size = new System.Drawing.Size(118, 30);
             this.textBoxDynZs.TabIndex = 139;
             // 
             // label132
             // 
             this.label132.AutoSize = true;
             this.label132.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label132.Location = new System.Drawing.Point(726, 94);
+            this.label132.Location = new System.Drawing.Point(968, 118);
+            this.label132.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label132.Name = "label132";
-            this.label132.Size = new System.Drawing.Size(48, 16);
+            this.label132.Size = new System.Drawing.Size(59, 20);
             this.label132.TabIndex = 141;
             this.label132.Text = "r/min";
             // 
@@ -6608,9 +7104,10 @@
             // 
             this.panel30.BackColor = System.Drawing.Color.Gray;
             this.panel30.Controls.Add(this.label126);
-            this.panel30.Location = new System.Drawing.Point(0, 3);
+            this.panel30.Location = new System.Drawing.Point(0, 4);
+            this.panel30.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel30.Name = "panel30";
-            this.panel30.Size = new System.Drawing.Size(1051, 27);
+            this.panel30.Size = new System.Drawing.Size(1401, 34);
             this.panel30.TabIndex = 132;
             // 
             // label126
@@ -6618,9 +7115,10 @@
             this.label126.AutoSize = true;
             this.label126.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label126.ForeColor = System.Drawing.Color.White;
-            this.label126.Location = new System.Drawing.Point(4, 7);
+            this.label126.Location = new System.Drawing.Point(5, 9);
+            this.label126.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label126.Name = "label126";
-            this.label126.Size = new System.Drawing.Size(63, 14);
+            this.label126.Size = new System.Drawing.Size(80, 18);
             this.label126.TabIndex = 107;
             this.label126.Text = "参数设置";
             // 
@@ -6628,9 +7126,10 @@
             // 
             this.label127.AutoSize = true;
             this.label127.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label127.Location = new System.Drawing.Point(234, 507);
+            this.label127.Location = new System.Drawing.Point(312, 634);
+            this.label127.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label127.Name = "label127";
-            this.label127.Size = new System.Drawing.Size(88, 16);
+            this.label127.Size = new System.Drawing.Size(109, 20);
             this.label127.TabIndex = 138;
             this.label127.Text = "转速计串口";
             // 
@@ -6638,9 +7137,10 @@
             // 
             this.label129.AutoSize = true;
             this.label129.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label129.Location = new System.Drawing.Point(9, 506);
+            this.label129.Location = new System.Drawing.Point(12, 632);
+            this.label129.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label129.Name = "label129";
-            this.label129.Size = new System.Drawing.Size(56, 16);
+            this.label129.Size = new System.Drawing.Size(69, 20);
             this.label129.TabIndex = 137;
             this.label129.Text = "转速计";
             // 
@@ -6648,9 +7148,10 @@
             // 
             this.panel31.BackColor = System.Drawing.Color.Gray;
             this.panel31.Controls.Add(this.label130);
-            this.panel31.Location = new System.Drawing.Point(0, 202);
+            this.panel31.Location = new System.Drawing.Point(0, 252);
+            this.panel31.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel31.Name = "panel31";
-            this.panel31.Size = new System.Drawing.Size(1051, 27);
+            this.panel31.Size = new System.Drawing.Size(1401, 34);
             this.panel31.TabIndex = 133;
             // 
             // label130
@@ -6658,9 +7159,10 @@
             this.label130.AutoSize = true;
             this.label130.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label130.ForeColor = System.Drawing.Color.White;
-            this.label130.Location = new System.Drawing.Point(4, 7);
+            this.label130.Location = new System.Drawing.Point(5, 9);
+            this.label130.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label130.Name = "label130";
-            this.label130.Size = new System.Drawing.Size(91, 14);
+            this.label130.Size = new System.Drawing.Size(116, 18);
             this.label130.TabIndex = 107;
             this.label130.Text = "检测过程设置";
             // 
@@ -6677,9 +7179,10 @@
             "COM4",
             "COM5",
             "COM6"});
-            this.comboBoxDynZsjCk.Location = new System.Drawing.Point(328, 502);
+            this.comboBoxDynZsjCk.Location = new System.Drawing.Point(437, 628);
+            this.comboBoxDynZsjCk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxDynZsjCk.Name = "comboBoxDynZsjCk";
-            this.comboBoxDynZsjCk.Size = new System.Drawing.Size(97, 24);
+            this.comboBoxDynZsjCk.Size = new System.Drawing.Size(128, 28);
             this.comboBoxDynZsjCk.TabIndex = 40;
             // 
             // comboBoxDynZsj
@@ -6698,9 +7201,10 @@
             "RPM5300",
             "南华附件",
             "未配置"});
-            this.comboBoxDynZsj.Location = new System.Drawing.Point(87, 502);
+            this.comboBoxDynZsj.Location = new System.Drawing.Point(116, 628);
+            this.comboBoxDynZsj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxDynZsj.Name = "comboBoxDynZsj";
-            this.comboBoxDynZsj.Size = new System.Drawing.Size(88, 24);
+            this.comboBoxDynZsj.Size = new System.Drawing.Size(116, 28);
             this.comboBoxDynZsj.TabIndex = 37;
             this.comboBoxDynZsj.SelectedIndexChanged += new System.EventHandler(this.comboBoxDynZsj_SelectedIndexChanged);
             // 
@@ -6708,9 +7212,10 @@
             // 
             this.panel32.BackColor = System.Drawing.Color.Gray;
             this.panel32.Controls.Add(this.label131);
-            this.panel32.Location = new System.Drawing.Point(0, 473);
+            this.panel32.Location = new System.Drawing.Point(0, 591);
+            this.panel32.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(1051, 27);
+            this.panel32.Size = new System.Drawing.Size(1401, 34);
             this.panel32.TabIndex = 134;
             // 
             // label131
@@ -6718,19 +7223,22 @@
             this.label131.AutoSize = true;
             this.label131.Font = new System.Drawing.Font("宋体", 10.5F);
             this.label131.ForeColor = System.Drawing.Color.White;
-            this.label131.Location = new System.Drawing.Point(4, 7);
+            this.label131.Location = new System.Drawing.Point(5, 9);
+            this.label131.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label131.Name = "label131";
-            this.label131.Size = new System.Drawing.Size(77, 14);
+            this.label131.Size = new System.Drawing.Size(98, 18);
             this.label131.TabIndex = 107;
             this.label131.Text = "转速计设置";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1064, 602);
+            this.ClientSize = new System.Drawing.Size(1419, 752);
             this.Controls.Add(this.tabControl1);
+            this.DoubleBuffered = true;
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "系统设置";

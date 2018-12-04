@@ -1152,6 +1152,7 @@ namespace 动力性测量
                             }
                             break;
                         case "mqw_50a":
+                        case "mqw_50b":
                             try
                             {
                                 UseFqy = "mqw_50a";

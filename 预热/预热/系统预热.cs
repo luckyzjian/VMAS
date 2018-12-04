@@ -150,6 +150,7 @@ namespace 预热
                         }
                         break;
                     case "mqw_50a":
+                    case "mqw_50b":
                         if (fla_502 != null)
                         {
                             if (fla_502.Get_Struct() == "仪器通讯失败")
@@ -462,6 +463,7 @@ namespace 预热
                             }
                             break;
                         case "mqw_50a":
+                        case "mqw_50b":
                             try
                             {
                                 UseFqy = "mqw_50a";

@@ -188,9 +188,10 @@ namespace 废气仪标定
                             }
                             break;
                         case "mqw_50a":
+                        case "mqw_50b":
                             try
                             {
-                                UseFqy = "mqw_50a";
+                                UseFqy = configdata.Fqyxh.ToLower();
                                 fla_502 = new Exhaust.Fla502(UseFqy);
                                 if (fla_502.Init_Comm(configdata.Fqyck, configdata.Fqyckpzz) == false)
                                 {
@@ -290,6 +291,7 @@ namespace 废气仪标定
             switch (UseFqy)
             {
                 case "mqw_50a":
+                case "mqw_50b":
 
                     if (radioButtonLowB.Checked == true)
                     {
@@ -1083,6 +1085,21 @@ namespace 废气仪标定
                                         Thread.Sleep(500);
                                 }
                                 break;
+                            case "mqw_50b":
+                                {
+                                    if (fla_502 != null)
+                                    {
+                                        Thread.Sleep(500);
+                                        Exhaust.Fla502_data ex_temp = fla_502.GetData();
+                                        Thread.Sleep(100);
+                                        pef = fla_502.Getdata_PEF();
+                                        Msg(ex_temp.HC, ex_temp.NO, ex_temp.CO, ex_temp.CO2, pef, ex_temp.O2);
+                                        Thread.Sleep(100);
+                                    }
+                                    else
+                                        Thread.Sleep(500);
+                                }
+                                break;
                             case "mqw_50a":
                                 {
                                     if (fla_502 != null)
@@ -1178,6 +1195,7 @@ namespace 废气仪标定
                                 }
                                 break;
                             case "mqw_50a":
+                            case "mqw_50b":
                                 if (fla_502 != null)
                                 {
                                     //Msg(fla_502.hc_density, fla_502.no_density, fla_502.co_density, fla_502.co2_density, fla_502.pef_value, fla_502.o2_density);
@@ -1364,6 +1382,7 @@ namespace 废气仪标定
                     }
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     if (fla_502 != null)
                     {
                         fla_502.Zeroing();
@@ -1770,6 +1789,7 @@ namespace 废气仪标定
                     }
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     if (fla_502 != null)
                     {
                         fla_502.Stop();
@@ -1798,7 +1818,10 @@ namespace 废气仪标定
                             Thread.Sleep(500);
                             Exhaust.Fla502_data ex_temp = fla_502.GetData();
                             Thread.Sleep(100);
-                            pef = fqyconfigdata.PEF;
+                            if (UseFqy == "mqw_50b")
+                                pef = fla_502.Getdata_PEF();
+                            else
+                                pef = fqyconfigdata.PEF;
                             Msg(ex_temp.HC, ex_temp.NO, ex_temp.CO, ex_temp.CO2, pef, ex_temp.O2);
                             Thread.Sleep(100);
                         }
@@ -1812,7 +1835,7 @@ namespace 废气仪标定
                         Thread.Sleep(1000);
                         Exhaust.Fla502_data resultdata = fla_502.GetData();
                         Thread.Sleep(100);
-                        float pefnow = fqyconfigdata.PEF;
+                        float pefnow = pef;
                         Msg(resultdata.HC, resultdata.NO, resultdata.CO, resultdata.CO2, pefnow, resultdata.O2);
                         setlabeltext(textEdit_Cojg, textEditCo.Text);
                         setlabeltext(textEdit_co2jg, textEditCo2.Text);
@@ -1924,6 +1947,7 @@ namespace 废气仪标定
                         action = "准备状态";
                         break;
                     case "mqw_50a":
+                    case "mqw_50b":
                         if (fla_502 != null) fla_502.Stop();
                         action = "准备状态";
                         break;
@@ -2387,6 +2411,7 @@ namespace 废气仪标定
                     }
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
 
                     if (fla_502 != null)
                     {
@@ -2558,8 +2583,8 @@ namespace 废气仪标定
                             co2pd = false;
                             wtgx += "CO2.";
                         }
-                        analysisdata.Nobz = float.Parse(textEditBiaoNo.Text.Trim());
-                        analysisdata.Noclz = float.Parse(textEdit_nojg.Text.Trim());
+                        analysisdata.Nobz = (float)Math.Round(double.Parse(textEditBiaoNo.Text.Trim()), 0);
+                        analysisdata.Noclz = (float)Math.Round(double.Parse(textEdit_nojg.Text.Trim()), 0);
                         nowc = Math.Abs(analysisdata.Nobz - analysisdata.Noclz);
                         noxdwc = nowc / analysisdata.Nobz;
                         if (nowc <= 25 || noxdwc <= 0.04)
@@ -2569,8 +2594,8 @@ namespace 废气仪标定
                             nopd = false;
                             wtgx += "NO.";
                         }
-                        analysisdata.Hcbz = float.Parse(textEditBiaoC3h8.Text.Trim()) * float.Parse(textEdit_pefjg.Text.Trim());
-                        analysisdata.Hcclz = float.Parse(textEdit_hcjg.Text.Trim());
+                        analysisdata.Hcbz = (float)Math.Round(double.Parse(textEditBiaoC3h8.Text.Trim()) * double.Parse(textEdit_pefjg.Text.Trim()), 0);
+                        analysisdata.Hcclz = (float)Math.Round(double.Parse(textEdit_hcjg.Text.Trim()), 0);
                         hcwc = Math.Abs(analysisdata.Hcbz - analysisdata.Hcclz);
                         hcxdwc = hcwc / analysisdata.Hcbz;
                         if (hcwc <= 4 || hcxdwc <= 0.03)
@@ -2646,8 +2671,8 @@ namespace 废气仪标定
                             wtgx += "CO2.";
                             co2pd = false;
                         }
-                        analysisdata.Nobz = float.Parse(textEditBiaoNo.Text.Trim());
-                        analysisdata.Noclz = float.Parse(textEdit_nojg.Text.Trim());
+                        analysisdata.Nobz = (float)Math.Round(double.Parse(textEditBiaoNo.Text.Trim()), 0);
+                        analysisdata.Noclz = (float)Math.Round(double.Parse(textEdit_nojg.Text.Trim()), 0);
                         nowc = Math.Abs(analysisdata.Nobz - analysisdata.Noclz);
                         noxdwc = nowc / analysisdata.Nobz;
                         if (noxdwc <= 0.08)
@@ -2657,8 +2682,8 @@ namespace 废气仪标定
                             wtgx += "NO.";
                             nopd = false;
                         }
-                        analysisdata.Hcbz = float.Parse(textEditBiaoC3h8.Text.Trim()) * float.Parse(textEdit_pefjg.Text.Trim());
-                        analysisdata.Hcclz = float.Parse(textEdit_hcjg.Text.Trim());
+                        analysisdata.Hcbz = (float)Math.Round(double.Parse(textEditBiaoC3h8.Text.Trim()) * double.Parse(textEdit_pefjg.Text.Trim()), 0);
+                        analysisdata.Hcclz = (float)Math.Round(double.Parse(textEdit_hcjg.Text.Trim()), 0);
                         hcwc = Math.Abs(analysisdata.Hcbz - analysisdata.Hcclz);
                         hcxdwc = hcwc / analysisdata.Hcbz;
                         if (hcxdwc <= 0.05)
@@ -2772,8 +2797,8 @@ namespace 废气仪标定
                             co2pd = false;
                             wtgx += "CO2.";
                         }
-                        analysisdata.Nobz = float.Parse(textEditBiaoNo.Text.Trim());
-                        analysisdata.Noclz = float.Parse(textEdit_nojg.Text.Trim());
+                        analysisdata.Nobz = (float)Math.Round(double.Parse(textEditBiaoNo.Text.Trim()), 0);
+                        analysisdata.Noclz = (float)Math.Round(double.Parse(textEdit_nojg.Text.Trim()), 0);
                         nowc = Math.Abs(analysisdata.Nobz - analysisdata.Noclz);
                         noxdwc = nowc / analysisdata.Nobz;
                         if (nowc <= 25 || noxdwc <= 0.04)
@@ -2783,8 +2808,8 @@ namespace 废气仪标定
                             nopd = false;
                             wtgx += "NO.";
                         }
-                        analysisdata.Hcbz = float.Parse(textEditBiaoC3h8.Text.Trim()) * float.Parse(textEdit_pefjg.Text.Trim());
-                        analysisdata.Hcclz = float.Parse(textEdit_hcjg.Text.Trim());
+                        analysisdata.Hcbz = (float)Math.Round(double.Parse(textEditBiaoC3h8.Text.Trim()) * double.Parse(textEdit_pefjg.Text.Trim()), 0);
+                        analysisdata.Hcclz = (float)Math.Round(double.Parse(textEdit_hcjg.Text.Trim()), 0);
                         hcwc = Math.Abs(analysisdata.Hcbz - analysisdata.Hcclz);
                         hcxdwc = hcwc / analysisdata.Hcbz;
                         if (hcwc <= 4 || hcxdwc <= 0.03)
@@ -2860,8 +2885,8 @@ namespace 废气仪标定
                             wtgx += "CO2.";
                             co2pd = false;
                         }
-                        analysisdata.Nobz = float.Parse(textEditBiaoNo.Text.Trim());
-                        analysisdata.Noclz = float.Parse(textEdit_nojg.Text.Trim());
+                        analysisdata.Nobz = (float)Math.Round(double.Parse(textEditBiaoNo.Text.Trim()), 0);
+                        analysisdata.Noclz = (float)Math.Round(double.Parse(textEdit_nojg.Text.Trim()), 0);
                         nowc = Math.Abs(analysisdata.Nobz - analysisdata.Noclz);
                         noxdwc = nowc / analysisdata.Nobz;
                         if (noxdwc <= 0.08)
@@ -2871,8 +2896,8 @@ namespace 废气仪标定
                             wtgx += "NO.";
                             nopd = false;
                         }
-                        analysisdata.Hcbz = float.Parse(textEditBiaoC3h8.Text.Trim()) * float.Parse(textEdit_pefjg.Text.Trim());
-                        analysisdata.Hcclz = float.Parse(textEdit_hcjg.Text.Trim());
+                        analysisdata.Hcbz = (float)Math.Round(double.Parse(textEditBiaoC3h8.Text.Trim()) * double.Parse(textEdit_pefjg.Text.Trim()), 0);
+                        analysisdata.Hcclz = (float)Math.Round(double.Parse(textEdit_hcjg.Text.Trim()), 0);
                         hcwc = Math.Abs(analysisdata.Hcbz - analysisdata.Hcclz);
                         hcxdwc = hcwc / analysisdata.Hcbz;
                         if (hcxdwc <= 0.05)
@@ -2986,8 +3011,8 @@ namespace 废气仪标定
                             co2pd = false;
                             wtgx += "CO2.";
                         }
-                        analysisdata.Nobz = float.Parse(textEditBiaoNo.Text.Trim());
-                        analysisdata.Noclz = float.Parse(textEdit_nojg.Text.Trim());
+                        analysisdata.Nobz = (float)Math.Round(double.Parse(textEditBiaoNo.Text.Trim()), 0);
+                        analysisdata.Noclz = (float)Math.Round(double.Parse(textEdit_nojg.Text.Trim()), 0);
                         nowc = Math.Abs(analysisdata.Nobz - analysisdata.Noclz);
                         noxdwc = nowc / analysisdata.Nobz;
                         if (nowc <= 25 || noxdwc <= 0.04)
@@ -2997,8 +3022,8 @@ namespace 废气仪标定
                             nopd = false;
                             wtgx += "NO.";
                         }
-                        analysisdata.Hcbz = float.Parse(textEditBiaoC3h8.Text.Trim()) * float.Parse(textEdit_pefjg.Text.Trim());
-                        analysisdata.Hcclz = float.Parse(textEdit_hcjg.Text.Trim());
+                        analysisdata.Hcbz = (float)Math.Round(double.Parse(textEditBiaoC3h8.Text.Trim()) * double.Parse(textEdit_pefjg.Text.Trim()), 0);
+                        analysisdata.Hcclz = (float)Math.Round(double.Parse(textEdit_hcjg.Text.Trim()), 0);
                         hcwc = Math.Abs(analysisdata.Hcbz - analysisdata.Hcclz);
                         hcxdwc = hcwc / analysisdata.Hcbz;
                         if (hcwc <= 4 || hcxdwc <= 0.03)
@@ -3079,8 +3104,8 @@ namespace 废气仪标定
                             wtgx += "CO2.";
                             co2pd = false;
                         }
-                        analysisdata.Nobz = float.Parse(textEditBiaoNo.Text.Trim());
-                        analysisdata.Noclz = float.Parse(textEdit_nojg.Text.Trim());
+                        analysisdata.Nobz = (float)Math.Round(double.Parse(textEditBiaoNo.Text.Trim()), 0);
+                        analysisdata.Noclz = (float)Math.Round(double.Parse(textEdit_nojg.Text.Trim()), 0);
                         nowc = Math.Abs(analysisdata.Nobz - analysisdata.Noclz);
                         noxdwc = nowc / analysisdata.Nobz;
                         if (noxdwc <= 0.08)
@@ -3090,8 +3115,8 @@ namespace 废气仪标定
                             wtgx += "NO.";
                             nopd = false;
                         }
-                        analysisdata.Hcbz = float.Parse(textEditBiaoC3h8.Text.Trim()) * float.Parse(textEdit_pefjg.Text.Trim());
-                        analysisdata.Hcclz = float.Parse(textEdit_hcjg.Text.Trim());
+                        analysisdata.Hcbz = (float)Math.Round(double.Parse(textEditBiaoC3h8.Text.Trim()) * double.Parse(textEdit_pefjg.Text.Trim()), 0);
+                        analysisdata.Hcclz = (float)Math.Round(double.Parse(textEdit_hcjg.Text.Trim()), 0);
                         hcwc = Math.Abs(analysisdata.Hcbz - analysisdata.Hcclz);
                         hcxdwc = hcwc / analysisdata.Hcbz;
                         if (hcxdwc <= 0.05)
@@ -3204,8 +3229,8 @@ namespace 废气仪标定
                             co2pd = false;
                             wtgx += "CO2.";
                         }
-                        analysisdata.Nobz = float.Parse(textEditBiaoNo.Text.Trim());
-                        analysisdata.Noclz = float.Parse(textEdit_nojg.Text.Trim());
+                        analysisdata.Nobz = (float)Math.Round(double.Parse(textEditBiaoNo.Text.Trim()), 0);
+                        analysisdata.Noclz = (float)Math.Round(double.Parse(textEdit_nojg.Text.Trim()), 0);
                         nowc = Math.Abs(analysisdata.Nobz - analysisdata.Noclz);
                         noxdwc = nowc / analysisdata.Nobz;
                         if (nowc <= 25 || noxdwc <= 0.04)
@@ -3215,8 +3240,8 @@ namespace 废气仪标定
                             nopd = false;
                             wtgx += "NO.";
                         }
-                        analysisdata.Hcbz = float.Parse(textEditBiaoC3h8.Text.Trim()) * float.Parse(textEdit_pefjg.Text.Trim());
-                        analysisdata.Hcclz = float.Parse(textEdit_hcjg.Text.Trim());
+                        analysisdata.Hcbz = (float)Math.Round(double.Parse(textEditBiaoC3h8.Text.Trim()) * double.Parse(textEdit_pefjg.Text.Trim()), 0);
+                        analysisdata.Hcclz = (float)Math.Round(double.Parse(textEdit_hcjg.Text.Trim()), 0);
                         hcwc = Math.Abs(analysisdata.Hcbz - analysisdata.Hcclz);
                         hcxdwc = hcwc / analysisdata.Hcbz;
                         if (hcwc <= 4 || hcxdwc <= 0.03)
@@ -3297,8 +3322,8 @@ namespace 废气仪标定
                             wtgx += "CO2.";
                             co2pd = false;
                         }
-                        analysisdata.Nobz = float.Parse(textEditBiaoNo.Text.Trim());
-                        analysisdata.Noclz = float.Parse(textEdit_nojg.Text.Trim());
+                        analysisdata.Nobz = (float)Math.Round(double.Parse(textEditBiaoNo.Text.Trim()), 0);
+                        analysisdata.Noclz = (float)Math.Round(double.Parse(textEdit_nojg.Text.Trim()), 0);
                         nowc = Math.Abs(analysisdata.Nobz - analysisdata.Noclz);
                         noxdwc = nowc / analysisdata.Nobz;
                         if (noxdwc <= 0.08)
@@ -3308,8 +3333,8 @@ namespace 废气仪标定
                             wtgx += "NOX.";
                             nopd = false;
                         }
-                        analysisdata.Hcbz = float.Parse(textEditBiaoC3h8.Text.Trim()) * float.Parse(textEdit_pefjg.Text.Trim());
-                        analysisdata.Hcclz = float.Parse(textEdit_hcjg.Text.Trim());
+                        analysisdata.Hcbz = (float)Math.Round(double.Parse(textEditBiaoC3h8.Text.Trim()) * double.Parse(textEdit_pefjg.Text.Trim()), 0);
+                        analysisdata.Hcclz = (float)Math.Round(double.Parse(textEdit_hcjg.Text.Trim()), 0);
                         hcwc = Math.Abs(analysisdata.Hcbz - analysisdata.Hcclz);
                         hcxdwc = hcwc / analysisdata.Hcbz;
                         if (hcxdwc <= 0.05)
@@ -3396,6 +3421,7 @@ namespace 废气仪标定
                     }
                     break;
                 case "mqw_50a":
+                case "mqw_50b":
                     if (radioButtonLowB.Checked == true)
                     {
                         analysisdata.Pef = textEdit_pefjg.Text;
@@ -3422,8 +3448,8 @@ namespace 废气仪标定
                             co2pd = false;
                             wtgx += "CO2.";
                         }
-                        analysisdata.Nobz = float.Parse(textEditBiaoNo.Text.Trim());
-                        analysisdata.Noclz = float.Parse(textEdit_nojg.Text.Trim());
+                        analysisdata.Nobz = (float)Math.Round(double.Parse(textEditBiaoNo.Text.Trim()),0);
+                        analysisdata.Noclz = (float)Math.Round(double.Parse(textEdit_nojg.Text.Trim()),0);
                         nowc = Math.Abs(analysisdata.Nobz - analysisdata.Noclz);
                         noxdwc = nowc / analysisdata.Nobz;
                         if (nowc <= 25 || noxdwc <= 0.04)
@@ -3433,8 +3459,8 @@ namespace 废气仪标定
                             nopd = false;
                             wtgx += "NO.";
                         }
-                        analysisdata.Hcbz = float.Parse(textEditBiaoC3h8.Text.Trim()) * float.Parse(textEdit_pefjg.Text.Trim());
-                        analysisdata.Hcclz = float.Parse(textEdit_hcjg.Text.Trim());
+                        analysisdata.Hcbz = (float)Math.Round(double.Parse(textEditBiaoC3h8.Text.Trim()) * double.Parse(textEdit_pefjg.Text.Trim()),0);
+                        analysisdata.Hcclz = (float)Math.Round(double.Parse(textEdit_hcjg.Text.Trim()),0);
                         hcwc = Math.Abs(analysisdata.Hcbz - analysisdata.Hcclz);
                         hcxdwc = hcwc / analysisdata.Hcbz;
                         if (hcwc <= 4 || hcxdwc <= 0.03)
@@ -3515,8 +3541,8 @@ namespace 废气仪标定
                             wtgx += "CO2.";
                             co2pd = false;
                         }
-                        analysisdata.Nobz = float.Parse(textEditBiaoNo.Text.Trim());
-                        analysisdata.Noclz = float.Parse(textEdit_nojg.Text.Trim());
+                        analysisdata.Nobz = (float)Math.Round(double.Parse(textEditBiaoNo.Text.Trim()), 0);
+                        analysisdata.Noclz = (float)Math.Round(double.Parse(textEdit_nojg.Text.Trim()), 0);
                         nowc = Math.Abs(analysisdata.Nobz - analysisdata.Noclz);
                         noxdwc = nowc / analysisdata.Nobz;
                         if (noxdwc <= 0.08)
@@ -3526,8 +3552,8 @@ namespace 废气仪标定
                             wtgx += "NOX.";
                             nopd = false;
                         }
-                        analysisdata.Hcbz = float.Parse(textEditBiaoC3h8.Text.Trim()) * float.Parse(textEdit_pefjg.Text.Trim());
-                        analysisdata.Hcclz = float.Parse(textEdit_hcjg.Text.Trim());
+                        analysisdata.Hcbz = (float)Math.Round(double.Parse(textEditBiaoC3h8.Text.Trim()) * double.Parse(textEdit_pefjg.Text.Trim()), 0);
+                        analysisdata.Hcclz = (float)Math.Round(double.Parse(textEdit_hcjg.Text.Trim()), 0);
                         hcwc = Math.Abs(analysisdata.Hcbz - analysisdata.Hcclz);
                         hcxdwc = hcwc / analysisdata.Hcbz;
                         if (hcxdwc <= 0.05)
@@ -3639,13 +3665,13 @@ namespace 废气仪标定
                             co2pd = false;
                             wtgx += "CO2.";
                         }
-                        analysisdata.Nobz = float.Parse(textEditBiaoNo.Text.Trim());
-                        analysisdata.Noclz = float.Parse(textEdit_nojg.Text.Trim());
+                        analysisdata.Nobz = (float)Math.Round(double.Parse(textEditBiaoNo.Text.Trim()), 0);
+                        analysisdata.Noclz = (float)Math.Round(double.Parse(textEdit_nojg.Text.Trim()), 0);
                         nowc = Math.Abs(analysisdata.Nobz - analysisdata.Noclz);
                         noxdwc = nowc / analysisdata.Nobz;
                         nopd = true;
-                        analysisdata.Hcbz = float.Parse(textEditBiaoC3h8.Text.Trim()) * float.Parse(textEdit_pefjg.Text.Trim());
-                        analysisdata.Hcclz = float.Parse(textEdit_hcjg.Text.Trim());
+                        analysisdata.Hcbz = (float)Math.Round(double.Parse(textEditBiaoC3h8.Text.Trim()) * double.Parse(textEdit_pefjg.Text.Trim()), 0);
+                        analysisdata.Hcclz = (float)Math.Round(double.Parse(textEdit_hcjg.Text.Trim()), 0);
                         hcwc = Math.Abs(analysisdata.Hcbz - analysisdata.Hcclz);
                         hcxdwc = hcwc / analysisdata.Hcbz;
                         if (hcwc <= 12 || hcxdwc <= 0.05)
@@ -3760,13 +3786,13 @@ namespace 废气仪标定
                             co2pd = false;
                             wtgx += "CO2.";
                         }
-                        analysisdata.Nobz = float.Parse(textEditBiaoNo.Text.Trim());
-                        analysisdata.Noclz = float.Parse(textEdit_nojg.Text.Trim());
+                        analysisdata.Nobz = (float)Math.Round(double.Parse(textEditBiaoNo.Text.Trim()), 0);
+                        analysisdata.Noclz = (float)Math.Round(double.Parse(textEdit_nojg.Text.Trim()), 0);
                         nowc = Math.Abs(analysisdata.Nobz - analysisdata.Noclz);
                         noxdwc = nowc / analysisdata.Nobz;
                         nopd = true;
-                        analysisdata.Hcbz = float.Parse(textEditBiaoC3h8.Text.Trim()) * float.Parse(textEdit_pefjg.Text.Trim());
-                        analysisdata.Hcclz = float.Parse(textEdit_hcjg.Text.Trim());
+                        analysisdata.Hcbz = (float)Math.Round(double.Parse(textEditBiaoC3h8.Text.Trim()) * double.Parse(textEdit_pefjg.Text.Trim()), 0);
+                        analysisdata.Hcclz = (float)Math.Round(double.Parse(textEdit_hcjg.Text.Trim()), 0);
                         hcwc = Math.Abs(analysisdata.Hcbz - analysisdata.Hcclz);
                         hcxdwc = hcwc / analysisdata.Hcbz;
                         if (hcwc <= 12 || hcxdwc <= 0.05)

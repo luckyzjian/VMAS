@@ -140,6 +140,7 @@ namespace QxzDemarcate
                             }
                             break;
                         case "mqw_50a":
+                        case "mqw_50b":
                             try
                             {
                                 UseFqy = "mqw_50a";
@@ -851,7 +852,7 @@ namespace QxzDemarcate
                 return;
             }
             string msg="";
-            if (equipconfig.TempInstrument == "废气仪" && equipconfig.Fqyxh.ToLower() == "mqw_50a"&&fla_502!=null)
+            if (equipconfig.TempInstrument == "废气仪" &&( equipconfig.Fqyxh.ToLower() == "mqw_50a"|| equipconfig.Fqyxh.ToLower() == "mqw_50b") &&fla_502!=null)
             {
                 /*
                 readingTemp = false;
@@ -939,7 +940,7 @@ namespace QxzDemarcate
             if (equipconfig.TempInstrument == "废气仪" && fla_502 != null)
             {
                 double realwd, realsd, realdqy, equipwd, equipsd, equipdqy;
-                if (equipconfig.Fqyxh.ToLower() == "mqw_50a" || equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503")
+                if (equipconfig.Fqyxh.ToLower() == "mqw_50b"||equipconfig.Fqyxh.ToLower() == "mqw_50a" || equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503")
                 {
                     try
                     {
@@ -1067,7 +1068,7 @@ namespace QxzDemarcate
             if (equipconfig.TempInstrument == "废气仪"&& fla_502 != null)
             {
                 double realwd, realsd, realdqy, equipwd, equipsd, equipdqy;
-                if (equipconfig.Fqyxh.ToLower() == "mqw_50a" || equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503")
+                if (equipconfig.Fqyxh.ToLower() == "mqw_50b"||equipconfig.Fqyxh.ToLower() == "mqw_50a" || equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503")
                 {
                     try
                     {
@@ -1195,7 +1196,7 @@ namespace QxzDemarcate
             if (equipconfig.TempInstrument == "废气仪" && fla_502 != null)
             {
                 double realwd, realsd, realdqy, equipwd, equipsd, equipdqy;
-                if (equipconfig.Fqyxh.ToLower() == "mqw_50a" || equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503")
+                if (equipconfig.Fqyxh.ToLower() == "mqw_50b"||equipconfig.Fqyxh.ToLower() == "mqw_50a" || equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503")
                 {
                     try
                     {

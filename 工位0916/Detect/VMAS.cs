@@ -647,6 +647,7 @@ namespace vmasDetect
                             }
                             break;
                         case "mqw_50a":
+                        case "mqw_50b":
                             try
                             {
                                 UseFqy = "mqw_50a";

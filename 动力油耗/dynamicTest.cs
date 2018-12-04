@@ -1237,6 +1237,7 @@ namespace 动力油耗
                             }
                             break;
                         case "mqw_50a":
+                        case "mqw_50b":
                             try
                             {
                                 UseFqy = "mqw_50a";
