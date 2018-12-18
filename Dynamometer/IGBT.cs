@@ -559,6 +559,7 @@ namespace Dynamometer
                                     b2 = b2_double.ToString();
                                     c2 = BitConverter.ToSingle(All_Content_byte.ToArray(), start + 11).ToString();
                                     All_Content_byte.RemoveRange(0, end + 1);
+                                    isGetForceXs = true;
                                     break;
                                 default:
                                     All_Content_byte.RemoveRange(0, end + 1);
@@ -1715,17 +1716,22 @@ namespace Dynamometer
         /// <summary>
         /// 读取力通道的系数 BNDT用 是读取所有力通道的系数，取完之后保存在IGBT类中b0、c0……
         /// </summary>
-        public void Get_Force_Modulus()
+        private bool isGetForceXs = false;
+        public bool Get_Force_Modulus()
         {
             try
             {
+                isGetForceXs = false;
                 List<byte> temp_cmd = Encoding.Default.GetBytes(BNTD_Cmd_Read_Force_Modulus).ToList();
                 temp_cmd.AddRange(BitConverter.GetBytes(0.0f));
                 byte[] Cmd = temp_cmd.ToArray();
                 SendData(Cmd);
+                Thread.Sleep(500);
+                return isGetForceXs;
             }
             catch (Exception)
             {
+                return false;
             }
         }
         #endregion

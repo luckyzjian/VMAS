@@ -82,11 +82,8 @@ namespace ASMtest
         public bool saveProcessData = false;
         public string JC_Circuit = "5025";                                                        //检测流程
         Thread Th_get_FqandLl = null;                                                           //废气检测线程
-        Thread th_get_llj = null;
         Thread TH_ST = null;                                                                    //检测线程
-        Thread th_load = null;
-        Thread TH_Speed_st = null;                                                              //速度检测线程
-        Thread Th_prepare = null;
+        
         public int fqy_delayTime = 0;
         public int Preset_Time = 10;                                                            //废气分析仪预置时间，默认10秒
         public float[] Speed_listIg195 = new float[300];                                          //IG195的每秒速度
@@ -151,18 +148,33 @@ namespace ASMtest
         private double[] asm_Exhaust_rev2540 = new double[90];
         private double[] asm_Exhaust_lambda2540 = new double[90];
 
-        public float[] Vmas_Exhaust_co_zb = new float[195];//每秒NO质量
-        public float[] Vmas_Exhaust_hc_zb = new float[195];//每秒NO质量
-        public float[] Vmas_Exhaust_no_zb = new float[195];//每秒NO质量
-        public float[] Vmas_Exhaust_o2_zb = new float[195];//每秒NO质量
-        public float[] Vmas_Exhaust_xishio2_zb = new float[195];//每秒NO质量
-        public float[] Vmas_Exhaust_hujingo2_zb = new float[195];//每秒NO质量
-        public float[] Vmas_Exhaust_cozl_zb = new float[195];//每秒NO质量
-        public float[] Vmas_Exhaust_hczl_zb = new float[195];//每秒NO质量
-        public float[] Vmas_Exhaust_nozl_zb = new float[195];//每秒NO质量 
-        public float[] Vmas_Exhaust_lljll_zb = new float[195];//每秒NO质量
-        public float[] Vmas_Exhaust_wqll_zb = new float[195];//每秒NO质量
-        public float[] Vmas_Exhaust_k_zb = new float[195];//每秒NO质量
+        List<string> other_Vmas_qcsj=new List<string>();//全程时序
+        List<string> other_Vmas_cysx = new List<string>();
+        List<string> other_Vmas_sxnb = new List<string>();
+        List<double> other_Vmas_Exhaust_co2ld = new List<double>();//标准车速
+        List<double> other_Vmas_Exhaust_cold = new List<double>();//实时车速
+        List<double> other_Vmas_Exhaust_hcld = new List<double>();//实时车速
+        List<double> other_Vmas_Exhaust_nold = new List<double>();//实时车速
+        List<double> other_Vmas_Exhaust_o2ld = new List<double>();//实时车速
+        List<double> other_Vmas_Exhaust_lambda = new List<double>();
+        List<double> other_Vmas_Exhaust_qlyl = new List<double>();//标准车速
+        List<double> other_Vmas_bzcs = new List<double>();//标准车速
+        List<double> other_Vmas_sscs = new List<double>();//实时车速
+        List<double> other_Vmas_jzgl = new List<double>();//加载功率
+        List<double> other_Vmas_nl = new List<double>();//加载功率
+        List<double> other_Vmas_hjwd = new List<double>();//环境温度
+        List<double> other_Vmas_xdsd = new List<double>();//相对湿度
+        List<double> other_Vmas_dqyl = new List<double>();//大气压力
+        List<double> other_Vmas_sdxzxs = new List<double>();//湿度修正系数
+        List<double> other_Vmas_xsxzxs = new List<double>();//稀释修正系数
+        List<double> other_Vmas_fxyglyl = new List<double>();//分析仪管路压力
+        List<double> other_Vmas_Exhaust_zs = new List<double>();//每秒NO质量
+        List<double> other_Vmas_Exhaust_yw = new List<double>();//每秒NO质量
+        List<double> other_Vmas_Exhaust_jsgl = new List<double>();//每秒NO质量
+        List<double> other_vmas_zsgl = new List<double>();
+        List<double> other_Vmas_jczt = new List<double>();
+        
+
         public int[] lowflowarray = new int[300];
         public int isLowFlow = 0;
         private float yw = 0;
@@ -243,8 +255,9 @@ namespace ASMtest
         public float outTimeTotal = 0;                                                                   //总共超差的时间
         public float Set_Power5025 = 0, Set_Power2540 = 0;                                                             //扭矩
         public static bool beforedate = true;
-        public static bool asm5025 = false;
-        public static bool asm2540 = false;
+        public enum TEST_STATE { STATE_PREP,STATE_ACC5025,STATE_TEST5025,STATE_ACC2540,STATE_TEST2540,STATE_FINISH};
+        public static TEST_STATE testState = TEST_STATE.STATE_PREP;
+
         public float gongkuangTime = 0f;
         public string gongkuangStartTime = "";
         public string gongkuangEndTime = "";
@@ -929,24 +942,62 @@ namespace ASMtest
                         if (JCSJ > preJCSJ)           //每1s记录一次信息
                         {
                             preJCSJ = JCSJ;
-                            //djccyString = "";
-                            sjxlString += jcnowtime.ToString("yyyy-MM-dd HH:mm:ss.fff") + ",";
-                            hcclzString += Vmas_Exhaust_Now.HC.ToString() + ",";
-                            noclzString += Vmas_Exhaust_Now.NO.ToString() + ",";
-                            coclzString += Vmas_Exhaust_Now.CO.ToString() + ",";
-                            co2clzString += co2.ToString() + ",";
-                            o2clzString += Vmas_Exhaust_Now.O2.ToString() + ",";
-                            csString += igbt.Speed.ToString("0.0") + ",";
-                            zsString += Vmas_Exhaust_Now.ZS.ToString() + ",";
-                            xsxzxsString += "1" + ",";
-                            sdxzxsString += "1" + ",";
-                            jsglString += jsgl.ToString("0.0") + ",";
-                            zsglString += zgl.ToString("0.0") + ",";
-                            hjwdString += WD.ToString("0.0") + ",";
-                            dqylString += DQY.ToString("0.0") + ",";
-                            xdsdString += SD.ToString("0.0") + ",";
-                            ywString += yw.ToString() + ",";
-                            jcztString += jczt.ToString() + ",";
+                            if (equipconfig.DATASECONDS_TYPE == "安徽")
+                            {                                
+                                if (testState == TEST_STATE.STATE_PREP||testState==TEST_STATE.STATE_ACC5025||testState==TEST_STATE.STATE_ACC2540)
+                                {
+                                    int other_sxnb = 0;
+                                    if (testState == TEST_STATE.STATE_PREP) other_sxnb = 0;
+                                    else if (testState == TEST_STATE.STATE_ACC5025) other_sxnb = 3;
+                                    else if (testState == TEST_STATE.STATE_ACC2540) other_sxnb = 4;
+                                    other_Vmas_qcsj.Add(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));//全程时序
+                                    other_Vmas_cysx.Add((JCSJ + 1).ToString());
+                                    other_Vmas_sxnb.Add(other_sxnb.ToString());
+                                    other_Vmas_sscs.Add(igbt.Speed);//实时速度
+                                    other_Vmas_jzgl.Add(zgl);//加载功率
+                                    other_Vmas_Exhaust_jsgl.Add(jsgl);//寄生功率
+                                    other_vmas_zsgl.Add(zsgl);
+                                    other_Vmas_jczt.Add( jczt);
+                                    other_Vmas_nl.Add(Math.Round(nl, 0));//加载功率
+                                    other_Vmas_Exhaust_qlyl.Add( Vmas_Exhaust_Now.QLYL);//气路压力
+                                    other_Vmas_Exhaust_cold.Add( Vmas_Exhaust_Now.CO);//CO浓度
+                                    other_Vmas_Exhaust_co2ld.Add(co2);//CO2浓度
+                                    other_Vmas_Exhaust_hcld.Add( Vmas_Exhaust_Now.HC);//HC浓度
+                                    other_Vmas_Exhaust_o2ld.Add(Vmas_Exhaust_Now.O2);//废气仪氧气浓度
+
+                                    other_Vmas_hjwd.Add(WD);//温度
+                                    other_Vmas_xdsd.Add(SD);//湿度
+                                    other_Vmas_dqyl.Add(DQY);//大气压
+
+                                    other_Vmas_sdxzxs.Add(caculateDf(co2, Vmas_Exhaust_Now.CO));//稀释修正系数
+                                    other_Vmas_xsxzxs.Add( caculateKh(WD, SD, DQY));//湿度修正系数
+
+                                    other_Vmas_Exhaust_zs.Add( Vmas_Exhaust_Now.ZS);//转速
+                                    other_Vmas_Exhaust_yw.Add( yw);//油温
+                                    other_Vmas_Exhaust_nold.Add( Vmas_Exhaust_Now.NO);//NO浓度
+                                }
+                            }
+                            else
+                            {
+                                //djccyString = "";
+                                sjxlString += jcnowtime.ToString("yyyy-MM-dd HH:mm:ss.fff") + ",";
+                                hcclzString += Vmas_Exhaust_Now.HC.ToString() + ",";
+                                noclzString += Vmas_Exhaust_Now.NO.ToString() + ",";
+                                coclzString += Vmas_Exhaust_Now.CO.ToString() + ",";
+                                co2clzString += co2.ToString() + ",";
+                                o2clzString += Vmas_Exhaust_Now.O2.ToString() + ",";
+                                csString += igbt.Speed.ToString("0.0") + ",";
+                                zsString += Vmas_Exhaust_Now.ZS.ToString() + ",";
+                                xsxzxsString += "1" + ",";
+                                sdxzxsString += "1" + ",";
+                                jsglString += jsgl.ToString("0.0") + ",";
+                                zsglString += zgl.ToString("0.0") + ",";
+                                hjwdString += WD.ToString("0.0") + ",";
+                                dqylString += DQY.ToString("0.0") + ",";
+                                xdsdString += SD.ToString("0.0") + ",";
+                                ywString += yw.ToString() + ",";
+                                jcztString += jczt.ToString() + ",";
+                            }
 
                         }
                     }
@@ -955,13 +1006,13 @@ namespace ASMtest
                         throw;
                     }
                 }
-                if (asm5025 || asm2540)
+                if (testState==TEST_STATE.STATE_TEST5025||testState==TEST_STATE.STATE_TEST2540)
                 {
                     try
                     {
                         bool chaocha = true;
                         speedNow.speed_now_data = igbt.Speed;
-                        if (asm5025)
+                        if (testState == TEST_STATE.STATE_TEST5025)
                         {
                             if (igbt.Speed < 15)
                                 igbt.Set_Control_Power(0);
@@ -971,7 +1022,7 @@ namespace ASMtest
                                 igbt.Set_Control_Power((float)(Set_Power5025));
 
                         }
-                        if (asm2540)
+                        if (testState == TEST_STATE.STATE_TEST2540)
                         {
                             if (igbt.Speed < 15)
                                 igbt.Set_Control_Power(0);
@@ -982,7 +1033,7 @@ namespace ASMtest
                         }
                         if (Convert.ToInt16(gongkuangTime * 10) / 10 != GKSJ)           //每1s记录一次信息
                         {
-                            if (asm5025)
+                            if (testState == TEST_STATE.STATE_TEST5025)
                             {
                                 if (GKSJ < 90)
                                 {
@@ -990,7 +1041,7 @@ namespace ASMtest
                                     asm_Exhaust_lambda5025[GKSJ] = Vmas_Exhaust_Now.λ;
                                 }
                             }
-                            if (asm2540)
+                            if (testState == TEST_STATE.STATE_TEST2540)
                             {
                                 if (GKSJ < 90)
                                 {
@@ -1016,55 +1067,14 @@ namespace ASMtest
                             Vmas_Exhaust_co2ld[gksj_count] = co2;//CO2浓度
                             Vmas_Exhaust_hcld[gksj_count] = Vmas_Exhaust_Now.HC;//HC浓度
                             Vmas_Exhaust_o2ld[gksj_count] = Vmas_Exhaust_Now.O2;//废气仪氧气浓度
-                                                                                /*
-                                                                                if (IsUseTpTemp)
-                                                                                {
-                                                                                    Vmas_hjwd[gksj_count] = (float)WD; //温度
-                                                                                    Vmas_xdsd[gksj_count] = (float)SD;//湿度
-                                                                                    Vmas_dqyl[gksj_count] = (float)DQY;//大气压
-                                                                                }
-                                                                                else if (equipconfig.TempInstrument == "烟度计" && flb_100 != null)
-                                                                                {
-                                                                                    Vmas_hjwd[gksj_count] = (float)WD;//温度
-                                                                                    Vmas_xdsd[gksj_count] = (float)SD;//湿度
-                                                                                    Vmas_dqyl[gksj_count] = (float)DQY;//大气压
-                                                                                }
-                                                                                else if (equipconfig.TempInstrument == "废气仪")
-                                                                                { 
-                                                                                    if (equipconfig.Fqyxh.ToLower() == "fla_502" || equipconfig.Fqyxh.ToLower() == "nha_503" || equipconfig.Fqyxh.ToLower() == "cdf5000")
-                                                                                    {
-                                                                                        WD= fla502_temp_data.TEMP;
-                                                                                        SD= fla502_temp_data.HUMIDITY;
-                                                                                        DQY= fla502_temp_data.AIRPRESSURE;
-                                                                                        Vmas_hjwd[gksj_count] = fla502_temp_data.TEMP;//温度
-                                                                                        Vmas_xdsd[gksj_count] = fla502_temp_data.HUMIDITY;//湿度
-                                                                                        Vmas_dqyl[gksj_count] = fla502_temp_data.AIRPRESSURE;//大气压
-                                                                                    }
-                                                                                    else
-                                                                                    {
-                                                                                        WD = Vmas_Exhaust_Now.HJWD;
-                                                                                        SD = Vmas_Exhaust_Now.SD;
-                                                                                        DQY = Vmas_Exhaust_Now.HJYL;
-                                                                                        Vmas_hjwd[gksj_count] = Vmas_Exhaust_Now.HJWD;//温度
-                                                                                        Vmas_xdsd[gksj_count] = Vmas_Exhaust_Now.SD;//湿度
-                                                                                        Vmas_dqyl[gksj_count] = Vmas_Exhaust_Now.HJYL;//大气压
-                                                                                    }
-                                                                                }
-                                                                                else
-                                                                                {
-                                                                                    Vmas_hjwd[gksj_count] = (float)WD;//温度
-                                                                                    Vmas_xdsd[gksj_count] = (float)SD;//湿度
-                                                                                    Vmas_dqyl[gksj_count] = (float)DQY;//大气压
-                                                                                }*/
+                                                                                
                             Vmas_hjwd[gksj_count] = (float)WD;//温度
                             Vmas_xdsd[gksj_count] = (float)SD;//湿度
                             Vmas_dqyl[gksj_count] = (float)DQY;//大气压
 
                             Vmas_xsxzxs[gksj_count] = caculateDf(Vmas_Exhaust_co2ld[gksj_count], Vmas_Exhaust_cold[gksj_count]);//稀释修正系数
                             Vmas_sdxzxs[gksj_count] = caculateKh(Vmas_hjwd[gksj_count], Vmas_xdsd[gksj_count], Vmas_dqyl[gksj_count]);//湿度修正系数
-
-                            //Vmas_xsxzxs[gksj_count] = xsxzxs;//稀释修正系数
-                            //Vmas_sdxzxs[gksj_count] = sdxzxs;//湿度修正系数
+                            
                             Vmas_Exhaust_zs[gksj_count] = Vmas_Exhaust_Now.ZS;//转速
                             Vmas_Exhaust_yw[gksj_count] = yw;//油温
                             Vmas_Exhaust_nold[gksj_count] = Vmas_Exhaust_Now.NO;//NO浓度
@@ -1085,7 +1095,7 @@ namespace ASMtest
                         }
                         if (GKSJ >= 25)
                         {
-                            if (asm5025)
+                            if (testState == TEST_STATE.STATE_TEST5025)
                             {
                                 //下面取消掉过程中大于5位限值判断不合格的程序，因为安车新平台要根据过程点反算结果，由于标准没有说清楚这种情况结果取什么修
                                 /*bool COexhaustCbFiveXzFlag = true;
@@ -1145,7 +1155,7 @@ namespace ASMtest
                                     
                                 }
                             }
-                            if (asm2540)
+                            if (testState == TEST_STATE.STATE_TEST2540)
                             {
                                 /*bool COexhaustCbFiveXzFlag = true;
                                 bool HCexhaustCbFiveXzFlag = true;
@@ -1207,11 +1217,11 @@ namespace ASMtest
                         }
                         else
                         {
-                            if (asm5025)
+                            if (testState == TEST_STATE.STATE_TEST5025)
                             {
                                 jczt = 1;
                             }
-                            if (asm2540)
+                            if (testState == TEST_STATE.STATE_TEST2540)
                             {
                                 jczt = 3;
                             }
@@ -1224,8 +1234,7 @@ namespace ASMtest
                                 {
                                     if ((Vmas_Exhaust_cold[gksj_count - 2] + Vmas_Exhaust_co2ld[gksj_count - 2]) < asmconfig.Ndz)
                                     {
-                                        asm5025 = false;
-                                        asm2540 = false;
+                                        testState = TEST_STATE.STATE_PREP;
                                         ovalShapeNDZ.FillColor = Color.Red;
                                         outTimeContinus = 0f;
                                         outTimeTotal = 0f;
@@ -1249,8 +1258,7 @@ namespace ASMtest
                         {
                             if ((lowflowarray[gksj_count] == -2) && (lowflowarray[gksj_count - 1] == -2) && (lowflowarray[gksj_count - 2] == -2))
                             {
-                                asm5025 = false;
-                                asm2540 = false;
+                                testState = TEST_STATE.STATE_PREP;
                                 //ovalShapeNDZ.FillColor = Color.Red;
                                 outTimeContinus = 0f;
                                 outTimeTotal = 0f;
@@ -1280,7 +1288,7 @@ namespace ASMtest
                         TimeSpan timespan = nowtime - startTime;
                         gongkuangTime = (float)timespan.TotalMilliseconds / 1000f;
                         thisTimeSpan = gongkuangTime - thisTimeSpan;
-                        if (asm5025)
+                        if (testState==TEST_STATE.STATE_TEST5025)
                         {
                             if ((igbt.Speed <= 26.5) && (igbt.Speed >= 23.5))
                                 chaocha = false;
@@ -1309,8 +1317,7 @@ namespace ASMtest
                                     outTimeTotal = 0f;
                                     TH_ST.Abort();
                                     Speed_Jc_flag = false;
-                                    asm5025 = false;
-                                    asm2540 = false;
+                                    testState = TEST_STATE.STATE_PREP;
                                     gongkuangTime = 0f;
                                     GKSJ = 0;
                                     fla_502.Stop();
@@ -1710,6 +1717,7 @@ namespace ASMtest
             bool asm5025isOK = false;
             bool fast2540isOK = false;
             bool asm2540isOK = false;
+            testState = TEST_STATE.STATE_PREP;
             float fast5025hc = 0;
             float fast5025co = 0;
             float fast5025no = 0;
@@ -1727,6 +1735,33 @@ namespace ASMtest
             asm_Exhaust_o22540.Clear();
             exhaustIsCb5025 = false;
             exhaustIsCb2540 = false;
+
+            other_Vmas_qcsj.Clear();
+            other_Vmas_cysx.Clear();
+            other_Vmas_sxnb.Clear();
+            other_Vmas_sscs.Clear();
+            other_Vmas_jzgl.Clear();
+            other_Vmas_Exhaust_jsgl.Clear();
+            other_vmas_zsgl.Clear();
+            other_Vmas_jczt.Clear();
+            other_Vmas_nl.Clear();
+            other_Vmas_Exhaust_qlyl.Clear();
+            other_Vmas_Exhaust_cold.Clear();
+            other_Vmas_Exhaust_co2ld.Clear();
+            other_Vmas_Exhaust_hcld.Clear();
+            other_Vmas_Exhaust_o2ld.Clear();
+
+            other_Vmas_hjwd.Clear();
+            other_Vmas_xdsd.Clear();
+            other_Vmas_dqyl.Clear();
+
+            other_Vmas_sdxzxs.Clear();
+            other_Vmas_xsxzxs.Clear();
+
+            other_Vmas_Exhaust_zs.Clear();
+            other_Vmas_Exhaust_yw.Clear();
+            other_Vmas_Exhaust_nold.Clear();
+
             DataTable vmas_datatable = new DataTable();
             vmas_datatable.Columns.Add("全程时序");
             vmas_datatable.Columns.Add("时序类别");
@@ -1854,6 +1889,7 @@ namespace ASMtest
                 //statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.ZIJIANJIESHU, JCSJ.ToString());
                 fla_502.Pump_Pipeair();
                 Msg(label_message, panel_msg, "测试仪器开始工作,请安置好检测探头", false);
+                sxnb = 0;
                 ts1 = "请安置探头";
                 statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.CHATANTOU, JCSJ.ToString());
                 statusconfigini.writeNeuStatusData("StartTest", JCSJ.ToString());//东软开始命令
@@ -1865,6 +1901,8 @@ namespace ASMtest
                 jcStarttime = DateTime.Now;
                 jczt = 0;
                 JC_Status = true;
+                if (equipconfig.DATASECONDS_TYPE == "安徽") saveProcessData = true;
+                testState = TEST_STATE.STATE_PREP;
                 Th_get_FqandLl.Start();
                 Thread.Sleep(2000);
                 while (Vmas_Exhaust_Now.CO + Vmas_Exhaust_Now.CO2 <= asmconfig.Ndz)
@@ -1904,7 +1942,7 @@ namespace ASMtest
                 ts2 = "保持25±1.5km/h";
                 jczt = 1;
                 sxnb = 1;
-                asm5025 = true;
+                testState = TEST_STATE.STATE_TEST5025;
                 startTime = DateTime.Now;
                 asm_data.Kstg5025 = "0";
                 asm_data.Kstg2540 = "0";
@@ -2005,7 +2043,7 @@ namespace ASMtest
                         fast5025isOK = true;
                         asm_data.Kstg5025 = "1";
                         //statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.JIANCEZHONG, JCSJ.ToString());
-                        asm5025 = false;
+                        testState = TEST_STATE.STATE_FINISH;
                         igbt.Set_Control_Power(0f);
                     }
                 }
@@ -2194,7 +2232,7 @@ namespace ASMtest
                         }
                         
                     //statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.JIANCEZHONG, JCSJ.ToString());
-                    asm5025 = false;
+                    testState = TEST_STATE.STATE_FINISH;
                     igbt.Set_Control_Power(0f);
                 }
                 statusconfigini.writeNeuStatusData("Finish5025", JCSJ.ToString());//5025结束
@@ -2202,6 +2240,7 @@ namespace ASMtest
                 {
                     if (!asm5025isOK)
                     {
+                        testState = TEST_STATE.STATE_ACC2540;
                         asm_data.Has2540Tested = "1";//5025工况检测合格的情况下，检测2540工况，这里标定为2540工况已检
                         jczt = 0;
                         Msg(label_message, panel_msg, "请加速至40km/h", true);
@@ -2222,7 +2261,7 @@ namespace ASMtest
                         Msg(label_message, panel_msg, "请保持40km/h±1.5km/h,ASM2540工况开始", true);
                         ts2 = "保持40±1.5km/h";
                         sxnb = 2;
-                        asm2540 = true;
+                        testState = TEST_STATE.STATE_ACC2540;
                         startTime = DateTime.Now;
                         while (GKSJ < 5)
                         {
@@ -2479,12 +2518,39 @@ namespace ASMtest
                         statusconfigini.writeNeuStatusData("Finish2540", JCSJ.ToString());//5025结束
                     }
                 }
+                for (int i = 0; i < other_Vmas_qcsj.Count; i++)//将准备阶段，加速阶段的值存入到列表中
+                {
+                    dr = vmas_datatable.NewRow();
+                    dr["全程时序"] = other_Vmas_qcsj[i];
+                    dr["时序类别"] = other_Vmas_sxnb[i];
+                    dr["采样时序"] = other_Vmas_cysx;
+                    dr["HC实时值"] = other_Vmas_Exhaust_hcld[i].ToString("0");
+                    dr["CO实时值"] = other_Vmas_Exhaust_cold[i].ToString("0.00");
+                    dr["CO2实时值"] = other_Vmas_Exhaust_co2ld[i].ToString("0.00");
+                    dr["NO实时值"] = equipconfig.DATASECONDS_TYPE == "安车通用联网" ? ((other_Vmas_Exhaust_nold[i] * other_Vmas_sdxzxs[i]).ToString("0")) : (other_Vmas_Exhaust_nold[i].ToString("0"));
+                    dr["O2实时值"] = other_Vmas_Exhaust_o2ld[i].ToString("0.00");
+                    //dr["标准时速"] = Vmas_bzcs[i];
+                    dr["实时车速"] = other_Vmas_sscs[i].ToString("0.0");
+                    dr["加载功率"] = other_Vmas_jzgl[i].ToString("0.00");
+                    dr["扭力"] = other_Vmas_nl[i].ToString("0");
+                    dr["检测状态"] = "3";
+                    dr["环境温度"] = other_Vmas_hjwd[i].ToString("0.0");
+                    dr["相对湿度"] = other_Vmas_xdsd[i].ToString("0.0");
+                    dr["大气压力"] = other_Vmas_dqyl[i].ToString("0.0");
+                    dr["湿度修正系数"] = other_Vmas_sdxzxs[i].ToString("0.000");
+                    dr["稀释修正系数"] = other_Vmas_xsxzxs[i].ToString("0.000");
+                    dr["分析仪管路压力"] = other_Vmas_Exhaust_qlyl[i];
+                    dr["转速"] = other_Vmas_Exhaust_zs[i];
+                    dr["油温"] = other_Vmas_Exhaust_yw[i];
+                    dr["寄生功率"] = other_Vmas_Exhaust_jsgl[i].ToString("0.00");
+                    dr["指示功率"] = other_vmas_zsgl[i].ToString("0.00");
+                    vmas_datatable.Rows.Add(dr);
+                }
                 statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.GUOCHE, JCSJ.ToString());
                 statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_ENDSAMPLE, "");
                 JC_Status = false; saveProcessData = false;
                 jcStatus = false;
-                asm2540 = false;
-                asm5025 = false;
+                testState = TEST_STATE.STATE_FINISH;
                 asm_data.CarID = carbj.CarID;
                 asm_data.Sd = SD.ToString("0.0");
                 asm_data.Wd = WD.ToString("0.0");
@@ -2680,8 +2746,7 @@ namespace ASMtest
                 {
                     Th_get_FqandLl.Abort();
                     TH_ST.Abort();
-                    asm5025 = false;
-                    asm2540 = false;
+                    testState = TEST_STATE.STATE_FINISH;
                     timer2.Stop();
                     JC_Status = false; saveProcessData = false;
                     button_ss.Text = "重新检测";
@@ -2919,11 +2984,11 @@ namespace ASMtest
                 switch (igbt.Status)
                 {
                     default:
-                        if (asm5025)
+                        if (testState==TEST_STATE.STATE_TEST5025)
                         {
                             linearScaleComponentSpeed25.Value = (igbt.Speed - 23.5f) * 100f / 3f;
                         }
-                        else if (asm2540)
+                        else if (testState==TEST_STATE.STATE_TEST2540)
                         {
                             linearScaleComponent40.Value = (igbt.Speed - 38.5f) * 100f / 3f;
                         }
@@ -3131,8 +3196,7 @@ namespace ASMtest
                     Th_get_FqandLl = new Thread(Fq_Detect);
                     TH_ST.Start();
                     button_ss.Text = "停止检测";
-                    asm5025 = false;
-                    asm2540 = false;
+                    testState = TEST_STATE.STATE_FINISH;
                     GKSJ = 0;
                     jczt = 0;
                     timer2.Start();
@@ -3149,8 +3213,7 @@ namespace ASMtest
                         Th_get_FqandLl.Abort();
                         TH_ST.Abort();
                         fla_502.Stop();
-                        asm5025 = false;
-                        asm2540 = false;
+                        testState = TEST_STATE.STATE_FINISH;
                         timer2.Stop();
                         button_ss.Text = "重新检测";
                         ts2 = "检测被终止";
@@ -3233,8 +3296,7 @@ namespace ASMtest
                     Th_get_FqandLl = new Thread(Fq_Detect);
                     TH_ST.Start();
                     button_ss.Text = "停止检测";
-                    asm5025 = false;
-                    asm2540 = false;
+                    testState = TEST_STATE.STATE_FINISH;
                     GKSJ = 0;
                     jczt = 0;
                     timer2.Start();
@@ -3249,9 +3311,8 @@ namespace ASMtest
                         Th_get_FqandLl.Abort();
                         TH_ST.Abort();
                         fla_502.Stop();
-                        asm5025 = false;
-                        asm2540 = false;
-                        timer2.Stop();
+                    testState = TEST_STATE.STATE_FINISH;
+                    timer2.Stop();
                         button_ss.Text = "重新检测";
                         ts2 = "检测被终止";
                         gongkuangTime = 0f;

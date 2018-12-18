@@ -53,6 +53,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FCalibNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FCalibNew.designer.cs">
+      <DependentUpon>FCalibNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,9 @@
     <Compile Include="ShowText.designer.cs">
       <DependentUpon>ShowText.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FCalibNew.resx">
+      <DependentUpon>FCalibNew.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>

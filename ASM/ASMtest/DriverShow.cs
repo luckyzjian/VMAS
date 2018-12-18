@@ -78,7 +78,7 @@ namespace ASMtest
             {
                 float speedNow=ASM.igbt.Speed;
                 Msg(labelSpeed, panelSpeed, speedNow.ToString("0.0"), false);
-                if (ASM.asm5025)
+                if (ASM.testState==ASM.TEST_STATE.STATE_TEST5025)
                 {
                     if (!asm5025)
                     {
@@ -106,7 +106,7 @@ namespace ASMtest
                 {
                     asm5025 = false;
                 }
-                if (ASM.asm2540)
+                if (ASM.testState == ASM.TEST_STATE.STATE_TEST2540)
                 {
                     if (!asm2540)
                     {
