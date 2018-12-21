@@ -2434,7 +2434,7 @@ namespace sds
                 sds_datatable.Columns.Add("大气压力");
                 if (equipconfig.DATASECONDS_TYPE == "安徽")
                 {
-                    for (int i = preseconds; i < preseconds + 90; i++)//安微过程数据只要90s内的数据
+                    for (int i = 0; i < preseconds + 90; i++)//安微过程数据只要90s内的数据
                     {
                         dr = sds_datatable.NewRow();
                         dr["全程时序"] = QcsxlistSY[i];

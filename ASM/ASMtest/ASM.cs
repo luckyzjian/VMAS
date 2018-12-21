@@ -977,8 +977,6 @@ namespace ASMtest
                                     other_Vmas_Exhaust_nold.Add( Vmas_Exhaust_Now.NO);//NO浓度
                                 }
                             }
-                            else
-                            {
                                 //djccyString = "";
                                 sjxlString += jcnowtime.ToString("yyyy-MM-dd HH:mm:ss.fff") + ",";
                                 hcclzString += Vmas_Exhaust_Now.HC.ToString() + ",";
@@ -997,7 +995,6 @@ namespace ASMtest
                                 xdsdString += SD.ToString("0.0") + ",";
                                 ywString += yw.ToString() + ",";
                                 jcztString += jczt.ToString() + ",";
-                            }
 
                         }
                     }
@@ -2261,7 +2258,7 @@ namespace ASMtest
                         Msg(label_message, panel_msg, "请保持40km/h±1.5km/h,ASM2540工况开始", true);
                         ts2 = "保持40±1.5km/h";
                         sxnb = 2;
-                        testState = TEST_STATE.STATE_ACC2540;
+                        testState = TEST_STATE.STATE_TEST2540;
                         startTime = DateTime.Now;
                         while (GKSJ < 5)
                         {
@@ -3149,6 +3146,7 @@ namespace ASMtest
             {
                 if (jcStatus == false)
                 {
+                    jcStatus = true;
                     isUseData = false;
                     djccyString = "";
                     sjxlString = "";
@@ -3237,6 +3235,7 @@ namespace ASMtest
             {
                 if (jcStatus == false)
                 {
+                    jcStatus = true;
                     if (File.Exists(@"C:\jcdatatxt\asmco2.dll"))                    
                         asmconfig.IsFixCo2 = true;
                     label19.ForeColor = asmconfig.IsFixCo2 ? Color.White : Color.Red;
