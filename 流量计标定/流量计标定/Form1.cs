@@ -246,7 +246,7 @@ namespace 流量计标定
             float o2wc = 0f, llwc = 0f;
             float o2xdwc = 0f, llxdwc = 0f;
             flowdata.Bzsm = "";
-            if(dataGridView1.Rows[0].Cells["标定结果"].Value=="未完成"||dataGridView1.Rows[1].Cells["标定结果"].Value=="未完成")
+            if(dataGridView1.Rows[0].Cells["标定结果"].Value.ToString()=="未完成"||dataGridView1.Rows[1].Cells["标定结果"].Value.ToString() == "未完成")
             {
                 MessageBox.Show("保存失败，请先完成标定！","系统提示");
                 return;
@@ -257,15 +257,15 @@ namespace 流量计标定
             flowdata.O2dlcbz = float.Parse(dataGridView1.Rows[0].Cells["氧气标准值"].Value.ToString());
             flowdata.O2dlcclz = float.Parse(dataGridView1.Rows[0].Cells["氧气实测值"].Value.ToString());
             flowdata.O2dlcwc = float.Parse(dataGridView1.Rows[0].Cells["氧气误差"].Value.ToString());
-            if (dataGridView1.Rows[0].Cells["标定结果"].Value == "成功" && dataGridView1.Rows[1].Cells["标定结果"].Value == "成功")
+            if (dataGridView1.Rows[0].Cells["标定结果"].Value.ToString() == "合格" && dataGridView1.Rows[1].Cells["标定结果"].Value.ToString() == "合格")
                 flowdata.Bdjg = "0";
             else
             {
                 
-                if (dataGridView1.Rows[0].Cells["标定结果"].Value == "不成功")
-                    flowdata.Bzsm += "低标不成功";
-                if (dataGridView1.Rows[1].Cells["标定结果"].Value == "不成功")
-                    flowdata.Bzsm += "高标不成功";
+                if (dataGridView1.Rows[0].Cells["标定结果"].Value.ToString() == "不合格")
+                    flowdata.Bzsm += "低标不合格";
+                if (dataGridView1.Rows[1].Cells["标定结果"].Value.ToString() == "不合格")
+                    flowdata.Bzsm += "高标不合格";
                 flowdata.Bdjg = "-1";
             }
             if (flowini.writeanalysismeterIni(flowdata))
@@ -301,8 +301,13 @@ namespace 流量计标定
 
                     if (flv_1000 != null)
                     {
-                        if (flv_1000.ComPort_1.IsOpen)
-                            flv_1000.ComPort_1.Close();
+                        try
+                        {
+                            if (flv_1000.ComPort_1.IsOpen)
+                                flv_1000.ComPort_1.Close();
+                        }
+                        catch
+                        { }
                     }
                 }
                 else
@@ -320,8 +325,13 @@ namespace 流量计标定
 
                 if (flv_1000 != null)
                 {
-                    if (flv_1000.ComPort_1.IsOpen)
-                        flv_1000.ComPort_1.Close();
+                    try
+                    {
+                        if (flv_1000.ComPort_1.IsOpen)
+                            flv_1000.ComPort_1.Close();
+                    }
+                    catch
+                    { }
                 }
             }
 

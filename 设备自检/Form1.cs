@@ -754,18 +754,18 @@ namespace 设备自检
         private void refselfcheckItem()
         {
             checkBoxItemFqy.Checked = !selfcheckrecord.Fqycheckrecord;
-            checkBoxItemFqy.Enabled = !checkBoxItemFqy.Checked;
+            //checkBoxItemFqy.Enabled = !checkBoxItemFqy.Checked;
             checkBoxItemJzhx.Checked = !selfcheckrecord.Cgjcheckrecord;
-            checkBoxItemJzhx.Enabled = !checkBoxItemJzhx.Checked;
+            //checkBoxItemJzhx.Enabled = !checkBoxItemJzhx.Checked;
             if (equipconfig.useJHJK)
             {
                 checkBoxJsGl.Checked = !selfcheckrecord.Cgjcheckrecord;
-                checkBoxJsGl.Enabled = !checkBoxJsGl.Checked;
+                //checkBoxJsGl.Enabled = !checkBoxJsGl.Checked;
             }
             checkBoxItemYdj.Checked = !selfcheckrecord.Ydjcheckrecord;
-            checkBoxItemYdj.Enabled = !checkBoxItemYdj.Checked;
+            //checkBoxItemYdj.Enabled = !checkBoxItemYdj.Checked;
             checkBoxItemLlj.Checked = !selfcheckrecord.Lljcheckrecord;
-            checkBoxItemLlj.Enabled = !checkBoxItemLlj.Checked;
+            //checkBoxItemLlj.Enabled = !checkBoxItemLlj.Checked;
             
         }
         private void timer1_Tick(object sender, EventArgs e)

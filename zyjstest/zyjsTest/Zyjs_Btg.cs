@@ -1376,9 +1376,8 @@ namespace zyjsTest
                 statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_STARTSAMPLE, "");
                 zyjs_data.StartTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 startTime = DateTime.Now;
-                
-                SaveData_status = true;
                 isReadRealTime = false;
+                SaveData_status = true;
                 if (btgconfig.btgclcs == 4)
                 {
                     Thread.Sleep(500);

@@ -1296,15 +1296,10 @@ namespace Exhaust
             }
         }
         #endregion
+        Flb_100_smoke smoke = new Flb_100_smoke();
         #region 取仪器测量数据
         public Flb_100_smoke get_Data()
-        {
-            Flb_100_smoke smoke = new Flb_100_smoke();
-            smoke.K = 0;
-            smoke.Ns = 0;
-            smoke.Yw = 0;
-            smoke.Zs = 0;
-            smoke.Qw = 0;
+        {            
             int i = 0;
             byte CS = 0;
             ReadData();
@@ -1533,12 +1528,7 @@ namespace Exhaust
         }
         public Flb_100_smoke get_Data(float minKvalue)
         {
-            Flb_100_smoke smoke = new Flb_100_smoke();
-            smoke.K = 0;
-            smoke.Ns = 0;
-            smoke.Yw = 0;
-            smoke.Zs = 0;
-            smoke.Qw = 0;
+            
             int i = 0;
             byte CS = 0;
             ReadData();
@@ -1774,12 +1764,7 @@ namespace Exhaust
         #region 取仪器测量数据
         public Flb_100_smoke get_DirectData()
         {
-            Flb_100_smoke smoke = new Flb_100_smoke();
-            smoke.K = 0;
-            smoke.Ns = 0;
-            smoke.Yw = 0;
-            smoke.Zs = 0;
-            smoke.Qw=0;
+            
             int i = 0;
             byte CS=0;
             ReadData();
@@ -1951,12 +1936,7 @@ namespace Exhaust
         }
         public Flb_100_smoke get_DirectData(float minKvalue)
         {
-            Flb_100_smoke smoke = new Flb_100_smoke();
-            smoke.K = 0;
-            smoke.Ns = 0;
-            smoke.Yw = 0;
-            smoke.Zs = 0;
-            smoke.Qw = 0;
+           
             int i = 0;
             byte CS = 0;
             ReadData();
@@ -2134,12 +2114,7 @@ namespace Exhaust
         public Flb_100_smoke get_StableData()
         {
             //string Measurement = Get_Mode();
-            Flb_100_smoke smoke = new Flb_100_smoke();
-            smoke.K = 0.01f;
-            smoke.Ns = 0;
-            smoke.Yw = 0;
-            smoke.Zs = 0;
-            smoke.Qw = 0;
+            
             int i = 0;
             byte CS = 0;
             ReadData();
@@ -2336,12 +2311,7 @@ namespace Exhaust
         public Flb_100_smoke get_StableData(float minKvalue)
         {
             //string Measurement = Get_Mode();
-            Flb_100_smoke smoke = new Flb_100_smoke();
-            smoke.K = 0.01f;
-            smoke.Ns = 0;
-            smoke.Yw = 0;
-            smoke.Zs = 0;
-            smoke.Qw = 0;
+            
             int i = 0;
             byte CS = 0;
             ReadData();
@@ -2642,12 +2612,7 @@ namespace Exhaust
         public Flb_100_smoke get_latestAccelerateData()
         {
             //string Measurement = Get_Mode();
-            Flb_100_smoke smoke = new Flb_100_smoke();
-            smoke.K = 0;
-            smoke.Ns = 0;
-            smoke.Yw = 0;
-            smoke.Zs = 0;
-            smoke.Qw = 0;
+            
             int i = 0;
             byte CS = 0;
             ReadData();

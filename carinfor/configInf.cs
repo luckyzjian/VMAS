@@ -2661,10 +2661,10 @@ namespace carinfor
             StringBuilder temp = new StringBuilder();
             temp.Length = 2048;
             ini.INIIO.GetPrivateProfileString("BTG", "转速监测", "", temp, 2048, startUpPath+"/detectConfig.ini");
-            //if (temp.ToString().Trim() == "true")
+            if (temp.ToString().Trim() == "true")
                 configinidata.RotateSpeedMonitor = true;
-            //else
-            //    configinidata.RotateSpeedMonitor = false;
+            else
+                configinidata.RotateSpeedMonitor = false;
             ini.INIIO.GetPrivateProfileString("BTG", "金华过程转速监测", "", temp, 2048, startUpPath + "/detectConfig.ini");
             if (temp.ToString().Trim() == "true")
                 configinidata.jhzsgcjk = true;
