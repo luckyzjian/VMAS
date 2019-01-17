@@ -3822,6 +3822,8 @@ namespace vmasDetect
                     vmas_datatable.Columns.Add("尾气实际排放流量");
                     if (equipconfig.DATASECONDS_TYPE == "江西")
                     {
+                        #region 江西上传取消准备阶段及怠速阶段数据上传，只要工况195秒数据
+                        /*
                         //准备阶段
                         dr = vmas_datatable.NewRow();
                         dr["全程时序"] = Vmas_qcsj[0];
@@ -3914,6 +3916,8 @@ namespace vmasDetect
                             zll += Vmas_Exhaust_fqsjll[i] * 0.6;
                             vmas_datatable.Rows.Add(dr);
                         }
+                        */
+                        #endregion
                         #region 195秒阶段
                         if (!isUseData)//将数据写入逐秒数据
                         {
@@ -5116,6 +5120,7 @@ namespace vmasDetect
                                 vmas_datatable.Rows[dt_count - 196 + i]["采样时序"] = i.ToString();
                             }
                         }
+                        #endregion
                     }
                     else
                     {
@@ -5210,7 +5215,6 @@ namespace vmasDetect
                                 lambdasum += Vmas_lambda[i];
                                 vmas_datatable.Rows.Add(dr);
                             }
-                            #endregion
                         }
                         else
                         {
