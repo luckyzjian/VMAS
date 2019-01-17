@@ -2456,7 +2456,29 @@ namespace sds
                 }
                 else if (equipconfig.DATASECONDS_TYPE == "安车通用联网")
                 {
-                    for (int i = 0; i < preseconds + 90; i++)//安微过程数据只要90s内的数据
+                    for (int i = 0; i < preseconds + 90; i++)
+                    {
+                        dr = sds_datatable.NewRow();
+                        dr["全程时序"] = QcsxlistSY[i];
+                        dr["时序类别"] = SxnblistSY[i];
+                        dr["采样时序"] = CysxlistSY[i];
+                        dr["HC"] = HclistSY[i];
+                        dr["NO"] = NolistSY[i];
+                        dr["CO"] = ColistSY[i];
+                        dr["O2"] = O2listSY[i];
+                        dr["CO2"] = Co2listSY[i];
+                        dr["过量空气系数"] = λlistSY[i];
+                        dr["转速"] = ZslistSY[i];
+                        dr["油温"] = YwlistSY[i];
+                        dr["环境温度"] = WdlistSY[i];
+                        dr["相对湿度"] = SdlistSY[i];
+                        dr["大气压力"] = DqylistSY[i];
+                        sds_datatable.Rows.Add(dr);
+                    }
+                }
+                else if (equipconfig.DATASECONDS_TYPE == "江西")
+                {
+                    for (int i = 0; i < preseconds + 90; i++)
                     {
                         dr = sds_datatable.NewRow();
                         dr["全程时序"] = QcsxlistSY[i];
