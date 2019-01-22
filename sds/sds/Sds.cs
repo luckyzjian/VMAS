@@ -2483,7 +2483,7 @@ namespace sds
                         dr = sds_datatable.NewRow();
                         dr["全程时序"] = QcsxlistSY[i];
                         dr["时序类别"] = SxnblistSY[i];
-                        dr["采样时序"] = CysxlistSY[i];
+                        dr["采样时序"] = (i + 1).ToString();
                         dr["HC"] = HclistSY[i];
                         dr["NO"] = NolistSY[i];
                         dr["CO"] = ColistSY[i];
