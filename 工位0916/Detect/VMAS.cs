@@ -116,6 +116,7 @@ namespace vmasDetect
         public float[] Vmas_lambda = new float[300];
         public string[] Vmas_sxnb = new string[300];
         public float[] Vmas_Exhaust_llList = new float[300];//流量计实际流量
+        public float[] Vmas_Exhaust_lljsjll = new float[300];//流量计实际流量
         public float[] Vmas_Exhaust_xso2now = new float[300];//流量计稀释O2浓度
         public float[] Vmas_Exhaust_xso2afterDelay = new float[300];
         public float[] Vmas_Exhaust_lljtemp = new float[300];//流量计温度
@@ -185,7 +186,7 @@ namespace vmasDetect
         //新车标准
         public static float Limit_HCNOX_AFTER = 1;
         public static float Limit_CO_AFTER = 1;//5025NO限值
-        public static bool accelerate_flag = false;
+        public static int accelerate_flag = 0;//0-怠速，1-等速 ，2-加速 3-减速
         public static bool shandongCo2O2_flag = false;
         //2540NO限值
         public string HC_IG195_JG = "";                                                          //5025HC结果
@@ -245,7 +246,11 @@ namespace vmasDetect
 
         int co2excedlimit = 0;
         int o2excedlimit = 0;
-        
+
+
+        int coxsmallthan8_JH = 0;
+        int coiszero_JH = 0;
+
         /// 设置在第几个屏幕上启动。
         /// </summary>
         /// <param name="screen">屏幕(从0开始)</param>
@@ -1175,142 +1180,142 @@ namespace vmasDetect
             if (gongkuangtime < 11)
             {
                 shandongCo2O2_flag = false;
-                accelerate_flag = false;
+                accelerate_flag = 0;
                 speedNow.speed_now_data = 0f; 
             }
             else if (gongkuangtime < 15)
             {
                 shandongCo2O2_flag = false;
-                accelerate_flag = true;
+                accelerate_flag = 2;
                 speedNow.speed_now_data = (gongkuangtime - 11) * 15 / 4f;
             }
             else if (gongkuangtime < 23)
             {
                 shandongCo2O2_flag = false;
-                accelerate_flag = false;
+                accelerate_flag = 1;
                 speedNow.speed_now_data = 15f;
             }
             else if (gongkuangtime < 28)
             {
                 shandongCo2O2_flag = false;
-                accelerate_flag = false;
+                accelerate_flag = 3;
                 speedNow.speed_now_data = 15 - (gongkuangtime - 23) * 15 / 5f;
             }
             else if (gongkuangtime < 49)
             {
                 shandongCo2O2_flag = false;
-                accelerate_flag = false;
+                accelerate_flag = 0;
                 speedNow.speed_now_data = 0f;
             }
             else if (gongkuangtime < 54)
             {
                 shandongCo2O2_flag = false;
-                accelerate_flag = true;
+                accelerate_flag = 2;
                 speedNow.speed_now_data = (gongkuangtime - 49) * 15f / 5f;
             }
             else if (gongkuangtime < 56)
             {
                 shandongCo2O2_flag = false;
-                accelerate_flag = false;
+                accelerate_flag = 1;
                 speedNow.speed_now_data = 15f;
                 speedNow.isChangeD = true;//变档中
             }
             else if (gongkuangtime < 61)
             {
                 shandongCo2O2_flag = true;
-                accelerate_flag = true;
+                accelerate_flag = 2;
                 speedNow.speed_now_data = 15 + (gongkuangtime - 56) * 17f / 5f;
             }
             else if (gongkuangtime < 85)
             {
                 shandongCo2O2_flag = true;
-                accelerate_flag = false;
+                accelerate_flag = 1;
                 speedNow.speed_now_data = 32f;
             }
             else if (gongkuangtime < 96)
             {
                 shandongCo2O2_flag = false;
-                accelerate_flag = false;
+                accelerate_flag = 3;
                 speedNow.speed_now_data = 32 - (gongkuangtime - 85) * 32 / 11f;
             }
             else if (gongkuangtime < 117)
             {
                 shandongCo2O2_flag = false;
-                accelerate_flag = false;
+                accelerate_flag = 0;
                 speedNow.speed_now_data = 0f;
             }
             else if (gongkuangtime < 122)
             {
                 shandongCo2O2_flag = true;
-                accelerate_flag = true;
+                accelerate_flag = 2;
                 speedNow.speed_now_data = (gongkuangtime - 117) * 15 / 5f;
                 //speedNow.isChangeD = true;//变档中
             }
             else if (gongkuangtime < 124)
             {
                 shandongCo2O2_flag = true;
-                accelerate_flag = false;
+                accelerate_flag = 1;
                 speedNow.speed_now_data = 15f ;
                 speedNow.isChangeD = true;//变档中
             }
             else if (gongkuangtime < 133)
             {
                 shandongCo2O2_flag = true;
-                accelerate_flag = true;
+                accelerate_flag = 2;
                 speedNow.speed_now_data = 15f + (gongkuangtime - 124) * 20 / 9f;
             }
             else if (gongkuangtime < 135)
             {
                 shandongCo2O2_flag = true;
-                accelerate_flag = false;
+                accelerate_flag = 1;
                 speedNow.speed_now_data = 35f;
                 speedNow.isChangeD = true;//变档中
             }
             else if (gongkuangtime < 143)
             {
                 shandongCo2O2_flag = true;
-                accelerate_flag = true;
+                accelerate_flag = 2;
                 power_flag = false;
                 speedNow.speed_now_data = 35f+(gongkuangtime - 135) * 15 / 8f;
             }
             else if (gongkuangtime < 155)
             {
                 shandongCo2O2_flag = true;
-                accelerate_flag = true;
+                accelerate_flag = 1;
                 power_flag = true;
                 speedNow.speed_now_data = 50f;
             }
             else if (gongkuangtime < 163)
             {
                 shandongCo2O2_flag = false;
-                accelerate_flag = false;
+                accelerate_flag = 3;
                 power_flag = false;
                 speedNow.speed_now_data = 50 - (gongkuangtime - 155) * 15 / 8f;
             }
             else if (gongkuangtime < 176)
             {
                 shandongCo2O2_flag = true;
-                accelerate_flag = false;
+                accelerate_flag = 1;
                 speedNow.speed_now_data = 35f;
             }
             else if (gongkuangtime < 178)
             {
                 shandongCo2O2_flag = false;
-                accelerate_flag = false;
+                accelerate_flag = 3;
                 speedNow.speed_now_data = 35 - (gongkuangtime - 176) * 3 / 2f;
                 speedNow.isChangeD = true;//变档中
             }
             else if (gongkuangtime < 188)
             {
                 shandongCo2O2_flag = false;
-                accelerate_flag = false;
+                accelerate_flag = 3;
                 speedNow.speed_now_data = 32 - (gongkuangtime - 178) * 32 / 10f;
                 //speedNow.isChangeD = true;//变档中
             }
             else
             {
                 shandongCo2O2_flag = false;
-                accelerate_flag = false;
+                accelerate_flag = 0;
                 speedNow.speed_now_data = 0f;
             }
             //if (speedNow.speed_low_data < 0) speedNow.speed_low_data = 0;
@@ -1445,7 +1450,7 @@ namespace vmasDetect
                         Vmas_jsgl[gksj_count] = (float)(Math.Round(jsgl, 3));//功率
                         Vmas_zsgl[gksj_count] = (float)(Math.Round(zsgl, 3));//功率
                         Vmas_jzgl[gksj_count] = (float)(Math.Round(zgl, 3));//功率
-                        Vmas_Exhaust_accelerate[gksj_count] = accelerate_flag;//是否处于加速和等速状态下
+                        Vmas_Exhaust_accelerate[gksj_count] = (accelerate_flag==1||accelerate_flag==2);//是否处于加速和等速状态下
                         Vmas_Exhaust_shandongflag[gksj_count] = shandongCo2O2_flag;
                         Speed_listIg195[gksj_count] = igbt.Speed;//实时速度
                         Vmas_Exhaust_ListIG195[gksj_count] = Vmas_Exhaust_Now;//尾气浓度值
@@ -1466,16 +1471,7 @@ namespace vmasDetect
                         Vmas_Exhaust_lljtemp[gksj_count] = flv_1000.temp_standard_value;//流量计温度
                         Vmas_Exhaust_lljyl[gksj_count] = flv_1000.yali_standard_value;//流量计压力
                         Vmas_Exhaust_o2ld[gksj_count] = Vmas_Exhaust_Now.O2;//废气仪氧气浓度
-                        if (GKSJ > fqy_delayTime)
-                        {
-                            if (Vmas_Exhaust_accelerate[gksj_count - fqy_delayTime - vmasconfig.Dssj] == false)
-                            {
-                                if (Vmas_Exhaust_o2ld[gksj_count] > 5)
-                                {
-                                    Vmas_Exhaust_o2ld[gksj_count] = (float)(5.0 + (float)(Vmas_Exhaust_o2ld[gksj_count] - 5.0) * 0.5f);
-                                }
-                            }
-                        }
+                        
                         if (hjo2 > Vmas_Exhaust_xso2afterDelay[gksj_count] && hjo2 > Vmas_Exhaust_o2ld[gksj_count])//稀释比
                         {
                             Vmas_Exhaust_k[gksj_count] = (float)(Math.Round((hjo2 - Vmas_Exhaust_xso2afterDelay[gksj_count]) / (hjo2 - Vmas_Exhaust_o2ld[gksj_count]), 3));
@@ -1577,6 +1573,11 @@ namespace vmasDetect
                         GKSJ++;
                         if (gksj_count >= vmasconfig.Dssj + fqy_delayTime)
                         {
+                            if (Vmas_Exhaust_accelerate[gksj_count - fqy_delayTime] == true
+                                &&(Vmas_Exhaust_co2ld[gksj_count - fqy_delayTime] + Vmas_Exhaust_cold[gksj_count - fqy_delayTime] < 8))
+                                coxsmallthan8_JH++;
+                            if (Vmas_Exhaust_cold[gksj_count - fqy_delayTime] == 0)
+                                coiszero_JH++;
                             if (vmasconfig.SdCo2AndO2Monitor)
                             {
                                 if (Vmas_Exhaust_shandongflag[gksj_count - fqy_delayTime] == true)
@@ -1947,6 +1948,297 @@ namespace vmasDetect
                             }
                         }
                     }
+                    if(equipconfig.useJHJK)
+                    {
+                        if (GKSJ > fqy_delayTime)
+                        {
+                            if(coxsmallthan8_JH>=2)
+                            {
+                                coxsmallthan8_JH = 0;
+                                co2excedlimit = 0;
+                                o2excedlimit = 0;
+                                ovalShapeNDZ.FillColor = Color.Red;
+                                outTimeContinus = 0f;
+                                outTimeTotal = 0f;
+                                TH_ST.Abort();
+                                Th_get_FqandLl.Abort();
+                                th_get_llj.Abort();
+                                Speed_Jc_flag = false;
+                                Ig195_status = false;
+                                gongkuangTime = 0f;
+                                GKSJ = 0;
+                                //fla_502.Stop();
+                                Msg(label_message, panel_msg, "CO2+CO2秒小于8，请检查取样探头是否脱落", true);
+                                ts1 = "检测中止";
+                                ts2 = "CO2+CO2秒小于8";
+                                if (vmasconfig.AutoRestart)
+                                {
+                                    power_flag = false;
+                                    isCcStop = true;
+                                    jctime = DateTime.Now.ToString();
+                                    TH_ST = new Thread(Jc_Exe);
+                                    Th_get_FqandLl = new Thread(Fq_Detect);
+                                    th_get_llj = new Thread(llj_Detect);
+                                    timer2.Start();
+                                    JC_Status = true;
+                                    pictureBox1.Location = new Point(1, -5303);
+                                    pictureBox2.Location = new Point(96, 5936);
+                                    pictureBox4.Location = new Point(96, 5936);
+                                    //1, -5304
+                                    ovalShapeLXCC.FillColor = Color.Lime;
+                                    ovalShapeLJCC.FillColor = Color.Lime;
+                                    //ovalShapeNDZ.FillColor = Color.Lime;
+                                    ovalShapeLLJLJ.FillColor = Color.Lime;
+                                    ovalShapeWQLL.FillColor = Color.Lime;
+                                    ovalShapeXSB.FillColor = Color.Lime;
+                                    ovalShapeJZGL.FillColor = Color.Lime;
+                                    Msg(labelGksj, panelGksj, "000.0", false);
+                                    Msg(labelCO, panelCO, "0.00", false);
+                                    Msg(labelCO2, panelCO2, "0.00", false);
+                                    Msg(labelOO2, panelO2, "0.00", false);
+                                    Msg(labelHC, panelHC, "0", false);
+                                    Msg(labelNO, panelNO, "0", false);
+                                    Msg(labelLL, panelLL, "0.0", false);
+                                    Msg(labelLXCC, panelLXCC, "0.0", true);
+                                    Msg(labelLJCC, panelLJCC, "0.0", true);
+                                    TH_ST.Start();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("CO2+CO2秒小于8，检测终止", "警告");
+                                }
+                            }
+                            if(coiszero_JH>=20)
+                            {
+                                coiszero_JH = 0;
+                                co2excedlimit = 0;
+                                o2excedlimit = 0;
+                                ovalShapeNDZ.FillColor = Color.Red;
+                                outTimeContinus = 0f;
+                                outTimeTotal = 0f;
+                                TH_ST.Abort();
+                                Th_get_FqandLl.Abort();
+                                th_get_llj.Abort();
+                                Speed_Jc_flag = false;
+                                Ig195_status = false;
+                                gongkuangTime = 0f;
+                                GKSJ = 0;
+                                //fla_502.Stop();
+                                Msg(label_message, panel_msg, "CO为0的次数超过20次，请检查取样探头是否脱落", true);
+                                ts1 = "检测中止";
+                                ts2 = "CO为0的次数超过20次";
+                                if (vmasconfig.AutoRestart)
+                                {
+                                    power_flag = false;
+                                    isCcStop = true;
+                                    jctime = DateTime.Now.ToString();
+                                    TH_ST = new Thread(Jc_Exe);
+                                    Th_get_FqandLl = new Thread(Fq_Detect);
+                                    th_get_llj = new Thread(llj_Detect);
+                                    timer2.Start();
+                                    JC_Status = true;
+                                    pictureBox1.Location = new Point(1, -5303);
+                                    pictureBox2.Location = new Point(96, 5936);
+                                    pictureBox4.Location = new Point(96, 5936);
+                                    //1, -5304
+                                    ovalShapeLXCC.FillColor = Color.Lime;
+                                    ovalShapeLJCC.FillColor = Color.Lime;
+                                    //ovalShapeNDZ.FillColor = Color.Lime;
+                                    ovalShapeLLJLJ.FillColor = Color.Lime;
+                                    ovalShapeWQLL.FillColor = Color.Lime;
+                                    ovalShapeXSB.FillColor = Color.Lime;
+                                    ovalShapeJZGL.FillColor = Color.Lime;
+                                    Msg(labelGksj, panelGksj, "000.0", false);
+                                    Msg(labelCO, panelCO, "0.00", false);
+                                    Msg(labelCO2, panelCO2, "0.00", false);
+                                    Msg(labelOO2, panelO2, "0.00", false);
+                                    Msg(labelHC, panelHC, "0", false);
+                                    Msg(labelNO, panelNO, "0", false);
+                                    Msg(labelLL, panelLL, "0.0", false);
+                                    Msg(labelLXCC, panelLXCC, "0.0", true);
+                                    Msg(labelLJCC, panelLJCC, "0.0", true);
+                                    TH_ST.Start();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("CO为0的次数超过20次，检测终止", "警告");
+                                }
+                            }
+                            if (Vmas_Exhaust_accelerate[gksj_count - fqy_delayTime - vmasconfig.Dssj] == true&& Vmas_Exhaust_o2ld[gksj_count] > 6)
+                            {
+                                co2excedlimit = 0;
+                                o2excedlimit = 0;
+                                ovalShapeNDZ.FillColor = Color.Red;
+                                outTimeContinus = 0f;
+                                outTimeTotal = 0f;
+                                TH_ST.Abort();
+                                Th_get_FqandLl.Abort();
+                                th_get_llj.Abort();
+                                Speed_Jc_flag = false;
+                                Ig195_status = false;
+                                gongkuangTime = 0f;
+                                GKSJ = 0;
+                                //fla_502.Stop();
+                                Msg(label_message, panel_msg, "O2浓度大于6%，请检查取样探头是否脱落", true);
+                                ts1 = "检测中止";
+                                ts2 = "O2浓度大于6%";
+                                if (vmasconfig.AutoRestart)
+                                {
+                                    power_flag = false;
+                                    isCcStop = true;
+                                    jctime = DateTime.Now.ToString();
+                                    TH_ST = new Thread(Jc_Exe);
+                                    Th_get_FqandLl = new Thread(Fq_Detect);
+                                    th_get_llj = new Thread(llj_Detect);
+                                    timer2.Start();
+                                    JC_Status = true;
+                                    pictureBox1.Location = new Point(1, -5303);
+                                    pictureBox2.Location = new Point(96, 5936);
+                                    pictureBox4.Location = new Point(96, 5936);
+                                    //1, -5304
+                                    ovalShapeLXCC.FillColor = Color.Lime;
+                                    ovalShapeLJCC.FillColor = Color.Lime;
+                                    //ovalShapeNDZ.FillColor = Color.Lime;
+                                    ovalShapeLLJLJ.FillColor = Color.Lime;
+                                    ovalShapeWQLL.FillColor = Color.Lime;
+                                    ovalShapeXSB.FillColor = Color.Lime;
+                                    ovalShapeJZGL.FillColor = Color.Lime;
+                                    Msg(labelGksj, panelGksj, "000.0", false);
+                                    Msg(labelCO, panelCO, "0.00", false);
+                                    Msg(labelCO2, panelCO2, "0.00", false);
+                                    Msg(labelOO2, panelO2, "0.00", false);
+                                    Msg(labelHC, panelHC, "0", false);
+                                    Msg(labelNO, panelNO, "0", false);
+                                    Msg(labelLL, panelLL, "0.0", false);
+                                    Msg(labelLXCC, panelLXCC, "0.0", true);
+                                    Msg(labelLJCC, panelLJCC, "0.0", true);
+                                    TH_ST.Start();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("O2浓度大于6%，检测终止", "警告");
+                                }
+                            }
+                        }
+                        if (Vmas_Exhaust_nold[gksj_count-4]==0
+                            && Vmas_Exhaust_nold[gksj_count - 3]==0
+                            && Vmas_Exhaust_nold[gksj_count - 2] == 0
+                            && Vmas_Exhaust_nold[gksj_count - 1] == 0
+                            && Vmas_Exhaust_nold[gksj_count] == 0)
+                        {
+                            co2excedlimit = 0;
+                            o2excedlimit = 0;
+                            ovalShapeNDZ.FillColor = Color.Red;
+                            outTimeContinus = 0f;
+                            outTimeTotal = 0f;
+                            TH_ST.Abort();
+                            Th_get_FqandLl.Abort();
+                            th_get_llj.Abort();
+                            Speed_Jc_flag = false;
+                            Ig195_status = false;
+                            gongkuangTime = 0f;
+                            GKSJ = 0;
+                            //fla_502.Stop();
+                            Msg(label_message, panel_msg, "NO连续5秒为0，请检查取样探头是否脱落", true);
+                            ts1 = "检测中止";
+                            ts2 = "NO连续5秒为0";
+                            if (vmasconfig.AutoRestart)
+                            {
+                                power_flag = false;
+                                isCcStop = true;
+                                jctime = DateTime.Now.ToString();
+                                TH_ST = new Thread(Jc_Exe);
+                                Th_get_FqandLl = new Thread(Fq_Detect);
+                                th_get_llj = new Thread(llj_Detect);
+                                timer2.Start();
+                                JC_Status = true;
+                                pictureBox1.Location = new Point(1, -5303);
+                                pictureBox2.Location = new Point(96, 5936);
+                                pictureBox4.Location = new Point(96, 5936);
+                                //1, -5304
+                                ovalShapeLXCC.FillColor = Color.Lime;
+                                ovalShapeLJCC.FillColor = Color.Lime;
+                                //ovalShapeNDZ.FillColor = Color.Lime;
+                                ovalShapeLLJLJ.FillColor = Color.Lime;
+                                ovalShapeWQLL.FillColor = Color.Lime;
+                                ovalShapeXSB.FillColor = Color.Lime;
+                                ovalShapeJZGL.FillColor = Color.Lime;
+                                Msg(labelGksj, panelGksj, "000.0", false);
+                                Msg(labelCO, panelCO, "0.00", false);
+                                Msg(labelCO2, panelCO2, "0.00", false);
+                                Msg(labelOO2, panelO2, "0.00", false);
+                                Msg(labelHC, panelHC, "0", false);
+                                Msg(labelNO, panelNO, "0", false);
+                                Msg(labelLL, panelLL, "0.0", false);
+                                Msg(labelLXCC, panelLXCC, "0.0", true);
+                                Msg(labelLJCC, panelLJCC, "0.0", true);
+                                TH_ST.Start();
+                            }
+                            else
+                            {
+                                MessageBox.Show("NO连续5秒为0，检测终止", "警告");
+                            }
+                        }
+                        if (Vmas_Exhaust_hcld[gksj_count - 4] == 0
+                            && Vmas_Exhaust_hcld[gksj_count - 3] == 0
+                            && Vmas_Exhaust_hcld[gksj_count - 2] == 0
+                            && Vmas_Exhaust_hcld[gksj_count - 1] == 0
+                            && Vmas_Exhaust_hcld[gksj_count] == 0)
+                        {
+                            co2excedlimit = 0;
+                            o2excedlimit = 0;
+                            ovalShapeNDZ.FillColor = Color.Red;
+                            outTimeContinus = 0f;
+                            outTimeTotal = 0f;
+                            TH_ST.Abort();
+                            Th_get_FqandLl.Abort();
+                            th_get_llj.Abort();
+                            Speed_Jc_flag = false;
+                            Ig195_status = false;
+                            gongkuangTime = 0f;
+                            GKSJ = 0;
+                            //fla_502.Stop();
+                            Msg(label_message, panel_msg, "HC连续5秒为0，请检查取样探头是否脱落", true);
+                            ts1 = "检测中止";
+                            ts2 = "HC连续5秒为0";
+                            if (vmasconfig.AutoRestart)
+                            {
+                                power_flag = false;
+                                isCcStop = true;
+                                jctime = DateTime.Now.ToString();
+                                TH_ST = new Thread(Jc_Exe);
+                                Th_get_FqandLl = new Thread(Fq_Detect);
+                                th_get_llj = new Thread(llj_Detect);
+                                timer2.Start();
+                                JC_Status = true;
+                                pictureBox1.Location = new Point(1, -5303);
+                                pictureBox2.Location = new Point(96, 5936);
+                                pictureBox4.Location = new Point(96, 5936);
+                                //1, -5304
+                                ovalShapeLXCC.FillColor = Color.Lime;
+                                ovalShapeLJCC.FillColor = Color.Lime;
+                                //ovalShapeNDZ.FillColor = Color.Lime;
+                                ovalShapeLLJLJ.FillColor = Color.Lime;
+                                ovalShapeWQLL.FillColor = Color.Lime;
+                                ovalShapeXSB.FillColor = Color.Lime;
+                                ovalShapeJZGL.FillColor = Color.Lime;
+                                Msg(labelGksj, panelGksj, "000.0", false);
+                                Msg(labelCO, panelCO, "0.00", false);
+                                Msg(labelCO2, panelCO2, "0.00", false);
+                                Msg(labelOO2, panelO2, "0.00", false);
+                                Msg(labelHC, panelHC, "0", false);
+                                Msg(labelNO, panelNO, "0", false);
+                                Msg(labelLL, panelLL, "0.0", false);
+                                Msg(labelLXCC, panelLXCC, "0.0", true);
+                                Msg(labelLJCC, panelLJCC, "0.0", true);
+                                TH_ST.Start();
+                            }
+                            else
+                            {
+                                MessageBox.Show("HC连续5秒为0，检测终止", "警告");
+                            }
+                        }
+                    }
                     if (GKSJ >= 3)//如果浓度监控开启的话
                     {
                         if ((cgjComSuccessarray[gksj_count] == false) && (cgjComSuccessarray[gksj_count - 1] == false))
@@ -2179,9 +2471,9 @@ namespace vmasDetect
                             }
                         }
                     }
-                    if (GKSJ >= 1 && vmasconfig.FlowMonitorr == true)
+                    if (GKSJ >= 0 && vmasconfig.FlowMonitorr == true)
                     {
-                        if (Vmas_Exhaust_llList[gksj_count] < vmasconfig.Lljll && Vmas_Exhaust_llList[gksj_count - 1] < vmasconfig.Lljll && vmasconfig.FlowMonitorr == true)
+                        if (Vmas_Exhaust_llList[gksj_count] < vmasconfig.Lljll &&  vmasconfig.FlowMonitorr == true)
                         {
                             co2excedlimit = 0;
                             o2excedlimit = 0;
@@ -2234,6 +2526,61 @@ namespace vmasDetect
                             else
                             {
                                 MessageBox.Show("监测到流量计流量<" + vmasconfig.Lljll.ToString("0.0") + "，检测终止", "警告");
+                            }
+                        }
+                        if (Vmas_Exhaust_lljsjll[gksj_count] < vmasconfig.Lljll && vmasconfig.FlowMonitorr == true)
+                        {
+                            co2excedlimit = 0;
+                            o2excedlimit = 0;
+                            ovalShapeLLJLJ.FillColor = Color.Red;
+                            outTimeContinus = 0f;
+                            outTimeTotal = 0f;
+                            TH_ST.Abort();
+                            Th_get_FqandLl.Abort();
+                            th_get_llj.Abort();
+                            Speed_Jc_flag = false;
+                            Ig195_status = false;
+                            gongkuangTime = 0f;
+                            GKSJ = 0;
+                            fla_502.Stop();
+                            Msg(label_message, panel_msg, "监测到流量计实际流量<" + vmasconfig.Lljll.ToString("0.0") + "L/s，请检查后并重新开始", true);
+                            ts1 = "检测中止";
+                            ts2 = "流量计流量过低";
+                            if (vmasconfig.AutoRestart)
+                            {
+                                power_flag = false;
+                                isCcStop = true;
+                                jctime = DateTime.Now.ToString();
+                                TH_ST = new Thread(Jc_Exe);
+                                Th_get_FqandLl = new Thread(Fq_Detect);
+                                th_get_llj = new Thread(llj_Detect);
+                                timer2.Start();
+                                JC_Status = true;
+                                pictureBox1.Location = new Point(1, -5303);
+                                pictureBox2.Location = new Point(96, 5936);
+                                pictureBox4.Location = new Point(96, 5936);
+                                //1, -5304
+                                ovalShapeLXCC.FillColor = Color.Lime;
+                                ovalShapeLJCC.FillColor = Color.Lime;
+                                //ovalShapeNDZ.FillColor = Color.Lime;
+                                ovalShapeLLJLJ.FillColor = Color.Lime;
+                                ovalShapeWQLL.FillColor = Color.Lime;
+                                ovalShapeXSB.FillColor = Color.Lime;
+                                ovalShapeJZGL.FillColor = Color.Lime;
+                                Msg(labelGksj, panelGksj, "000.0", false);
+                                Msg(labelCO, panelCO, "0.00", false);
+                                Msg(labelCO2, panelCO2, "0.00", false);
+                                Msg(labelOO2, panelO2, "0.00", false);
+                                Msg(labelHC, panelHC, "0", false);
+                                Msg(labelNO, panelNO, "0", false);
+                                Msg(labelLL, panelLL, "0.0", false);
+                                Msg(labelLXCC, panelLXCC, "0.0", true);
+                                Msg(labelLJCC, panelLJCC, "0.0", true);
+                                TH_ST.Start();
+                            }
+                            else
+                            {
+                                MessageBox.Show("监测到流量计实际流量<" + vmasconfig.Lljll.ToString("0.0") + "，检测终止", "警告");
                             }
                         }
                     }
@@ -2584,6 +2931,8 @@ namespace vmasDetect
         private void getLlRealData()
         {
             string lljstatus = flv_1000.Get_standardDat();
+            Thread.Sleep(50);
+            flv_1000.Get_unstandardDat();
             islljpoweroff = (lljstatus == "通讯故障");
         }
         private DateTime fq_pre_time = DateTime.Now;
@@ -2638,6 +2987,8 @@ namespace vmasDetect
         }
         public void Jc_Exe()
         {
+            coxsmallthan8_JH = 0;
+            coiszero_JH = 0;
             Ig195_exe();
         }
 
@@ -2834,6 +3185,8 @@ namespace vmasDetect
             for (int i = 0; i < 10; i++)
             {
                 flv_1000.Get_standardDat();
+                Thread.Sleep(50);
+                flv_1000.Get_unstandardDat();
                 hjo2data[i] = flv_1000.o2_standard_value;//取样空气O2浓度
             }
             px();
@@ -3168,6 +3521,8 @@ namespace vmasDetect
                         for (int i = 0; i < 10; i++)
                         {
                             flv_1000.Get_standardDat();
+                            Thread.Sleep(50);
+                            flv_1000.Get_unstandardDat();
                             hjo2data[i] = flv_1000.o2_standard_value;//取样空气O2浓度
                         }
                         px();
@@ -3196,6 +3551,7 @@ namespace vmasDetect
                         Vmas_Exhaust_ListIG195[0] = zhunbei_data;//尾气浓度值
                         Vmas_Exhaust_Revise_ListIG195[0] = zhunbei_data;//修正的尾气浓度值
                         Vmas_Exhaust_llList[0] = flv_1000.ll_standard_value;//流量计标准流量值
+                        Vmas_Exhaust_lljsjll[0] = flv_1000.ll_unstandard_value;
                         Vmas_Exhaust_xso2now[0] = flv_1000.o2_standard_value;
                         Vmas_Exhaust_xso2afterDelay[0] = flv_1000.o2_standard_value;//流量计稀释氧浓度
                         Vmas_Exhaust_lljtemp[0] = flv_1000.temp_standard_value;//流量计温度
@@ -3337,6 +3693,7 @@ namespace vmasDetect
                         Vmas_Exhaust_ListIG195[cysx] = Vmas_Exhaust_Now;//尾气浓度值
                         Vmas_Exhaust_Revise_ListIG195[cysx] = Vmas_Exhaust_Now;//修正的尾气浓度值
                         Vmas_Exhaust_llList[cysx] = flv_1000.ll_standard_value;//流量计标准流量值
+                        Vmas_Exhaust_lljsjll[cysx] = flv_1000.ll_unstandard_value;
                         Vmas_Exhaust_xso2now[cysx] = flv_1000.o2_standard_value;
                         Vmas_Exhaust_xso2afterDelay[cysx] = flv_1000.o2_standard_value;//流量计稀释氧浓度
                         Vmas_Exhaust_lljtemp[cysx] = flv_1000.temp_standard_value;//流量计温度
@@ -3403,6 +3760,7 @@ namespace vmasDetect
                         Vmas_Exhaust_ListIG195[cysx] = Vmas_Exhaust_Now;//尾气浓度值
                         Vmas_Exhaust_Revise_ListIG195[cysx] = Vmas_Exhaust_Now;//修正的尾气浓度值
                         Vmas_Exhaust_llList[cysx] = flv_1000.ll_standard_value;//流量计标准流量值
+                        Vmas_Exhaust_lljsjll[cysx] = flv_1000.ll_unstandard_value;
                         Vmas_Exhaust_xso2now[cysx] = flv_1000.o2_standard_value;
                         Vmas_Exhaust_xso2afterDelay[cysx] = flv_1000.o2_standard_value;//流量计稀释氧浓度
                         Vmas_Exhaust_lljtemp[cysx] = flv_1000.temp_standard_value;//流量计温度
@@ -3857,7 +4215,7 @@ namespace vmasDetect
                         dr["大气压力"] = Vmas_dqyl[0].ToString("0.0");
                         dr["流量计温度"] = Vmas_Exhaust_lljtemp[0].ToString("0.0");
                         dr["流量计压力"] = Vmas_Exhaust_lljyl[0].ToString("0.0");
-                        dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[0] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[0]) / (Vmas_Exhaust_lljyl[0] * 273.15), 3).ToString("0.000");
+                        dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000");// Math.Round(Vmas_Exhaust_llList[0] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[0]) / (Vmas_Exhaust_lljyl[0] * 273.15), 3).ToString("0.000");
                         dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[0], 3).ToString("0.000");
                         dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[0], 3).ToString("0.000");
                         dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[0], 3).ToString("0.000");
@@ -3903,7 +4261,7 @@ namespace vmasDetect
                             dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                             dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                             dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                            dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                            dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000");// Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                             dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                             dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                             dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -3946,7 +4304,7 @@ namespace vmasDetect
                                 dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                                 dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                                 dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000");// Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                                 dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                                 dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                                 dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -3988,7 +4346,7 @@ namespace vmasDetect
                                 dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                                 dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                                 dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000");// Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                                 dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                                 dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                                 dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -4030,7 +4388,7 @@ namespace vmasDetect
                                 dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                                 dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                                 dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000");// Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                                 dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                                 dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                                 dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -4072,7 +4430,7 @@ namespace vmasDetect
                                 dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                                 dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                                 dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000");// Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                                 dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                                 dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                                 dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -4114,7 +4472,7 @@ namespace vmasDetect
                                 dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                                 dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                                 dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000");// Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                                 dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                                 dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                                 dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -4156,7 +4514,7 @@ namespace vmasDetect
                                 dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                                 dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                                 dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000");// Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                                 dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                                 dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                                 dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -4198,7 +4556,7 @@ namespace vmasDetect
                                 dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                                 dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                                 dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000"); //Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                                 dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                                 dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                                 dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -4240,7 +4598,7 @@ namespace vmasDetect
                                 dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                                 dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                                 dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000");// Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                                 dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                                 dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                                 dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -4282,7 +4640,7 @@ namespace vmasDetect
                                 dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                                 dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                                 dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000");// Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                                 dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                                 dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                                 dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -4324,7 +4682,7 @@ namespace vmasDetect
                                 dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                                 dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                                 dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000");// Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                                 dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                                 dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                                 dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -4366,7 +4724,7 @@ namespace vmasDetect
                                 dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                                 dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                                 dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000"); //Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                                 dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                                 dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                                 dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -4408,7 +4766,7 @@ namespace vmasDetect
                                 dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                                 dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                                 dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000");// Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                                 dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                                 dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                                 dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -4450,7 +4808,7 @@ namespace vmasDetect
                                 dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                                 dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                                 dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000"); //Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                                 dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                                 dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                                 dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -4492,7 +4850,7 @@ namespace vmasDetect
                                 dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                                 dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                                 dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000");// Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                                 dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                                 dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                                 dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -4534,7 +4892,7 @@ namespace vmasDetect
                                 dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                                 dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                                 dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000"); //Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                                 dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                                 dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                                 dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -5155,7 +5513,7 @@ namespace vmasDetect
                             dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                             dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                             dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                            dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                            dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000");// Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                             dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                             dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                             dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");
@@ -5197,7 +5555,7 @@ namespace vmasDetect
                                 dr["大气压力"] = Vmas_dqyl[i].ToString("0.0");
                                 dr["流量计温度"] = Vmas_Exhaust_lljtemp[i].ToString("0.0");
                                 dr["流量计压力"] = Vmas_Exhaust_lljyl[i].ToString("0.0");
-                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
+                                dr["实际体积流量"] = Math.Round(Vmas_Exhaust_lljsjll[0], 3).ToString("0.000");// Math.Round(Vmas_Exhaust_llList[i] * 101.325 * (273.15 + Vmas_Exhaust_lljtemp[i]) / (Vmas_Exhaust_lljyl[i] * 273.15), 3).ToString("0.000");
                                 dr["标准体积流量"] = Math.Round(Vmas_Exhaust_llList[i], 3).ToString("0.000");
                                 dr["湿度修正系数"] = Math.Round(Vmas_sdxzxs[i], 3).ToString("0.000");
                                 dr["稀释修正系数"] = Math.Round(Vmas_xsxzxs[i], 3).ToString("0.000");

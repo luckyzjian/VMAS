@@ -409,6 +409,8 @@ namespace Exhaust
         byte cmdTurnOffLCD_MQ = 0x89;
         byte cmdGetPef_MQ50B = 0x8c;
 
+        byte cmdGetData_MQ50B = 0xa3;
+
         #endregion
         #region 佛分FASM-5000的通讯协议
         byte[] cmdFrameHead_FF = { 0x5a, 0x5a };
@@ -673,12 +675,47 @@ namespace Exhaust
                     return msg;
                     break;
                 case "mqw_50a":
-                case "mqw_50b":
                     ReadData();
                     i = 0;
                     byte[] Content_MQ = new byte[] { DID, cmdGetStatus_MQ, 0X03, 0 };
                     Content_MQ[3] = getCS_MQ(Content_MQ, 3);
                     ComPort_1.Write(Content_MQ, 0, 4);        //发送开始测量命令
+                    Thread.Sleep(10);
+                    while (ComPort_1.BytesToRead < 11)                          //等待仪器返回
+                    {
+                        i++;
+                        Thread.Sleep(10);
+                        if (i == 200)
+                            return "仪器通讯失败";
+                    }
+                    ReadData();                     //读取返回的数据
+                    if (Read_Buffer[0] == 0x06 && Read_Buffer[1] == 0x61)
+                    {
+                        Status = Convert.ToByte(Read_Buffer[3] & 0xff);
+                        switch (Status)
+                        {
+                            case 0x00: msg += "仪器已经准备好"; break;
+                            case 0x01: msg += "预热中"; break;
+                            case 0x02: msg += "反吹中"; break;
+                            case 0x04: msg += "背景空气测定中"; break;
+                            case 0x08: msg += "环境空气测定中"; break;
+                            case 0x10: msg += "泄漏检查进行中"; break;
+                            case 0x20: msg += "HC残留测定中"; break;
+                            case 0x40: msg += "调零中"; break;
+                            case 0x80: msg += "气路低流量"; break;
+                            default: break;
+                        }
+                        return msg;
+                    }
+                    else
+                        return "仪器通讯失败";
+                    break;
+                case "mqw_50b":
+                    ReadData();
+                    i = 0;
+                    byte[] Content_MQB = new byte[] { DID, cmdGetStatus_MQ, 0X03, 0 };
+                    Content_MQB[3] = getCS_MQ(Content_MQB, 3);
+                    ComPort_1.Write(Content_MQB, 0, 4);        //发送开始测量命令
                     Thread.Sleep(10);
                     while (ComPort_1.BytesToRead < 11)                          //等待仪器返回
                     {
@@ -4279,7 +4316,6 @@ namespace Exhaust
                     return Fla502_data;
                     break;
                 case "mqw_50a":
-                case "mqw_50b":
                     byte[] Content_MQ = new byte[] { DID, cmdGetDat_MQ, 0X03, 0 };
                     Content_MQ[3] = getCS_MQ(Content_MQ, 3);
                     ComPort_1.Write(Content_MQ, 0, 4);        //发送开始测量命令
@@ -4301,7 +4337,7 @@ namespace Exhaust
                         temp_byte[0] = Read_Buffer[6];
                         temp_byte[1] = Read_Buffer[5];
                         Fla502_data.CO = (float)(Math.Round(coxs * (BitConverter.ToInt16(temp_byte, 0) / 100f), 2));       //一氧化碳
-                       // if (Fla502_data.CO <= 0) Fla502_data.CO = 0.01f;
+                                                                                                                           // if (Fla502_data.CO <= 0) Fla502_data.CO = 0.01f;
                         temp_byte[0] = Read_Buffer[8];
                         temp_byte[1] = Read_Buffer[7];
                         Fla502_data.HC = (float)(Math.Round(hcxs * (BitConverter.ToInt16(temp_byte, 0)), 0));               //碳氢
@@ -4334,6 +4370,58 @@ namespace Exhaust
                         temp_byte[0] = Read_Buffer[26];
                         temp_byte[1] = Read_Buffer[25];
                         Fla502_data.HJYL = BitConverter.ToInt16(temp_byte, 0) / 10f;       //环境压力 kpa
+                    }
+                    return Fla502_data;
+                    break;
+                case "mqw_50b":
+                    byte[] Content_MQB = new byte[] { DID, cmdGetData_MQ50B, 0X03, 0 };
+                    Content_MQB[3] = getCS_MQ(Content_MQB, 3);
+                    ComPort_1.Write(Content_MQB, 0, 4);        //发送开始测量命令
+                    Thread.Sleep(500);
+                    while (ComPort_1.BytesToRead < 24)                          //等待仪器返回
+                    {
+                        i++;
+                        Thread.Sleep(10);
+                        if (i == 100)
+                            return Fla502_data;
+                    }
+                    ReadData();
+                    if (Read_Buffer[0] == 0x6 && Read_Buffer[1] == 0xA3 && Read_Buffer[2] == 0x17)
+                    {
+                        byte[] temp_byte = new byte[2];
+                        temp_byte[0] = Read_Buffer[4];
+                        temp_byte[1] = Read_Buffer[3];
+                        Fla502_data.CO2 = BitConverter.ToInt16(temp_byte, 0) / 100f;         //二氧化碳
+                        temp_byte[0] = Read_Buffer[6];
+                        temp_byte[1] = Read_Buffer[5];
+                        Fla502_data.CO = (float)(Math.Round(coxs * (BitConverter.ToInt16(temp_byte, 0) / 100f), 2));       //一氧化碳
+                       // if (Fla502_data.CO <= 0) Fla502_data.CO = 0.01f;
+                        temp_byte[0] = Read_Buffer[8];
+                        temp_byte[1] = Read_Buffer[7];
+                        Fla502_data.HC = (float)(Math.Round(hcxs * (BitConverter.ToInt16(temp_byte, 0)), 0));               //碳氢
+                        //if (Fla502_data.HC <= 0) Fla502_data.HC = 1f;
+                        temp_byte[0] = Read_Buffer[10];
+                        temp_byte[1] = Read_Buffer[9];
+                        Fla502_data.NO = (float)(Math.Round(noxs * (BitConverter.ToInt16(temp_byte, 0)), 0));               //一氧化氮
+                        //if (Fla502_data.NO <= 0) Fla502_data.NO = 1f;
+                        temp_byte[0] = Read_Buffer[12];
+                        temp_byte[1] = Read_Buffer[11];
+                        Fla502_data.O2 = BitConverter.ToInt16(temp_byte, 0) / 100f;          //氧气
+                        temp_byte[0] = Read_Buffer[14];
+                        temp_byte[1] = Read_Buffer[13];
+                        Fla502_data.YW = BitConverter.ToInt16(temp_byte, 0) / 10f;         //油温
+                        temp_byte[0] = Read_Buffer[16];
+                        temp_byte[1] = Read_Buffer[15];
+                        Fla502_data.ZS = BitConverter.ToInt16(temp_byte, 0);               //转速
+                        temp_byte[0] = Read_Buffer[18];
+                        temp_byte[1] = Read_Buffer[17];
+                        Fla502_data.QLYL = BitConverter.ToInt16(temp_byte, 0) / 10f;         //油路压力 
+                        temp_byte[0] = Read_Buffer[20];
+                        temp_byte[1] = Read_Buffer[19];
+                        Fla502_data.λ = BitConverter.ToInt16(temp_byte, 0) / 1000f;       //燃空比λ
+                        temp_byte[0] = Read_Buffer[22];
+                        temp_byte[1] = Read_Buffer[21];
+                        Fla502_data.PEF = BitConverter.ToInt16(temp_byte, 0) / 1000f;       //环境压力 kpa
                     }
                     return Fla502_data;
                     break;

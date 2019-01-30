@@ -609,7 +609,7 @@
             this.checkBoxLugdownYw.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLugdownYw.ForeColor = System.Drawing.Color.Red;
             this.checkBoxLugdownYw.Location = new System.Drawing.Point(253, 124);
-            this.checkBoxLugdownYw.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxLugdownYw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLugdownYw.Name = "checkBoxLugdownYw";
             this.checkBoxLugdownYw.Size = new System.Drawing.Size(111, 24);
             this.checkBoxLugdownYw.TabIndex = 65;
@@ -632,7 +632,7 @@
             this.radioButtonLugdownHgl.AutoSize = true;
             this.radioButtonLugdownHgl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonLugdownHgl.Location = new System.Drawing.Point(904, 124);
-            this.radioButtonLugdownHgl.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonLugdownHgl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonLugdownHgl.Name = "radioButtonLugdownHgl";
             this.radioButtonLugdownHgl.Size = new System.Drawing.Size(90, 24);
             this.radioButtonLugdownHgl.TabIndex = 62;
@@ -645,7 +645,7 @@
             this.radioButtonLugdownhs.AutoSize = true;
             this.radioButtonLugdownhs.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonLugdownhs.Location = new System.Drawing.Point(811, 124);
-            this.radioButtonLugdownhs.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonLugdownhs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonLugdownhs.Name = "radioButtonLugdownhs";
             this.radioButtonLugdownhs.Size = new System.Drawing.Size(70, 24);
             this.radioButtonLugdownhs.TabIndex = 61;
@@ -659,7 +659,7 @@
             this.checkBoxLugdownSureTemp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLugdownSureTemp.ForeColor = System.Drawing.Color.Red;
             this.checkBoxLugdownSureTemp.Location = new System.Drawing.Point(9, 124);
-            this.checkBoxLugdownSureTemp.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxLugdownSureTemp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLugdownSureTemp.Name = "checkBoxLugdownSureTemp";
             this.checkBoxLugdownSureTemp.Size = new System.Drawing.Size(151, 24);
             this.checkBoxLugdownSureTemp.TabIndex = 60;
@@ -670,7 +670,7 @@
             // 
             this.buttonLugdownSave.Font = new System.Drawing.Font("宋体", 9F);
             this.buttonLugdownSave.Location = new System.Drawing.Point(533, 0);
-            this.buttonLugdownSave.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonLugdownSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonLugdownSave.Name = "buttonLugdownSave";
             this.buttonLugdownSave.Size = new System.Drawing.Size(149, 38);
             this.buttonLugdownSave.TabIndex = 59;
@@ -693,7 +693,7 @@
             "COM5",
             "COM6"});
             this.comboBoxLugdownZsjCom.Location = new System.Drawing.Point(455, 516);
-            this.comboBoxLugdownZsjCom.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLugdownZsjCom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLugdownZsjCom.Name = "comboBoxLugdownZsjCom";
             this.comboBoxLugdownZsjCom.Size = new System.Drawing.Size(116, 28);
             this.comboBoxLugdownZsjCom.TabIndex = 40;
@@ -725,7 +725,7 @@
             "RPM5300",
             "南华附件"});
             this.comboBoxLugdownZsj.Location = new System.Drawing.Point(148, 518);
-            this.comboBoxLugdownZsj.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLugdownZsj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLugdownZsj.Name = "comboBoxLugdownZsj";
             this.comboBoxLugdownZsj.Size = new System.Drawing.Size(113, 28);
             this.comboBoxLugdownZsj.TabIndex = 37;
@@ -748,7 +748,7 @@
             this.textBoxLugdownSmpl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxLugdownSmpl.ForeColor = System.Drawing.Color.Blue;
             this.textBoxLugdownSmpl.Location = new System.Drawing.Point(787, 44);
-            this.textBoxLugdownSmpl.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxLugdownSmpl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLugdownSmpl.Name = "textBoxLugdownSmpl";
             this.textBoxLugdownSmpl.Size = new System.Drawing.Size(105, 30);
             this.textBoxLugdownSmpl.TabIndex = 57;
@@ -781,7 +781,7 @@
             this.textBoxLugDownMinSpeed.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxLugDownMinSpeed.ForeColor = System.Drawing.Color.Blue;
             this.textBoxLugDownMinSpeed.Location = new System.Drawing.Point(144, 44);
-            this.textBoxLugDownMinSpeed.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxLugDownMinSpeed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLugDownMinSpeed.Name = "textBoxLugDownMinSpeed";
             this.textBoxLugDownMinSpeed.Size = new System.Drawing.Size(114, 30);
             this.textBoxLugDownMinSpeed.TabIndex = 54;
@@ -814,7 +814,7 @@
             this.textBoxLugDownMaxSpeed.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxLugDownMaxSpeed.ForeColor = System.Drawing.Color.Blue;
             this.textBoxLugDownMaxSpeed.Location = new System.Drawing.Point(451, 44);
-            this.textBoxLugDownMaxSpeed.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxLugDownMaxSpeed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLugDownMaxSpeed.Name = "textBoxLugDownMaxSpeed";
             this.textBoxLugDownMaxSpeed.Size = new System.Drawing.Size(117, 30);
             this.textBoxLugDownMaxSpeed.TabIndex = 51;
@@ -834,7 +834,7 @@
             // 
             this.buttonBtgSave.Font = new System.Drawing.Font("宋体", 9F);
             this.buttonBtgSave.Location = new System.Drawing.Point(501, 0);
-            this.buttonBtgSave.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonBtgSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonBtgSave.Name = "buttonBtgSave";
             this.buttonBtgSave.Size = new System.Drawing.Size(169, 40);
             this.buttonBtgSave.TabIndex = 59;
@@ -857,7 +857,7 @@
             "COM5",
             "COM6"});
             this.comboBoxBtgZsjCom.Location = new System.Drawing.Point(437, 251);
-            this.comboBoxBtgZsjCom.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxBtgZsjCom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBtgZsjCom.Name = "comboBoxBtgZsjCom";
             this.comboBoxBtgZsjCom.Size = new System.Drawing.Size(128, 28);
             this.comboBoxBtgZsjCom.TabIndex = 40;
@@ -879,7 +879,7 @@
             "南华附件",
             "无"});
             this.comboBoxBtgZsj.Location = new System.Drawing.Point(116, 251);
-            this.comboBoxBtgZsj.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxBtgZsj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBtgZsj.Name = "comboBoxBtgZsj";
             this.comboBoxBtgZsj.Size = new System.Drawing.Size(116, 28);
             this.comboBoxBtgZsj.TabIndex = 37;
@@ -891,7 +891,7 @@
             this.checkBoxBtgManualTantou.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxBtgManualTantou.ForeColor = System.Drawing.Color.Red;
             this.checkBoxBtgManualTantou.Location = new System.Drawing.Point(643, 125);
-            this.checkBoxBtgManualTantou.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxBtgManualTantou.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxBtgManualTantou.Name = "checkBoxBtgManualTantou";
             this.checkBoxBtgManualTantou.Size = new System.Drawing.Size(151, 24);
             this.checkBoxBtgManualTantou.TabIndex = 67;
@@ -904,7 +904,7 @@
             this.checkBoxBtgYw.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxBtgYw.ForeColor = System.Drawing.Color.Red;
             this.checkBoxBtgYw.Location = new System.Drawing.Point(344, 125);
-            this.checkBoxBtgYw.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxBtgYw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxBtgYw.Name = "checkBoxBtgYw";
             this.checkBoxBtgYw.Size = new System.Drawing.Size(111, 24);
             this.checkBoxBtgYw.TabIndex = 66;
@@ -916,7 +916,7 @@
             this.checkBoxBtgZsjk.AutoSize = true;
             this.checkBoxBtgZsjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxBtgZsjk.Location = new System.Drawing.Point(16, 125);
-            this.checkBoxBtgZsjk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxBtgZsjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxBtgZsjk.Name = "checkBoxBtgZsjk";
             this.checkBoxBtgZsjk.Size = new System.Drawing.Size(111, 24);
             this.checkBoxBtgZsjk.TabIndex = 37;
@@ -947,7 +947,7 @@
             "3",
             "4"});
             this.comboBoxBTGCFCS.Location = new System.Drawing.Point(437, 44);
-            this.comboBoxBTGCFCS.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxBTGCFCS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBTGCFCS.Name = "comboBoxBTGCFCS";
             this.comboBoxBTGCFCS.Size = new System.Drawing.Size(128, 28);
             this.comboBoxBTGCFCS.TabIndex = 104;
@@ -969,7 +969,7 @@
             this.textBoxBtgDyzs.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxBtgDyzs.ForeColor = System.Drawing.Color.Blue;
             this.textBoxBtgDyzs.Location = new System.Drawing.Point(116, 42);
-            this.textBoxBtgDyzs.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxBtgDyzs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxBtgDyzs.Name = "textBoxBtgDyzs";
             this.textBoxBtgDyzs.Size = new System.Drawing.Size(117, 30);
             this.textBoxBtgDyzs.TabIndex = 11;
@@ -999,7 +999,7 @@
             "COM5",
             "COM6"});
             this.comboBoxSdsZsjCom.Location = new System.Drawing.Point(452, 351);
-            this.comboBoxSdsZsjCom.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxSdsZsjCom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxSdsZsjCom.Name = "comboBoxSdsZsjCom";
             this.comboBoxSdsZsjCom.Size = new System.Drawing.Size(124, 28);
             this.comboBoxSdsZsjCom.TabIndex = 39;
@@ -1031,7 +1031,7 @@
             "RPM5300",
             "南华附件"});
             this.comboBoxSdsZsj.Location = new System.Drawing.Point(99, 351);
-            this.comboBoxSdsZsj.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxSdsZsj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxSdsZsj.Name = "comboBoxSdsZsj";
             this.comboBoxSdsZsj.Size = new System.Drawing.Size(104, 28);
             this.comboBoxSdsZsj.TabIndex = 37;
@@ -1087,7 +1087,7 @@
             this.textBoxSdsFlowtime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxSdsFlowtime.ForeColor = System.Drawing.Color.Blue;
             this.textBoxSdsFlowtime.Location = new System.Drawing.Point(452, 42);
-            this.textBoxSdsFlowtime.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxSdsFlowtime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxSdsFlowtime.Name = "textBoxSdsFlowtime";
             this.textBoxSdsFlowtime.Size = new System.Drawing.Size(125, 30);
             this.textBoxSdsFlowtime.TabIndex = 53;
@@ -1098,7 +1098,7 @@
             this.textBoxSdsZscc.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxSdsZscc.ForeColor = System.Drawing.Color.Blue;
             this.textBoxSdsZscc.Location = new System.Drawing.Point(777, 42);
-            this.textBoxSdsZscc.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxSdsZscc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxSdsZscc.Name = "textBoxSdsZscc";
             this.textBoxSdsZscc.Size = new System.Drawing.Size(127, 30);
             this.textBoxSdsZscc.TabIndex = 11;
@@ -1109,7 +1109,7 @@
             this.textBoxSdsNdz.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxSdsNdz.ForeColor = System.Drawing.Color.Blue;
             this.textBoxSdsNdz.Location = new System.Drawing.Point(99, 42);
-            this.textBoxSdsNdz.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxSdsNdz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxSdsNdz.Name = "textBoxSdsNdz";
             this.textBoxSdsNdz.Size = new System.Drawing.Size(117, 30);
             this.textBoxSdsNdz.TabIndex = 1;
@@ -1142,7 +1142,7 @@
             this.checkBoxSdsYw.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxSdsYw.ForeColor = System.Drawing.Color.Red;
             this.checkBoxSdsYw.Location = new System.Drawing.Point(439, 121);
-            this.checkBoxSdsYw.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxSdsYw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSdsYw.Name = "checkBoxSdsYw";
             this.checkBoxSdsYw.Size = new System.Drawing.Size(111, 24);
             this.checkBoxSdsYw.TabIndex = 59;
@@ -1154,7 +1154,7 @@
             this.checkBoxSdsZero.AutoSize = true;
             this.checkBoxSdsZero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxSdsZero.Location = new System.Drawing.Point(20, 121);
-            this.checkBoxSdsZero.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxSdsZero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSdsZero.Name = "checkBoxSdsZero";
             this.checkBoxSdsZero.Size = new System.Drawing.Size(111, 24);
             this.checkBoxSdsZero.TabIndex = 57;
@@ -1166,7 +1166,7 @@
             this.checkBoxSdsFlowback.AutoSize = true;
             this.checkBoxSdsFlowback.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxSdsFlowback.Location = new System.Drawing.Point(243, 121);
-            this.checkBoxSdsFlowback.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxSdsFlowback.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSdsFlowback.Name = "checkBoxSdsFlowback";
             this.checkBoxSdsFlowback.Size = new System.Drawing.Size(111, 24);
             this.checkBoxSdsFlowback.TabIndex = 55;
@@ -1177,7 +1177,7 @@
             // 
             this.buttonSdsSave.Font = new System.Drawing.Font("宋体", 9F);
             this.buttonSdsSave.Location = new System.Drawing.Point(535, 0);
-            this.buttonSdsSave.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSdsSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSdsSave.Name = "buttonSdsSave";
             this.buttonSdsSave.Size = new System.Drawing.Size(137, 41);
             this.buttonSdsSave.TabIndex = 58;
@@ -1191,7 +1191,7 @@
             this.checkBoxSdsZsjk.AutoSize = true;
             this.checkBoxSdsZsjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxSdsZsjk.Location = new System.Drawing.Point(20, 42);
-            this.checkBoxSdsZsjk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxSdsZsjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSdsZsjk.Name = "checkBoxSdsZsjk";
             this.checkBoxSdsZsjk.Size = new System.Drawing.Size(111, 24);
             this.checkBoxSdsZsjk.TabIndex = 37;
@@ -1203,7 +1203,7 @@
             this.checkBoxSdsNdjk.AutoSize = true;
             this.checkBoxSdsNdjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxSdsNdjk.Location = new System.Drawing.Point(331, 42);
-            this.checkBoxSdsNdjk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxSdsNdjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSdsNdjk.Name = "checkBoxSdsNdjk";
             this.checkBoxSdsNdjk.Size = new System.Drawing.Size(111, 24);
             this.checkBoxSdsNdjk.TabIndex = 39;
@@ -1216,7 +1216,7 @@
             this.checkBoxASMyw.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxASMyw.ForeColor = System.Drawing.Color.Red;
             this.checkBoxASMyw.Location = new System.Drawing.Point(899, 172);
-            this.checkBoxASMyw.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxASMyw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxASMyw.Name = "checkBoxASMyw";
             this.checkBoxASMyw.Size = new System.Drawing.Size(151, 24);
             this.checkBoxASMyw.TabIndex = 59;
@@ -1228,7 +1228,7 @@
             this.checkBoxAsmDispData.AutoSize = true;
             this.checkBoxAsmDispData.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxAsmDispData.Location = new System.Drawing.Point(456, 172);
-            this.checkBoxAsmDispData.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxAsmDispData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmDispData.Name = "checkBoxAsmDispData";
             this.checkBoxAsmDispData.Size = new System.Drawing.Size(151, 24);
             this.checkBoxAsmDispData.TabIndex = 53;
@@ -1241,7 +1241,7 @@
             this.checkBoxAsmSuretemp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxAsmSuretemp.ForeColor = System.Drawing.Color.Red;
             this.checkBoxAsmSuretemp.Location = new System.Drawing.Point(229, 172);
-            this.checkBoxAsmSuretemp.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxAsmSuretemp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmSuretemp.Name = "checkBoxAsmSuretemp";
             this.checkBoxAsmSuretemp.Size = new System.Drawing.Size(151, 24);
             this.checkBoxAsmSuretemp.TabIndex = 54;
@@ -1253,7 +1253,7 @@
             this.checkBoxAsmZero.AutoSize = true;
             this.checkBoxAsmZero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxAsmZero.Location = new System.Drawing.Point(12, 172);
-            this.checkBoxAsmZero.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxAsmZero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmZero.Name = "checkBoxAsmZero";
             this.checkBoxAsmZero.Size = new System.Drawing.Size(111, 24);
             this.checkBoxAsmZero.TabIndex = 57;
@@ -1265,7 +1265,7 @@
             this.checkBoxAsmFlowback.AutoSize = true;
             this.checkBoxAsmFlowback.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxAsmFlowback.Location = new System.Drawing.Point(680, 172);
-            this.checkBoxAsmFlowback.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxAsmFlowback.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmFlowback.Name = "checkBoxAsmFlowback";
             this.checkBoxAsmFlowback.Size = new System.Drawing.Size(111, 24);
             this.checkBoxAsmFlowback.TabIndex = 55;
@@ -1276,7 +1276,7 @@
             // 
             this.buttonAsmSave.Font = new System.Drawing.Font("宋体", 9F);
             this.buttonAsmSave.Location = new System.Drawing.Point(523, 1);
-            this.buttonAsmSave.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAsmSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAsmSave.Name = "buttonAsmSave";
             this.buttonAsmSave.Size = new System.Drawing.Size(148, 38);
             this.buttonAsmSave.TabIndex = 60;
@@ -1346,7 +1346,7 @@
             this.textBoxAsmFlowtime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxAsmFlowtime.ForeColor = System.Drawing.Color.Blue;
             this.textBoxAsmFlowtime.Location = new System.Drawing.Point(436, 88);
-            this.textBoxAsmFlowtime.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxAsmFlowtime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxAsmFlowtime.Name = "textBoxAsmFlowtime";
             this.textBoxAsmFlowtime.Size = new System.Drawing.Size(109, 30);
             this.textBoxAsmFlowtime.TabIndex = 53;
@@ -1357,7 +1357,7 @@
             this.textBoxAsmCcsj.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxAsmCcsj.ForeColor = System.Drawing.Color.Blue;
             this.textBoxAsmCcsj.Location = new System.Drawing.Point(1063, 44);
-            this.textBoxAsmCcsj.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxAsmCcsj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxAsmCcsj.Name = "textBoxAsmCcsj";
             this.textBoxAsmCcsj.Size = new System.Drawing.Size(101, 30);
             this.textBoxAsmCcsj.TabIndex = 11;
@@ -1368,7 +1368,7 @@
             this.textBoxAsmNdz.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxAsmNdz.ForeColor = System.Drawing.Color.Blue;
             this.textBoxAsmNdz.Location = new System.Drawing.Point(147, 44);
-            this.textBoxAsmNdz.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxAsmNdz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxAsmNdz.Name = "textBoxAsmNdz";
             this.textBoxAsmNdz.Size = new System.Drawing.Size(109, 30);
             this.textBoxAsmNdz.TabIndex = 1;
@@ -1390,7 +1390,7 @@
             this.textBoxAsmGlwc.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxAsmGlwc.ForeColor = System.Drawing.Color.Blue;
             this.textBoxAsmGlwc.Location = new System.Drawing.Point(147, 88);
-            this.textBoxAsmGlwc.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxAsmGlwc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxAsmGlwc.Name = "textBoxAsmGlwc";
             this.textBoxAsmGlwc.Size = new System.Drawing.Size(109, 30);
             this.textBoxAsmGlwc.TabIndex = 9;
@@ -1422,7 +1422,7 @@
             this.checkBoxKsgk.AutoSize = true;
             this.checkBoxKsgk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxKsgk.Location = new System.Drawing.Point(896, 42);
-            this.checkBoxKsgk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxKsgk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxKsgk.Name = "checkBoxKsgk";
             this.checkBoxKsgk.Size = new System.Drawing.Size(151, 24);
             this.checkBoxKsgk.TabIndex = 60;
@@ -1434,7 +1434,7 @@
             this.checkBoxAsmClljk.AutoSize = true;
             this.checkBoxAsmClljk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxAsmClljk.Location = new System.Drawing.Point(677, 42);
-            this.checkBoxAsmClljk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxAsmClljk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmClljk.Name = "checkBoxAsmClljk";
             this.checkBoxAsmClljk.Size = new System.Drawing.Size(131, 24);
             this.checkBoxAsmClljk.TabIndex = 43;
@@ -1446,7 +1446,7 @@
             this.checkBoxAsmSdjk.AutoSize = true;
             this.checkBoxAsmSdjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxAsmSdjk.Location = new System.Drawing.Point(9, 42);
-            this.checkBoxAsmSdjk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxAsmSdjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmSdjk.Name = "checkBoxAsmSdjk";
             this.checkBoxAsmSdjk.Size = new System.Drawing.Size(111, 24);
             this.checkBoxAsmSdjk.TabIndex = 37;
@@ -1458,7 +1458,7 @@
             this.checkBoxAsmGljk.AutoSize = true;
             this.checkBoxAsmGljk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxAsmGljk.Location = new System.Drawing.Point(453, 42);
-            this.checkBoxAsmGljk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxAsmGljk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmGljk.Name = "checkBoxAsmGljk";
             this.checkBoxAsmGljk.Size = new System.Drawing.Size(151, 24);
             this.checkBoxAsmGljk.TabIndex = 38;
@@ -1470,7 +1470,7 @@
             this.checkBoxAsmNdjk.AutoSize = true;
             this.checkBoxAsmNdjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxAsmNdjk.Location = new System.Drawing.Point(227, 42);
-            this.checkBoxAsmNdjk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxAsmNdjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmNdjk.Name = "checkBoxAsmNdjk";
             this.checkBoxAsmNdjk.Size = new System.Drawing.Size(111, 24);
             this.checkBoxAsmNdjk.TabIndex = 39;
@@ -1482,9 +1482,9 @@
             this.groupBox1.Controls.Add(this.radioButtonVmasWholeProcess);
             this.groupBox1.Controls.Add(this.radioButtonVmasAccelerateProcess);
             this.groupBox1.Location = new System.Drawing.Point(23, 311);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Size = new System.Drawing.Size(520, 71);
             this.groupBox1.TabIndex = 63;
             this.groupBox1.TabStop = false;
@@ -1495,7 +1495,7 @@
             this.radioButtonVmasWholeProcess.AutoSize = true;
             this.radioButtonVmasWholeProcess.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonVmasWholeProcess.Location = new System.Drawing.Point(356, 32);
-            this.radioButtonVmasWholeProcess.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonVmasWholeProcess.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonVmasWholeProcess.Name = "radioButtonVmasWholeProcess";
             this.radioButtonVmasWholeProcess.Size = new System.Drawing.Size(130, 24);
             this.radioButtonVmasWholeProcess.TabIndex = 64;
@@ -1508,7 +1508,7 @@
             this.radioButtonVmasAccelerateProcess.AutoSize = true;
             this.radioButtonVmasAccelerateProcess.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonVmasAccelerateProcess.Location = new System.Drawing.Point(27, 32);
-            this.radioButtonVmasAccelerateProcess.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonVmasAccelerateProcess.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonVmasAccelerateProcess.Name = "radioButtonVmasAccelerateProcess";
             this.radioButtonVmasAccelerateProcess.Size = new System.Drawing.Size(130, 24);
             this.radioButtonVmasAccelerateProcess.TabIndex = 63;
@@ -1520,7 +1520,7 @@
             // 
             this.buttonVmasSave.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.buttonVmasSave.Location = new System.Drawing.Point(535, 0);
-            this.buttonVmasSave.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonVmasSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonVmasSave.Name = "buttonVmasSave";
             this.buttonVmasSave.Size = new System.Drawing.Size(160, 41);
             this.buttonVmasSave.TabIndex = 61;
@@ -1623,7 +1623,7 @@
             this.textBoxVmasFlowbackTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasFlowbackTime.ForeColor = System.Drawing.Color.Blue;
             this.textBoxVmasFlowbackTime.Location = new System.Drawing.Point(849, 80);
-            this.textBoxVmasFlowbackTime.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxVmasFlowbackTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasFlowbackTime.Name = "textBoxVmasFlowbackTime";
             this.textBoxVmasFlowbackTime.Size = new System.Drawing.Size(115, 30);
             this.textBoxVmasFlowbackTime.TabIndex = 53;
@@ -1645,7 +1645,7 @@
             this.textBoxVmasLxcc.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasLxcc.ForeColor = System.Drawing.Color.Blue;
             this.textBoxVmasLxcc.Location = new System.Drawing.Point(193, 81);
-            this.textBoxVmasLxcc.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxVmasLxcc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasLxcc.Name = "textBoxVmasLxcc";
             this.textBoxVmasLxcc.Size = new System.Drawing.Size(95, 30);
             this.textBoxVmasLxcc.TabIndex = 11;
@@ -1656,7 +1656,7 @@
             this.textBoxVmasNdz.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasNdz.ForeColor = System.Drawing.Color.Blue;
             this.textBoxVmasNdz.Location = new System.Drawing.Point(165, 45);
-            this.textBoxVmasNdz.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxVmasNdz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasNdz.Name = "textBoxVmasNdz";
             this.textBoxVmasNdz.Size = new System.Drawing.Size(123, 30);
             this.textBoxVmasNdz.TabIndex = 1;
@@ -1678,7 +1678,7 @@
             this.textBoxVmasLljll.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasLljll.ForeColor = System.Drawing.Color.Blue;
             this.textBoxVmasLljll.Location = new System.Drawing.Point(165, 118);
-            this.textBoxVmasLljll.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxVmasLljll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasLljll.Name = "textBoxVmasLljll";
             this.textBoxVmasLljll.Size = new System.Drawing.Size(123, 30);
             this.textBoxVmasLljll.TabIndex = 3;
@@ -1700,7 +1700,7 @@
             this.textBoxVmasWqll.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasWqll.ForeColor = System.Drawing.Color.Blue;
             this.textBoxVmasWqll.Location = new System.Drawing.Point(557, 154);
-            this.textBoxVmasWqll.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxVmasWqll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasWqll.Name = "textBoxVmasWqll";
             this.textBoxVmasWqll.Size = new System.Drawing.Size(89, 30);
             this.textBoxVmasWqll.TabIndex = 5;
@@ -1722,7 +1722,7 @@
             this.textBoxVmasXsb.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasXsb.ForeColor = System.Drawing.Color.Blue;
             this.textBoxVmasXsb.Location = new System.Drawing.Point(523, 118);
-            this.textBoxVmasXsb.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxVmasXsb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasXsb.Name = "textBoxVmasXsb";
             this.textBoxVmasXsb.Size = new System.Drawing.Size(123, 30);
             this.textBoxVmasXsb.TabIndex = 7;
@@ -1744,7 +1744,7 @@
             this.textBoxVmasJzgl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasJzgl.ForeColor = System.Drawing.Color.Blue;
             this.textBoxVmasJzgl.Location = new System.Drawing.Point(849, 118);
-            this.textBoxVmasJzgl.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxVmasJzgl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasJzgl.Name = "textBoxVmasJzgl";
             this.textBoxVmasJzgl.Size = new System.Drawing.Size(115, 30);
             this.textBoxVmasJzgl.TabIndex = 9;
@@ -1777,7 +1777,7 @@
             this.textBoxVmasLjcc.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasLjcc.ForeColor = System.Drawing.Color.Blue;
             this.textBoxVmasLjcc.Location = new System.Drawing.Point(555, 81);
-            this.textBoxVmasLjcc.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxVmasLjcc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasLjcc.Name = "textBoxVmasLjcc";
             this.textBoxVmasLjcc.Size = new System.Drawing.Size(91, 30);
             this.textBoxVmasLjcc.TabIndex = 13;
@@ -1799,7 +1799,7 @@
             this.textBoxVmasDssj.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasDssj.ForeColor = System.Drawing.Color.Blue;
             this.textBoxVmasDssj.Location = new System.Drawing.Point(849, 44);
-            this.textBoxVmasDssj.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxVmasDssj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasDssj.Name = "textBoxVmasDssj";
             this.textBoxVmasDssj.Size = new System.Drawing.Size(115, 30);
             this.textBoxVmasDssj.TabIndex = 17;
@@ -1821,7 +1821,7 @@
             this.checkBoxAutoRestart.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxAutoRestart.ForeColor = System.Drawing.Color.Coral;
             this.checkBoxAutoRestart.Location = new System.Drawing.Point(596, 246);
-            this.checkBoxAutoRestart.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxAutoRestart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAutoRestart.Name = "checkBoxAutoRestart";
             this.checkBoxAutoRestart.Size = new System.Drawing.Size(151, 24);
             this.checkBoxAutoRestart.TabIndex = 61;
@@ -1834,7 +1834,7 @@
             this.checkBoxVmasYw.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasYw.ForeColor = System.Drawing.Color.Red;
             this.checkBoxVmasYw.Location = new System.Drawing.Point(297, 246);
-            this.checkBoxVmasYw.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxVmasYw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasYw.Name = "checkBoxVmasYw";
             this.checkBoxVmasYw.Size = new System.Drawing.Size(111, 24);
             this.checkBoxVmasYw.TabIndex = 60;
@@ -1847,7 +1847,7 @@
             this.checkBoxVmasDisplayData.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasDisplayData.ForeColor = System.Drawing.Color.Black;
             this.checkBoxVmasDisplayData.Location = new System.Drawing.Point(596, 279);
-            this.checkBoxVmasDisplayData.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxVmasDisplayData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasDisplayData.Name = "checkBoxVmasDisplayData";
             this.checkBoxVmasDisplayData.Size = new System.Drawing.Size(151, 24);
             this.checkBoxVmasDisplayData.TabIndex = 53;
@@ -1860,7 +1860,7 @@
             this.checkBoxVmasSureTemp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasSureTemp.ForeColor = System.Drawing.Color.Red;
             this.checkBoxVmasSureTemp.Location = new System.Drawing.Point(297, 279);
-            this.checkBoxVmasSureTemp.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxVmasSureTemp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasSureTemp.Name = "checkBoxVmasSureTemp";
             this.checkBoxVmasSureTemp.Size = new System.Drawing.Size(151, 24);
             this.checkBoxVmasSureTemp.TabIndex = 54;
@@ -1873,7 +1873,7 @@
             this.checkBoxVmasZero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasZero.ForeColor = System.Drawing.Color.Black;
             this.checkBoxVmasZero.Location = new System.Drawing.Point(23, 246);
-            this.checkBoxVmasZero.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxVmasZero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasZero.Name = "checkBoxVmasZero";
             this.checkBoxVmasZero.Size = new System.Drawing.Size(111, 24);
             this.checkBoxVmasZero.TabIndex = 57;
@@ -1886,7 +1886,7 @@
             this.checkBoxVmasFlowback.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasFlowback.ForeColor = System.Drawing.Color.Black;
             this.checkBoxVmasFlowback.Location = new System.Drawing.Point(23, 279);
-            this.checkBoxVmasFlowback.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxVmasFlowback.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasFlowback.Name = "checkBoxVmasFlowback";
             this.checkBoxVmasFlowback.Size = new System.Drawing.Size(111, 24);
             this.checkBoxVmasFlowback.TabIndex = 55;
@@ -1898,7 +1898,7 @@
             this.checkBoxVmasCyljk.AutoSize = true;
             this.checkBoxVmasCyljk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasCyljk.Location = new System.Drawing.Point(596, 42);
-            this.checkBoxVmasCyljk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxVmasCyljk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasCyljk.Name = "checkBoxVmasCyljk";
             this.checkBoxVmasCyljk.Size = new System.Drawing.Size(131, 24);
             this.checkBoxVmasCyljk.TabIndex = 43;
@@ -1911,7 +1911,7 @@
             this.checkBoxVmasLljk.Enabled = false;
             this.checkBoxVmasLljk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasLljk.Location = new System.Drawing.Point(596, 75);
-            this.checkBoxVmasLljk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxVmasLljk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasLljk.Name = "checkBoxVmasLljk";
             this.checkBoxVmasLljk.Size = new System.Drawing.Size(111, 24);
             this.checkBoxVmasLljk.TabIndex = 40;
@@ -1924,7 +1924,7 @@
             this.checkBoxVmasHjyjk.Enabled = false;
             this.checkBoxVmasHjyjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasHjyjk.Location = new System.Drawing.Point(397, 75);
-            this.checkBoxVmasHjyjk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxVmasHjyjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasHjyjk.Name = "checkBoxVmasHjyjk";
             this.checkBoxVmasHjyjk.Size = new System.Drawing.Size(131, 24);
             this.checkBoxVmasHjyjk.TabIndex = 42;
@@ -1937,7 +1937,7 @@
             this.checkBoxVmasSdjk.Enabled = false;
             this.checkBoxVmasSdjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasSdjk.Location = new System.Drawing.Point(220, 75);
-            this.checkBoxVmasSdjk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxVmasSdjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasSdjk.Name = "checkBoxVmasSdjk";
             this.checkBoxVmasSdjk.Size = new System.Drawing.Size(111, 24);
             this.checkBoxVmasSdjk.TabIndex = 37;
@@ -1949,7 +1949,7 @@
             this.checkBoxVmasXsbjk.AutoSize = true;
             this.checkBoxVmasXsbjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasXsbjk.Location = new System.Drawing.Point(220, 42);
-            this.checkBoxVmasXsbjk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxVmasXsbjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasXsbjk.Name = "checkBoxVmasXsbjk";
             this.checkBoxVmasXsbjk.Size = new System.Drawing.Size(131, 24);
             this.checkBoxVmasXsbjk.TabIndex = 41;
@@ -1961,7 +1961,7 @@
             this.checkBoxVmasJzgljk.AutoSize = true;
             this.checkBoxVmasJzgljk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasJzgljk.Location = new System.Drawing.Point(397, 42);
-            this.checkBoxVmasJzgljk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxVmasJzgljk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasJzgljk.Name = "checkBoxVmasJzgljk";
             this.checkBoxVmasJzgljk.Size = new System.Drawing.Size(151, 24);
             this.checkBoxVmasJzgljk.TabIndex = 38;
@@ -1974,7 +1974,7 @@
             this.checkBoxVmasNdjk.Enabled = false;
             this.checkBoxVmasNdjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmasNdjk.Location = new System.Drawing.Point(19, 72);
-            this.checkBoxVmasNdjk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxVmasNdjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmasNdjk.Name = "checkBoxVmasNdjk";
             this.checkBoxVmasNdjk.Size = new System.Drawing.Size(111, 24);
             this.checkBoxVmasNdjk.TabIndex = 39;
@@ -2006,7 +2006,7 @@
             "COM5",
             "COM6"});
             this.comboBoxTMQCK.Location = new System.Drawing.Point(355, 110);
-            this.comboBoxTMQCK.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxTMQCK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxTMQCK.Name = "comboBoxTMQCK";
             this.comboBoxTMQCK.Size = new System.Drawing.Size(125, 28);
             this.comboBoxTMQCK.TabIndex = 120;
@@ -2033,7 +2033,7 @@
             "4800,N,8,1",
             "19200,N,8,1"});
             this.comboBoxTMQPZ.Location = new System.Drawing.Point(596, 110);
-            this.comboBoxTMQPZ.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxTMQPZ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxTMQPZ.Name = "comboBoxTMQPZ";
             this.comboBoxTMQPZ.Size = new System.Drawing.Size(125, 28);
             this.comboBoxTMQPZ.TabIndex = 118;
@@ -2060,7 +2060,7 @@
             "无",
             "YZ_1"});
             this.comboBoxTMQXH.Location = new System.Drawing.Point(119, 110);
-            this.comboBoxTMQXH.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxTMQXH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxTMQXH.Name = "comboBoxTMQXH";
             this.comboBoxTMQXH.Size = new System.Drawing.Size(120, 28);
             this.comboBoxTMQXH.TabIndex = 116;
@@ -2087,7 +2087,7 @@
             "全自动",
             "半自动"});
             this.comboBoxWorkMode.Location = new System.Drawing.Point(952, 155);
-            this.comboBoxWorkMode.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxWorkMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxWorkMode.Name = "comboBoxWorkMode";
             this.comboBoxWorkMode.Size = new System.Drawing.Size(125, 28);
             this.comboBoxWorkMode.TabIndex = 114;
@@ -2098,7 +2098,7 @@
             this.checkBoxOldMqy200.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxOldMqy200.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxOldMqy200.Location = new System.Drawing.Point(964, 261);
-            this.checkBoxOldMqy200.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxOldMqy200.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxOldMqy200.Name = "checkBoxOldMqy200";
             this.checkBoxOldMqy200.Size = new System.Drawing.Size(211, 24);
             this.checkBoxOldMqy200.TabIndex = 113;
@@ -2123,7 +2123,7 @@
             this.textBoxPEF.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxPEF.ForeColor = System.Drawing.Color.Blue;
             this.textBoxPEF.Location = new System.Drawing.Point(840, 224);
-            this.textBoxPEF.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxPEF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxPEF.Name = "textBoxPEF";
             this.textBoxPEF.Size = new System.Drawing.Size(119, 30);
             this.textBoxPEF.TabIndex = 111;
@@ -2147,7 +2147,7 @@
             this.textBoxDIWMP.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDIWMP.ForeColor = System.Drawing.Color.Blue;
             this.textBoxDIWMP.Location = new System.Drawing.Point(671, 44);
-            this.textBoxDIWMP.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxDIWMP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDIWMP.Name = "textBoxDIWMP";
             this.textBoxDIWMP.Size = new System.Drawing.Size(125, 30);
             this.textBoxDIWMP.TabIndex = 109;
@@ -2165,7 +2165,7 @@
             "JJF1221压燃式",
             "JJF1221点燃式"});
             this.comboBoxHJT.Location = new System.Drawing.Point(116, 80);
-            this.comboBoxHJT.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxHJT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxHJT.Name = "comboBoxHJT";
             this.comboBoxHJT.Size = new System.Drawing.Size(125, 28);
             this.comboBoxHJT.TabIndex = 107;
@@ -2193,7 +2193,7 @@
             "轻型测功机",
             "重型测功机"});
             this.comboBoxCgjlx.Location = new System.Drawing.Point(116, 46);
-            this.comboBoxCgjlx.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxCgjlx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCgjlx.Name = "comboBoxCgjlx";
             this.comboBoxCgjlx.Size = new System.Drawing.Size(125, 28);
             this.comboBoxCgjlx.TabIndex = 105;
@@ -2229,7 +2229,7 @@
             this.textBoxLugdownWdsj.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxLugdownWdsj.ForeColor = System.Drawing.Color.Blue;
             this.textBoxLugdownWdsj.Location = new System.Drawing.Point(161, 498);
-            this.textBoxLugdownWdsj.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxLugdownWdsj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLugdownWdsj.Name = "textBoxLugdownWdsj";
             this.textBoxLugdownWdsj.Size = new System.Drawing.Size(126, 30);
             this.textBoxLugdownWdsj.TabIndex = 103;
@@ -2252,7 +2252,7 @@
             this.textBoxLLjO2xysj.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxLLjO2xysj.ForeColor = System.Drawing.Color.Blue;
             this.textBoxLLjO2xysj.Location = new System.Drawing.Point(840, 360);
-            this.textBoxLLjO2xysj.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxLLjO2xysj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLLjO2xysj.Name = "textBoxLLjO2xysj";
             this.textBoxLLjO2xysj.Size = new System.Drawing.Size(119, 30);
             this.textBoxLLjO2xysj.TabIndex = 101;
@@ -2275,7 +2275,7 @@
             this.textBoxFqyxysj.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxFqyxysj.ForeColor = System.Drawing.Color.Blue;
             this.textBoxFqyxysj.Location = new System.Drawing.Point(1059, 224);
-            this.textBoxFqyxysj.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxFqyxysj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxFqyxysj.Name = "textBoxFqyxysj";
             this.textBoxFqyxysj.Size = new System.Drawing.Size(126, 30);
             this.textBoxFqyxysj.TabIndex = 99;
@@ -2290,7 +2290,7 @@
             "复制",
             "扩展"});
             this.comboBoxDisplayMethod.Location = new System.Drawing.Point(157, 155);
-            this.comboBoxDisplayMethod.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxDisplayMethod.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxDisplayMethod.Name = "comboBoxDisplayMethod";
             this.comboBoxDisplayMethod.Size = new System.Drawing.Size(119, 28);
             this.comboBoxDisplayMethod.TabIndex = 95;
@@ -2329,7 +2329,7 @@
             "0",
             "1"});
             this.comboBoxDriverScreen.Location = new System.Drawing.Point(404, 155);
-            this.comboBoxDriverScreen.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxDriverScreen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxDriverScreen.Name = "comboBoxDriverScreen";
             this.comboBoxDriverScreen.Size = new System.Drawing.Size(111, 28);
             this.comboBoxDriverScreen.TabIndex = 97;
@@ -2355,7 +2355,7 @@
             "9600,N,8,1",
             "4800,N,8,1"});
             this.comboBoxLljckpzz.Location = new System.Drawing.Point(592, 361);
-            this.comboBoxLljckpzz.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLljckpzz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLljckpzz.Name = "comboBoxLljckpzz";
             this.comboBoxLljckpzz.Size = new System.Drawing.Size(124, 28);
             this.comboBoxLljckpzz.TabIndex = 93;
@@ -2381,7 +2381,7 @@
             "9600,N,8,1",
             "4800,N,8,1"});
             this.comboBoxFqyckppz.Location = new System.Drawing.Point(592, 225);
-            this.comboBoxFqyckppz.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxFqyckppz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxFqyckppz.Name = "comboBoxFqyckppz";
             this.comboBoxFqyckppz.Size = new System.Drawing.Size(124, 28);
             this.comboBoxFqyckppz.TabIndex = 91;
@@ -2409,7 +2409,7 @@
             "2400,N,8,1",
             "1200,N,8,1"});
             this.comboBoxYdjckppz.Location = new System.Drawing.Point(592, 258);
-            this.comboBoxYdjckppz.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxYdjckppz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYdjckppz.Name = "comboBoxYdjckppz";
             this.comboBoxYdjckppz.Size = new System.Drawing.Size(125, 28);
             this.comboBoxYdjckppz.TabIndex = 89;
@@ -2436,7 +2436,7 @@
             "4800,N,8,1",
             "19200,N,8,1"});
             this.comboBoxXCECOMSTRING.Location = new System.Drawing.Point(595, 142);
-            this.comboBoxXCECOMSTRING.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxXCECOMSTRING.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxXCECOMSTRING.Name = "comboBoxXCECOMSTRING";
             this.comboBoxXCECOMSTRING.Size = new System.Drawing.Size(127, 28);
             this.comboBoxXCECOMSTRING.TabIndex = 87;
@@ -2462,7 +2462,7 @@
             "9600,N,8,1",
             "4800,N,8,1"});
             this.comboBoxLEDCOMSTRING.Location = new System.Drawing.Point(593, 78);
-            this.comboBoxLEDCOMSTRING.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLEDCOMSTRING.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLEDCOMSTRING.Name = "comboBoxLEDCOMSTRING";
             this.comboBoxLEDCOMSTRING.Size = new System.Drawing.Size(128, 28);
             this.comboBoxLEDCOMSTRING.TabIndex = 85;
@@ -2496,7 +2496,7 @@
             "安通",
             "成保"});
             this.comboBoxLEDXH.Location = new System.Drawing.Point(119, 78);
-            this.comboBoxLEDXH.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLEDXH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLEDXH.Name = "comboBoxLEDXH";
             this.comboBoxLEDXH.Size = new System.Drawing.Size(119, 28);
             this.comboBoxLEDXH.TabIndex = 83;
@@ -2527,7 +2527,7 @@
             "COM5",
             "COM6"});
             this.comboBoxCOMXCE.Location = new System.Drawing.Point(355, 142);
-            this.comboBoxCOMXCE.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxCOMXCE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCOMXCE.Name = "comboBoxCOMXCE";
             this.comboBoxCOMXCE.Size = new System.Drawing.Size(125, 28);
             this.comboBoxCOMXCE.TabIndex = 81;
@@ -2543,7 +2543,7 @@
             "yd_1",
             "fby_201"});
             this.comboBoxLZYDJXH.Location = new System.Drawing.Point(161, 426);
-            this.comboBoxLZYDJXH.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLZYDJXH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLZYDJXH.Name = "comboBoxLZYDJXH";
             this.comboBoxLZYDJXH.Size = new System.Drawing.Size(125, 28);
             this.comboBoxLZYDJXH.TabIndex = 77;
@@ -2573,7 +2573,7 @@
             "COM5",
             "COM6"});
             this.comboBoxLZYDJCK.Location = new System.Drawing.Point(728, 425);
-            this.comboBoxLZYDJCK.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLZYDJCK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLZYDJCK.Name = "comboBoxLZYDJCK";
             this.comboBoxLZYDJCK.Size = new System.Drawing.Size(132, 28);
             this.comboBoxLZYDJCK.TabIndex = 79;
@@ -2613,7 +2613,7 @@
             "2",
             "3"});
             this.comboBoxEmergency.Location = new System.Drawing.Point(355, 250);
-            this.comboBoxEmergency.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxEmergency.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxEmergency.Name = "comboBoxEmergency";
             this.comboBoxEmergency.Size = new System.Drawing.Size(125, 28);
             this.comboBoxEmergency.TabIndex = 76;
@@ -2629,7 +2629,7 @@
             "2",
             "3"});
             this.comboBoxBPQDY.Location = new System.Drawing.Point(841, 46);
-            this.comboBoxBPQDY.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxBPQDY.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBPQDY.Name = "comboBoxBPQDY";
             this.comboBoxBPQDY.Size = new System.Drawing.Size(119, 28);
             this.comboBoxBPQDY.TabIndex = 71;
@@ -2669,7 +2669,7 @@
             "2",
             "3"});
             this.comboBoxFAN.Location = new System.Drawing.Point(117, 250);
-            this.comboBoxFAN.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxFAN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxFAN.Name = "comboBoxFAN";
             this.comboBoxFAN.Size = new System.Drawing.Size(119, 28);
             this.comboBoxFAN.TabIndex = 73;
@@ -2684,7 +2684,7 @@
             "串口",
             "端子"});
             this.comboBoxBPQFS.Location = new System.Drawing.Point(593, 46);
-            this.comboBoxBPQFS.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxBPQFS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBPQFS.Name = "comboBoxBPQFS";
             this.comboBoxBPQFS.Size = new System.Drawing.Size(128, 28);
             this.comboBoxBPQFS.TabIndex = 69;
@@ -2705,7 +2705,7 @@
             // 
             this.buttonSaveEquipment.Font = new System.Drawing.Font("宋体", 9F);
             this.buttonSaveEquipment.Location = new System.Drawing.Point(496, 2);
-            this.buttonSaveEquipment.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSaveEquipment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSaveEquipment.Name = "buttonSaveEquipment";
             this.buttonSaveEquipment.Size = new System.Drawing.Size(164, 36);
             this.buttonSaveEquipment.TabIndex = 60;
@@ -2725,7 +2725,7 @@
             "X11",
             "AMB100"});
             this.comboBoxBPQXH.Location = new System.Drawing.Point(119, 46);
-            this.comboBoxBPQXH.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxBPQXH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBPQXH.Name = "comboBoxBPQXH";
             this.comboBoxBPQXH.Size = new System.Drawing.Size(119, 28);
             this.comboBoxBPQXH.TabIndex = 63;
@@ -2767,7 +2767,7 @@
             "COM5",
             "COM6"});
             this.comboBoxBPQCOM.Location = new System.Drawing.Point(355, 46);
-            this.comboBoxBPQCOM.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxBPQCOM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBPQCOM.Name = "comboBoxBPQCOM";
             this.comboBoxBPQCOM.Size = new System.Drawing.Size(125, 28);
             this.comboBoxBPQCOM.TabIndex = 65;
@@ -2802,7 +2802,7 @@
             "模拟",
             "XCE_101"});
             this.comboBoxTemp.Location = new System.Drawing.Point(119, 142);
-            this.comboBoxTemp.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxTemp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxTemp.Name = "comboBoxTemp";
             this.comboBoxTemp.Size = new System.Drawing.Size(119, 28);
             this.comboBoxTemp.TabIndex = 61;
@@ -2832,9 +2832,10 @@
             "mqw_5101",
             "nht_1",
             "fty_100",
-            "CDF5000"});
+            "CDF5000",
+            "mqw_5102"});
             this.comboBoxYdjxh.Location = new System.Drawing.Point(116, 258);
-            this.comboBoxYdjxh.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxYdjxh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYdjxh.Name = "comboBoxYdjxh";
             this.comboBoxYdjxh.Size = new System.Drawing.Size(120, 28);
             this.comboBoxYdjxh.TabIndex = 21;
@@ -2853,7 +2854,7 @@
             "COM5",
             "COM6"});
             this.comboBoxLEDck.Location = new System.Drawing.Point(355, 78);
-            this.comboBoxLEDck.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLEDck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLEDck.Name = "comboBoxLEDck";
             this.comboBoxLEDck.Size = new System.Drawing.Size(125, 28);
             this.comboBoxLEDck.TabIndex = 35;
@@ -2872,7 +2873,7 @@
             "DCG-26L|DCG-26LD",
             "DCG-26LX"});
             this.comboBoxCgjxh.Location = new System.Drawing.Point(407, 48);
-            this.comboBoxCgjxh.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxCgjxh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCgjxh.Name = "comboBoxCgjxh";
             this.comboBoxCgjxh.Size = new System.Drawing.Size(125, 28);
             this.comboBoxCgjxh.TabIndex = 19;
@@ -2914,7 +2915,7 @@
             "COM5",
             "COM6"});
             this.comboBoxFqyck.Location = new System.Drawing.Point(353, 225);
-            this.comboBoxFqyck.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxFqyck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxFqyck.Name = "comboBoxFqyck";
             this.comboBoxFqyck.Size = new System.Drawing.Size(125, 28);
             this.comboBoxFqyck.TabIndex = 33;
@@ -2956,7 +2957,7 @@
             "COM5",
             "COM6"});
             this.comboBoxYdjck.Location = new System.Drawing.Point(353, 258);
-            this.comboBoxYdjck.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxYdjck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYdjck.Name = "comboBoxYdjck";
             this.comboBoxYdjck.Size = new System.Drawing.Size(125, 28);
             this.comboBoxYdjck.TabIndex = 23;
@@ -2973,15 +2974,13 @@
             "fla_501",
             "mqw_50a",
             "mqw_50b",
-            "mqw_5102",
-            "mqw_5105",
             "mqw_511",
             "nha_503",
             "fasm_5000",
             "CDF5000",
             "nha_506"});
             this.comboBoxFqyxh.Location = new System.Drawing.Point(116, 225);
-            this.comboBoxFqyxh.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxFqyxh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxFqyxh.Name = "comboBoxFqyxh";
             this.comboBoxFqyxh.Size = new System.Drawing.Size(119, 28);
             this.comboBoxFqyxh.TabIndex = 31;
@@ -3022,7 +3021,7 @@
             "mql_100",
             "nhf_1"});
             this.comboBoxLljxh.Location = new System.Drawing.Point(116, 361);
-            this.comboBoxLljxh.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLljxh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLljxh.Name = "comboBoxLljxh";
             this.comboBoxLljxh.Size = new System.Drawing.Size(119, 28);
             this.comboBoxLljxh.TabIndex = 25;
@@ -3040,7 +3039,7 @@
             "COM5",
             "COM6"});
             this.comboBoxCgjck.Location = new System.Drawing.Point(407, 79);
-            this.comboBoxCgjck.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxCgjck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCgjck.Name = "comboBoxCgjck";
             this.comboBoxCgjck.Size = new System.Drawing.Size(125, 28);
             this.comboBoxCgjck.TabIndex = 29;
@@ -3082,7 +3081,7 @@
             "COM5",
             "COM6"});
             this.comboBoxLljck.Location = new System.Drawing.Point(353, 361);
-            this.comboBoxLljck.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLljck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLljck.Name = "comboBoxLljck";
             this.comboBoxLljck.Size = new System.Drawing.Size(125, 28);
             this.comboBoxLljck.TabIndex = 27;
@@ -3098,7 +3097,7 @@
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Font = new System.Drawing.Font("宋体", 11F);
             this.tabControl1.Location = new System.Drawing.Point(1, -1);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1416, 752);
@@ -3109,9 +3108,9 @@
             this.tabPage1.Controls.Add(this.tabControl2);
             this.tabPage1.Controls.Add(this.panel6);
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage1.Size = new System.Drawing.Size(1408, 720);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "仪器配置";
@@ -3124,7 +3123,7 @@
             this.tabControl2.Controls.Add(this.tabControlPanel1);
             this.tabControl2.Controls.Add(this.tabControlPanel2);
             this.tabControl2.Location = new System.Drawing.Point(4, 2);
-            this.tabControl2.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedTabFont = new System.Drawing.Font("宋体", 11F, System.Drawing.FontStyle.Bold);
             this.tabControl2.SelectedTabIndex = 0;
@@ -3234,7 +3233,7 @@
             this.tabControlPanel1.Controls.Add(this.comboBoxLljxh);
             this.tabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlPanel1.Location = new System.Drawing.Point(33, 0);
-            this.tabControlPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControlPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControlPanel1.Name = "tabControlPanel1";
             this.tabControlPanel1.Padding = new System.Windows.Forms.Padding(1);
             this.tabControlPanel1.Size = new System.Drawing.Size(1364, 665);
@@ -3259,7 +3258,7 @@
             "v8.1(带光电、滑行距离)",
             "v10.3"});
             this.comboBoxDYNVersion.Location = new System.Drawing.Point(1087, 80);
-            this.comboBoxDYNVersion.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxDYNVersion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxDYNVersion.Name = "comboBoxDYNVersion";
             this.comboBoxDYNVersion.Size = new System.Drawing.Size(231, 28);
             this.comboBoxDYNVersion.TabIndex = 183;
@@ -3284,7 +3283,7 @@
             this.textBoxCanliHCTime.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxCanliHCTime.ForeColor = System.Drawing.Color.Blue;
             this.textBoxCanliHCTime.Location = new System.Drawing.Point(592, 538);
-            this.textBoxCanliHCTime.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxCanliHCTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxCanliHCTime.Name = "textBoxCanliHCTime";
             this.textBoxCanliHCTime.Size = new System.Drawing.Size(126, 30);
             this.textBoxCanliHCTime.TabIndex = 181;
@@ -3307,7 +3306,7 @@
             this.textBoxBackGroundTime.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxBackGroundTime.ForeColor = System.Drawing.Color.Blue;
             this.textBoxBackGroundTime.Location = new System.Drawing.Point(161, 538);
-            this.textBoxBackGroundTime.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxBackGroundTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxBackGroundTime.Name = "textBoxBackGroundTime";
             this.textBoxBackGroundTime.Size = new System.Drawing.Size(126, 30);
             this.textBoxBackGroundTime.TabIndex = 179;
@@ -3330,7 +3329,7 @@
             this.checkBoxNHSJZ.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxNHSJZ.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxNHSJZ.Location = new System.Drawing.Point(4, 465);
-            this.checkBoxNHSJZ.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxNHSJZ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxNHSJZ.Name = "checkBoxNHSJZ";
             this.checkBoxNHSJZ.Size = new System.Drawing.Size(351, 24);
             this.checkBoxNHSJZ.TabIndex = 178;
@@ -3346,7 +3345,7 @@
             "9600,N,8,1",
             "4800,N,8,1"});
             this.comboBoxNHSJZ_COMSTRING.Location = new System.Drawing.Point(625, 462);
-            this.comboBoxNHSJZ_COMSTRING.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxNHSJZ_COMSTRING.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxNHSJZ_COMSTRING.Name = "comboBoxNHSJZ_COMSTRING";
             this.comboBoxNHSJZ_COMSTRING.Size = new System.Drawing.Size(235, 28);
             this.comboBoxNHSJZ_COMSTRING.TabIndex = 176;
@@ -3376,7 +3375,7 @@
             "COM5",
             "COM6"});
             this.comboBoxNHSJZ_COM.Location = new System.Drawing.Point(387, 462);
-            this.comboBoxNHSJZ_COM.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxNHSJZ_COM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxNHSJZ_COM.Name = "comboBoxNHSJZ_COM";
             this.comboBoxNHSJZ_COM.Size = new System.Drawing.Size(125, 28);
             this.comboBoxNHSJZ_COM.TabIndex = 174;
@@ -3387,7 +3386,7 @@
             this.checkBoxIsLljNhSelfUse.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxIsLljNhSelfUse.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxIsLljNhSelfUse.Location = new System.Drawing.Point(1215, 364);
-            this.checkBoxIsLljNhSelfUse.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxIsLljNhSelfUse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxIsLljNhSelfUse.Name = "checkBoxIsLljNhSelfUse";
             this.checkBoxIsLljNhSelfUse.Size = new System.Drawing.Size(111, 24);
             this.checkBoxIsLljNhSelfUse.TabIndex = 171;
@@ -3400,7 +3399,7 @@
             this.checkBoxCD_YDJ.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxCD_YDJ.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxCD_YDJ.Location = new System.Drawing.Point(353, 298);
-            this.checkBoxCD_YDJ.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxCD_YDJ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxCD_YDJ.Name = "checkBoxCD_YDJ";
             this.checkBoxCD_YDJ.Size = new System.Drawing.Size(91, 24);
             this.checkBoxCD_YDJ.TabIndex = 170;
@@ -3413,7 +3412,7 @@
             this.checkBoxCD_FQY.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxCD_FQY.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxCD_FQY.Location = new System.Drawing.Point(240, 298);
-            this.checkBoxCD_FQY.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxCD_FQY.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxCD_FQY.Name = "checkBoxCD_FQY";
             this.checkBoxCD_FQY.Size = new System.Drawing.Size(91, 24);
             this.checkBoxCD_FQY.TabIndex = 0;
@@ -3438,7 +3437,7 @@
             this.textBoxLLjLlmyz.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxLLjLlmyz.ForeColor = System.Drawing.Color.Blue;
             this.textBoxLLjLlmyz.Location = new System.Drawing.Point(1087, 359);
-            this.textBoxLLjLlmyz.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxLLjLlmyz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLLjLlmyz.Name = "textBoxLLjLlmyz";
             this.textBoxLLjLlmyz.Size = new System.Drawing.Size(98, 30);
             this.textBoxLLjLlmyz.TabIndex = 167;
@@ -3466,7 +3465,7 @@
             "300,N,8,2",
             "9600,N,8,1"});
             this.comboBoxLZCKPZZ.Location = new System.Drawing.Point(988, 424);
-            this.comboBoxLZCKPZZ.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLZCKPZZ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLZCKPZZ.Name = "comboBoxLZCKPZZ";
             this.comboBoxLZCKPZZ.Size = new System.Drawing.Size(195, 28);
             this.comboBoxLZCKPZZ.TabIndex = 165;
@@ -3489,7 +3488,7 @@
             this.textBoxLZYDJADD.Font = new System.Drawing.Font("宋体", 12F);
             this.textBoxLZYDJADD.ForeColor = System.Drawing.Color.Blue;
             this.textBoxLZYDJADD.Location = new System.Drawing.Point(445, 425);
-            this.textBoxLZYDJADD.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxLZYDJADD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLZYDJADD.Name = "textBoxLZYDJADD";
             this.textBoxLZYDJADD.Size = new System.Drawing.Size(109, 30);
             this.textBoxLZYDJADD.TabIndex = 163;
@@ -3517,7 +3516,7 @@
             "2400,N,8,1",
             "1200,N,8,1"});
             this.comboBoxNOxCkpz.Location = new System.Drawing.Point(796, 328);
-            this.comboBoxNOxCkpz.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxNOxCkpz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxNOxCkpz.Name = "comboBoxNOxCkpz";
             this.comboBoxNOxCkpz.Size = new System.Drawing.Size(163, 28);
             this.comboBoxNOxCkpz.TabIndex = 161;
@@ -3544,7 +3543,7 @@
             "无",
             "mqw_5101"});
             this.comboBoxNOxXh.Location = new System.Drawing.Point(235, 328);
-            this.comboBoxNOxXh.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxNOxXh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxNOxXh.Name = "comboBoxNOxXh";
             this.comboBoxNOxXh.Size = new System.Drawing.Size(120, 28);
             this.comboBoxNOxXh.TabIndex = 157;
@@ -3574,7 +3573,7 @@
             "COM5",
             "COM6"});
             this.comboBoxNOxCk.Location = new System.Drawing.Point(523, 328);
-            this.comboBoxNOxCk.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxNOxCk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxNOxCk.Name = "comboBoxNOxCk";
             this.comboBoxNOxCk.Size = new System.Drawing.Size(160, 28);
             this.comboBoxNOxCk.TabIndex = 159;
@@ -3596,7 +3595,7 @@
             this.panel1.BackColor = System.Drawing.Color.Gray;
             this.panel1.Controls.Add(this.label40);
             this.panel1.Location = new System.Drawing.Point(0, 6);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1355, 34);
             this.panel1.TabIndex = 122;
@@ -3619,7 +3618,7 @@
             this.checkBoxDisplayJudge.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxDisplayJudge.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxDisplayJudge.Location = new System.Drawing.Point(1087, 159);
-            this.checkBoxDisplayJudge.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxDisplayJudge.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDisplayJudge.Name = "checkBoxDisplayJudge";
             this.checkBoxDisplayJudge.Size = new System.Drawing.Size(231, 24);
             this.checkBoxDisplayJudge.TabIndex = 156;
@@ -3649,7 +3648,7 @@
             "9600,N,8,1",
             "4800,N,8,1"});
             this.comboBoxCgjckpzz.Location = new System.Drawing.Point(671, 79);
-            this.comboBoxCgjckpzz.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxCgjckpzz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCgjckpzz.Name = "comboBoxCgjckpzz";
             this.comboBoxCgjckpzz.Size = new System.Drawing.Size(264, 28);
             this.comboBoxCgjckpzz.TabIndex = 152;
@@ -3660,7 +3659,7 @@
             this.checkBoxIsYdjNhSelfUse.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxIsYdjNhSelfUse.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxIsYdjNhSelfUse.Location = new System.Drawing.Point(1216, 259);
-            this.checkBoxIsYdjNhSelfUse.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxIsYdjNhSelfUse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxIsYdjNhSelfUse.Name = "checkBoxIsYdjNhSelfUse";
             this.checkBoxIsYdjNhSelfUse.Size = new System.Drawing.Size(111, 24);
             this.checkBoxIsYdjNhSelfUse.TabIndex = 147;
@@ -3673,7 +3672,7 @@
             this.checkBoxIsFqyNhSelfUse.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxIsFqyNhSelfUse.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxIsFqyNhSelfUse.Location = new System.Drawing.Point(1216, 229);
-            this.checkBoxIsFqyNhSelfUse.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxIsFqyNhSelfUse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxIsFqyNhSelfUse.Name = "checkBoxIsFqyNhSelfUse";
             this.checkBoxIsFqyNhSelfUse.Size = new System.Drawing.Size(111, 24);
             this.checkBoxIsFqyNhSelfUse.TabIndex = 146;
@@ -3686,7 +3685,7 @@
             this.checkBoxGdyk.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxGdyk.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxGdyk.Location = new System.Drawing.Point(967, 51);
-            this.checkBoxGdyk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxGdyk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxGdyk.Name = "checkBoxGdyk";
             this.checkBoxGdyk.Size = new System.Drawing.Size(131, 24);
             this.checkBoxGdyk.TabIndex = 143;
@@ -3715,7 +3714,7 @@
             "使用推荐值",
             "反拖法测定"});
             this.comboBoxCgjNz.Location = new System.Drawing.Point(840, 394);
-            this.comboBoxCgjNz.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxCgjNz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCgjNz.Name = "comboBoxCgjNz";
             this.comboBoxCgjNz.Size = new System.Drawing.Size(165, 28);
             this.comboBoxCgjNz.TabIndex = 141;
@@ -3742,7 +3741,7 @@
             "1440*960",
             "1366*768"});
             this.comboBoxDriveFbl.Location = new System.Drawing.Point(660, 154);
-            this.comboBoxDriveFbl.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxDriveFbl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxDriveFbl.Name = "comboBoxDriveFbl";
             this.comboBoxDriveFbl.Size = new System.Drawing.Size(188, 28);
             this.comboBoxDriveFbl.TabIndex = 139;
@@ -3760,7 +3759,7 @@
             "COM5",
             "COM6"});
             this.comboBoxYhyck.Location = new System.Drawing.Point(353, 392);
-            this.comboBoxYhyck.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxYhyck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYhyck.Name = "comboBoxYhyck";
             this.comboBoxYhyck.Size = new System.Drawing.Size(125, 28);
             this.comboBoxYhyck.TabIndex = 135;
@@ -3801,7 +3800,7 @@
             "fly_2000",
             "nhty_1"});
             this.comboBoxYhyxh.Location = new System.Drawing.Point(116, 392);
-            this.comboBoxYhyxh.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxYhyxh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYhyxh.Name = "comboBoxYhyxh";
             this.comboBoxYhyxh.Size = new System.Drawing.Size(119, 28);
             this.comboBoxYhyxh.TabIndex = 133;
@@ -3827,7 +3826,7 @@
             "9600,N,8,1",
             "4800,N,8,1"});
             this.comboBoxYhyckpz.Location = new System.Drawing.Point(592, 392);
-            this.comboBoxYhyckpz.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxYhyckpz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYhyckpz.Name = "comboBoxYhyckpz";
             this.comboBoxYhyckpz.Size = new System.Drawing.Size(124, 28);
             this.comboBoxYhyckpz.TabIndex = 137;
@@ -3838,7 +3837,7 @@
             this.textBoxYdjL.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxYdjL.ForeColor = System.Drawing.Color.Blue;
             this.textBoxYdjL.Location = new System.Drawing.Point(888, 256);
-            this.textBoxYdjL.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxYdjL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxYdjL.Name = "textBoxYdjL";
             this.textBoxYdjL.Size = new System.Drawing.Size(71, 31);
             this.textBoxYdjL.TabIndex = 129;
@@ -3860,7 +3859,7 @@
             this.panel3.BackColor = System.Drawing.Color.Gray;
             this.panel3.Controls.Add(this.label84);
             this.panel3.Location = new System.Drawing.Point(0, 190);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1355, 34);
             this.panel3.TabIndex = 124;
@@ -3882,7 +3881,7 @@
             this.panel2.BackColor = System.Drawing.Color.Gray;
             this.panel2.Controls.Add(this.label83);
             this.panel2.Location = new System.Drawing.Point(0, 116);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1355, 34);
             this.panel2.TabIndex = 123;
@@ -3965,7 +3964,7 @@
             this.tabControlPanel2.Controls.Add(this.label18);
             this.tabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlPanel2.Location = new System.Drawing.Point(33, 0);
-            this.tabControlPanel2.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControlPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControlPanel2.Name = "tabControlPanel2";
             this.tabControlPanel2.Padding = new System.Windows.Forms.Padding(1);
             this.tabControlPanel2.Size = new System.Drawing.Size(1364, 665);
@@ -3984,7 +3983,7 @@
             this.checkBoxJH_SCREEN.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxJH_SCREEN.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxJH_SCREEN.Location = new System.Drawing.Point(9, 358);
-            this.checkBoxJH_SCREEN.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxJH_SCREEN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxJH_SCREEN.Name = "checkBoxJH_SCREEN";
             this.checkBoxJH_SCREEN.Size = new System.Drawing.Size(291, 24);
             this.checkBoxJH_SCREEN.TabIndex = 178;
@@ -4017,7 +4016,7 @@
             "东软甘肃",
             "云南保山"});
             this.comboBoxDataSecondsType.Location = new System.Drawing.Point(119, 442);
-            this.comboBoxDataSecondsType.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxDataSecondsType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxDataSecondsType.Name = "comboBoxDataSecondsType";
             this.comboBoxDataSecondsType.Size = new System.Drawing.Size(236, 28);
             this.comboBoxDataSecondsType.TabIndex = 177;
@@ -4028,7 +4027,7 @@
             this.textBoxJHLAMBDAMAX.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxJHLAMBDAMAX.ForeColor = System.Drawing.Color.Blue;
             this.textBoxJHLAMBDAMAX.Location = new System.Drawing.Point(804, 402);
-            this.textBoxJHLAMBDAMAX.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxJHLAMBDAMAX.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxJHLAMBDAMAX.Name = "textBoxJHLAMBDAMAX";
             this.textBoxJHLAMBDAMAX.Size = new System.Drawing.Size(111, 31);
             this.textBoxJHLAMBDAMAX.TabIndex = 175;
@@ -4051,7 +4050,7 @@
             this.textBoxJHLAMBDAMIN.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxJHLAMBDAMIN.ForeColor = System.Drawing.Color.Blue;
             this.textBoxJHLAMBDAMIN.Location = new System.Drawing.Point(804, 362);
-            this.textBoxJHLAMBDAMIN.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxJHLAMBDAMIN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxJHLAMBDAMIN.Name = "textBoxJHLAMBDAMIN";
             this.textBoxJHLAMBDAMIN.Size = new System.Drawing.Size(111, 31);
             this.textBoxJHLAMBDAMIN.TabIndex = 173;
@@ -4074,7 +4073,7 @@
             this.textBoxJHLBGLYJZ.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxJHLBGLYJZ.ForeColor = System.Drawing.Color.Blue;
             this.textBoxJHLBGLYJZ.Location = new System.Drawing.Point(804, 322);
-            this.textBoxJHLBGLYJZ.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxJHLBGLYJZ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxJHLBGLYJZ.Name = "textBoxJHLBGLYJZ";
             this.textBoxJHLBGLYJZ.Size = new System.Drawing.Size(111, 31);
             this.textBoxJHLBGLYJZ.TabIndex = 171;
@@ -4096,7 +4095,7 @@
             this.panel43.BackColor = System.Drawing.Color.Gray;
             this.panel43.Controls.Add(this.label181);
             this.panel43.Location = new System.Drawing.Point(0, 284);
-            this.panel43.Margin = new System.Windows.Forms.Padding(4);
+            this.panel43.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel43.Name = "panel43";
             this.panel43.Size = new System.Drawing.Size(1353, 34);
             this.panel43.TabIndex = 169;
@@ -4119,7 +4118,7 @@
             this.checkBoxJHJK.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxJHJK.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxJHJK.Location = new System.Drawing.Point(9, 325);
-            this.checkBoxJHJK.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxJHJK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxJHJK.Name = "checkBoxJHJK";
             this.checkBoxJHJK.Size = new System.Drawing.Size(211, 24);
             this.checkBoxJHJK.TabIndex = 168;
@@ -4131,7 +4130,7 @@
             this.panel4.BackColor = System.Drawing.Color.Gray;
             this.panel4.Controls.Add(this.label85);
             this.panel4.Location = new System.Drawing.Point(1, 5);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1355, 34);
             this.panel4.TabIndex = 125;
@@ -4154,7 +4153,7 @@
             this.checkBoxUseWeightWCF.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxUseWeightWCF.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxUseWeightWCF.Location = new System.Drawing.Point(11, 180);
-            this.checkBoxUseWeightWCF.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxUseWeightWCF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxUseWeightWCF.Name = "checkBoxUseWeightWCF";
             this.checkBoxUseWeightWCF.Size = new System.Drawing.Size(371, 24);
             this.checkBoxUseWeightWCF.TabIndex = 160;
@@ -4167,7 +4166,7 @@
             this.textBoxWeightWCF.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxWeightWCF.ForeColor = System.Drawing.Color.Blue;
             this.textBoxWeightWCF.Location = new System.Drawing.Point(417, 175);
-            this.textBoxWeightWCF.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxWeightWCF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxWeightWCF.Name = "textBoxWeightWCF";
             this.textBoxWeightWCF.Size = new System.Drawing.Size(909, 30);
             this.textBoxWeightWCF.TabIndex = 159;
@@ -4199,7 +4198,7 @@
             "6",
             "7"});
             this.comboBoxLEDTJPH.Location = new System.Drawing.Point(841, 79);
-            this.comboBoxLEDTJPH.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLEDTJPH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLEDTJPH.Name = "comboBoxLEDTJPH";
             this.comboBoxLEDTJPH.Size = new System.Drawing.Size(119, 28);
             this.comboBoxLEDTJPH.TabIndex = 154;
@@ -4231,7 +4230,7 @@
             "6",
             "7"});
             this.comboBoxLEDROW2.Location = new System.Drawing.Point(1249, 78);
-            this.comboBoxLEDROW2.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLEDROW2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLEDROW2.Name = "comboBoxLEDROW2";
             this.comboBoxLEDROW2.Size = new System.Drawing.Size(76, 28);
             this.comboBoxLEDROW2.TabIndex = 150;
@@ -4263,7 +4262,7 @@
             "6",
             "7"});
             this.comboBoxLEDROW1.Location = new System.Drawing.Point(1076, 79);
-            this.comboBoxLEDROW1.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLEDROW1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLEDROW1.Name = "comboBoxLEDROW1";
             this.comboBoxLEDROW1.Size = new System.Drawing.Size(73, 28);
             this.comboBoxLEDROW1.TabIndex = 148;
@@ -4280,7 +4279,7 @@
             "3",
             "4"});
             this.comboBoxCarGd.Location = new System.Drawing.Point(659, 251);
-            this.comboBoxCarGd.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxCarGd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCarGd.Name = "comboBoxCarGd";
             this.comboBoxCarGd.Size = new System.Drawing.Size(125, 28);
             this.comboBoxCarGd.TabIndex = 145;
@@ -4303,7 +4302,7 @@
             this.checkBoxTPWSD.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxTPWSD.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxTPWSD.Location = new System.Drawing.Point(743, 145);
-            this.checkBoxTPWSD.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxTPWSD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxTPWSD.Name = "checkBoxTPWSD";
             this.checkBoxTPWSD.Size = new System.Drawing.Size(291, 24);
             this.checkBoxTPWSD.TabIndex = 132;
@@ -4316,7 +4315,7 @@
             this.textBoxBrakePWM.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxBrakePWM.ForeColor = System.Drawing.Color.Blue;
             this.textBoxBrakePWM.Location = new System.Drawing.Point(1076, 44);
-            this.textBoxBrakePWM.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxBrakePWM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxBrakePWM.Name = "textBoxBrakePWM";
             this.textBoxBrakePWM.Size = new System.Drawing.Size(111, 31);
             this.textBoxBrakePWM.TabIndex = 131;
@@ -4338,7 +4337,7 @@
             this.panel5.BackColor = System.Drawing.Color.Gray;
             this.panel5.Controls.Add(this.label86);
             this.panel5.Location = new System.Drawing.Point(1, 212);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1353, 34);
             this.panel5.TabIndex = 126;
@@ -4366,7 +4365,7 @@
             this.panel6.BackColor = System.Drawing.Color.Gray;
             this.panel6.Controls.Add(this.buttonSaveEquipment);
             this.panel6.Location = new System.Drawing.Point(4, 672);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1401, 40);
             this.panel6.TabIndex = 127;
@@ -4377,9 +4376,9 @@
             this.tabPage2.Controls.Add(this.panelASM);
             this.tabPage2.Controls.Add(this.panel11);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage2.Size = new System.Drawing.Size(1408, 720);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "稳态工况法";
@@ -4420,7 +4419,7 @@
             this.panelASMSETTINGS.Controls.Add(this.checkBoxAsmDispData);
             this.panelASMSETTINGS.Enabled = false;
             this.panelASMSETTINGS.Location = new System.Drawing.Point(0, 0);
-            this.panelASMSETTINGS.Margin = new System.Windows.Forms.Padding(4);
+            this.panelASMSETTINGS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelASMSETTINGS.Name = "panelASMSETTINGS";
             this.panelASMSETTINGS.Size = new System.Drawing.Size(1401, 284);
             this.panelASMSETTINGS.TabIndex = 142;
@@ -4431,7 +4430,7 @@
             this.checkBoxAsm_nozero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxAsm_nozero.ForeColor = System.Drawing.Color.Black;
             this.checkBoxAsm_nozero.Location = new System.Drawing.Point(1099, 172);
-            this.checkBoxAsm_nozero.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxAsm_nozero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsm_nozero.Name = "checkBoxAsm_nozero";
             this.checkBoxAsm_nozero.Size = new System.Drawing.Size(131, 24);
             this.checkBoxAsm_nozero.TabIndex = 154;
@@ -4454,7 +4453,7 @@
             this.panel14.BackColor = System.Drawing.Color.Gray;
             this.panel14.Controls.Add(this.label93);
             this.panel14.Location = new System.Drawing.Point(0, 4);
-            this.panel14.Margin = new System.Windows.Forms.Padding(4);
+            this.panel14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(1401, 34);
             this.panel14.TabIndex = 128;
@@ -4492,7 +4491,7 @@
             "废气仪",
             "南华附件"});
             this.comboBoxYWJ_ASM.Location = new System.Drawing.Point(93, 246);
-            this.comboBoxYWJ_ASM.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxYWJ_ASM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYWJ_ASM.Name = "comboBoxYWJ_ASM";
             this.comboBoxYWJ_ASM.Size = new System.Drawing.Size(173, 28);
             this.comboBoxYWJ_ASM.TabIndex = 152;
@@ -4503,7 +4502,7 @@
             this.textBox3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox3.ForeColor = System.Drawing.Color.Blue;
             this.textBox3.Location = new System.Drawing.Point(1063, 89);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(101, 30);
             this.textBox3.TabIndex = 140;
@@ -4514,7 +4513,7 @@
             this.panel44.BackColor = System.Drawing.Color.Gray;
             this.panel44.Controls.Add(this.label195);
             this.panel44.Location = new System.Drawing.Point(1, 205);
-            this.panel44.Margin = new System.Windows.Forms.Padding(4);
+            this.panel44.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel44.Name = "panel44";
             this.panel44.Size = new System.Drawing.Size(1401, 34);
             this.panel44.TabIndex = 151;
@@ -4548,7 +4547,7 @@
             this.textBox2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox2.ForeColor = System.Drawing.Color.Blue;
             this.textBox2.Location = new System.Drawing.Point(704, 44);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(109, 30);
             this.textBox2.TabIndex = 137;
@@ -4581,7 +4580,7 @@
             this.panel13.BackColor = System.Drawing.Color.Gray;
             this.panel13.Controls.Add(this.label92);
             this.panel13.Location = new System.Drawing.Point(0, 128);
-            this.panel13.Margin = new System.Windows.Forms.Padding(4);
+            this.panel13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(1401, 34);
             this.panel13.TabIndex = 129;
@@ -4604,7 +4603,7 @@
             this.textBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox1.ForeColor = System.Drawing.Color.Blue;
             this.textBox1.Location = new System.Drawing.Point(436, 44);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(109, 30);
             this.textBox1.TabIndex = 134;
@@ -4632,7 +4631,7 @@
             this.panelASM.Controls.Add(this.checkBoxAsmGljk);
             this.panelASM.Controls.Add(this.checkBoxAsmNdjk);
             this.panelASM.Location = new System.Drawing.Point(3, 290);
-            this.panelASM.Margin = new System.Windows.Forms.Padding(4);
+            this.panelASM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelASM.Name = "panelASM";
             this.panelASM.Size = new System.Drawing.Size(1400, 118);
             this.panelASM.TabIndex = 133;
@@ -4643,7 +4642,7 @@
             this.checkBoxAsmHalfXzKsgk.AutoSize = true;
             this.checkBoxAsmHalfXzKsgk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxAsmHalfXzKsgk.Location = new System.Drawing.Point(227, 75);
-            this.checkBoxAsmHalfXzKsgk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxAsmHalfXzKsgk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxAsmHalfXzKsgk.Name = "checkBoxAsmHalfXzKsgk";
             this.checkBoxAsmHalfXzKsgk.Size = new System.Drawing.Size(221, 24);
             this.checkBoxAsmHalfXzKsgk.TabIndex = 134;
@@ -4655,7 +4654,7 @@
             this.checkBox05Sdjk.AutoSize = true;
             this.checkBox05Sdjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBox05Sdjk.Location = new System.Drawing.Point(9, 75);
-            this.checkBox05Sdjk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBox05Sdjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBox05Sdjk.Name = "checkBox05Sdjk";
             this.checkBox05Sdjk.Size = new System.Drawing.Size(141, 24);
             this.checkBox05Sdjk.TabIndex = 133;
@@ -4667,7 +4666,7 @@
             this.panel12.BackColor = System.Drawing.Color.Gray;
             this.panel12.Controls.Add(this.label104);
             this.panel12.Location = new System.Drawing.Point(1, 1);
-            this.panel12.Margin = new System.Windows.Forms.Padding(4);
+            this.panel12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(1399, 34);
             this.panel12.TabIndex = 132;
@@ -4689,7 +4688,7 @@
             this.panel11.BackColor = System.Drawing.Color.Gray;
             this.panel11.Controls.Add(this.buttonAsmSave);
             this.panel11.Location = new System.Drawing.Point(4, 672);
-            this.panel11.Margin = new System.Windows.Forms.Padding(4);
+            this.panel11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(1401, 41);
             this.panel11.TabIndex = 131;
@@ -4700,7 +4699,7 @@
             this.tabPage3.Controls.Add(this.panelVMAS);
             this.tabPage3.Controls.Add(this.panel23);
             this.tabPage3.Location = new System.Drawing.Point(4, 28);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1408, 720);
             this.tabPage3.TabIndex = 2;
@@ -4754,7 +4753,7 @@
             this.panelVMASSETTINGS.Controls.Add(this.label22);
             this.panelVMASSETTINGS.Enabled = false;
             this.panelVMASSETTINGS.Location = new System.Drawing.Point(4, 0);
-            this.panelVMASSETTINGS.Margin = new System.Windows.Forms.Padding(4);
+            this.panelVMASSETTINGS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelVMASSETTINGS.Name = "panelVMASSETTINGS";
             this.panelVMASSETTINGS.Size = new System.Drawing.Size(1401, 386);
             this.panelVMASSETTINGS.TabIndex = 140;
@@ -4765,7 +4764,7 @@
             this.checkBoxVmas_norezero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVmas_norezero.ForeColor = System.Drawing.Color.Black;
             this.checkBoxVmas_norezero.Location = new System.Drawing.Point(896, 246);
-            this.checkBoxVmas_norezero.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxVmas_norezero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVmas_norezero.Name = "checkBoxVmas_norezero";
             this.checkBoxVmas_norezero.Size = new System.Drawing.Size(131, 24);
             this.checkBoxVmas_norezero.TabIndex = 144;
@@ -4777,9 +4776,9 @@
             this.groupBox2.Controls.Add(this.radioButtonCjAfterTl);
             this.groupBox2.Controls.Add(this.radioButtonCjBeforeTl);
             this.groupBox2.Location = new System.Drawing.Point(555, 311);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Size = new System.Drawing.Size(520, 71);
             this.groupBox2.TabIndex = 143;
             this.groupBox2.TabStop = false;
@@ -4790,7 +4789,7 @@
             this.radioButtonCjAfterTl.AutoSize = true;
             this.radioButtonCjAfterTl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonCjAfterTl.Location = new System.Drawing.Point(356, 32);
-            this.radioButtonCjAfterTl.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonCjAfterTl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonCjAfterTl.Name = "radioButtonCjAfterTl";
             this.radioButtonCjAfterTl.Size = new System.Drawing.Size(130, 24);
             this.radioButtonCjAfterTl.TabIndex = 64;
@@ -4803,7 +4802,7 @@
             this.radioButtonCjBeforeTl.AutoSize = true;
             this.radioButtonCjBeforeTl.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonCjBeforeTl.Location = new System.Drawing.Point(27, 32);
-            this.radioButtonCjBeforeTl.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonCjBeforeTl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonCjBeforeTl.Name = "radioButtonCjBeforeTl";
             this.radioButtonCjBeforeTl.Size = new System.Drawing.Size(130, 24);
             this.radioButtonCjBeforeTl.TabIndex = 63;
@@ -4817,7 +4816,7 @@
             this.textBoxVmasNdccsj.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxVmasNdccsj.ForeColor = System.Drawing.Color.Blue;
             this.textBoxVmasNdccsj.Location = new System.Drawing.Point(523, 45);
-            this.textBoxVmasNdccsj.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxVmasNdccsj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVmasNdccsj.Name = "textBoxVmasNdccsj";
             this.textBoxVmasNdccsj.Size = new System.Drawing.Size(123, 30);
             this.textBoxVmasNdccsj.TabIndex = 140;
@@ -4849,7 +4848,7 @@
             this.panel26.BackColor = System.Drawing.Color.Gray;
             this.panel26.Controls.Add(this.label102);
             this.panel26.Location = new System.Drawing.Point(1, 4);
-            this.panel26.Margin = new System.Windows.Forms.Padding(4);
+            this.panel26.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel26.Name = "panel26";
             this.panel26.Size = new System.Drawing.Size(1400, 34);
             this.panel26.TabIndex = 132;
@@ -4872,7 +4871,7 @@
             this.textBox4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox4.ForeColor = System.Drawing.Color.Blue;
             this.textBox4.Location = new System.Drawing.Point(208, 154);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(81, 30);
             this.textBox4.TabIndex = 137;
@@ -4905,7 +4904,7 @@
             this.panel25.BackColor = System.Drawing.Color.Gray;
             this.panel25.Controls.Add(this.label101);
             this.panel25.Location = new System.Drawing.Point(1, 205);
-            this.panel25.Margin = new System.Windows.Forms.Padding(4);
+            this.panel25.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(1400, 34);
             this.panel25.TabIndex = 133;
@@ -4934,7 +4933,7 @@
             this.panelVMAS.Controls.Add(this.checkBoxVmasXsbjk);
             this.panelVMAS.Controls.Add(this.checkBoxVmasJzgljk);
             this.panelVMAS.Location = new System.Drawing.Point(4, 385);
-            this.panelVMAS.Margin = new System.Windows.Forms.Padding(4);
+            this.panelVMAS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelVMAS.Name = "panelVMAS";
             this.panelVMAS.Size = new System.Drawing.Size(1401, 196);
             this.panelVMAS.TabIndex = 136;
@@ -4945,7 +4944,7 @@
             this.checkBoxVMAS_CO2ANDO2.AutoSize = true;
             this.checkBoxVMAS_CO2ANDO2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxVMAS_CO2ANDO2.Location = new System.Drawing.Point(19, 42);
-            this.checkBoxVMAS_CO2ANDO2.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxVMAS_CO2ANDO2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxVMAS_CO2ANDO2.Name = "checkBoxVMAS_CO2ANDO2";
             this.checkBoxVMAS_CO2ANDO2.Size = new System.Drawing.Size(151, 24);
             this.checkBoxVMAS_CO2ANDO2.TabIndex = 133;
@@ -4957,7 +4956,7 @@
             this.panel27.BackColor = System.Drawing.Color.Gray;
             this.panel27.Controls.Add(this.label105);
             this.panel27.Location = new System.Drawing.Point(1, 1);
-            this.panel27.Margin = new System.Windows.Forms.Padding(4);
+            this.panel27.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel27.Name = "panel27";
             this.panel27.Size = new System.Drawing.Size(1400, 34);
             this.panel27.TabIndex = 132;
@@ -4979,7 +4978,7 @@
             this.panel23.BackColor = System.Drawing.Color.Gray;
             this.panel23.Controls.Add(this.buttonVmasSave);
             this.panel23.Location = new System.Drawing.Point(4, 670);
-            this.panel23.Margin = new System.Windows.Forms.Padding(4);
+            this.panel23.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(1401, 41);
             this.panel23.TabIndex = 135;
@@ -4989,7 +4988,7 @@
             this.tabPage4.Controls.Add(this.panelJZJS);
             this.tabPage4.Controls.Add(this.panel10);
             this.tabPage4.Location = new System.Drawing.Point(4, 28);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(1408, 720);
             this.tabPage4.TabIndex = 3;
@@ -5043,7 +5042,7 @@
             this.panelJZJS.Controls.Add(this.radioButtonLugdownHgl);
             this.panelJZJS.Enabled = false;
             this.panelJZJS.Location = new System.Drawing.Point(4, 4);
-            this.panelJZJS.Margin = new System.Windows.Forms.Padding(4);
+            this.panelJZJS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelJZJS.Name = "panelJZJS";
             this.panelJZJS.Size = new System.Drawing.Size(1401, 582);
             this.panelJZJS.TabIndex = 128;
@@ -5054,7 +5053,7 @@
             this.checkBoxLudown_prepare.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLudown_prepare.ForeColor = System.Drawing.Color.Red;
             this.checkBoxLudown_prepare.Location = new System.Drawing.Point(9, 242);
-            this.checkBoxLudown_prepare.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxLudown_prepare.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLudown_prepare.Name = "checkBoxLudown_prepare";
             this.checkBoxLudown_prepare.Size = new System.Drawing.Size(351, 24);
             this.checkBoxLudown_prepare.TabIndex = 162;
@@ -5067,7 +5066,7 @@
             this.panel45.Controls.Add(this.radioButtonLugdown_MaxRPM_KD);
             this.panel45.Controls.Add(this.radioButtonLugdown_MaxRPM_SD);
             this.panel45.Location = new System.Drawing.Point(5, 191);
-            this.panel45.Margin = new System.Windows.Forms.Padding(4);
+            this.panel45.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel45.Name = "panel45";
             this.panel45.Size = new System.Drawing.Size(1000, 39);
             this.panel45.TabIndex = 161;
@@ -5088,7 +5087,7 @@
             this.radioButtonLugdown_MaxRPM_KD.AutoSize = true;
             this.radioButtonLugdown_MaxRPM_KD.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonLugdown_MaxRPM_KD.Location = new System.Drawing.Point(248, 6);
-            this.radioButtonLugdown_MaxRPM_KD.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonLugdown_MaxRPM_KD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonLugdown_MaxRPM_KD.Name = "radioButtonLugdown_MaxRPM_KD";
             this.radioButtonLugdown_MaxRPM_KD.Size = new System.Drawing.Size(170, 24);
             this.radioButtonLugdown_MaxRPM_KD.TabIndex = 64;
@@ -5101,7 +5100,7 @@
             this.radioButtonLugdown_MaxRPM_SD.AutoSize = true;
             this.radioButtonLugdown_MaxRPM_SD.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonLugdown_MaxRPM_SD.Location = new System.Drawing.Point(645, 6);
-            this.radioButtonLugdown_MaxRPM_SD.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonLugdown_MaxRPM_SD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonLugdown_MaxRPM_SD.Name = "radioButtonLugdown_MaxRPM_SD";
             this.radioButtonLugdown_MaxRPM_SD.Size = new System.Drawing.Size(130, 24);
             this.radioButtonLugdown_MaxRPM_SD.TabIndex = 65;
@@ -5126,7 +5125,7 @@
             this.textBoxLugdown_cl_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxLugdown_cl_ydjk.ForeColor = System.Drawing.Color.Blue;
             this.textBoxLugdown_cl_ydjk.Location = new System.Drawing.Point(967, 439);
-            this.textBoxLugdown_cl_ydjk.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxLugdown_cl_ydjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLugdown_cl_ydjk.Name = "textBoxLugdown_cl_ydjk";
             this.textBoxLugdown_cl_ydjk.Size = new System.Drawing.Size(94, 30);
             this.textBoxLugdown_cl_ydjk.TabIndex = 158;
@@ -5148,7 +5147,7 @@
             this.checkBoxLugdown_cl_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLugdown_cl_ydjk.ForeColor = System.Drawing.Color.Red;
             this.checkBoxLugdown_cl_ydjk.Location = new System.Drawing.Point(9, 440);
-            this.checkBoxLugdown_cl_ydjk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxLugdown_cl_ydjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLugdown_cl_ydjk.Name = "checkBoxLugdown_cl_ydjk";
             this.checkBoxLugdown_cl_ydjk.Size = new System.Drawing.Size(631, 24);
             this.checkBoxLugdown_cl_ydjk.TabIndex = 157;
@@ -5172,7 +5171,7 @@
             this.textBoxLugdown_glsm_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxLugdown_glsm_ydjk.ForeColor = System.Drawing.Color.Blue;
             this.textBoxLugdown_glsm_ydjk.Location = new System.Drawing.Point(967, 406);
-            this.textBoxLugdown_glsm_ydjk.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxLugdown_glsm_ydjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLugdown_glsm_ydjk.Name = "textBoxLugdown_glsm_ydjk";
             this.textBoxLugdown_glsm_ydjk.Size = new System.Drawing.Size(94, 30);
             this.textBoxLugdown_glsm_ydjk.TabIndex = 154;
@@ -5194,7 +5193,7 @@
             this.checkBoxLugdown_glsm_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLugdown_glsm_ydjk.ForeColor = System.Drawing.Color.Red;
             this.checkBoxLugdown_glsm_ydjk.Location = new System.Drawing.Point(9, 408);
-            this.checkBoxLugdown_glsm_ydjk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxLugdown_glsm_ydjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLugdown_glsm_ydjk.Name = "checkBoxLugdown_glsm_ydjk";
             this.checkBoxLugdown_glsm_ydjk.Size = new System.Drawing.Size(431, 24);
             this.checkBoxLugdown_glsm_ydjk.TabIndex = 153;
@@ -5222,7 +5221,7 @@
             "烟度计",
             "南华附件"});
             this.comboBoxYWJ_LUGDOWN.Location = new System.Drawing.Point(735, 516);
-            this.comboBoxYWJ_LUGDOWN.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxYWJ_LUGDOWN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYWJ_LUGDOWN.Name = "comboBoxYWJ_LUGDOWN";
             this.comboBoxYWJ_LUGDOWN.Size = new System.Drawing.Size(173, 28);
             this.comboBoxYWJ_LUGDOWN.TabIndex = 151;
@@ -5244,7 +5243,7 @@
             this.textBoxLug_gljk_value.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxLug_gljk_value.ForeColor = System.Drawing.Color.Blue;
             this.textBoxLug_gljk_value.Location = new System.Drawing.Point(967, 374);
-            this.textBoxLug_gljk_value.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxLug_gljk_value.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxLug_gljk_value.Name = "textBoxLug_gljk_value";
             this.textBoxLug_gljk_value.Size = new System.Drawing.Size(94, 30);
             this.textBoxLug_gljk_value.TabIndex = 134;
@@ -5266,7 +5265,7 @@
             this.checkBoxLugdownGljk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLugdownGljk.ForeColor = System.Drawing.Color.Red;
             this.checkBoxLugdownGljk.Location = new System.Drawing.Point(9, 375);
-            this.checkBoxLugdownGljk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxLugdownGljk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLugdownGljk.Name = "checkBoxLugdownGljk";
             this.checkBoxLugdownGljk.Size = new System.Drawing.Size(751, 24);
             this.checkBoxLugdownGljk.TabIndex = 133;
@@ -5279,7 +5278,7 @@
             this.checkBoxLugdownJcNox.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLugdownJcNox.ForeColor = System.Drawing.Color.Red;
             this.checkBoxLugdownJcNox.Location = new System.Drawing.Point(1015, 45);
-            this.checkBoxLugdownJcNox.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxLugdownJcNox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLugdownJcNox.Name = "checkBoxLugdownJcNox";
             this.checkBoxLugdownJcNox.Size = new System.Drawing.Size(101, 24);
             this.checkBoxLugdownJcNox.TabIndex = 132;
@@ -5292,7 +5291,7 @@
             this.checkBoxGSKHGPD.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxGSKHGPD.ForeColor = System.Drawing.Color.Red;
             this.checkBoxGSKHGPD.Location = new System.Drawing.Point(9, 342);
-            this.checkBoxGSKHGPD.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxGSKHGPD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxGSKHGPD.Name = "checkBoxGSKHGPD";
             this.checkBoxGSKHGPD.Size = new System.Drawing.Size(911, 24);
             this.checkBoxGSKHGPD.TabIndex = 131;
@@ -5305,7 +5304,7 @@
             this.checkBoxGSKCBPD.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxGSKCBPD.ForeColor = System.Drawing.Color.Red;
             this.checkBoxGSKCBPD.Location = new System.Drawing.Point(9, 310);
-            this.checkBoxGSKCBPD.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxGSKCBPD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxGSKCBPD.Name = "checkBoxGSKCBPD";
             this.checkBoxGSKCBPD.Size = new System.Drawing.Size(861, 24);
             this.checkBoxGSKCBPD.TabIndex = 130;
@@ -5318,7 +5317,7 @@
             this.checkBoxGSMAXPPD.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxGSMAXPPD.ForeColor = System.Drawing.Color.Red;
             this.checkBoxGSMAXPPD.Location = new System.Drawing.Point(9, 278);
-            this.checkBoxGSMAXPPD.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxGSMAXPPD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxGSMAXPPD.Name = "checkBoxGSMAXPPD";
             this.checkBoxGSMAXPPD.Size = new System.Drawing.Size(601, 24);
             this.checkBoxGSMAXPPD.TabIndex = 129;
@@ -5331,7 +5330,7 @@
             this.panel34.Controls.Add(this.radioButtonLugMaxHpGlsm);
             this.panel34.Controls.Add(this.radioButtonLugMaxHpVelmaxhp);
             this.panel34.Location = new System.Drawing.Point(5, 151);
-            this.panel34.Margin = new System.Windows.Forms.Padding(4);
+            this.panel34.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel34.Name = "panel34";
             this.panel34.Size = new System.Drawing.Size(1000, 39);
             this.panel34.TabIndex = 128;
@@ -5352,7 +5351,7 @@
             this.radioButtonLugMaxHpGlsm.AutoSize = true;
             this.radioButtonLugMaxHpGlsm.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonLugMaxHpGlsm.Location = new System.Drawing.Point(248, 6);
-            this.radioButtonLugMaxHpGlsm.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonLugMaxHpGlsm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonLugMaxHpGlsm.Name = "radioButtonLugMaxHpGlsm";
             this.radioButtonLugMaxHpGlsm.Size = new System.Drawing.Size(210, 24);
             this.radioButtonLugMaxHpGlsm.TabIndex = 64;
@@ -5365,7 +5364,7 @@
             this.radioButtonLugMaxHpVelmaxhp.AutoSize = true;
             this.radioButtonLugMaxHpVelmaxhp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonLugMaxHpVelmaxhp.Location = new System.Drawing.Point(645, 6);
-            this.radioButtonLugMaxHpVelmaxhp.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonLugMaxHpVelmaxhp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonLugMaxHpVelmaxhp.Name = "radioButtonLugMaxHpVelmaxhp";
             this.radioButtonLugMaxHpVelmaxhp.Size = new System.Drawing.Size(210, 24);
             this.radioButtonLugMaxHpVelmaxhp.TabIndex = 65;
@@ -5379,7 +5378,7 @@
             this.checkBoxLugdownZsPd.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLugdownZsPd.ForeColor = System.Drawing.Color.Red;
             this.checkBoxLugdownZsPd.Location = new System.Drawing.Point(436, 124);
-            this.checkBoxLugdownZsPd.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxLugdownZsPd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLugdownZsPd.Name = "checkBoxLugdownZsPd";
             this.checkBoxLugdownZsPd.Size = new System.Drawing.Size(171, 24);
             this.checkBoxLugdownZsPd.TabIndex = 127;
@@ -5391,7 +5390,7 @@
             this.panel7.BackColor = System.Drawing.Color.Gray;
             this.panel7.Controls.Add(this.label87);
             this.panel7.Location = new System.Drawing.Point(0, 4);
-            this.panel7.Margin = new System.Windows.Forms.Padding(4);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1401, 34);
             this.panel7.TabIndex = 123;
@@ -5424,7 +5423,7 @@
             this.panel9.BackColor = System.Drawing.Color.Gray;
             this.panel9.Controls.Add(this.label89);
             this.panel9.Location = new System.Drawing.Point(4, 476);
-            this.panel9.Margin = new System.Windows.Forms.Padding(4);
+            this.panel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1401, 34);
             this.panel9.TabIndex = 125;
@@ -5446,7 +5445,7 @@
             this.panel8.BackColor = System.Drawing.Color.Gray;
             this.panel8.Controls.Add(this.label88);
             this.panel8.Location = new System.Drawing.Point(0, 80);
-            this.panel8.Margin = new System.Windows.Forms.Padding(4);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(1401, 34);
             this.panel8.TabIndex = 124;
@@ -5468,7 +5467,7 @@
             this.panel10.BackColor = System.Drawing.Color.Gray;
             this.panel10.Controls.Add(this.buttonLugdownSave);
             this.panel10.Location = new System.Drawing.Point(4, 671);
-            this.panel10.Margin = new System.Windows.Forms.Padding(4);
+            this.panel10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(1401, 41);
             this.panel10.TabIndex = 127;
@@ -5479,7 +5478,7 @@
             this.tabPage5.Controls.Add(this.panelSDS);
             this.tabPage5.Controls.Add(this.panel15);
             this.tabPage5.Location = new System.Drawing.Point(4, 28);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(1408, 720);
             this.tabPage5.TabIndex = 4;
@@ -5524,7 +5523,7 @@
             this.panelSDSSETTINGS.Controls.Add(this.label9);
             this.panelSDSSETTINGS.Enabled = false;
             this.panelSDSSETTINGS.Location = new System.Drawing.Point(4, 4);
-            this.panelSDSSETTINGS.Margin = new System.Windows.Forms.Padding(4);
+            this.panelSDSSETTINGS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelSDSSETTINGS.Name = "panelSDSSETTINGS";
             this.panelSDSSETTINGS.Size = new System.Drawing.Size(1401, 394);
             this.panelSDSSETTINGS.TabIndex = 138;
@@ -5535,7 +5534,7 @@
             this.checkBoxSds_norezero.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxSds_norezero.ForeColor = System.Drawing.Color.Black;
             this.checkBoxSds_norezero.Location = new System.Drawing.Point(920, 121);
-            this.checkBoxSds_norezero.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxSds_norezero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSds_norezero.Name = "checkBoxSds_norezero";
             this.checkBoxSds_norezero.Size = new System.Drawing.Size(131, 24);
             this.checkBoxSds_norezero.TabIndex = 151;
@@ -5563,7 +5562,7 @@
             "废气仪",
             "南华附件"});
             this.comboBoxYWJ_SDS.Location = new System.Drawing.Point(777, 351);
-            this.comboBoxYWJ_SDS.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxYWJ_SDS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYWJ_SDS.Name = "comboBoxYWJ_SDS";
             this.comboBoxYWJ_SDS.Size = new System.Drawing.Size(173, 28);
             this.comboBoxYWJ_SDS.TabIndex = 149;
@@ -5574,7 +5573,7 @@
             this.checkBoxSdsSureTemp.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxSdsSureTemp.ForeColor = System.Drawing.Color.Red;
             this.checkBoxSdsSureTemp.Location = new System.Drawing.Point(641, 121);
-            this.checkBoxSdsSureTemp.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxSdsSureTemp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxSdsSureTemp.Name = "checkBoxSdsSureTemp";
             this.checkBoxSdsSureTemp.Size = new System.Drawing.Size(231, 24);
             this.checkBoxSdsSureTemp.TabIndex = 148;
@@ -5603,7 +5602,7 @@
             "累计计时",
             "重新计时"});
             this.comboBoxLTest.Location = new System.Drawing.Point(452, 271);
-            this.comboBoxLTest.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLTest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLTest.Name = "comboBoxLTest";
             this.comboBoxLTest.Size = new System.Drawing.Size(165, 28);
             this.comboBoxLTest.TabIndex = 146;
@@ -5631,7 +5630,7 @@
             "累计计时",
             "重新计时"});
             this.comboBoxLPrepare.Location = new System.Drawing.Point(141, 271);
-            this.comboBoxLPrepare.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxLPrepare.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxLPrepare.Name = "comboBoxLPrepare";
             this.comboBoxLPrepare.Size = new System.Drawing.Size(165, 28);
             this.comboBoxLPrepare.TabIndex = 144;
@@ -5658,7 +5657,7 @@
             "累计计时",
             "重新计时"});
             this.comboBoxHTest.Location = new System.Drawing.Point(452, 234);
-            this.comboBoxHTest.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxHTest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxHTest.Name = "comboBoxHTest";
             this.comboBoxHTest.Size = new System.Drawing.Size(165, 28);
             this.comboBoxHTest.TabIndex = 142;
@@ -5684,7 +5683,7 @@
             "累计计时",
             "重新计时"});
             this.comboBoxHPrepare.Location = new System.Drawing.Point(141, 234);
-            this.comboBoxHPrepare.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxHPrepare.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxHPrepare.Name = "comboBoxHPrepare";
             this.comboBoxHPrepare.Size = new System.Drawing.Size(165, 28);
             this.comboBoxHPrepare.TabIndex = 140;
@@ -5694,7 +5693,7 @@
             this.panel24.BackColor = System.Drawing.Color.Gray;
             this.panel24.Controls.Add(this.label121);
             this.panel24.Location = new System.Drawing.Point(0, 154);
-            this.panel24.Margin = new System.Windows.Forms.Padding(4);
+            this.panel24.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(1401, 34);
             this.panel24.TabIndex = 139;
@@ -5733,7 +5732,7 @@
             "重新计时",
             "达到3500转即可"});
             this.comboBox3500.Location = new System.Drawing.Point(141, 195);
-            this.comboBox3500.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBox3500.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox3500.Name = "comboBox3500";
             this.comboBox3500.Size = new System.Drawing.Size(165, 28);
             this.comboBox3500.TabIndex = 137;
@@ -5743,7 +5742,7 @@
             this.panel18.BackColor = System.Drawing.Color.Gray;
             this.panel18.Controls.Add(this.label96);
             this.panel18.Location = new System.Drawing.Point(0, 4);
-            this.panel18.Margin = new System.Windows.Forms.Padding(4);
+            this.panel18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(1401, 34);
             this.panel18.TabIndex = 132;
@@ -5776,7 +5775,7 @@
             this.panel17.BackColor = System.Drawing.Color.Gray;
             this.panel17.Controls.Add(this.label95);
             this.panel17.Location = new System.Drawing.Point(0, 80);
-            this.panel17.Margin = new System.Windows.Forms.Padding(4);
+            this.panel17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(1401, 34);
             this.panel17.TabIndex = 133;
@@ -5798,7 +5797,7 @@
             this.panel16.BackColor = System.Drawing.Color.Gray;
             this.panel16.Controls.Add(this.label94);
             this.panel16.Location = new System.Drawing.Point(0, 310);
-            this.panel16.Margin = new System.Windows.Forms.Padding(4);
+            this.panel16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(1401, 34);
             this.panel16.TabIndex = 134;
@@ -5823,7 +5822,7 @@
             this.panelSDS.Controls.Add(this.checkBoxSdsNdjk);
             this.panelSDS.Controls.Add(this.panel28);
             this.panelSDS.Location = new System.Drawing.Point(4, 405);
-            this.panelSDS.Margin = new System.Windows.Forms.Padding(4);
+            this.panelSDS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelSDS.Name = "panelSDS";
             this.panelSDS.Size = new System.Drawing.Size(1401, 128);
             this.panelSDS.TabIndex = 137;
@@ -5834,7 +5833,7 @@
             this.checkBoxLAMBDA_LOW.AutoSize = true;
             this.checkBoxLAMBDA_LOW.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLAMBDA_LOW.Location = new System.Drawing.Point(961, 42);
-            this.checkBoxLAMBDA_LOW.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxLAMBDA_LOW.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLAMBDA_LOW.Name = "checkBoxLAMBDA_LOW";
             this.checkBoxLAMBDA_LOW.Size = new System.Drawing.Size(171, 24);
             this.checkBoxLAMBDA_LOW.TabIndex = 134;
@@ -5846,7 +5845,7 @@
             this.checkBoxLAMBDA_HIGH.AutoSize = true;
             this.checkBoxLAMBDA_HIGH.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxLAMBDA_HIGH.Location = new System.Drawing.Point(641, 42);
-            this.checkBoxLAMBDA_HIGH.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxLAMBDA_HIGH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxLAMBDA_HIGH.Name = "checkBoxLAMBDA_HIGH";
             this.checkBoxLAMBDA_HIGH.Size = new System.Drawing.Size(191, 24);
             this.checkBoxLAMBDA_HIGH.TabIndex = 133;
@@ -5858,7 +5857,7 @@
             this.panel28.BackColor = System.Drawing.Color.Gray;
             this.panel28.Controls.Add(this.label106);
             this.panel28.Location = new System.Drawing.Point(1, 1);
-            this.panel28.Margin = new System.Windows.Forms.Padding(4);
+            this.panel28.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel28.Name = "panel28";
             this.panel28.Size = new System.Drawing.Size(1400, 34);
             this.panel28.TabIndex = 132;
@@ -5880,7 +5879,7 @@
             this.panel15.BackColor = System.Drawing.Color.Gray;
             this.panel15.Controls.Add(this.buttonSdsSave);
             this.panel15.Location = new System.Drawing.Point(4, 671);
-            this.panel15.Margin = new System.Windows.Forms.Padding(4);
+            this.panel15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(1401, 41);
             this.panel15.TabIndex = 135;
@@ -5890,7 +5889,7 @@
             this.tabPage6.Controls.Add(this.panelBTG);
             this.tabPage6.Controls.Add(this.panel19);
             this.tabPage6.Location = new System.Drawing.Point(4, 28);
-            this.tabPage6.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Size = new System.Drawing.Size(1408, 720);
             this.tabPage6.TabIndex = 5;
@@ -5926,7 +5925,7 @@
             this.panelBTG.Controls.Add(this.checkBoxBtgZsjk);
             this.panelBTG.Enabled = false;
             this.panelBTG.Location = new System.Drawing.Point(3, 5);
-            this.panelBTG.Margin = new System.Windows.Forms.Padding(4);
+            this.panelBTG.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelBTG.Name = "panelBTG";
             this.panelBTG.Size = new System.Drawing.Size(1403, 310);
             this.panelBTG.TabIndex = 139;
@@ -5948,7 +5947,7 @@
             this.textBoxBtg_cl_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxBtg_cl_ydjk.ForeColor = System.Drawing.Color.Blue;
             this.textBoxBtg_cl_ydjk.Location = new System.Drawing.Point(441, 156);
-            this.textBoxBtg_cl_ydjk.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxBtg_cl_ydjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxBtg_cl_ydjk.Name = "textBoxBtg_cl_ydjk";
             this.textBoxBtg_cl_ydjk.Size = new System.Drawing.Size(94, 30);
             this.textBoxBtg_cl_ydjk.TabIndex = 158;
@@ -5970,7 +5969,7 @@
             this.checkBoxBtg_cl_ydjk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxBtg_cl_ydjk.ForeColor = System.Drawing.Color.Red;
             this.checkBoxBtg_cl_ydjk.Location = new System.Drawing.Point(16, 158);
-            this.checkBoxBtg_cl_ydjk.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxBtg_cl_ydjk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxBtg_cl_ydjk.Name = "checkBoxBtg_cl_ydjk";
             this.checkBoxBtg_cl_ydjk.Size = new System.Drawing.Size(291, 24);
             this.checkBoxBtg_cl_ydjk.TabIndex = 157;
@@ -5998,7 +5997,7 @@
             "烟度计",
             "南华附件"});
             this.comboBoxYWJ_BTG.Location = new System.Drawing.Point(729, 251);
-            this.comboBoxYWJ_BTG.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxYWJ_BTG.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxYWJ_BTG.Name = "comboBoxYWJ_BTG";
             this.comboBoxYWJ_BTG.Size = new System.Drawing.Size(173, 28);
             this.comboBoxYWJ_BTG.TabIndex = 153;
@@ -6009,7 +6008,7 @@
             this.panel40.Controls.Add(this.radioButtonBTGDSZS);
             this.panel40.Controls.Add(this.radioButtonBTGDYZS);
             this.panel40.Location = new System.Drawing.Point(849, 40);
-            this.panel40.Margin = new System.Windows.Forms.Padding(4);
+            this.panel40.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel40.Name = "panel40";
             this.panel40.Size = new System.Drawing.Size(433, 39);
             this.panel40.TabIndex = 142;
@@ -6030,7 +6029,7 @@
             this.radioButtonBTGDSZS.AutoSize = true;
             this.radioButtonBTGDSZS.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonBTGDSZS.Location = new System.Drawing.Point(129, 6);
-            this.radioButtonBTGDSZS.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonBTGDSZS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonBTGDSZS.Name = "radioButtonBTGDSZS";
             this.radioButtonBTGDSZS.Size = new System.Drawing.Size(130, 24);
             this.radioButtonBTGDSZS.TabIndex = 64;
@@ -6043,7 +6042,7 @@
             this.radioButtonBTGDYZS.AutoSize = true;
             this.radioButtonBTGDYZS.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonBTGDYZS.Location = new System.Drawing.Point(279, 6);
-            this.radioButtonBTGDYZS.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonBTGDYZS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonBTGDYZS.Name = "radioButtonBTGDYZS";
             this.radioButtonBTGDYZS.Size = new System.Drawing.Size(130, 24);
             this.radioButtonBTGDYZS.TabIndex = 65;
@@ -6056,7 +6055,7 @@
             this.checkBoxBTGJHGCJK.AutoSize = true;
             this.checkBoxBTGJHGCJK.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBoxBTGJHGCJK.Location = new System.Drawing.Point(936, 125);
-            this.checkBoxBTGJHGCJK.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxBTGJHGCJK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxBTGJHGCJK.Name = "checkBoxBTGJHGCJK";
             this.checkBoxBTGJHGCJK.Size = new System.Drawing.Size(191, 24);
             this.checkBoxBTGJHGCJK.TabIndex = 141;
@@ -6074,7 +6073,7 @@
             "4",
             "6"});
             this.comboBoxBTGCLCS.Location = new System.Drawing.Point(692, 45);
-            this.comboBoxBTGCLCS.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxBTGCLCS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxBTGCLCS.Name = "comboBoxBTGCLCS";
             this.comboBoxBTGCLCS.Size = new System.Drawing.Size(128, 28);
             this.comboBoxBTGCLCS.TabIndex = 140;
@@ -6095,7 +6094,7 @@
             this.panel22.BackColor = System.Drawing.Color.Gray;
             this.panel22.Controls.Add(this.label99);
             this.panel22.Location = new System.Drawing.Point(0, 4);
-            this.panel22.Margin = new System.Windows.Forms.Padding(4);
+            this.panel22.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel22.Name = "panel22";
             this.panel22.Size = new System.Drawing.Size(1403, 34);
             this.panel22.TabIndex = 132;
@@ -6139,7 +6138,7 @@
             this.panel21.BackColor = System.Drawing.Color.Gray;
             this.panel21.Controls.Add(this.label98);
             this.panel21.Location = new System.Drawing.Point(0, 80);
-            this.panel21.Margin = new System.Windows.Forms.Padding(4);
+            this.panel21.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(1403, 34);
             this.panel21.TabIndex = 133;
@@ -6161,7 +6160,7 @@
             this.panel20.BackColor = System.Drawing.Color.Gray;
             this.panel20.Controls.Add(this.label97);
             this.panel20.Location = new System.Drawing.Point(0, 211);
-            this.panel20.Margin = new System.Windows.Forms.Padding(4);
+            this.panel20.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(1403, 34);
             this.panel20.TabIndex = 134;
@@ -6183,7 +6182,7 @@
             this.panel19.BackColor = System.Drawing.Color.Gray;
             this.panel19.Controls.Add(this.buttonBtgSave);
             this.panel19.Location = new System.Drawing.Point(4, 671);
-            this.panel19.Margin = new System.Windows.Forms.Padding(4);
+            this.panel19.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(1403, 41);
             this.panel19.TabIndex = 135;
@@ -6193,9 +6192,9 @@
             this.tabPage7.Controls.Add(this.panel33);
             this.tabPage7.Controls.Add(this.panel29);
             this.tabPage7.Location = new System.Drawing.Point(4, 28);
-            this.tabPage7.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPage7.Size = new System.Drawing.Size(1408, 720);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "动力性检测&油耗检测";
@@ -6206,7 +6205,7 @@
             this.panel33.BackColor = System.Drawing.Color.Gray;
             this.panel33.Controls.Add(this.button1);
             this.panel33.Location = new System.Drawing.Point(4, 672);
-            this.panel33.Margin = new System.Windows.Forms.Padding(4);
+            this.panel33.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel33.Name = "panel33";
             this.panel33.Size = new System.Drawing.Size(1401, 41);
             this.panel33.TabIndex = 141;
@@ -6215,7 +6214,7 @@
             // 
             this.button1.Font = new System.Drawing.Font("宋体", 9F);
             this.button1.Location = new System.Drawing.Point(501, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(169, 40);
             this.button1.TabIndex = 59;
@@ -6280,7 +6279,7 @@
             this.panel29.Controls.Add(this.panel32);
             this.panel29.Enabled = false;
             this.panel29.Location = new System.Drawing.Point(4, 1);
-            this.panel29.Margin = new System.Windows.Forms.Padding(4);
+            this.panel29.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel29.Name = "panel29";
             this.panel29.Size = new System.Drawing.Size(1401, 664);
             this.panel29.TabIndex = 140;
@@ -6290,7 +6289,7 @@
             this.checkBoxDynManulKey.AutoSize = true;
             this.checkBoxDynManulKey.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxDynManulKey.Location = new System.Drawing.Point(9, 290);
-            this.checkBoxDynManulKey.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxDynManulKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynManulKey.Name = "checkBoxDynManulKey";
             this.checkBoxDynManulKey.Size = new System.Drawing.Size(191, 24);
             this.checkBoxDynManulKey.TabIndex = 184;
@@ -6302,7 +6301,7 @@
             this.checkBoxDynYkqr.AutoSize = true;
             this.checkBoxDynYkqr.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxDynYkqr.Location = new System.Drawing.Point(825, 290);
-            this.checkBoxDynYkqr.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxDynYkqr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynYkqr.Name = "checkBoxDynYkqr";
             this.checkBoxDynYkqr.Size = new System.Drawing.Size(251, 24);
             this.checkBoxDynYkqr.TabIndex = 183;
@@ -6314,7 +6313,7 @@
             this.checkBoxDynFlowBack.AutoSize = true;
             this.checkBoxDynFlowBack.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxDynFlowBack.Location = new System.Drawing.Point(705, 290);
-            this.checkBoxDynFlowBack.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxDynFlowBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynFlowBack.Name = "checkBoxDynFlowBack";
             this.checkBoxDynFlowBack.Size = new System.Drawing.Size(71, 24);
             this.checkBoxDynFlowBack.TabIndex = 182;
@@ -6326,7 +6325,7 @@
             this.checkBoxDynCO2Test.AutoSize = true;
             this.checkBoxDynCO2Test.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxDynCO2Test.Location = new System.Drawing.Point(557, 290);
-            this.checkBoxDynCO2Test.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxDynCO2Test.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynCO2Test.Name = "checkBoxDynCO2Test";
             this.checkBoxDynCO2Test.Size = new System.Drawing.Size(101, 24);
             this.checkBoxDynCO2Test.TabIndex = 181;
@@ -6338,7 +6337,7 @@
             this.checkBoxDynBackTest.AutoSize = true;
             this.checkBoxDynBackTest.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxDynBackTest.Location = new System.Drawing.Point(401, 290);
-            this.checkBoxDynBackTest.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxDynBackTest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynBackTest.Name = "checkBoxDynBackTest";
             this.checkBoxDynBackTest.Size = new System.Drawing.Size(111, 24);
             this.checkBoxDynBackTest.TabIndex = 180;
@@ -6350,7 +6349,7 @@
             this.checkBoxDYNTL.AutoSize = true;
             this.checkBoxDYNTL.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxDYNTL.Location = new System.Drawing.Point(281, 290);
-            this.checkBoxDYNTL.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxDYNTL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDYNTL.Name = "checkBoxDYNTL";
             this.checkBoxDYNTL.Size = new System.Drawing.Size(71, 24);
             this.checkBoxDYNTL.TabIndex = 179;
@@ -6365,7 +6364,7 @@
             this.panel42.Controls.Add(this.checkBoxDynStopUnstable);
             this.panel42.Controls.Add(this.label180);
             this.panel42.Location = new System.Drawing.Point(5, 476);
-            this.panel42.Margin = new System.Windows.Forms.Padding(4);
+            this.panel42.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel42.Name = "panel42";
             this.panel42.Size = new System.Drawing.Size(1392, 36);
             this.panel42.TabIndex = 178;
@@ -6376,7 +6375,7 @@
             this.textBoxDynUnstableTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynUnstableTime.ForeColor = System.Drawing.Color.Blue;
             this.textBoxDynUnstableTime.Location = new System.Drawing.Point(840, 1);
-            this.textBoxDynUnstableTime.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxDynUnstableTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynUnstableTime.Name = "textBoxDynUnstableTime";
             this.textBoxDynUnstableTime.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynUnstableTime.TabIndex = 149;
@@ -6408,7 +6407,7 @@
             this.checkBoxDynStopUnstable.AutoSize = true;
             this.checkBoxDynStopUnstable.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxDynStopUnstable.Location = new System.Drawing.Point(276, 6);
-            this.checkBoxDynStopUnstable.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxDynStopUnstable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynStopUnstable.Name = "checkBoxDynStopUnstable";
             this.checkBoxDynStopUnstable.Size = new System.Drawing.Size(271, 24);
             this.checkBoxDynStopUnstable.TabIndex = 147;
@@ -6432,7 +6431,7 @@
             this.panel41.Controls.Add(this.radioButtonDynFileJson);
             this.panel41.Controls.Add(this.radioButtonDynFileIni);
             this.panel41.Location = new System.Drawing.Point(5, 552);
-            this.panel41.Margin = new System.Windows.Forms.Padding(4);
+            this.panel41.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel41.Name = "panel41";
             this.panel41.Size = new System.Drawing.Size(1392, 36);
             this.panel41.TabIndex = 177;
@@ -6453,7 +6452,7 @@
             this.radioButtonDynFileJson.AutoSize = true;
             this.radioButtonDynFileJson.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonDynFileJson.Location = new System.Drawing.Point(277, 5);
-            this.radioButtonDynFileJson.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonDynFileJson.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonDynFileJson.Name = "radioButtonDynFileJson";
             this.radioButtonDynFileJson.Size = new System.Drawing.Size(110, 24);
             this.radioButtonDynFileJson.TabIndex = 64;
@@ -6466,7 +6465,7 @@
             this.radioButtonDynFileIni.AutoSize = true;
             this.radioButtonDynFileIni.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonDynFileIni.Location = new System.Drawing.Point(605, 5);
-            this.radioButtonDynFileIni.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonDynFileIni.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonDynFileIni.Name = "radioButtonDynFileIni";
             this.radioButtonDynFileIni.Size = new System.Drawing.Size(180, 24);
             this.radioButtonDynFileIni.TabIndex = 65;
@@ -6502,7 +6501,7 @@
             this.textBoxDynVwSdqj.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynVwSdqj.ForeColor = System.Drawing.Color.Blue;
             this.textBoxDynVwSdqj.Location = new System.Drawing.Point(304, 220);
-            this.textBoxDynVwSdqj.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxDynVwSdqj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynVwSdqj.Name = "textBoxDynVwSdqj";
             this.textBoxDynVwSdqj.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynVwSdqj.TabIndex = 174;
@@ -6524,7 +6523,7 @@
             this.textBoxDynMaxWaitTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynMaxWaitTime.ForeColor = System.Drawing.Color.Blue;
             this.textBoxDynMaxWaitTime.Location = new System.Drawing.Point(847, 220);
-            this.textBoxDynMaxWaitTime.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxDynMaxWaitTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynMaxWaitTime.Name = "textBoxDynMaxWaitTime";
             this.textBoxDynMaxWaitTime.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynMaxWaitTime.TabIndex = 171;
@@ -6557,7 +6556,7 @@
             this.textBoxDynSdqj.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynSdqj.ForeColor = System.Drawing.Color.Blue;
             this.textBoxDynSdqj.Location = new System.Drawing.Point(304, 111);
-            this.textBoxDynSdqj.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxDynSdqj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynSdqj.Name = "textBoxDynSdqj";
             this.textBoxDynSdqj.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynSdqj.TabIndex = 168;
@@ -6590,7 +6589,7 @@
             this.textBoxFuelTestFjcs.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxFuelTestFjcs.ForeColor = System.Drawing.Color.Blue;
             this.textBoxFuelTestFjcs.Location = new System.Drawing.Point(847, 74);
-            this.textBoxFuelTestFjcs.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxFuelTestFjcs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxFuelTestFjcs.Name = "textBoxFuelTestFjcs";
             this.textBoxFuelTestFjcs.Size = new System.Drawing.Size(117, 30);
             this.textBoxFuelTestFjcs.TabIndex = 166;
@@ -6603,7 +6602,7 @@
             this.panel39.Controls.Add(this.checkBoxDynJkYh);
             this.panel39.Controls.Add(this.label161);
             this.panel39.Location = new System.Drawing.Point(5, 515);
-            this.panel39.Margin = new System.Windows.Forms.Padding(4);
+            this.panel39.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel39.Name = "panel39";
             this.panel39.Size = new System.Drawing.Size(1392, 36);
             this.panel39.TabIndex = 165;
@@ -6614,7 +6613,7 @@
             this.textBoxDynYhxz.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynYhxz.ForeColor = System.Drawing.Color.Blue;
             this.textBoxDynYhxz.Location = new System.Drawing.Point(840, 1);
-            this.textBoxDynYhxz.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxDynYhxz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynYhxz.Name = "textBoxDynYhxz";
             this.textBoxDynYhxz.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynYhxz.TabIndex = 149;
@@ -6646,7 +6645,7 @@
             this.checkBoxDynJkYh.AutoSize = true;
             this.checkBoxDynJkYh.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxDynJkYh.Location = new System.Drawing.Point(276, 6);
-            this.checkBoxDynJkYh.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxDynJkYh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynJkYh.Name = "checkBoxDynJkYh";
             this.checkBoxDynJkYh.Size = new System.Drawing.Size(151, 24);
             this.checkBoxDynJkYh.TabIndex = 147;
@@ -6669,7 +6668,7 @@
             this.panel38.Controls.Add(this.checkBoxDynYkdw);
             this.panel38.Controls.Add(this.label160);
             this.panel38.Location = new System.Drawing.Point(5, 360);
-            this.panel38.Margin = new System.Windows.Forms.Padding(4);
+            this.panel38.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel38.Name = "panel38";
             this.panel38.Size = new System.Drawing.Size(1392, 36);
             this.panel38.TabIndex = 164;
@@ -6679,7 +6678,7 @@
             this.checkBoxDynYkdw.AutoSize = true;
             this.checkBoxDynYkdw.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxDynYkdw.Location = new System.Drawing.Point(276, 6);
-            this.checkBoxDynYkdw.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxDynYkdw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynYkdw.Name = "checkBoxDynYkdw";
             this.checkBoxDynYkdw.Size = new System.Drawing.Size(251, 24);
             this.checkBoxDynYkdw.TabIndex = 147;
@@ -6705,7 +6704,7 @@
             this.panel37.Controls.Add(this.checkBoxDynGddw);
             this.panel37.Controls.Add(this.label152);
             this.panel37.Location = new System.Drawing.Point(5, 322);
-            this.panel37.Margin = new System.Windows.Forms.Padding(4);
+            this.panel37.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel37.Name = "panel37";
             this.panel37.Size = new System.Drawing.Size(1392, 36);
             this.panel37.TabIndex = 163;
@@ -6716,7 +6715,7 @@
             this.textBoxDynGddwTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynGddwTime.ForeColor = System.Drawing.Color.Blue;
             this.textBoxDynGddwTime.Location = new System.Drawing.Point(840, 1);
-            this.textBoxDynGddwTime.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxDynGddwTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynGddwTime.Name = "textBoxDynGddwTime";
             this.textBoxDynGddwTime.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynGddwTime.TabIndex = 149;
@@ -6748,7 +6747,7 @@
             this.checkBoxDynGddw.AutoSize = true;
             this.checkBoxDynGddw.Font = new System.Drawing.Font("宋体", 12F);
             this.checkBoxDynGddw.Location = new System.Drawing.Point(276, 6);
-            this.checkBoxDynGddw.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxDynGddw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxDynGddw.Name = "checkBoxDynGddw";
             this.checkBoxDynGddw.Size = new System.Drawing.Size(271, 24);
             this.checkBoxDynGddw.TabIndex = 147;
@@ -6772,7 +6771,7 @@
             this.panel36.Controls.Add(this.radioButtonDynReStartForm15);
             this.panel36.Controls.Add(this.radioButtonDynReStartFrom60);
             this.panel36.Location = new System.Drawing.Point(5, 438);
-            this.panel36.Margin = new System.Windows.Forms.Padding(4);
+            this.panel36.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel36.Name = "panel36";
             this.panel36.Size = new System.Drawing.Size(1392, 36);
             this.panel36.TabIndex = 162;
@@ -6793,7 +6792,7 @@
             this.radioButtonDynReStartForm15.AutoSize = true;
             this.radioButtonDynReStartForm15.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonDynReStartForm15.Location = new System.Drawing.Point(277, 5);
-            this.radioButtonDynReStartForm15.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonDynReStartForm15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonDynReStartForm15.Name = "radioButtonDynReStartForm15";
             this.radioButtonDynReStartForm15.Size = new System.Drawing.Size(200, 24);
             this.radioButtonDynReStartForm15.TabIndex = 64;
@@ -6806,7 +6805,7 @@
             this.radioButtonDynReStartFrom60.AutoSize = true;
             this.radioButtonDynReStartFrom60.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonDynReStartFrom60.Location = new System.Drawing.Point(605, 5);
-            this.radioButtonDynReStartFrom60.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonDynReStartFrom60.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonDynReStartFrom60.Name = "radioButtonDynReStartFrom60";
             this.radioButtonDynReStartFrom60.Size = new System.Drawing.Size(200, 24);
             this.radioButtonDynReStartFrom60.TabIndex = 65;
@@ -6823,7 +6822,7 @@
             this.panel35.Controls.Add(this.radioButtonDynZdyk);
             this.panel35.Controls.Add(this.radioButtonDynWjyk);
             this.panel35.Location = new System.Drawing.Point(5, 400);
-            this.panel35.Margin = new System.Windows.Forms.Padding(4);
+            this.panel35.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel35.Name = "panel35";
             this.panel35.Size = new System.Drawing.Size(1392, 36);
             this.panel35.TabIndex = 161;
@@ -6845,7 +6844,7 @@
             this.textBoxDynYkKey.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynYkKey.ForeColor = System.Drawing.Color.Blue;
             this.textBoxDynYkKey.Location = new System.Drawing.Point(876, 2);
-            this.textBoxDynYkKey.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxDynYkKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynYkKey.Name = "textBoxDynYkKey";
             this.textBoxDynYkKey.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynYkKey.TabIndex = 150;
@@ -6862,7 +6861,7 @@
             "3",
             "4"});
             this.comboBoxDynYkTd.Location = new System.Drawing.Point(1263, 2);
-            this.comboBoxDynYkTd.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxDynYkTd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxDynYkTd.Name = "comboBoxDynYkTd";
             this.comboBoxDynYkTd.Size = new System.Drawing.Size(125, 28);
             this.comboBoxDynYkTd.TabIndex = 146;
@@ -6883,7 +6882,7 @@
             this.radioButtonDynZdyk.AutoSize = true;
             this.radioButtonDynZdyk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonDynZdyk.Location = new System.Drawing.Point(277, 5);
-            this.radioButtonDynZdyk.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonDynZdyk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonDynZdyk.Name = "radioButtonDynZdyk";
             this.radioButtonDynZdyk.Size = new System.Drawing.Size(150, 24);
             this.radioButtonDynZdyk.TabIndex = 64;
@@ -6896,7 +6895,7 @@
             this.radioButtonDynWjyk.AutoSize = true;
             this.radioButtonDynWjyk.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButtonDynWjyk.Location = new System.Drawing.Point(1028, 5);
-            this.radioButtonDynWjyk.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonDynWjyk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radioButtonDynWjyk.Name = "radioButtonDynWjyk";
             this.radioButtonDynWjyk.Size = new System.Drawing.Size(210, 24);
             this.radioButtonDynWjyk.TabIndex = 65;
@@ -6921,7 +6920,7 @@
             this.textBoxDynForceQj.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynForceQj.ForeColor = System.Drawing.Color.Blue;
             this.textBoxDynForceQj.Location = new System.Drawing.Point(845, 182);
-            this.textBoxDynForceQj.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxDynForceQj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynForceQj.Name = "textBoxDynForceQj";
             this.textBoxDynForceQj.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynForceQj.TabIndex = 157;
@@ -6954,7 +6953,7 @@
             this.textBoxFuelForceQj.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxFuelForceQj.ForeColor = System.Drawing.Color.Blue;
             this.textBoxFuelForceQj.Location = new System.Drawing.Point(847, 38);
-            this.textBoxFuelForceQj.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxFuelForceQj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxFuelForceQj.Name = "textBoxFuelForceQj";
             this.textBoxFuelForceQj.Size = new System.Drawing.Size(117, 30);
             this.textBoxFuelForceQj.TabIndex = 154;
@@ -6987,7 +6986,7 @@
             this.textBoxFuelSdQj.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxFuelSdQj.ForeColor = System.Drawing.Color.Blue;
             this.textBoxFuelSdQj.Location = new System.Drawing.Point(304, 38);
-            this.textBoxFuelSdQj.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxFuelSdQj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxFuelSdQj.Name = "textBoxFuelSdQj";
             this.textBoxFuelSdQj.Size = new System.Drawing.Size(117, 30);
             this.textBoxFuelSdQj.TabIndex = 151;
@@ -7020,7 +7019,7 @@
             this.textBoxFuelForceTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxFuelForceTime.ForeColor = System.Drawing.Color.Blue;
             this.textBoxFuelForceTime.Location = new System.Drawing.Point(304, 74);
-            this.textBoxFuelForceTime.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxFuelForceTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxFuelForceTime.Name = "textBoxFuelForceTime";
             this.textBoxFuelForceTime.Size = new System.Drawing.Size(117, 30);
             this.textBoxFuelForceTime.TabIndex = 148;
@@ -7053,7 +7052,7 @@
             this.textBoxDynForceTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynForceTime.ForeColor = System.Drawing.Color.Blue;
             this.textBoxDynForceTime.Location = new System.Drawing.Point(304, 184);
-            this.textBoxDynForceTime.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxDynForceTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynForceTime.Name = "textBoxDynForceTime";
             this.textBoxDynForceTime.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynForceTime.TabIndex = 145;
@@ -7086,7 +7085,7 @@
             this.textBoxDynZsTime.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynZsTime.ForeColor = System.Drawing.Color.Blue;
             this.textBoxDynZsTime.Location = new System.Drawing.Point(304, 148);
-            this.textBoxDynZsTime.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxDynZsTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynZsTime.Name = "textBoxDynZsTime";
             this.textBoxDynZsTime.Size = new System.Drawing.Size(117, 30);
             this.textBoxDynZsTime.TabIndex = 142;
@@ -7119,7 +7118,7 @@
             this.textBoxDynZs.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBoxDynZs.ForeColor = System.Drawing.Color.Blue;
             this.textBoxDynZs.Location = new System.Drawing.Point(845, 111);
-            this.textBoxDynZs.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxDynZs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxDynZs.Name = "textBoxDynZs";
             this.textBoxDynZs.Size = new System.Drawing.Size(118, 30);
             this.textBoxDynZs.TabIndex = 139;
@@ -7140,7 +7139,7 @@
             this.panel30.BackColor = System.Drawing.Color.Gray;
             this.panel30.Controls.Add(this.label126);
             this.panel30.Location = new System.Drawing.Point(0, 4);
-            this.panel30.Margin = new System.Windows.Forms.Padding(4);
+            this.panel30.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel30.Name = "panel30";
             this.panel30.Size = new System.Drawing.Size(1401, 34);
             this.panel30.TabIndex = 132;
@@ -7184,7 +7183,7 @@
             this.panel31.BackColor = System.Drawing.Color.Gray;
             this.panel31.Controls.Add(this.label130);
             this.panel31.Location = new System.Drawing.Point(0, 252);
-            this.panel31.Margin = new System.Windows.Forms.Padding(4);
+            this.panel31.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel31.Name = "panel31";
             this.panel31.Size = new System.Drawing.Size(1401, 34);
             this.panel31.TabIndex = 133;
@@ -7215,7 +7214,7 @@
             "COM5",
             "COM6"});
             this.comboBoxDynZsjCk.Location = new System.Drawing.Point(437, 628);
-            this.comboBoxDynZsjCk.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxDynZsjCk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxDynZsjCk.Name = "comboBoxDynZsjCk";
             this.comboBoxDynZsjCk.Size = new System.Drawing.Size(128, 28);
             this.comboBoxDynZsjCk.TabIndex = 40;
@@ -7237,7 +7236,7 @@
             "南华附件",
             "未配置"});
             this.comboBoxDynZsj.Location = new System.Drawing.Point(116, 628);
-            this.comboBoxDynZsj.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxDynZsj.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxDynZsj.Name = "comboBoxDynZsj";
             this.comboBoxDynZsj.Size = new System.Drawing.Size(116, 28);
             this.comboBoxDynZsj.TabIndex = 37;
@@ -7248,7 +7247,7 @@
             this.panel32.BackColor = System.Drawing.Color.Gray;
             this.panel32.Controls.Add(this.label131);
             this.panel32.Location = new System.Drawing.Point(0, 591);
-            this.panel32.Margin = new System.Windows.Forms.Padding(4);
+            this.panel32.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel32.Name = "panel32";
             this.panel32.Size = new System.Drawing.Size(1401, 34);
             this.panel32.TabIndex = 134;
@@ -7273,7 +7272,7 @@
             this.Controls.Add(this.tabControl1);
             this.DoubleBuffered = true;
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "系统设置";

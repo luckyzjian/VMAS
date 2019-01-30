@@ -300,6 +300,7 @@ namespace lugdowm
             initCarInfo();
             initConfigInfo();
             initEquipment();
+            equipconfig.useJHSCREEN = false;
             //ledcontrol.writeLed("白日依山尽", 2,equipconfig.Ledxh);
             initChujian();
             Init_Data();                                //初始化数据
@@ -2036,10 +2037,14 @@ namespace lugdowm
                     #endregion
                 }
                 #endregion
+                
+                igbt.Set_Speed(igbt.Speed + 1);
+                Thread.Sleep(200);
+                igbt.Start_Control_Speed();
 
                 #region 核对最大轮边功率
-                igbt.Exit_Control();
-                igbt.Exit_Control();
+                
+
                 VelMaxHP_real = 0;
                 MaxP = 0;
                 for (int timecount = 0; timecount <= GKSJ - 1; timecount++)
@@ -2069,7 +2074,8 @@ namespace lugdowm
                             JC_Status = false;
                             button_ss.Text = "重新检测";
                             Th_get_FqandLl.Abort();
-                            Jzjs_status = false; fq_getdata = false;
+                            Jzjs_status = false;
+                            fq_getdata = false;
                             Thread.Sleep(500);
                             Msg(Msg_msg, panel_msg, "轮边功率异常预警，检测中止。", true);
                             ts1 = "轮边功率异常预警";
@@ -2097,7 +2103,7 @@ namespace lugdowm
                 led_display(ledNumber_SJVEL, VelMaxHP.ToString("0.0"));
                 //led_display(ledNumberLBGL, HP);
                 statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.JIANCEZHONG, GKSJ.ToString());
-                Thread.Sleep(1000);//显示时间
+                Thread.Sleep(500);//显示时间
                 if (equipconfig.useJHJK && carbj.CarZzl >= 3500)//金华重型车最大车速如果不在60-100之间则中止检测
                 {
                     if (VelMaxHP_real < 60 || VelMaxHP_real > 100)
@@ -2105,7 +2111,8 @@ namespace lugdowm
                         JC_Status = false;
                         button_ss.Text = "重新检测";
                         Th_get_FqandLl.Abort();
-                        Jzjs_status = false; fq_getdata = false;
+                        Jzjs_status = false;
+                        fq_getdata = false;
                         Thread.Sleep(500);
                         Msg(Msg_msg, panel_msg, "最高车速不正常，检测中止。", true);
                         ts1 = "最高车速不正常";
@@ -2145,7 +2152,7 @@ namespace lugdowm
 
                 if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山"||equipconfig.DATASECONDS_TYPE=="安徽")
                     sxnb = 2;
-
+                
                 #region 加载测试
                 ts1 = "加载测试开始";
                 ts2 = "保持油门全开";
@@ -2155,14 +2162,10 @@ namespace lugdowm
                     Thread.Sleep(200);
                 }
                 Msg(Msg_msg, panel_msg, "扫描完毕，开始加载测试，保持油门全开", true);
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
                 opno = 4;
                 opcode = 14;
-                if (lugdownconfig.Glsmms == "恒功率")
-                {
-                    igbt.Set_Control_Force(0f);
-                    Thread.Sleep(200);
-                }
+                
                 Jc_Process = "VelMaxHP100%";
                 flag = 0;
                 while (JC_Status)
@@ -2177,37 +2180,125 @@ namespace lugdowm
                     switch (Jc_Process)
                     {
                         case "VelMaxHP100%":
-                            statusconfigini.writeNeuStatusData("K100Testing", DateTime.Now.ToString());
-                            Modulus = 1;
-                            if (equipconfig.DATASECONDS_TYPE != "江西"&&equipconfig.DATASECONDS_TYPE!="云南保山"&& equipconfig.DATASECONDS_TYPE != "安徽")
-                                sxnb = 2;
-                            opno = 5;
-                            opcode = 21;
+                            {
+                                flag = 0;
+                                statusconfigini.writeNeuStatusData("K100Testing", DateTime.Now.ToString());
+                                Modulus = 1;
+                                if (equipconfig.DATASECONDS_TYPE != "江西" && equipconfig.DATASECONDS_TYPE != "云南保山" && equipconfig.DATASECONDS_TYPE != "安徽")
+                                    sxnb = 2;
+                                opno = 5;
+                                opcode = 21;
+                                if (equipconfig.DATASECONDS_TYPE == "安徽")//安徽要求速度变化 不能超过2km/h/s
+                                {
+                                    Control_Speed = igbt.Speed + 1;
+                                    flag++;
+                                    while (JC_Status)               //功率扫描
+                                    {
+                                        ts1 = "100%VelMaxHP";
+                                        Msg(Msg_msg, panel_msg, "100%VelMaxHP，当前速度：" + igbt.Speed.ToString("0.0") + "km/h", true);
+                                        ts2 = "速度:" + igbt.Speed.ToString("0.0") + "功率:" + nowpower.ToString("0.0");
+                                        flag++;
+                                        Thread.Sleep(100);
+                                        if (flag % 8 == 0)         //每隔一秒速度减少0.5km/h
+                                        {
+                                            Control_Speed += 1.0f;
+                                            igbt.Set_Speed(Control_Speed);
+                                        }
+                                        while (Math.Abs(igbt.Speed - Control_Speed) > lugdownconfig.Sdwdqj)
+                                        {
+                                            Thread.Sleep(100);
+                                        }
+                                        if (Math.Round(Control_Speed - VelMaxHP_real) <= 1.5)
+                                            break;
+                                    }
+                                }
+                                igbt.Set_Speed(VelMaxHP_real);
+                                Thread.Sleep(200);
+                                igbt.Start_Control_Speed();
+                            }
                             break;
                         case "VelMaxHP90%":
-                            statusconfigini.writeNeuStatusData("K90Testing", DateTime.Now.ToString());
-                            Modulus = 0.9f;
-                            if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山"|| equipconfig.DATASECONDS_TYPE == "安徽")
-                                sxnb = 4;
-                            else
-                                sxnb = 3;
-                            opno = 9;
-                            opcode = 31;
+                            {
+                                flag = 0;
+                                statusconfigini.writeNeuStatusData("K90Testing", DateTime.Now.ToString());
+                                Modulus = 0.9f;
+                                if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山" || equipconfig.DATASECONDS_TYPE == "安徽")
+                                    sxnb = 4;
+                                else
+                                    sxnb = 3;
+                                opno = 9;
+                                opcode = 31;
+                                if (equipconfig.DATASECONDS_TYPE == "安徽")//安徽要求速度变化 不能超过2km/h/s
+                                {
+                                    Control_Speed = igbt.Speed;
+                                    flag++;
+                                    while (JC_Status)               //功率扫描
+                                    {
+                                        ts1 = "90%VelMaxHP";
+                                        Msg(Msg_msg, panel_msg, "90%VelMaxHP，当前速度：" + igbt.Speed.ToString("0.0") + "km/h", true);
+                                        ts2 = "速度:" + igbt.Speed.ToString("0.0") + "功率:" + nowpower.ToString("0.0");
+                                        flag++;
+                                        Thread.Sleep(100);
+                                        if (flag % 8 == 0)         //每隔一秒速度减少0.5km/h
+                                        {
+                                            Control_Speed -= 1.0f;
+                                            igbt.Set_Speed(Control_Speed);
+                                        }
+                                        while (Math.Abs(igbt.Speed - Control_Speed) > lugdownconfig.Sdwdqj)
+                                        {
+                                            Thread.Sleep(100);
+                                        }
+                                        if (Math.Round(Control_Speed - VelMaxHP_real*0.9) <= 1.5)
+                                            break;
+                                    }
+                                }
+                                igbt.Set_Speed(VelMaxHP_real * Modulus);
+                                Thread.Sleep(100);
+                                igbt.Start_Control_Speed();
+                            }
                             break;
                         case "VelMaxHP80%":
-                            statusconfigini.writeNeuStatusData("K80Testing", DateTime.Now.ToString());
-                            Modulus = 0.8f;
-                            if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山"|| equipconfig.DATASECONDS_TYPE == "安徽")
-                                sxnb = 5;
-                            else
-                                sxnb = 4;
-                            opno = 13;
-                            opcode = 41;
+                            {
+                                flag = 0;
+                                statusconfigini.writeNeuStatusData("K80Testing", DateTime.Now.ToString());
+                                Modulus = 0.8f;
+                                if (equipconfig.DATASECONDS_TYPE == "江西" || equipconfig.DATASECONDS_TYPE == "云南保山" || equipconfig.DATASECONDS_TYPE == "安徽")
+                                    sxnb = 5;
+                                else
+                                    sxnb = 4;
+                                opno = 13;
+                                opcode = 41;
+                                if (equipconfig.DATASECONDS_TYPE == "安徽")//安徽要求速度变化 不能超过2km/h/s
+                                {
+                                    Control_Speed = igbt.Speed;
+                                    flag++;
+                                    while (JC_Status)               //功率扫描
+                                    {
+                                        ts1 = "80%VelMaxHP";
+                                        Msg(Msg_msg, panel_msg, "80%VelMaxHP，当前速度：" + igbt.Speed.ToString("0.0") + "km/h", true);
+                                        ts2 = "速度:" + igbt.Speed.ToString("0.0") + "功率:" + nowpower.ToString("0.0");
+                                        flag++;
+                                        Thread.Sleep(100);
+                                        if (flag % 8 == 0)         //每隔一秒速度减少0.5km/h
+                                        {
+                                            Control_Speed -= 1.0f;
+                                            igbt.Set_Speed(Control_Speed);
+                                        }
+                                        while (Math.Abs(igbt.Speed - Control_Speed) > lugdownconfig.Sdwdqj)
+                                        {
+                                            Thread.Sleep(100);
+                                        }
+                                        if (Math.Round(Control_Speed - VelMaxHP_real*0.8) <= 1.5)
+                                            break;
+                                    }
+                                }
+                                igbt.Set_Speed(VelMaxHP_real * Modulus);
+                                Thread.Sleep(100);
+                                igbt.Start_Control_Speed();
+                            }
                             break;
                     }
-                    igbt.Set_Speed(VelMaxHP_real * Modulus);
                     Thread.Sleep(200);
-                    igbt.Start_Control_Speed();
 
                     if ((equipconfig.DATASECONDS_TYPE == "江西"|| equipconfig.DATASECONDS_TYPE == "云南保山"|| equipconfig.DATASECONDS_TYPE == "安徽") && Jc_Process == "VelMaxHP100%")
                     {

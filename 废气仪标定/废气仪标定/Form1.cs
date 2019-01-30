@@ -1479,6 +1479,12 @@ namespace 废气仪标定
                         }
                         Msg_label(label_msg, panel_msg, bdzt);
                         Thread.Sleep(1000);
+                        fla_502.Open_standardGas();
+                        for(int i=10;i>=0;i--)
+                        {
+                            Msg_label(label_msg, panel_msg, "等待数据稳定..."+i.ToString());
+                            Thread.Sleep(1000);
+                        }
                         Exhaust.Fla502_data resultdata = fla_502.GetData();
                         Thread.Sleep(100);
                         pef = fla_502.Getdata_PEF();
@@ -1489,6 +1495,7 @@ namespace 废气仪标定
                         setlabeltext(textEdit_nojg, textEditNo.Text);
                         setlabeltext(textEdit_pefjg, pef.ToString("0.000"));
                         setlabeltext(textEdit_o2jg, textEditO2.Text);
+                        fla_502.StopBlowback();
                         /*if (radioButtonLowB.Checked == true)
                         {
 
@@ -1573,6 +1580,12 @@ namespace 废气仪标定
                         }
                         Msg_label(label_msg, panel_msg, bdzt);
                         Thread.Sleep(1000);
+                        fla_502.Open_standardGas();
+                        for (int i = 10; i >= 0; i--)
+                        {
+                            Msg_label(label_msg, panel_msg, "等待数据稳定..." + i.ToString());
+                            Thread.Sleep(1000);
+                        }
                         Exhaust.Fla502_data resultdata = fla_502.GetData();
                         Thread.Sleep(100);
                         float pefnow = fqyconfigdata.PEF;
@@ -1583,6 +1596,7 @@ namespace 废气仪标定
                         setlabeltext(textEdit_nojg, textEditNo.Text);
                         setlabeltext(textEdit_pefjg, textEditPEF.Text);
                         setlabeltext(textEdit_o2jg, textEditO2.Text);
+                        fla_502.StopBlowback();
                         /*
                         if (radioButtonLowB.Checked == true)
                         {
@@ -1667,6 +1681,12 @@ namespace 废气仪标定
                         }
                         Msg_label(label_msg, panel_msg, bdzt);
                         Thread.Sleep(1000);
+                        fla_502.Open_standardGas();
+                        for (int i = 10; i >= 0; i--)
+                        {
+                            Msg_label(label_msg, panel_msg, "等待数据稳定..." + i.ToString());
+                            Thread.Sleep(1000);
+                        }
                         Exhaust.Fla502_data resultdata = fla_502.GetData();
                         Thread.Sleep(100);
                         pef = fla_502.Getdata_PEF();
@@ -1677,6 +1697,7 @@ namespace 废气仪标定
                         setlabeltext(textEdit_nojg, textEditNo.Text);
                         setlabeltext(textEdit_pefjg, pef.ToString("0.000"));
                         setlabeltext(textEdit_o2jg, textEditO2.Text);
+                        fla_502.StopBlowback();
                         /*
                         if (radioButtonLowB.Checked == true)
                         {
@@ -1767,7 +1788,12 @@ namespace 废气仪标定
                         else
                             Msg_label(label_msg, panel_msg, "标定失败");
                         Thread.Sleep(500);
-                        fla_502.StopBlowback();
+                        fla_502.Open_standardGas();
+                        for (int i = 10; i >= 0; i--)
+                        {
+                            Msg_label(label_msg, panel_msg, "等待数据稳定..." + i.ToString());
+                            Thread.Sleep(1000);
+                        }
                         Ref_Control_visible(buttonDemarcateMQ, false);
                         Thread.Sleep(1000);
                         Exhaust.Fla502_data resultdata = fla_502.GetData();
@@ -1781,6 +1807,7 @@ namespace 废气仪标定
                         setlabeltext(textEdit_nojg, textEditNo.Text);
                         setlabeltext(textEdit_pefjg, pef.ToString("0.000"));
                         setlabeltext(textEdit_o2jg, textEditO2.Text);
+                        fla_502.StopBlowback();
 
                         if (jiancha_detect())
                             Msg_label(label_jcjg, panel_jcjg, "通过");
@@ -1830,7 +1857,12 @@ namespace 废气仪标定
                         else
                             Msg_label(label_msg, panel_msg, "标定失败");
                         Thread.Sleep(500);
-                        fla_502.StopBlowback();
+                        fla_502.Open_standardGas();
+                        for (int i = 10; i >= 0; i--)
+                        {
+                            Msg_label(label_msg, panel_msg, "等待数据稳定..." + i.ToString());
+                            Thread.Sleep(1000);
+                        }
                         Ref_Control_visible(buttonDemarcateMQ, false);
                         Thread.Sleep(1000);
                         Exhaust.Fla502_data resultdata = fla_502.GetData();
@@ -1843,6 +1875,7 @@ namespace 废气仪标定
                         setlabeltext(textEdit_nojg, textEditNo.Text);
                         setlabeltext(textEdit_pefjg, textEditPEF.Text);
                         setlabeltext(textEdit_o2jg, textEditO2.Text);
+                        fla_502.StopBlowback();
                         /*
                         if (radioButtonLowB.Checked == true)
                         {

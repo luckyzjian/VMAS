@@ -2226,9 +2226,9 @@ namespace carinfor
             else
                 configinidata.AutoRestart = false;
             ini.INIIO.GetPrivateProfileString("VMAS", "浓度值", "", temp, 2048, startUpPath+"/detectConfig.ini");
-            //if (float.TryParse(temp.ToString().Trim(), out a))
-            //    configinidata.Ndz = a;
-            //else
+            if (float.TryParse(temp.ToString().Trim(), out a))
+                configinidata.Ndz = a;
+            else
                 configinidata.Ndz = 6f;
             ini.INIIO.GetPrivateProfileString("VMAS", "流量计流量值", "", temp, 2048, startUpPath+"/detectConfig.ini");
             if (float.TryParse(temp.ToString().Trim(), out a))

@@ -166,10 +166,24 @@ namespace Exhaust
             }
         }
 
+        public float Co2
+        {
+            get
+            {
+                return co2;
+            }
+
+            set
+            {
+                co2 = value;
+            }
+        }
+
         private float no;
         private float glyl;
         private float qswd;
         private float yqwd;
+        private float co2;
     }
     public class mqw_5101_status
     {
@@ -309,6 +323,40 @@ namespace Exhaust
         byte[] cmdLockKeyBoard_MQW = { 0x05, 0x54, 0x03, 0xa4 };//设置调零气体
         byte[] cmdUnLockKeyBoard_MQW = { 0x05, 0x55, 0x03, 0xa3 };//设置调零气体
         byte[] cmdResetFactorySettings_MQW = { 0x05, 0x58, 0x03, 0xa0 };//设置调零气体
+
+        #endregion
+
+        #region MQW_5102A通讯协议
+
+        byte cmdGetDat = 0x30;
+        byte cmdGetStatus = 0x61;
+        byte cmdPumpPipeair = 0x10;
+        byte cmdPumpAir = 0x11;
+        byte cmdFlowBack = 0x12;
+        byte cmdOpenDemarcateGas = 0x13;
+        byte cmdOpenTestGas = 0x14;
+        byte cmdPumpN2 = 0x15;
+        byte cmdStopAction = 0x16;
+        byte cmdAutoFlowback = 0x17;
+        byte cmdTestBackAir = 0x18;
+        byte cmdTestAir = 0x19;
+        byte cmdAutoLeakTest = 0x1a;
+        byte cmdSkipPrepare = 0x1f;
+        byte cmdZero = 0x21;
+        byte cmdCaliOilTemp = 0x27;
+        byte cmdCaliPressure = 0x28;
+        byte cmdGetBackAirData = 0x33;
+        byte cmdGetAirData = 0x34;
+        byte cmdSetZeroGas = 0x40;
+        byte cmdSetZeroStyle = 0x41;
+        byte cmdLockKeyBoard = 0x54;
+        byte cmdUnLockKeyBoard = 0x55;
+        byte cmdRestFactory = 0x58;
+        byte cmdCaliCO2andNO = 0x69;
+        byte cmdClearMax_YDJ = 0x63;
+        byte cmdGetMax_YDJ = 0x64;
+        byte cmdZero_YDJ = 0x2A;
+        byte cmdZero_NOx = 0x29;
 
         #endregion
 
@@ -528,6 +576,27 @@ namespace Exhaust
                     else
                         return false;
                     break;
+                case "mqw_5102":
+                    byte[] Content = new byte[] { 0x05, cmdClearMax_YDJ, 0X03, 0 };
+                    Content[3] = getCS_MQ(Content, 3);
+                    SendData(Content);// ComPort_1.Write(Content, 0, 4);        //发送开始测量命令
+                    Thread.Sleep(50);
+                    int receivelength = 4;
+                    while (ComPort_3.BytesToRead < receivelength)                          //等待仪器返回
+                    {
+                        i++;
+                        Thread.Sleep(10);
+                        if (i == 100)
+                            return false;
+                    }
+                    ReadData();
+                    if (Read_Buffer[0] == 0x6)
+                    {
+                        return true;
+                    }
+                    else
+                        return false;
+                    break;
                 default:
                     return false;
                     break;
@@ -713,6 +782,40 @@ namespace Exhaust
 
                     }
                     break;
+                case "mqw_5102":
+                    byte[] Content = new byte[] { 0x05, cmdGetStatus, 0X03, 0 };
+                    Content[3] = getCS_MQ(Content, 3);
+                    SendData(Content);// ComPort_1.Write(Content, 0, 4);        //发送开始测量命令
+                    Thread.Sleep(50);
+                    int receivelength = 11;
+                    while (ComPort_3.BytesToRead < receivelength)                          //等待仪器返回
+                    {
+                        i++;
+                        Thread.Sleep(10);
+                        if (i == 100)
+                            return "通讯故障";
+                    }
+                    ReadData();
+                    if (Read_Buffer[0] == 0x6)
+                    {
+                        byte statusbyte1 = Read_Buffer[3];
+                        byte statusbyte2 = Read_Buffer[4];
+                        byte statusbyte3 = Read_Buffer[5];
+                        byte statusbyte4 = Read_Buffer[6];
+                        byte statusbyte5 = Read_Buffer[7];
+                        byte statusbyte6 = Read_Buffer[8];
+                        byte statusbyte7 = Read_Buffer[9];
+                        if(((statusbyte1 & 0x01) == (byte)0x01))
+                            return "仪器处于预热状态";
+                        else if ((statusbyte1 & 0x02) == (byte)0x00)
+                            return "仪器已经准备好";
+                        else
+                            return "仪器已经准备好";
+                    }
+                    else
+                        return "通讯故障";
+                    break;
+
                 default:
                     return "未提供该型号此操作";
                     break;
@@ -855,22 +958,24 @@ namespace Exhaust
             switch (yqxh)
             {
                 case "flb_100":
-                    byte[] Content = new byte[] {0x01};
-                    SendData(set_TestDirectly);
-                    Thread.Sleep(50);
-                    while (ComPort_3.BytesToRead<4)                          //等待仪器返回
                     {
-                        i++;
-                        Thread.Sleep(10);
-                        if (i == 100)
+                        byte[] Content = new byte[] { 0x01 };
+                        SendData(set_TestDirectly);
+                        Thread.Sleep(50);
+                        while (ComPort_3.BytesToRead < 4)                          //等待仪器返回
+                        {
+                            i++;
+                            Thread.Sleep(10);
+                            if (i == 100)
+                                return false;
+                        }
+                        ReadData();
+                        if (Read_Buffer[0] == 0x06)
+                            return true;
+                        else
                             return false;
+                        break;
                     }
-                    ReadData();
-                    if (Read_Buffer[0] == 0x06)
-                        return true;
-                    else
-                        return false;
-                    break;
                 case "mqy_200":
                     byte[] Content_MQ = new byte[] {cmdSetTestMethod_MQ,0x01,0};
                     Content_MQ[2] = getCS_MQ(Content_MQ, 2);
@@ -933,6 +1038,29 @@ namespace Exhaust
                     else
                         return true;
                     break;
+                case "mqw_5102":
+                    {
+                        byte[] Content = new byte[] { 0x05, cmdPumpPipeair, 0X03, 0 };
+                        Content[3] = getCS_MQ(Content, 3);
+                        SendData(Content);// ComPort_1.Write(Content, 0, 4);        //发送开始测量命令
+                        Thread.Sleep(50);
+                        int receivelength = 4;
+                        while (ComPort_3.BytesToRead < receivelength)                          //等待仪器返回
+                        {
+                            i++;
+                            Thread.Sleep(10);
+                            if (i == 100)
+                                return false;
+                        }
+                        ReadData();
+                        if (Read_Buffer[0] == 0x6)
+                        {
+                            return true;
+                        }
+                        else
+                            return false;
+                        break;
+                    }
                 default:
                     return false;
                     break;
@@ -1159,6 +1287,8 @@ namespace Exhaust
                     return true;
                 case "nht_1":
                     return true;
+                case "mqw_5102":
+                    return true;
                 default:
                     return false;
             }
@@ -1202,6 +1332,8 @@ namespace Exhaust
                 case "mqy_200":
                     return true;
                 case "nht_1":
+                    return true;
+                case "mqw_5102":
                     return true;
                 default:
                     return false;
@@ -1247,6 +1379,8 @@ namespace Exhaust
                     return true;
                 case "nht_1":
                     return true;
+                case "mqw_5102":
+                    return true;
                 default:
                     return false;
             }
@@ -1290,6 +1424,8 @@ namespace Exhaust
                 case "mqy_200":
                     return true;
                 case "nht_1":
+                    return true;
+                case "mqw_5102":
                     return true;
                 default:
                     return false;
@@ -1432,6 +1568,54 @@ namespace Exhaust
                         else
                             return smoke;
                     }
+                    break;
+                case "mqw_5102":
+                    byte[] Content = new byte[] { 0x05, cmdGetDat, 0X05, 0x02, 0x00, 0 };
+                    Content[4] = (byte)( 0x01);
+                    Content[5] = getCS_MQ(Content, 5);
+                    SendData(Content);// ComPort_1.Write(Content, 0, 6);        //发送开始测量命令
+                    Thread.Sleep(50);
+                    int receivelength =  23 ;
+                    while (ComPort_3.BytesToRead < receivelength)                          //等待仪器返回
+                    {
+                        i++;
+                        Thread.Sleep(10);
+                        if (i == 100)
+                            return smoke;
+                    }
+                    ReadData();
+                    if (Read_Buffer[0] == 0x6)
+                    {
+                        byte[] temp_byte = new byte[2];
+                        temp_byte[0] = Read_Buffer[6];
+                        temp_byte[1] = Read_Buffer[5];
+                        smoke.Glyl = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.1);
+                        temp_byte[0] = Read_Buffer[8];
+                        temp_byte[1] = Read_Buffer[7];
+                        smoke.Yw = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.1);
+                        temp_byte[0] = Read_Buffer[10];
+                        temp_byte[1] = Read_Buffer[9];
+                        smoke.Zs = BitConverter.ToInt16(temp_byte, 0);
+                        temp_byte[0] = Read_Buffer[12];
+                        temp_byte[1] = Read_Buffer[11];
+                        smoke.No = BitConverter.ToInt16(temp_byte, 0);
+                        temp_byte[0] = Read_Buffer[14];
+                        temp_byte[1] = Read_Buffer[13];
+                        smoke.Co2 = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[16];
+                        temp_byte[1] = Read_Buffer[15];
+                        smoke.N = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[18];
+                        temp_byte[1] = Read_Buffer[17];
+                        smoke.Ns = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[20];
+                        temp_byte[1] = Read_Buffer[19];
+                        smoke.K = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        smoke.Qswd = Read_Buffer[21];
+                        return smoke;
+                    }
+                    else
+                        return smoke;
                     break;
                 case "nht_1":
                     byte[] Content_NH = new byte[] { cmdGetDirectData_NH, 0 };
@@ -1665,6 +1849,54 @@ namespace Exhaust
                             return smoke;
                     }
                     break;
+                case "mqw_5102":
+                    byte[] Content = new byte[] { 0x05, cmdGetDat, 0X05, 0x02, 0x00, 0 };
+                    Content[4] = (byte)(0x01);
+                    Content[5] = getCS_MQ(Content, 5);
+                    SendData(Content);// ComPort_1.Write(Content, 0, 6);        //发送开始测量命令
+                    Thread.Sleep(50);
+                    int receivelength = 23;
+                    while (ComPort_3.BytesToRead < receivelength)                          //等待仪器返回
+                    {
+                        i++;
+                        Thread.Sleep(10);
+                        if (i == 100)
+                            return smoke;
+                    }
+                    ReadData();
+                    if (Read_Buffer[0] == 0x6)
+                    {
+                        byte[] temp_byte = new byte[2];
+                        temp_byte[0] = Read_Buffer[6];
+                        temp_byte[1] = Read_Buffer[5];
+                        smoke.Glyl = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.1);
+                        temp_byte[0] = Read_Buffer[8];
+                        temp_byte[1] = Read_Buffer[7];
+                        smoke.Yw = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.1);
+                        temp_byte[0] = Read_Buffer[10];
+                        temp_byte[1] = Read_Buffer[9];
+                        smoke.Zs = BitConverter.ToInt16(temp_byte, 0);
+                        temp_byte[0] = Read_Buffer[12];
+                        temp_byte[1] = Read_Buffer[11];
+                        smoke.No = BitConverter.ToInt16(temp_byte, 0);
+                        temp_byte[0] = Read_Buffer[14];
+                        temp_byte[1] = Read_Buffer[13];
+                        smoke.Co2 = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[16];
+                        temp_byte[1] = Read_Buffer[15];
+                        smoke.N = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[18];
+                        temp_byte[1] = Read_Buffer[17];
+                        smoke.Ns = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[20];
+                        temp_byte[1] = Read_Buffer[19];
+                        smoke.K = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        smoke.Qswd = Read_Buffer[21];
+                        return smoke;
+                    }
+                    else
+                        return smoke;
+                    break;
                 case "nht_1":
                     byte[] Content_NH = new byte[] { cmdGetDirectData_NH, 0 };
                     Content_NH[1] = getCS_MQ(Content_NH, 1);
@@ -1889,6 +2121,54 @@ namespace Exhaust
                             return smoke;
                     }
                     break;
+                case "mqw_5102":
+                    byte[] Content = new byte[] { 0x05, cmdGetDat, 0X05, 0x02, 0x00, 0 };
+                    Content[4] = (byte)(0x01);
+                    Content[5] = getCS_MQ(Content, 5);
+                    SendData(Content);// ComPort_1.Write(Content, 0, 6);        //发送开始测量命令
+                    Thread.Sleep(50);
+                    int receivelength = 23;
+                    while (ComPort_3.BytesToRead < receivelength)                          //等待仪器返回
+                    {
+                        i++;
+                        Thread.Sleep(10);
+                        if (i == 100)
+                            return smoke;
+                    }
+                    ReadData();
+                    if (Read_Buffer[0] == 0x6)
+                    {
+                        byte[] temp_byte = new byte[2];
+                        temp_byte[0] = Read_Buffer[6];
+                        temp_byte[1] = Read_Buffer[5];
+                        smoke.Glyl = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.1);
+                        temp_byte[0] = Read_Buffer[8];
+                        temp_byte[1] = Read_Buffer[7];
+                        smoke.Yw = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.1);
+                        temp_byte[0] = Read_Buffer[10];
+                        temp_byte[1] = Read_Buffer[9];
+                        smoke.Zs = BitConverter.ToInt16(temp_byte, 0);
+                        temp_byte[0] = Read_Buffer[12];
+                        temp_byte[1] = Read_Buffer[11];
+                        smoke.No = BitConverter.ToInt16(temp_byte, 0);
+                        temp_byte[0] = Read_Buffer[14];
+                        temp_byte[1] = Read_Buffer[13];
+                        smoke.Co2 = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[16];
+                        temp_byte[1] = Read_Buffer[15];
+                        smoke.N = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[18];
+                        temp_byte[1] = Read_Buffer[17];
+                        smoke.Ns = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[20];
+                        temp_byte[1] = Read_Buffer[19];
+                        smoke.K = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        smoke.Qswd = Read_Buffer[21];
+                        return smoke;
+                    }
+                    else
+                        return smoke;
+                    break;
                 case "nht_1":
                     byte[] Content_NH = new byte[] { cmdGetDirectData_NH, 0 };
                     Content_NH[1] = getCS_MQ(Content_NH, 1);
@@ -2062,6 +2342,54 @@ namespace Exhaust
                         else
                             return smoke;
                     }
+                    break;
+                case "mqw_5102":
+                    byte[] Content = new byte[] { 0x05, cmdGetDat, 0X05, 0x02, 0x00, 0 };
+                    Content[4] = (byte)(0x01);
+                    Content[5] = getCS_MQ(Content, 5);
+                    SendData(Content);// ComPort_1.Write(Content, 0, 6);        //发送开始测量命令
+                    Thread.Sleep(50);
+                    int receivelength = 23;
+                    while (ComPort_3.BytesToRead < receivelength)                          //等待仪器返回
+                    {
+                        i++;
+                        Thread.Sleep(10);
+                        if (i == 100)
+                            return smoke;
+                    }
+                    ReadData();
+                    if (Read_Buffer[0] == 0x6)
+                    {
+                        byte[] temp_byte = new byte[2];
+                        temp_byte[0] = Read_Buffer[6];
+                        temp_byte[1] = Read_Buffer[5];
+                        smoke.Glyl = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.1);
+                        temp_byte[0] = Read_Buffer[8];
+                        temp_byte[1] = Read_Buffer[7];
+                        smoke.Yw = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.1);
+                        temp_byte[0] = Read_Buffer[10];
+                        temp_byte[1] = Read_Buffer[9];
+                        smoke.Zs = BitConverter.ToInt16(temp_byte, 0);
+                        temp_byte[0] = Read_Buffer[12];
+                        temp_byte[1] = Read_Buffer[11];
+                        smoke.No = BitConverter.ToInt16(temp_byte, 0);
+                        temp_byte[0] = Read_Buffer[14];
+                        temp_byte[1] = Read_Buffer[13];
+                        smoke.Co2 = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[16];
+                        temp_byte[1] = Read_Buffer[15];
+                        smoke.N = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[18];
+                        temp_byte[1] = Read_Buffer[17];
+                        smoke.Ns = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[20];
+                        temp_byte[1] = Read_Buffer[19];
+                        smoke.K = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        smoke.Qswd = Read_Buffer[21];
+                        return smoke;
+                    }
+                    else
+                        return smoke;
                     break;
                 case "nht_1":
                     byte[] Content_NH = new byte[] { cmdGetDirectData_NH, 0 };
@@ -2267,6 +2595,54 @@ namespace Exhaust
                             return smoke;
                     }
                     break;
+                case "mqw_5102":
+                    byte[] Content = new byte[] { 0x05, cmdGetDat, 0X05, 0x02, 0x00, 0 };
+                    Content[4] = (byte)(0x01);
+                    Content[5] = getCS_MQ(Content, 5);
+                    SendData(Content);// ComPort_1.Write(Content, 0, 6);        //发送开始测量命令
+                    Thread.Sleep(50);
+                    int receivelength = 23;
+                    while (ComPort_3.BytesToRead < receivelength)                          //等待仪器返回
+                    {
+                        i++;
+                        Thread.Sleep(10);
+                        if (i == 100)
+                            return smoke;
+                    }
+                    ReadData();
+                    if (Read_Buffer[0] == 0x6)
+                    {
+                        byte[] temp_byte = new byte[2];
+                        temp_byte[0] = Read_Buffer[6];
+                        temp_byte[1] = Read_Buffer[5];
+                        smoke.Glyl = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.1);
+                        temp_byte[0] = Read_Buffer[8];
+                        temp_byte[1] = Read_Buffer[7];
+                        smoke.Yw = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.1);
+                        temp_byte[0] = Read_Buffer[10];
+                        temp_byte[1] = Read_Buffer[9];
+                        smoke.Zs = BitConverter.ToInt16(temp_byte, 0);
+                        temp_byte[0] = Read_Buffer[12];
+                        temp_byte[1] = Read_Buffer[11];
+                        smoke.No = BitConverter.ToInt16(temp_byte, 0);
+                        temp_byte[0] = Read_Buffer[14];
+                        temp_byte[1] = Read_Buffer[13];
+                        smoke.Co2 = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[16];
+                        temp_byte[1] = Read_Buffer[15];
+                        smoke.N = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[18];
+                        temp_byte[1] = Read_Buffer[17];
+                        smoke.Ns = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[20];
+                        temp_byte[1] = Read_Buffer[19];
+                        smoke.K = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        smoke.Qswd = Read_Buffer[21];
+                        return smoke;
+                    }
+                    else
+                        return smoke;
+                    break;
                 case "nht_1":
                     byte[] Content_NH = new byte[] { cmdGetMaxData_NH, 0 };
                     Content_NH[1] = getCS_MQ(Content_NH, 1);
@@ -2467,6 +2843,54 @@ namespace Exhaust
                             return smoke;
                     }
                     break;
+                case "mqw_5102":
+                    byte[] Content = new byte[] { 0x05, cmdGetDat, 0X05, 0x02, 0x00, 0 };
+                    Content[4] = (byte)(0x01);
+                    Content[5] = getCS_MQ(Content, 5);
+                    SendData(Content);// ComPort_1.Write(Content, 0, 6);        //发送开始测量命令
+                    Thread.Sleep(50);
+                    int receivelength = 23;
+                    while (ComPort_3.BytesToRead < receivelength)                          //等待仪器返回
+                    {
+                        i++;
+                        Thread.Sleep(10);
+                        if (i == 100)
+                            return smoke;
+                    }
+                    ReadData();
+                    if (Read_Buffer[0] == 0x6)
+                    {
+                        byte[] temp_byte = new byte[2];
+                        temp_byte[0] = Read_Buffer[6];
+                        temp_byte[1] = Read_Buffer[5];
+                        smoke.Glyl = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.1);
+                        temp_byte[0] = Read_Buffer[8];
+                        temp_byte[1] = Read_Buffer[7];
+                        smoke.Yw = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.1);
+                        temp_byte[0] = Read_Buffer[10];
+                        temp_byte[1] = Read_Buffer[9];
+                        smoke.Zs = BitConverter.ToInt16(temp_byte, 0);
+                        temp_byte[0] = Read_Buffer[12];
+                        temp_byte[1] = Read_Buffer[11];
+                        smoke.No = BitConverter.ToInt16(temp_byte, 0);
+                        temp_byte[0] = Read_Buffer[14];
+                        temp_byte[1] = Read_Buffer[13];
+                        smoke.Co2 = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[16];
+                        temp_byte[1] = Read_Buffer[15];
+                        smoke.N = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[18];
+                        temp_byte[1] = Read_Buffer[17];
+                        smoke.Ns = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        temp_byte[0] = Read_Buffer[20];
+                        temp_byte[1] = Read_Buffer[19];
+                        smoke.K = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                        smoke.Qswd = Read_Buffer[21];
+                        return smoke;
+                    }
+                    else
+                        return smoke;
+                    break;
                 case "nht_1":
                     byte[] Content_NH = new byte[] { cmdGetMaxData_NH, 0 };
                     Content_NH[1] = getCS_MQ(Content_NH, 1);
@@ -2602,6 +3026,29 @@ namespace Exhaust
                     else
                         return false;
                     break;
+                case "mqw_5102":
+                    {
+                        byte[] Content = new byte[] { 0x05, cmdZero_YDJ, 0X03, 0 };
+                        Content[3] = getCS_MQ(Content, 3);
+                        SendData(Content);// ComPort_1.Write(Content, 0, 4);        //发送开始测量命令
+                        Thread.Sleep(50);
+                        int receivelength = 4;
+                        while (ComPort_3.BytesToRead < receivelength)                          //等待仪器返回
+                        {
+                            i++;
+                            Thread.Sleep(10);
+                            if (i == 100)
+                                return false;
+                        }
+                        ReadData();
+                        if (Read_Buffer[0] == 0x6)
+                        {
+                            return true;
+                        }
+                        else
+                            return false;
+                        break;
+                    }
                 default:
                     return false;
                     break;
@@ -2728,6 +3175,38 @@ namespace Exhaust
                             return smoke;
                     }
                     break;
+                case "mqw_5102":
+                    {
+                        byte[] Content = new byte[] { 0x05, cmdGetMax_YDJ, 0X03, 0 };
+                        Content[3] = getCS_MQ(Content, 3);
+                        SendData(Content);// ComPort_1.Write(Content, 0, 4);        //发送开始测量命令
+                        Thread.Sleep(50);
+                        int receivelength = 10;
+                        while (ComPort_3.BytesToRead < receivelength)                          //等待仪器返回
+                        {
+                            i++;
+                            Thread.Sleep(10);
+                            if (i == 100)
+                                return smoke;
+                        }
+                        ReadData();
+                        if (Read_Buffer[0] == 0x6)
+                        {
+                            byte[] temp_byte = new byte[2];
+                            temp_byte[0] = Read_Buffer[4];
+                            temp_byte[1] = Read_Buffer[3];
+                            smoke.N = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                            temp_byte[0] = Read_Buffer[6];
+                            temp_byte[1] = Read_Buffer[5];
+                            smoke.Ns = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                            temp_byte[0] = Read_Buffer[8];
+                            temp_byte[1] = Read_Buffer[7];
+                            smoke.K = (float)(BitConverter.ToInt16(temp_byte, 0) * 0.01);
+                            return smoke;
+                        }
+                        else
+                            return smoke;
+                    }
                 case "nht_1":
                     byte[] Content_NH = new byte[] { cmdGetMaxData_NH, 0 };
                     Content_NH[1] = getCS_MQ(Content_NH, 1);
