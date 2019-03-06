@@ -1456,6 +1456,7 @@ namespace vmasDetect
                         Vmas_Exhaust_ListIG195[gksj_count] = Vmas_Exhaust_Now;//尾气浓度值
                         Vmas_Exhaust_Revise_ListIG195[gksj_count] = Vmas_Exhaust_Now;//修正的尾气浓度值
                         Vmas_Exhaust_llList[gksj_count] = flv_1000.ll_standard_value;//流量计标准流量值
+                        Vmas_Exhaust_lljsjll[gksj_count] = flv_1000.ll_unstandard_value;//流量计实际流量
                         Vmas_lambda[gksj_count] = Vmas_Exhaust_Now.λ;
                         Vmas_Exhaust_xso2now[gksj_count] = flv_1000.o2_standard_value;//流量计稀释氧浓度
                         if (Vmas_Exhaust_xso2now[gksj_count] > hjo2)
@@ -2931,7 +2932,7 @@ namespace vmasDetect
         private void getLlRealData()
         {
             string lljstatus = flv_1000.Get_standardDat();
-            Thread.Sleep(50);
+            Thread.Sleep(100);
             flv_1000.Get_unstandardDat();
             islljpoweroff = (lljstatus == "通讯故障");
         }

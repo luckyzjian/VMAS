@@ -1081,10 +1081,34 @@ namespace zyjsTest
                             sd = xce_100.humidity;
                             dqy = xce_100.airpressure;
                         }
+                        else if (xce_100.readEnvironment())
+                        {
+                            wd = xce_100.temp;
+                            sd = xce_100.humidity;
+                            dqy = xce_100.airpressure;
+                        }
+                        else if (xce_100.readEnvironment())
+                        {
+                            wd = xce_100.temp;
+                            sd = xce_100.humidity;
+                            dqy = xce_100.airpressure;
+                        }
                     }
                     else if (equipconfig.TempInstrument == "XCE_101")
                     {
                         if (xce_100.readEnvironment())
+                        {
+                            wd = xce_100.temp;
+                            sd = xce_100.humidity;
+                            dqy = xce_100.airpressure;
+                        }
+                        else if (xce_100.readEnvironment())
+                        {
+                            wd = xce_100.temp;
+                            sd = xce_100.humidity;
+                            dqy = xce_100.airpressure;
+                        }
+                        else if (xce_100.readEnvironment())
                         {
                             wd = xce_100.temp;
                             sd = xce_100.humidity;

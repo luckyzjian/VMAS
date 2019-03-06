@@ -1254,10 +1254,34 @@ namespace lugdowm
                         SD = xce_100.humidity;
                         DQY = xce_100.airpressure;
                     }
+                    else if (xce_100.readEnvironment())
+                    {
+                        WD = xce_100.temp;
+                        SD = xce_100.humidity;
+                        DQY = xce_100.airpressure;
+                    }
+                    else if (xce_100.readEnvironment())
+                    {
+                        WD = xce_100.temp;
+                        SD = xce_100.humidity;
+                        DQY = xce_100.airpressure;
+                    }
                 }
                 else if (equipconfig.TempInstrument == "XCE_101")
                 {
                     if (xce_100.readEnvironment())
+                    {
+                        WD = xce_100.temp;
+                        SD = xce_100.humidity;
+                        DQY = xce_100.airpressure;
+                    }
+                    else if (xce_100.readEnvironment())
+                    {
+                        WD = xce_100.temp;
+                        SD = xce_100.humidity;
+                        DQY = xce_100.airpressure;
+                    }
+                    else if (xce_100.readEnvironment())
                     {
                         WD = xce_100.temp;
                         SD = xce_100.humidity;
@@ -4960,6 +4984,7 @@ namespace lugdowm
                 }
             }
         }
+        double realwd = 0, realsd = 0, realdqy = 0;
         public void Fq_Detect()
         {
             while (true)
@@ -5038,7 +5063,6 @@ namespace lugdowm
                         led_display(ledNumberNO, No.ToString("0"));
                         //arcScaleComponentGXXS.Value = Smoke;
                         led_display(ledNumberZS, ZS.ToString("0.0"));
-                        double realwd = WD, realsd = SD, realdqy = DQY;
                         if (IsUseTpTemp)
                         {
                             realwd = WD;
@@ -5088,9 +5112,9 @@ namespace lugdowm
                         {
                             if (xce_100.readEnvironment())
                             {
-                                realwd = xce_100.temp;
-                                realsd = xce_100.humidity;
-                                realdqy = xce_100.airpressure;
+                                realwd = thaxsdata.Tempxs * xce_100.temp;
+                                realsd = thaxsdata.Humixs * xce_100.humidity;
+                                realdqy = thaxsdata.Airpxs * xce_100.airpressure;
                             }
                         }
                         else if (equipconfig.TempInstrument == "XCE_101")
@@ -5129,14 +5153,14 @@ namespace lugdowm
                             else
                             {
                                 xce_100.readEnvironment();
-                                realwd = xce_100.temp;
+                                realwd =  xce_100.temp;
                                 realsd = xce_100.humidity;
                                 realdqy = xce_100.airpressure;
                             }
                         }
-                        realwd = thaxsdata.Tempxs * realwd;
-                        realsd = thaxsdata.Humixs * realsd;
-                        realdqy = thaxsdata.Airpxs * realdqy;
+                        //realwd = thaxsdata.Tempxs * realwd;
+                        //realsd = thaxsdata.Humixs * realsd;
+                        //realdqy = thaxsdata.Airpxs * realdqy;
                         led_display(ledNumberWd, realwd.ToString("0.0"));
                         led_display(ledNumberSd, realsd.ToString("0.0"));
                         led_display(ledNumberDqy, realdqy.ToString("0.0"));

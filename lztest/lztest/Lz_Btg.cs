@@ -908,7 +908,7 @@ namespace lzTest
                     Thread.Sleep(400);
                 }
                 dsczs = (int)ZS;
-                while (!yd_1.WaitFirstTestFinished())
+                while (!yd_1.WaitTestFinished())
                 {
                     ts1 = "第" + sxnb.ToString() + "次测量";
                     ts2 = "测量中";
