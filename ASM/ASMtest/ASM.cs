@@ -2226,7 +2226,7 @@ namespace ASMtest
                         //asm_data.O25025 = asm_Exhaust_o25025[i].ToString("0.00");
                         
                             
-                        }
+                    }
                         
                     //statusconfigini.writeStatusData(statusconfigIni.EQUIPMENTSTATUS.JIANCEZHONG, JCSJ.ToString());
                     testState = TEST_STATE.STATE_FINISH;

@@ -259,11 +259,6 @@ namespace sds
                 }
             }
 
-            if (carbj.ISUSE)
-            {
-                fla_502.coxs = carbj.SDS_CO;
-                fla_502.hcxs = carbj.SDS_HC;
-            }
             if (isautostart)
             {
                 Thread.Sleep(3000);
@@ -272,6 +267,11 @@ namespace sds
 
             if (fla_502 != null)
             {
+                if (carbj.ISUSE)
+                {
+                    fla_502.coxs = carbj.SDS_CO;
+                    fla_502.hcxs = carbj.SDS_HC;
+                }
                 fla_502.lockKeyboard();
                 Thread.Sleep(100);
                 fla_502.StopBlowback();
@@ -1056,6 +1056,11 @@ namespace sds
                             SD = Environment.HUMIDITY;
                             DQY = Environment.AIRPRESSURE;
                         }
+                        else if (equipconfig.Fqyxh.ToLower() == "fla_501")
+                        {
+                        }
+                        else if (equipconfig.Fqyxh.ToLower() == "mqw_511")
+                        { }
                         else
                         {
                             Exhaust.Fla502_data Environment = fla_502.GetData();
@@ -1170,56 +1175,112 @@ namespace sds
                 }
                 if (sdsconfig.IfFqyTl == true)
                 {
-                    Thread.Sleep(500);
-                    fla_502.Pump_Pipeair();
-                    for (int i = 15; i >= 0; i--)
+                    if (fla_502 != null)
                     {
-                        Msg(Msg_msg, panel_msg, "HC残留测定..." + i.ToString("0"), true);
-                        ts1 = "HC测定..." + i.ToString("0");
-                        if (ledcontrol != null)
+                        Thread.Sleep(500);
+                        fla_502.Pump_Pipeair();
+                        for (int i = 15; i >= 0; i--)
                         {
-                            ledcontrol.writeLed("HC残留测定...", 2, equipconfig.Ledxh);
-                            Thread.Sleep(200);
-                            ledcontrol.writeLed(i.ToString() + "s", 5, equipconfig.Ledxh);
+                            Msg(Msg_msg, panel_msg, "HC残留测定..." + i.ToString("0"), true);
+                            ts1 = "HC测定..." + i.ToString("0");
+                            if (ledcontrol != null)
+                            {
+                                ledcontrol.writeLed("HC残留测定...", 2, equipconfig.Ledxh);
+                                Thread.Sleep(200);
+                                ledcontrol.writeLed(i.ToString() + "s", 5, equipconfig.Ledxh);
+                            }
+                            Thread.Sleep(900);
                         }
-                        Thread.Sleep(900);
+                        Thread.Sleep(500);
+                        Exhaust.Fla502_data Environment = fla_502.GetData();
+                        if (Environment.HC < 20)
+                        {
+                            Msg(Msg_msg, panel_msg, "HC残留量：" + Environment.HC.ToString("0") + " 达标", true);
+                            ts1 = "HC残留量：" + Environment.HC.ToString("0");
+                            ts2 = "达标";
+                            if (ledcontrol != null)
+                            {
+                                ledcontrol.writeLed("HC残留量：" + Environment.HC.ToString("0"), 2, equipconfig.Ledxh);
+                                Thread.Sleep(200);
+                                ledcontrol.writeLed("达标", 5, equipconfig.Ledxh);
+                            }
+                        }
+                        else
+                        {
+                            Msg(Msg_msg, panel_msg, "HC残留量：" + Environment.HC.ToString("0") + " 未达标", true);
+                            ts1 = "HC残留量：" + Environment.HC.ToString("0");
+                            ts2 = "未达标，检测中止";
+                            if (ledcontrol != null)
+                            {
+                                ledcontrol.writeLed("HC残留量：" + Environment.HC.ToString("0"), 2, equipconfig.Ledxh);
+                                Thread.Sleep(200);
+                                ledcontrol.writeLed("未达标，检测中止", 5, equipconfig.Ledxh);
+                            }
+                            BeginInvoke(new wt_void(Ref_Button));
+                            Ref_Control_Text(label_st, "检测停止");
+                            JC_Status = false;
+                            //BeginInvoke(new wt_void(Ref_Button));
+                            sds_status = false;
+                            Th_get_FqandLl.Abort();
+                            return;
+                        }
+                        fla_502.StopBlowback();
+                        Thread.Sleep(1000);
+                        ts2 = "";
                     }
-                    Thread.Sleep(500);
-                    Exhaust.Fla502_data Environment = fla_502.GetData();
-                    if (Environment.HC < 20)
+                    else if (fla_501 != null)
                     {
-                        Msg(Msg_msg, panel_msg, "HC残留量：" + Environment.HC.ToString("0")+" 达标", true);
-                        ts1 = "HC残留量：" + Environment.HC.ToString("0");
-                        ts2 = "达标";
-                        if (ledcontrol != null)
+                        Thread.Sleep(500);
+                        fla_501.openbang();
+                        for (int i = 15; i >= 0; i--)
                         {
-                            ledcontrol.writeLed("HC残留量：" + Environment.HC.ToString("0"), 2, equipconfig.Ledxh);
-                            Thread.Sleep(200);
-                            ledcontrol.writeLed("达标", 5, equipconfig.Ledxh);
+                            Msg(Msg_msg, panel_msg, "HC残留测定..." + i.ToString("0"), true);
+                            ts1 = "HC测定..." + i.ToString("0");
+                            if (ledcontrol != null)
+                            {
+                                ledcontrol.writeLed("HC残留测定...", 2, equipconfig.Ledxh);
+                                Thread.Sleep(200);
+                                ledcontrol.writeLed(i.ToString() + "s", 5, equipconfig.Ledxh);
+                            }
+                            Thread.Sleep(900);
                         }
-                    }
-                    else
-                    {
-                        Msg(Msg_msg, panel_msg, "HC残留量：" + Environment.HC.ToString("0") + " 未达标", true);
-                        ts1 = "HC残留量：" + Environment.HC.ToString("0");
-                        ts2 = "未达标，检测中止";
-                        if (ledcontrol != null)
+                        Thread.Sleep(500);
+                        Exhaust.Fla501_data Environment = fla_501.Get_Data();
+                        if (Environment.HC < 20)
                         {
-                            ledcontrol.writeLed("HC残留量：" + Environment.HC.ToString("0"), 2, equipconfig.Ledxh);
-                            Thread.Sleep(200);
-                            ledcontrol.writeLed("未达标，检测中止", 5, equipconfig.Ledxh);
+                            Msg(Msg_msg, panel_msg, "HC残留量：" + Environment.HC.ToString("0") + " 达标", true);
+                            ts1 = "HC残留量：" + Environment.HC.ToString("0");
+                            ts2 = "达标";
+                            if (ledcontrol != null)
+                            {
+                                ledcontrol.writeLed("HC残留量：" + Environment.HC.ToString("0"), 2, equipconfig.Ledxh);
+                                Thread.Sleep(200);
+                                ledcontrol.writeLed("达标", 5, equipconfig.Ledxh);
+                            }
                         }
-                        BeginInvoke(new wt_void(Ref_Button));
-                        Ref_Control_Text(label_st, "检测停止");
-                        JC_Status = false;
-                        //BeginInvoke(new wt_void(Ref_Button));
-                        sds_status = false;
-                        Th_get_FqandLl.Abort();
-                        return;
+                        else
+                        {
+                            Msg(Msg_msg, panel_msg, "HC残留量：" + Environment.HC.ToString("0") + " 未达标", true);
+                            ts1 = "HC残留量：" + Environment.HC.ToString("0");
+                            ts2 = "未达标，检测中止";
+                            if (ledcontrol != null)
+                            {
+                                ledcontrol.writeLed("HC残留量：" + Environment.HC.ToString("0"), 2, equipconfig.Ledxh);
+                                Thread.Sleep(200);
+                                ledcontrol.writeLed("未达标，检测中止", 5, equipconfig.Ledxh);
+                            }
+                            BeginInvoke(new wt_void(Ref_Button));
+                            Ref_Control_Text(label_st, "检测停止");
+                            JC_Status = false;
+                            //BeginInvoke(new wt_void(Ref_Button));
+                            sds_status = false;
+                            Th_get_FqandLl.Abort();
+                            return;
+                        }
+                        fla_501.Closebang();
+                        Thread.Sleep(1000);
+                        ts2 = "";
                     }
-                    fla_502.StopBlowback();
-                    Thread.Sleep(1000);
-                    ts2 = "";
                 }
                 if (sdsconfig.IsTestYw)
                 {
@@ -1237,9 +1298,14 @@ namespace sds
                         else if (nhsjz.readData())
                             ywnow = nhsjz.yw;
                     }
-                    else
+                    else if(fla_502!=null)
                     {
                         Exhaust.Fla502_data Environment = fla_502.GetData();
+                        ywnow = Environment.YW;
+                    }
+                    else if(fla_501!=null)
+                    {
+                        Exhaust.Fla501_data Environment = fla_501.Get_Data();
                         ywnow = Environment.YW;
                     }
                     Thread.Sleep(1000);
@@ -1284,7 +1350,7 @@ namespace sds
                         //CarWait.fla_502.Set_QigangShu(gangshu);
                         break;
                     case "fla_501":
-                        fla_501.Start();
+                        fla_501.openbang();
                         break;
                 }
                 Thread.Sleep(1000);
@@ -2562,6 +2628,8 @@ namespace sds
                         case "mqw_511":
                             break;
                         case "fla_501":
+                            //fla_501.Closebang();
+                            //fla_501.Clear();
                             //CarWait.fla_501.Stop();
                             //CarWait.fla_501.Clear();
                             break;
@@ -2589,6 +2657,7 @@ namespace sds
                             fla_502.StopBlowback();//停止废气分析析工作
                             break;
                         case "fla_501":
+                            fla_501.Closebang();
                             //CarWait.fla_501.Stop();
                             break;
                     }
@@ -2857,7 +2926,7 @@ namespace sds
                     hc_ld = Vmas_Exhaust501_Now.HC;
                     o2_ld = Vmas_Exhaust501_Now.O2;
                     no_ld = Vmas_Exhaust501_Now.NO;
-                    λ_value_temp = Vmas_Exhaust_Now.λ;
+                    λ_value_temp = Vmas_Exhaust501_Now.λ;
                     if (carbj.ISUSE)
                     {
                         if (λ_value_temp > 0.97 && λ_value_temp < 1.03)

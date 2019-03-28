@@ -265,6 +265,10 @@
       <Project>{94E93096-17F3-40CE-8C13-6F15DEF62036}</Project>
       <Name>柴油寄生功率</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\泄漏检查\泄漏检查.csproj">
+      <Project>{18e2c1b8-f0d2-4772-a6d8-7ae8ad242d31}</Project>
+      <Name>泄漏检查</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\流量计标定\流量计标定\流量计标定.csproj">
       <Project>{DE693BAF-4102-4739-85F0-FC5619131C55}</Project>
       <Name>流量计标定</Name>

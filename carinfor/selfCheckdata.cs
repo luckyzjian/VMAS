@@ -347,6 +347,17 @@ namespace carinfor
         public string kssj4 { set; get; }
         public string jssj4 { set; get; }
     }
+    public class leakcheck
+    {
+        private string tightnessResult;
+
+        public string TightnessResult
+        {
+            get { return tightnessResult; }
+            set { tightnessResult = value; }
+        }
+
+    }
     public class wqfxySelfcheck
     {
         private string tightnessResult;
@@ -1121,6 +1132,18 @@ namespace carinfor
                 ini.INIIO.WritePrivateProfileString("自检数据", "checkTimeStart", cgjcheckdata.CheckTimeStart, "C:/jcdatatxt/wqfxySelfcheck.ini");
                 ini.INIIO.WritePrivateProfileString("自检数据", "checkTimeEnd", cgjcheckdata.CheckTimeEnd, "C:/jcdatatxt/wqfxySelfcheck.ini");
                 ini.INIIO.WritePrivateProfileString("自检数据", "remark", cgjcheckdata.Remark, "C:/jcdatatxt/wqfxySelfcheck.ini");
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool writeLeakTestResult(leakcheck cgjcheckdata)
+        {
+            try
+            {
+                ini.INIIO.WritePrivateProfileString("自检数据", "tightnessResult", cgjcheckdata.TightnessResult, "C:/jcdatatxt/leakcheck.ini");
                 return true;
             }
             catch

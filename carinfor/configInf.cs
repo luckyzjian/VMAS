@@ -3084,9 +3084,9 @@ namespace carinfor
             ini.INIIO.GetPrivateProfileString("LUGDOWN", "油温计", "烟度计", temp, 2048, startUpPath + "/detectConfig.ini");
             configinidata.Ywj = temp.ToString();
 
-            ini.INIIO.GetPrivateProfileString("LUGDOWN", "功率扫描模式", "", temp, 2048, startUpPath+"/detectConfig.ini");
+            ini.INIIO.GetPrivateProfileString("LUGDOWN", "功率扫描模式", "恒速度", temp, 2048, startUpPath+"/detectConfig.ini");
             configinidata.Glsmms = temp.ToString();
-
+            //configinidata.Glsmms = "恒速度";
             ini.INIIO.GetPrivateProfileString("LUGDOWN", "扫描频率", "", temp, 2048, startUpPath+"/detectConfig.ini");
             if (float.TryParse(temp.ToString().Trim(), out a))
                 configinidata.Smpl = a;
@@ -3108,6 +3108,7 @@ namespace carinfor
                 configinidata.LugdownMaxHpStyle = b;
             else
                 configinidata.LugdownMaxHpStyle = 0;
+            //configinidata.LugdownMaxHpStyle = 1;
             ini.INIIO.GetPrivateProfileString("LUGDOWN", "最大转速取值方式", "0", temp, 2048, startUpPath + "/detectConfig.ini");
             if (int.TryParse(temp.ToString().Trim(), out b))
                 configinidata.maxRPMStyle = b;
@@ -3134,10 +3135,10 @@ namespace carinfor
             else
                 configinidata.testNOx = false;
             ini.INIIO.GetPrivateProfileString("LUGDOWN", "测试过程功率监控", "true", temp, 2048, startUpPath + "/detectConfig.ini");
-            if (temp.ToString().Trim() == "true")
+            //if (temp.ToString().Trim() == "true")
                 configinidata.LugdownGljk = true;
-            else
-                configinidata.LugdownGljk = false;
+            //else
+            //    configinidata.LugdownGljk = false;
             ini.INIIO.GetPrivateProfileString("LUGDOWN", "功率监控规定值", "20", temp, 2048, startUpPath + "/detectConfig.ini");
             if (int.TryParse(temp.ToString().Trim(), out b))
                 configinidata.Lugdown_Gljk_value = b;
