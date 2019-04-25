@@ -853,6 +853,8 @@ namespace ASMtest
             asmconfig = configini.getAsmConfigIni();
             thaxsdata = configini.getthaxsConfigIni();
             fqy_delayTime = 8;
+            if (carbj.CarRlzl.Contains("电") || carbj.CarRlzl.Contains("混合动力"))
+                asmconfig.ConcentrationMonitor = false;
         }
         public void led_display(LEDNumber.LEDNumber lednumber, string data)
         {
@@ -1902,8 +1904,14 @@ namespace ASMtest
                 testState = TEST_STATE.STATE_PREP;
                 Th_get_FqandLl.Start();
                 Thread.Sleep(2000);
-                while (Vmas_Exhaust_Now.CO + Vmas_Exhaust_Now.CO2 <= asmconfig.Ndz)
-                    Thread.Sleep(500);
+
+                if (carbj.CarRlzl.Contains("电") || carbj.CarRlzl.Contains("混合动力"))
+                    Thread.Sleep(10000);
+                else
+                {
+                    while (Vmas_Exhaust_Now.CO + Vmas_Exhaust_Now.CO2 <= asmconfig.Ndz)
+                        Thread.Sleep(500);
+                }
                 Msg(label_message, panel_msg, "探头已插好,检测开始", false);
                 statusconfigini.writeGlStatusData(statusconfigIni.ENUM_GL_STATUS.STATUS_TANTOU, "");
                 //Msg(label_message, panel_msg, "检测开始,举升下降", false);
@@ -3208,8 +3216,10 @@ namespace ASMtest
                         jcStatus = false;
                         //toolStripButtonLiftUp.Enabled = true;
                         //toolStripButtonLiftDown.Enabled = true;
-                        Th_get_FqandLl.Abort();
-                        TH_ST.Abort();
+                        if(Th_get_FqandLl!=null&&Th_get_FqandLl.IsAlive)
+                            Th_get_FqandLl.Abort();
+                        if(TH_ST!=null&& TH_ST.IsAlive)
+                            TH_ST.Abort();
                         fla_502.Stop();
                         testState = TEST_STATE.STATE_FINISH;
                         timer2.Stop();

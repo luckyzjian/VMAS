@@ -999,6 +999,8 @@ namespace vmasDetect
             thaxsdata = configini.getthaxsConfigIni();
             fqy_delayTime = equipconfig.FqyDelayTime;
             delayTimeBetweenFqyAndLlj = fqy_delayTime - equipconfig.LljDelayTime;
+            if (carbj.CarRlzl.Contains("电") || carbj.CarRlzl.Contains("混合动力"))
+                vmasconfig.ConcentrationMonitor = false;
         }
         public void led_display(LEDNumber.LEDNumber lednumber, string data)
         {
@@ -3655,8 +3657,13 @@ namespace vmasDetect
                     Th_get_FqandLl.Start();
                     th_get_llj.Start();
                     Thread.Sleep(2000);
-                    while (Vmas_Exhaust_Now.CO + Vmas_Exhaust_Now.CO2 <= vmasconfig.Ndz)
-                        Thread.Sleep(500);
+                    if (carbj.CarRlzl.Contains("电") || carbj.CarRlzl.Contains("混合动力"))
+                        Thread.Sleep(10000);
+                    else
+                    {
+                        while (Vmas_Exhaust_Now.CO + Vmas_Exhaust_Now.CO2 <= vmasconfig.Ndz)
+                            Thread.Sleep(500);
+                    }
                     Msg(label_message, panel_msg, "探头已插好,检测开始", true);
                     Thread.Sleep(1500);
                 }

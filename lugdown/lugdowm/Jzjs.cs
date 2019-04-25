@@ -123,18 +123,18 @@ namespace lugdowm
         int opno = 1;
         int opcode = 11;
         public float dcf = 0;
-        public string HV = "-";                                                                     //100%VelMaxHP发动机转速
-        public string NV = "-";                                                                     //90%VelMaxHP发动机转速
-        public string EV = "-";                                                                     //80%VelMaxHP发动机转速
-        public string HP = "-";                                                                     //100%VelMaxHP轮边功率
-        public string NP = "-";                                                                     //90%VelMaxHP轮边功率
-        public string EP = "-";                                                                     //80%VelMaxHP轮边功率
-        public string HK = "-";                                                                     //100%VelMaxHP光吸收系数
-        public string NK = "-";                                                                     //90%VelMaxHP光吸收系数
-        public string EK = "-";                                                                     //80%VelMaxHP光吸收系数
-        public string HNo = "-";                                                                     //100%VelMaxHP光吸收系数
-        public string NNo = "-";                                                                     //90%VelMaxHP光吸收系数
-        public string ENo = "-";                                                                     //80%VelMaxHP光吸收系数
+        public string HV = "0";                                                                     //100%VelMaxHP发动机转速
+        public string NV = "0";                                                                     //90%VelMaxHP发动机转速
+        public string EV = "0";                                                                     //80%VelMaxHP发动机转速
+        public string HP = "0";                                                                     //100%VelMaxHP轮边功率
+        public string NP = "0";                                                                     //90%VelMaxHP轮边功率
+        public string EP = "0";                                                                     //80%VelMaxHP轮边功率
+        public string HK = "0";                                                                     //100%VelMaxHP光吸收系数
+        public string NK = "0";                                                                     //90%VelMaxHP光吸收系数
+        public string EK = "0";                                                                     //80%VelMaxHP光吸收系数
+        public string HNo = "0";                                                                     //100%VelMaxHP光吸收系数
+        public string NNo = "0";                                                                     //90%VelMaxHP光吸收系数
+        public string ENo = "0";                                                                     //80%VelMaxHP光吸收系数
 
         public string MMZGXSD = "-";                                                                //每秒转鼓线速度
         public string MMCGJFH = "-";                                                                //每秒测功机负荷
@@ -5037,6 +5037,11 @@ namespace lugdowm
                                 if (vmt_2000.readRotateSpeed())
                                     ZS = vmt_2000.zs;
                             }
+                        }
+                        else if (nhsjz != null && lugdownconfig.Zsj == "南华附件")
+                        {
+                            if (nhsjz.readData())
+                                ZS = nhsjz.zs;
                         }
                         else
                         {

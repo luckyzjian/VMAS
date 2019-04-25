@@ -755,14 +755,15 @@ namespace QxzDemarcate
                         }
                         catch
                         { }
+                        System.Environment.Exit(0);
                     }
                     catch (Exception)
                     {
-                        e.Cancel = true;
                     }
                 }
                 else
-                { 
+                {
+                    e.Cancel = true;
                 }
             }
             else
@@ -813,6 +814,7 @@ namespace QxzDemarcate
                     }
                     catch
                     { }
+                    System.Environment.Exit(0);
                 }
                 catch (Exception)
                 {

@@ -302,6 +302,8 @@ namespace sds
             sdsconfig = configini.getSdsConfigIni();
             vmasconfig = configini.getVmasConfigIni();
             thaxsdata = configini.getthaxsConfigIni();
+            if (carbj.CarRlzl.Contains("电") || carbj.CarRlzl.Contains("混合动力"))
+                sdsconfig.ConcentrationMonitor = false; 
         }
         public void initEquipment()
         {
@@ -1726,21 +1728,26 @@ namespace sds
                 }
                 Thread.Sleep(2000);
                 chaocha = 0;
-                if (sdsconfig.ConcentrationMonitor)
+                if (carbj.CarRlzl.Contains("电") || carbj.CarRlzl.Contains("混合动力"))
+                    Thread.Sleep(10000);
+                else
                 {
-                    switch (UseFqy)
+                    if (sdsconfig.ConcentrationMonitor)
                     {
-                        case "fla_502":
-                            while ((Vmas_Exhaust_Now.CO + Vmas_Exhaust_Now.CO2 < sdsconfig.Ndz)||Vmas_Exhaust_Now.O2>=10) ;
-                            //CarWait.fla_502.Set_QigangShu(gangshu);
-                            break;
-                        case "mqw_511":
-                            while ((Vmas_Exhaust_Now.CO + Vmas_Exhaust_Now.CO2 < sdsconfig.Ndz )|| Vmas_Exhaust_Now.O2 >= 10) ;
-                            //CarWait.fla_502.Set_QigangShu(gangshu);
-                            break;
-                        case "fla_501":
-                            while ((Vmas_Exhaust501_Now.CO + Vmas_Exhaust501_Now.CO2 < sdsconfig.Ndz) || Vmas_Exhaust501_Now.O2 >= 10) ;
-                            break;
+                        switch (UseFqy)
+                        {
+                            case "fla_502":
+                                while ((Vmas_Exhaust_Now.CO + Vmas_Exhaust_Now.CO2 < sdsconfig.Ndz) || Vmas_Exhaust_Now.O2 >= 10) ;
+                                //CarWait.fla_502.Set_QigangShu(gangshu);
+                                break;
+                            case "mqw_511":
+                                while ((Vmas_Exhaust_Now.CO + Vmas_Exhaust_Now.CO2 < sdsconfig.Ndz) || Vmas_Exhaust_Now.O2 >= 10) ;
+                                //CarWait.fla_502.Set_QigangShu(gangshu);
+                                break;
+                            case "fla_501":
+                                while ((Vmas_Exhaust501_Now.CO + Vmas_Exhaust501_Now.CO2 < sdsconfig.Ndz) || Vmas_Exhaust501_Now.O2 >= 10) ;
+                                break;
+                        }
                     }
                 }
                 ts2 = "探头已插好";
@@ -2731,6 +2738,11 @@ namespace sds
                                     Zs = vmt_2000.zs;
                             }
                         }
+                        else if (nhsjz != null && sdsconfig.Zsj == "南华附件")
+                        {
+                            if (nhsjz.readData())
+                                Zs = nhsjz.zs;
+                        }
                         else
                         {
                             Zs = Vmas_Exhaust_Now.ZS;
@@ -2826,6 +2838,11 @@ namespace sds
                                     Zs = vmt_2000.zs;
                             }
                         }
+                        else if (nhsjz != null && sdsconfig.Zsj == "南华附件")
+                        {
+                            if (nhsjz.readData())
+                                Zs = nhsjz.zs;
+                        }
                         else
                         {
                             Zs = Vmas_Exhaust_Now.ZS;
@@ -2899,6 +2916,11 @@ namespace sds
                                 if (vmt_2000.readRotateSpeed())
                                     Zs = vmt_2000.zs;
                             }
+                        }
+                        else if (nhsjz != null && sdsconfig.Zsj == "南华附件")
+                        {
+                            if (nhsjz.readData())
+                                Zs = nhsjz.zs;
                         }
                         else
                         {

@@ -782,6 +782,7 @@ namespace zyjsTest
                     try
                     {
                         nhsjz = new Exhaust.Nhsjz();
+                        if (btgconfig.Zsj == "南华附件") isUseRotater = true;
                         if (nhsjz.Init_Comm(equipconfig.NhSjz_Com, equipconfig.NhSjz_ComString) == false)
                         {
                             nhsjz = null;
@@ -3280,9 +3281,12 @@ namespace zyjsTest
                                 if (vmt_2000.readRotateSpeed())
                                     ZS = vmt_2000.zs;
                             }
+                            else if (nhsjz != null && btgconfig.Zsj == "南华附件")
+                            {
+                                if (nhsjz.readData())
+                                    ZS = nhsjz.zs;
+                            }
                         }
-                        Msg(label_zstext, panel_zstext, ZS.ToString(), false);
-                        arcScaleComponent3.Value = ZS;
                         if (isReadRealTime)
                         {
                             if (equipconfig.Ydjxh.ToLower() == "cdf5000")
@@ -3310,6 +3314,8 @@ namespace zyjsTest
                             if (!isUseRotater&&!IsUseVRM)
                                 ZS = (int)(smoke.Zs);
 
+                            Msg(label_zstext, panel_zstext, ZS.ToString(), false);
+                            arcScaleComponent3.Value = ZS;
                             if (carbj.ISUSE)
                             {
                                 Smoke = (float)(carbj.ZYJS_K * smoke.K);
@@ -3478,6 +3484,11 @@ namespace zyjsTest
                                 if (vmt_2000.readRotateSpeed())
                                     ZS = vmt_2000.zs;
                             }
+                            else if (nhsjz != null && btgconfig.Zsj == "南华附件")
+                            {
+                                if (nhsjz.readData())
+                                    ZS = nhsjz.zs;
+                            }
                         }
                         if (nhsjz != null && btgconfig.Ywj == "南华附件")
                         {
@@ -3587,6 +3598,11 @@ namespace zyjsTest
                         {
                             if (vmt_2000.readRotateSpeed())
                                 ZS = vmt_2000.zs;
+                        }
+                        else if (nhsjz != null && btgconfig.Zsj == "南华附件")
+                        {
+                            if (nhsjz.readData())
+                                ZS = nhsjz.zs;
                         }
                     }
                     if (nhsjz != null && btgconfig.Ywj == "南华附件")

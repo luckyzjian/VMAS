@@ -107,6 +107,7 @@ namespace lugdowm
                 float powerNow =Jzjs.igbt.Power;
                 Msg(labelSpeed, panelSpeed, speedNow.ToString("0.0"), false);
                 Msg(labelPower, panelPower, powerNow.ToString("0.0"), false);
+                Msg(labelK, panelK, Jzjs.Smoke.ToString("0.00"), false);
                 if (Jzjs.Jzjs_status)
                 {
                     if (timerCount > 8)

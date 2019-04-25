@@ -2381,10 +2381,20 @@ namespace carinfor
             else
                 configinidata.PowerMonitor = false;
             ini.INIIO.GetPrivateProfileString("ASM", "浓度监测", "", temp, 2048, startUpPath+"/detectConfig.ini");
-            //if (temp.ToString().Trim() == "true")
+            if (DateTime.Compare(DateTime.Now, Convert.ToDateTime("2019-05-01 00:00:00")) < 0)
+            {
+                if (temp.ToString().Trim() == "true")
+                    configinidata.ConcentrationMonitor = true;
+                else
+                    configinidata.ConcentrationMonitor = false;
+            }
+            else
+            {
+                //if (temp.ToString().Trim() == "true")
                 configinidata.ConcentrationMonitor = true;
-            //else
-            //    configinidata.ConcentrationMonitor = false;
+                //else
+                //    configinidata.ConcentrationMonitor = false;
+            }
 
             ini.INIIO.GetPrivateProfileString("ASM", "残余量监测", "", temp, 2048, startUpPath+"/detectConfig.ini");
             if (temp.ToString().Trim() == "true")
@@ -2415,10 +2425,20 @@ namespace carinfor
                 configinidata.IfDisplayData = false;
 
             ini.INIIO.GetPrivateProfileString("ASM", "浓度值", "", temp, 2048, startUpPath+"/detectConfig.ini");
-            //if (float.TryParse(temp.ToString().Trim(), out a))
-              //  configinidata.Ndz = a;
-            //else
+            if (DateTime.Compare(DateTime.Now, Convert.ToDateTime("2019-05-01 00:00:00")) < 0)
+            {
+                if (float.TryParse(temp.ToString().Trim(), out a))
+                    configinidata.Ndz = a;
+                else
+                    configinidata.Ndz = 6f;
+            }
+            else
+            {//if (float.TryParse(temp.ToString().Trim(), out a))
+             //  configinidata.Ndz = a;
+             //else
                 configinidata.Ndz = 6f;
+
+            }
 
             ini.INIIO.GetPrivateProfileString("ASM", "功率加载", "", temp, 2048, startUpPath+"/detectConfig.ini");
             if (float.TryParse(temp.ToString().Trim(), out a))
@@ -2522,12 +2542,21 @@ namespace carinfor
             else
                 configinidata.RotateSpeedMonitor = false;
             ini.INIIO.GetPrivateProfileString("SDS", "浓度监测", "", temp, 2048, startUpPath+"/detectConfig.ini");
-            //if (temp.ToString().Trim() == "true")
+            if (DateTime.Compare(DateTime.Now, Convert.ToDateTime("2019-05-01 00:00:00")) < 0)
+            {
+                if (temp.ToString().Trim() == "true")
                 configinidata.ConcentrationMonitor = true;
-           // else
-           //     configinidata.ConcentrationMonitor = false;
+                 else
+                     configinidata.ConcentrationMonitor = false;
+            }
+            else
+            { //if (temp.ToString().Trim() == "true")
+                configinidata.ConcentrationMonitor = true;
+                // else
+                //     configinidata.ConcentrationMonitor = false;
+            }
 
-            ini.INIIO.GetPrivateProfileString("SDS", "是否调零", "", temp, 2048, startUpPath+"/detectConfig.ini");
+                ini.INIIO.GetPrivateProfileString("SDS", "是否调零", "", temp, 2048, startUpPath+"/detectConfig.ini");
             if (temp.ToString().Trim() == "true")
                 configinidata.IfFqyTl = true;
             else
@@ -2539,10 +2568,20 @@ namespace carinfor
                 configinidata.Flowback = false;
 
             ini.INIIO.GetPrivateProfileString("SDS", "浓度值", "", temp, 2048, startUpPath+"/detectConfig.ini");
-            //if (float.TryParse(temp.ToString().Trim(), out a))
-              //  configinidata.Ndz = a;
-            //else
-                configinidata.Ndz = 6f;
+                if (DateTime.Compare(DateTime.Now, Convert.ToDateTime("2019-05-01 00:00:00")) < 0)
+                {
+                    if (float.TryParse(temp.ToString().Trim(), out a))
+                   configinidata.Ndz = a;
+                 else
+                    configinidata.Ndz = 6f;
+                }
+                else
+                {//if (float.TryParse(temp.ToString().Trim(), out a))
+                 //  configinidata.Ndz = a;
+                 //else
+                    configinidata.Ndz = 6f;
+
+                }
 
             ini.INIIO.GetPrivateProfileString("SDS", "转速超差", "", temp, 2048, startUpPath+"/detectConfig.ini");
             if (int.TryParse(temp.ToString().Trim(), out b))
@@ -3135,11 +3174,20 @@ namespace carinfor
             else
                 configinidata.testNOx = false;
             ini.INIIO.GetPrivateProfileString("LUGDOWN", "测试过程功率监控", "true", temp, 2048, startUpPath + "/detectConfig.ini");
-            //if (temp.ToString().Trim() == "true")
+            if (DateTime.Compare(DateTime.Now, Convert.ToDateTime("2019-05-01 00:00:00")) < 0)
+            {
+                if (temp.ToString().Trim() == "true")
+                    configinidata.LugdownGljk = true;
+                else
+                    configinidata.LugdownGljk = false;
+            }
+            else
+            { //if (temp.ToString().Trim() == "true")
                 configinidata.LugdownGljk = true;
-            //else
-            //    configinidata.LugdownGljk = false;
-            ini.INIIO.GetPrivateProfileString("LUGDOWN", "功率监控规定值", "20", temp, 2048, startUpPath + "/detectConfig.ini");
+                //else
+                //    configinidata.LugdownGljk = false;}
+            }
+                ini.INIIO.GetPrivateProfileString("LUGDOWN", "功率监控规定值", "20", temp, 2048, startUpPath + "/detectConfig.ini");
             if (int.TryParse(temp.ToString().Trim(), out b))
                 configinidata.Lugdown_Gljk_value = b;
             else
